@@ -1,0 +1,137 @@
+export const resumeData = {
+  name: "Vaibhav Bapat",
+  location: "United States",
+  phone: "(210) 201-4314",
+  email: "vaibhavb@worktechmail.com",
+  summary:
+    "Data Analyst with 6+ years across cloud data engineering, advanced analytics, and business analysis. Builds HIPAA-compliant data systems on AWS/Snowflake/PySpark and translates statistical insight into measurable operating impact.",
+  skills: {
+    programming: [
+      "Python (Pandas, NumPy, scikit-learn, statsmodels)",
+      "SQL",
+      "R",
+      "Julia",
+      "Shell scripting",
+    ],
+    dataEngineering: [
+      "Snowflake",
+      "dbt",
+      "Airflow",
+      "PySpark",
+      "Data modeling",
+      "ETL/ELT",
+      "Data governance",
+      "Forecasting",
+      "A/B and multivariate testing",
+    ],
+    businessAnalysis: [
+      "Requirements gathering",
+      "Process mapping",
+      "KPI definition",
+      "Cost-benefit analysis",
+      "UAT and RTM",
+      "BRD/FRD/SRS documentation",
+    ],
+    visualization: [
+      "Tableau",
+      "Power BI",
+      "Looker",
+      "QlikView",
+      "Excel VBA",
+      "QuickSight",
+    ],
+    cloudAndData: [
+      "AWS (Glue, Redshift, Athena, Lambda)",
+      "Azure Databricks",
+      "GCP BigQuery",
+      "MySQL",
+      "PostgreSQL",
+      "SQL Server",
+      "Oracle",
+      "NoSQL",
+    ],
+  },
+  experience: [
+    {
+      company: "Humana",
+      role: "Senior Data Analyst",
+      period: "February 2025 - Present",
+      location: "United States",
+      highlights: [
+        "Engineered AWS Glue + Snowflake + dbt pipelines for 10M+ daily claims and membership records, improving data freshness by 35%.",
+        "Built HIPAA-compliant Snowflake data models for PHI with 100% compliance controls.",
+        "Implemented A/B and multivariate testing to validate an 8% uplift in member engagement with lower cost-per-encounter.",
+        "Automated reporting with Python + Power BI, reducing manual preparation by 40+ hours monthly.",
+      ],
+    },
+    {
+      company: "Clean Harbors",
+      role: "Data Analyst",
+      period: "September 2024 - December 2024",
+      location: "United States",
+      highlights: [
+        "Processed and modeled 200K+ records with Python and SQL for operational and financial analytics.",
+        "Built Power BI KPI dashboards to support strategy and cost-efficiency decisions.",
+      ],
+    },
+    {
+      company: "MOTORMIA",
+      role: "Data Analyst",
+      period: "June 2024 - September 2024",
+      location: "United States",
+      highlights: [
+        "Built SQL ETL automation for multi-source analytics workflows.",
+        "Developed real-time Tableau and Power BI dashboards for sales, customer behavior, and inventory.",
+        "Improved demand-forecasting accuracy by 20% using PySpark and Python models.",
+      ],
+    },
+    {
+      company: "BrownFrame Technologies",
+      role: "Data Analyst",
+      period: "June 2018 - July 2023",
+      location: "India",
+      highlights: [
+        "Optimized 20+ PL/SQL procedures for financial reporting, reducing report time by 45%.",
+        "Developed forecasting models improving quarterly budget prediction accuracy by 15%.",
+        "Implemented governance foundations for 4 business domains, increasing trust in reporting metrics by 10%.",
+      ],
+    },
+  ],
+  education: [
+    {
+      school: "Northeastern University",
+      degree: "Master of Science in Business Analytics",
+      period: "September 2023 - December 2024",
+      location: "Boston, Massachusetts, United States",
+    },
+    {
+      school: "Bharati Vidyapeeth University",
+      degree: "Bachelor of Business Administration",
+      period: "July 2015 - May 2018",
+      location: "India",
+    },
+  ],
+  projectHighlights: [
+    {
+      title: "E-commerce Revenue Optimization",
+      impact: "Marketing ROI +15%",
+      stack: "SQL, Python, PySpark, Tableau, Power BI, Databricks",
+    },
+    {
+      title: "Unified Analytics & Optimization Suite",
+      impact: "$150K annual savings, reporting cycle -30%",
+      stack: "Redshift, Snowflake, Python, Excel VBA, Power BI, Tableau, QuickSight",
+    },
+    {
+      title: "Customer & Product Insights Platform",
+      impact: "$480K annual recapture, retention +12%",
+      stack: "AWS Lambda, SQL, PySpark, Databricks, Tableau, Looker",
+    },
+  ],
+  certifications: [
+    "Foundations: Data, Data, Everywhere",
+    "K-DVA: Data Visualization & Analytics",
+    "Introduction to Data Analytics for Business",
+    "Six Sigma Tools for Analyze",
+  ],
+} as const;

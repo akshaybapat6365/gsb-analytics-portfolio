@@ -1,0 +1,104 @@
+"use client";
+
+import DeckGL from "@deck.gl/react";
+import type { Layer, PickingInfo } from "@deck.gl/core";
+import { Map } from "react-map-gl/maplibre";
+import maplibregl from "maplibre-gl";
+import { cn } from "@/lib/cn";
+import { VizErrorBoundary } from "@/components/viz/VizErrorBoundary";
+
+type DeckMapProps = {
+  initialViewState: {
+    longitude: number;
+    latitude: number;
+    zoom: number;
+    pitch?: number;
+    bearing?: number;
+  };
+  layers: Layer[];
+  className?: string;
+  height?: number;
+  mapStyle?: string;
+  getTooltip?: (info: PickingInfo) => string | null;
+};
+
+const defaultStyle = "https://demotiles.maplibre.org/style.json";
+
+function detectWebglSupport() {
+  if (typeof window === "undefined") return true;
+
+  try {
+    const canvas = document.createElement("canvas");
+    return Boolean(
+      canvas.getContext("webgl2") ||
+        canvas.getContext("webgl") ||
+        canvas.getContext("experimental-webgl"),
+    );
+  } catch {
+    return false;
+  }
+}
+
+export function DeckMap({
+  initialViewState,
+  layers,
+  className,
+  height = 420,
+  mapStyle = defaultStyle,
+  getTooltip,
+}: DeckMapProps) {
+  const webglReady = detectWebglSupport();
+
+  if (!webglReady) {
+    return (
+      <section
+        className={cn("glass overflow-hidden rounded-2xl", className)}
+        style={{ height }}
+      >
+        <div className="flex h-full items-center justify-center px-6 text-center">
+          <div className="max-w-lg space-y-2 rounded-xl border border-white/10 bg-white/5 p-5">
+            <p className="font-sans text-xs font-medium uppercase tracking-[0.18em] text-slate-400">
+              Map unavailable
+            </p>
+            <p className="text-sm leading-relaxed text-slate-300">
+              WebGL is not available in this browser. Decision metrics and scenario outputs are still active.
+            </p>
+          </div>
+        </div>
+      </section>
+    );
+  }
+
+  return (
+    <section
+      className={cn("glass overflow-hidden rounded-2xl", className)}
+      style={{ height }}
+    >
+      <VizErrorBoundary
+        fallbackTitle="Map rendering error"
+        fallbackMessage="The interactive map could not mount. Use the surrounding KPIs/charts to continue the scenario analysis."
+        height={height}
+      >
+        <DeckGL
+          initialViewState={initialViewState}
+          controller
+          layers={layers}
+          getTooltip={
+            getTooltip ??
+            ((info) => {
+              const obj = info.object as { tooltip?: string } | null;
+              return obj?.tooltip ?? null;
+            })
+          }
+        >
+          <Map
+            reuseMaps
+            mapLib={maplibregl}
+            mapStyle={mapStyle}
+            attributionControl={false}
+          />
+        </DeckGL>
+      </VizErrorBoundary>
+    </section>
+  );
+}

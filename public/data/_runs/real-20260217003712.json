@@ -1,0 +1,13 @@
+{
+  "generatedAt": "2026-02-17T00:37:12+00:00",
+  "overallStatus": "unavailable",
+  "projects": {
+    "fraud-radar": "unavailable",
+    "netflix-roi": "unavailable",
+    "ord-lga-price-war": "unavailable",
+    "starbucks-pivot": "unavailable",
+    "target-shrink": "unavailable",
+    "tesla-nacs": "unavailable"
+  },
+  "runId": "real-20260217003712"
+}

@@ -1,0 +1,4766 @@
+{
+  "bookingCurve": [
+    {
+      "actualBookings": 165.0,
+      "algoBookings": 275.0,
+      "date": "2023-04-01",
+      "window": 1
+    },
+    {
+      "actualBookings": 157.0,
+      "algoBookings": 262.0,
+      "date": "2023-04-01",
+      "window": 3
+    },
+    {
+      "actualBookings": 138.0,
+      "algoBookings": 244.0,
+      "date": "2023-04-01",
+      "window": 7
+    },
+    {
+      "actualBookings": 119.0,
+      "algoBookings": 192.0,
+      "date": "2023-04-01",
+      "window": 14
+    },
+    {
+      "actualBookings": 27.0,
+      "algoBookings": 39.0,
+      "date": "2023-04-01",
+      "window": 30
+    },
+    {
+      "actualBookings": 177.0,
+      "algoBookings": 288.0,
+      "date": "2023-04-02",
+      "window": 1
+    },
+    {
+      "actualBookings": 173.0,
+      "algoBookings": 262.0,
+      "date": "2023-04-02",
+      "window": 3
+    },
+    {
+      "actualBookings": 158.0,
+      "algoBookings": 246.0,
+      "date": "2023-04-02",
+      "window": 7
+    },
+    {
+      "actualBookings": 119.0,
+      "algoBookings": 198.0,
+      "date": "2023-04-02",
+      "window": 14
+    },
+    {
+      "actualBookings": 29.0,
+      "algoBookings": 42.0,
+      "date": "2023-04-02",
+      "window": 30
+    },
+    {
+      "actualBookings": 206.0,
+      "algoBookings": 331.0,
+      "date": "2023-04-03",
+      "window": 1
+    },
+    {
+      "actualBookings": 195.0,
+      "algoBookings": 314.0,
+      "date": "2023-04-03",
+      "window": 3
+    },
+    {
+      "actualBookings": 173.0,
+      "algoBookings": 294.0,
+      "date": "2023-04-03",
+      "window": 7
+    },
+    {
+      "actualBookings": 151.0,
+      "algoBookings": 234.0,
+      "date": "2023-04-03",
+      "window": 14
+    },
+    {
+      "actualBookings": 34.0,
+      "algoBookings": 48.0,
+      "date": "2023-04-03",
+      "window": 30
+    },
+    {
+      "actualBookings": 182.0,
+      "algoBookings": 299.0,
+      "date": "2023-04-04",
+      "window": 1
+    },
+    {
+      "actualBookings": 173.0,
+      "algoBookings": 273.0,
+      "date": "2023-04-04",
+      "window": 3
+    },
+    {
+      "actualBookings": 163.0,
+      "algoBookings": 249.0,
+      "date": "2023-04-04",
+      "window": 7
+    },
+    {
+      "actualBookings": 138.0,
+      "algoBookings": 209.0,
+      "date": "2023-04-04",
+      "window": 14
+    },
+    {
+      "actualBookings": 30.0,
+      "algoBookings": 41.0,
+      "date": "2023-04-04",
+      "window": 30
+    },
+    {
+      "actualBookings": 177.0,
+      "algoBookings": 288.0,
+      "date": "2023-04-05",
+      "window": 1
+    },
+    {
+      "actualBookings": 166.0,
+      "algoBookings": 268.0,
+      "date": "2023-04-05",
+      "window": 3
+    },
+    {
+      "actualBookings": 150.0,
+      "algoBookings": 246.0,
+      "date": "2023-04-05",
+      "window": 7
+    },
+    {
+      "actualBookings": 124.0,
+      "algoBookings": 196.0,
+      "date": "2023-04-05",
+      "window": 14
+    },
+    {
+      "actualBookings": 28.0,
+      "algoBookings": 40.0,
+      "date": "2023-04-05",
+      "window": 30
+    },
+    {
+      "actualBookings": 196.0,
+      "algoBookings": 321.0,
+      "date": "2023-04-06",
+      "window": 1
+    },
+    {
+      "actualBookings": 183.0,
+      "algoBookings": 311.0,
+      "date": "2023-04-06",
+      "window": 3
+    },
+    {
+      "actualBookings": 161.0,
+      "algoBookings": 278.0,
+      "date": "2023-04-06",
+      "window": 7
+    },
+    {
+      "actualBookings": 134.0,
+      "algoBookings": 227.0,
+      "date": "2023-04-06",
+      "window": 14
+    },
+    {
+      "actualBookings": 31.0,
+      "algoBookings": 46.0,
+      "date": "2023-04-06",
+      "window": 30
+    },
+    {
+      "actualBookings": 194.0,
+      "algoBookings": 351.0,
+      "date": "2023-04-07",
+      "window": 1
+    },
+    {
+      "actualBookings": 197.0,
+      "algoBookings": 327.0,
+      "date": "2023-04-07",
+      "window": 3
+    },
+    {
+      "actualBookings": 182.0,
+      "algoBookings": 302.0,
+      "date": "2023-04-07",
+      "window": 7
+    },
+    {
+      "actualBookings": 145.0,
+      "algoBookings": 244.0,
+      "date": "2023-04-07",
+      "window": 14
+    },
+    {
+      "actualBookings": 34.0,
+      "algoBookings": 49.0,
+      "date": "2023-04-07",
+      "window": 30
+    },
+    {
+      "actualBookings": 170.0,
+      "algoBookings": 284.0,
+      "date": "2023-04-08",
+      "window": 1
+    },
+    {
+      "actualBookings": 153.0,
+      "algoBookings": 279.0,
+      "date": "2023-04-08",
+      "window": 3
+    },
+    {
+      "actualBookings": 145.0,
+      "algoBookings": 242.0,
+      "date": "2023-04-08",
+      "window": 7
+    },
+    {
+      "actualBookings": 112.0,
+      "algoBookings": 205.0,
+      "date": "2023-04-08",
+      "window": 14
+    },
+    {
+      "actualBookings": 27.0,
+      "algoBookings": 41.0,
+      "date": "2023-04-08",
+      "window": 30
+    },
+    {
+      "actualBookings": 148.0,
+      "algoBookings": 245.0,
+      "date": "2023-04-09",
+      "window": 1
+    },
+    {
+      "actualBookings": 148.0,
+      "algoBookings": 229.0,
+      "date": "2023-04-09",
+      "window": 3
+    },
+    {
+      "actualBookings": 127.0,
+      "algoBookings": 222.0,
+      "date": "2023-04-09",
+      "window": 7
+    },
+    {
+      "actualBookings": 106.0,
+      "algoBookings": 174.0,
+      "date": "2023-04-09",
+      "window": 14
+    },
+    {
+      "actualBookings": 25.0,
+      "algoBookings": 36.0,
+      "date": "2023-04-09",
+      "window": 30
+    },
+    {
+      "actualBookings": 203.0,
+      "algoBookings": 313.0,
+      "date": "2023-04-10",
+      "window": 1
+    },
+    {
+      "actualBookings": 199.0,
+      "algoBookings": 312.0,
+      "date": "2023-04-10",
+      "window": 3
+    },
+    {
+      "actualBookings": 177.0,
+      "algoBookings": 293.0,
+      "date": "2023-04-10",
+      "window": 7
+    },
+    {
+      "actualBookings": 140.0,
+      "algoBookings": 229.0,
+      "date": "2023-04-10",
+      "window": 14
+    },
+    {
+      "actualBookings": 35.0,
+      "algoBookings": 46.0,
+      "date": "2023-04-10",
+      "window": 30
+    },
+    {
+      "actualBookings": 195.0,
+      "algoBookings": 321.0,
+      "date": "2023-04-11",
+      "window": 1
+    },
+    {
+      "actualBookings": 188.0,
+      "algoBookings": 297.0,
+      "date": "2023-04-11",
+      "window": 3
+    },
+    {
+      "actualBookings": 172.0,
+      "algoBookings": 274.0,
+      "date": "2023-04-11",
+      "window": 7
+    },
+    {
+      "actualBookings": 134.0,
+      "algoBookings": 227.0,
+      "date": "2023-04-11",
+      "window": 14
+    },
+    {
+      "actualBookings": 32.0,
+      "algoBookings": 45.0,
+      "date": "2023-04-11",
+      "window": 30
+    },
+    {
+      "actualBookings": 182.0,
+      "algoBookings": 297.0,
+      "date": "2023-04-12",
+      "window": 1
+    },
+    {
+      "actualBookings": 172.0,
+      "algoBookings": 277.0,
+      "date": "2023-04-12",
+      "window": 3
+    },
+    {
+      "actualBookings": 160.0,
+      "algoBookings": 252.0,
+      "date": "2023-04-12",
+      "window": 7
+    },
+    {
+      "actualBookings": 124.0,
+      "algoBookings": 203.0,
+      "date": "2023-04-12",
+      "window": 14
+    },
+    {
+      "actualBookings": 29.0,
+      "algoBookings": 43.0,
+      "date": "2023-04-12",
+      "window": 30
+    },
+    {
+      "actualBookings": 195.0,
+      "algoBookings": 320.0,
+      "date": "2023-04-13",
+      "window": 1
+    },
+    {
+      "actualBookings": 195.0,
+      "algoBookings": 298.0,
+      "date": "2023-04-13",
+      "window": 3
+    },
+    {
+      "actualBookings": 172.0,
+      "algoBookings": 269.0,
+      "date": "2023-04-13",
+      "window": 7
+    },
+    {
+      "actualBookings": 136.0,
+      "algoBookings": 224.0,
+      "date": "2023-04-13",
+      "window": 14
+    },
+    {
+      "actualBookings": 32.0,
+      "algoBookings": 46.0,
+      "date": "2023-04-13",
+      "window": 30
+    },
+    {
+      "actualBookings": 206.0,
+      "algoBookings": 348.0,
+      "date": "2023-04-14",
+      "window": 1
+    },
+    {
+      "actualBookings": 194.0,
+      "algoBookings": 324.0,
+      "date": "2023-04-14",
+      "window": 3
+    },
+    {
+      "actualBookings": 185.0,
+      "algoBookings": 301.0,
+      "date": "2023-04-14",
+      "window": 7
+    },
+    {
+      "actualBookings": 150.0,
+      "algoBookings": 241.0,
+      "date": "2023-04-14",
+      "window": 14
+    },
+    {
+      "actualBookings": 35.0,
+      "algoBookings": 48.0,
+      "date": "2023-04-14",
+      "window": 30
+    },
+    {
+      "actualBookings": 171.0,
+      "algoBookings": 277.0,
+      "date": "2023-04-15",
+      "window": 1
+    },
+    {
+      "actualBookings": 157.0,
+      "algoBookings": 266.0,
+      "date": "2023-04-15",
+      "window": 3
+    },
+    {
+      "actualBookings": 144.0,
+      "algoBookings": 248.0,
+      "date": "2023-04-15",
+      "window": 7
+    },
+    {
+      "actualBookings": 119.0,
+      "algoBookings": 199.0,
+      "date": "2023-04-15",
+      "window": 14
+    },
+    {
+      "actualBookings": 28.0,
+      "algoBookings": 39.0,
+      "date": "2023-04-15",
+      "window": 30
+    },
+    {
+      "actualBookings": 167.0,
+      "algoBookings": 282.0,
+      "date": "2023-04-16",
+      "window": 1
+    },
+    {
+      "actualBookings": 165.0,
+      "algoBookings": 271.0,
+      "date": "2023-04-16",
+      "window": 3
+    },
+    {
+      "actualBookings": 150.0,
+      "algoBookings": 236.0,
+      "date": "2023-04-16",
+      "window": 7
+    },
+    {
+      "actualBookings": 112.0,
+      "algoBookings": 197.0,
+      "date": "2023-04-16",
+      "window": 14
+    },
+    {
+      "actualBookings": 27.0,
+      "algoBookings": 40.0,
+      "date": "2023-04-16",
+      "window": 30
+    },
+    {
+      "actualBookings": 196.0,
+      "algoBookings": 308.0,
+      "date": "2023-04-17",
+      "window": 1
+    },
+    {
+      "actualBookings": 186.0,
+      "algoBookings": 298.0,
+      "date": "2023-04-17",
+      "window": 3
+    },
+    {
+      "actualBookings": 177.0,
+      "algoBookings": 266.0,
+      "date": "2023-04-17",
+      "window": 7
+    },
+    {
+      "actualBookings": 139.0,
+      "algoBookings": 221.0,
+      "date": "2023-04-17",
+      "window": 14
+    },
+    {
+      "actualBookings": 32.0,
+      "algoBookings": 44.0,
+      "date": "2023-04-17",
+      "window": 30
+    },
+    {
+      "actualBookings": 214.0,
+      "algoBookings": 311.0,
+      "date": "2023-04-18",
+      "window": 1
+    },
+    {
+      "actualBookings": 205.0,
+      "algoBookings": 295.0,
+      "date": "2023-04-18",
+      "window": 3
+    },
+    {
+      "actualBookings": 197.0,
+      "algoBookings": 265.0,
+      "date": "2023-04-18",
+      "window": 7
+    },
+    {
+      "actualBookings": 152.0,
+      "algoBookings": 222.0,
+      "date": "2023-04-18",
+      "window": 14
+    },
+    {
+      "actualBookings": 35.0,
+      "algoBookings": 44.0,
+      "date": "2023-04-18",
+      "window": 30
+    },
+    {
+      "actualBookings": 201.0,
+      "algoBookings": 295.0,
+      "date": "2023-04-19",
+      "window": 1
+    },
+    {
+      "actualBookings": 191.0,
+      "algoBookings": 272.0,
+      "date": "2023-04-19",
+      "window": 3
+    },
+    {
+      "actualBookings": 164.0,
+      "algoBookings": 258.0,
+      "date": "2023-04-19",
+      "window": 7
+    },
+    {
+      "actualBookings": 130.0,
+      "algoBookings": 209.0,
+      "date": "2023-04-19",
+      "window": 14
+    },
+    {
+      "actualBookings": 32.0,
+      "algoBookings": 42.0,
+      "date": "2023-04-19",
+      "window": 30
+    },
+    {
+      "actualBookings": 210.0,
+      "algoBookings": 323.0,
+      "date": "2023-04-20",
+      "window": 1
+    },
+    {
+      "actualBookings": 202.0,
+      "algoBookings": 305.0,
+      "date": "2023-04-20",
+      "window": 3
+    },
+    {
+      "actualBookings": 189.0,
+      "algoBookings": 285.0,
+      "date": "2023-04-20",
+      "window": 7
+    },
+    {
+      "actualBookings": 155.0,
+      "algoBookings": 232.0,
+      "date": "2023-04-20",
+      "window": 14
+    },
+    {
+      "actualBookings": 34.0,
+      "algoBookings": 46.0,
+      "date": "2023-04-20",
+      "window": 30
+    },
+    {
+      "actualBookings": 208.0,
+      "algoBookings": 322.0,
+      "date": "2023-04-21",
+      "window": 1
+    },
+    {
+      "actualBookings": 191.0,
+      "algoBookings": 305.0,
+      "date": "2023-04-21",
+      "window": 3
+    },
+    {
+      "actualBookings": 178.0,
+      "algoBookings": 280.0,
+      "date": "2023-04-21",
+      "window": 7
+    },
+    {
+      "actualBookings": 142.0,
+      "algoBookings": 222.0,
+      "date": "2023-04-21",
+      "window": 14
+    },
+    {
+      "actualBookings": 34.0,
+      "algoBookings": 46.0,
+      "date": "2023-04-21",
+      "window": 30
+    },
+    {
+      "actualBookings": 179.0,
+      "algoBookings": 267.0,
+      "date": "2023-04-22",
+      "window": 1
+    },
+    {
+      "actualBookings": 164.0,
+      "algoBookings": 258.0,
+      "date": "2023-04-22",
+      "window": 3
+    },
+    {
+      "actualBookings": 152.0,
+      "algoBookings": 239.0,
+      "date": "2023-04-22",
+      "window": 7
+    },
+    {
+      "actualBookings": 122.0,
+      "algoBookings": 190.0,
+      "date": "2023-04-22",
+      "window": 14
+    },
+    {
+      "actualBookings": 29.0,
+      "algoBookings": 38.0,
+      "date": "2023-04-22",
+      "window": 30
+    },
+    {
+      "actualBookings": 176.0,
+      "algoBookings": 302.0,
+      "date": "2023-04-23",
+      "window": 1
+    },
+    {
+      "actualBookings": 163.0,
+      "algoBookings": 278.0,
+      "date": "2023-04-23",
+      "window": 3
+    },
+    {
+      "actualBookings": 149.0,
+      "algoBookings": 237.0,
+      "date": "2023-04-23",
+      "window": 7
+    },
+    {
+      "actualBookings": 129.0,
+      "algoBookings": 200.0,
+      "date": "2023-04-23",
+      "window": 14
+    },
+    {
+      "actualBookings": 29.0,
+      "algoBookings": 39.0,
+      "date": "2023-04-23",
+      "window": 30
+    },
+    {
+      "actualBookings": 191.0,
+      "algoBookings": 313.0,
+      "date": "2023-04-24",
+      "window": 1
+    },
+    {
+      "actualBookings": 179.0,
+      "algoBookings": 293.0,
+      "date": "2023-04-24",
+      "window": 3
+    },
+    {
+      "actualBookings": 164.0,
+      "algoBookings": 276.0,
+      "date": "2023-04-24",
+      "window": 7
+    },
+    {
+      "actualBookings": 134.0,
+      "algoBookings": 216.0,
+      "date": "2023-04-24",
+      "window": 14
+    },
+    {
+      "actualBookings": 30.0,
+      "algoBookings": 44.0,
+      "date": "2023-04-24",
+      "window": 30
+    },
+    {
+      "actualBookings": 174.0,
+      "algoBookings": 283.0,
+      "date": "2023-04-25",
+      "window": 1
+    },
+    {
+      "actualBookings": 157.0,
+      "algoBookings": 267.0,
+      "date": "2023-04-25",
+      "window": 3
+    },
+    {
+      "actualBookings": 152.0,
+      "algoBookings": 241.0,
+      "date": "2023-04-25",
+      "window": 7
+    },
+    {
+      "actualBookings": 113.0,
+      "algoBookings": 190.0,
+      "date": "2023-04-25",
+      "window": 14
+    },
+    {
+      "actualBookings": 28.0,
+      "algoBookings": 40.0,
+      "date": "2023-04-25",
+      "window": 30
+    },
+    {
+      "actualBookings": 153.0,
+      "algoBookings": 284.0,
+      "date": "2023-04-26",
+      "window": 1
+    },
+    {
+      "actualBookings": 155.0,
+      "algoBookings": 282.0,
+      "date": "2023-04-26",
+      "window": 3
+    },
+    {
+      "actualBookings": 141.0,
+      "algoBookings": 253.0,
+      "date": "2023-04-26",
+      "window": 7
+    },
+    {
+      "actualBookings": 115.0,
+      "algoBookings": 200.0,
+      "date": "2023-04-26",
+      "window": 14
+    },
+    {
+      "actualBookings": 25.0,
+      "algoBookings": 40.0,
+      "date": "2023-04-26",
+      "window": 30
+    },
+    {
+      "actualBookings": 162.0,
+      "algoBookings": 303.0,
+      "date": "2023-04-27",
+      "window": 1
+    },
+    {
+      "actualBookings": 154.0,
+      "algoBookings": 273.0,
+      "date": "2023-04-27",
+      "window": 3
+    },
+    {
+      "actualBookings": 145.0,
+      "algoBookings": 256.0,
+      "date": "2023-04-27",
+      "window": 7
+    },
+    {
+      "actualBookings": 125.0,
+      "algoBookings": 199.0,
+      "date": "2023-04-27",
+      "window": 14
+    },
+    {
+      "actualBookings": 28.0,
+      "algoBookings": 42.0,
+      "date": "2023-04-27",
+      "window": 30
+    },
+    {
+      "actualBookings": 178.0,
+      "algoBookings": 316.0,
+      "date": "2023-04-28",
+      "window": 1
+    },
+    {
+      "actualBookings": 175.0,
+      "algoBookings": 302.0,
+      "date": "2023-04-28",
+      "window": 3
+    },
+    {
+      "actualBookings": 163.0,
+      "algoBookings": 277.0,
+      "date": "2023-04-28",
+      "window": 7
+    },
+    {
+      "actualBookings": 131.0,
+      "algoBookings": 223.0,
+      "date": "2023-04-28",
+      "window": 14
+    },
+    {
+      "actualBookings": 30.0,
+      "algoBookings": 47.0,
+      "date": "2023-04-28",
+      "window": 30
+    },
+    {
+      "actualBookings": 150.0,
+      "algoBookings": 246.0,
+      "date": "2023-04-29",
+      "window": 1
+    },
+    {
+      "actualBookings": 137.0,
+      "algoBookings": 244.0,
+      "date": "2023-04-29",
+      "window": 3
+    },
+    {
+      "actualBookings": 131.0,
+      "algoBookings": 205.0,
+      "date": "2023-04-29",
+      "window": 7
+    },
+    {
+      "actualBookings": 108.0,
+      "algoBookings": 175.0,
+      "date": "2023-04-29",
+      "window": 14
+    },
+    {
+      "actualBookings": 25.0,
+      "algoBookings": 35.0,
+      "date": "2023-04-29",
+      "window": 30
+    },
+    {
+      "actualBookings": 180.0,
+      "algoBookings": 279.0,
+      "date": "2023-04-30",
+      "window": 1
+    },
+    {
+      "actualBookings": 163.0,
+      "algoBookings": 271.0,
+      "date": "2023-04-30",
+      "window": 3
+    },
+    {
+      "actualBookings": 158.0,
+      "algoBookings": 246.0,
+      "date": "2023-04-30",
+      "window": 7
+    },
+    {
+      "actualBookings": 124.0,
+      "algoBookings": 204.0,
+      "date": "2023-04-30",
+      "window": 14
+    },
+    {
+      "actualBookings": 28.0,
+      "algoBookings": 41.0,
+      "date": "2023-04-30",
+      "window": 30
+    },
+    {
+      "actualBookings": 192.0,
+      "algoBookings": 300.0,
+      "date": "2023-05-01",
+      "window": 1
+    },
+    {
+      "actualBookings": 194.0,
+      "algoBookings": 286.0,
+      "date": "2023-05-01",
+      "window": 3
+    },
+    {
+      "actualBookings": 165.0,
+      "algoBookings": 270.0,
+      "date": "2023-05-01",
+      "window": 7
+    },
+    {
+      "actualBookings": 139.0,
+      "algoBookings": 215.0,
+      "date": "2023-05-01",
+      "window": 14
+    },
+    {
+      "actualBookings": 32.0,
+      "algoBookings": 42.0,
+      "date": "2023-05-01",
+      "window": 30
+    },
+    {
+      "actualBookings": 200.0,
+      "algoBookings": 323.0,
+      "date": "2023-05-02",
+      "window": 1
+    },
+    {
+      "actualBookings": 207.0,
+      "algoBookings": 295.0,
+      "date": "2023-05-02",
+      "window": 3
+    },
+    {
+      "actualBookings": 184.0,
+      "algoBookings": 268.0,
+      "date": "2023-05-02",
+      "window": 7
+    },
+    {
+      "actualBookings": 142.0,
+      "algoBookings": 217.0,
+      "date": "2023-05-02",
+      "window": 14
+    },
+    {
+      "actualBookings": 33.0,
+      "algoBookings": 43.0,
+      "date": "2023-05-02",
+      "window": 30
+    },
+    {
+      "actualBookings": 199.0,
+      "algoBookings": 316.0,
+      "date": "2023-05-03",
+      "window": 1
+    },
+    {
+      "actualBookings": 194.0,
+      "algoBookings": 300.0,
+      "date": "2023-05-03",
+      "window": 3
+    },
+    {
+      "actualBookings": 172.0,
+      "algoBookings": 273.0,
+      "date": "2023-05-03",
+      "window": 7
+    },
+    {
+      "actualBookings": 143.0,
+      "algoBookings": 219.0,
+      "date": "2023-05-03",
+      "window": 14
+    },
+    {
+      "actualBookings": 32.0,
+      "algoBookings": 45.0,
+      "date": "2023-05-03",
+      "window": 30
+    },
+    {
+      "actualBookings": 194.0,
+      "algoBookings": 317.0,
+      "date": "2023-05-04",
+      "window": 1
+    },
+    {
+      "actualBookings": 174.0,
+      "algoBookings": 281.0,
+      "date": "2023-05-04",
+      "window": 3
+    },
+    {
+      "actualBookings": 167.0,
+      "algoBookings": 259.0,
+      "date": "2023-05-04",
+      "window": 7
+    },
+    {
+      "actualBookings": 138.0,
+      "algoBookings": 216.0,
+      "date": "2023-05-04",
+      "window": 14
+    },
+    {
+      "actualBookings": 30.0,
+      "algoBookings": 44.0,
+      "date": "2023-05-04",
+      "window": 30
+    },
+    {
+      "actualBookings": 190.0,
+      "algoBookings": 296.0,
+      "date": "2023-05-05",
+      "window": 1
+    },
+    {
+      "actualBookings": 181.0,
+      "algoBookings": 288.0,
+      "date": "2023-05-05",
+      "window": 3
+    },
+    {
+      "actualBookings": 170.0,
+      "algoBookings": 262.0,
+      "date": "2023-05-05",
+      "window": 7
+    },
+    {
+      "actualBookings": 142.0,
+      "algoBookings": 213.0,
+      "date": "2023-05-05",
+      "window": 14
+    },
+    {
+      "actualBookings": 32.0,
+      "algoBookings": 43.0,
+      "date": "2023-05-05",
+      "window": 30
+    },
+    {
+      "actualBookings": 157.0,
+      "algoBookings": 245.0,
+      "date": "2023-05-06",
+      "window": 1
+    },
+    {
+      "actualBookings": 152.0,
+      "algoBookings": 234.0,
+      "date": "2023-05-06",
+      "window": 3
+    },
+    {
+      "actualBookings": 139.0,
+      "algoBookings": 211.0,
+      "date": "2023-05-06",
+      "window": 7
+    },
+    {
+      "actualBookings": 111.0,
+      "algoBookings": 175.0,
+      "date": "2023-05-06",
+      "window": 14
+    },
+    {
+      "actualBookings": 26.0,
+      "algoBookings": 35.0,
+      "date": "2023-05-06",
+      "window": 30
+    },
+    {
+      "actualBookings": 176.0,
+      "algoBookings": 279.0,
+      "date": "2023-05-07",
+      "window": 1
+    },
+    {
+      "actualBookings": 161.0,
+      "algoBookings": 271.0,
+      "date": "2023-05-07",
+      "window": 3
+    },
+    {
+      "actualBookings": 144.0,
+      "algoBookings": 240.0,
+      "date": "2023-05-07",
+      "window": 7
+    },
+    {
+      "actualBookings": 123.0,
+      "algoBookings": 196.0,
+      "date": "2023-05-07",
+      "window": 14
+    },
+    {
+      "actualBookings": 28.0,
+      "algoBookings": 38.0,
+      "date": "2023-05-07",
+      "window": 30
+    },
+    {
+      "actualBookings": 190.0,
+      "algoBookings": 298.0,
+      "date": "2023-05-08",
+      "window": 1
+    },
+    {
+      "actualBookings": 177.0,
+      "algoBookings": 294.0,
+      "date": "2023-05-08",
+      "window": 3
+    },
+    {
+      "actualBookings": 163.0,
+      "algoBookings": 266.0,
+      "date": "2023-05-08",
+      "window": 7
+    },
+    {
+      "actualBookings": 122.0,
+      "algoBookings": 215.0,
+      "date": "2023-05-08",
+      "window": 14
+    },
+    {
+      "actualBookings": 31.0,
+      "algoBookings": 43.0,
+      "date": "2023-05-08",
+      "window": 30
+    },
+    {
+      "actualBookings": 173.0,
+      "algoBookings": 267.0,
+      "date": "2023-05-09",
+      "window": 1
+    },
+    {
+      "actualBookings": 171.0,
+      "algoBookings": 260.0,
+      "date": "2023-05-09",
+      "window": 3
+    },
+    {
+      "actualBookings": 151.0,
+      "algoBookings": 231.0,
+      "date": "2023-05-09",
+      "window": 7
+    },
+    {
+      "actualBookings": 123.0,
+      "algoBookings": 190.0,
+      "date": "2023-05-09",
+      "window": 14
+    },
+    {
+      "actualBookings": 29.0,
+      "algoBookings": 39.0,
+      "date": "2023-05-09",
+      "window": 30
+    },
+    {
+      "actualBookings": 170.0,
+      "algoBookings": 292.0,
+      "date": "2023-05-10",
+      "window": 1
+    },
+    {
+      "actualBookings": 167.0,
+      "algoBookings": 270.0,
+      "date": "2023-05-10",
+      "window": 3
+    },
+    {
+      "actualBookings": 152.0,
+      "algoBookings": 247.0,
+      "date": "2023-05-10",
+      "window": 7
+    },
+    {
+      "actualBookings": 121.0,
+      "algoBookings": 202.0,
+      "date": "2023-05-10",
+      "window": 14
+    },
+    {
+      "actualBookings": 27.0,
+      "algoBookings": 41.0,
+      "date": "2023-05-10",
+      "window": 30
+    },
+    {
+      "actualBookings": 196.0,
+      "algoBookings": 315.0,
+      "date": "2023-05-11",
+      "window": 1
+    },
+    {
+      "actualBookings": 192.0,
+      "algoBookings": 307.0,
+      "date": "2023-05-11",
+      "window": 3
+    },
+    {
+      "actualBookings": 181.0,
+      "algoBookings": 270.0,
+      "date": "2023-05-11",
+      "window": 7
+    },
+    {
+      "actualBookings": 139.0,
+      "algoBookings": 216.0,
+      "date": "2023-05-11",
+      "window": 14
+    },
+    {
+      "actualBookings": 32.0,
+      "algoBookings": 45.0,
+      "date": "2023-05-11",
+      "window": 30
+    },
+    {
+      "actualBookings": 211.0,
+      "algoBookings": 356.0,
+      "date": "2023-05-12",
+      "window": 1
+    },
+    {
+      "actualBookings": 215.0,
+      "algoBookings": 334.0,
+      "date": "2023-05-12",
+      "window": 3
+    },
+    {
+      "actualBookings": 189.0,
+      "algoBookings": 307.0,
+      "date": "2023-05-12",
+      "window": 7
+    },
+    {
+      "actualBookings": 163.0,
+      "algoBookings": 247.0,
+      "date": "2023-05-12",
+      "window": 14
+    },
+    {
+      "actualBookings": 36.0,
+      "algoBookings": 50.0,
+      "date": "2023-05-12",
+      "window": 30
+    },
+    {
+      "actualBookings": 165.0,
+      "algoBookings": 265.0,
+      "date": "2023-05-13",
+      "window": 1
+    },
+    {
+      "actualBookings": 165.0,
+      "algoBookings": 249.0,
+      "date": "2023-05-13",
+      "window": 3
+    },
+    {
+      "actualBookings": 146.0,
+      "algoBookings": 233.0,
+      "date": "2023-05-13",
+      "window": 7
+    },
+    {
+      "actualBookings": 115.0,
+      "algoBookings": 195.0,
+      "date": "2023-05-13",
+      "window": 14
+    },
+    {
+      "actualBookings": 29.0,
+      "algoBookings": 38.0,
+      "date": "2023-05-13",
+      "window": 30
+    },
+    {
+      "actualBookings": 169.0,
+      "algoBookings": 264.0,
+      "date": "2023-05-14",
+      "window": 1
+    },
+    {
+      "actualBookings": 165.0,
+      "algoBookings": 245.0,
+      "date": "2023-05-14",
+      "window": 3
+    },
+    {
+      "actualBookings": 149.0,
+      "algoBookings": 225.0,
+      "date": "2023-05-14",
+      "window": 7
+    },
+    {
+      "actualBookings": 122.0,
+      "algoBookings": 179.0,
+      "date": "2023-05-14",
+      "window": 14
+    },
+    {
+      "actualBookings": 29.0,
+      "algoBookings": 37.0,
+      "date": "2023-05-14",
+      "window": 30
+    },
+    {
+      "actualBookings": 230.0,
+      "algoBookings": 344.0,
+      "date": "2023-05-15",
+      "window": 1
+    },
+    {
+      "actualBookings": 224.0,
+      "algoBookings": 323.0,
+      "date": "2023-05-15",
+      "window": 3
+    },
+    {
+      "actualBookings": 202.0,
+      "algoBookings": 286.0,
+      "date": "2023-05-15",
+      "window": 7
+    },
+    {
+      "actualBookings": 168.0,
+      "algoBookings": 234.0,
+      "date": "2023-05-15",
+      "window": 14
+    },
+    {
+      "actualBookings": 41.0,
+      "algoBookings": 48.0,
+      "date": "2023-05-15",
+      "window": 30
+    },
+    {
+      "actualBookings": 175.0,
+      "algoBookings": 275.0,
+      "date": "2023-05-16",
+      "window": 1
+    },
+    {
+      "actualBookings": 174.0,
+      "algoBookings": 266.0,
+      "date": "2023-05-16",
+      "window": 3
+    },
+    {
+      "actualBookings": 165.0,
+      "algoBookings": 253.0,
+      "date": "2023-05-16",
+      "window": 7
+    },
+    {
+      "actualBookings": 129.0,
+      "algoBookings": 207.0,
+      "date": "2023-05-16",
+      "window": 14
+    },
+    {
+      "actualBookings": 29.0,
+      "algoBookings": 40.0,
+      "date": "2023-05-16",
+      "window": 30
+    },
+    {
+      "actualBookings": 194.0,
+      "algoBookings": 296.0,
+      "date": "2023-05-17",
+      "window": 1
+    },
+    {
+      "actualBookings": 180.0,
+      "algoBookings": 291.0,
+      "date": "2023-05-17",
+      "window": 3
+    },
+    {
+      "actualBookings": 164.0,
+      "algoBookings": 276.0,
+      "date": "2023-05-17",
+      "window": 7
+    },
+    {
+      "actualBookings": 124.0,
+      "algoBookings": 219.0,
+      "date": "2023-05-17",
+      "window": 14
+    },
+    {
+      "actualBookings": 30.0,
+      "algoBookings": 43.0,
+      "date": "2023-05-17",
+      "window": 30
+    },
+    {
+      "actualBookings": 207.0,
+      "algoBookings": 312.0,
+      "date": "2023-05-18",
+      "window": 1
+    },
+    {
+      "actualBookings": 197.0,
+      "algoBookings": 311.0,
+      "date": "2023-05-18",
+      "window": 3
+    },
+    {
+      "actualBookings": 175.0,
+      "algoBookings": 278.0,
+      "date": "2023-05-18",
+      "window": 7
+    },
+    {
+      "actualBookings": 140.0,
+      "algoBookings": 228.0,
+      "date": "2023-05-18",
+      "window": 14
+    },
+    {
+      "actualBookings": 32.0,
+      "algoBookings": 46.0,
+      "date": "2023-05-18",
+      "window": 30
+    },
+    {
+      "actualBookings": 202.0,
+      "algoBookings": 323.0,
+      "date": "2023-05-19",
+      "window": 1
+    },
+    {
+      "actualBookings": 200.0,
+      "algoBookings": 312.0,
+      "date": "2023-05-19",
+      "window": 3
+    },
+    {
+      "actualBookings": 186.0,
+      "algoBookings": 284.0,
+      "date": "2023-05-19",
+      "window": 7
+    },
+    {
+      "actualBookings": 140.0,
+      "algoBookings": 230.0,
+      "date": "2023-05-19",
+      "window": 14
+    },
+    {
+      "actualBookings": 34.0,
+      "algoBookings": 45.0,
+      "date": "2023-05-19",
+      "window": 30
+    },
+    {
+      "actualBookings": 177.0,
+      "algoBookings": 270.0,
+      "date": "2023-05-20",
+      "window": 1
+    },
+    {
+      "actualBookings": 155.0,
+      "algoBookings": 268.0,
+      "date": "2023-05-20",
+      "window": 3
+    },
+    {
+      "actualBookings": 150.0,
+      "algoBookings": 244.0,
+      "date": "2023-05-20",
+      "window": 7
+    },
+    {
+      "actualBookings": 117.0,
+      "algoBookings": 203.0,
+      "date": "2023-05-20",
+      "window": 14
+    },
+    {
+      "actualBookings": 28.0,
+      "algoBookings": 41.0,
+      "date": "2023-05-20",
+      "window": 30
+    },
+    {
+      "actualBookings": 173.0,
+      "algoBookings": 264.0,
+      "date": "2023-05-21",
+      "window": 1
+    },
+    {
+      "actualBookings": 158.0,
+      "algoBookings": 255.0,
+      "date": "2023-05-21",
+      "window": 3
+    },
+    {
+      "actualBookings": 151.0,
+      "algoBookings": 239.0,
+      "date": "2023-05-21",
+      "window": 7
+    },
+    {
+      "actualBookings": 120.0,
+      "algoBookings": 188.0,
+      "date": "2023-05-21",
+      "window": 14
+    },
+    {
+      "actualBookings": 27.0,
+      "algoBookings": 39.0,
+      "date": "2023-05-21",
+      "window": 30
+    },
+    {
+      "actualBookings": 189.0,
+      "algoBookings": 311.0,
+      "date": "2023-05-22",
+      "window": 1
+    },
+    {
+      "actualBookings": 188.0,
+      "algoBookings": 295.0,
+      "date": "2023-05-22",
+      "window": 3
+    },
+    {
+      "actualBookings": 167.0,
+      "algoBookings": 281.0,
+      "date": "2023-05-22",
+      "window": 7
+    },
+    {
+      "actualBookings": 142.0,
+      "algoBookings": 222.0,
+      "date": "2023-05-22",
+      "window": 14
+    },
+    {
+      "actualBookings": 32.0,
+      "algoBookings": 44.0,
+      "date": "2023-05-22",
+      "window": 30
+    },
+    {
+      "actualBookings": 176.0,
+      "algoBookings": 305.0,
+      "date": "2023-05-23",
+      "window": 1
+    },
+    {
+      "actualBookings": 172.0,
+      "algoBookings": 293.0,
+      "date": "2023-05-23",
+      "window": 3
+    },
+    {
+      "actualBookings": 151.0,
+      "algoBookings": 264.0,
+      "date": "2023-05-23",
+      "window": 7
+    },
+    {
+      "actualBookings": 130.0,
+      "algoBookings": 214.0,
+      "date": "2023-05-23",
+      "window": 14
+    },
+    {
+      "actualBookings": 30.0,
+      "algoBookings": 43.0,
+      "date": "2023-05-23",
+      "window": 30
+    },
+    {
+      "actualBookings": 178.0,
+      "algoBookings": 302.0,
+      "date": "2023-05-24",
+      "window": 1
+    },
+    {
+      "actualBookings": 170.0,
+      "algoBookings": 294.0,
+      "date": "2023-05-24",
+      "window": 3
+    },
+    {
+      "actualBookings": 149.0,
+      "algoBookings": 271.0,
+      "date": "2023-05-24",
+      "window": 7
+    },
+    {
+      "actualBookings": 117.0,
+      "algoBookings": 204.0,
+      "date": "2023-05-24",
+      "window": 14
+    },
+    {
+      "actualBookings": 28.0,
+      "algoBookings": 43.0,
+      "date": "2023-05-24",
+      "window": 30
+    },
+    {
+      "actualBookings": 188.0,
+      "algoBookings": 338.0,
+      "date": "2023-05-25",
+      "window": 1
+    },
+    {
+      "actualBookings": 184.0,
+      "algoBookings": 305.0,
+      "date": "2023-05-25",
+      "window": 3
+    },
+    {
+      "actualBookings": 166.0,
+      "algoBookings": 288.0,
+      "date": "2023-05-25",
+      "window": 7
+    },
+    {
+      "actualBookings": 132.0,
+      "algoBookings": 234.0,
+      "date": "2023-05-25",
+      "window": 14
+    },
+    {
+      "actualBookings": 31.0,
+      "algoBookings": 46.0,
+      "date": "2023-05-25",
+      "window": 30
+    },
+    {
+      "actualBookings": 196.0,
+      "algoBookings": 335.0,
+      "date": "2023-05-26",
+      "window": 1
+    },
+    {
+      "actualBookings": 187.0,
+      "algoBookings": 319.0,
+      "date": "2023-05-26",
+      "window": 3
+    },
+    {
+      "actualBookings": 165.0,
+      "algoBookings": 293.0,
+      "date": "2023-05-26",
+      "window": 7
+    },
+    {
+      "actualBookings": 134.0,
+      "algoBookings": 234.0,
+      "date": "2023-05-26",
+      "window": 14
+    },
+    {
+      "actualBookings": 32.0,
+      "algoBookings": 49.0,
+      "date": "2023-05-26",
+      "window": 30
+    },
+    {
+      "actualBookings": 147.0,
+      "algoBookings": 258.0,
+      "date": "2023-05-27",
+      "window": 1
+    },
+    {
+      "actualBookings": 147.0,
+      "algoBookings": 243.0,
+      "date": "2023-05-27",
+      "window": 3
+    },
+    {
+      "actualBookings": 132.0,
+      "algoBookings": 225.0,
+      "date": "2023-05-27",
+      "window": 7
+    },
+    {
+      "actualBookings": 113.0,
+      "algoBookings": 186.0,
+      "date": "2023-05-27",
+      "window": 14
+    },
+    {
+      "actualBookings": 25.0,
+      "algoBookings": 36.0,
+      "date": "2023-05-27",
+      "window": 30
+    },
+    {
+      "actualBookings": 169.0,
+      "algoBookings": 295.0,
+      "date": "2023-05-28",
+      "window": 1
+    },
+    {
+      "actualBookings": 160.0,
+      "algoBookings": 281.0,
+      "date": "2023-05-28",
+      "window": 3
+    },
+    {
+      "actualBookings": 145.0,
+      "algoBookings": 259.0,
+      "date": "2023-05-28",
+      "window": 7
+    },
+    {
+      "actualBookings": 125.0,
+      "algoBookings": 208.0,
+      "date": "2023-05-28",
+      "window": 14
+    },
+    {
+      "actualBookings": 30.0,
+      "algoBookings": 43.0,
+      "date": "2023-05-28",
+      "window": 30
+    },
+    {
+      "actualBookings": 182.0,
+      "algoBookings": 310.0,
+      "date": "2023-05-29",
+      "window": 1
+    },
+    {
+      "actualBookings": 178.0,
+      "algoBookings": 302.0,
+      "date": "2023-05-29",
+      "window": 3
+    },
+    {
+      "actualBookings": 156.0,
+      "algoBookings": 275.0,
+      "date": "2023-05-29",
+      "window": 7
+    },
+    {
+      "actualBookings": 129.0,
+      "algoBookings": 226.0,
+      "date": "2023-05-29",
+      "window": 14
+    },
+    {
+      "actualBookings": 30.0,
+      "algoBookings": 45.0,
+      "date": "2023-05-29",
+      "window": 30
+    },
+    {
+      "actualBookings": 179.0,
+      "algoBookings": 297.0,
+      "date": "2023-05-30",
+      "window": 1
+    },
+    {
+      "actualBookings": 179.0,
+      "algoBookings": 290.0,
+      "date": "2023-05-30",
+      "window": 3
+    },
+    {
+      "actualBookings": 164.0,
+      "algoBookings": 269.0,
+      "date": "2023-05-30",
+      "window": 7
+    },
+    {
+      "actualBookings": 134.0,
+      "algoBookings": 212.0,
+      "date": "2023-05-30",
+      "window": 14
+    },
+    {
+      "actualBookings": 30.0,
+      "algoBookings": 41.0,
+      "date": "2023-05-30",
+      "window": 30
+    },
+    {
+      "actualBookings": 176.0,
+      "algoBookings": 288.0,
+      "date": "2023-05-31",
+      "window": 1
+    },
+    {
+      "actualBookings": 164.0,
+      "algoBookings": 266.0,
+      "date": "2023-05-31",
+      "window": 3
+    },
+    {
+      "actualBookings": 143.0,
+      "algoBookings": 247.0,
+      "date": "2023-05-31",
+      "window": 7
+    },
+    {
+      "actualBookings": 120.0,
+      "algoBookings": 201.0,
+      "date": "2023-05-31",
+      "window": 14
+    },
+    {
+      "actualBookings": 26.0,
+      "algoBookings": 42.0,
+      "date": "2023-05-31",
+      "window": 30
+    },
+    {
+      "actualBookings": 188.0,
+      "algoBookings": 320.0,
+      "date": "2023-06-01",
+      "window": 1
+    },
+    {
+      "actualBookings": 185.0,
+      "algoBookings": 321.0,
+      "date": "2023-06-01",
+      "window": 3
+    },
+    {
+      "actualBookings": 162.0,
+      "algoBookings": 288.0,
+      "date": "2023-06-01",
+      "window": 7
+    },
+    {
+      "actualBookings": 131.0,
+      "algoBookings": 224.0,
+      "date": "2023-06-01",
+      "window": 14
+    },
+    {
+      "actualBookings": 31.0,
+      "algoBookings": 45.0,
+      "date": "2023-06-01",
+      "window": 30
+    },
+    {
+      "actualBookings": 173.0,
+      "algoBookings": 318.0,
+      "date": "2023-06-02",
+      "window": 1
+    },
+    {
+      "actualBookings": 162.0,
+      "algoBookings": 327.0,
+      "date": "2023-06-02",
+      "window": 3
+    },
+    {
+      "actualBookings": 153.0,
+      "algoBookings": 289.0,
+      "date": "2023-06-02",
+      "window": 7
+    },
+    {
+      "actualBookings": 130.0,
+      "algoBookings": 237.0,
+      "date": "2023-06-02",
+      "window": 14
+    },
+    {
+      "actualBookings": 30.0,
+      "algoBookings": 49.0,
+      "date": "2023-06-02",
+      "window": 30
+    },
+    {
+      "actualBookings": 152.0,
+      "algoBookings": 280.0,
+      "date": "2023-06-03",
+      "window": 1
+    },
+    {
+      "actualBookings": 151.0,
+      "algoBookings": 265.0,
+      "date": "2023-06-03",
+      "window": 3
+    },
+    {
+      "actualBookings": 132.0,
+      "algoBookings": 237.0,
+      "date": "2023-06-03",
+      "window": 7
+    },
+    {
+      "actualBookings": 105.0,
+      "algoBookings": 201.0,
+      "date": "2023-06-03",
+      "window": 14
+    },
+    {
+      "actualBookings": 25.0,
+      "algoBookings": 39.0,
+      "date": "2023-06-03",
+      "window": 30
+    },
+    {
+      "actualBookings": 176.0,
+      "algoBookings": 281.0,
+      "date": "2023-06-04",
+      "window": 1
+    },
+    {
+      "actualBookings": 165.0,
+      "algoBookings": 283.0,
+      "date": "2023-06-04",
+      "window": 3
+    },
+    {
+      "actualBookings": 151.0,
+      "algoBookings": 255.0,
+      "date": "2023-06-04",
+      "window": 7
+    },
+    {
+      "actualBookings": 118.0,
+      "algoBookings": 218.0,
+      "date": "2023-06-04",
+      "window": 14
+    },
+    {
+      "actualBookings": 28.0,
+      "algoBookings": 41.0,
+      "date": "2023-06-04",
+      "window": 30
+    },
+    {
+      "actualBookings": 158.0,
+      "algoBookings": 289.0,
+      "date": "2023-06-05",
+      "window": 1
+    },
+    {
+      "actualBookings": 164.0,
+      "algoBookings": 281.0,
+      "date": "2023-06-05",
+      "window": 3
+    },
+    {
+      "actualBookings": 143.0,
+      "algoBookings": 259.0,
+      "date": "2023-06-05",
+      "window": 7
+    },
+    {
+      "actualBookings": 118.0,
+      "algoBookings": 214.0,
+      "date": "2023-06-05",
+      "window": 14
+    },
+    {
+      "actualBookings": 26.0,
+      "algoBookings": 44.0,
+      "date": "2023-06-05",
+      "window": 30
+    },
+    {
+      "actualBookings": 170.0,
+      "algoBookings": 295.0,
+      "date": "2023-06-06",
+      "window": 1
+    },
+    {
+      "actualBookings": 160.0,
+      "algoBookings": 285.0,
+      "date": "2023-06-06",
+      "window": 3
+    },
+    {
+      "actualBookings": 137.0,
+      "algoBookings": 255.0,
+      "date": "2023-06-06",
+      "window": 7
+    },
+    {
+      "actualBookings": 118.0,
+      "algoBookings": 207.0,
+      "date": "2023-06-06",
+      "window": 14
+    },
+    {
+      "actualBookings": 27.0,
+      "algoBookings": 42.0,
+      "date": "2023-06-06",
+      "window": 30
+    },
+    {
+      "actualBookings": 168.0,
+      "algoBookings": 292.0,
+      "date": "2023-06-07",
+      "window": 1
+    },
+    {
+      "actualBookings": 159.0,
+      "algoBookings": 276.0,
+      "date": "2023-06-07",
+      "window": 3
+    },
+    {
+      "actualBookings": 138.0,
+      "algoBookings": 253.0,
+      "date": "2023-06-07",
+      "window": 7
+    },
+    {
+      "actualBookings": 117.0,
+      "algoBookings": 212.0,
+      "date": "2023-06-07",
+      "window": 14
+    },
+    {
+      "actualBookings": 27.0,
+      "algoBookings": 42.0,
+      "date": "2023-06-07",
+      "window": 30
+    },
+    {
+      "actualBookings": 156.0,
+      "algoBookings": 269.0,
+      "date": "2023-06-08",
+      "window": 1
+    },
+    {
+      "actualBookings": 153.0,
+      "algoBookings": 267.0,
+      "date": "2023-06-08",
+      "window": 3
+    },
+    {
+      "actualBookings": 130.0,
+      "algoBookings": 231.0,
+      "date": "2023-06-08",
+      "window": 7
+    },
+    {
+      "actualBookings": 109.0,
+      "algoBookings": 193.0,
+      "date": "2023-06-08",
+      "window": 14
+    },
+    {
+      "actualBookings": 26.0,
+      "algoBookings": 37.0,
+      "date": "2023-06-08",
+      "window": 30
+    },
+    {
+      "actualBookings": 207.0,
+      "algoBookings": 341.0,
+      "date": "2023-06-09",
+      "window": 1
+    },
+    {
+      "actualBookings": 202.0,
+      "algoBookings": 322.0,
+      "date": "2023-06-09",
+      "window": 3
+    },
+    {
+      "actualBookings": 191.0,
+      "algoBookings": 309.0,
+      "date": "2023-06-09",
+      "window": 7
+    },
+    {
+      "actualBookings": 155.0,
+      "algoBookings": 249.0,
+      "date": "2023-06-09",
+      "window": 14
+    },
+    {
+      "actualBookings": 34.0,
+      "algoBookings": 49.0,
+      "date": "2023-06-09",
+      "window": 30
+    },
+    {
+      "actualBookings": 150.0,
+      "algoBookings": 236.0,
+      "date": "2023-06-10",
+      "window": 1
+    },
+    {
+      "actualBookings": 146.0,
+      "algoBookings": 229.0,
+      "date": "2023-06-10",
+      "window": 3
+    },
+    {
+      "actualBookings": 130.0,
+      "algoBookings": 204.0,
+      "date": "2023-06-10",
+      "window": 7
+    },
+    {
+      "actualBookings": 104.0,
+      "algoBookings": 177.0,
+      "date": "2023-06-10",
+      "window": 14
+    },
+    {
+      "actualBookings": 23.0,
+      "algoBookings": 34.0,
+      "date": "2023-06-10",
+      "window": 30
+    },
+    {
+      "actualBookings": 152.0,
+      "algoBookings": 248.0,
+      "date": "2023-06-11",
+      "window": 1
+    },
+    {
+      "actualBookings": 138.0,
+      "algoBookings": 236.0,
+      "date": "2023-06-11",
+      "window": 3
+    },
+    {
+      "actualBookings": 125.0,
+      "algoBookings": 216.0,
+      "date": "2023-06-11",
+      "window": 7
+    },
+    {
+      "actualBookings": 103.0,
+      "algoBookings": 178.0,
+      "date": "2023-06-11",
+      "window": 14
+    },
+    {
+      "actualBookings": 24.0,
+      "algoBookings": 36.0,
+      "date": "2023-06-11",
+      "window": 30
+    },
+    {
+      "actualBookings": 187.0,
+      "algoBookings": 321.0,
+      "date": "2023-06-12",
+      "window": 1
+    },
+    {
+      "actualBookings": 186.0,
+      "algoBookings": 284.0,
+      "date": "2023-06-12",
+      "window": 3
+    },
+    {
+      "actualBookings": 163.0,
+      "algoBookings": 260.0,
+      "date": "2023-06-12",
+      "window": 7
+    },
+    {
+      "actualBookings": 134.0,
+      "algoBookings": 214.0,
+      "date": "2023-06-12",
+      "window": 14
+    },
+    {
+      "actualBookings": 30.0,
+      "algoBookings": 43.0,
+      "date": "2023-06-12",
+      "window": 30
+    },
+    {
+      "actualBookings": 178.0,
+      "algoBookings": 293.0,
+      "date": "2023-06-13",
+      "window": 1
+    },
+    {
+      "actualBookings": 166.0,
+      "algoBookings": 281.0,
+      "date": "2023-06-13",
+      "window": 3
+    },
+    {
+      "actualBookings": 155.0,
+      "algoBookings": 251.0,
+      "date": "2023-06-13",
+      "window": 7
+    },
+    {
+      "actualBookings": 126.0,
+      "algoBookings": 211.0,
+      "date": "2023-06-13",
+      "window": 14
+    },
+    {
+      "actualBookings": 30.0,
+      "algoBookings": 43.0,
+      "date": "2023-06-13",
+      "window": 30
+    },
+    {
+      "actualBookings": 166.0,
+      "algoBookings": 284.0,
+      "date": "2023-06-14",
+      "window": 1
+    },
+    {
+      "actualBookings": 151.0,
+      "algoBookings": 274.0,
+      "date": "2023-06-14",
+      "window": 3
+    },
+    {
+      "actualBookings": 147.0,
+      "algoBookings": 247.0,
+      "date": "2023-06-14",
+      "window": 7
+    },
+    {
+      "actualBookings": 118.0,
+      "algoBookings": 195.0,
+      "date": "2023-06-14",
+      "window": 14
+    },
+    {
+      "actualBookings": 26.0,
+      "algoBookings": 41.0,
+      "date": "2023-06-14",
+      "window": 30
+    },
+    {
+      "actualBookings": 152.0,
+      "algoBookings": 268.0,
+      "date": "2023-06-15",
+      "window": 1
+    },
+    {
+      "actualBookings": 146.0,
+      "algoBookings": 255.0,
+      "date": "2023-06-15",
+      "window": 3
+    },
+    {
+      "actualBookings": 130.0,
+      "algoBookings": 235.0,
+      "date": "2023-06-15",
+      "window": 7
+    },
+    {
+      "actualBookings": 112.0,
+      "algoBookings": 191.0,
+      "date": "2023-06-15",
+      "window": 14
+    },
+    {
+      "actualBookings": 25.0,
+      "algoBookings": 37.0,
+      "date": "2023-06-15",
+      "window": 30
+    },
+    {
+      "actualBookings": 168.0,
+      "algoBookings": 308.0,
+      "date": "2023-06-16",
+      "window": 1
+    },
+    {
+      "actualBookings": 165.0,
+      "algoBookings": 292.0,
+      "date": "2023-06-16",
+      "window": 3
+    },
+    {
+      "actualBookings": 152.0,
+      "algoBookings": 266.0,
+      "date": "2023-06-16",
+      "window": 7
+    },
+    {
+      "actualBookings": 114.0,
+      "algoBookings": 207.0,
+      "date": "2023-06-16",
+      "window": 14
+    },
+    {
+      "actualBookings": 26.0,
+      "algoBookings": 43.0,
+      "date": "2023-06-16",
+      "window": 30
+    },
+    {
+      "actualBookings": 163.0,
+      "algoBookings": 271.0,
+      "date": "2023-06-17",
+      "window": 1
+    },
+    {
+      "actualBookings": 159.0,
+      "algoBookings": 263.0,
+      "date": "2023-06-17",
+      "window": 3
+    },
+    {
+      "actualBookings": 147.0,
+      "algoBookings": 235.0,
+      "date": "2023-06-17",
+      "window": 7
+    },
+    {
+      "actualBookings": 118.0,
+      "algoBookings": 198.0,
+      "date": "2023-06-17",
+      "window": 14
+    },
+    {
+      "actualBookings": 27.0,
+      "algoBookings": 39.0,
+      "date": "2023-06-17",
+      "window": 30
+    },
+    {
+      "actualBookings": 150.0,
+      "algoBookings": 233.0,
+      "date": "2023-06-18",
+      "window": 1
+    },
+    {
+      "actualBookings": 141.0,
+      "algoBookings": 234.0,
+      "date": "2023-06-18",
+      "window": 3
+    },
+    {
+      "actualBookings": 133.0,
+      "algoBookings": 207.0,
+      "date": "2023-06-18",
+      "window": 7
+    },
+    {
+      "actualBookings": 103.0,
+      "algoBookings": 171.0,
+      "date": "2023-06-18",
+      "window": 14
+    },
+    {
+      "actualBookings": 24.0,
+      "algoBookings": 33.0,
+      "date": "2023-06-18",
+      "window": 30
+    },
+    {
+      "actualBookings": 179.0,
+      "algoBookings": 320.0,
+      "date": "2023-06-19",
+      "window": 1
+    },
+    {
+      "actualBookings": 174.0,
+      "algoBookings": 295.0,
+      "date": "2023-06-19",
+      "window": 3
+    },
+    {
+      "actualBookings": 154.0,
+      "algoBookings": 275.0,
+      "date": "2023-06-19",
+      "window": 7
+    },
+    {
+      "actualBookings": 133.0,
+      "algoBookings": 216.0,
+      "date": "2023-06-19",
+      "window": 14
+    },
+    {
+      "actualBookings": 30.0,
+      "algoBookings": 44.0,
+      "date": "2023-06-19",
+      "window": 30
+    },
+    {
+      "actualBookings": 174.0,
+      "algoBookings": 291.0,
+      "date": "2023-06-20",
+      "window": 1
+    },
+    {
+      "actualBookings": 174.0,
+      "algoBookings": 287.0,
+      "date": "2023-06-20",
+      "window": 3
+    },
+    {
+      "actualBookings": 159.0,
+      "algoBookings": 257.0,
+      "date": "2023-06-20",
+      "window": 7
+    },
+    {
+      "actualBookings": 128.0,
+      "algoBookings": 205.0,
+      "date": "2023-06-20",
+      "window": 14
+    },
+    {
+      "actualBookings": 29.0,
+      "algoBookings": 42.0,
+      "date": "2023-06-20",
+      "window": 30
+    },
+    {
+      "actualBookings": 188.0,
+      "algoBookings": 294.0,
+      "date": "2023-06-21",
+      "window": 1
+    },
+    {
+      "actualBookings": 166.0,
+      "algoBookings": 288.0,
+      "date": "2023-06-21",
+      "window": 3
+    },
+    {
+      "actualBookings": 168.0,
+      "algoBookings": 259.0,
+      "date": "2023-06-21",
+      "window": 7
+    },
+    {
+      "actualBookings": 122.0,
+      "algoBookings": 207.0,
+      "date": "2023-06-21",
+      "window": 14
+    },
+    {
+      "actualBookings": 29.0,
+      "algoBookings": 43.0,
+      "date": "2023-06-21",
+      "window": 30
+    },
+    {
+      "actualBookings": 193.0,
+      "algoBookings": 301.0,
+      "date": "2023-06-22",
+      "window": 1
+    },
+    {
+      "actualBookings": 182.0,
+      "algoBookings": 292.0,
+      "date": "2023-06-22",
+      "window": 3
+    },
+    {
+      "actualBookings": 172.0,
+      "algoBookings": 257.0,
+      "date": "2023-06-22",
+      "window": 7
+    },
+    {
+      "actualBookings": 137.0,
+      "algoBookings": 208.0,
+      "date": "2023-06-22",
+      "window": 14
+    },
+    {
+      "actualBookings": 30.0,
+      "algoBookings": 43.0,
+      "date": "2023-06-22",
+      "window": 30
+    },
+    {
+      "actualBookings": 208.0,
+      "algoBookings": 304.0,
+      "date": "2023-06-23",
+      "window": 1
+    },
+    {
+      "actualBookings": 194.0,
+      "algoBookings": 292.0,
+      "date": "2023-06-23",
+      "window": 3
+    },
+    {
+      "actualBookings": 181.0,
+      "algoBookings": 273.0,
+      "date": "2023-06-23",
+      "window": 7
+    },
+    {
+      "actualBookings": 141.0,
+      "algoBookings": 213.0,
+      "date": "2023-06-23",
+      "window": 14
+    },
+    {
+      "actualBookings": 34.0,
+      "algoBookings": 45.0,
+      "date": "2023-06-23",
+      "window": 30
+    },
+    {
+      "actualBookings": 161.0,
+      "algoBookings": 248.0,
+      "date": "2023-06-24",
+      "window": 1
+    },
+    {
+      "actualBookings": 153.0,
+      "algoBookings": 234.0,
+      "date": "2023-06-24",
+      "window": 3
+    },
+    {
+      "actualBookings": 142.0,
+      "algoBookings": 217.0,
+      "date": "2023-06-24",
+      "window": 7
+    },
+    {
+      "actualBookings": 112.0,
+      "algoBookings": 177.0,
+      "date": "2023-06-24",
+      "window": 14
+    },
+    {
+      "actualBookings": 26.0,
+      "algoBookings": 35.0,
+      "date": "2023-06-24",
+      "window": 30
+    },
+    {
+      "actualBookings": 173.0,
+      "algoBookings": 275.0,
+      "date": "2023-06-25",
+      "window": 1
+    },
+    {
+      "actualBookings": 177.0,
+      "algoBookings": 276.0,
+      "date": "2023-06-25",
+      "window": 3
+    },
+    {
+      "actualBookings": 162.0,
+      "algoBookings": 237.0,
+      "date": "2023-06-25",
+      "window": 7
+    },
+    {
+      "actualBookings": 123.0,
+      "algoBookings": 197.0,
+      "date": "2023-06-25",
+      "window": 14
+    },
+    {
+      "actualBookings": 28.0,
+      "algoBookings": 39.0,
+      "date": "2023-06-25",
+      "window": 30
+    },
+    {
+      "actualBookings": 193.0,
+      "algoBookings": 317.0,
+      "date": "2023-06-26",
+      "window": 1
+    },
+    {
+      "actualBookings": 185.0,
+      "algoBookings": 288.0,
+      "date": "2023-06-26",
+      "window": 3
+    },
+    {
+      "actualBookings": 180.0,
+      "algoBookings": 275.0,
+      "date": "2023-06-26",
+      "window": 7
+    },
+    {
+      "actualBookings": 133.0,
+      "algoBookings": 223.0,
+      "date": "2023-06-26",
+      "window": 14
+    },
+    {
+      "actualBookings": 32.0,
+      "algoBookings": 44.0,
+      "date": "2023-06-26",
+      "window": 30
+    },
+    {
+      "actualBookings": 167.0,
+      "algoBookings": 271.0,
+      "date": "2023-06-27",
+      "window": 1
+    },
+    {
+      "actualBookings": 165.0,
+      "algoBookings": 266.0,
+      "date": "2023-06-27",
+      "window": 3
+    },
+    {
+      "actualBookings": 155.0,
+      "algoBookings": 242.0,
+      "date": "2023-06-27",
+      "window": 7
+    },
+    {
+      "actualBookings": 121.0,
+      "algoBookings": 211.0,
+      "date": "2023-06-27",
+      "window": 14
+    },
+    {
+      "actualBookings": 29.0,
+      "algoBookings": 40.0,
+      "date": "2023-06-27",
+      "window": 30
+    },
+    {
+      "actualBookings": 171.0,
+      "algoBookings": 283.0,
+      "date": "2023-06-28",
+      "window": 1
+    },
+    {
+      "actualBookings": 177.0,
+      "algoBookings": 283.0,
+      "date": "2023-06-28",
+      "window": 3
+    },
+    {
+      "actualBookings": 156.0,
+      "algoBookings": 256.0,
+      "date": "2023-06-28",
+      "window": 7
+    },
+    {
+      "actualBookings": 131.0,
+      "algoBookings": 212.0,
+      "date": "2023-06-28",
+      "window": 14
+    },
+    {
+      "actualBookings": 30.0,
+      "algoBookings": 40.0,
+      "date": "2023-06-28",
+      "window": 30
+    },
+    {
+      "actualBookings": 186.0,
+      "algoBookings": 302.0,
+      "date": "2023-06-29",
+      "window": 1
+    },
+    {
+      "actualBookings": 175.0,
+      "algoBookings": 289.0,
+      "date": "2023-06-29",
+      "window": 3
+    },
+    {
+      "actualBookings": 165.0,
+      "algoBookings": 270.0,
+      "date": "2023-06-29",
+      "window": 7
+    },
+    {
+      "actualBookings": 130.0,
+      "algoBookings": 213.0,
+      "date": "2023-06-29",
+      "window": 14
+    },
+    {
+      "actualBookings": 31.0,
+      "algoBookings": 42.0,
+      "date": "2023-06-29",
+      "window": 30
+    },
+    {
+      "actualBookings": 212.0,
+      "algoBookings": 323.0,
+      "date": "2023-06-30",
+      "window": 1
+    },
+    {
+      "actualBookings": 194.0,
+      "algoBookings": 325.0,
+      "date": "2023-06-30",
+      "window": 3
+    },
+    {
+      "actualBookings": 183.0,
+      "algoBookings": 283.0,
+      "date": "2023-06-30",
+      "window": 7
+    },
+    {
+      "actualBookings": 147.0,
+      "algoBookings": 242.0,
+      "date": "2023-06-30",
+      "window": 14
+    },
+    {
+      "actualBookings": 34.0,
+      "algoBookings": 47.0,
+      "date": "2023-06-30",
+      "window": 30
+    }
+  ],
+  "competitor": {
+    "dailyAggressiveness": [
+      0.444,
+      0.512,
+      0.412,
+      0.421,
+      0.442,
+      0.525,
+      0.482,
+      0.452,
+      0.491,
+      0.5,
+      0.655,
+      0.475,
+      0.402,
+      0.478,
+      0.562,
+      0.497,
+      0.469,
+      0.625,
+      0.444,
+      0.442,
+      0.408,
+      0.363,
+      0.327,
+      0.42,
+      0.326,
+      0.351,
+      0.387,
+      0.391,
+      0.403,
+      0.352,
+      0.327,
+      0.546,
+      0.348,
+      0.437,
+      0.516,
+      0.428,
+      0.506,
+      0.451,
+      0.415,
+      0.501,
+      0.628,
+      0.658,
+      0.446,
+      0.521,
+      0.777,
+      0.51,
+      0.462,
+      0.441,
+      0.442,
+      0.485,
+      0.502,
+      0.431,
+      0.496,
+      0.379,
+      0.433,
+      0.343,
+      0.412,
+      0.413,
+      0.398,
+      0.374,
+      0.426,
+      0.395,
+      0.375,
+      0.298,
+      0.423,
+      0.396,
+      0.458,
+      0.437,
+      0.375,
+      0.392,
+      0.48,
+      0.467,
+      0.453,
+      0.477,
+      0.438,
+      0.522,
+      0.571,
+      0.641,
+      0.441,
+      0.482,
+      0.511,
+      0.486,
+      0.513,
+      0.52,
+      0.416,
+      0.508,
+      0.395,
+      0.454,
+      0.393,
+      0.352,
+      0.443
+    ],
+    "inferredPolicyLabel": "price-match with lagged undercut on shock days",
+    "name": "Delta"
+  },
+  "days": [
+    {
+      "actual": {
+        "pax": 173.0,
+        "price": 287.0,
+        "revenue": 49855.84
+      },
+      "algo": {
+        "pax": 278.0,
+        "price": 200.0,
+        "revenue": 55590.08
+      },
+      "date": "2023-04-01",
+      "dow": "Sat",
+      "regret": 5734.25,
+      "shock": 0.0
+    },
+    {
+      "actual": {
+        "pax": 187.0,
+        "price": 284.0,
+        "revenue": 53080.1
+      },
+      "algo": {
+        "pax": 295.0,
+        "price": 200.0,
+        "revenue": 58958.26
+      },
+      "date": "2023-04-02",
+      "dow": "Sun",
+      "regret": 5878.16,
+      "shock": 0.0
+    },
+    {
+      "actual": {
+        "pax": 213.0,
+        "price": 285.0,
+        "revenue": 60627.52
+      },
+      "algo": {
+        "pax": 337.0,
+        "price": 200.0,
+        "revenue": 67420.32
+      },
+      "date": "2023-04-03",
+      "dow": "Mon",
+      "regret": 6792.8,
+      "shock": 0.0
+    },
+    {
+      "actual": {
+        "pax": 193.0,
+        "price": 283.0,
+        "revenue": 54669.91
+      },
+      "algo": {
+        "pax": 303.0,
+        "price": 200.0,
+        "revenue": 60676.32
+      },
+      "date": "2023-04-04",
+      "dow": "Tue",
+      "regret": 6006.41,
+      "shock": 0.0
+    },
+    {
+      "actual": {
+        "pax": 182.0,
+        "price": 285.0,
+        "revenue": 51826.13
+      },
+      "algo": {
+        "pax": 288.0,
+        "price": 200.0,
+        "revenue": 57664.02
+      },
+      "date": "2023-04-05",
+      "dow": "Wed",
+      "regret": 5837.89,
+      "shock": 0.0
+    },
+    {
+      "actual": {
+        "pax": 197.0,
+        "price": 295.0,
+        "revenue": 58168.55
+      },
+      "algo": {
+        "pax": 327.0,
+        "price": 200.0,
+        "revenue": 65365.85
+      },
+      "date": "2023-04-06",
+      "dow": "Thu",
+      "regret": 7197.3,
+      "shock": 0.0
+    },
+    {
+      "actual": {
+        "pax": 216.0,
+        "price": 295.0,
+        "revenue": 63785.75
+      },
+      "algo": {
+        "pax": 358.0,
+        "price": 200.0,
+        "revenue": 71652.7
+      },
+      "date": "2023-04-07",
+      "dow": "Fri",
+      "regret": 7866.96,
+      "shock": 0.0
+    },
+    {
+      "actual": {
+        "pax": 172.0,
+        "price": 299.0,
+        "revenue": 51545.21
+      },
+      "algo": {
+        "pax": 291.0,
+        "price": 200.0,
+        "revenue": 58143.86
+      },
+      "date": "2023-04-08",
+      "dow": "Sat",
+      "regret": 6598.65,
+      "shock": 0.0
+    },
+    {
+      "actual": {
+        "pax": 158.0,
+        "price": 291.0,
+        "revenue": 45945.78
+      },
+      "algo": {
+        "pax": 257.0,
+        "price": 200.0,
+        "revenue": 51404.38
+      },
+      "date": "2023-04-09",
+      "dow": "Sun",
+      "regret": 5458.61,
+      "shock": 0.0
+    },
+    {
+      "actual": {
+        "pax": 205.0,
+        "price": 291.0,
+        "revenue": 59668.19
+      },
+      "algo": {
+        "pax": 334.0,
+        "price": 200.0,
+        "revenue": 66797.35
+      },
+      "date": "2023-04-10",
+      "dow": "Mon",
+      "regret": 7129.17,
+      "shock": 0.0
+    },
+    {
+      "actual": {
+        "pax": 204.0,
+        "price": 298.0,
+        "revenue": 60841.88
+      },
+      "algo": {
+        "pax": 331.0,
+        "price": 200.0,
+        "revenue": 66273.8
+      },
+      "date": "2023-04-11",
+      "dow": "Tue",
+      "regret": 5431.92,
+      "shock": 0.5
+    },
+    {
+      "actual": {
+        "pax": 190.0,
+        "price": 285.0,
+        "revenue": 54081.33
+      },
+      "algo": {
+        "pax": 301.0,
+        "price": 200.0,
+        "revenue": 60130.87
+      },
+      "date": "2023-04-12",
+      "dow": "Wed",
+      "regret": 6049.54,
+      "shock": 0.0
+    },
+    {
+      "actual": {
+        "pax": 203.0,
+        "price": 287.0,
+        "revenue": 58426.6
+      },
+      "algo": {
+        "pax": 326.0,
+        "price": 200.0,
+        "revenue": 65122.9
+      },
+      "date": "2023-04-13",
+      "dow": "Thu",
+      "regret": 6696.3,
+      "shock": 0.0
+    },
+    {
+      "actual": {
+        "pax": 221.0,
+        "price": 288.0,
+        "revenue": 63474.53
+      },
+      "algo": {
+        "pax": 354.0,
+        "price": 200.0,
+        "revenue": 70780.86
+      },
+      "date": "2023-04-14",
+      "dow": "Fri",
+      "regret": 7306.33,
+      "shock": 0.0
+    },
+    {
+      "actual": {
+        "pax": 178.0,
+        "price": 287.0,
+        "revenue": 50977.56
+      },
+      "algo": {
+        "pax": 284.0,
+        "price": 200.0,
+        "revenue": 56806.58
+      },
+      "date": "2023-04-15",
+      "dow": "Sat",
+      "regret": 5829.01,
+      "shock": 0.0
+    },
+    {
+      "actual": {
+        "pax": 177.0,
+        "price": 289.0,
+        "revenue": 51190.48
+      },
+      "algo": {
+        "pax": 286.0,
+        "price": 200.0,
+        "revenue": 57162.45
+      },
+      "date": "2023-04-16",
+      "dow": "Sun",
+      "regret": 5971.98,
+      "shock": 0.0
+    },
+    {
+      "actual": {
+        "pax": 209.0,
+        "price": 276.0,
+        "revenue": 57641.96
+      },
+      "algo": {
+        "pax": 318.0,
+        "price": 200.0,
+        "revenue": 63519.97
+      },
+      "date": "2023-04-17",
+      "dow": "Mon",
+      "regret": 5878.01,
+      "shock": 0.0
+    },
+    {
+      "actual": {
+        "pax": 225.0,
+        "price": 274.0,
+        "revenue": 61878.42
+      },
+      "algo": {
+        "pax": 323.0,
+        "price": 200.0,
+        "revenue": 64579.04
+      },
+      "date": "2023-04-18",
+      "dow": "Tue",
+      "regret": 2700.61,
+      "shock": 1.0
+    },
+    {
+      "actual": {
+        "pax": 204.0,
+        "price": 272.0,
+        "revenue": 55340.67
+      },
+      "algo": {
+        "pax": 303.0,
+        "price": 200.0,
+        "revenue": 60662.76
+      },
+      "date": "2023-04-19",
+      "dow": "Wed",
+      "regret": 5322.09,
+      "shock": 0.0
+    },
+    {
+      "actual": {
+        "pax": 221.0,
+        "price": 274.0,
+        "revenue": 60655.04
+      },
+      "algo": {
+        "pax": 333.0,
+        "price": 200.0,
+        "revenue": 66677.59
+      },
+      "date": "2023-04-20",
+      "dow": "Thu",
+      "regret": 6022.56,
+      "shock": 0.0
+    },
+    {
+      "actual": {
+        "pax": 215.0,
+        "price": 281.0,
+        "revenue": 60444.77
+      },
+      "algo": {
+        "pax": 335.0,
+        "price": 200.0,
+        "revenue": 66938.45
+      },
+      "date": "2023-04-21",
+      "dow": "Fri",
+      "regret": 6493.68,
+      "shock": 0.0
+    },
+    {
+      "actual": {
+        "pax": 180.0,
+        "price": 281.0,
+        "revenue": 50569.33
+      },
+      "algo": {
+        "pax": 280.0,
+        "price": 200.0,
+        "revenue": 56011.26
+      },
+      "date": "2023-04-22",
+      "dow": "Sat",
+      "regret": 5441.93,
+      "shock": 0.0
+    },
+    {
+      "actual": {
+        "pax": 185.0,
+        "price": 285.0,
+        "revenue": 52536.78
+      },
+      "algo": {
+        "pax": 292.0,
+        "price": 200.0,
+        "revenue": 58404.34
+      },
+      "date": "2023-04-23",
+      "dow": "Sun",
+      "regret": 5867.56,
+      "shock": 0.0
+    },
+    {
+      "actual": {
+        "pax": 191.0,
+        "price": 293.0,
+        "revenue": 55966.97
+      },
+      "algo": {
+        "pax": 314.0,
+        "price": 200.0,
+        "revenue": 62754.13
+      },
+      "date": "2023-04-24",
+      "dow": "Mon",
+      "regret": 6787.16,
+      "shock": 0.0
+    },
+    {
+      "actual": {
+        "pax": 173.0,
+        "price": 294.0,
+        "revenue": 50837.48
+      },
+      "algo": {
+        "pax": 285.0,
+        "price": 200.0,
+        "revenue": 57053.46
+      },
+      "date": "2023-04-25",
+      "dow": "Tue",
+      "regret": 6215.97,
+      "shock": 0.0
+    },
+    {
+      "actual": {
+        "pax": 165.0,
+        "price": 307.0,
+        "revenue": 50790.27
+      },
+      "algo": {
+        "pax": 289.0,
+        "price": 200.0,
+        "revenue": 57757.65
+      },
+      "date": "2023-04-26",
+      "dow": "Wed",
+      "regret": 6967.38,
+      "shock": 0.0
+    },
+    {
+      "actual": {
+        "pax": 171.0,
+        "price": 310.0,
+        "revenue": 52935.39
+      },
+      "algo": {
+        "pax": 302.0,
+        "price": 200.0,
+        "revenue": 60388.52
+      },
+      "date": "2023-04-27",
+      "dow": "Thu",
+      "regret": 7453.13,
+      "shock": 0.0
+    },
+    {
+      "actual": {
+        "pax": 192.0,
+        "price": 302.0,
+        "revenue": 58103.11
+      },
+      "algo": {
+        "pax": 329.0,
+        "price": 200.0,
+        "revenue": 65740.54
+      },
+      "date": "2023-04-28",
+      "dow": "Fri",
+      "regret": 7637.43,
+      "shock": 0.0
+    },
+    {
+      "actual": {
+        "pax": 154.0,
+        "price": 295.0,
+        "revenue": 45491.72
+      },
+      "algo": {
+        "pax": 256.0,
+        "price": 200.0,
+        "revenue": 51102.43
+      },
+      "date": "2023-04-29",
+      "dow": "Sat",
+      "regret": 5610.7,
+      "shock": 0.0
+    },
+    {
+      "actual": {
+        "pax": 185.0,
+        "price": 284.0,
+        "revenue": 52421.67
+      },
+      "algo": {
+        "pax": 291.0,
+        "price": 200.0,
+        "revenue": 58227.62
+      },
+      "date": "2023-04-30",
+      "dow": "Sun",
+      "regret": 5805.94,
+      "shock": 0.0
+    },
+    {
+      "actual": {
+        "pax": 200.0,
+        "price": 279.0,
+        "revenue": 55666.62
+      },
+      "algo": {
+        "pax": 308.0,
+        "price": 200.0,
+        "revenue": 61512.84
+      },
+      "date": "2023-05-01",
+      "dow": "Mon",
+      "regret": 5846.22,
+      "shock": 0.0
+    },
+    {
+      "actual": {
+        "pax": 218.0,
+        "price": 279.0,
+        "revenue": 60789.56
+      },
+      "algo": {
+        "pax": 317.0,
+        "price": 200.0,
+        "revenue": 63482.99
+      },
+      "date": "2023-05-02",
+      "dow": "Tue",
+      "regret": 2693.42,
+      "shock": 1.0
+    },
+    {
+      "actual": {
+        "pax": 206.0,
+        "price": 278.0,
+        "revenue": 57461.68
+      },
+      "algo": {
+        "pax": 317.0,
+        "price": 200.0,
+        "revenue": 63448.07
+      },
+      "date": "2023-05-03",
+      "dow": "Wed",
+      "regret": 5986.39,
+      "shock": 0.0
+    },
+    {
+      "actual": {
+        "pax": 196.0,
+        "price": 286.0,
+        "revenue": 56193.29
+      },
+      "algo": {
+        "pax": 313.0,
+        "price": 200.0,
+        "revenue": 62562.44
+      },
+      "date": "2023-05-04",
+      "dow": "Thu",
+      "regret": 6369.15,
+      "shock": 0.0
+    },
+    {
+      "actual": {
+        "pax": 200.0,
+        "price": 278.0,
+        "revenue": 55751.34
+      },
+      "algo": {
+        "pax": 308.0,
+        "price": 200.0,
+        "revenue": 61558.55
+      },
+      "date": "2023-05-05",
+      "dow": "Fri",
+      "regret": 5807.21,
+      "shock": 0.0
+    },
+    {
+      "actual": {
+        "pax": 164.0,
+        "price": 278.0,
+        "revenue": 45571.78
+      },
+      "algo": {
+        "pax": 252.0,
+        "price": 200.0,
+        "revenue": 50313.52
+      },
+      "date": "2023-05-06",
+      "dow": "Sat",
+      "regret": 4741.74,
+      "shock": 0.0
+    },
+    {
+      "actual": {
+        "pax": 177.0,
+        "price": 286.0,
+        "revenue": 50558.69
+      },
+      "algo": {
+        "pax": 281.0,
+        "price": 200.0,
+        "revenue": 56281.23
+      },
+      "date": "2023-05-07",
+      "dow": "Sun",
+      "regret": 5722.53,
+      "shock": 0.0
+    },
+    {
+      "actual": {
+        "pax": 193.0,
+        "price": 290.0,
+        "revenue": 55966.4
+      },
+      "algo": {
+        "pax": 313.0,
+        "price": 200.0,
+        "revenue": 62590.89
+      },
+      "date": "2023-05-08",
+      "dow": "Mon",
+      "regret": 6624.48,
+      "shock": 0.0
+    },
+    {
+      "actual": {
+        "pax": 180.0,
+        "price": 281.0,
+        "revenue": 50540.86
+      },
+      "algo": {
+        "pax": 280.0,
+        "price": 200.0,
+        "revenue": 55962.99
+      },
+      "date": "2023-05-09",
+      "dow": "Tue",
+      "regret": 5422.12,
+      "shock": 0.0
+    },
+    {
+      "actual": {
+        "pax": 177.0,
+        "price": 296.0,
+        "revenue": 52289.71
+      },
+      "algo": {
+        "pax": 294.0,
+        "price": 200.0,
+        "revenue": 58787.22
+      },
+      "date": "2023-05-10",
+      "dow": "Wed",
+      "regret": 6497.52,
+      "shock": 0.0
+    },
+    {
+      "actual": {
+        "pax": 210.0,
+        "price": 283.0,
+        "revenue": 59439.44
+      },
+      "algo": {
+        "pax": 320.0,
+        "price": 200.0,
+        "revenue": 64010.8
+      },
+      "date": "2023-05-11",
+      "dow": "Thu",
+      "regret": 4571.36,
+      "shock": 0.5
+    },
+    {
+      "actual": {
+        "pax": 231.0,
+        "price": 284.0,
+        "revenue": 65625.66
+      },
+      "algo": {
+        "pax": 355.0,
+        "price": 200.0,
+        "revenue": 70919.62
+      },
+      "date": "2023-05-12",
+      "dow": "Fri",
+      "regret": 5293.95,
+      "shock": 0.5
+    },
+    {
+      "actual": {
+        "pax": 176.0,
+        "price": 279.0,
+        "revenue": 49280.46
+      },
+      "algo": {
+        "pax": 272.0,
+        "price": 200.0,
+        "revenue": 54476.87
+      },
+      "date": "2023-05-13",
+      "dow": "Sat",
+      "regret": 5196.41,
+      "shock": 0.0
+    },
+    {
+      "actual": {
+        "pax": 175.0,
+        "price": 278.0,
+        "revenue": 48607.18
+      },
+      "algo": {
+        "pax": 268.0,
+        "price": 200.0,
+        "revenue": 53656.29
+      },
+      "date": "2023-05-14",
+      "dow": "Sun",
+      "regret": 5049.11,
+      "shock": 0.0
+    },
+    {
+      "actual": {
+        "pax": 243.0,
+        "price": 271.0,
+        "revenue": 65790.49
+      },
+      "algo": {
+        "pax": 344.0,
+        "price": 200.0,
+        "revenue": 68782.09
+      },
+      "date": "2023-05-15",
+      "dow": "Mon",
+      "regret": 2991.6,
+      "shock": 1.0
+    },
+    {
+      "actual": {
+        "pax": 188.0,
+        "price": 280.0,
+        "revenue": 52747.89
+      },
+      "algo": {
+        "pax": 292.0,
+        "price": 200.0,
+        "revenue": 58362.06
+      },
+      "date": "2023-05-16",
+      "dow": "Tue",
+      "regret": 5614.17,
+      "shock": 0.0
+    },
+    {
+      "actual": {
+        "pax": 197.0,
+        "price": 286.0,
+        "revenue": 56548.26
+      },
+      "algo": {
+        "pax": 315.0,
+        "price": 200.0,
+        "revenue": 62979.32
+      },
+      "date": "2023-05-17",
+      "dow": "Wed",
+      "regret": 6431.07,
+      "shock": 0.0
+    },
+    {
+      "actual": {
+        "pax": 207.0,
+        "price": 286.0,
+        "revenue": 59305.42
+      },
+      "algo": {
+        "pax": 330.0,
+        "price": 200.0,
+        "revenue": 66040.26
+      },
+      "date": "2023-05-18",
+      "dow": "Thu",
+      "regret": 6734.85,
+      "shock": 0.0
+    },
+    {
+      "actual": {
+        "pax": 210.0,
+        "price": 285.0,
+        "revenue": 59996.19
+      },
+      "algo": {
+        "pax": 334.0,
+        "price": 200.0,
+        "revenue": 66743.12
+      },
+      "date": "2023-05-19",
+      "dow": "Fri",
+      "regret": 6746.94,
+      "shock": 0.0
+    },
+    {
+      "actual": {
+        "pax": 176.0,
+        "price": 291.0,
+        "revenue": 51043.19
+      },
+      "algo": {
+        "pax": 286.0,
+        "price": 200.0,
+        "revenue": 57104.79
+      },
+      "date": "2023-05-20",
+      "dow": "Sat",
+      "regret": 6061.6,
+      "shock": 0.0
+    },
+    {
+      "actual": {
+        "pax": 176.0,
+        "price": 284.0,
+        "revenue": 50094.86
+      },
+      "algo": {
+        "pax": 278.0,
+        "price": 200.0,
+        "revenue": 55652.04
+      },
+      "date": "2023-05-21",
+      "dow": "Sun",
+      "regret": 5557.19,
+      "shock": 0.0
+    },
+    {
+      "actual": {
+        "pax": 200.0,
+        "price": 286.0,
+        "revenue": 57241.66
+      },
+      "algo": {
+        "pax": 319.0,
+        "price": 200.0,
+        "revenue": 63745.43
+      },
+      "date": "2023-05-22",
+      "dow": "Mon",
+      "regret": 6503.77,
+      "shock": 0.0
+    },
+    {
+      "actual": {
+        "pax": 186.0,
+        "price": 301.0,
+        "revenue": 55935.44
+      },
+      "algo": {
+        "pax": 316.0,
+        "price": 200.0,
+        "revenue": 63260.26
+      },
+      "date": "2023-05-23",
+      "dow": "Tue",
+      "regret": 7324.82,
+      "shock": 0.0
+    },
+    {
+      "actual": {
+        "pax": 181.0,
+        "price": 301.0,
+        "revenue": 54607.28
+      },
+      "algo": {
+        "pax": 309.0,
+        "price": 200.0,
+        "revenue": 61736.99
+      },
+      "date": "2023-05-24",
+      "dow": "Wed",
+      "regret": 7129.71,
+      "shock": 0.0
+    },
+    {
+      "actual": {
+        "pax": 195.0,
+        "price": 306.0,
+        "revenue": 59685.51
+      },
+      "algo": {
+        "pax": 339.0,
+        "price": 200.0,
+        "revenue": 67775.47
+      },
+      "date": "2023-05-25",
+      "dow": "Thu",
+      "regret": 8089.96,
+      "shock": 0.0
+    },
+    {
+      "actual": {
+        "pax": 200.0,
+        "price": 304.0,
+        "revenue": 60734.05
+      },
+      "algo": {
+        "pax": 344.0,
+        "price": 200.0,
+        "revenue": 68845.9
+      },
+      "date": "2023-05-26",
+      "dow": "Fri",
+      "regret": 8111.85,
+      "shock": 0.0
+    },
+    {
+      "actual": {
+        "pax": 160.0,
+        "price": 299.0,
+        "revenue": 47786.82
+      },
+      "algo": {
+        "pax": 270.0,
+        "price": 200.0,
+        "revenue": 53927.42
+      },
+      "date": "2023-05-27",
+      "dow": "Sat",
+      "regret": 6140.6,
+      "shock": 0.0
+    },
+    {
+      "actual": {
+        "pax": 177.0,
+        "price": 300.0,
+        "revenue": 53259.59
+      },
+      "algo": {
+        "pax": 301.0,
+        "price": 200.0,
+        "revenue": 60168.63
+      },
+      "date": "2023-05-28",
+      "dow": "Sun",
+      "regret": 6909.04,
+      "shock": 0.0
+    },
+    {
+      "actual": {
+        "pax": 192.0,
+        "price": 299.0,
+        "revenue": 57279.09
+      },
+      "algo": {
+        "pax": 323.0,
+        "price": 200.0,
+        "revenue": 64595.3
+      },
+      "date": "2023-05-29",
+      "dow": "Mon",
+      "regret": 7316.21,
+      "shock": 0.0
+    },
+    {
+      "actual": {
+        "pax": 190.0,
+        "price": 291.0,
+        "revenue": 55485.91
+      },
+      "algo": {
+        "pax": 311.0,
+        "price": 200.0,
+        "revenue": 62112.33
+      },
+      "date": "2023-05-30",
+      "dow": "Tue",
+      "regret": 6626.41,
+      "shock": 0.0
+    },
+    {
+      "actual": {
+        "pax": 178.0,
+        "price": 297.0,
+        "revenue": 52987.46
+      },
+      "algo": {
+        "pax": 298.0,
+        "price": 200.0,
+        "revenue": 59681.41
+      },
+      "date": "2023-05-31",
+      "dow": "Wed",
+      "regret": 6693.95,
+      "shock": 0.0
+    },
+    {
+      "actual": {
+        "pax": 195.0,
+        "price": 302.0,
+        "revenue": 58800.05
+      },
+      "algo": {
+        "pax": 333.0,
+        "price": 200.0,
+        "revenue": 66558.58
+      },
+      "date": "2023-06-01",
+      "dow": "Thu",
+      "regret": 7758.53,
+      "shock": 0.0
+    },
+    {
+      "actual": {
+        "pax": 184.0,
+        "price": 319.0,
+        "revenue": 58771.57
+      },
+      "algo": {
+        "pax": 338.0,
+        "price": 200.0,
+        "revenue": 67606.95
+      },
+      "date": "2023-06-02",
+      "dow": "Fri",
+      "regret": 8835.38,
+      "shock": 0.0
+    },
+    {
+      "actual": {
+        "pax": 159.0,
+        "price": 315.0,
+        "revenue": 50056.21
+      },
+      "algo": {
+        "pax": 287.0,
+        "price": 200.0,
+        "revenue": 57371.96
+      },
+      "date": "2023-06-03",
+      "dow": "Sat",
+      "regret": 7315.75,
+      "shock": 0.0
+    },
+    {
+      "actual": {
+        "pax": 177.0,
+        "price": 306.0,
+        "revenue": 54201.84
+      },
+      "algo": {
+        "pax": 308.0,
+        "price": 200.0,
+        "revenue": 61581.11
+      },
+      "date": "2023-06-04",
+      "dow": "Sun",
+      "regret": 7379.27,
+      "shock": 0.0
+    },
+    {
+      "actual": {
+        "pax": 169.0,
+        "price": 315.0,
+        "revenue": 53239.77
+      },
+      "algo": {
+        "pax": 305.0,
+        "price": 200.0,
+        "revenue": 61021.18
+      },
+      "date": "2023-06-05",
+      "dow": "Mon",
+      "regret": 7781.42,
+      "shock": 0.0
+    },
+    {
+      "actual": {
+        "pax": 170.0,
+        "price": 312.0,
+        "revenue": 53209.4
+      },
+      "algo": {
+        "pax": 304.0,
+        "price": 200.0,
+        "revenue": 60810.58
+      },
+      "date": "2023-06-06",
+      "dow": "Tue",
+      "regret": 7601.18,
+      "shock": 0.0
+    },
+    {
+      "actual": {
+        "pax": 172.0,
+        "price": 307.0,
+        "revenue": 52685.42
+      },
+      "algo": {
+        "pax": 300.0,
+        "price": 200.0,
+        "revenue": 59901.61
+      },
+      "date": "2023-06-07",
+      "dow": "Wed",
+      "regret": 7216.19,
+      "shock": 0.0
+    },
+    {
+      "actual": {
+        "pax": 161.0,
+        "price": 304.0,
+        "revenue": 48883.9
+      },
+      "algo": {
+        "pax": 277.0,
+        "price": 200.0,
+        "revenue": 55402.94
+      },
+      "date": "2023-06-08",
+      "dow": "Thu",
+      "regret": 6519.04,
+      "shock": 0.0
+    },
+    {
+      "actual": {
+        "pax": 223.0,
+        "price": 286.0,
+        "revenue": 63878.53
+      },
+      "algo": {
+        "pax": 356.0,
+        "price": 200.0,
+        "revenue": 71116.39
+      },
+      "date": "2023-06-09",
+      "dow": "Fri",
+      "regret": 7237.86,
+      "shock": 0.0
+    },
+    {
+      "actual": {
+        "pax": 157.0,
+        "price": 283.0,
+        "revenue": 44481.28
+      },
+      "algo": {
+        "pax": 247.0,
+        "price": 200.0,
+        "revenue": 49350.38
+      },
+      "date": "2023-06-10",
+      "dow": "Sat",
+      "regret": 4869.1,
+      "shock": 0.0
+    },
+    {
+      "actual": {
+        "pax": 155.0,
+        "price": 292.0,
+        "revenue": 45346.96
+      },
+      "algo": {
+        "pax": 254.0,
+        "price": 200.0,
+        "revenue": 50811.52
+      },
+      "date": "2023-06-11",
+      "dow": "Sun",
+      "regret": 5464.56,
+      "shock": 0.0
+    },
+    {
+      "actual": {
+        "pax": 198.0,
+        "price": 286.0,
+        "revenue": 56713.49
+      },
+      "algo": {
+        "pax": 316.0,
+        "price": 200.0,
+        "revenue": 63150.99
+      },
+      "date": "2023-06-12",
+      "dow": "Mon",
+      "regret": 6437.5,
+      "shock": 0.0
+    },
+    {
+      "actual": {
+        "pax": 189.0,
+        "price": 286.0,
+        "revenue": 53972.06
+      },
+      "algo": {
+        "pax": 300.0,
+        "price": 200.0,
+        "revenue": 60093.32
+      },
+      "date": "2023-06-13",
+      "dow": "Tue",
+      "regret": 6121.25,
+      "shock": 0.0
+    },
+    {
+      "actual": {
+        "pax": 168.0,
+        "price": 306.0,
+        "revenue": 51545.77
+      },
+      "algo": {
+        "pax": 293.0,
+        "price": 200.0,
+        "revenue": 58581.3
+      },
+      "date": "2023-06-14",
+      "dow": "Wed",
+      "regret": 7035.53,
+      "shock": 0.0
+    },
+    {
+      "actual": {
+        "pax": 159.0,
+        "price": 305.0,
+        "revenue": 48459.69
+      },
+      "algo": {
+        "pax": 275.0,
+        "price": 200.0,
+        "revenue": 54976.09
+      },
+      "date": "2023-06-15",
+      "dow": "Thu",
+      "regret": 6516.41,
+      "shock": 0.0
+    },
+    {
+      "actual": {
+        "pax": 174.0,
+        "price": 315.0,
+        "revenue": 54807.57
+      },
+      "algo": {
+        "pax": 314.0,
+        "price": 200.0,
+        "revenue": 62831.36
+      },
+      "date": "2023-06-16",
+      "dow": "Fri",
+      "regret": 8023.79,
+      "shock": 0.0
+    },
+    {
+      "actual": {
+        "pax": 171.0,
+        "price": 303.0,
+        "revenue": 51889.98
+      },
+      "algo": {
+        "pax": 282.0,
+        "price": 200.0,
+        "revenue": 56346.11
+      },
+      "date": "2023-06-17",
+      "dow": "Sat",
+      "regret": 4456.13,
+      "shock": 0.5
+    },
+    {
+      "actual": {
+        "pax": 152.0,
+        "price": 292.0,
+        "revenue": 44426.46
+      },
+      "algo": {
+        "pax": 249.0,
+        "price": 200.0,
+        "revenue": 49782.39
+      },
+      "date": "2023-06-18",
+      "dow": "Sun",
+      "regret": 5355.92,
+      "shock": 0.0
+    },
+    {
+      "actual": {
+        "pax": 192.0,
+        "price": 292.0,
+        "revenue": 56068.04
+      },
+      "algo": {
+        "pax": 314.0,
+        "price": 200.0,
+        "revenue": 62831.4
+      },
+      "date": "2023-06-19",
+      "dow": "Mon",
+      "regret": 6763.36,
+      "shock": 0.0
+    },
+    {
+      "actual": {
+        "pax": 185.0,
+        "price": 294.0,
+        "revenue": 54301.08
+      },
+      "algo": {
+        "pax": 305.0,
+        "price": 200.0,
+        "revenue": 60943.11
+      },
+      "date": "2023-06-20",
+      "dow": "Tue",
+      "regret": 6642.03,
+      "shock": 0.0
+    },
+    {
+      "actual": {
+        "pax": 191.0,
+        "price": 287.0,
+        "revenue": 54703.62
+      },
+      "algo": {
+        "pax": 305.0,
+        "price": 200.0,
+        "revenue": 60954.56
+      },
+      "date": "2023-06-21",
+      "dow": "Wed",
+      "regret": 6250.95,
+      "shock": 0.0
+    },
+    {
+      "actual": {
+        "pax": 199.0,
+        "price": 278.0,
+        "revenue": 55312.11
+      },
+      "algo": {
+        "pax": 305.0,
+        "price": 200.0,
+        "revenue": 61067.99
+      },
+      "date": "2023-06-22",
+      "dow": "Thu",
+      "regret": 5755.89,
+      "shock": 0.0
+    },
+    {
+      "actual": {
+        "pax": 211.0,
+        "price": 273.0,
+        "revenue": 57680.65
+      },
+      "algo": {
+        "pax": 317.0,
+        "price": 200.0,
+        "revenue": 63338.94
+      },
+      "date": "2023-06-23",
+      "dow": "Fri",
+      "regret": 5658.29,
+      "shock": 0.0
+    },
+    {
+      "actual": {
+        "pax": 165.0,
+        "price": 279.0,
+        "revenue": 45894.24
+      },
+      "algo": {
+        "pax": 254.0,
+        "price": 200.0,
+        "revenue": 50705.1
+      },
+      "date": "2023-06-24",
+      "dow": "Sat",
+      "regret": 4810.86,
+      "shock": 0.0
+    },
+    {
+      "actual": {
+        "pax": 183.0,
+        "price": 281.0,
+        "revenue": 51422.92
+      },
+      "algo": {
+        "pax": 285.0,
+        "price": 200.0,
+        "revenue": 56975.06
+      },
+      "date": "2023-06-25",
+      "dow": "Sun",
+      "regret": 5552.14,
+      "shock": 0.0
+    },
+    {
+      "actual": {
+        "pax": 203.0,
+        "price": 283.0,
+        "revenue": 57497.21
+      },
+      "algo": {
+        "pax": 319.0,
+        "price": 200.0,
+        "revenue": 63826.42
+      },
+      "date": "2023-06-26",
+      "dow": "Mon",
+      "regret": 6329.21,
+      "shock": 0.0
+    },
+    {
+      "actual": {
+        "pax": 181.0,
+        "price": 283.0,
+        "revenue": 51300.43
+      },
+      "algo": {
+        "pax": 285.0,
+        "price": 200.0,
+        "revenue": 56913.57
+      },
+      "date": "2023-06-27",
+      "dow": "Tue",
+      "regret": 5613.14,
+      "shock": 0.0
+    },
+    {
+      "actual": {
+        "pax": 189.0,
+        "price": 284.0,
+        "revenue": 53794.15
+      },
+      "algo": {
+        "pax": 299.0,
+        "price": 200.0,
+        "revenue": 59762.73
+      },
+      "date": "2023-06-28",
+      "dow": "Wed",
+      "regret": 5968.58,
+      "shock": 0.0
+    },
+    {
+      "actual": {
+        "pax": 196.0,
+        "price": 283.0,
+        "revenue": 55485.39
+      },
+      "algo": {
+        "pax": 308.0,
+        "price": 200.0,
+        "revenue": 61604.73
+      },
+      "date": "2023-06-29",
+      "dow": "Thu",
+      "regret": 6119.33,
+      "shock": 0.0
+    },
+    {
+      "actual": {
+        "pax": 220.0,
+        "price": 279.0,
+        "revenue": 61527.15
+      },
+      "algo": {
+        "pax": 340.0,
+        "price": 200.0,
+        "revenue": 68013.49
+      },
+      "date": "2023-06-30",
+      "dow": "Fri",
+      "regret": 6486.33,
+      "shock": 0.0
+    }
+  ],
+  "heatmap": {
+    "actual": [
+      [
+        288.0,
+        274.0,
+        268.0,
+        272.0,
+        249.0
+      ],
+      [
+        273.0,
+        268.0,
+        269.0,
+        257.0,
+        232.0
+      ],
+      [
+        281.0,
+        274.0,
+        264.0,
+        256.0,
+        243.0
+      ],
+      [
+        287.0,
+        285.0,
+        279.0,
+        266.0,
+        248.0
+      ],
+      [
+        306.0,
+        305.0,
+        293.0,
+        288.0,
+        264.0
+      ],
+      [
+        246.0,
+        241.0,
+        238.0,
+        230.0,
+        209.0
+      ],
+      [
+        252.0,
+        246.0,
+        250.0,
+        242.0,
+        223.0
+      ]
+    ],
+    "algo": [
+      [
+        278.0,
+        265.0,
+        265.0,
+        254.0,
+        236.0
+      ],
+      [
+        255.0,
+        256.0,
+        251.0,
+        240.0,
+        222.0
+      ],
+      [
+        261.0,
+        255.0,
+        254.0,
+        242.0,
+        214.0
+      ],
+      [
+        277.0,
+        264.0,
+        267.0,
+        255.0,
+        230.0
+      ],
+      [
+        290.0,
+        289.0,
+        282.0,
+        277.0,
+        257.0
+      ],
+      [
+        233.0,
+        233.0,
+        229.0,
+        210.0,
+        200
+      ],
+      [
+        233.0,
+        241.0,
+        230.0,
+        222.0,
+        210.0
+      ]
+    ],
+    "bookingWindows": [
+      1,
+      3,
+      7,
+      14,
+      30
+    ],
+    "dows": [
+      "Mon",
+      "Tue",
+      "Wed",
+      "Thu",
+      "Fri",
+      "Sat",
+      "Sun"
+    ]
+  },
+  "meta": {
+    "generatedAt": "2026-02-17T16:06:17+00:00",
+    "modules": {
+      "airfare_cpi_yoy": {
+        "provenance": {
+          "asOf": "2026-01-01",
+          "fetchedAt": "2026-02-17T16:06:17+00:00",
+          "note": "Airfare CPI YoY",
+          "source": "fred:CUSR0000SETG01"
+        },
+        "status": "ok"
+      },
+      "dal_30d_return": {
+        "provenance": {
+          "asOf": "2026-02-17",
+          "fetchedAt": "2026-02-17T16:06:19+00:00",
+          "note": "30d total return",
+          "source": "stooq:DAL"
+        },
+        "status": "ok"
+      },
+      "ual_30d_return": {
+        "provenance": {
+          "asOf": "2026-02-17",
+          "fetchedAt": "2026-02-17T16:06:17+00:00",
+          "note": "30d total return",
+          "source": "stooq:UAL"
+        },
+        "status": "ok"
+      }
+    },
+    "overallStatus": "ok",
+    "runId": "real-20260217160617"
+  },
+  "narrative": [
+    {
+      "actualPrice": 319.0,
+      "date": "2023-06-02",
+      "incrementalRevenue": 8835.0,
+      "incrementalTravelers": 154,
+      "reason": "Fri business mix: the pricing team stayed sticky while the policy adjusted into the local elasticity sweet spot.",
+      "recommendedPrice": 200.0
+    },
+    {
+      "actualPrice": 304.0,
+      "date": "2023-05-26",
+      "incrementalRevenue": 8112.0,
+      "incrementalTravelers": 144,
+      "reason": "Fri business mix: the pricing team stayed sticky while the policy adjusted into the local elasticity sweet spot.",
+      "recommendedPrice": 200.0
+    },
+    {
+      "actualPrice": 306.0,
+      "date": "2023-05-25",
+      "incrementalRevenue": 8090.0,
+      "incrementalTravelers": 144,
+      "reason": "Thu business mix: the pricing team stayed sticky while the policy adjusted into the local elasticity sweet spot.",
+      "recommendedPrice": 200.0
+    },
+    {
+      "actualPrice": 315.0,
+      "date": "2023-06-16",
+      "incrementalRevenue": 8024.0,
+      "incrementalTravelers": 140,
+      "reason": "Fri business mix: the pricing team stayed sticky while the policy adjusted into the local elasticity sweet spot.",
+      "recommendedPrice": 200.0
+    },
+    {
+      "actualPrice": 295.0,
+      "date": "2023-04-07",
+      "incrementalRevenue": 7867.0,
+      "incrementalTravelers": 142,
+      "reason": "Fri business mix: the pricing team stayed sticky while the policy adjusted into the local elasticity sweet spot.",
+      "recommendedPrice": 200.0
+    },
+    {
+      "actualPrice": 315.0,
+      "date": "2023-06-05",
+      "incrementalRevenue": 7781.0,
+      "incrementalTravelers": 136,
+      "reason": "Mon business mix: the pricing team stayed sticky while the policy adjusted into the local elasticity sweet spot.",
+      "recommendedPrice": 200.0
+    },
+    {
+      "actualPrice": 302.0,
+      "date": "2023-06-01",
+      "incrementalRevenue": 7759.0,
+      "incrementalTravelers": 138,
+      "reason": "Thu business mix: the pricing team stayed sticky while the policy adjusted into the local elasticity sweet spot.",
+      "recommendedPrice": 200.0
+    },
+    {
+      "actualPrice": 302.0,
+      "date": "2023-04-28",
+      "incrementalRevenue": 7637.0,
+      "incrementalTravelers": 137,
+      "reason": "Fri business mix: the pricing team stayed sticky while the policy adjusted into the local elasticity sweet spot.",
+      "recommendedPrice": 200.0
+    }
+  ],
+  "nashSim": {
+    "convergenceDay": 20,
+    "states": [
+      {
+        "dayIndex": 1,
+        "dlPrice": 318.52,
+        "dlShare": 0.48,
+        "regret": 7203.6,
+        "uaPrice": 314.98,
+        "uaShare": 0.52
+      },
+      {
+        "dayIndex": 2,
+        "dlPrice": 334.7,
+        "dlShare": 0.468,
+        "regret": 4178.09,
+        "uaPrice": 331.79,
+        "uaShare": 0.532
+      },
+      {
+        "dayIndex": 3,
+        "dlPrice": 344.57,
+        "dlShare": 0.476,
+        "regret": 2423.29,
+        "uaPrice": 341.54,
+        "uaShare": 0.524
+      },
+      {
+        "dayIndex": 4,
+        "dlPrice": 350.58,
+        "dlShare": 0.479,
+        "regret": 1405.51,
+        "uaPrice": 347.19,
+        "uaShare": 0.521
+      },
+      {
+        "dayIndex": 5,
+        "dlPrice": 354.26,
+        "dlShare": 0.464,
+        "regret": 815.2,
+        "uaPrice": 350.47,
+        "uaShare": 0.536
+      },
+      {
+        "dayIndex": 6,
+        "dlPrice": 356.5,
+        "dlShare": 0.471,
+        "regret": 472.81,
+        "uaPrice": 352.37,
+        "uaShare": 0.529
+      },
+      {
+        "dayIndex": 7,
+        "dlPrice": 357.86,
+        "dlShare": 0.463,
+        "regret": 274.23,
+        "uaPrice": 353.48,
+        "uaShare": 0.537
+      },
+      {
+        "dayIndex": 8,
+        "dlPrice": 358.7,
+        "dlShare": 0.47,
+        "regret": 159.05,
+        "uaPrice": 354.12,
+        "uaShare": 0.53
+      },
+      {
+        "dayIndex": 9,
+        "dlPrice": 359.2,
+        "dlShare": 0.478,
+        "regret": 92.25,
+        "uaPrice": 354.49,
+        "uaShare": 0.522
+      },
+      {
+        "dayIndex": 10,
+        "dlPrice": 359.51,
+        "dlShare": 0.5,
+        "regret": 53.51,
+        "uaPrice": 354.7,
+        "uaShare": 0.5
+      },
+      {
+        "dayIndex": 11,
+        "dlPrice": 359.7,
+        "dlShare": 0.479,
+        "regret": 31.03,
+        "uaPrice": 354.83,
+        "uaShare": 0.521
+      },
+      {
+        "dayIndex": 12,
+        "dlPrice": 359.82,
+        "dlShare": 0.481,
+        "regret": 18.0,
+        "uaPrice": 354.9,
+        "uaShare": 0.519
+      },
+      {
+        "dayIndex": 13,
+        "dlPrice": 359.89,
+        "dlShare": 0.478,
+        "regret": 10.44,
+        "uaPrice": 354.94,
+        "uaShare": 0.522
+      },
+      {
+        "dayIndex": 14,
+        "dlPrice": 359.93,
+        "dlShare": 0.466,
+        "regret": 6.05,
+        "uaPrice": 354.97,
+        "uaShare": 0.534
+      },
+      {
+        "dayIndex": 15,
+        "dlPrice": 359.96,
+        "dlShare": 0.48,
+        "regret": 3.51,
+        "uaPrice": 354.98,
+        "uaShare": 0.52
+      },
+      {
+        "dayIndex": 16,
+        "dlPrice": 359.98,
+        "dlShare": 0.483,
+        "regret": 2.04,
+        "uaPrice": 354.99,
+        "uaShare": 0.517
+      },
+      {
+        "dayIndex": 17,
+        "dlPrice": 359.98,
+        "dlShare": 0.475,
+        "regret": 1.18,
+        "uaPrice": 354.99,
+        "uaShare": 0.525
+      },
+      {
+        "dayIndex": 18,
+        "dlPrice": 359.99,
+        "dlShare": 0.48,
+        "regret": 0.69,
+        "uaPrice": 355.0,
+        "uaShare": 0.52
+      },
+      {
+        "dayIndex": 19,
+        "dlPrice": 359.99,
+        "dlShare": 0.459,
+        "regret": 0.4,
+        "uaPrice": 355.0,
+        "uaShare": 0.541
+      },
+      {
+        "dayIndex": 20,
+        "dlPrice": 360.0,
+        "dlShare": 0.467,
+        "regret": 0.23,
+        "uaPrice": 355.0,
+        "uaShare": 0.533
+      }
+    ]
+  },
+  "realSignals": [
+    {
+      "change": "Airfare CPI YoY",
+      "id": "airfare_cpi_yoy",
+      "label": "US airfare CPI YoY",
+      "provenance": {
+        "asOf": "2026-01-01",
+        "fetchedAt": "2026-02-17T16:06:17+00:00",
+        "note": "Airfare CPI YoY",
+        "source": "fred:CUSR0000SETG01"
+      },
+      "status": "ok",
+      "unit": "%",
+      "value": "2.93"
+    },
+    {
+      "change": "30d total return",
+      "id": "ual_30d_return",
+      "label": "UAL 30d return",
+      "provenance": {
+        "asOf": "2026-02-17",
+        "fetchedAt": "2026-02-17T16:06:17+00:00",
+        "note": "30d total return",
+        "source": "stooq:UAL"
+      },
+      "status": "ok",
+      "unit": "%",
+      "value": "-0.83"
+    },
+    {
+      "change": "30d total return",
+      "id": "dal_30d_return",
+      "label": "DAL 30d return",
+      "provenance": {
+        "asOf": "2026-02-17",
+        "fetchedAt": "2026-02-17T16:06:19+00:00",
+        "note": "30d total return",
+        "source": "stooq:DAL"
+      },
+      "status": "ok",
+      "unit": "%",
+      "value": "1.46"
+    }
+  ],
+  "route": {
+    "destination": "LGA",
+    "origin": "ORD"
+  },
+  "shockEvents": [
+    {
+      "date": "2023-04-11",
+      "label": "Demand anomaly",
+      "narrative": "Moderate demand shock: weather and event spillovers shifted late-booking behavior.",
+      "severity": "med"
+    },
+    {
+      "date": "2023-04-18",
+      "label": "Demand anomaly",
+      "narrative": "Major demand shock: schedule disruption and event traffic changed booking mix intraday.",
+      "severity": "high"
+    },
+    {
+      "date": "2023-05-02",
+      "label": "Demand anomaly",
+      "narrative": "Major demand shock: schedule disruption and event traffic changed booking mix intraday.",
+      "severity": "high"
+    },
+    {
+      "date": "2023-05-11",
+      "label": "Demand anomaly",
+      "narrative": "Moderate demand shock: weather and event spillovers shifted late-booking behavior.",
+      "severity": "med"
+    },
+    {
+      "date": "2023-05-12",
+      "label": "Demand anomaly",
+      "narrative": "Moderate demand shock: weather and event spillovers shifted late-booking behavior.",
+      "severity": "med"
+    },
+    {
+      "date": "2023-05-15",
+      "label": "Demand anomaly",
+      "narrative": "Major demand shock: schedule disruption and event traffic changed booking mix intraday.",
+      "severity": "high"
+    },
+    {
+      "date": "2023-06-17",
+      "label": "Demand anomaly",
+      "narrative": "Moderate demand shock: weather and event spillovers shifted late-booking behavior.",
+      "severity": "med"
+    }
+  ]
+}

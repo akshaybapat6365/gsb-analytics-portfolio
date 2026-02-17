@@ -1,0 +1,42 @@
+{
+  "project": "starbucks-pivot",
+  "outputs_dir": "public/assets/starbucks-pivot",
+  "assets": [
+    {
+      "filename": "hero.webp",
+      "model": {
+        "owner": "black-forest-labs",
+        "name": "flux-schnell"
+      },
+      "input": {
+        "prompt": "Geo-analytics decision dashboard with Denver suburban map, store clusters, remote-work mobility zones, and scenario slider controls. High-end strategy consulting visual style, emerald/cyan accents, glass cards.",
+        "num_outputs": 1,
+        "output_format": "webp"
+      }
+    },
+    {
+      "filename": "diagram.webp",
+      "model": {
+        "owner": "black-forest-labs",
+        "name": "flux-schnell"
+      },
+      "input": {
+        "prompt": "Causal inference geo-analytics diagram: difference-in-differences timeline with pre-trend check, 3D isochrone rings, suburban cluster map, and decision recommendation legend. Emerald/cyan palette, consulting-style visuals, no logos.",
+        "num_outputs": 1,
+        "output_format": "webp"
+      }
+    },
+    {
+      "filename": "overlay.webp",
+      "model": {
+        "owner": "black-forest-labs",
+        "name": "flux-schnell"
+      },
+      "input": {
+        "prompt": "Geospatial suburban overlay with translucent isochrone rings, commuter-collapse arrows, demand heat gradients, and portfolio surgery markers for a premium analytics map. No logos, no text blocks.",
+        "num_outputs": 1,
+        "output_format": "webp"
+      }
+    }
+  ]
+}

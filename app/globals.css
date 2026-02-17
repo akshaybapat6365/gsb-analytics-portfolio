@@ -1,0 +1,341 @@
+@import "tailwindcss";
+
+@theme inline {
+  --font-serif: var(--font-instrument-serif), "Instrument Serif", serif;
+  --font-sans: var(--font-instrument-sans), "Instrument Sans", "Segoe UI", sans-serif;
+  --font-mono: var(--font-jetbrains-mono), "JetBrains Mono", "SFMono-Regular", monospace;
+}
+
+:root {
+  color-scheme: dark;
+  --surface-0: 4 6 14;
+  --surface-1: 7 11 24;
+  --surface-2: 10 16 35;
+  --text-main: 226 232 240;
+  --text-muted: 148 163 184;
+  --line-soft: 148 163 184;
+  --p-accent: 34 211 238;
+  --p-accent2: 52 211 153;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  border-color: rgba(var(--line-soft), 0.16);
+}
+
+html,
+body {
+  margin: 0;
+  min-height: 100%;
+  background-color: rgb(var(--surface-0));
+  color: rgb(var(--text-main));
+}
+
+body {
+  font-family: var(--font-instrument-serif), "Instrument Serif", serif;
+  text-rendering: geometricPrecision;
+  -webkit-font-smoothing: antialiased;
+  background-image:
+    radial-gradient(1100px 700px at 8% 4%, rgba(var(--p-accent), 0.14), transparent 62%),
+    radial-gradient(960px 640px at 92% 0%, rgba(var(--p-accent2), 0.1), transparent 58%),
+    linear-gradient(180deg, rgb(var(--surface-1)), rgb(var(--surface-0)) 38%, rgb(var(--surface-0)));
+}
+
+::selection {
+  background: rgba(var(--p-accent), 0.3);
+  color: rgb(var(--text-main));
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  transition:
+    color 180ms ease,
+    border-color 180ms ease,
+    background-color 180ms ease;
+}
+
+.site-shell {
+  position: relative;
+  isolation: isolate;
+  overflow-x: clip;
+}
+
+.site-shell::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  pointer-events: none;
+  opacity: 0.72;
+  background:
+    linear-gradient(to right, rgba(148, 163, 184, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(148, 163, 184, 0.04) 1px, transparent 1px);
+  background-size: 60px 60px;
+  mask-image: radial-gradient(circle at 46% 10%, black 30%, transparent 80%);
+}
+
+.site-shell::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 12% 82%, rgba(var(--p-accent), 0.08), transparent 45%),
+    radial-gradient(circle at 86% 80%, rgba(var(--p-accent2), 0.07), transparent 42%);
+}
+
+.font-display {
+  font-family: var(--font-feature, var(--font-instrument-serif)), "Instrument Serif", serif;
+  letter-spacing: -0.0125em;
+}
+
+.font-feature {
+  font-family: var(--font-feature, var(--font-instrument-sans)), "Instrument Sans", sans-serif;
+}
+
+.glass {
+  position: relative;
+  border: 1px solid rgba(var(--line-soft), 0.18);
+  background:
+    linear-gradient(160deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.015) 56%),
+    linear-gradient(145deg, rgba(var(--surface-2), 0.84), rgba(var(--surface-1), 0.7));
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.08),
+    0 24px 70px rgba(0, 0, 0, 0.42);
+  backdrop-filter: blur(20px);
+}
+
+.glass::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(
+    115deg,
+    rgba(var(--p-accent), 0.06),
+    rgba(var(--p-accent2), 0.045) 36%,
+    transparent 64%
+  );
+}
+
+.glass-strong {
+  position: relative;
+  border: 1px solid rgba(var(--line-soft), 0.22);
+  background:
+    linear-gradient(160deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.015) 58%),
+    linear-gradient(165deg, rgba(var(--surface-2), 0.96), rgba(var(--surface-1), 0.86));
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.08),
+    0 26px 76px rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(22px);
+}
+
+.neo-panel {
+  position: relative;
+  border-radius: 1.55rem;
+  border: 1px solid rgba(var(--line-soft), 0.2);
+  background:
+    radial-gradient(
+      920px 480px at 8% -16%,
+      rgba(var(--p-accent), 0.09),
+      transparent 58%
+    ),
+    radial-gradient(
+      840px 460px at 96% -16%,
+      rgba(var(--p-accent2), 0.075),
+      transparent 56%
+    ),
+    linear-gradient(165deg, rgba(var(--surface-2), 0.86), rgba(var(--surface-1), 0.72));
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.07),
+    0 16px 54px rgba(0, 0, 0, 0.4);
+}
+
+.neo-panel::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.42;
+  background:
+    linear-gradient(to right, rgba(148, 163, 184, 0.08) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(148, 163, 184, 0.06) 1px, transparent 1px);
+  background-size: 34px 34px;
+  mask-image: radial-gradient(circle at 28% 12%, black 30%, transparent 78%);
+}
+
+.terminal {
+  position: relative;
+  border-radius: 1.5rem;
+  border: 1px solid rgba(var(--line-soft), 0.22);
+  background:
+    linear-gradient(180deg, rgba(0, 0, 0, 0.44), rgba(0, 0, 0, 0.2)),
+    linear-gradient(
+      to right,
+      rgba(var(--p-accent), 0.06) 0,
+      transparent 26%,
+      transparent 72%,
+      rgba(var(--p-accent2), 0.06) 100%
+    ),
+    rgba(var(--surface-1), 0.92);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.08),
+    0 22px 56px rgba(0, 0, 0, 0.42);
+}
+
+.terminal::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.42;
+  background:
+    repeating-linear-gradient(
+      to bottom,
+      rgba(148, 163, 184, 0.11) 0,
+      rgba(148, 163, 184, 0.11) 1px,
+      transparent 1px,
+      transparent 24px
+    );
+}
+
+.terminal::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.14;
+  background: radial-gradient(circle at 50% -22%, rgba(255, 255, 255, 0.9), transparent 52%);
+}
+
+.project-backdrop-media {
+  transform: scale(1.04);
+}
+
+.project-backdrop-sweep {
+  opacity: 0.36;
+}
+
+@keyframes reveal-up {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes soft-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-4px);
+  }
+}
+
+@keyframes backdrop-pan {
+  0% {
+    transform: scale(1.03) translate3d(0, 0, 0);
+  }
+  50% {
+    transform: scale(1.06) translate3d(-1.1%, -0.8%, 0);
+  }
+  100% {
+    transform: scale(1.03) translate3d(1.3%, 0.7%, 0);
+  }
+}
+
+@keyframes sweep {
+  0% {
+    transform: translateX(-120%) skewX(-12deg);
+  }
+  100% {
+    transform: translateX(180%) skewX(-12deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .neo-panel,
+  .glass,
+  .glass-strong,
+  .terminal {
+    animation: reveal-up 520ms ease both;
+  }
+
+  .project-backdrop-media {
+    animation: backdrop-pan 22s ease-in-out infinite;
+    will-change: transform;
+  }
+
+  .project-backdrop-sweep::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      100deg,
+      transparent 16%,
+      rgba(255, 255, 255, 0.08) 42%,
+      transparent 66%
+    );
+    mix-blend-mode: screen;
+    opacity: 0.45;
+    animation: sweep 8.5s linear infinite;
+  }
+}
+
+@media (max-width: 768px) {
+  body {
+    background-image:
+      radial-gradient(620px 360px at 12% -4%, rgba(var(--p-accent), 0.14), transparent 68%),
+      radial-gradient(640px 380px at 88% -2%, rgba(var(--p-accent2), 0.1), transparent 66%),
+      linear-gradient(180deg, rgb(var(--surface-1)), rgb(var(--surface-0)) 42%, rgb(var(--surface-0)));
+  }
+}
+
+[data-project-theme="ord-lga-price-war"] .neo-panel,
+[data-project-theme="ord-lga-price-war"] .glass,
+[data-project-theme="ord-lga-price-war"] .terminal {
+  --line-soft: 125 211 252;
+}
+
+[data-project-theme="fraud-radar"] .neo-panel,
+[data-project-theme="fraud-radar"] .glass,
+[data-project-theme="fraud-radar"] .terminal {
+  --line-soft: 251 113 133;
+  background-blend-mode: normal, normal, multiply;
+}
+
+[data-project-theme="target-shrink"] .neo-panel,
+[data-project-theme="target-shrink"] .glass,
+[data-project-theme="target-shrink"] .terminal {
+  --line-soft: 251 191 36;
+}
+
+[data-project-theme="starbucks-pivot"] .neo-panel,
+[data-project-theme="starbucks-pivot"] .glass,
+[data-project-theme="starbucks-pivot"] .terminal {
+  --line-soft: 52 211 153;
+}
+
+[data-project-theme="tesla-nacs"] .neo-panel,
+[data-project-theme="tesla-nacs"] .glass,
+[data-project-theme="tesla-nacs"] .terminal {
+  --line-soft: 34 211 238;
+}
+
+[data-project-theme="netflix-roi"] .neo-panel,
+[data-project-theme="netflix-roi"] .glass,
+[data-project-theme="netflix-roi"] .terminal {
+  --line-soft: 251 191 36;
+}

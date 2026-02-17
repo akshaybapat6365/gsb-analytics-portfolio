@@ -1,0 +1,227 @@
+{
+  "headline": {
+    "ciAddsM": [
+      0.6,
+      2.0
+    ],
+    "dealCostM": 150.0,
+    "estimatedIncrementalAddsM": 1.2,
+    "retentionLiftPct": 4.6
+  },
+  "meta": {
+    "generatedAt": "2026-02-17T16:06:17+00:00",
+    "modules": {
+      "netflix_daily_trend_presence": {
+        "provenance": {
+          "fetchedAt": "2026-02-17T16:06:54+00:00",
+          "source": "google-trends:dailytrends"
+        },
+        "reasonCode": "fetch_error:HTTPError",
+        "status": "unavailable"
+      },
+      "nflx_30d_return": {
+        "provenance": {
+          "asOf": "2026-02-17",
+          "fetchedAt": "2026-02-17T16:06:52+00:00",
+          "note": "30d total return",
+          "source": "stooq:NFLX"
+        },
+        "status": "ok"
+      },
+      "nflx_recent_10k_10q": {
+        "provenance": {
+          "asOf": "2026-01-23",
+          "fetchedAt": "2026-02-17T16:06:55+00:00",
+          "note": "10-K/10-Q count in last 365d",
+          "source": "sec:0001065280"
+        },
+        "status": "ok"
+      }
+    },
+    "overallStatus": "stale",
+    "runId": "real-20260217160617"
+  },
+  "model": {
+    "acquisitionAddsCoeff": {
+      "acclaim": 0.38,
+      "budget": 0.0042,
+      "buzz": 0.72,
+      "intercept": 0.12
+    },
+    "retentionMonthsCoeff": {
+      "acclaim": 1.9,
+      "budget": 0.012,
+      "buzz": 3.6,
+      "intercept": 0.8
+    }
+  },
+  "paretoFrontier": [
+    {
+      "acquisition": 103.0,
+      "id": "t05",
+      "retention": 98.0
+    },
+    {
+      "acquisition": 80.0,
+      "id": "t04",
+      "retention": 109.0
+    },
+    {
+      "acquisition": 71.0,
+      "id": "t10",
+      "retention": 88.0
+    },
+    {
+      "acquisition": 29.0,
+      "id": "t02",
+      "retention": 108.0
+    },
+    {
+      "acquisition": 66.0,
+      "id": "t11",
+      "retention": 65.0
+    },
+    {
+      "acquisition": 58.0,
+      "id": "t07",
+      "retention": 57.0
+    }
+  ],
+  "realSignals": [
+    {
+      "change": "30d total return",
+      "id": "nflx_30d_return",
+      "label": "NFLX 30d return",
+      "provenance": {
+        "asOf": "2026-02-17",
+        "fetchedAt": "2026-02-17T16:06:52+00:00",
+        "note": "30d total return",
+        "source": "stooq:NFLX"
+      },
+      "status": "ok",
+      "unit": "%",
+      "value": "-16.13"
+    },
+    {
+      "id": "netflix_daily_trend_presence",
+      "label": "Google Trends daily presence (Netflix)",
+      "provenance": {
+        "fetchedAt": "2026-02-17T16:06:54+00:00",
+        "source": "google-trends:dailytrends"
+      },
+      "reasonCode": "fetch_error:HTTPError",
+      "status": "unavailable"
+    },
+    {
+      "change": "10-K/10-Q count in last 365d",
+      "id": "nflx_recent_10k_10q",
+      "label": "NFLX 10-K/10-Q filings (365d)",
+      "provenance": {
+        "asOf": "2026-01-23",
+        "fetchedAt": "2026-02-17T16:06:55+00:00",
+        "note": "10-K/10-Q count in last 365d",
+        "source": "sec:0001065280"
+      },
+      "status": "ok",
+      "value": "4"
+    }
+  ],
+  "titles": [
+    {
+      "acclaim": 41.0,
+      "acquisitionLtvM": 40.0,
+      "costM": 27.0,
+      "id": "t01",
+      "retentionLtvM": 94.0,
+      "title": "Bridgerton"
+    },
+    {
+      "acclaim": 36.0,
+      "acquisitionLtvM": 29.0,
+      "costM": 8,
+      "id": "t02",
+      "retentionLtvM": 108.0,
+      "title": "Inventing Anna"
+    },
+    {
+      "acclaim": 73.0,
+      "acquisitionLtvM": 60.0,
+      "costM": 18.0,
+      "id": "t03",
+      "retentionLtvM": 93.0,
+      "title": "Queen Charlotte"
+    },
+    {
+      "acclaim": 57.0,
+      "acquisitionLtvM": 80.0,
+      "costM": 8,
+      "id": "t04",
+      "retentionLtvM": 109.0,
+      "title": "The Residence"
+    },
+    {
+      "acclaim": 50.0,
+      "acquisitionLtvM": 103.0,
+      "costM": 8,
+      "id": "t05",
+      "retentionLtvM": 98.0,
+      "title": "Grey\u2019s: Rewatch Effect (Synthetic)"
+    },
+    {
+      "acclaim": 41.0,
+      "acquisitionLtvM": 58.0,
+      "costM": 32.0,
+      "id": "t06",
+      "retentionLtvM": 91.0,
+      "title": "Scandal: Legacy Tail (Synthetic)"
+    },
+    {
+      "acclaim": 29.0,
+      "acquisitionLtvM": 58.0,
+      "costM": 12.0,
+      "id": "t07",
+      "retentionLtvM": 57.0,
+      "title": "Drama Anthology (Synthetic)"
+    },
+    {
+      "acclaim": 49.0,
+      "acquisitionLtvM": 44.0,
+      "costM": 65.0,
+      "id": "t08",
+      "retentionLtvM": 42.0,
+      "title": "Courtroom Thriller (Synthetic)"
+    },
+    {
+      "acclaim": 55.0,
+      "acquisitionLtvM": 81.0,
+      "costM": 30.0,
+      "id": "t09",
+      "retentionLtvM": 97.0,
+      "title": "Romance Limited (Synthetic)"
+    },
+    {
+      "acclaim": 29.0,
+      "acquisitionLtvM": 71.0,
+      "costM": 8,
+      "id": "t10",
+      "retentionLtvM": 88.0,
+      "title": "YA Spinoff (Synthetic)"
+    },
+    {
+      "acclaim": 43.0,
+      "acquisitionLtvM": 66.0,
+      "costM": 9.0,
+      "id": "t11",
+      "retentionLtvM": 65.0,
+      "title": "Prestige Limited (Synthetic)"
+    },
+    {
+      "acclaim": 57.0,
+      "acquisitionLtvM": 60.0,
+      "costM": 50.0,
+      "id": "t12",
+      "retentionLtvM": 66.0,
+      "title": "Event Series (Synthetic)"
+    }
+  ]
+}

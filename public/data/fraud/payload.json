@@ -1,0 +1,5058 @@
+{
+  "backtest": {
+    "annualizedAlpha": 0.34,
+    "benchmark": [
+      0.9967,
+      1.0083,
+      1.0143,
+      1.0281,
+      1.0285,
+      1.0489,
+      1.0725,
+      1.079,
+      1.0803,
+      1.0845,
+      1.1027,
+      1.105,
+      1.1013,
+      1.116,
+      1.1174,
+      1.1221,
+      1.1279,
+      1.1269,
+      1.1345,
+      1.1369,
+      1.1429,
+      1.1423,
+      1.128,
+      1.1409,
+      1.1531,
+      1.1708,
+      1.1546,
+      1.162,
+      1.1672,
+      1.1861,
+      1.197,
+      1.1992,
+      1.2167,
+      1.2361,
+      1.2427,
+      1.2539,
+      1.2594,
+      1.2818,
+      1.28,
+      1.3031,
+      1.3029,
+      1.3197,
+      1.3019,
+      1.3249,
+      1.3295,
+      1.3493,
+      1.3799,
+      1.3797,
+      1.3673,
+      1.3663,
+      1.3889,
+      1.4069,
+      1.3876,
+      1.3962,
+      1.4101,
+      1.4408,
+      1.4366,
+      1.4416,
+      1.4426,
+      1.4325,
+      1.4401,
+      1.4442,
+      1.4276,
+      1.4372,
+      1.4517,
+      1.4291,
+      1.4308,
+      1.4291,
+      1.4538,
+      1.4784,
+      1.4752,
+      1.4696
+    ],
+    "dates": [
+      "2019-01-01",
+      "2019-02-01",
+      "2019-03-01",
+      "2019-04-01",
+      "2019-05-01",
+      "2019-06-01",
+      "2019-07-01",
+      "2019-08-01",
+      "2019-09-01",
+      "2019-10-01",
+      "2019-11-01",
+      "2019-12-01",
+      "2020-01-01",
+      "2020-02-01",
+      "2020-03-01",
+      "2020-04-01",
+      "2020-05-01",
+      "2020-06-01",
+      "2020-07-01",
+      "2020-08-01",
+      "2020-09-01",
+      "2020-10-01",
+      "2020-11-01",
+      "2020-12-01",
+      "2021-01-01",
+      "2021-02-01",
+      "2021-03-01",
+      "2021-04-01",
+      "2021-05-01",
+      "2021-06-01",
+      "2021-07-01",
+      "2021-08-01",
+      "2021-09-01",
+      "2021-10-01",
+      "2021-11-01",
+      "2021-12-01",
+      "2022-01-01",
+      "2022-02-01",
+      "2022-03-01",
+      "2022-04-01",
+      "2022-05-01",
+      "2022-06-01",
+      "2022-07-01",
+      "2022-08-01",
+      "2022-09-01",
+      "2022-10-01",
+      "2022-11-01",
+      "2022-12-01",
+      "2023-01-01",
+      "2023-02-01",
+      "2023-03-01",
+      "2023-04-01",
+      "2023-05-01",
+      "2023-06-01",
+      "2023-07-01",
+      "2023-08-01",
+      "2023-09-01",
+      "2023-10-01",
+      "2023-11-01",
+      "2023-12-01",
+      "2024-01-01",
+      "2024-02-01",
+      "2024-03-01",
+      "2024-04-01",
+      "2024-05-01",
+      "2024-06-01",
+      "2024-07-01",
+      "2024-08-01",
+      "2024-09-01",
+      "2024-10-01",
+      "2024-11-01",
+      "2024-12-01"
+    ],
+    "strategy": [
+      1.0146,
+      1.0145,
+      1.0283,
+      1.0505,
+      1.0428,
+      1.0574,
+      1.0897,
+      1.1004,
+      1.1018,
+      1.1184,
+      1.1415,
+      1.1763,
+      1.173,
+      1.1905,
+      1.2031,
+      1.2118,
+      1.1929,
+      1.1887,
+      1.2257,
+      1.2335,
+      1.249,
+      1.2539,
+      1.2602,
+      1.2717,
+      1.3067,
+      1.3198,
+      1.3384,
+      1.351,
+      1.3612,
+      1.3968,
+      1.3742,
+      1.3657,
+      1.3578,
+      1.385,
+      1.4019,
+      1.4288,
+      1.4509,
+      1.4712,
+      1.5221,
+      1.5331,
+      1.5415,
+      1.5203,
+      1.5351,
+      1.53,
+      1.5247,
+      1.5696,
+      1.5672,
+      1.5894,
+      1.6179,
+      1.6349,
+      1.6709,
+      1.6613,
+      1.6676,
+      1.657,
+      1.6829,
+      1.7027,
+      1.6839,
+      1.6931,
+      1.6801,
+      1.6794,
+      1.7003,
+      1.7092,
+      1.6998,
+      1.7311,
+      1.7175,
+      1.736,
+      1.7356,
+      1.7206,
+      1.7738,
+      1.7815,
+      1.8296,
+      1.8128
+    ]
+  },
+  "companies": [
+    {
+      "name": "Apple",
+      "ticker": "AAPL"
+    },
+    {
+      "name": "Microsoft",
+      "ticker": "MSFT"
+    },
+    {
+      "name": "Amazon",
+      "ticker": "AMZN"
+    },
+    {
+      "name": "Tesla",
+      "ticker": "TSLA"
+    },
+    {
+      "name": "JPMorgan Chase",
+      "ticker": "JPM"
+    },
+    {
+      "name": "Coca-Cola",
+      "ticker": "KO"
+    },
+    {
+      "name": "Walmart",
+      "ticker": "WMT"
+    },
+    {
+      "name": "Nikola",
+      "ticker": "NKLA"
+    },
+    {
+      "name": "Luckin Coffee (ADR)",
+      "ticker": "LKNCY"
+    },
+    {
+      "name": "FTX (Synthetic)",
+      "ticker": "FTX"
+    },
+    {
+      "name": "MidCap Industrials (Synthetic)",
+      "ticker": "XYZ"
+    },
+    {
+      "name": "Growth SaaS (Synthetic)",
+      "ticker": "ABCD"
+    }
+  ],
+  "filings": [
+    {
+      "beneishM": -1.88,
+      "deception": 0,
+      "filingDate": "2018-03-31",
+      "riskScore": 0.37,
+      "sentiment": -0.12,
+      "ticker": "AAPL",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -1.89,
+      "deception": 0.1,
+      "filingDate": "2018-06-30",
+      "riskScore": 0.38,
+      "sentiment": 0.02,
+      "ticker": "AAPL",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -2.09,
+      "deception": 0.1,
+      "filingDate": "2018-09-30",
+      "riskScore": 0.34,
+      "sentiment": -0.21,
+      "ticker": "AAPL",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -2.0,
+      "deception": 0.19,
+      "filingDate": "2018-12-31",
+      "riskScore": 0.37,
+      "sentiment": 0.01,
+      "ticker": "AAPL",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -2.13,
+      "deception": 0.14,
+      "filingDate": "2019-03-31",
+      "riskScore": 0.3,
+      "sentiment": -0.02,
+      "ticker": "AAPL",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -2.02,
+      "deception": 0.23,
+      "filingDate": "2019-06-30",
+      "riskScore": 0.39,
+      "sentiment": -0.12,
+      "ticker": "AAPL",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -2.17,
+      "deception": 0.13,
+      "filingDate": "2019-09-30",
+      "riskScore": 0.3,
+      "sentiment": -0.1,
+      "ticker": "AAPL",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -2.09,
+      "deception": 0.25,
+      "filingDate": "2019-12-31",
+      "riskScore": 0.35,
+      "sentiment": -0.02,
+      "ticker": "AAPL",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -1.83,
+      "deception": 0.11,
+      "filingDate": "2020-03-31",
+      "riskScore": 0.42,
+      "sentiment": -0.09,
+      "ticker": "AAPL",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -1.84,
+      "deception": 0.11,
+      "filingDate": "2020-06-30",
+      "riskScore": 0.42,
+      "sentiment": -0.08,
+      "ticker": "AAPL",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -1.98,
+      "deception": 0.18,
+      "filingDate": "2020-09-30",
+      "riskScore": 0.39,
+      "sentiment": -0.12,
+      "ticker": "AAPL",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -2.13,
+      "deception": 0.04,
+      "filingDate": "2020-12-31",
+      "riskScore": 0.29,
+      "sentiment": -0.12,
+      "ticker": "AAPL",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -1.96,
+      "deception": 0.07,
+      "filingDate": "2021-03-31",
+      "riskScore": 0.31,
+      "sentiment": 0.26,
+      "ticker": "AAPL",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -2.04,
+      "deception": 0.14,
+      "filingDate": "2021-06-30",
+      "riskScore": 0.34,
+      "sentiment": 0.0,
+      "ticker": "AAPL",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -2.17,
+      "deception": 0,
+      "filingDate": "2021-09-30",
+      "riskScore": 0.24,
+      "sentiment": 0.01,
+      "ticker": "AAPL",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -1.89,
+      "deception": 0.08,
+      "filingDate": "2021-12-31",
+      "riskScore": 0.37,
+      "sentiment": 0.04,
+      "ticker": "AAPL",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -1.99,
+      "deception": 0.1,
+      "filingDate": "2022-03-31",
+      "riskScore": 0.37,
+      "sentiment": -0.16,
+      "ticker": "AAPL",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -1.84,
+      "deception": 0.14,
+      "filingDate": "2022-06-30",
+      "riskScore": 0.43,
+      "sentiment": -0.07,
+      "ticker": "AAPL",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -1.9,
+      "deception": 0.21,
+      "filingDate": "2022-09-30",
+      "riskScore": 0.41,
+      "sentiment": 0.02,
+      "ticker": "AAPL",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -1.97,
+      "deception": 0.12,
+      "filingDate": "2022-12-31",
+      "riskScore": 0.35,
+      "sentiment": 0.03,
+      "ticker": "AAPL",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -1.74,
+      "deception": 0.25,
+      "filingDate": "2023-03-31",
+      "riskScore": 0.49,
+      "sentiment": -0.06,
+      "ticker": "AAPL",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -2.08,
+      "deception": 0.21,
+      "filingDate": "2023-06-30",
+      "riskScore": 0.36,
+      "sentiment": -0.12,
+      "ticker": "AAPL",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -1.8,
+      "deception": 0.05,
+      "filingDate": "2023-09-30",
+      "riskScore": 0.42,
+      "sentiment": -0.16,
+      "ticker": "AAPL",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -1.95,
+      "deception": 0.26,
+      "filingDate": "2023-12-31",
+      "riskScore": 0.4,
+      "sentiment": 0.08,
+      "ticker": "AAPL",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -2.01,
+      "deception": 0.09,
+      "filingDate": "2024-03-31",
+      "riskScore": 0.33,
+      "sentiment": 0.03,
+      "ticker": "AAPL",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -1.88,
+      "deception": 0.09,
+      "filingDate": "2024-06-30",
+      "riskScore": 0.41,
+      "sentiment": -0.13,
+      "ticker": "AAPL",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -1.99,
+      "deception": 0.09,
+      "filingDate": "2024-09-30",
+      "riskScore": 0.33,
+      "sentiment": 0.11,
+      "ticker": "AAPL",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -2.12,
+      "deception": 0.27,
+      "filingDate": "2024-12-31",
+      "riskScore": 0.33,
+      "sentiment": 0.08,
+      "ticker": "AAPL",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -1.91,
+      "deception": 0.22,
+      "filingDate": "2018-03-31",
+      "riskScore": 0.42,
+      "sentiment": -0.08,
+      "ticker": "MSFT",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -1.78,
+      "deception": 0.11,
+      "filingDate": "2018-06-30",
+      "riskScore": 0.44,
+      "sentiment": -0.07,
+      "ticker": "MSFT",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -1.93,
+      "deception": 0.15,
+      "filingDate": "2018-09-30",
+      "riskScore": 0.37,
+      "sentiment": 0.1,
+      "ticker": "MSFT",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -2.14,
+      "deception": 0.19,
+      "filingDate": "2018-12-31",
+      "riskScore": 0.29,
+      "sentiment": 0.14,
+      "ticker": "MSFT",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -2.05,
+      "deception": 0.26,
+      "filingDate": "2019-03-31",
+      "riskScore": 0.38,
+      "sentiment": -0.06,
+      "ticker": "MSFT",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -2.07,
+      "deception": 0.01,
+      "filingDate": "2019-06-30",
+      "riskScore": 0.28,
+      "sentiment": 0.04,
+      "ticker": "MSFT",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -2.03,
+      "deception": 0.1,
+      "filingDate": "2019-09-30",
+      "riskScore": 0.31,
+      "sentiment": 0.09,
+      "ticker": "MSFT",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -2.0,
+      "deception": 0.14,
+      "filingDate": "2019-12-31",
+      "riskScore": 0.36,
+      "sentiment": -0.03,
+      "ticker": "MSFT",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -1.94,
+      "deception": 0.18,
+      "filingDate": "2020-03-31",
+      "riskScore": 0.41,
+      "sentiment": -0.15,
+      "ticker": "MSFT",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -1.83,
+      "deception": 0.23,
+      "filingDate": "2020-06-30",
+      "riskScore": 0.43,
+      "sentiment": 0.13,
+      "ticker": "MSFT",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -2.16,
+      "deception": 0.15,
+      "filingDate": "2020-09-30",
+      "riskScore": 0.27,
+      "sentiment": 0.16,
+      "ticker": "MSFT",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -1.85,
+      "deception": 0.13,
+      "filingDate": "2020-12-31",
+      "riskScore": 0.42,
+      "sentiment": -0.08,
+      "ticker": "MSFT",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -1.9,
+      "deception": 0.09,
+      "filingDate": "2021-03-31",
+      "riskScore": 0.36,
+      "sentiment": 0.15,
+      "ticker": "MSFT",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -2.02,
+      "deception": 0.14,
+      "filingDate": "2021-06-30",
+      "riskScore": 0.35,
+      "sentiment": -0.03,
+      "ticker": "MSFT",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -1.98,
+      "deception": 0.18,
+      "filingDate": "2021-09-30",
+      "riskScore": 0.37,
+      "sentiment": 0.03,
+      "ticker": "MSFT",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -2.05,
+      "deception": 0.13,
+      "filingDate": "2021-12-31",
+      "riskScore": 0.36,
+      "sentiment": -0.22,
+      "ticker": "MSFT",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -2.06,
+      "deception": 0.29,
+      "filingDate": "2022-03-31",
+      "riskScore": 0.38,
+      "sentiment": -0.02,
+      "ticker": "MSFT",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -2.21,
+      "deception": 0.17,
+      "filingDate": "2022-06-30",
+      "riskScore": 0.3,
+      "sentiment": -0.13,
+      "ticker": "MSFT",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -2.08,
+      "deception": 0.16,
+      "filingDate": "2022-09-30",
+      "riskScore": 0.34,
+      "sentiment": -0.11,
+      "ticker": "MSFT",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -2.01,
+      "deception": 0.35,
+      "filingDate": "2022-12-31",
+      "riskScore": 0.39,
+      "sentiment": 0.17,
+      "ticker": "MSFT",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -1.82,
+      "deception": 0.03,
+      "filingDate": "2023-03-31",
+      "riskScore": 0.4,
+      "sentiment": -0.07,
+      "ticker": "MSFT",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -2.17,
+      "deception": 0.15,
+      "filingDate": "2023-06-30",
+      "riskScore": 0.29,
+      "sentiment": 0.0,
+      "ticker": "MSFT",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -2.0,
+      "deception": 0.17,
+      "filingDate": "2023-09-30",
+      "riskScore": 0.37,
+      "sentiment": -0.06,
+      "ticker": "MSFT",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -2.22,
+      "deception": 0.03,
+      "filingDate": "2023-12-31",
+      "riskScore": 0.24,
+      "sentiment": -0.04,
+      "ticker": "MSFT",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -2.2,
+      "deception": 0.11,
+      "filingDate": "2024-03-31",
+      "riskScore": 0.26,
+      "sentiment": 0.05,
+      "ticker": "MSFT",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -2.21,
+      "deception": 0.18,
+      "filingDate": "2024-06-30",
+      "riskScore": 0.27,
+      "sentiment": 0.11,
+      "ticker": "MSFT",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -2.04,
+      "deception": 0.23,
+      "filingDate": "2024-09-30",
+      "riskScore": 0.37,
+      "sentiment": -0.04,
+      "ticker": "MSFT",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -1.86,
+      "deception": 0.11,
+      "filingDate": "2024-12-31",
+      "riskScore": 0.38,
+      "sentiment": 0.12,
+      "ticker": "MSFT",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -1.94,
+      "deception": 0.21,
+      "filingDate": "2018-03-31",
+      "riskScore": 0.4,
+      "sentiment": -0.04,
+      "ticker": "AMZN",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -1.94,
+      "deception": 0.14,
+      "filingDate": "2018-06-30",
+      "riskScore": 0.41,
+      "sentiment": -0.21,
+      "ticker": "AMZN",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -2.09,
+      "deception": 0.22,
+      "filingDate": "2018-09-30",
+      "riskScore": 0.35,
+      "sentiment": -0.03,
+      "ticker": "AMZN",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -2.07,
+      "deception": 0.34,
+      "filingDate": "2018-12-31",
+      "riskScore": 0.38,
+      "sentiment": 0.03,
+      "ticker": "AMZN",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -2.06,
+      "deception": 0.15,
+      "filingDate": "2019-03-31",
+      "riskScore": 0.31,
+      "sentiment": 0.12,
+      "ticker": "AMZN",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -2.01,
+      "deception": 0.27,
+      "filingDate": "2019-06-30",
+      "riskScore": 0.36,
+      "sentiment": 0.18,
+      "ticker": "AMZN",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -2.12,
+      "deception": 0.18,
+      "filingDate": "2019-09-30",
+      "riskScore": 0.33,
+      "sentiment": -0.08,
+      "ticker": "AMZN",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -2.07,
+      "deception": 0.15,
+      "filingDate": "2019-12-31",
+      "riskScore": 0.31,
+      "sentiment": 0.14,
+      "ticker": "AMZN",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -2.0,
+      "deception": 0.16,
+      "filingDate": "2020-03-31",
+      "riskScore": 0.36,
+      "sentiment": -0.01,
+      "ticker": "AMZN",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -2.08,
+      "deception": 0.13,
+      "filingDate": "2020-06-30",
+      "riskScore": 0.33,
+      "sentiment": -0.05,
+      "ticker": "AMZN",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -2.07,
+      "deception": 0.17,
+      "filingDate": "2020-09-30",
+      "riskScore": 0.31,
+      "sentiment": 0.13,
+      "ticker": "AMZN",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -1.83,
+      "deception": 0.21,
+      "filingDate": "2020-12-31",
+      "riskScore": 0.41,
+      "sentiment": 0.2,
+      "ticker": "AMZN",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -2.09,
+      "deception": 0.21,
+      "filingDate": "2021-03-31",
+      "riskScore": 0.32,
+      "sentiment": 0.1,
+      "ticker": "AMZN",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -2.14,
+      "deception": 0.17,
+      "filingDate": "2021-06-30",
+      "riskScore": 0.31,
+      "sentiment": 0.01,
+      "ticker": "AMZN",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -1.99,
+      "deception": 0.21,
+      "filingDate": "2021-09-30",
+      "riskScore": 0.38,
+      "sentiment": -0.03,
+      "ticker": "AMZN",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -2.2,
+      "deception": 0.14,
+      "filingDate": "2021-12-31",
+      "riskScore": 0.29,
+      "sentiment": -0.07,
+      "ticker": "AMZN",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -1.95,
+      "deception": 0.18,
+      "filingDate": "2022-03-31",
+      "riskScore": 0.37,
+      "sentiment": 0.11,
+      "ticker": "AMZN",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -2.05,
+      "deception": 0.22,
+      "filingDate": "2022-06-30",
+      "riskScore": 0.35,
+      "sentiment": 0.06,
+      "ticker": "AMZN",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -1.82,
+      "deception": 0.21,
+      "filingDate": "2022-09-30",
+      "riskScore": 0.45,
+      "sentiment": -0.03,
+      "ticker": "AMZN",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -2.09,
+      "deception": 0.31,
+      "filingDate": "2022-12-31",
+      "riskScore": 0.36,
+      "sentiment": 0.03,
+      "ticker": "AMZN",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -1.91,
+      "deception": 0.21,
+      "filingDate": "2023-03-31",
+      "riskScore": 0.4,
+      "sentiment": 0.04,
+      "ticker": "AMZN",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -1.97,
+      "deception": 0.17,
+      "filingDate": "2023-06-30",
+      "riskScore": 0.36,
+      "sentiment": 0.12,
+      "ticker": "AMZN",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -2.03,
+      "deception": 0.26,
+      "filingDate": "2023-09-30",
+      "riskScore": 0.38,
+      "sentiment": -0.04,
+      "ticker": "AMZN",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -2.11,
+      "deception": 0.24,
+      "filingDate": "2023-12-31",
+      "riskScore": 0.32,
+      "sentiment": 0.15,
+      "ticker": "AMZN",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -2.23,
+      "deception": 0.14,
+      "filingDate": "2024-03-31",
+      "riskScore": 0.26,
+      "sentiment": 0.02,
+      "ticker": "AMZN",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -1.86,
+      "deception": 0.16,
+      "filingDate": "2024-06-30",
+      "riskScore": 0.43,
+      "sentiment": -0.07,
+      "ticker": "AMZN",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -2.08,
+      "deception": 0.08,
+      "filingDate": "2024-09-30",
+      "riskScore": 0.31,
+      "sentiment": -0.04,
+      "ticker": "AMZN",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -2.09,
+      "deception": 0.25,
+      "filingDate": "2024-12-31",
+      "riskScore": 0.33,
+      "sentiment": 0.15,
+      "ticker": "AMZN",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -2.0,
+      "deception": 0.01,
+      "filingDate": "2018-03-31",
+      "riskScore": 0.31,
+      "sentiment": 0.02,
+      "ticker": "TSLA",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -1.77,
+      "deception": 0.22,
+      "filingDate": "2018-06-30",
+      "riskScore": 0.45,
+      "sentiment": 0.14,
+      "ticker": "TSLA",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -2.13,
+      "deception": 0.3,
+      "filingDate": "2018-09-30",
+      "riskScore": 0.35,
+      "sentiment": 0.05,
+      "ticker": "TSLA",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -2.05,
+      "deception": 0.13,
+      "filingDate": "2018-12-31",
+      "riskScore": 0.34,
+      "sentiment": -0.09,
+      "ticker": "TSLA",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -1.93,
+      "deception": 0.31,
+      "filingDate": "2019-03-31",
+      "riskScore": 0.43,
+      "sentiment": -0.01,
+      "ticker": "TSLA",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -2.04,
+      "deception": 0.06,
+      "filingDate": "2019-06-30",
+      "riskScore": 0.31,
+      "sentiment": 0.02,
+      "ticker": "TSLA",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -1.98,
+      "deception": 0.21,
+      "filingDate": "2019-09-30",
+      "riskScore": 0.38,
+      "sentiment": 0.01,
+      "ticker": "TSLA",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -1.88,
+      "deception": 0.24,
+      "filingDate": "2019-12-31",
+      "riskScore": 0.43,
+      "sentiment": 0.04,
+      "ticker": "TSLA",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -1.98,
+      "deception": 0.15,
+      "filingDate": "2020-03-31",
+      "riskScore": 0.38,
+      "sentiment": -0.09,
+      "ticker": "TSLA",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -1.95,
+      "deception": 0.34,
+      "filingDate": "2020-06-30",
+      "riskScore": 0.43,
+      "sentiment": 0.04,
+      "ticker": "TSLA",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -1.96,
+      "deception": 0.16,
+      "filingDate": "2020-09-30",
+      "riskScore": 0.38,
+      "sentiment": -0.05,
+      "ticker": "TSLA",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -2.01,
+      "deception": 0.15,
+      "filingDate": "2020-12-31",
+      "riskScore": 0.34,
+      "sentiment": 0.11,
+      "ticker": "TSLA",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -2.01,
+      "deception": 0.24,
+      "filingDate": "2021-03-31",
+      "riskScore": 0.37,
+      "sentiment": 0.04,
+      "ticker": "TSLA",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -1.77,
+      "deception": 0.15,
+      "filingDate": "2021-06-30",
+      "riskScore": 0.45,
+      "sentiment": -0.01,
+      "ticker": "TSLA",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -1.98,
+      "deception": 0.2,
+      "filingDate": "2021-09-30",
+      "riskScore": 0.38,
+      "sentiment": 0.0,
+      "ticker": "TSLA",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -1.86,
+      "deception": 0.3,
+      "filingDate": "2021-12-31",
+      "riskScore": 0.47,
+      "sentiment": -0.05,
+      "ticker": "TSLA",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -2.02,
+      "deception": 0.02,
+      "filingDate": "2022-03-31",
+      "riskScore": 0.32,
+      "sentiment": -0.1,
+      "ticker": "TSLA",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -2.02,
+      "deception": 0.11,
+      "filingDate": "2022-06-30",
+      "riskScore": 0.34,
+      "sentiment": -0.01,
+      "ticker": "TSLA",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -1.95,
+      "deception": 0.26,
+      "filingDate": "2022-09-30",
+      "riskScore": 0.4,
+      "sentiment": 0.06,
+      "ticker": "TSLA",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -2.17,
+      "deception": 0.16,
+      "filingDate": "2022-12-31",
+      "riskScore": 0.27,
+      "sentiment": 0.12,
+      "ticker": "TSLA",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -1.99,
+      "deception": 0.23,
+      "filingDate": "2023-03-31",
+      "riskScore": 0.39,
+      "sentiment": -0.03,
+      "ticker": "TSLA",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -2.01,
+      "deception": 0.17,
+      "filingDate": "2023-06-30",
+      "riskScore": 0.37,
+      "sentiment": -0.08,
+      "ticker": "TSLA",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -1.83,
+      "deception": 0.19,
+      "filingDate": "2023-09-30",
+      "riskScore": 0.46,
+      "sentiment": -0.15,
+      "ticker": "TSLA",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -1.94,
+      "deception": 0.09,
+      "filingDate": "2023-12-31",
+      "riskScore": 0.37,
+      "sentiment": -0.05,
+      "ticker": "TSLA",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -2.15,
+      "deception": 0.17,
+      "filingDate": "2024-03-31",
+      "riskScore": 0.31,
+      "sentiment": -0.03,
+      "ticker": "TSLA",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -2.04,
+      "deception": 0.33,
+      "filingDate": "2024-06-30",
+      "riskScore": 0.41,
+      "sentiment": -0.08,
+      "ticker": "TSLA",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -1.93,
+      "deception": 0.28,
+      "filingDate": "2024-09-30",
+      "riskScore": 0.43,
+      "sentiment": -0.04,
+      "ticker": "TSLA",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -2.14,
+      "deception": 0.17,
+      "filingDate": "2024-12-31",
+      "riskScore": 0.31,
+      "sentiment": -0.05,
+      "ticker": "TSLA",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -2.05,
+      "deception": 0.17,
+      "filingDate": "2018-03-31",
+      "riskScore": 0.33,
+      "sentiment": 0.08,
+      "ticker": "JPM",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -1.94,
+      "deception": 0.25,
+      "filingDate": "2018-06-30",
+      "riskScore": 0.4,
+      "sentiment": 0.05,
+      "ticker": "JPM",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -2.06,
+      "deception": 0.16,
+      "filingDate": "2018-09-30",
+      "riskScore": 0.33,
+      "sentiment": 0.05,
+      "ticker": "JPM",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -2.15,
+      "deception": 0.08,
+      "filingDate": "2018-12-31",
+      "riskScore": 0.29,
+      "sentiment": -0.08,
+      "ticker": "JPM",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -2.14,
+      "deception": 0.19,
+      "filingDate": "2019-03-31",
+      "riskScore": 0.31,
+      "sentiment": 0.04,
+      "ticker": "JPM",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -1.91,
+      "deception": 0.16,
+      "filingDate": "2019-06-30",
+      "riskScore": 0.4,
+      "sentiment": -0.03,
+      "ticker": "JPM",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -2.07,
+      "deception": 0.02,
+      "filingDate": "2019-09-30",
+      "riskScore": 0.28,
+      "sentiment": 0.06,
+      "ticker": "JPM",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -2.09,
+      "deception": 0.17,
+      "filingDate": "2019-12-31",
+      "riskScore": 0.33,
+      "sentiment": -0.0,
+      "ticker": "JPM",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -1.96,
+      "deception": 0.06,
+      "filingDate": "2020-03-31",
+      "riskScore": 0.33,
+      "sentiment": 0.08,
+      "ticker": "JPM",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -1.95,
+      "deception": 0.06,
+      "filingDate": "2020-06-30",
+      "riskScore": 0.36,
+      "sentiment": -0.07,
+      "ticker": "JPM",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -2.09,
+      "deception": 0.09,
+      "filingDate": "2020-09-30",
+      "riskScore": 0.33,
+      "sentiment": -0.22,
+      "ticker": "JPM",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -2.1,
+      "deception": 0.07,
+      "filingDate": "2020-12-31",
+      "riskScore": 0.29,
+      "sentiment": 0.01,
+      "ticker": "JPM",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -2.11,
+      "deception": 0.0,
+      "filingDate": "2021-03-31",
+      "riskScore": 0.26,
+      "sentiment": 0.06,
+      "ticker": "JPM",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -2.01,
+      "deception": 0.25,
+      "filingDate": "2021-06-30",
+      "riskScore": 0.35,
+      "sentiment": 0.18,
+      "ticker": "JPM",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -1.95,
+      "deception": 0.1,
+      "filingDate": "2021-09-30",
+      "riskScore": 0.35,
+      "sentiment": 0.05,
+      "ticker": "JPM",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -2.12,
+      "deception": 0,
+      "filingDate": "2021-12-31",
+      "riskScore": 0.27,
+      "sentiment": -0.03,
+      "ticker": "JPM",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -1.82,
+      "deception": 0.33,
+      "filingDate": "2022-03-31",
+      "riskScore": 0.47,
+      "sentiment": 0.04,
+      "ticker": "JPM",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -1.86,
+      "deception": 0.07,
+      "filingDate": "2022-06-30",
+      "riskScore": 0.4,
+      "sentiment": -0.1,
+      "ticker": "JPM",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -1.8,
+      "deception": 0.08,
+      "filingDate": "2022-09-30",
+      "riskScore": 0.43,
+      "sentiment": -0.13,
+      "ticker": "JPM",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -2.05,
+      "deception": 0.26,
+      "filingDate": "2022-12-31",
+      "riskScore": 0.37,
+      "sentiment": -0.05,
+      "ticker": "JPM",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -1.7,
+      "deception": 0.24,
+      "filingDate": "2023-03-31",
+      "riskScore": 0.51,
+      "sentiment": -0.09,
+      "ticker": "JPM",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -1.98,
+      "deception": 0.01,
+      "filingDate": "2023-06-30",
+      "riskScore": 0.32,
+      "sentiment": 0.01,
+      "ticker": "JPM",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -1.83,
+      "deception": 0.25,
+      "filingDate": "2023-09-30",
+      "riskScore": 0.45,
+      "sentiment": 0.02,
+      "ticker": "JPM",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -2.22,
+      "deception": 0.17,
+      "filingDate": "2023-12-31",
+      "riskScore": 0.29,
+      "sentiment": -0.1,
+      "ticker": "JPM",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -2.13,
+      "deception": 0.15,
+      "filingDate": "2024-03-31",
+      "riskScore": 0.3,
+      "sentiment": 0.04,
+      "ticker": "JPM",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -1.82,
+      "deception": 0.13,
+      "filingDate": "2024-06-30",
+      "riskScore": 0.44,
+      "sentiment": -0.1,
+      "ticker": "JPM",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -2.02,
+      "deception": 0.14,
+      "filingDate": "2024-09-30",
+      "riskScore": 0.36,
+      "sentiment": -0.14,
+      "ticker": "JPM",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -1.93,
+      "deception": 0.14,
+      "filingDate": "2024-12-31",
+      "riskScore": 0.36,
+      "sentiment": 0.14,
+      "ticker": "JPM",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -1.96,
+      "deception": 0.11,
+      "filingDate": "2018-03-31",
+      "riskScore": 0.36,
+      "sentiment": 0.02,
+      "ticker": "KO",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -1.86,
+      "deception": 0.13,
+      "filingDate": "2018-06-30",
+      "riskScore": 0.41,
+      "sentiment": -0.05,
+      "ticker": "KO",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -1.96,
+      "deception": 0.14,
+      "filingDate": "2018-09-30",
+      "riskScore": 0.37,
+      "sentiment": 0.0,
+      "ticker": "KO",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -1.85,
+      "deception": 0.09,
+      "filingDate": "2018-12-31",
+      "riskScore": 0.41,
+      "sentiment": -0.08,
+      "ticker": "KO",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -2.09,
+      "deception": 0.24,
+      "filingDate": "2019-03-31",
+      "riskScore": 0.34,
+      "sentiment": 0.04,
+      "ticker": "KO",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -1.96,
+      "deception": 0.21,
+      "filingDate": "2019-06-30",
+      "riskScore": 0.4,
+      "sentiment": -0.05,
+      "ticker": "KO",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -2.15,
+      "deception": 0.18,
+      "filingDate": "2019-09-30",
+      "riskScore": 0.32,
+      "sentiment": -0.08,
+      "ticker": "KO",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -2.16,
+      "deception": 0,
+      "filingDate": "2019-12-31",
+      "riskScore": 0.24,
+      "sentiment": 0.08,
+      "ticker": "KO",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -2.1,
+      "deception": 0,
+      "filingDate": "2020-03-31",
+      "riskScore": 0.29,
+      "sentiment": -0.1,
+      "ticker": "KO",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -2.0,
+      "deception": 0.23,
+      "filingDate": "2020-06-30",
+      "riskScore": 0.38,
+      "sentiment": -0.03,
+      "ticker": "KO",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -1.89,
+      "deception": 0.1,
+      "filingDate": "2020-09-30",
+      "riskScore": 0.39,
+      "sentiment": -0.09,
+      "ticker": "KO",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -1.85,
+      "deception": 0.19,
+      "filingDate": "2020-12-31",
+      "riskScore": 0.48,
+      "sentiment": -0.39,
+      "ticker": "KO",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -2.15,
+      "deception": 0.2,
+      "filingDate": "2021-03-31",
+      "riskScore": 0.32,
+      "sentiment": -0.02,
+      "ticker": "KO",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -1.85,
+      "deception": 0.12,
+      "filingDate": "2021-06-30",
+      "riskScore": 0.39,
+      "sentiment": 0.13,
+      "ticker": "KO",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -2.08,
+      "deception": 0.15,
+      "filingDate": "2021-09-30",
+      "riskScore": 0.3,
+      "sentiment": 0.16,
+      "ticker": "KO",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -2.22,
+      "deception": 0.19,
+      "filingDate": "2021-12-31",
+      "riskScore": 0.28,
+      "sentiment": 0.01,
+      "ticker": "KO",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -2.16,
+      "deception": 0.15,
+      "filingDate": "2022-03-31",
+      "riskScore": 0.32,
+      "sentiment": -0.16,
+      "ticker": "KO",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -1.99,
+      "deception": 0.23,
+      "filingDate": "2022-06-30",
+      "riskScore": 0.39,
+      "sentiment": -0.06,
+      "ticker": "KO",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -2.0,
+      "deception": 0.06,
+      "filingDate": "2022-09-30",
+      "riskScore": 0.33,
+      "sentiment": -0.02,
+      "ticker": "KO",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -2.22,
+      "deception": 0.26,
+      "filingDate": "2022-12-31",
+      "riskScore": 0.29,
+      "sentiment": 0.06,
+      "ticker": "KO",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -2.05,
+      "deception": 0.29,
+      "filingDate": "2023-03-31",
+      "riskScore": 0.39,
+      "sentiment": -0.06,
+      "ticker": "KO",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -1.96,
+      "deception": 0,
+      "filingDate": "2023-06-30",
+      "riskScore": 0.3,
+      "sentiment": 0.17,
+      "ticker": "KO",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -1.97,
+      "deception": 0.08,
+      "filingDate": "2023-09-30",
+      "riskScore": 0.35,
+      "sentiment": 0.0,
+      "ticker": "KO",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -2.16,
+      "deception": 0.13,
+      "filingDate": "2023-12-31",
+      "riskScore": 0.27,
+      "sentiment": 0.12,
+      "ticker": "KO",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -1.89,
+      "deception": 0.15,
+      "filingDate": "2024-03-31",
+      "riskScore": 0.42,
+      "sentiment": -0.11,
+      "ticker": "KO",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -1.99,
+      "deception": 0.11,
+      "filingDate": "2024-06-30",
+      "riskScore": 0.38,
+      "sentiment": -0.19,
+      "ticker": "KO",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -1.74,
+      "deception": 0,
+      "filingDate": "2024-09-30",
+      "riskScore": 0.38,
+      "sentiment": 0.25,
+      "ticker": "KO",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -2.08,
+      "deception": 0.22,
+      "filingDate": "2024-12-31",
+      "riskScore": 0.35,
+      "sentiment": -0.02,
+      "ticker": "KO",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -1.87,
+      "deception": 0.26,
+      "filingDate": "2018-03-31",
+      "riskScore": 0.44,
+      "sentiment": -0.01,
+      "ticker": "WMT",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -1.9,
+      "deception": 0.2,
+      "filingDate": "2018-06-30",
+      "riskScore": 0.41,
+      "sentiment": 0.02,
+      "ticker": "WMT",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -1.93,
+      "deception": 0.2,
+      "filingDate": "2018-09-30",
+      "riskScore": 0.37,
+      "sentiment": 0.16,
+      "ticker": "WMT",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -1.93,
+      "deception": 0.18,
+      "filingDate": "2018-12-31",
+      "riskScore": 0.39,
+      "sentiment": 0.04,
+      "ticker": "WMT",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -1.82,
+      "deception": 0.25,
+      "filingDate": "2019-03-31",
+      "riskScore": 0.43,
+      "sentiment": 0.17,
+      "ticker": "WMT",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -1.97,
+      "deception": 0.15,
+      "filingDate": "2019-06-30",
+      "riskScore": 0.37,
+      "sentiment": -0.01,
+      "ticker": "WMT",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -1.88,
+      "deception": 0.29,
+      "filingDate": "2019-09-30",
+      "riskScore": 0.43,
+      "sentiment": 0.06,
+      "ticker": "WMT",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -2.06,
+      "deception": 0.25,
+      "filingDate": "2019-12-31",
+      "riskScore": 0.38,
+      "sentiment": -0.1,
+      "ticker": "WMT",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -1.83,
+      "deception": 0.2,
+      "filingDate": "2020-03-31",
+      "riskScore": 0.46,
+      "sentiment": -0.13,
+      "ticker": "WMT",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -1.93,
+      "deception": 0.16,
+      "filingDate": "2020-06-30",
+      "riskScore": 0.38,
+      "sentiment": 0.05,
+      "ticker": "WMT",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -1.92,
+      "deception": 0.09,
+      "filingDate": "2020-09-30",
+      "riskScore": 0.38,
+      "sentiment": -0.05,
+      "ticker": "WMT",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -2.15,
+      "deception": 0.18,
+      "filingDate": "2020-12-31",
+      "riskScore": 0.34,
+      "sentiment": -0.2,
+      "ticker": "WMT",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -1.98,
+      "deception": 0.09,
+      "filingDate": "2021-03-31",
+      "riskScore": 0.33,
+      "sentiment": 0.11,
+      "ticker": "WMT",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -1.68,
+      "deception": 0.04,
+      "filingDate": "2021-06-30",
+      "riskScore": 0.42,
+      "sentiment": 0.18,
+      "ticker": "WMT",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -2.09,
+      "deception": 0.19,
+      "filingDate": "2021-09-30",
+      "riskScore": 0.33,
+      "sentiment": 0.03,
+      "ticker": "WMT",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -1.78,
+      "deception": 0.19,
+      "filingDate": "2021-12-31",
+      "riskScore": 0.45,
+      "sentiment": 0.05,
+      "ticker": "WMT",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -2.04,
+      "deception": 0.14,
+      "filingDate": "2022-03-31",
+      "riskScore": 0.31,
+      "sentiment": 0.17,
+      "ticker": "WMT",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -2.09,
+      "deception": 0.21,
+      "filingDate": "2022-06-30",
+      "riskScore": 0.35,
+      "sentiment": -0.04,
+      "ticker": "WMT",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -2.02,
+      "deception": 0.18,
+      "filingDate": "2022-09-30",
+      "riskScore": 0.36,
+      "sentiment": -0.02,
+      "ticker": "WMT",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -1.9,
+      "deception": 0.19,
+      "filingDate": "2022-12-31",
+      "riskScore": 0.4,
+      "sentiment": 0.06,
+      "ticker": "WMT",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -1.92,
+      "deception": 0.16,
+      "filingDate": "2023-03-31",
+      "riskScore": 0.4,
+      "sentiment": -0.09,
+      "ticker": "WMT",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -2.0,
+      "deception": 0.17,
+      "filingDate": "2023-06-30",
+      "riskScore": 0.37,
+      "sentiment": -0.05,
+      "ticker": "WMT",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -1.91,
+      "deception": 0.29,
+      "filingDate": "2023-09-30",
+      "riskScore": 0.45,
+      "sentiment": -0.1,
+      "ticker": "WMT",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -2.02,
+      "deception": 0.09,
+      "filingDate": "2023-12-31",
+      "riskScore": 0.31,
+      "sentiment": 0.14,
+      "ticker": "WMT",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -2.05,
+      "deception": 0.13,
+      "filingDate": "2024-03-31",
+      "riskScore": 0.34,
+      "sentiment": -0.07,
+      "ticker": "WMT",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -2.13,
+      "deception": 0.34,
+      "filingDate": "2024-06-30",
+      "riskScore": 0.36,
+      "sentiment": 0.02,
+      "ticker": "WMT",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -1.95,
+      "deception": 0.24,
+      "filingDate": "2024-09-30",
+      "riskScore": 0.41,
+      "sentiment": -0.01,
+      "ticker": "WMT",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -1.84,
+      "deception": 0.07,
+      "filingDate": "2024-12-31",
+      "riskScore": 0.4,
+      "sentiment": -0.09,
+      "ticker": "WMT",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -1.94,
+      "deception": 0.62,
+      "filingDate": "2018-03-31",
+      "riskScore": 0.54,
+      "sentiment": -0.15,
+      "ticker": "NKLA",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -1.79,
+      "deception": 0.5,
+      "filingDate": "2018-06-30",
+      "riskScore": 0.55,
+      "sentiment": -0.03,
+      "ticker": "NKLA",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -2.08,
+      "deception": 0.61,
+      "filingDate": "2018-09-30",
+      "riskScore": 0.47,
+      "sentiment": -0.04,
+      "ticker": "NKLA",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -2.04,
+      "deception": 0.49,
+      "filingDate": "2018-12-31",
+      "riskScore": 0.45,
+      "sentiment": -0.05,
+      "ticker": "NKLA",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -1.73,
+      "deception": 0.62,
+      "filingDate": "2019-03-31",
+      "riskScore": 0.62,
+      "sentiment": -0.08,
+      "ticker": "NKLA",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -1.91,
+      "deception": 0.34,
+      "filingDate": "2019-06-30",
+      "riskScore": 0.46,
+      "sentiment": -0.07,
+      "ticker": "NKLA",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -2.04,
+      "deception": 0.52,
+      "filingDate": "2019-09-30",
+      "riskScore": 0.46,
+      "sentiment": -0.06,
+      "ticker": "NKLA",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -1.83,
+      "deception": 0.48,
+      "filingDate": "2019-12-31",
+      "riskScore": 0.51,
+      "sentiment": 0.09,
+      "ticker": "NKLA",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -1.83,
+      "deception": 0.35,
+      "filingDate": "2020-03-31",
+      "riskScore": 0.49,
+      "sentiment": -0.03,
+      "ticker": "NKLA",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -1.91,
+      "deception": 0.42,
+      "filingDate": "2020-06-30",
+      "riskScore": 0.46,
+      "sentiment": 0.08,
+      "ticker": "NKLA",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -1.78,
+      "deception": 0.5,
+      "filingDate": "2020-09-30",
+      "riskScore": 0.54,
+      "sentiment": 0.06,
+      "ticker": "NKLA",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -1.85,
+      "deception": 0.6,
+      "filingDate": "2020-12-31",
+      "riskScore": 0.56,
+      "sentiment": -0.04,
+      "ticker": "NKLA",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -1.86,
+      "deception": 0.51,
+      "filingDate": "2021-03-31",
+      "riskScore": 0.54,
+      "sentiment": -0.17,
+      "ticker": "NKLA",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -2.03,
+      "deception": 0.45,
+      "filingDate": "2021-06-30",
+      "riskScore": 0.45,
+      "sentiment": -0.11,
+      "ticker": "NKLA",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -1.96,
+      "deception": 0.41,
+      "filingDate": "2021-09-30",
+      "riskScore": 0.45,
+      "sentiment": 0.0,
+      "ticker": "NKLA",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -1.74,
+      "deception": 0.59,
+      "filingDate": "2021-12-31",
+      "riskScore": 0.61,
+      "sentiment": -0.11,
+      "ticker": "NKLA",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -1.64,
+      "deception": 0.54,
+      "filingDate": "2022-03-31",
+      "riskScore": 0.6,
+      "sentiment": 0.07,
+      "ticker": "NKLA",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -1.71,
+      "deception": 0.53,
+      "filingDate": "2022-06-30",
+      "riskScore": 0.59,
+      "sentiment": -0.05,
+      "ticker": "NKLA",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -2.08,
+      "deception": 0.59,
+      "filingDate": "2022-09-30",
+      "riskScore": 0.45,
+      "sentiment": 0.04,
+      "ticker": "NKLA",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -1.79,
+      "deception": 0.61,
+      "filingDate": "2022-12-31",
+      "riskScore": 0.56,
+      "sentiment": 0.16,
+      "ticker": "NKLA",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -1.94,
+      "deception": 0.54,
+      "filingDate": "2023-03-31",
+      "riskScore": 0.51,
+      "sentiment": -0.1,
+      "ticker": "NKLA",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -2.16,
+      "deception": 0.44,
+      "filingDate": "2023-06-30",
+      "riskScore": 0.36,
+      "sentiment": 0.1,
+      "ticker": "NKLA",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -1.99,
+      "deception": 0.48,
+      "filingDate": "2023-09-30",
+      "riskScore": 0.46,
+      "sentiment": 0.0,
+      "ticker": "NKLA",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -1.83,
+      "deception": 0.49,
+      "filingDate": "2023-12-31",
+      "riskScore": 0.54,
+      "sentiment": -0.11,
+      "ticker": "NKLA",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -1.83,
+      "deception": 0.56,
+      "filingDate": "2024-03-31",
+      "riskScore": 0.52,
+      "sentiment": 0.15,
+      "ticker": "NKLA",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -1.89,
+      "deception": 0.6,
+      "filingDate": "2024-06-30",
+      "riskScore": 0.55,
+      "sentiment": -0.1,
+      "ticker": "NKLA",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -1.94,
+      "deception": 0.5,
+      "filingDate": "2024-09-30",
+      "riskScore": 0.48,
+      "sentiment": 0.07,
+      "ticker": "NKLA",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -1.65,
+      "deception": 0.51,
+      "filingDate": "2024-12-31",
+      "riskScore": 0.6,
+      "sentiment": 0.0,
+      "ticker": "NKLA",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -1.37,
+      "deception": 0.71,
+      "filingDate": "2020-05-15",
+      "riskScore": 1,
+      "sentiment": -0.18,
+      "ticker": "NKLA",
+      "topSignals": [
+        "MD&A: 'revenue' mentions up while 'delivery' stays near-zero",
+        "Cash conversion deteriorates; receivables inflate",
+        "Sentiment-action mismatch (optimism without operating evidence)"
+      ]
+    },
+    {
+      "beneishM": -1.7,
+      "deception": 0.38,
+      "filingDate": "2018-03-31",
+      "riskScore": 0.54,
+      "sentiment": -0.01,
+      "ticker": "LKNCY",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -1.57,
+      "deception": 0.35,
+      "filingDate": "2018-06-30",
+      "riskScore": 0.6,
+      "sentiment": -0.1,
+      "ticker": "LKNCY",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -1.81,
+      "deception": 0.3,
+      "filingDate": "2018-09-30",
+      "riskScore": 0.49,
+      "sentiment": -0.1,
+      "ticker": "LKNCY",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -1.97,
+      "deception": 0.41,
+      "filingDate": "2018-12-31",
+      "riskScore": 0.43,
+      "sentiment": 0.08,
+      "ticker": "LKNCY",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -1.65,
+      "deception": 0.46,
+      "filingDate": "2019-03-31",
+      "riskScore": 0.58,
+      "sentiment": 0.01,
+      "ticker": "LKNCY",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -1.83,
+      "deception": 0.26,
+      "filingDate": "2019-06-30",
+      "riskScore": 0.46,
+      "sentiment": 0.0,
+      "ticker": "LKNCY",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -1.8,
+      "deception": 0.49,
+      "filingDate": "2019-09-30",
+      "riskScore": 0.5,
+      "sentiment": 0.23,
+      "ticker": "LKNCY",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -1.91,
+      "deception": 0.37,
+      "filingDate": "2019-12-31",
+      "riskScore": 0.46,
+      "sentiment": -0.0,
+      "ticker": "LKNCY",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -1.68,
+      "deception": 0.56,
+      "filingDate": "2020-03-31",
+      "riskScore": 0.6,
+      "sentiment": 0.02,
+      "ticker": "LKNCY",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -1.95,
+      "deception": 0.37,
+      "filingDate": "2020-06-30",
+      "riskScore": 0.46,
+      "sentiment": -0.12,
+      "ticker": "LKNCY",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -1.8,
+      "deception": 0.31,
+      "filingDate": "2020-09-30",
+      "riskScore": 0.47,
+      "sentiment": 0.1,
+      "ticker": "LKNCY",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -1.85,
+      "deception": 0.4,
+      "filingDate": "2020-12-31",
+      "riskScore": 0.51,
+      "sentiment": -0.11,
+      "ticker": "LKNCY",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -2.12,
+      "deception": 0.39,
+      "filingDate": "2021-03-31",
+      "riskScore": 0.39,
+      "sentiment": -0.05,
+      "ticker": "LKNCY",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -1.83,
+      "deception": 0.29,
+      "filingDate": "2021-06-30",
+      "riskScore": 0.47,
+      "sentiment": -0.02,
+      "ticker": "LKNCY",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -1.77,
+      "deception": 0.28,
+      "filingDate": "2021-09-30",
+      "riskScore": 0.5,
+      "sentiment": -0.12,
+      "ticker": "LKNCY",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -1.88,
+      "deception": 0.25,
+      "filingDate": "2021-12-31",
+      "riskScore": 0.44,
+      "sentiment": -0.03,
+      "ticker": "LKNCY",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -2.04,
+      "deception": 0.4,
+      "filingDate": "2022-03-31",
+      "riskScore": 0.43,
+      "sentiment": -0.07,
+      "ticker": "LKNCY",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -1.95,
+      "deception": 0.36,
+      "filingDate": "2022-06-30",
+      "riskScore": 0.44,
+      "sentiment": 0.01,
+      "ticker": "LKNCY",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -1.84,
+      "deception": 0.37,
+      "filingDate": "2022-09-30",
+      "riskScore": 0.46,
+      "sentiment": 0.16,
+      "ticker": "LKNCY",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -1.83,
+      "deception": 0.23,
+      "filingDate": "2022-12-31",
+      "riskScore": 0.42,
+      "sentiment": 0.15,
+      "ticker": "LKNCY",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -1.98,
+      "deception": 0.37,
+      "filingDate": "2023-03-31",
+      "riskScore": 0.43,
+      "sentiment": 0.03,
+      "ticker": "LKNCY",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -1.83,
+      "deception": 0.46,
+      "filingDate": "2023-06-30",
+      "riskScore": 0.52,
+      "sentiment": -0.07,
+      "ticker": "LKNCY",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -1.68,
+      "deception": 0.32,
+      "filingDate": "2023-09-30",
+      "riskScore": 0.53,
+      "sentiment": 0.04,
+      "ticker": "LKNCY",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -1.99,
+      "deception": 0.39,
+      "filingDate": "2023-12-31",
+      "riskScore": 0.43,
+      "sentiment": 0.02,
+      "ticker": "LKNCY",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -1.88,
+      "deception": 0.2,
+      "filingDate": "2024-03-31",
+      "riskScore": 0.42,
+      "sentiment": 0.02,
+      "ticker": "LKNCY",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -1.83,
+      "deception": 0.36,
+      "filingDate": "2024-06-30",
+      "riskScore": 0.48,
+      "sentiment": 0.02,
+      "ticker": "LKNCY",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -1.87,
+      "deception": 0.24,
+      "filingDate": "2024-09-30",
+      "riskScore": 0.45,
+      "sentiment": -0.08,
+      "ticker": "LKNCY",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -1.78,
+      "deception": 0.34,
+      "filingDate": "2024-12-31",
+      "riskScore": 0.53,
+      "sentiment": -0.22,
+      "ticker": "LKNCY",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -1.47,
+      "deception": 0.66,
+      "filingDate": "2020-04-15",
+      "riskScore": 1,
+      "sentiment": -0.2,
+      "ticker": "LKNCY",
+      "topSignals": [
+        "Unusual revenue growth vs. traffic proxy",
+        "Margin expansion out of line with peers",
+        "Higher abstraction language + fewer self-references"
+      ]
+    },
+    {
+      "beneishM": -1.61,
+      "deception": 0.41,
+      "filingDate": "2018-03-31",
+      "riskScore": 0.59,
+      "sentiment": 0.02,
+      "ticker": "FTX",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -1.63,
+      "deception": 0.39,
+      "filingDate": "2018-06-30",
+      "riskScore": 0.55,
+      "sentiment": 0.16,
+      "ticker": "FTX",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -1.81,
+      "deception": 0.35,
+      "filingDate": "2018-09-30",
+      "riskScore": 0.5,
+      "sentiment": -0.04,
+      "ticker": "FTX",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -1.95,
+      "deception": 0.45,
+      "filingDate": "2018-12-31",
+      "riskScore": 0.48,
+      "sentiment": -0.05,
+      "ticker": "FTX",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -1.78,
+      "deception": 0.48,
+      "filingDate": "2019-03-31",
+      "riskScore": 0.56,
+      "sentiment": -0.11,
+      "ticker": "FTX",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -1.8,
+      "deception": 0.36,
+      "filingDate": "2019-06-30",
+      "riskScore": 0.5,
+      "sentiment": 0.01,
+      "ticker": "FTX",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -1.94,
+      "deception": 0.58,
+      "filingDate": "2019-09-30",
+      "riskScore": 0.52,
+      "sentiment": -0.09,
+      "ticker": "FTX",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -1.81,
+      "deception": 0.23,
+      "filingDate": "2019-12-31",
+      "riskScore": 0.43,
+      "sentiment": 0.16,
+      "ticker": "FTX",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -1.79,
+      "deception": 0.4,
+      "filingDate": "2020-03-31",
+      "riskScore": 0.49,
+      "sentiment": 0.15,
+      "ticker": "FTX",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -1.93,
+      "deception": 0.29,
+      "filingDate": "2020-06-30",
+      "riskScore": 0.45,
+      "sentiment": -0.19,
+      "ticker": "FTX",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -1.87,
+      "deception": 0.47,
+      "filingDate": "2020-09-30",
+      "riskScore": 0.5,
+      "sentiment": 0.05,
+      "ticker": "FTX",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -1.66,
+      "deception": 0.3,
+      "filingDate": "2020-12-31",
+      "riskScore": 0.55,
+      "sentiment": -0.07,
+      "ticker": "FTX",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -1.83,
+      "deception": 0.26,
+      "filingDate": "2021-03-31",
+      "riskScore": 0.44,
+      "sentiment": 0.09,
+      "ticker": "FTX",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -1.84,
+      "deception": 0.44,
+      "filingDate": "2021-06-30",
+      "riskScore": 0.5,
+      "sentiment": 0.01,
+      "ticker": "FTX",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -1.85,
+      "deception": 0.39,
+      "filingDate": "2021-09-30",
+      "riskScore": 0.49,
+      "sentiment": -0.02,
+      "ticker": "FTX",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -1.81,
+      "deception": 0.43,
+      "filingDate": "2021-12-31",
+      "riskScore": 0.52,
+      "sentiment": -0.04,
+      "ticker": "FTX",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -1.8,
+      "deception": 0.35,
+      "filingDate": "2022-03-31",
+      "riskScore": 0.5,
+      "sentiment": -0.05,
+      "ticker": "FTX",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -1.87,
+      "deception": 0.5,
+      "filingDate": "2022-06-30",
+      "riskScore": 0.52,
+      "sentiment": -0.02,
+      "ticker": "FTX",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -1.86,
+      "deception": 0.35,
+      "filingDate": "2022-09-30",
+      "riskScore": 0.49,
+      "sentiment": -0.09,
+      "ticker": "FTX",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -1.86,
+      "deception": 0.43,
+      "filingDate": "2022-12-31",
+      "riskScore": 0.51,
+      "sentiment": -0.09,
+      "ticker": "FTX",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -1.66,
+      "deception": 0.5,
+      "filingDate": "2023-03-31",
+      "riskScore": 0.62,
+      "sentiment": -0.15,
+      "ticker": "FTX",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -1.71,
+      "deception": 0.66,
+      "filingDate": "2023-06-30",
+      "riskScore": 0.62,
+      "sentiment": 0.01,
+      "ticker": "FTX",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -1.91,
+      "deception": 0.55,
+      "filingDate": "2023-09-30",
+      "riskScore": 0.52,
+      "sentiment": -0.05,
+      "ticker": "FTX",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -1.84,
+      "deception": 0.54,
+      "filingDate": "2023-12-31",
+      "riskScore": 0.52,
+      "sentiment": 0.1,
+      "ticker": "FTX",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -1.77,
+      "deception": 0.38,
+      "filingDate": "2024-03-31",
+      "riskScore": 0.54,
+      "sentiment": -0.15,
+      "ticker": "FTX",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -1.86,
+      "deception": 0.51,
+      "filingDate": "2024-06-30",
+      "riskScore": 0.52,
+      "sentiment": -0.02,
+      "ticker": "FTX",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -1.88,
+      "deception": 0.4,
+      "filingDate": "2024-09-30",
+      "riskScore": 0.52,
+      "sentiment": -0.27,
+      "ticker": "FTX",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -2.09,
+      "deception": 0.45,
+      "filingDate": "2024-12-31",
+      "riskScore": 0.42,
+      "sentiment": -0.08,
+      "ticker": "FTX",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -1.3,
+      "deception": 0.67,
+      "filingDate": "2022-11-15",
+      "riskScore": 1,
+      "sentiment": -0.29,
+      "ticker": "FTX",
+      "topSignals": [
+        "Opaque related-party exposure language increases",
+        "Liquidity wording shifts: 'counterparty'/'risk' spikes",
+        "Disclosure density drops as valuation claims rise"
+      ]
+    },
+    {
+      "beneishM": -2.01,
+      "deception": 0.3,
+      "filingDate": "2018-03-31",
+      "riskScore": 0.41,
+      "sentiment": -0.12,
+      "ticker": "XYZ",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -1.95,
+      "deception": 0.28,
+      "filingDate": "2018-06-30",
+      "riskScore": 0.4,
+      "sentiment": 0.07,
+      "ticker": "XYZ",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -1.85,
+      "deception": 0.04,
+      "filingDate": "2018-09-30",
+      "riskScore": 0.4,
+      "sentiment": -0.13,
+      "ticker": "XYZ",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -2.08,
+      "deception": 0.37,
+      "filingDate": "2018-12-31",
+      "riskScore": 0.39,
+      "sentiment": 0.02,
+      "ticker": "XYZ",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -2.04,
+      "deception": 0.31,
+      "filingDate": "2019-03-31",
+      "riskScore": 0.39,
+      "sentiment": 0.01,
+      "ticker": "XYZ",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -2.04,
+      "deception": 0.23,
+      "filingDate": "2019-06-30",
+      "riskScore": 0.35,
+      "sentiment": 0.1,
+      "ticker": "XYZ",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -1.81,
+      "deception": 0.39,
+      "filingDate": "2019-09-30",
+      "riskScore": 0.49,
+      "sentiment": 0.05,
+      "ticker": "XYZ",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -1.96,
+      "deception": 0.2,
+      "filingDate": "2019-12-31",
+      "riskScore": 0.39,
+      "sentiment": -0.0,
+      "ticker": "XYZ",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -2.07,
+      "deception": 0.34,
+      "filingDate": "2020-03-31",
+      "riskScore": 0.38,
+      "sentiment": 0.05,
+      "ticker": "XYZ",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -2.14,
+      "deception": 0.21,
+      "filingDate": "2020-06-30",
+      "riskScore": 0.33,
+      "sentiment": -0.08,
+      "ticker": "XYZ",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -2.05,
+      "deception": 0.09,
+      "filingDate": "2020-09-30",
+      "riskScore": 0.34,
+      "sentiment": -0.18,
+      "ticker": "XYZ",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -2.01,
+      "deception": 0.35,
+      "filingDate": "2020-12-31",
+      "riskScore": 0.39,
+      "sentiment": 0.11,
+      "ticker": "XYZ",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -2.07,
+      "deception": 0.18,
+      "filingDate": "2021-03-31",
+      "riskScore": 0.33,
+      "sentiment": 0.07,
+      "ticker": "XYZ",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -1.88,
+      "deception": 0.26,
+      "filingDate": "2021-06-30",
+      "riskScore": 0.47,
+      "sentiment": -0.24,
+      "ticker": "XYZ",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -1.88,
+      "deception": 0.11,
+      "filingDate": "2021-09-30",
+      "riskScore": 0.38,
+      "sentiment": 0.08,
+      "ticker": "XYZ",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -1.98,
+      "deception": 0.18,
+      "filingDate": "2021-12-31",
+      "riskScore": 0.39,
+      "sentiment": -0.15,
+      "ticker": "XYZ",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -2.14,
+      "deception": 0.06,
+      "filingDate": "2022-03-31",
+      "riskScore": 0.26,
+      "sentiment": 0.06,
+      "ticker": "XYZ",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -2.03,
+      "deception": 0.14,
+      "filingDate": "2022-06-30",
+      "riskScore": 0.33,
+      "sentiment": 0.06,
+      "ticker": "XYZ",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -2.03,
+      "deception": 0.04,
+      "filingDate": "2022-09-30",
+      "riskScore": 0.33,
+      "sentiment": -0.1,
+      "ticker": "XYZ",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -2.23,
+      "deception": 0.11,
+      "filingDate": "2022-12-31",
+      "riskScore": 0.25,
+      "sentiment": -0.0,
+      "ticker": "XYZ",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -2.1,
+      "deception": 0.15,
+      "filingDate": "2023-03-31",
+      "riskScore": 0.33,
+      "sentiment": -0.07,
+      "ticker": "XYZ",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -1.95,
+      "deception": 0.17,
+      "filingDate": "2023-06-30",
+      "riskScore": 0.38,
+      "sentiment": 0.03,
+      "ticker": "XYZ",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -2.06,
+      "deception": 0.34,
+      "filingDate": "2023-09-30",
+      "riskScore": 0.39,
+      "sentiment": 0.01,
+      "ticker": "XYZ",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -2.16,
+      "deception": 0.17,
+      "filingDate": "2023-12-31",
+      "riskScore": 0.31,
+      "sentiment": -0.05,
+      "ticker": "XYZ",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -1.93,
+      "deception": 0.16,
+      "filingDate": "2024-03-31",
+      "riskScore": 0.39,
+      "sentiment": -0.05,
+      "ticker": "XYZ",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -2.02,
+      "deception": 0.17,
+      "filingDate": "2024-06-30",
+      "riskScore": 0.37,
+      "sentiment": -0.08,
+      "ticker": "XYZ",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -1.94,
+      "deception": 0.18,
+      "filingDate": "2024-09-30",
+      "riskScore": 0.38,
+      "sentiment": 0.02,
+      "ticker": "XYZ",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -1.99,
+      "deception": 0.18,
+      "filingDate": "2024-12-31",
+      "riskScore": 0.37,
+      "sentiment": -0.01,
+      "ticker": "XYZ",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -2.17,
+      "deception": 0.24,
+      "filingDate": "2018-03-31",
+      "riskScore": 0.32,
+      "sentiment": -0.02,
+      "ticker": "ABCD",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -1.96,
+      "deception": 0.13,
+      "filingDate": "2018-06-30",
+      "riskScore": 0.36,
+      "sentiment": 0.07,
+      "ticker": "ABCD",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -2.13,
+      "deception": 0.17,
+      "filingDate": "2018-09-30",
+      "riskScore": 0.32,
+      "sentiment": -0.09,
+      "ticker": "ABCD",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -1.84,
+      "deception": 0.22,
+      "filingDate": "2018-12-31",
+      "riskScore": 0.44,
+      "sentiment": -0.04,
+      "ticker": "ABCD",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -1.98,
+      "deception": 0.18,
+      "filingDate": "2019-03-31",
+      "riskScore": 0.36,
+      "sentiment": 0.1,
+      "ticker": "ABCD",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -2.12,
+      "deception": 0.19,
+      "filingDate": "2019-06-30",
+      "riskScore": 0.32,
+      "sentiment": -0.01,
+      "ticker": "ABCD",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -2.16,
+      "deception": 0.09,
+      "filingDate": "2019-09-30",
+      "riskScore": 0.26,
+      "sentiment": 0.12,
+      "ticker": "ABCD",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -2.04,
+      "deception": 0.15,
+      "filingDate": "2019-12-31",
+      "riskScore": 0.34,
+      "sentiment": -0.03,
+      "ticker": "ABCD",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -1.94,
+      "deception": 0.1,
+      "filingDate": "2020-03-31",
+      "riskScore": 0.37,
+      "sentiment": -0.05,
+      "ticker": "ABCD",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -1.85,
+      "deception": 0.25,
+      "filingDate": "2020-06-30",
+      "riskScore": 0.42,
+      "sentiment": 0.16,
+      "ticker": "ABCD",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -2.15,
+      "deception": 0.25,
+      "filingDate": "2020-09-30",
+      "riskScore": 0.32,
+      "sentiment": 0.05,
+      "ticker": "ABCD",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -2.34,
+      "deception": 0.32,
+      "filingDate": "2020-12-31",
+      "riskScore": 0.29,
+      "sentiment": -0.12,
+      "ticker": "ABCD",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -2.03,
+      "deception": 0.19,
+      "filingDate": "2021-03-31",
+      "riskScore": 0.37,
+      "sentiment": -0.11,
+      "ticker": "ABCD",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -1.94,
+      "deception": 0.22,
+      "filingDate": "2021-06-30",
+      "riskScore": 0.39,
+      "sentiment": 0.11,
+      "ticker": "ABCD",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -1.98,
+      "deception": 0.24,
+      "filingDate": "2021-09-30",
+      "riskScore": 0.4,
+      "sentiment": -0.06,
+      "ticker": "ABCD",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -2.0,
+      "deception": 0.2,
+      "filingDate": "2021-12-31",
+      "riskScore": 0.33,
+      "sentiment": 0.25,
+      "ticker": "ABCD",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -2.09,
+      "deception": 0.28,
+      "filingDate": "2022-03-31",
+      "riskScore": 0.33,
+      "sentiment": 0.21,
+      "ticker": "ABCD",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -1.86,
+      "deception": 0.2,
+      "filingDate": "2022-06-30",
+      "riskScore": 0.42,
+      "sentiment": 0.04,
+      "ticker": "ABCD",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -2.0,
+      "deception": 0.11,
+      "filingDate": "2022-09-30",
+      "riskScore": 0.35,
+      "sentiment": -0.0,
+      "ticker": "ABCD",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -2.17,
+      "deception": 0.22,
+      "filingDate": "2022-12-31",
+      "riskScore": 0.32,
+      "sentiment": -0.05,
+      "ticker": "ABCD",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -2.11,
+      "deception": 0.21,
+      "filingDate": "2023-03-31",
+      "riskScore": 0.35,
+      "sentiment": -0.1,
+      "ticker": "ABCD",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -1.92,
+      "deception": 0.17,
+      "filingDate": "2023-06-30",
+      "riskScore": 0.38,
+      "sentiment": 0.06,
+      "ticker": "ABCD",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -2.04,
+      "deception": 0.17,
+      "filingDate": "2023-09-30",
+      "riskScore": 0.35,
+      "sentiment": 0.0,
+      "ticker": "ABCD",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -1.99,
+      "deception": 0.22,
+      "filingDate": "2023-12-31",
+      "riskScore": 0.38,
+      "sentiment": -0.0,
+      "ticker": "ABCD",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -1.92,
+      "deception": 0.25,
+      "filingDate": "2024-03-31",
+      "riskScore": 0.37,
+      "sentiment": 0.3,
+      "ticker": "ABCD",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -2.11,
+      "deception": 0.09,
+      "filingDate": "2024-06-30",
+      "riskScore": 0.3,
+      "sentiment": -0.04,
+      "ticker": "ABCD",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -2.13,
+      "deception": 0.15,
+      "filingDate": "2024-09-30",
+      "riskScore": 0.3,
+      "sentiment": 0.04,
+      "ticker": "ABCD",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    },
+    {
+      "beneishM": -1.97,
+      "deception": 0.18,
+      "filingDate": "2024-12-31",
+      "riskScore": 0.37,
+      "sentiment": 0.03,
+      "ticker": "ABCD",
+      "topSignals": [
+        "Receivables growth outpaces sales",
+        "Non-GAAP reconciliation complexity rises",
+        "MD&A specificity declines (more abstraction)"
+      ]
+    }
+  ],
+  "graph": {
+    "links": [
+      {
+        "source": "AAPL",
+        "target": "MSFT",
+        "weight": 0.96
+      },
+      {
+        "source": "AAPL",
+        "target": "AMZN",
+        "weight": 0.9
+      },
+      {
+        "source": "AAPL",
+        "target": "TSLA",
+        "weight": 0.91
+      },
+      {
+        "source": "AAPL",
+        "target": "JPM",
+        "weight": 0.98
+      },
+      {
+        "source": "AAPL",
+        "target": "KO",
+        "weight": 0.98
+      },
+      {
+        "source": "AAPL",
+        "target": "WMT",
+        "weight": 0.91
+      },
+      {
+        "source": "AAPL",
+        "target": "LKNCY",
+        "weight": 0.57
+      },
+      {
+        "source": "AAPL",
+        "target": "XYZ",
+        "weight": 0.89
+      },
+      {
+        "source": "AAPL",
+        "target": "ABCD",
+        "weight": 0.9
+      },
+      {
+        "source": "MSFT",
+        "target": "AMZN",
+        "weight": 0.94
+      },
+      {
+        "source": "MSFT",
+        "target": "TSLA",
+        "weight": 0.93
+      },
+      {
+        "source": "MSFT",
+        "target": "JPM",
+        "weight": 0.97
+      },
+      {
+        "source": "MSFT",
+        "target": "KO",
+        "weight": 0.98
+      },
+      {
+        "source": "MSFT",
+        "target": "WMT",
+        "weight": 0.93
+      },
+      {
+        "source": "MSFT",
+        "target": "LKNCY",
+        "weight": 0.59
+      },
+      {
+        "source": "MSFT",
+        "target": "XYZ",
+        "weight": 0.92
+      },
+      {
+        "source": "MSFT",
+        "target": "ABCD",
+        "weight": 0.94
+      },
+      {
+        "source": "AMZN",
+        "target": "TSLA",
+        "weight": 0.96
+      },
+      {
+        "source": "AMZN",
+        "target": "JPM",
+        "weight": 0.9
+      },
+      {
+        "source": "AMZN",
+        "target": "KO",
+        "weight": 0.91
+      },
+      {
+        "source": "AMZN",
+        "target": "WMT",
+        "weight": 0.95
+      },
+      {
+        "source": "AMZN",
+        "target": "LKNCY",
+        "weight": 0.64
+      },
+      {
+        "source": "AMZN",
+        "target": "XYZ",
+        "weight": 0.97
+      },
+      {
+        "source": "AMZN",
+        "target": "ABCD",
+        "weight": 0.99
+      },
+      {
+        "source": "TSLA",
+        "target": "JPM",
+        "weight": 0.9
+      },
+      {
+        "source": "TSLA",
+        "target": "KO",
+        "weight": 0.91
+      },
+      {
+        "source": "TSLA",
+        "target": "WMT",
+        "weight": 0.98
+      },
+      {
+        "source": "TSLA",
+        "target": "LKNCY",
+        "weight": 0.66
+      },
+      {
+        "source": "TSLA",
+        "target": "XYZ",
+        "weight": 0.97
+      },
+      {
+        "source": "TSLA",
+        "target": "ABCD",
+        "weight": 0.96
+      },
+      {
+        "source": "JPM",
+        "target": "KO",
+        "weight": 0.99
+      },
+      {
+        "source": "JPM",
+        "target": "WMT",
+        "weight": 0.91
+      },
+      {
+        "source": "JPM",
+        "target": "LKNCY",
+        "weight": 0.57
+      },
+      {
+        "source": "JPM",
+        "target": "XYZ",
+        "weight": 0.89
+      },
+      {
+        "source": "JPM",
+        "target": "ABCD",
+        "weight": 0.91
+      },
+      {
+        "source": "KO",
+        "target": "WMT",
+        "weight": 0.91
+      },
+      {
+        "source": "KO",
+        "target": "LKNCY",
+        "weight": 0.57
+      },
+      {
+        "source": "KO",
+        "target": "XYZ",
+        "weight": 0.9
+      },
+      {
+        "source": "KO",
+        "target": "ABCD",
+        "weight": 0.92
+      },
+      {
+        "source": "WMT",
+        "target": "LKNCY",
+        "weight": 0.66
+      },
+      {
+        "source": "WMT",
+        "target": "XYZ",
+        "weight": 0.96
+      },
+      {
+        "source": "WMT",
+        "target": "ABCD",
+        "weight": 0.94
+      },
+      {
+        "source": "NKLA",
+        "target": "LKNCY",
+        "weight": 0.74
+      },
+      {
+        "source": "NKLA",
+        "target": "FTX",
+        "weight": 0.86
+      },
+      {
+        "source": "LKNCY",
+        "target": "FTX",
+        "weight": 0.88
+      },
+      {
+        "source": "LKNCY",
+        "target": "XYZ",
+        "weight": 0.67
+      },
+      {
+        "source": "LKNCY",
+        "target": "ABCD",
+        "weight": 0.64
+      },
+      {
+        "source": "FTX",
+        "target": "XYZ",
+        "weight": 0.55
+      },
+      {
+        "source": "XYZ",
+        "target": "ABCD",
+        "weight": 0.97
+      }
+    ],
+    "nodes": [
+      {
+        "group": 2,
+        "id": "AAPL"
+      },
+      {
+        "group": 2,
+        "id": "MSFT"
+      },
+      {
+        "group": 2,
+        "id": "AMZN"
+      },
+      {
+        "group": 2,
+        "id": "TSLA"
+      },
+      {
+        "group": 2,
+        "id": "JPM"
+      },
+      {
+        "group": 2,
+        "id": "KO"
+      },
+      {
+        "group": 2,
+        "id": "WMT"
+      },
+      {
+        "group": 2,
+        "id": "NKLA"
+      },
+      {
+        "group": 2,
+        "id": "LKNCY"
+      },
+      {
+        "group": 2,
+        "id": "FTX"
+      },
+      {
+        "group": 2,
+        "id": "XYZ"
+      },
+      {
+        "group": 2,
+        "id": "ABCD"
+      }
+    ]
+  },
+  "meta": {
+    "generatedAt": "2026-02-17T16:06:17+00:00",
+    "modules": {
+      "nkla_30d_return": {
+        "provenance": {
+          "fetchedAt": "2026-02-17T16:06:23+00:00",
+          "source": "stooq:NKLA"
+        },
+        "reasonCode": "insufficient_history",
+        "status": "unavailable"
+      },
+      "nkla_recent_10k_10q": {
+        "provenance": {
+          "asOf": "2025-10-09",
+          "fetchedAt": "2026-02-17T16:06:24+00:00",
+          "note": "10-K/10-Q count in last 365d",
+          "source": "sec:0001731289"
+        },
+        "status": "ok"
+      },
+      "spy_30d_return": {
+        "provenance": {
+          "asOf": "2026-02-17",
+          "fetchedAt": "2026-02-17T16:06:21+00:00",
+          "note": "30d total return",
+          "source": "stooq:SPY"
+        },
+        "status": "ok"
+      }
+    },
+    "overallStatus": "stale",
+    "runId": "real-20260217160617"
+  },
+  "realSignals": [
+    {
+      "change": "30d total return",
+      "id": "spy_30d_return",
+      "label": "SPY 30d return",
+      "provenance": {
+        "asOf": "2026-02-17",
+        "fetchedAt": "2026-02-17T16:06:21+00:00",
+        "note": "30d total return",
+        "source": "stooq:SPY"
+      },
+      "status": "ok",
+      "unit": "%",
+      "value": "-0.86"
+    },
+    {
+      "id": "nkla_30d_return",
+      "label": "NKLA 30d return",
+      "provenance": {
+        "fetchedAt": "2026-02-17T16:06:23+00:00",
+        "source": "stooq:NKLA"
+      },
+      "reasonCode": "insufficient_history",
+      "status": "unavailable",
+      "unit": "%"
+    },
+    {
+      "change": "10-K/10-Q count in last 365d",
+      "id": "nkla_recent_10k_10q",
+      "label": "NKLA 10-K/10-Q filings (365d)",
+      "provenance": {
+        "asOf": "2025-10-09",
+        "fetchedAt": "2026-02-17T16:06:24+00:00",
+        "note": "10-K/10-Q count in last 365d",
+        "source": "sec:0001731289"
+      },
+      "status": "ok",
+      "value": "1"
+    }
+  ]
+}

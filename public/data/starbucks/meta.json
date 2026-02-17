@@ -1,0 +1,25 @@
+{
+  "generatedAt": "2026-02-17T16:06:17+00:00",
+  "modules": {
+    "denver_remote_share": {
+      "provenance": {
+        "asOf": "2023",
+        "fetchedAt": "2026-02-17T16:06:31+00:00",
+        "note": "Denver MSA remote-work commuter share",
+        "source": "census:acs1:B08006"
+      },
+      "status": "ok"
+    },
+    "sbux_30d_return": {
+      "provenance": {
+        "asOf": "2026-02-17",
+        "fetchedAt": "2026-02-17T16:06:29+00:00",
+        "note": "30d total return",
+        "source": "stooq:SBUX"
+      },
+      "status": "ok"
+    }
+  },
+  "overallStatus": "ok",
+  "runId": "real-20260217160617"
+}

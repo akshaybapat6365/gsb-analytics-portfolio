@@ -1,0 +1,42 @@
+{
+  "project": "netflix-roi",
+  "outputs_dir": "public/assets/netflix-roi",
+  "assets": [
+    {
+      "filename": "hero.webp",
+      "model": {
+        "owner": "black-forest-labs",
+        "name": "flux-schnell"
+      },
+      "input": {
+        "prompt": "Content portfolio ROI studio control room with content bubbles, acquisition-retention frontier, and strategic investment frontier curves. Premium media-analytics style, deep slate and cyan highlights, no logos.",
+        "num_outputs": 1,
+        "output_format": "webp"
+      }
+    },
+    {
+      "filename": "diagram.webp",
+      "model": {
+        "owner": "black-forest-labs",
+        "name": "flux-schnell"
+      },
+      "input": {
+        "prompt": "Cinematic content ROI diagram: bubble matrix (cost vs LTV), acquisition vs retention Pareto frontier, and budget sensitivity sliders. Editorial dark background with subtle film grain, warm amber highlights, no logos or text blocks.",
+        "num_outputs": 1,
+        "output_format": "webp"
+      }
+    },
+    {
+      "filename": "overlay.webp",
+      "model": {
+        "owner": "black-forest-labs",
+        "name": "flux-schnell"
+      },
+      "input": {
+        "prompt": "Cinematic analytics overlay with film-grain texture, ROI frontier arcs, acquisition-retention trails, and studio allocation markers for dark editorial dashboard. No logos, no text blocks.",
+        "num_outputs": 1,
+        "output_format": "webp"
+      }
+    }
+  ]
+}

@@ -1,0 +1,42 @@
+{
+  "project": "tesla-nacs",
+  "outputs_dir": "public/assets/tesla-nacs",
+  "assets": [
+    {
+      "filename": "hero.webp",
+      "model": {
+        "owner": "black-forest-labs",
+        "name": "flux-schnell"
+      },
+      "input": {
+        "prompt": "3D-inspired EV charging corridor game map along Interstate 5 with station nodes, traffic flows, and decision nodes. Futuristic electric-blue design, dark gradient background, enterprise dashboard framing.",
+        "num_outputs": 1,
+        "output_format": "webp"
+      }
+    },
+    {
+      "filename": "diagram.webp",
+      "model": {
+        "owner": "black-forest-labs",
+        "name": "flux-schnell"
+      },
+      "input": {
+        "prompt": "Spatial game theory EV charging diagram: I-5 corridor map, station placement nodes, range anxiety desert zones overlay, and NPV vs capex chart. Electric cyan/green accents on deep dark background, minimal labels, no logos.",
+        "num_outputs": 1,
+        "output_format": "webp"
+      }
+    },
+    {
+      "filename": "overlay.webp",
+      "model": {
+        "owner": "black-forest-labs",
+        "name": "flux-schnell"
+      },
+      "input": {
+        "prompt": "Electric corridor overlay with route vectors, charging influence zones, range-anxiety deserts, and capex warning markers for high-tech strategy map UI. No logos, no text blocks.",
+        "num_outputs": 1,
+        "output_format": "webp"
+      }
+    }
+  ]
+}

@@ -1,0 +1,42 @@
+{
+  "project": "ord-lga-price-war",
+  "outputs_dir": "public/assets/ord-lga-price-war",
+  "assets": [
+    {
+      "filename": "hero.webp",
+      "model": {
+        "owner": "black-forest-labs",
+        "name": "flux-schnell"
+      },
+      "input": {
+        "prompt": "Cinematic isometric war-room dashboard showing airline pricing heatmaps, fare deltas, and competitive market simulation. Dark executive UI style with cyan, emerald, and rose accents, 3D-like depth, clean typography, no text overlays.",
+        "num_outputs": 1,
+        "output_format": "webp"
+      }
+    },
+    {
+      "filename": "diagram.webp",
+      "model": {
+        "owner": "black-forest-labs",
+        "name": "flux-schnell"
+      },
+      "input": {
+        "prompt": "Reinforcement learning pricing system diagram: state-action grid, booking-window heatmap, regret curve, and competitor response loop. Minimal labels, no logos, Bloomberg-style dark UI, cyan/emerald accents, crisp lines.",
+        "num_outputs": 1,
+        "output_format": "webp"
+      }
+    },
+    {
+      "filename": "overlay.webp",
+      "model": {
+        "owner": "black-forest-labs",
+        "name": "flux-schnell"
+      },
+      "input": {
+        "prompt": "Aviation pricing command overlay with booking-window lattice marks, competitor response vectors, and regret contours for a dark war-room dashboard. No logos, no text blocks.",
+        "num_outputs": 1,
+        "output_format": "webp"
+      }
+    }
+  ]
+}

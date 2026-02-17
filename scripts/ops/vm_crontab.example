@@ -1,0 +1,9 @@
+SHELL=/bin/bash
+PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+
+# Daily synthetic + strict real-only enrichment at 06:00 UTC
+0 6 * * * cd /Users/akshaybapat/gsb-analytics-portfolio && /bin/bash scripts/ops/refresh_data.sh
+
+# Weekly Replicate media refresh Sunday 07:00 UTC
+0 7 * * 0 cd /Users/akshaybapat/gsb-analytics-portfolio && /bin/bash scripts/ops/refresh_media.sh
+

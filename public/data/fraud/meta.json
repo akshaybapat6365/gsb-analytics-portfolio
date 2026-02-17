@@ -1,0 +1,33 @@
+{
+  "generatedAt": "2026-02-17T16:06:17+00:00",
+  "modules": {
+    "nkla_30d_return": {
+      "provenance": {
+        "fetchedAt": "2026-02-17T16:06:23+00:00",
+        "source": "stooq:NKLA"
+      },
+      "reasonCode": "insufficient_history",
+      "status": "unavailable"
+    },
+    "nkla_recent_10k_10q": {
+      "provenance": {
+        "asOf": "2025-10-09",
+        "fetchedAt": "2026-02-17T16:06:24+00:00",
+        "note": "10-K/10-Q count in last 365d",
+        "source": "sec:0001731289"
+      },
+      "status": "ok"
+    },
+    "spy_30d_return": {
+      "provenance": {
+        "asOf": "2026-02-17",
+        "fetchedAt": "2026-02-17T16:06:21+00:00",
+        "note": "30d total return",
+        "source": "stooq:SPY"
+      },
+      "status": "ok"
+    }
+  },
+  "overallStatus": "stale",
+  "runId": "real-20260217160617"
+}

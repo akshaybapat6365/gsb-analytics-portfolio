@@ -1,0 +1,42 @@
+{
+  "project": "target-shrink",
+  "outputs_dir": "public/assets/target-shrink",
+  "assets": [
+    {
+      "filename": "hero.webp",
+      "model": {
+        "owner": "black-forest-labs",
+        "name": "flux-schnell"
+      },
+      "input": {
+        "prompt": "Retail analytics war room with store heatmap overlays and theft-pressure zones. Isometric store floor plan, confidence bands, amber and cyan accents, dramatic noir data-visual style.",
+        "num_outputs": 1,
+        "output_format": "webp"
+      }
+    },
+    {
+      "filename": "diagram.webp",
+      "model": {
+        "owner": "black-forest-labs",
+        "name": "flux-schnell"
+      },
+      "input": {
+        "prompt": "Bayesian decision theory diagram for loss prevention: threshold curve, ROI vs threshold frontier, false-positive cost vs theft cost tradeoff. Industrial amber/cyan palette, dark ops-room UI, minimal labels.",
+        "num_outputs": 1,
+        "output_format": "webp"
+      }
+    },
+    {
+      "filename": "overlay.webp",
+      "model": {
+        "owner": "black-forest-labs",
+        "name": "flux-schnell"
+      },
+      "input": {
+        "prompt": "Industrial retail floor overlay with aisle pressure contours, camera cones, intervention markers, and threshold contour lines for a dark operations dashboard. No logos, no text blocks.",
+        "num_outputs": 1,
+        "output_format": "webp"
+      }
+    }
+  ]
+}

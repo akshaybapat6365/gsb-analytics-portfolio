@@ -1,0 +1,42 @@
+{
+  "project": "fraud-radar",
+  "outputs_dir": "public/assets/fraud-radar",
+  "assets": [
+    {
+      "filename": "hero.webp",
+      "model": {
+        "owner": "black-forest-labs",
+        "name": "flux-schnell"
+      },
+      "input": {
+        "prompt": "Forensic analytics command center with fraud network graph, risk score gauges, and document anomaly markers. Bloomberg-style dark interface, deep shadows, crimson glow, modern glassmorphism panels, data-first aesthetics.",
+        "num_outputs": 1,
+        "output_format": "webp"
+      }
+    },
+    {
+      "filename": "diagram.webp",
+      "model": {
+        "owner": "black-forest-labs",
+        "name": "flux-schnell"
+      },
+      "input": {
+        "prompt": "Fraud detection diagram: filing timeline, risk score spike, network similarity clusters, and feature contribution bars. Dark forensic dossier aesthetic, crimson and amber glow, thin grid lines, no logos or text blocks.",
+        "num_outputs": 1,
+        "output_format": "webp"
+      }
+    },
+    {
+      "filename": "overlay.webp",
+      "model": {
+        "owner": "black-forest-labs",
+        "name": "flux-schnell"
+      },
+      "input": {
+        "prompt": "Transparent-feel forensic overlay texture with radial scan arcs, evidence node lines, anomaly hotspots, and dossier grid marks for a dark fraud analytics UI. No logos, no text blocks.",
+        "num_outputs": 1,
+        "output_format": "webp"
+      }
+    }
+  ]
+}

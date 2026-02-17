@@ -1,0 +1,61 @@
+{
+  "name": "gsb-analytics-portfolio",
+  "version": "0.1.0",
+  "private": true,
+  "engines": {
+    "node": ">=20 <21"
+  },
+  "scripts": {
+    "dev": "scripts/dev/start.sh",
+    "dev:doctor": "scripts/dev/doctor.sh",
+    "dev:port": "PORT=3401 npm run dev",
+    "dev:open": "scripts/dev/open.sh",
+    "build": "next build",
+    "start": "next start --port 3401",
+    "lint": "eslint",
+    "typecheck": "tsc -p tsconfig.typecheck.json --noEmit",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:e2e": "playwright test",
+    "env:check": "node scripts/check_env.mjs",
+    "data:build": "python3 scripts/python/build_all.py",
+    "data:build:real": "python3 scripts/python/build_partial_real.py --strict-real-only",
+    "data:refresh": "npm run data:build && npm run data:build:real",
+    "media:build": "scripts/replicate/run_build.sh",
+    "media:build:dry": "scripts/replicate/run_build.sh --dry-run"
+  },
+  "dependencies": {
+    "@deck.gl/core": "^9.2.7",
+    "@deck.gl/geo-layers": "^9.2.7",
+    "@deck.gl/layers": "^9.2.7",
+    "@deck.gl/react": "^9.2.7",
+    "clsx": "^2.1.1",
+    "d3": "^7.9.0",
+    "echarts": "^6.0.0",
+    "echarts-for-react": "^3.0.6",
+    "framer-motion": "^12.34.0",
+    "lucide-react": "^0.564.0",
+    "maplibre-gl": "^5.18.0",
+    "next": "16.1.6",
+    "react": "19.2.3",
+    "react-dom": "19.2.3",
+    "react-map-gl": "^8.1.0",
+    "tailwind-merge": "^3.4.1",
+    "zod": "^4.3.6"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.58.2",
+    "@tailwindcss/postcss": "^4",
+    "@types/d3": "^7.4.3",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "eslint": "^9",
+    "eslint-config-next": "16.1.6",
+    "jsdom": "^28.1.0",
+    "tailwindcss": "^4",
+    "typescript": "^5",
+    "vite-tsconfig-paths": "^6.1.1",
+    "vitest": "^4.0.18"
+  }
+}

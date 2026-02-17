@@ -1,0 +1,813 @@
+{
+  "city": {
+    "center": [
+      -104.9903,
+      39.7392
+    ],
+    "name": "Denver Metro",
+    "zoom": 9.8
+  },
+  "did": {
+    "ate": -0.18,
+    "ci": [
+      -0.26,
+      -0.1
+    ],
+    "pretrendP": 0.42
+  },
+  "meta": {
+    "generatedAt": "2026-02-17T16:06:17+00:00",
+    "modules": {
+      "denver_remote_share": {
+        "provenance": {
+          "asOf": "2023",
+          "fetchedAt": "2026-02-17T16:06:31+00:00",
+          "note": "Denver MSA remote-work commuter share",
+          "source": "census:acs1:B08006"
+        },
+        "status": "ok"
+      },
+      "sbux_30d_return": {
+        "provenance": {
+          "asOf": "2026-02-17",
+          "fetchedAt": "2026-02-17T16:06:29+00:00",
+          "note": "30d total return",
+          "source": "stooq:SBUX"
+        },
+        "status": "ok"
+      }
+    },
+    "overallStatus": "ok",
+    "runId": "real-20260217160617"
+  },
+  "realSignals": [
+    {
+      "change": "30d total return",
+      "id": "sbux_30d_return",
+      "label": "SBUX 30d return",
+      "provenance": {
+        "asOf": "2026-02-17",
+        "fetchedAt": "2026-02-17T16:06:29+00:00",
+        "note": "30d total return",
+        "source": "stooq:SBUX"
+      },
+      "status": "ok",
+      "unit": "%",
+      "value": "11.87"
+    },
+    {
+      "change": "Denver MSA remote-work commuter share",
+      "id": "denver_remote_share",
+      "label": "Denver remote-work share",
+      "provenance": {
+        "asOf": "2023",
+        "fetchedAt": "2026-02-17T16:06:31+00:00",
+        "note": "Denver MSA remote-work commuter share",
+        "source": "census:acs1:B08006"
+      },
+      "status": "ok",
+      "unit": "%",
+      "value": "22.34"
+    }
+  ],
+  "scenarios": [
+    {
+      "trafficMultiplier": 1.0,
+      "wfhIndex": 0.0
+    },
+    {
+      "trafficMultiplier": 0.92,
+      "wfhIndex": 0.4
+    },
+    {
+      "trafficMultiplier": 0.84,
+      "wfhIndex": 0.7
+    },
+    {
+      "trafficMultiplier": 0.79,
+      "wfhIndex": 0.9
+    }
+  ],
+  "stores": [
+    {
+      "baselineProfitK": 105.3,
+      "baselineTraffic": 1021.0,
+      "deltaProfitK": 7.7,
+      "id": "den-01",
+      "lat": 39.7368,
+      "lon": -105.11213,
+      "name": "Denver Store 01",
+      "recommendation": "Lockers",
+      "segment": "residential",
+      "wfhExposure": 0.27
+    },
+    {
+      "baselineProfitK": 73.8,
+      "baselineTraffic": 870.0,
+      "deltaProfitK": 8.4,
+      "id": "den-02",
+      "lat": 39.63321,
+      "lon": -105.0363,
+      "name": "Denver Store 02",
+      "recommendation": "Lockers",
+      "segment": "residential",
+      "wfhExposure": 0.21
+    },
+    {
+      "baselineProfitK": 44.4,
+      "baselineTraffic": 831.0,
+      "deltaProfitK": 28.1,
+      "id": "den-03",
+      "lat": 39.77337,
+      "lon": -105.08734,
+      "name": "Denver Store 03",
+      "recommendation": "Lockers",
+      "segment": "residential",
+      "wfhExposure": 0.43
+    },
+    {
+      "baselineProfitK": 89.4,
+      "baselineTraffic": 982.0,
+      "deltaProfitK": 18.6,
+      "id": "den-04",
+      "lat": 39.70768,
+      "lon": -104.77264,
+      "name": "Denver Store 04",
+      "recommendation": "Lockers",
+      "segment": "mixed",
+      "wfhExposure": 0.55
+    },
+    {
+      "baselineProfitK": 64.4,
+      "baselineTraffic": 508.0,
+      "deltaProfitK": 19.2,
+      "id": "den-05",
+      "lat": 39.86853,
+      "lon": -105.19249,
+      "name": "Denver Store 05",
+      "recommendation": "Lockers",
+      "segment": "residential",
+      "wfhExposure": 0.44
+    },
+    {
+      "baselineProfitK": 106.9,
+      "baselineTraffic": 915.0,
+      "deltaProfitK": 27.8,
+      "id": "den-06",
+      "lat": 39.62479,
+      "lon": -105.36104,
+      "name": "Denver Store 06",
+      "recommendation": "Lockers",
+      "segment": "residential",
+      "wfhExposure": 0.38
+    },
+    {
+      "baselineProfitK": 86.2,
+      "baselineTraffic": 829.0,
+      "deltaProfitK": 19.6,
+      "id": "den-07",
+      "lat": 39.68345,
+      "lon": -104.95986,
+      "name": "Denver Store 07",
+      "recommendation": "Lockers",
+      "segment": "residential",
+      "wfhExposure": 0.07
+    },
+    {
+      "baselineProfitK": 59.2,
+      "baselineTraffic": 743.0,
+      "deltaProfitK": 4.9,
+      "id": "den-08",
+      "lat": 39.62241,
+      "lon": -104.98154,
+      "name": "Denver Store 08",
+      "recommendation": "Lockers",
+      "segment": "residential",
+      "wfhExposure": 0.33
+    },
+    {
+      "baselineProfitK": 78.7,
+      "baselineTraffic": 1114.0,
+      "deltaProfitK": 7.1,
+      "id": "den-09",
+      "lat": 39.66297,
+      "lon": -104.97629,
+      "name": "Denver Store 09",
+      "recommendation": "Lockers",
+      "segment": "mixed",
+      "wfhExposure": 0.35
+    },
+    {
+      "baselineProfitK": 91.6,
+      "baselineTraffic": 900.0,
+      "deltaProfitK": 26.9,
+      "id": "den-10",
+      "lat": 39.80724,
+      "lon": -104.91223,
+      "name": "Denver Store 10",
+      "recommendation": "Lockers",
+      "segment": "office",
+      "wfhExposure": 0.66
+    },
+    {
+      "baselineProfitK": 88.3,
+      "baselineTraffic": 605.0,
+      "deltaProfitK": 29.2,
+      "id": "den-11",
+      "lat": 39.6818,
+      "lon": -104.81611,
+      "name": "Denver Store 11",
+      "recommendation": "Lockers",
+      "segment": "office",
+      "wfhExposure": 0.73
+    },
+    {
+      "baselineProfitK": 57.2,
+      "baselineTraffic": 811.0,
+      "deltaProfitK": 17.8,
+      "id": "den-12",
+      "lat": 39.91637,
+      "lon": -105.02017,
+      "name": "Denver Store 12",
+      "recommendation": "Lockers",
+      "segment": "residential",
+      "wfhExposure": 0.44
+    },
+    {
+      "baselineProfitK": 94.0,
+      "baselineTraffic": 567.0,
+      "deltaProfitK": 20.9,
+      "id": "den-13",
+      "lat": 39.87497,
+      "lon": -104.92251,
+      "name": "Denver Store 13",
+      "recommendation": "Lockers",
+      "segment": "residential",
+      "wfhExposure": 0.33
+    },
+    {
+      "baselineProfitK": 90.8,
+      "baselineTraffic": 809.0,
+      "deltaProfitK": 21.6,
+      "id": "den-14",
+      "lat": 39.69214,
+      "lon": -105.22271,
+      "name": "Denver Store 14",
+      "recommendation": "Lockers",
+      "segment": "office",
+      "wfhExposure": 0.87
+    },
+    {
+      "baselineProfitK": 84.0,
+      "baselineTraffic": 826.0,
+      "deltaProfitK": 27.6,
+      "id": "den-15",
+      "lat": 39.52371,
+      "lon": -104.83631,
+      "name": "Denver Store 15",
+      "recommendation": "Lockers",
+      "segment": "residential",
+      "wfhExposure": 0.3
+    },
+    {
+      "baselineProfitK": 37.5,
+      "baselineTraffic": 735.0,
+      "deltaProfitK": 39.6,
+      "id": "den-16",
+      "lat": 39.69328,
+      "lon": -105.01598,
+      "name": "Denver Store 16",
+      "recommendation": "Convert",
+      "segment": "office",
+      "wfhExposure": 0.68
+    },
+    {
+      "baselineProfitK": 59.3,
+      "baselineTraffic": 908.0,
+      "deltaProfitK": 29.6,
+      "id": "den-17",
+      "lat": 39.83931,
+      "lon": -105.04356,
+      "name": "Denver Store 17",
+      "recommendation": "Lockers",
+      "segment": "office",
+      "wfhExposure": 0.52
+    },
+    {
+      "baselineProfitK": 93.6,
+      "baselineTraffic": 661.0,
+      "deltaProfitK": 31.5,
+      "id": "den-18",
+      "lat": 39.85402,
+      "lon": -104.98101,
+      "name": "Denver Store 18",
+      "recommendation": "Lockers",
+      "segment": "mixed",
+      "wfhExposure": 0.45
+    },
+    {
+      "baselineProfitK": 46.1,
+      "baselineTraffic": 792.0,
+      "deltaProfitK": 8.4,
+      "id": "den-19",
+      "lat": 39.70599,
+      "lon": -104.96396,
+      "name": "Denver Store 19",
+      "recommendation": "Lockers",
+      "segment": "residential",
+      "wfhExposure": 0.37
+    },
+    {
+      "baselineProfitK": 49.3,
+      "baselineTraffic": 1225.0,
+      "deltaProfitK": 10.8,
+      "id": "den-20",
+      "lat": 39.77664,
+      "lon": -105.12205,
+      "name": "Denver Store 20",
+      "recommendation": "Lockers",
+      "segment": "residential",
+      "wfhExposure": 0.26
+    },
+    {
+      "baselineProfitK": 30.6,
+      "baselineTraffic": 1022.0,
+      "deltaProfitK": 50.2,
+      "id": "den-21",
+      "lat": 39.63622,
+      "lon": -105.04914,
+      "name": "Denver Store 21",
+      "recommendation": "Convert",
+      "segment": "office",
+      "wfhExposure": 0.75
+    },
+    {
+      "baselineProfitK": 60.1,
+      "baselineTraffic": 1075.0,
+      "deltaProfitK": 23.0,
+      "id": "den-22",
+      "lat": 39.66617,
+      "lon": -105.1162,
+      "name": "Denver Store 22",
+      "recommendation": "Lockers",
+      "segment": "mixed",
+      "wfhExposure": 0.52
+    },
+    {
+      "baselineProfitK": 21.9,
+      "baselineTraffic": 388.0,
+      "deltaProfitK": 40.5,
+      "id": "den-23",
+      "lat": 39.75403,
+      "lon": -105.21341,
+      "name": "Denver Store 23",
+      "recommendation": "Convert",
+      "segment": "office",
+      "wfhExposure": 0.7
+    },
+    {
+      "baselineProfitK": 77.3,
+      "baselineTraffic": 723.0,
+      "deltaProfitK": 36.5,
+      "id": "den-24",
+      "lat": 39.88663,
+      "lon": -105.00678,
+      "name": "Denver Store 24",
+      "recommendation": "Lockers",
+      "segment": "mixed",
+      "wfhExposure": 0.68
+    },
+    {
+      "baselineProfitK": 62.4,
+      "baselineTraffic": 402.0,
+      "deltaProfitK": 50.2,
+      "id": "den-25",
+      "lat": 39.54166,
+      "lon": -104.69896,
+      "name": "Denver Store 25",
+      "recommendation": "Convert",
+      "segment": "office",
+      "wfhExposure": 0.77
+    },
+    {
+      "baselineProfitK": 88.8,
+      "baselineTraffic": 893.0,
+      "deltaProfitK": 7.8,
+      "id": "den-26",
+      "lat": 39.62175,
+      "lon": -104.92791,
+      "name": "Denver Store 26",
+      "recommendation": "Lockers",
+      "segment": "office",
+      "wfhExposure": 0.56
+    },
+    {
+      "baselineProfitK": 100.1,
+      "baselineTraffic": 633.0,
+      "deltaProfitK": 22.6,
+      "id": "den-27",
+      "lat": 39.84384,
+      "lon": -105.08772,
+      "name": "Denver Store 27",
+      "recommendation": "Lockers",
+      "segment": "residential",
+      "wfhExposure": 0.41
+    },
+    {
+      "baselineProfitK": 77.9,
+      "baselineTraffic": 663.0,
+      "deltaProfitK": 15.9,
+      "id": "den-28",
+      "lat": 39.84151,
+      "lon": -104.81763,
+      "name": "Denver Store 28",
+      "recommendation": "Lockers",
+      "segment": "residential",
+      "wfhExposure": 0.37
+    },
+    {
+      "baselineProfitK": 52.7,
+      "baselineTraffic": 512.0,
+      "deltaProfitK": 22.1,
+      "id": "den-29",
+      "lat": 39.59657,
+      "lon": -104.98108,
+      "name": "Denver Store 29",
+      "recommendation": "Lockers",
+      "segment": "residential",
+      "wfhExposure": 0.29
+    },
+    {
+      "baselineProfitK": 99.0,
+      "baselineTraffic": 920.0,
+      "deltaProfitK": 15.7,
+      "id": "den-30",
+      "lat": 39.85421,
+      "lon": -104.67961,
+      "name": "Denver Store 30",
+      "recommendation": "Lockers",
+      "segment": "residential",
+      "wfhExposure": 0.2
+    },
+    {
+      "baselineProfitK": 66.1,
+      "baselineTraffic": 516.0,
+      "deltaProfitK": 16.3,
+      "id": "den-31",
+      "lat": 39.97393,
+      "lon": -105.1585,
+      "name": "Denver Store 31",
+      "recommendation": "Lockers",
+      "segment": "mixed",
+      "wfhExposure": 0.43
+    },
+    {
+      "baselineProfitK": 44.8,
+      "baselineTraffic": 569.0,
+      "deltaProfitK": 7.8,
+      "id": "den-32",
+      "lat": 39.59723,
+      "lon": -105.03288,
+      "name": "Denver Store 32",
+      "recommendation": "Lockers",
+      "segment": "residential",
+      "wfhExposure": 0.43
+    },
+    {
+      "baselineProfitK": 80.3,
+      "baselineTraffic": 965.0,
+      "deltaProfitK": 25.4,
+      "id": "den-33",
+      "lat": 39.67601,
+      "lon": -104.83232,
+      "name": "Denver Store 33",
+      "recommendation": "Lockers",
+      "segment": "office",
+      "wfhExposure": 0.54
+    },
+    {
+      "baselineProfitK": 71.3,
+      "baselineTraffic": 566.0,
+      "deltaProfitK": 23.6,
+      "id": "den-34",
+      "lat": 40.02975,
+      "lon": -104.81705,
+      "name": "Denver Store 34",
+      "recommendation": "Lockers",
+      "segment": "mixed",
+      "wfhExposure": 0.33
+    },
+    {
+      "baselineProfitK": 83.5,
+      "baselineTraffic": 476.0,
+      "deltaProfitK": 10.7,
+      "id": "den-35",
+      "lat": 39.80915,
+      "lon": -105.09302,
+      "name": "Denver Store 35",
+      "recommendation": "Lockers",
+      "segment": "office",
+      "wfhExposure": 0.79
+    },
+    {
+      "baselineProfitK": 105.6,
+      "baselineTraffic": 910.0,
+      "deltaProfitK": 28.8,
+      "id": "den-36",
+      "lat": 39.5315,
+      "lon": -104.99392,
+      "name": "Denver Store 36",
+      "recommendation": "Lockers",
+      "segment": "residential",
+      "wfhExposure": 0.09
+    },
+    {
+      "baselineProfitK": 85.6,
+      "baselineTraffic": 728.0,
+      "deltaProfitK": 44.0,
+      "id": "den-37",
+      "lat": 39.49106,
+      "lon": -105.18514,
+      "name": "Denver Store 37",
+      "recommendation": "Lockers",
+      "segment": "mixed",
+      "wfhExposure": 0.23
+    },
+    {
+      "baselineProfitK": 110.3,
+      "baselineTraffic": 822.0,
+      "deltaProfitK": 10.3,
+      "id": "den-38",
+      "lat": 39.63364,
+      "lon": -104.74828,
+      "name": "Denver Store 38",
+      "recommendation": "Lockers",
+      "segment": "office",
+      "wfhExposure": 0.68
+    },
+    {
+      "baselineProfitK": 81.1,
+      "baselineTraffic": 600.0,
+      "deltaProfitK": 25.0,
+      "id": "den-39",
+      "lat": 39.80771,
+      "lon": -105.32606,
+      "name": "Denver Store 39",
+      "recommendation": "Lockers",
+      "segment": "office",
+      "wfhExposure": 0.74
+    },
+    {
+      "baselineProfitK": 96.8,
+      "baselineTraffic": 880.0,
+      "deltaProfitK": 12.2,
+      "id": "den-40",
+      "lat": 39.64997,
+      "lon": -105.00488,
+      "name": "Denver Store 40",
+      "recommendation": "Lockers",
+      "segment": "residential",
+      "wfhExposure": 0.1
+    },
+    {
+      "baselineProfitK": 65.3,
+      "baselineTraffic": 808.0,
+      "deltaProfitK": 34.3,
+      "id": "den-41",
+      "lat": 39.69769,
+      "lon": -105.2718,
+      "name": "Denver Store 41",
+      "recommendation": "Lockers",
+      "segment": "mixed",
+      "wfhExposure": 0.39
+    },
+    {
+      "baselineProfitK": 66.5,
+      "baselineTraffic": 1374.0,
+      "deltaProfitK": 20.1,
+      "id": "den-42",
+      "lat": 39.71688,
+      "lon": -104.83993,
+      "name": "Denver Store 42",
+      "recommendation": "Lockers",
+      "segment": "mixed",
+      "wfhExposure": 0.35
+    },
+    {
+      "baselineProfitK": 75.1,
+      "baselineTraffic": 650.0,
+      "deltaProfitK": 31.8,
+      "id": "den-43",
+      "lat": 39.78327,
+      "lon": -105.13556,
+      "name": "Denver Store 43",
+      "recommendation": "Lockers",
+      "segment": "residential",
+      "wfhExposure": 0.23
+    },
+    {
+      "baselineProfitK": 85.2,
+      "baselineTraffic": 937.0,
+      "deltaProfitK": 9.8,
+      "id": "den-44",
+      "lat": 39.76891,
+      "lon": -104.83325,
+      "name": "Denver Store 44",
+      "recommendation": "Lockers",
+      "segment": "residential",
+      "wfhExposure": 0.31
+    },
+    {
+      "baselineProfitK": 67.6,
+      "baselineTraffic": 1088.0,
+      "deltaProfitK": 28.7,
+      "id": "den-45",
+      "lat": 39.95299,
+      "lon": -105.12849,
+      "name": "Denver Store 45",
+      "recommendation": "Lockers",
+      "segment": "residential",
+      "wfhExposure": 0.05
+    },
+    {
+      "baselineProfitK": 81.9,
+      "baselineTraffic": 843.0,
+      "deltaProfitK": 21.4,
+      "id": "den-46",
+      "lat": 39.8568,
+      "lon": -105.23868,
+      "name": "Denver Store 46",
+      "recommendation": "Lockers",
+      "segment": "office",
+      "wfhExposure": 0.67
+    },
+    {
+      "baselineProfitK": 78.4,
+      "baselineTraffic": 1145.0,
+      "deltaProfitK": 26.7,
+      "id": "den-47",
+      "lat": 39.80571,
+      "lon": -105.25393,
+      "name": "Denver Store 47",
+      "recommendation": "Lockers",
+      "segment": "residential",
+      "wfhExposure": 0.33
+    },
+    {
+      "baselineProfitK": 34.5,
+      "baselineTraffic": 761.0,
+      "deltaProfitK": 72.5,
+      "id": "den-48",
+      "lat": 39.78654,
+      "lon": -105.22281,
+      "name": "Denver Store 48",
+      "recommendation": "Convert",
+      "segment": "office",
+      "wfhExposure": 0.77
+    },
+    {
+      "baselineProfitK": 60.1,
+      "baselineTraffic": 1152.0,
+      "deltaProfitK": 44.8,
+      "id": "den-49",
+      "lat": 39.53125,
+      "lon": -104.89625,
+      "name": "Denver Store 49",
+      "recommendation": "Convert",
+      "segment": "office",
+      "wfhExposure": 0.89
+    },
+    {
+      "baselineProfitK": 37.6,
+      "baselineTraffic": 536.0,
+      "deltaProfitK": 49.7,
+      "id": "den-50",
+      "lat": 39.67154,
+      "lon": -104.85794,
+      "name": "Denver Store 50",
+      "recommendation": "Convert",
+      "segment": "office",
+      "wfhExposure": 0.87
+    },
+    {
+      "baselineProfitK": 34.6,
+      "baselineTraffic": 615.0,
+      "deltaProfitK": 16.7,
+      "id": "den-51",
+      "lat": 39.6426,
+      "lon": -104.63032,
+      "name": "Denver Store 51",
+      "recommendation": "Lockers",
+      "segment": "residential",
+      "wfhExposure": 0.05
+    },
+    {
+      "baselineProfitK": 76.5,
+      "baselineTraffic": 458.0,
+      "deltaProfitK": 21.6,
+      "id": "den-52",
+      "lat": 39.68231,
+      "lon": -104.86522,
+      "name": "Denver Store 52",
+      "recommendation": "Lockers",
+      "segment": "residential",
+      "wfhExposure": 0.35
+    },
+    {
+      "baselineProfitK": 90.6,
+      "baselineTraffic": 836.0,
+      "deltaProfitK": 17.8,
+      "id": "den-53",
+      "lat": 39.93059,
+      "lon": -105.00703,
+      "name": "Denver Store 53",
+      "recommendation": "Lockers",
+      "segment": "residential",
+      "wfhExposure": 0.23
+    },
+    {
+      "baselineProfitK": 49.3,
+      "baselineTraffic": 898.0,
+      "deltaProfitK": 37.7,
+      "id": "den-54",
+      "lat": 39.484,
+      "lon": -104.91721,
+      "name": "Denver Store 54",
+      "recommendation": "Convert",
+      "segment": "mixed",
+      "wfhExposure": 0.66
+    },
+    {
+      "baselineProfitK": 98.6,
+      "baselineTraffic": 629.0,
+      "deltaProfitK": 35.5,
+      "id": "den-55",
+      "lat": 39.81504,
+      "lon": -104.91923,
+      "name": "Denver Store 55",
+      "recommendation": "Lockers",
+      "segment": "residential",
+      "wfhExposure": 0.21
+    },
+    {
+      "baselineProfitK": 87.7,
+      "baselineTraffic": 656.0,
+      "deltaProfitK": 23.3,
+      "id": "den-56",
+      "lat": 39.80645,
+      "lon": -104.82849,
+      "name": "Denver Store 56",
+      "recommendation": "Lockers",
+      "segment": "office",
+      "wfhExposure": 0.66
+    },
+    {
+      "baselineProfitK": 70.1,
+      "baselineTraffic": 828.0,
+      "deltaProfitK": 19.6,
+      "id": "den-57",
+      "lat": 39.83277,
+      "lon": -104.75572,
+      "name": "Denver Store 57",
+      "recommendation": "Lockers",
+      "segment": "office",
+      "wfhExposure": 0.67
+    },
+    {
+      "baselineProfitK": 60.2,
+      "baselineTraffic": 416.0,
+      "deltaProfitK": 13.9,
+      "id": "den-58",
+      "lat": 39.71549,
+      "lon": -105.33571,
+      "name": "Denver Store 58",
+      "recommendation": "Lockers",
+      "segment": "residential",
+      "wfhExposure": 0.31
+    },
+    {
+      "baselineProfitK": 51.2,
+      "baselineTraffic": 577.0,
+      "deltaProfitK": 46.7,
+      "id": "den-59",
+      "lat": 39.89025,
+      "lon": -105.03598,
+      "name": "Denver Store 59",
+      "recommendation": "Convert",
+      "segment": "office",
+      "wfhExposure": 0.69
+    },
+    {
+      "baselineProfitK": 38.3,
+      "baselineTraffic": 538.0,
+      "deltaProfitK": 33.6,
+      "id": "den-60",
+      "lat": 39.75734,
+      "lon": -105.30456,
+      "name": "Denver Store 60",
+      "recommendation": "Lockers",
+      "segment": "residential",
+      "wfhExposure": 0.32
+    }
+  ]
+}

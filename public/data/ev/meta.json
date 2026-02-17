@@ -1,0 +1,34 @@
+{
+  "generatedAt": "2026-02-17T16:06:17+00:00",
+  "modules": {
+    "ca_ev_station_count": {
+      "provenance": {
+        "asOf": "2026-02-17T16:06:33+00:00",
+        "fetchedAt": "2026-02-17T16:06:33+00:00",
+        "note": "CA public EV stations",
+        "source": "nrel:afdc"
+      },
+      "status": "ok"
+    },
+    "i5_corridor_stations": {
+      "provenance": {
+        "asOf": "2026-02-17T16:06:44+00:00",
+        "fetchedAt": "2026-02-17T16:06:44+00:00",
+        "note": "Approximate I-5 CA corridor EV stations",
+        "source": "nrel:afdc"
+      },
+      "status": "ok"
+    },
+    "tsla_30d_return": {
+      "provenance": {
+        "asOf": "2026-02-17",
+        "fetchedAt": "2026-02-17T16:06:32+00:00",
+        "note": "30d total return",
+        "source": "stooq:TSLA"
+      },
+      "status": "ok"
+    }
+  },
+  "overallStatus": "ok",
+  "runId": "real-20260217160617"
+}
