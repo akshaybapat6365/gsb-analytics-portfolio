@@ -1,21 +1,44 @@
+"use client";
+
+import { useState } from "react";
+
 export function DevEnvBanner() {
-  if (process.env.NODE_ENV === "production") {
+  const [dismissed, setDismissed] = useState(false);
+
+  if (process.env.NODE_ENV === "production" || dismissed) {
     return null;
   }
 
-  const major = Number.parseInt(process.versions.node.split(".")[0] ?? "0", 10);
+  /* process.versions is undefined on the client — guard access */
+  const nodeVersion =
+    typeof process !== "undefined" && process.versions?.node
+      ? process.versions.node
+      : null;
+
+  if (!nodeVersion) {
+    return null;
+  }
+
+  const major = Number.parseInt(nodeVersion.split(".")[0] ?? "0", 10);
   if (major === 20) {
     return null;
   }
 
   return (
-    <div className="mx-auto mb-4 mt-2 w-full max-w-6xl rounded-xl border border-amber-300/20 bg-amber-200/10 px-4 py-3">
-      <p className="font-sans text-xs font-medium uppercase tracking-[0.18em] text-amber-100">
-        Dev diagnostics
-      </p>
-      <p className="mt-2 text-sm text-amber-50/90">
-        Node {process.versions.node} detected. Node 20.x is recommended for stable project routing and rendering.
-      </p>
+    <div className="fixed bottom-4 right-4 z-[9999] max-w-xs rounded-lg border border-white/[0.06] bg-[rgba(10,10,14,0.95)] px-3 py-2 shadow-lg backdrop-blur-sm">
+      <div className="flex items-start justify-between gap-2">
+        <p className="font-mono text-[9px] uppercase tracking-[0.12em] text-slate-500">
+          Dev · Node {nodeVersion}
+        </p>
+        <button
+          type="button"
+          onClick={() => setDismissed(true)}
+          className="text-slate-600 transition-colors hover:text-white"
+          aria-label="Dismiss"
+        >
+          ✕
+        </button>
+      </div>
     </div>
   );
 }

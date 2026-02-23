@@ -136,21 +136,21 @@ function buildKpis(input: Project[]): HomeKpiItem[] {
 
   return [
     {
-      label: "Simulator Theses",
+      label: "Simulators shipped",
       value: String(input.length).padStart(2, "0"),
-      hint: "Pricing, fraud, shrink, geospatial, infrastructure, content",
+      hint: "Across pricing, fraud, retail ops, geospatial, infrastructure, and content allocation",
       tone: "primary",
     },
     {
-      label: "Evidence-tagged Claims",
+      label: "Evidence-tagged claims",
       value: String(input.length).padStart(2, "0"),
-      hint: `${mixedCount} mixed · ${modeledCount} modeled, all with source and as-of`,
+      hint: `${mixedCount} mixed-evidence, ${modeledCount} modeled — all framed with source and as-of date`,
       tone: "neutral",
     },
     {
-      label: "Decision Outputs",
+      label: "Output families",
       value: "04",
-      hint: "ROI, NPV, Alpha, and ATE delivered in each case-study flow",
+      hint: "ROI / NPV / ATE / Risk — delivered in every case study",
       tone: "success",
     },
   ];
@@ -234,7 +234,7 @@ export function buildHomePageViewModel(inputProjects: Project[] = projects): Hom
       eyebrow: "Decision Science · Strategy Simulation · Analytics Engineering",
       headline: "Strategy simulators that move real capital.",
       subhead:
-        "I design decision-intelligence products that turn complex operating choices into quantified actions with clear evidence framing.",
+        "I build strategy simulators for pricing, fraud, operations, and capital allocation teams — each delivers a quantified decision with sensitivity analysis and evidence framing.",
       ctaPrimary: { label: "Explore Simulators", href: "/projects" },
       ctaSecondary: { label: "View Resume", href: "/resume" },
       modes: buildHeroModes(),

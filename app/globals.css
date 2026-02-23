@@ -272,53 +272,49 @@ a {
   border-radius: 999px;
   font-family: var(--font-sans);
   font-size: 13px;
-  font-weight: 500;
+  font-weight: 600;
   letter-spacing: 0.06em;
   text-transform: uppercase;
   text-decoration: none;
   transition:
-    transform 300ms ease,
-    background-color 300ms ease,
-    border-color 300ms ease,
-    box-shadow 300ms ease;
+    transform 250ms ease,
+    background-color 250ms ease,
+    border-color 250ms ease,
+    box-shadow 250ms ease,
+    opacity 250ms ease;
 }
 
 .cta-primary {
-  position: relative;
-  padding: 0.85rem 1.9rem;
-  color: rgb(240, 236, 226);
-  border: 1px solid transparent;
-  background: rgba(255, 255, 255, 0.06);
-  z-index: 0;
-}
-
-.cta-primary::before {
-  content: "";
-  position: absolute;
-  inset: -1px;
-  border-radius: 999px;
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.18), rgba(255, 255, 255, 0.08));
-  z-index: -1;
+  padding: 0.85rem 2rem;
+  color: rgb(10, 10, 14);
+  border: 1px solid rgba(255, 255, 255, 0.95);
+  background: rgba(255, 255, 255, 0.95);
 }
 
 .cta-primary:hover {
   transform: translateY(-1px);
-  background: rgba(255, 255, 255, 0.1);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+  background: rgb(255, 255, 255);
+  box-shadow: 0 8px 32px rgba(255, 255, 255, 0.12), 0 0 0 1px rgba(255, 255, 255, 0.2);
+}
+
+.cta-primary:focus-visible {
+  outline: 2px solid white;
+  outline-offset: 2px;
 }
 
 .cta-secondary {
   padding: 0.85rem 1.7rem;
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.3);
   background: transparent;
-  color: rgb(226, 230, 244);
+  color: rgba(255, 255, 255, 0.85);
 }
 
 .cta-secondary:hover {
   transform: translateY(-1px);
-  border-color: rgba(255, 255, 255, 0.35);
-  background: rgba(255, 255, 255, 0.04);
+  border-color: rgba(255, 255, 255, 0.5);
+  background: rgba(255, 255, 255, 0.06);
 }
+
 
 /* Old card/signal/trust/footer-social classes stripped — styling now handled inline in components */
 
