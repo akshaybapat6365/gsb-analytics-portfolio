@@ -5,15 +5,7 @@ import type { CSSProperties } from "react";
 import { motion, useReducedMotion } from "framer-motion";
 import type { HomeProjectCardVM } from "@/lib/viewmodels/home";
 
-type HomeProjectGridProps = {
-  cards: HomeProjectCardVM[];
-};
-
-function evidenceClass(level: HomeProjectCardVM["evidenceLevel"]) {
-  if (level === "real") return "evidence-badge evidence-badge--real";
-  if (level === "mixed") return "evidence-badge evidence-badge--mixed";
-  return "evidence-badge evidence-badge--modeled";
-}
+type Props = { cards: HomeProjectCardVM[] };
 
 const accentBySlug: Record<HomeProjectCardVM["slug"], string> = {
   "ord-lga-price-war": "246,178,74",
@@ -28,91 +20,106 @@ const domainBySlug: Record<HomeProjectCardVM["slug"], string> = {
   "ord-lga-price-war": "Pricing Strategy",
   "fraud-radar": "Forensic Risk",
   "target-shrink": "Retail Operations",
-  "starbucks-pivot": "Geo Portfolio",
+  "starbucks-pivot": "Geospatial Strategy",
   "tesla-nacs": "Infrastructure",
   "netflix-roi": "Capital Allocation",
 };
 
-export function HomeProjectGrid({ cards }: HomeProjectGridProps) {
-  const reduceMotion = useReducedMotion();
+export function HomeProjectGrid({ cards }: Props) {
+  const rm = useReducedMotion();
 
   return (
-    <section id="projects" className="space-y-8 sm:space-y-10">
-      <div className="flex flex-wrap items-end justify-between gap-4">
-        <div>
-          <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-slate-500">Projects</p>
-          <h2 className="mt-2 font-display text-[32px] leading-[1.02] text-white sm:text-[46px]">
-            The Work
-          </h2>
-        </div>
-        <span className="rounded-full border border-white/[0.08] bg-white/[0.02] px-3 py-1 font-mono text-[11px] uppercase tracking-[0.14em] text-slate-400">
+    <section id="projects">
+      {/* ── Task 21: Section header ──────────────────── */}
+      <div className="mb-8 flex items-end justify-between">
+        <h2 className="font-display text-[clamp(2rem,4vw,3rem)] leading-none tracking-[-0.02em] text-white">
+          The Work
+        </h2>
+        <span className="rounded-full border border-white/[0.08] px-3 py-1 font-mono text-[11px] uppercase tracking-[0.14em] text-slate-500">
           {cards.length} projects
         </span>
       </div>
 
-      <div className="grid gap-8 sm:gap-6 lg:grid-cols-3">
+      {/* ── Task 20: 3-column grid, equal cards ──────── */}
+      <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
         {cards.map((card, idx) => {
-          const cardStyle = {
-            "--card-accent": accentBySlug[card.slug],
-          } as CSSProperties;
+          const accent = accentBySlug[card.slug];
+          const style = { "--card-accent": accent } as CSSProperties;
 
           return (
+            /* ── Task 22: Stagger animation ────────── */
             <motion.article
               key={card.slug}
-              initial={reduceMotion ? undefined : { opacity: 0, y: 16 }}
-              whileInView={reduceMotion ? undefined : { opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-60px" }}
+              initial={rm ? undefined : { opacity: 0, y: 20 }}
+              whileInView={rm ? undefined : { opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-40px" }}
               transition={
-                reduceMotion
+                rm
                   ? { duration: 0 }
-                  : { duration: 0.45, delay: idx * 0.06, ease: [0.22, 1, 0.36, 1] }
+                  : { duration: 0.45, delay: idx * 0.08, ease: [0.22, 1, 0.36, 1] }
               }
             >
               <Link
                 href={card.href}
-                style={cardStyle}
-                className="project-card group relative block overflow-hidden rounded-2xl border border-white/[0.06] bg-[rgba(12,12,20,0.6)] p-6 no-underline backdrop-blur-sm hover:no-underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[rgba(var(--card-accent),0.55)] sm:p-7"
+                style={style}
+                className="group relative flex h-full flex-col overflow-hidden rounded-xl border border-white/[0.08] bg-[#111116] p-7 no-underline transition-all duration-200 hover:border-white/[0.18] hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/50"
               >
-                <div className="project-card-glow" aria-hidden="true" />
-                <div className="project-card-topline" aria-hidden="true" />
+                {/* ── Task 25: Top accent line ───────── */}
+                <div
+                  className="absolute inset-x-0 top-0 h-[2px]"
+                  style={{ background: `rgba(${accent}, 0.7)` }}
+                  aria-hidden="true"
+                />
 
-                <p className="project-method-pill relative z-[1] inline-flex items-center">
+                {/* ── Task 25: Subtle top glow ───────── */}
+                <div
+                  className="pointer-events-none absolute inset-x-0 top-0 h-16 opacity-[0.04]"
+                  style={{
+                    background: `radial-gradient(ellipse 80% 100% at 50% 0%, rgba(${accent}, 1) 0%, transparent 100%)`,
+                  }}
+                  aria-hidden="true"
+                />
+
+                {/* ── Task 26: Domain tag ─────────────── */}
+                <p className="relative font-mono text-[10px] uppercase tracking-[0.2em] text-slate-500">
                   {domainBySlug[card.slug]}
                 </p>
 
-                <h3 className="relative z-[1] mt-4 text-[20px] font-semibold leading-[1.12] text-white sm:text-[22px]">
+                {/* ── Task 27: Title ──────────────────── */}
+                <h3 className="relative mt-3 text-[20px] font-semibold leading-tight tracking-tight text-white">
                   {card.title}
                 </h3>
-                <p className="relative z-[1] mt-3 line-clamp-2 text-[14px] leading-6 text-slate-400">
+
+                {/* ── Task 27: Subtitle ───────────────── */}
+                <p className="relative mt-2 line-clamp-2 text-[14px] leading-[1.6] text-slate-400">
                   {card.subtitle}
                 </p>
 
-                <div className="project-result-block relative z-[1] mt-12">
-                  <div className="flex items-start justify-between gap-3">
-                    <p className="font-mono text-[11px] uppercase tracking-[0.16em] text-slate-500">
+                {/* ── Task 28: Result block ───────────── */}
+                <div className="relative mt-auto pt-6">
+                  <div className="border-y border-white/[0.04] bg-white/[0.02] px-4 py-3">
+                    <p className="font-mono text-[9px] uppercase tracking-[0.12em] text-slate-500">
                       {card.resultLabel}
                     </p>
-                    <span
-                      className={`${evidenceClass(card.evidenceLevel)} home-evidence-badge`}
-                      data-evidence-badge
-                      title={`${card.evidenceMeta}\n${card.provenanceLong}`}
+                    <p
+                      className="mt-1 text-[24px] font-bold leading-none tracking-tight"
+                      style={{ color: `rgba(${accent}, 0.92)` }}
                     >
-                      <span aria-hidden="true">{card.evidenceBadge.icon}</span>
-                      <span>{card.evidenceBadge.label}</span>
-                    </span>
+                      {card.resultValue}
+                    </p>
                   </div>
-                  <p className="mt-3 text-[34px] font-bold leading-[1.02] tracking-tight text-[rgba(var(--card-accent),0.98)]">
-                    {card.resultValue}
-                  </p>
-                  <p className="sr-only">{card.claimFraming}</p>
                 </div>
 
-                <div className="relative z-[1] mt-8 flex items-center justify-between gap-3">
-                  <span className="font-mono text-[12px] uppercase tracking-[0.14em] text-slate-200">
+                {/* ── Task 29: Footer CTA row ─────────── */}
+                <div className="relative mt-4 flex items-center justify-between">
+                  <span className="font-mono text-[11px] uppercase tracking-[0.12em] text-slate-500 transition-all duration-200 group-hover:translate-x-0.5 group-hover:text-slate-300">
                     Explore →
                   </span>
-                  <span className="font-mono text-[10px] uppercase tracking-[0.16em] text-slate-500">
-                    {card.methodPlain}
+                  <span
+                    className="inline-flex items-center gap-1 font-mono text-[9px] uppercase tracking-[0.1em]"
+                    style={{ color: `rgba(${accent}, 0.6)` }}
+                  >
+                    {card.evidenceBadge.icon} {card.evidenceBadge.label}
                   </span>
                 </div>
               </Link>

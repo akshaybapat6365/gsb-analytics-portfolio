@@ -17,7 +17,7 @@ export function TopNav() {
   const pathname = usePathname();
 
   return (
-    <header className="sticky top-0 z-50 border-b border-white/15 bg-[rgba(18,16,14,0.86)] backdrop-blur-2xl">
+    <header className="sticky top-0 z-50 border-b border-white/[0.06] bg-[rgba(10,10,14,0.88)] backdrop-blur-2xl">
       <div className="mx-auto flex w-full max-w-[1420px] items-center justify-between px-4 py-3.5 sm:px-7 lg:px-10">
         <Link
           href="/"
@@ -45,8 +45,8 @@ export function TopNav() {
               "inline-flex items-center rounded-full border px-3.5 py-1.5 text-[11px] font-semibold uppercase tracking-[0.14em] transition sm:text-xs sm:tracking-[0.15em]",
               hideOnMobile && "hidden sm:inline-flex",
               isActive
-                ? "border-amber-200/45 bg-amber-300/18 text-amber-100"
-                : "border-white/15 bg-white/[0.05] text-slate-200 hover:border-amber-300/35 hover:text-amber-100",
+                ? "border-white/25 bg-white/[0.08] text-white"
+                : "border-white/[0.08] bg-white/[0.03] text-slate-400 hover:border-white/[0.15] hover:text-white",
             );
 
             if (external) {

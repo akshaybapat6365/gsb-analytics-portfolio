@@ -22,7 +22,7 @@ export default function HomePage() {
   return (
     <>
       <StructuredDataScript id="person-jsonld" data={buildPersonSchema()} />
-      <div className="space-y-20 pb-8 sm:space-y-24">
+      <div className="space-y-24 sm:space-y-28">
         <HomeHeroSignalWall hero={vm.hero} kpis={vm.kpis} />
 
         <Reveal delay={0.06}>
