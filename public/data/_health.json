@@ -1,13 +1,51 @@
 {
-  "generatedAt": "2026-02-17T16:06:17+00:00",
-  "overallStatus": "stale",
+  "failures": {},
+  "generatedAt": "2026-02-19T20:20:20+00:00",
+  "mode": "open-only",
+  "overallStatus": "ok",
   "projects": {
-    "fraud-radar": "stale",
-    "netflix-roi": "stale",
-    "ord-lga-price-war": "ok",
-    "starbucks-pivot": "ok",
-    "target-shrink": "ok",
-    "tesla-nacs": "ok"
+    "fraud-radar": {
+      "okSignals": 2,
+      "overallStatus": "ok",
+      "signalCount": 3,
+      "staleSignals": 0,
+      "unavailableSignals": 1
+    },
+    "netflix-roi": {
+      "okSignals": 2,
+      "overallStatus": "ok",
+      "signalCount": 3,
+      "staleSignals": 0,
+      "unavailableSignals": 1
+    },
+    "ord-lga-price-war": {
+      "okSignals": 3,
+      "overallStatus": "ok",
+      "signalCount": 3,
+      "staleSignals": 0,
+      "unavailableSignals": 0
+    },
+    "starbucks-pivot": {
+      "okSignals": 2,
+      "overallStatus": "ok",
+      "signalCount": 2,
+      "staleSignals": 0,
+      "unavailableSignals": 0
+    },
+    "target-shrink": {
+      "okSignals": 2,
+      "overallStatus": "ok",
+      "signalCount": 2,
+      "staleSignals": 0,
+      "unavailableSignals": 0
+    },
+    "tesla-nacs": {
+      "okSignals": 3,
+      "overallStatus": "ok",
+      "signalCount": 3,
+      "staleSignals": 0,
+      "unavailableSignals": 0
+    }
   },
-  "runId": "real-20260217160617"
+  "runId": "real-20260219202020"
 }

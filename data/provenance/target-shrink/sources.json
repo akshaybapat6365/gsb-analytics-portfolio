@@ -1,0 +1,49 @@
+{
+  "discoveredAt": "2026-02-19T20:16:52+00:00",
+  "mode": "open-only",
+  "opennessPotentialScore": 69.67,
+  "projectSlug": "target-shrink",
+  "projectTitle": "Target Shrink: Loss Prevention Economics",
+  "qualityRubric": {
+    "coverage": 40,
+    "freshness": 20,
+    "modelDepth": 25,
+    "provenance": 15
+  },
+  "sources": [
+    {
+      "expectedSignalIds": [
+        "tgt_30d_return"
+      ],
+      "id": "stooq_tgt",
+      "kind": "market_context",
+      "label": "Stooq TGT daily prices",
+      "opennessScore": 82,
+      "sourceKey": "stooq:TGT",
+      "status": "configured",
+      "url": "https://stooq.com/"
+    },
+    {
+      "expectedSignalIds": [
+        "wmt_30d_return"
+      ],
+      "id": "stooq_wmt",
+      "kind": "market_context",
+      "label": "Stooq WMT daily prices",
+      "opennessScore": 82,
+      "sourceKey": "stooq:WMT",
+      "status": "configured",
+      "url": "https://stooq.com/"
+    },
+    {
+      "expectedSignalIds": [],
+      "id": "lprc_public_notes",
+      "kind": "domain_reference_limited",
+      "label": "Public retail-loss reference corpus",
+      "opennessScore": 45,
+      "sourceKey": "retail-loss:public-reference",
+      "status": "configured",
+      "url": "https://lpresearch.org/"
+    }
+  ]
+}

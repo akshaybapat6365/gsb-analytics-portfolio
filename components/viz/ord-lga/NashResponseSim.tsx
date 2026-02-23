@@ -45,7 +45,7 @@ export function NashResponseSim({ states, convergenceDay }: NashResponseSimProps
         <p className="font-feature text-xs uppercase tracking-[0.2em] text-slate-300">
           Nash Response Simulator
         </p>
-        <p className="font-mono text-sm text-cyan-100">
+        <p className="font-mono text-sm text-amber-100">
           Convergence day: {formatNumber(convergenceDay)}
         </p>
       </div>
@@ -60,7 +60,7 @@ export function NashResponseSim({ states, convergenceDay }: NashResponseSimProps
               x2={width - margin.right}
               y1={yy}
               y2={yy}
-              stroke="rgba(148,163,184,0.12)"
+              stroke="rgba(182,169,151,0.12)"
             />
           );
         })}
@@ -73,7 +73,7 @@ export function NashResponseSim({ states, convergenceDay }: NashResponseSimProps
               x2={xx}
               y1={margin.top}
               y2={height - margin.bottom}
-              stroke="rgba(148,163,184,0.12)"
+              stroke="rgba(182,169,151,0.12)"
             />
           );
         })}
@@ -83,30 +83,30 @@ export function NashResponseSim({ states, convergenceDay }: NashResponseSimProps
           y1={y(x.domain()[0])}
           x2={x(x.domain()[1])}
           y2={y(x.domain()[1])}
-          stroke="rgba(148,163,184,0.4)"
+          stroke="rgba(182,169,151,0.4)"
           strokeDasharray="6 6"
         />
 
-        <path d={path(states) ?? ""} fill="none" stroke="rgba(34,211,238,0.95)" strokeWidth={2.8} />
+        <path d={path(states) ?? ""} fill="none" stroke="rgba(139,107,62,0.95)" strokeWidth={2.8} />
         {states.map((state, index) => (
           <circle
             key={state.dayIndex}
             cx={x(state.uaPrice)}
             cy={y(state.dlPrice)}
             r={index === states.length - 1 ? 6 : 3.6}
-            fill={index === states.length - 1 ? "rgba(52,211,153,0.95)" : "rgba(34,211,238,0.85)"}
+            fill={index === states.length - 1 ? "rgba(73,95,69,0.95)" : "rgba(139,107,62,0.85)"}
             stroke="rgba(226,232,240,0.8)"
             strokeWidth={0.8}
           />
         ))}
 
         {first ? (
-          <text x={x(first.uaPrice) + 8} y={y(first.dlPrice) - 8} fontSize={11} fill="rgba(148,163,184,0.95)">
+          <text x={x(first.uaPrice) + 8} y={y(first.dlPrice) - 8} fontSize={11} fill="rgba(182,169,151,0.95)">
             Start
           </text>
         ) : null}
         {last ? (
-          <text x={x(last.uaPrice) + 8} y={y(last.dlPrice) - 8} fontSize={11} fill="rgba(52,211,153,0.95)">
+          <text x={x(last.uaPrice) + 8} y={y(last.dlPrice) - 8} fontSize={11} fill="rgba(73,95,69,0.95)">
             Equilibrium
           </text>
         ) : null}
@@ -115,7 +115,7 @@ export function NashResponseSim({ states, convergenceDay }: NashResponseSimProps
       <div className="mt-4 grid gap-3 sm:grid-cols-3">
         <div className="rounded-2xl border border-white/10 bg-black/25 p-4">
           <p className="font-feature text-xs uppercase tracking-[0.18em] text-slate-300">UAL Capture</p>
-          <p className="mt-2 font-mono text-lg text-cyan-200">{formatPct(avgCapture, { digits: 1 })}</p>
+          <p className="mt-2 font-mono text-lg text-amber-200">{formatPct(avgCapture, { digits: 1 })}</p>
         </div>
         <div className="rounded-2xl border border-white/10 bg-black/25 p-4">
           <p className="font-feature text-xs uppercase tracking-[0.18em] text-slate-300">Price Spread</p>

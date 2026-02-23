@@ -26,10 +26,12 @@ export function Slider({
   const display = formatValue ? formatValue(value) : String(value);
 
   return (
-    <label className={cn("flex flex-col gap-2", className)}>
+    <label className={cn("flex flex-col gap-2.5", className)}>
       <div className="flex items-baseline justify-between gap-4">
-        <span className="text-sm text-slate-200">{label}</span>
-        <span className="font-sans text-xs tabular-nums text-slate-400">
+        <span className="text-[13px] font-medium text-slate-100 sm:text-sm">
+          {label}
+        </span>
+        <span className="font-mono text-[12px] tabular-nums text-slate-300 sm:text-[13px]">
           {display}
         </span>
       </div>
@@ -41,10 +43,11 @@ export function Slider({
         value={value}
         onChange={(e) => onChange(Number(e.target.value))}
         className={cn(
-          "h-2 w-full cursor-pointer appearance-none rounded-full bg-white/10",
+          "h-2.5 w-full cursor-pointer appearance-none rounded-full border border-white/8 bg-white/12",
           "[&::-webkit-slider-thumb]:h-5 [&::-webkit-slider-thumb]:w-5 [&::-webkit-slider-thumb]:appearance-none",
-          "[&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-cyan-300",
-          "[&::-webkit-slider-thumb]:shadow-[0_0_0_6px_rgba(34,211,238,0.12)]",
+          "[&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-amber-300",
+          "[&::-webkit-slider-thumb]:shadow-[0_0_0_6px_rgba(139,107,62,0.12)]",
+          "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-200/50",
         )}
       />
     </label>

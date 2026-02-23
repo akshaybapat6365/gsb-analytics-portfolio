@@ -32,7 +32,7 @@ export function RouteError({ title, error, reset, hint }: RouteErrorProps) {
           <button
             type="button"
             onClick={() => reset()}
-            className="inline-flex items-center justify-center rounded-full bg-cyan-300 px-5 py-3 font-sans text-sm font-semibold text-slate-950 hover:bg-cyan-200"
+            className="inline-flex items-center justify-center rounded-full bg-amber-300 px-5 py-3 font-sans text-sm font-semibold text-slate-950 hover:bg-amber-200"
           >
             Retry render
           </button>

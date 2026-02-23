@@ -1,4 +1,106 @@
 {
+  "ablationSummary": [
+    {
+      "actualRevenue": 1325287.5,
+      "incrementalRevenue": 72119.49,
+      "liftPct": 0.0544,
+      "meanRegret": 2884.78,
+      "scenario": "full_policy",
+      "simRevenue": 1397406.99
+    },
+    {
+      "actualRevenue": 1325287.5,
+      "incrementalRevenue": 77530.04,
+      "liftPct": 0.0585,
+      "meanRegret": 3101.2,
+      "scenario": "no_competitor_response",
+      "simRevenue": 1402817.54
+    },
+    {
+      "actualRevenue": 1325287.5,
+      "incrementalRevenue": 72398.32,
+      "liftPct": 0.0546,
+      "meanRegret": 2895.93,
+      "scenario": "no_shock_adjustment",
+      "simRevenue": 1397685.82
+    },
+    {
+      "actualRevenue": 1325287.5,
+      "incrementalRevenue": 5820.22,
+      "liftPct": 0.0044,
+      "meanRegret": 232.81,
+      "scenario": "static_elasticity_soft",
+      "simRevenue": 1331107.72
+    }
+  ],
+  "annotations": [
+    {
+      "body": "Moderate demand shock: weather and event spillovers shifted late-booking behavior.",
+      "evidenceRefs": [
+        {
+          "asOf": "2026-01-01",
+          "seriesId": "airfare_cpi_yoy",
+          "source": "fred:CUSR0000SETG01",
+          "value": "2.93"
+        },
+        {
+          "asOf": "2026-02-19",
+          "seriesId": "ual_30d_return",
+          "source": "stooq:UAL",
+          "value": "-6.10"
+        }
+      ],
+      "id": "ord-shock-1",
+      "moduleId": "pricing-war-room",
+      "timestampOrIndex": "2023-04-11",
+      "title": "Demand anomaly",
+      "type": "shock"
+    },
+    {
+      "body": "Major demand shock: schedule disruption and event traffic changed booking mix intraday.",
+      "evidenceRefs": [
+        {
+          "asOf": "2026-01-01",
+          "seriesId": "airfare_cpi_yoy",
+          "source": "fred:CUSR0000SETG01",
+          "value": "2.93"
+        },
+        {
+          "asOf": "2026-02-19",
+          "seriesId": "ual_30d_return",
+          "source": "stooq:UAL",
+          "value": "-6.10"
+        }
+      ],
+      "id": "ord-shock-2",
+      "moduleId": "pricing-war-room",
+      "timestampOrIndex": "2023-04-18",
+      "title": "Demand anomaly",
+      "type": "shock"
+    },
+    {
+      "body": "Major demand shock: schedule disruption and event traffic changed booking mix intraday.",
+      "evidenceRefs": [
+        {
+          "asOf": "2026-01-01",
+          "seriesId": "airfare_cpi_yoy",
+          "source": "fred:CUSR0000SETG01",
+          "value": "2.93"
+        },
+        {
+          "asOf": "2026-02-19",
+          "seriesId": "ual_30d_return",
+          "source": "stooq:UAL",
+          "value": "-6.10"
+        }
+      ],
+      "id": "ord-shock-3",
+      "moduleId": "pricing-war-room",
+      "timestampOrIndex": "2023-05-02",
+      "title": "Demand anomaly",
+      "type": "shock"
+    }
+  ],
   "bookingCurve": [
     {
       "actualBookings": 165.0,
@@ -2828,6 +2930,43 @@
     "inferredPolicyLabel": "price-match with lagged undercut on shock days",
     "name": "Delta"
   },
+  "dataLineage": {
+    "inferredPct": 0.24,
+    "modeledPct": 0.39,
+    "observedPct": 0.37
+  },
+  "dataReadiness": [
+    {
+      "lastSuccessfulRealRunAt": "2026-02-19T20:20:20+00:00",
+      "minRequiredSeries": [
+        "airfare_cpi_yoy"
+      ],
+      "missingSeries": [],
+      "moduleId": "airfare_cpi_yoy",
+      "realCoveragePct": 100,
+      "status": "ready"
+    },
+    {
+      "lastSuccessfulRealRunAt": "2026-02-19T20:20:21+00:00",
+      "minRequiredSeries": [
+        "ual_30d_return"
+      ],
+      "missingSeries": [],
+      "moduleId": "ual_30d_return",
+      "realCoveragePct": 100,
+      "status": "ready"
+    },
+    {
+      "lastSuccessfulRealRunAt": "2026-02-19T20:20:22+00:00",
+      "minRequiredSeries": [
+        "dal_30d_return"
+      ],
+      "missingSeries": [],
+      "moduleId": "dal_30d_return",
+      "realCoveragePct": 100,
+      "status": "ready"
+    }
+  ],
   "days": [
     {
       "actual": {
@@ -4286,6 +4425,21 @@
       "shock": 0.0
     }
   ],
+  "decisionEvidence": [
+    {
+      "confidenceBand": [
+        0.8,
+        0.98
+      ],
+      "counterfactualDelta": "566,670 revenue delta",
+      "drivers": [
+        "booking-window elasticity",
+        "competitor reactivity",
+        "demand shock handling"
+      ],
+      "recommendationId": "ord-price-policy"
+    }
+  ],
   "heatmap": {
     "actual": [
       [
@@ -4407,12 +4561,12 @@
     ]
   },
   "meta": {
-    "generatedAt": "2026-02-17T16:06:17+00:00",
+    "generatedAt": "2026-02-19T20:20:20+00:00",
     "modules": {
       "airfare_cpi_yoy": {
         "provenance": {
           "asOf": "2026-01-01",
-          "fetchedAt": "2026-02-17T16:06:17+00:00",
+          "fetchedAt": "2026-02-19T20:20:20+00:00",
           "note": "Airfare CPI YoY",
           "source": "fred:CUSR0000SETG01"
         },
@@ -4420,8 +4574,8 @@
       },
       "dal_30d_return": {
         "provenance": {
-          "asOf": "2026-02-17",
-          "fetchedAt": "2026-02-17T16:06:19+00:00",
+          "asOf": "2026-02-19",
+          "fetchedAt": "2026-02-19T20:20:22+00:00",
           "note": "30d total return",
           "source": "stooq:DAL"
         },
@@ -4429,8 +4583,8 @@
       },
       "ual_30d_return": {
         "provenance": {
-          "asOf": "2026-02-17",
-          "fetchedAt": "2026-02-17T16:06:17+00:00",
+          "asOf": "2026-02-19",
+          "fetchedAt": "2026-02-19T20:20:21+00:00",
           "note": "30d total return",
           "source": "stooq:UAL"
         },
@@ -4438,7 +4592,23 @@
       }
     },
     "overallStatus": "ok",
-    "runId": "real-20260217160617"
+    "policyDecision": "Strict real-feed mode with stale-real cache continuity.",
+    "policyMode": "strict-real",
+    "runId": "real-20260219202020"
+  },
+  "methodMeta": {
+    "calibrationWindow": {
+      "count": 66,
+      "end": "2023-06-05",
+      "start": "2023-04-01"
+    },
+    "modelVersion": "ord_lga_policy_v2",
+    "objective": "maximize risk-adjusted incremental revenue under bounded fare movement",
+    "validationWindow": {
+      "count": 25,
+      "end": "2023-06-30",
+      "start": "2023-06-06"
+    }
   },
   "narrative": [
     {
@@ -4678,10 +4848,11 @@
       "label": "US airfare CPI YoY",
       "provenance": {
         "asOf": "2026-01-01",
-        "fetchedAt": "2026-02-17T16:06:17+00:00",
+        "fetchedAt": "2026-02-19T20:20:20+00:00",
         "note": "Airfare CPI YoY",
         "source": "fred:CUSR0000SETG01"
       },
+      "required": true,
       "status": "ok",
       "unit": "%",
       "value": "2.93"
@@ -4691,33 +4862,201 @@
       "id": "ual_30d_return",
       "label": "UAL 30d return",
       "provenance": {
-        "asOf": "2026-02-17",
-        "fetchedAt": "2026-02-17T16:06:17+00:00",
+        "asOf": "2026-02-19",
+        "fetchedAt": "2026-02-19T20:20:21+00:00",
         "note": "30d total return",
         "source": "stooq:UAL"
       },
+      "required": true,
       "status": "ok",
       "unit": "%",
-      "value": "-0.83"
+      "value": "-6.10"
     },
     {
       "change": "30d total return",
       "id": "dal_30d_return",
       "label": "DAL 30d return",
       "provenance": {
-        "asOf": "2026-02-17",
-        "fetchedAt": "2026-02-17T16:06:19+00:00",
+        "asOf": "2026-02-19",
+        "fetchedAt": "2026-02-19T20:20:22+00:00",
         "note": "30d total return",
         "source": "stooq:DAL"
       },
+      "required": true,
       "status": "ok",
       "unit": "%",
-      "value": "1.46"
+      "value": "-6.25"
     }
   ],
   "route": {
     "destination": "LGA",
     "origin": "ORD"
+  },
+  "sensitivitySummary": {
+    "bestCase": {
+      "competitorReactivity": 0.336,
+      "elasticity": -1.638,
+      "incrementalRevenue": 202175.57,
+      "liftPct": 0.1526
+    },
+    "grid": [
+      {
+        "competitorReactivity": 0.336,
+        "elasticity": -0.882,
+        "incrementalRevenue": -42565.46,
+        "liftPct": -0.0321
+      },
+      {
+        "competitorReactivity": 0.476,
+        "elasticity": -0.882,
+        "incrementalRevenue": -44008.17,
+        "liftPct": -0.0332
+      },
+      {
+        "competitorReactivity": 0.56,
+        "elasticity": -0.882,
+        "incrementalRevenue": -44873.58,
+        "liftPct": -0.0339
+      },
+      {
+        "competitorReactivity": 0.672,
+        "elasticity": -0.882,
+        "incrementalRevenue": -46027.36,
+        "liftPct": -0.0347
+      },
+      {
+        "competitorReactivity": 0.784,
+        "elasticity": -0.882,
+        "incrementalRevenue": -47180.91,
+        "liftPct": -0.0356
+      },
+      {
+        "competitorReactivity": 0.336,
+        "elasticity": -1.071,
+        "incrementalRevenue": 14543.03,
+        "liftPct": 0.011
+      },
+      {
+        "competitorReactivity": 0.476,
+        "elasticity": -1.071,
+        "incrementalRevenue": 13142.02,
+        "liftPct": 0.0099
+      },
+      {
+        "competitorReactivity": 0.56,
+        "elasticity": -1.071,
+        "incrementalRevenue": 12301.32,
+        "liftPct": 0.0093
+      },
+      {
+        "competitorReactivity": 0.672,
+        "elasticity": -1.071,
+        "incrementalRevenue": 11180.23,
+        "liftPct": 0.0084
+      },
+      {
+        "competitorReactivity": 0.784,
+        "elasticity": -1.071,
+        "incrementalRevenue": 10059.02,
+        "liftPct": 0.0076
+      },
+      {
+        "competitorReactivity": 0.336,
+        "elasticity": -1.26,
+        "incrementalRevenue": 74285.15,
+        "liftPct": 0.0561
+      },
+      {
+        "competitorReactivity": 0.476,
+        "elasticity": -1.26,
+        "incrementalRevenue": 72931.87,
+        "liftPct": 0.055
+      },
+      {
+        "competitorReactivity": 0.56,
+        "elasticity": -1.26,
+        "incrementalRevenue": 72119.49,
+        "liftPct": 0.0544
+      },
+      {
+        "competitorReactivity": 0.672,
+        "elasticity": -1.26,
+        "incrementalRevenue": 71035.98,
+        "liftPct": 0.0536
+      },
+      {
+        "competitorReactivity": 0.784,
+        "elasticity": -1.26,
+        "incrementalRevenue": 69951.95,
+        "liftPct": 0.0528
+      },
+      {
+        "competitorReactivity": 0.336,
+        "elasticity": -1.449,
+        "incrementalRevenue": 136785.68,
+        "liftPct": 0.1032
+      },
+      {
+        "competitorReactivity": 0.476,
+        "elasticity": -1.449,
+        "incrementalRevenue": 135486.6,
+        "liftPct": 0.1022
+      },
+      {
+        "competitorReactivity": 0.56,
+        "elasticity": -1.449,
+        "incrementalRevenue": 134706.55,
+        "liftPct": 0.1016
+      },
+      {
+        "competitorReactivity": 0.672,
+        "elasticity": -1.449,
+        "incrementalRevenue": 133665.73,
+        "liftPct": 0.1009
+      },
+      {
+        "competitorReactivity": 0.784,
+        "elasticity": -1.449,
+        "incrementalRevenue": 132624.1,
+        "liftPct": 0.1001
+      },
+      {
+        "competitorReactivity": 0.336,
+        "elasticity": -1.638,
+        "incrementalRevenue": 202175.57,
+        "liftPct": 0.1526
+      },
+      {
+        "competitorReactivity": 0.476,
+        "elasticity": -1.638,
+        "incrementalRevenue": 200937.69,
+        "liftPct": 0.1516
+      },
+      {
+        "competitorReactivity": 0.56,
+        "elasticity": -1.638,
+        "incrementalRevenue": 200194.11,
+        "liftPct": 0.1511
+      },
+      {
+        "competitorReactivity": 0.672,
+        "elasticity": -1.638,
+        "incrementalRevenue": 199201.62,
+        "liftPct": 0.1503
+      },
+      {
+        "competitorReactivity": 0.784,
+        "elasticity": -1.638,
+        "incrementalRevenue": 198207.93,
+        "liftPct": 0.1496
+      }
+    ],
+    "worstCase": {
+      "competitorReactivity": 0.784,
+      "elasticity": -0.882,
+      "incrementalRevenue": -47180.91,
+      "liftPct": -0.0356
+    }
   },
   "shockEvents": [
     {
@@ -4762,5 +5101,51 @@
       "narrative": "Moderate demand shock: weather and event spillovers shifted late-booking behavior.",
       "severity": "med"
     }
-  ]
+  ],
+  "uncertainty": {
+    "regretCi": [
+      2314.93,
+      3858.61
+    ],
+    "revenueLiftCi": [
+      57873.26,
+      96465.33
+    ],
+    "samples": 600,
+    "shareImpactCi": [
+      0.265,
+      0.2881
+    ]
+  },
+  "validationSummary": {
+    "metrics": {
+      "policyModel": {
+        "maeRevenue": 2884.78,
+        "mapeRevenue": 0.0549,
+        "meanRegret": 2884.78
+      },
+      "staticBaseline": {
+        "maeRevenue": 772.55,
+        "mapeRevenue": 0.0144,
+        "meanRegret": -176.51
+      },
+      "stickyBaseline": {
+        "maeRevenue": 1158.79,
+        "mapeRevenue": 0.0218,
+        "meanRegret": -313.88
+      }
+    },
+    "oosLiftDeltaVsStatic": 76532.2,
+    "oosLiftDeltaVsSticky": 79966.44,
+    "trainWindow": {
+      "count": 66,
+      "end": "2023-06-05",
+      "start": "2023-04-01"
+    },
+    "validationWindow": {
+      "count": 25,
+      "end": "2023-06-30",
+      "start": "2023-06-06"
+    }
+  }
 }

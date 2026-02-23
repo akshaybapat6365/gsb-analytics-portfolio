@@ -1,7 +1,7 @@
 # Starbucks Suburban Pivot — Data Card
 
 ## Status
-Synthetic (default)
+Mode-aware baseline payload (supports strict-real and baseline-fallback enrichment)
 
 ## What’s included
 - Denver metro store points with WFH exposure and baseline performance
@@ -16,4 +16,3 @@ Synthetic (default)
 ## Real-world swap
 - SafeGraph/Placer patterns + Census commuting data (LODES)
 - DID with robust standard errors and placebo checks
-

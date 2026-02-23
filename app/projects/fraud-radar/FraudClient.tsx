@@ -6,15 +6,70 @@ import { EChart } from "@/components/viz/EChart";
 import { KpiCard } from "@/components/ui/KpiCard";
 import { Slider } from "@/components/ui/Slider";
 import { StoryChapterShell } from "@/components/story/StoryChapterShell";
+import { RouteReveal } from "@/components/motion/RouteReveal";
+import { NarrativeStrip } from "@/components/story/NarrativeStrip";
+import { DecisionEvidencePanel } from "@/components/story/DecisionEvidencePanel";
+import { DecisionConsole } from "@/components/story/DecisionConsole";
 import { formatNumber, formatPct } from "@/lib/metrics/format";
 import type { FraudPayload } from "@/lib/schemas/fraud";
 import { clamp } from "@/lib/metrics/math";
+
+const ACCOUNTING_KEYS = [
+  "revenue",
+  "accrual",
+  "inventory",
+  "receivable",
+  "margin",
+  "cash",
+  "expense",
+  "asset",
+  "liability",
+  "beneish",
+];
+
+const LINGUISTIC_KEYS = [
+  "sentiment",
+  "tone",
+  "modal",
+  "hedge",
+  "pronoun",
+  "deception",
+  "language",
+  "narrative",
+  "uncertainty",
+  "verbosity",
+];
+
+type SignalMode = "blended" | "accounting" | "linguistic";
+
+function pickChapterAnnotations(
+  annotations: NonNullable<FraudPayload["annotations"]>,
+  keywords: string[],
+) {
+  const pool = annotations.filter((annotation) =>
+    keywords.some((keyword) => annotation.moduleId.includes(keyword)),
+  );
+  return pool.length > 0 ? pool : annotations;
+}
+
+function classifySignal(signal: string) {
+  const lower = signal.toLowerCase();
+  if (ACCOUNTING_KEYS.some((keyword) => lower.includes(keyword))) {
+    return "accounting" as const;
+  }
+  if (LINGUISTIC_KEYS.some((keyword) => lower.includes(keyword))) {
+    return "linguistic" as const;
+  }
+  return "other" as const;
+}
 
 export default function FraudClient({ payload }: { payload: FraudPayload }) {
   const [ticker, setTicker] = useState<string>("");
   const [deceptionWeight, setDeceptionWeight] = useState(56);
   const [linkCutoff, setLinkCutoff] = useState(28);
   const [shortIntensity, setShortIntensity] = useState(62);
+  const [signalMode, setSignalMode] = useState<SignalMode>("blended");
+  const [selectedFlagIndex, setSelectedFlagIndex] = useState(0);
 
   const derived = useMemo(() => {
     const selectedTicker =
@@ -22,6 +77,7 @@ export default function FraudClient({ payload }: { payload: FraudPayload }) {
     const filings = payload.filings
       .filter((f) => f.ticker === selectedTicker)
       .sort((a, b) => a.filingDate.localeCompare(b.filingDate));
+
     const weight = clamp(deceptionWeight / 100, 0, 1);
     const withAdjustedRisk = filings.map((filing) => ({
       ...filing,
@@ -31,6 +87,7 @@ export default function FraudClient({ payload }: { payload: FraudPayload }) {
         1,
       ),
     }));
+
     const latest = withAdjustedRisk.at(-1);
     const maxRisk = withAdjustedRisk.reduce(
       (maxValue, filing) => Math.max(maxValue, filing.adjustedRisk),
@@ -58,10 +115,11 @@ export default function FraudClient({ payload }: { payload: FraudPayload }) {
         acc[signal] = (acc[signal] ?? 0) + 1;
         return acc;
       }, {});
+
     const topSignals = Object.entries(signalCounts)
       .sort((a, b) => b[1] - a[1])
-      .slice(0, 8)
-      .map(([signal, count]) => ({ signal, count }));
+      .slice(0, 12)
+      .map(([signal, count]) => ({ signal, count, family: classifySignal(signal) }));
 
     const latestByTicker = payload.filings.reduce<Record<string, (typeof payload.filings)[number]>>(
       (acc, filing) => {
@@ -73,6 +131,7 @@ export default function FraudClient({ payload }: { payload: FraudPayload }) {
       },
       {},
     );
+
     const watchlist = Object.values(latestByTicker)
       .map((filing) => ({
         ticker: filing.ticker,
@@ -84,7 +143,22 @@ export default function FraudClient({ payload }: { payload: FraudPayload }) {
         ),
       }))
       .sort((a, b) => b.score - a.score)
-      .slice(0, 6);
+      .slice(0, 8);
+
+    const flaggedEvents = withAdjustedRisk
+      .map((filing) => ({
+        ...filing,
+        delta: filing.adjustedRisk - filing.riskScore,
+      }))
+      .sort((a, b) => b.adjustedRisk - a.adjustedRisk)
+      .slice(0, 8);
+
+    const alphaCenter = payload.backtest.annualizedAlpha * (0.72 + shortIntensity / 180);
+    const alphaBand: [number, number] = [
+      clamp(alphaCenter - 0.08, -0.5, 1),
+      clamp(alphaCenter + 0.08, -0.5, 1),
+    ];
+    const triggerThreshold = clamp(0.64 + shortIntensity / 250, 0.55, 0.92);
 
     return {
       selectedTicker,
@@ -97,30 +171,57 @@ export default function FraudClient({ payload }: { payload: FraudPayload }) {
       adjustedStrategy,
       topSignals,
       watchlist,
+      flaggedEvents,
+      alphaBand,
+      triggerThreshold,
+      alphaCenter,
     };
   }, [payload, ticker, deceptionWeight, linkCutoff, shortIntensity]);
 
+  const selectedFlag =
+    derived.flaggedEvents[selectedFlagIndex] ?? derived.flaggedEvents[0] ?? null;
+
+  const viewedSignals = useMemo(() => {
+    if (signalMode === "blended") {
+      return derived.topSignals.slice(0, 8);
+    }
+    return derived.topSignals
+      .filter((entry) => entry.family === signalMode)
+      .slice(0, 8);
+  }, [derived.topSignals, signalMode]);
+
   const riskChart: EChartsOption = {
     backgroundColor: "transparent",
-    grid: { left: 44, right: 24, top: 20, bottom: 36 },
+    grid: { left: 52, right: 54, top: 20, bottom: 42 },
     tooltip: { trigger: "axis" },
     legend: { textStyle: { color: "#cbd5e1" } },
     xAxis: {
       type: "category",
       data: derived.withAdjustedRisk.map((filing) => filing.filingDate),
       axisLabel: { color: "#94a3b8", hideOverlap: true },
-      axisLine: { lineStyle: { color: "rgba(148,163,184,0.25)" } },
+      axisLine: { lineStyle: { color: "rgba(182,169,151,0.25)" } },
     },
-    yAxis: {
-      type: "value",
-      min: 0,
-      max: 1,
-      axisLabel: {
-        color: "#94a3b8",
-        formatter: (value: number) => `${Math.round(value * 100)}%`,
+    yAxis: [
+      {
+        type: "value",
+        min: 0,
+        max: 1,
+        axisLabel: {
+          color: "#94a3b8",
+          formatter: (value: number) => `${Math.round(value * 100)}%`,
+        },
+        splitLine: { lineStyle: { color: "rgba(182,169,151,0.12)" } },
       },
-      splitLine: { lineStyle: { color: "rgba(148,163,184,0.12)" } },
-    },
+      {
+        type: "value",
+        min: 0,
+        max: 1,
+        axisLabel: {
+          color: "#94a3b8",
+          formatter: (value: number) => `${Math.round(value * 100)}%`,
+        },
+      },
+    ],
     series: [
       {
         name: "Raw risk score",
@@ -128,7 +229,7 @@ export default function FraudClient({ payload }: { payload: FraudPayload }) {
         data: derived.withAdjustedRisk.map((filing) => filing.riskScore),
         smooth: 0.24,
         symbol: "none",
-        lineStyle: { width: 2, color: "rgba(251,113,133,0.82)" },
+        lineStyle: { width: 2, color: "rgba(157,49,49,0.68)" },
       },
       {
         name: "Adjusted risk score",
@@ -136,16 +237,28 @@ export default function FraudClient({ payload }: { payload: FraudPayload }) {
         data: derived.withAdjustedRisk.map((filing) => filing.adjustedRisk),
         smooth: 0.24,
         symbol: "none",
-        lineStyle: { width: 2.8, color: "rgba(244,63,94,0.98)" },
+        lineStyle: { width: 3, color: "rgba(244,63,94,0.98)" },
         areaStyle: { color: "rgba(244,63,94,0.12)" },
+        markPoint: {
+          symbol: "pin",
+          symbolSize: 44,
+          data: derived.flaggedEvents.slice(0, 3).map((filing) => ({
+            coord: [filing.filingDate, filing.adjustedRisk],
+            name: filing.filingDate,
+            value: `${Math.round(filing.adjustedRisk * 100)}%`,
+          })),
+          itemStyle: { color: "rgba(190,24,93,0.9)" },
+          label: { color: "#fff", fontSize: 9 },
+        },
       },
       {
-        name: "Deception intensity",
+        name: "Deception index",
         type: "line",
+        yAxisIndex: 1,
         data: derived.withAdjustedRisk.map((filing) => filing.deception),
         smooth: 0.24,
         symbol: "none",
-        lineStyle: { width: 2, color: "rgba(34,211,238,0.92)" },
+        lineStyle: { width: 2.2, color: "rgba(139,107,62,0.9)", type: "dashed" },
       },
     ],
   };
@@ -158,31 +271,35 @@ export default function FraudClient({ payload }: { payload: FraudPayload }) {
         type: "graph",
         layout: "force",
         roam: true,
-        data: derived.nodes.map((node) => ({
-          id: node.id,
-          name: node.id,
-          value: node.group,
-          symbolSize: 14 + node.group * 3.4,
-          itemStyle: {
-            color:
-              node.group >= 3
-                ? "rgba(251,113,133,0.9)"
-                : node.group === 2
-                  ? "rgba(251,191,36,0.88)"
-                  : "rgba(148,163,184,0.82)",
-          },
-        })),
+        data: derived.nodes.map((node) => {
+          const focused = node.id.toUpperCase().includes(derived.selectedTicker.toUpperCase());
+          return {
+            id: node.id,
+            name: node.id,
+            value: node.group,
+            symbolSize: focused ? 32 : 14 + node.group * 4,
+            itemStyle: {
+              color: focused
+                ? "rgba(244,63,94,0.96)"
+                : node.group >= 3
+                  ? "rgba(157,49,49,0.9)"
+                  : node.group === 2
+                    ? "rgba(139,107,62,0.88)"
+                    : "rgba(182,169,151,0.82)",
+            },
+          };
+        }),
         links: derived.links.map((link) => ({
           source: link.source,
           target: link.target,
           value: link.weight,
           lineStyle: {
-            width: 0.7 + link.weight * 2.2,
-            opacity: 0.38,
-            color: "rgba(226,232,240,0.5)",
+            width: 0.8 + link.weight * 2.6,
+            opacity: 0.4,
+            color: "rgba(226,232,240,0.48)",
           },
         })),
-        force: { repulsion: 138, edgeLength: 64 },
+        force: { repulsion: 190, edgeLength: 76, gravity: 0.05 },
         label: { show: true, color: "#e2e8f0", fontSize: 10 },
       },
     ],
@@ -190,44 +307,54 @@ export default function FraudClient({ payload }: { payload: FraudPayload }) {
 
   const signalChart: EChartsOption = {
     backgroundColor: "transparent",
-    grid: { left: 78, right: 22, top: 16, bottom: 24 },
+    grid: { left: 92, right: 24, top: 26, bottom: 30 },
     tooltip: { trigger: "axis" },
     xAxis: {
       type: "value",
       axisLabel: { color: "#94a3b8" },
-      splitLine: { lineStyle: { color: "rgba(148,163,184,0.1)" } },
-      axisLine: { lineStyle: { color: "rgba(148,163,184,0.25)" } },
+      splitLine: { lineStyle: { color: "rgba(182,169,151,0.1)" } },
+      axisLine: { lineStyle: { color: "rgba(182,169,151,0.25)" } },
     },
     yAxis: {
       type: "category",
-      data: derived.topSignals.map((entry) => entry.signal),
-      axisLabel: { color: "#cbd5e1" },
-      axisLine: { lineStyle: { color: "rgba(148,163,184,0.25)" } },
+      data: viewedSignals.map((entry) => entry.signal),
+      axisLabel: { color: "#cbd5e1", width: 140, overflow: "truncate" },
+      axisLine: { lineStyle: { color: "rgba(182,169,151,0.25)" } },
     },
     series: [
       {
         type: "bar",
-        data: derived.topSignals.map((entry) => entry.count),
-        itemStyle: { color: "rgba(251,113,133,0.84)" },
+        data: viewedSignals.map((entry) => entry.count),
+        itemStyle: {
+          color: (param: unknown) => {
+            const raw = param as { dataIndex?: unknown };
+            const idx = typeof raw.dataIndex === "number" ? raw.dataIndex : 0;
+            const item = viewedSignals[idx];
+            if (!item) return "rgba(157,49,49,0.84)";
+            if (item.family === "accounting") return "rgba(139,107,62,0.84)";
+            if (item.family === "linguistic") return "rgba(157,49,49,0.84)";
+            return "rgba(73,95,69,0.82)";
+          },
+        },
       },
     ],
   };
 
   const backtestChart: EChartsOption = {
     backgroundColor: "transparent",
-    grid: { left: 44, right: 24, top: 16, bottom: 34 },
+    grid: { left: 50, right: 30, top: 20, bottom: 42 },
     tooltip: { trigger: "axis" },
     legend: { textStyle: { color: "#cbd5e1" } },
     xAxis: {
       type: "category",
       data: payload.backtest.dates,
       axisLabel: { color: "#94a3b8", hideOverlap: true },
-      axisLine: { lineStyle: { color: "rgba(148,163,184,0.25)" } },
+      axisLine: { lineStyle: { color: "rgba(182,169,151,0.25)" } },
     },
     yAxis: {
       type: "value",
       axisLabel: { color: "#94a3b8" },
-      splitLine: { lineStyle: { color: "rgba(148,163,184,0.12)" } },
+      splitLine: { lineStyle: { color: "rgba(182,169,151,0.12)" } },
     },
     series: [
       {
@@ -236,8 +363,8 @@ export default function FraudClient({ payload }: { payload: FraudPayload }) {
         data: derived.adjustedStrategy,
         smooth: 0.2,
         symbol: "none",
-        lineStyle: { width: 2.4, color: "rgba(52,211,153,0.95)" },
-        areaStyle: { color: "rgba(52,211,153,0.1)" },
+        lineStyle: { width: 2.6, color: "rgba(73,95,69,0.95)" },
+        areaStyle: { color: "rgba(73,95,69,0.1)" },
       },
       {
         name: "Benchmark",
@@ -245,190 +372,279 @@ export default function FraudClient({ payload }: { payload: FraudPayload }) {
         data: payload.backtest.benchmark,
         smooth: 0.2,
         symbol: "none",
-        lineStyle: { width: 2, color: "rgba(148,163,184,0.85)" },
+        lineStyle: { width: 2, color: "rgba(182,169,151,0.85)" },
       },
     ],
   };
 
+  const annotations = payload.annotations ?? [];
+  const chapterAAnnotations = pickChapterAnnotations(annotations, ["risk", "timeline", "forensic"]);
+  const chapterBAnnotations = pickChapterAnnotations(annotations, ["cluster", "network", "similarity", "signal"]);
+  const chapterCAnnotations = pickChapterAnnotations(annotations, ["recommendation", "short", "alpha"]);
+  const chapterDAnnotations = pickChapterAnnotations(annotations, ["recommendation", "evidence"]);
+
   return (
     <div className="space-y-8">
-      <section className="neo-panel p-5">
-        <div className="grid gap-4 xl:grid-cols-[280px_minmax(0,1fr)] xl:items-end">
-          <div className="space-y-2">
-            <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-rose-100/85">
-              Forensic Controls
-            </p>
-            <label className="flex flex-col gap-2 text-xs text-slate-400">
-              Company
-              <select
-                className="rounded-xl border border-white/10 bg-black/30 px-3 py-2 text-sm text-slate-100"
-                value={derived.selectedTicker}
-                onChange={(event) => setTicker(event.target.value)}
-              >
-                {payload.companies.map((company) => (
-                  <option key={company.ticker} value={company.ticker}>
-                    {company.ticker} · {company.name}
-                  </option>
+      <RouteReveal profile="forensic">
+        <section className="neo-panel p-5">
+          <div className="grid gap-4 xl:grid-cols-[280px_minmax(0,1fr)] xl:items-end">
+            <div className="space-y-2">
+              <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-rose-100/85">Forensic Controls</p>
+              <label className="flex flex-col gap-2 text-xs text-slate-400">
+                Company
+                <select
+                  className="rounded-xl border border-white/10 bg-black/30 px-3 py-2 text-sm text-slate-100"
+                  value={derived.selectedTicker}
+                  onChange={(event) => {
+                    setTicker(event.target.value);
+                    setSelectedFlagIndex(0);
+                  }}
+                >
+                  {payload.companies.map((company) => (
+                    <option key={company.ticker} value={company.ticker}>
+                      {company.ticker} · {company.name}
+                    </option>
+                  ))}
+                </select>
+              </label>
+            </div>
+            <div className="grid gap-4 md:grid-cols-3">
+              <Slider
+                label="Deception weight"
+                value={deceptionWeight}
+                min={0}
+                max={100}
+                step={1}
+                onChange={setDeceptionWeight}
+                formatValue={(value) => `${value}%`}
+              />
+              <Slider
+                label="Cluster link cutoff"
+                value={linkCutoff}
+                min={0}
+                max={90}
+                step={1}
+                onChange={setLinkCutoff}
+                formatValue={(value) => `${value}%`}
+              />
+              <Slider
+                label="Short intensity"
+                value={shortIntensity}
+                min={0}
+                max={100}
+                step={1}
+                onChange={setShortIntensity}
+                formatValue={(value) => `${value}%`}
+              />
+            </div>
+          </div>
+        </section>
+      </RouteReveal>
+
+      <RouteReveal profile="forensic" delay={0.04}>
+        <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+          <KpiCard
+            label="Adjusted Risk (Latest)"
+            value={derived.latest ? formatPct(derived.latest.adjustedRisk, { digits: 0 }) : "—"}
+            hint={`${derived.selectedTicker} latest filing`}
+            accent="crimson"
+          />
+          <KpiCard
+            label="Peak Risk (History)"
+            value={formatPct(derived.maxRisk, { digits: 0 })}
+            hint="Max adjusted filing score"
+            accent="amber"
+          />
+          <KpiCard
+            label="Filtered Cluster Links"
+            value={formatNumber(derived.links.length)}
+            hint={`Cutoff ≥ ${Math.round(derived.threshold * 100)}%`}
+            accent="cyan"
+          />
+          <KpiCard
+            label="Expected Alpha Band"
+            value={`${formatPct(derived.alphaBand[0], { digits: 0 })} → ${formatPct(derived.alphaBand[1], { digits: 0 })}`}
+            hint="Short basket annualized range"
+            accent="emerald"
+          />
+        </div>
+      </RouteReveal>
+
+      <RouteReveal profile="forensic" delay={0.08}>
+        <StoryChapterShell
+          chapter="Primary Analysis"
+          title="Forensic timeline and event board"
+          description="Dual-axis risk/deception trajectory with filing-level flag events and direct why-flagged context."
+          insight={`Latest adjusted risk ${derived.latest ? formatPct(derived.latest.adjustedRisk, { digits: 0 }) : "—"} for ${derived.selectedTicker}.`}
+          impact={`${formatNumber(derived.withAdjustedRisk.length)} filings sequenced with top-${formatNumber(derived.flaggedEvents.length)} anomaly flags.`}
+          annotationCount={chapterAAnnotations.length}
+          tone="crimson"
+        >
+          <div className="grid gap-4 xl:grid-cols-[minmax(0,1fr)_360px]">
+            <EChart option={riskChart} height={620} title="Forensic Timeline (Risk vs Deception)" className="neo-panel" />
+            <section className="terminal overflow-hidden" data-testid="decision-console">
+              <div className="border-b border-white/10 bg-white/5 px-5 py-3">
+                <p className="font-mono text-[11px] uppercase tracking-[0.16em] text-slate-300">Flagged Filing Drawer</p>
+              </div>
+              <div className="space-y-2 px-5 py-4">
+                {derived.flaggedEvents.map((filing, index) => (
+                  <button
+                    key={`${filing.filingDate}-${filing.ticker}`}
+                    type="button"
+                    onClick={() => setSelectedFlagIndex(index)}
+                    className={
+                      selectedFlagIndex === index
+                        ? "w-full rounded-xl border border-rose-300/30 bg-rose-300/12 px-3 py-2 text-left"
+                        : "w-full rounded-xl border border-white/10 bg-white/[0.03] px-3 py-2 text-left hover:bg-white/[0.08]"
+                    }
+                  >
+                    <p className="text-xs text-slate-200">{filing.filingDate}</p>
+                    <p className="text-sm font-semibold text-slate-100">
+                      {filing.ticker} · {formatPct(filing.adjustedRisk, { digits: 0 })}
+                    </p>
+                  </button>
                 ))}
-              </select>
-            </label>
+              </div>
+              <div className="border-t border-white/10 px-5 py-4 text-sm text-slate-300">
+                <p>
+                  <span className="text-slate-100">Selected filing:</span> {selectedFlag?.filingDate ?? "—"}
+                </p>
+                <p>
+                  <span className="text-slate-100">Top signals:</span> {selectedFlag?.topSignals.slice(0, 3).join(" · ") || "—"}
+                </p>
+                <p>
+                  <span className="text-slate-100">Risk uplift:</span>{" "}
+                  {selectedFlag ? formatPct(selectedFlag.delta, { digits: 1 }) : "—"}
+                </p>
+              </div>
+            </section>
           </div>
-          <div className="grid gap-4 md:grid-cols-3">
-            <Slider
-              label="Deception weight"
-              value={deceptionWeight}
-              min={0}
-              max={100}
-              step={1}
-              onChange={setDeceptionWeight}
-              formatValue={(value) => `${value}%`}
-            />
-            <Slider
-              label="Cluster link cutoff"
-              value={linkCutoff}
-              min={0}
-              max={90}
-              step={1}
-              onChange={setLinkCutoff}
-              formatValue={(value) => `${value}%`}
-            />
-            <Slider
-              label="Short intensity"
-              value={shortIntensity}
-              min={0}
-              max={100}
-              step={1}
-              onChange={setShortIntensity}
-              formatValue={(value) => `${value}%`}
-            />
-          </div>
-        </div>
-      </section>
+          <NarrativeStrip
+            title="Forensic Annotations"
+            subtitle="Event-linked callouts for filing chronology and risk regime transitions."
+            annotations={chapterAAnnotations}
+            tone="rose"
+            maxItems={4}
+          />
+        </StoryChapterShell>
+      </RouteReveal>
 
-      <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
-        <KpiCard
-          label="Adjusted Risk (Latest)"
-          value={derived.latest ? formatPct(derived.latest.adjustedRisk, { digits: 0 }) : "—"}
-          hint={`${derived.selectedTicker} latest filing`}
-          accent="crimson"
-        />
-        <KpiCard
-          label="Peak Risk (History)"
-          value={formatPct(derived.maxRisk, { digits: 0 })}
-          hint="Max adjusted filing score"
-          accent="amber"
-        />
-        <KpiCard
-          label="Filtered Cluster Links"
-          value={formatNumber(derived.links.length)}
-          hint={`Cutoff ≥ ${Math.round(derived.threshold * 100)}%`}
-          accent="cyan"
-        />
-        <KpiCard
-          label="Backtest Alpha (Ann.)"
-          value={formatPct(payload.backtest.annualizedAlpha, { digits: 0 })}
-          hint="Strategy vs benchmark"
-          accent="emerald"
-        />
-      </div>
-
-      <StoryChapterShell
-        chapter="Chapter A"
-        title="Risk chronology"
-        description="Track filing-level regime shifts and compare raw vs weighted deception-adjusted risk."
-        tone="crimson"
-      >
-        <div className="grid gap-4 xl:grid-cols-[minmax(0,1fr)_320px]">
-          <EChart option={riskChart} height={340} title="Filing Risk Timeline" className="neo-panel" />
-          <section className="terminal overflow-hidden">
-            <div className="border-b border-white/10 bg-white/5 px-5 py-3">
-              <p className="font-mono text-[11px] uppercase tracking-[0.16em] text-slate-400">
-                Latest Filing Readout
-              </p>
-            </div>
-            <div className="space-y-3 px-5 py-5 text-sm text-slate-300">
-              <p>
-                <span className="text-slate-100">Date:</span>{" "}
-                {derived.latest?.filingDate ?? "—"}
-              </p>
-              <p>
-                <span className="text-slate-100">Beneish M:</span>{" "}
-                {derived.latest ? formatNumber(derived.latest.beneishM, { digits: 2 }) : "—"}
-              </p>
-              <p>
-                <span className="text-slate-100">MD&A sentiment:</span>{" "}
-                {derived.latest ? formatNumber(derived.latest.sentiment, { digits: 2 }) : "—"}
-              </p>
-              <p>
-                <span className="text-slate-100">Deception:</span>{" "}
-                {derived.latest ? formatNumber(derived.latest.deception, { digits: 2 }) : "—"}
-              </p>
-            </div>
-          </section>
-        </div>
-      </StoryChapterShell>
-
-      <StoryChapterShell
-        chapter="Chapter B"
-        title="Similarity clusters"
-        description="Filter network links to isolate high-confidence resemblance to known fraud pattern structures."
-        tone="crimson"
-      >
-        <EChart option={graphChart} height={430} title="Fraud Similarity Network" className="neo-panel" />
-      </StoryChapterShell>
-
-      <StoryChapterShell
-        chapter="Chapter C"
-        title="Signal attribution"
-        description="Most frequent linguistic and accounting markers behind elevated forensic risk assignments."
-        tone="amber"
-      >
-        <div className="grid gap-4 xl:grid-cols-[minmax(0,1fr)_340px]">
-          <EChart option={signalChart} height={320} title="Top Trigger Signals" className="neo-panel" />
+      <RouteReveal profile="forensic" delay={0.12}>
+        <StoryChapterShell
+          chapter="Stress / Scenario"
+          title="Similarity network and attribution matrix"
+          description="Threshold scrubber and signal-family split expose structural fraud resemblance under different evidence priors."
+          insight={`${formatNumber(derived.links.length)} graph links retained at ${Math.round(derived.threshold * 100)}% cutoff.`}
+          impact="Cluster structure and marker family shifts indicate how fragile conviction is under alternate assumptions."
+          annotationCount={chapterBAnnotations.length}
+          tone="amber"
+        >
+          <EChart option={graphChart} height={620} title="Fraud Similarity Network (Thresholded)" className="neo-panel" />
           <section className="glass rounded-2xl p-5">
-            <p className="font-mono text-[11px] uppercase tracking-[0.16em] text-amber-100/90">
-              Signal Stack
-            </p>
-            <ul className="mt-3 space-y-2 text-sm text-slate-300">
-              {derived.topSignals.map((entry) => (
-                <li key={entry.signal} className="flex items-center justify-between gap-3">
-                  <span>{entry.signal}</span>
-                  <span className="font-mono text-amber-100">{formatNumber(entry.count)}</span>
-                </li>
-              ))}
-            </ul>
+            <div className="flex flex-wrap items-center justify-between gap-3">
+              <p className="font-mono text-[11px] uppercase tracking-[0.16em] text-amber-100/90">Signal Attribution Matrix</p>
+              <div className="flex flex-wrap gap-2">
+                {(["blended", "accounting", "linguistic"] as const).map((mode) => (
+                  <button
+                    key={mode}
+                    type="button"
+                    onClick={() => setSignalMode(mode)}
+                    className={
+                      signalMode === mode
+                        ? "rounded-full border border-amber-300/35 bg-amber-300/14 px-3 py-1.5 font-mono text-[10px] uppercase tracking-[0.12em] text-amber-100"
+                        : "rounded-full border border-white/10 bg-white/[0.04] px-3 py-1.5 font-mono text-[10px] uppercase tracking-[0.12em] text-slate-300 hover:bg-white/[0.08]"
+                    }
+                  >
+                    {mode}
+                  </button>
+                ))}
+              </div>
+            </div>
+            <div className="mt-4">
+              <EChart option={signalChart} height={520} title="Signal Family Contribution" className="bg-transparent" />
+            </div>
           </section>
-        </div>
-      </StoryChapterShell>
+          <NarrativeStrip
+            title="Scenario Notes"
+            subtitle="Signal-family toggles demonstrate where accounting and linguistic evidence diverge or reinforce."
+            annotations={chapterBAnnotations}
+            tone="amber"
+            maxItems={4}
+          />
+        </StoryChapterShell>
+      </RouteReveal>
 
-      <StoryChapterShell
-        chapter="Chapter D"
-        title="Short portfolio outcome"
-        description="Stress test the strategy path under varying short intensity and produce a ranked watchlist."
-        tone="emerald"
-      >
-        <div className="grid gap-4 xl:grid-cols-[minmax(0,1fr)_360px]">
-          <EChart option={backtestChart} height={360} title="Backtested Equity Path" className="neo-panel" />
-          <section className="terminal overflow-hidden">
-            <div className="border-b border-white/10 bg-white/5 px-5 py-3">
-              <p className="font-mono text-[11px] uppercase tracking-[0.16em] text-emerald-100/90">
-                Priority Watchlist
-              </p>
-            </div>
-            <div className="space-y-2 px-5 py-5 text-sm text-slate-300">
-              {derived.watchlist.map((item, index) => (
-                <div key={`${item.ticker}-${item.date}`} className="flex items-center justify-between gap-3">
-                  <p>
-                    <span className="text-slate-500">{index + 1}.</span> {item.ticker}{" "}
-                    <span className="text-slate-500">({item.date})</span>
-                  </p>
-                  <span className="font-mono text-rose-100">{formatPct(item.score, { digits: 0 })}</span>
-                </div>
-              ))}
-            </div>
-          </section>
-        </div>
-      </StoryChapterShell>
+      <RouteReveal profile="forensic" delay={0.16}>
+        <StoryChapterShell
+          chapter="Decision Console"
+          title="Short basket recommendation board"
+          description="Translate model output into expected alpha, confidence, and trigger thresholds for portfolio actioning."
+          insight={`Backtest alpha center ${formatPct(derived.alphaCenter, { digits: 0 })} with trigger threshold ${formatPct(derived.triggerThreshold, { digits: 0 })}.`}
+          impact={`Watchlist surfaces ${formatNumber(derived.watchlist.length)} names with highest deception-adjusted risk.`}
+          annotationCount={chapterCAnnotations.length}
+          tone="emerald"
+        >
+          <div className="grid gap-4 xl:grid-cols-[minmax(0,1fr)_360px]">
+            <EChart option={backtestChart} height={560} title="Strategy vs Benchmark (Stress-Adjusted)" className="neo-panel" />
+            <DecisionConsole
+              lines={[
+                {
+                  label: "Expected alpha band",
+                  value: `${formatPct(derived.alphaBand[0], { digits: 0 })} → ${formatPct(derived.alphaBand[1], { digits: 0 })}`,
+                  tone: "emerald",
+                },
+                {
+                  label: "Trigger threshold",
+                  value: formatPct(derived.triggerThreshold, { digits: 0 }),
+                  tone: "amber",
+                  hint: "Escalate forensic review when adjusted risk exceeds this band.",
+                },
+                {
+                  label: "Top watchlist ticker",
+                  value: derived.watchlist[0]?.ticker ?? "—",
+                  tone: "crimson",
+                  hint: derived.watchlist[0] ? `Score ${formatPct(derived.watchlist[0].score, { digits: 0 })}` : undefined,
+                },
+                {
+                  label: "Short intensity setting",
+                  value: `${shortIntensity}%`,
+                  tone: "neutral",
+                },
+              ]}
+            />
+          </div>
+          <NarrativeStrip
+            title="Decision Notes"
+            subtitle="Operational triggers and confidence should be reviewed alongside position sizing discipline."
+            annotations={chapterCAnnotations}
+            tone="emerald"
+            maxItems={4}
+          />
+        </StoryChapterShell>
+      </RouteReveal>
+
+      <RouteReveal profile="forensic" delay={0.2}>
+        <StoryChapterShell
+          chapter="Evidence"
+          title="Evidence and recommendation trace"
+          description="Evidence rail binds recommendation IDs to confidence bands, primary drivers, and source-linked annotations."
+          insight={`Current recommendation trace uses ${formatNumber(payload.decisionEvidence?.length ?? 0)} evidence blocks.`}
+          impact="Provides auditable handoff from forensic signal stack to portfolio action recommendation."
+          annotationCount={chapterDAnnotations.length}
+          tone="crimson"
+        >
+          <div className="grid gap-4 xl:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]">
+            <NarrativeStrip
+              title="Evidence Callouts"
+              subtitle="Source-linked annotation clusters supporting the active recommendation regime."
+              annotations={chapterDAnnotations}
+              tone="rose"
+              maxItems={6}
+            />
+            <DecisionEvidencePanel title="Short Basket Evidence" evidence={payload.decisionEvidence} />
+          </div>
+        </StoryChapterShell>
+      </RouteReveal>
     </div>
   );
 }

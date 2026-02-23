@@ -1,10 +1,10 @@
 {
-  "generatedAt": "2026-02-17T16:06:17+00:00",
+  "generatedAt": "2026-02-19T20:20:20+00:00",
   "modules": {
     "tgt_30d_return": {
       "provenance": {
-        "asOf": "2026-02-17",
-        "fetchedAt": "2026-02-17T16:06:24+00:00",
+        "asOf": "2026-02-19",
+        "fetchedAt": "2026-02-19T20:20:20+00:00",
         "note": "30d total return",
         "source": "stooq:TGT"
       },
@@ -12,8 +12,8 @@
     },
     "wmt_30d_return": {
       "provenance": {
-        "asOf": "2026-02-17",
-        "fetchedAt": "2026-02-17T16:06:27+00:00",
+        "asOf": "2026-02-19",
+        "fetchedAt": "2026-02-19T20:20:23+00:00",
         "note": "30d total return",
         "source": "stooq:WMT"
       },
@@ -21,5 +21,7 @@
     }
   },
   "overallStatus": "ok",
-  "runId": "real-20260217160617"
+  "policyDecision": "Strict real-feed mode with stale-real cache continuity.",
+  "policyMode": "strict-real",
+  "runId": "real-20260219202020"
 }

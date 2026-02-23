@@ -46,6 +46,7 @@ __pycache__/
 # data pipeline (optional)
 /data/raw/
 /data/processed/
+/public/data/_runs/
 
 # typescript
 *.tsbuildinfo

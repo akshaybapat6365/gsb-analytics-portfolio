@@ -1,0 +1,179 @@
+{
+  "baseUrl": "http://localhost:3401",
+  "rounds": 1,
+  "generatedAt": "2026-02-22T08:25:45.011Z",
+  "routes": [
+    {
+      "route": "/",
+      "rounds": [
+        {
+          "round": 1,
+          "url": "http://localhost:3401/",
+          "diagnostics": {
+            "h1": "Strategic analytics narratives built for operating decisions.",
+            "chartCount": 10,
+            "loadingTextVisible": false,
+            "title": "Vaibhav Bapat | Decision Intelligence Portfolio"
+          },
+          "screenshotPaths": [
+            "tmp/visual-loops/2026-02-22T08-25-44.264Z/home/round-01-desktop.png",
+            "tmp/visual-loops/2026-02-22T08-25-44.264Z/home/round-01-mobile.png"
+          ],
+          "consoleErrors": [],
+          "pass": true
+        }
+      ]
+    },
+    {
+      "route": "/projects",
+      "rounds": [
+        {
+          "round": 1,
+          "url": "http://localhost:3401/projects",
+          "diagnostics": {
+            "h1": "Interactive decision war rooms",
+            "chartCount": 3,
+            "loadingTextVisible": false,
+            "title": "Projects | Vaibhav Bapat"
+          },
+          "screenshotPaths": [
+            "tmp/visual-loops/2026-02-22T08-25-44.264Z/projects/round-01-desktop.png",
+            "tmp/visual-loops/2026-02-22T08-25-44.264Z/projects/round-01-mobile.png"
+          ],
+          "consoleErrors": [],
+          "pass": true
+        }
+      ]
+    },
+    {
+      "route": "/projects/ord-lga-price-war",
+      "rounds": [
+        {
+          "round": 1,
+          "url": "http://localhost:3401/projects/ord-lga-price-war",
+          "diagnostics": {
+            "h1": "United vs. Delta:ORD–LGA price war simulator",
+            "chartCount": 10,
+            "loadingTextVisible": false,
+            "title": "ORD–LGA Price War Simulator | Vaibhav Bapat"
+          },
+          "screenshotPaths": [
+            "tmp/visual-loops/2026-02-22T08-25-44.264Z/projects_ord-lga-price-war/round-01-desktop.png",
+            "tmp/visual-loops/2026-02-22T08-25-44.264Z/projects_ord-lga-price-war/round-01-mobile.png"
+          ],
+          "consoleErrors": [],
+          "pass": true
+        }
+      ]
+    },
+    {
+      "route": "/projects/fraud-radar",
+      "rounds": [
+        {
+          "round": 1,
+          "url": "http://localhost:3401/projects/fraud-radar",
+          "diagnostics": {
+            "h1": "Fraud Radar:forensic pre-collapse signal board",
+            "chartCount": 5,
+            "loadingTextVisible": false,
+            "title": "Fraud Radar | Vaibhav Bapat"
+          },
+          "screenshotPaths": [
+            "tmp/visual-loops/2026-02-22T08-25-44.264Z/projects_fraud-radar/round-01-desktop.png",
+            "tmp/visual-loops/2026-02-22T08-25-44.264Z/projects_fraud-radar/round-01-mobile.png"
+          ],
+          "consoleErrors": [],
+          "pass": true
+        }
+      ]
+    },
+    {
+      "route": "/projects/target-shrink",
+      "rounds": [
+        {
+          "round": 1,
+          "url": "http://localhost:3401/projects/target-shrink",
+          "diagnostics": {
+            "h1": "Target Shrink Simulator:operations floor intervention engine",
+            "chartCount": 5,
+            "loadingTextVisible": false,
+            "title": "Target Shrink Simulator | Vaibhav Bapat"
+          },
+          "screenshotPaths": [
+            "tmp/visual-loops/2026-02-22T08-25-44.264Z/projects_target-shrink/round-01-desktop.png",
+            "tmp/visual-loops/2026-02-22T08-25-44.264Z/projects_target-shrink/round-01-mobile.png"
+          ],
+          "consoleErrors": [],
+          "pass": true
+        }
+      ]
+    },
+    {
+      "route": "/projects/starbucks-pivot",
+      "rounds": [
+        {
+          "round": 1,
+          "url": "http://localhost:3401/projects/starbucks-pivot",
+          "diagnostics": {
+            "h1": "Starbucks Pivot:geo-strategy operating board",
+            "chartCount": 5,
+            "loadingTextVisible": false,
+            "title": "Starbucks Suburban Pivot | Vaibhav Bapat"
+          },
+          "screenshotPaths": [
+            "tmp/visual-loops/2026-02-22T08-25-44.264Z/projects_starbucks-pivot/round-01-desktop.png",
+            "tmp/visual-loops/2026-02-22T08-25-44.264Z/projects_starbucks-pivot/round-01-mobile.png"
+          ],
+          "consoleErrors": [],
+          "pass": true
+        }
+      ]
+    },
+    {
+      "route": "/projects/tesla-nacs",
+      "rounds": [
+        {
+          "round": 1,
+          "url": "http://localhost:3401/projects/tesla-nacs",
+          "diagnostics": {
+            "h1": "Tesla NACS War Board:corridor build-order simulator",
+            "chartCount": 5,
+            "loadingTextVisible": false,
+            "title": "Tesla NACS War Game | Vaibhav Bapat"
+          },
+          "screenshotPaths": [
+            "tmp/visual-loops/2026-02-22T08-25-44.264Z/projects_tesla-nacs/round-01-desktop.png",
+            "tmp/visual-loops/2026-02-22T08-25-44.264Z/projects_tesla-nacs/round-01-mobile.png"
+          ],
+          "consoleErrors": [],
+          "pass": true
+        }
+      ]
+    },
+    {
+      "route": "/projects/netflix-roi",
+      "rounds": [
+        {
+          "round": 1,
+          "url": "http://localhost:3401/projects/netflix-roi",
+          "diagnostics": {
+            "h1": "Netflix ROI Autopsy:capital committee decision deck",
+            "chartCount": 4,
+            "loadingTextVisible": false,
+            "title": "Netflix Content ROI Autopsy | Vaibhav Bapat"
+          },
+          "screenshotPaths": [
+            "tmp/visual-loops/2026-02-22T08-25-44.264Z/projects_netflix-roi/round-01-desktop.png",
+            "tmp/visual-loops/2026-02-22T08-25-44.264Z/projects_netflix-roi/round-01-mobile.png"
+          ],
+          "consoleErrors": [],
+          "pass": true
+        }
+      ]
+    }
+  ],
+  "summary": {
+    "totalRounds": 8,
+    "failedRounds": 0
+  }
+}

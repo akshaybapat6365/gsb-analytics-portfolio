@@ -1,0 +1,110 @@
+{
+  "generatedAt": "2026-02-19T20:05:59+00:00",
+  "meta": {
+    "generatedAt": "2026-02-19T20:05:59+00:00",
+    "modules": {
+      "nflx_30d_return": {
+        "provenance": {
+          "asOf": "2026-02-19",
+          "fetchedAt": "2026-02-19T20:05:59+00:00",
+          "note": "30d total return",
+          "source": "stooq:NFLX"
+        },
+        "status": "ok"
+      },
+      "nflx_recent_10k_10q": {
+        "provenance": {
+          "asOf": "2026-01-23",
+          "fetchedAt": "2026-02-19T20:06:05+00:00",
+          "note": "10-K/10-Q count in last 365d",
+          "source": "sec:0001065280"
+        },
+        "status": "ok"
+      }
+    },
+    "overallStatus": "ok",
+    "policyDecision": "Strict real-feed mode with stale-real cache continuity.",
+    "policyMode": "strict-real",
+    "runId": "real-20260219200559"
+  },
+  "mode": "open-only",
+  "projectSlug": "netflix-roi",
+  "projectTitle": "Netflix Content ROI Autopsy",
+  "qualityRubric": {
+    "coverage": 30,
+    "freshness": 20,
+    "modelDepth": 30,
+    "provenance": 20
+  },
+  "runId": "real-20260219200559",
+  "sourceStatuses": [
+    {
+      "expectedSignalIds": [
+        "nflx_recent_10k_10q"
+      ],
+      "id": "sec_nflx",
+      "kind": "filings_primary",
+      "label": "SEC EDGAR filings (NFLX)",
+      "matchedSignalStatuses": [
+        {
+          "id": "nflx_recent_10k_10q",
+          "reasonCode": null,
+          "status": "ok"
+        }
+      ],
+      "opennessScore": 96,
+      "sourceKey": "sec:0001065280",
+      "status": "ok",
+      "url": "https://data.sec.gov/"
+    },
+    {
+      "expectedSignalIds": [
+        "nflx_30d_return"
+      ],
+      "id": "stooq_nflx",
+      "kind": "market_context",
+      "label": "Stooq NFLX daily prices",
+      "matchedSignalStatuses": [
+        {
+          "id": "nflx_30d_return",
+          "reasonCode": null,
+          "status": "ok"
+        }
+      ],
+      "opennessScore": 82,
+      "sourceKey": "stooq:NFLX",
+      "status": "ok",
+      "url": "https://stooq.com/"
+    },
+    {
+      "expectedSignalIds": [
+        "netflix_daily_trend_presence"
+      ],
+      "id": "google_trends_daily",
+      "kind": "attention_proxy",
+      "label": "Google Trends daily presence",
+      "matchedSignalStatuses": [
+        {
+          "id": "netflix_daily_trend_presence",
+          "reasonCode": "fetch_error:HTTPError",
+          "status": "unavailable"
+        }
+      ],
+      "opennessScore": 78,
+      "sourceKey": "google-trends:dailytrends",
+      "status": "unavailable",
+      "url": "https://developers.google.com/search/apis/trends"
+    },
+    {
+      "expectedSignalIds": [],
+      "id": "imdb_noncommercial",
+      "kind": "title_reference",
+      "label": "IMDb non-commercial datasets",
+      "matchedSignalStatuses": [],
+      "opennessScore": 86,
+      "sourceKey": "imdb:noncommercial",
+      "status": "reference",
+      "url": "https://developer.imdb.com/non-commercial-datasets/"
+    }
+  ]
+}

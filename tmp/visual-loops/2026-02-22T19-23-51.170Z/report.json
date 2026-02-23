@@ -1,0 +1,2792 @@
+{
+  "baseUrl": "http://localhost:3401",
+  "rounds": 10,
+  "strict": true,
+  "generatedAt": "2026-02-22T19:23:52.127Z",
+  "routes": [
+    {
+      "route": "/",
+      "rounds": [
+        {
+          "round": 1,
+          "url": "http://localhost:3401/",
+          "diagnostics": {
+            "h1": "Data products for operating decisions, not dashboard theater.",
+            "chartCount": 10,
+            "loadingTextVisible": false,
+            "title": "Vaibhav Bapat | Decision Intelligence Portfolio",
+            "minFunctionalFontPx": 11,
+            "kpiValueMaxPx": 46.4,
+            "heroCopyLeftFirst": true,
+            "evidenceBadgeCount": 6,
+            "provenanceCount": 6,
+            "cardCtaCount": 6,
+            "chartAxisCount": 2,
+            "chartLegendCount": 3,
+            "dataIntegrityVisible": true
+          },
+          "scores": {
+            "readabilityScore": 65,
+            "affordanceScore": 100,
+            "evidenceScore": 100,
+            "chartClarityScore": 100
+          },
+          "failures": [
+            "small_functional_text",
+            "strict_score_failed:readabilityScore"
+          ],
+          "screenshotPaths": [
+            "tmp/visual-loops/2026-02-22T19-23-51.170Z/home/round-01-desktop.png",
+            "tmp/visual-loops/2026-02-22T19-23-51.170Z/home/round-01-mobile.png"
+          ],
+          "consoleErrors": [],
+          "pass": false
+        },
+        {
+          "round": 2,
+          "url": "http://localhost:3401/",
+          "diagnostics": {
+            "h1": "Data products for operating decisions, not dashboard theater.",
+            "chartCount": 10,
+            "loadingTextVisible": false,
+            "title": "Vaibhav Bapat | Decision Intelligence Portfolio",
+            "minFunctionalFontPx": 11,
+            "kpiValueMaxPx": 46.4,
+            "heroCopyLeftFirst": true,
+            "evidenceBadgeCount": 6,
+            "provenanceCount": 6,
+            "cardCtaCount": 6,
+            "chartAxisCount": 2,
+            "chartLegendCount": 3,
+            "dataIntegrityVisible": true
+          },
+          "scores": {
+            "readabilityScore": 65,
+            "affordanceScore": 100,
+            "evidenceScore": 100,
+            "chartClarityScore": 100
+          },
+          "failures": [
+            "small_functional_text",
+            "strict_score_failed:readabilityScore"
+          ],
+          "screenshotPaths": [
+            "tmp/visual-loops/2026-02-22T19-23-51.170Z/home/round-02-desktop.png",
+            "tmp/visual-loops/2026-02-22T19-23-51.170Z/home/round-02-mobile.png"
+          ],
+          "consoleErrors": [],
+          "pass": false
+        },
+        {
+          "round": 3,
+          "url": "http://localhost:3401/",
+          "diagnostics": {
+            "h1": "Data products for operating decisions, not dashboard theater.",
+            "chartCount": 10,
+            "loadingTextVisible": false,
+            "title": "Vaibhav Bapat | Decision Intelligence Portfolio",
+            "minFunctionalFontPx": 11,
+            "kpiValueMaxPx": 46.4,
+            "heroCopyLeftFirst": true,
+            "evidenceBadgeCount": 6,
+            "provenanceCount": 6,
+            "cardCtaCount": 6,
+            "chartAxisCount": 2,
+            "chartLegendCount": 3,
+            "dataIntegrityVisible": true
+          },
+          "scores": {
+            "readabilityScore": 65,
+            "affordanceScore": 100,
+            "evidenceScore": 100,
+            "chartClarityScore": 100
+          },
+          "failures": [
+            "small_functional_text",
+            "strict_score_failed:readabilityScore"
+          ],
+          "screenshotPaths": [
+            "tmp/visual-loops/2026-02-22T19-23-51.170Z/home/round-03-desktop.png",
+            "tmp/visual-loops/2026-02-22T19-23-51.170Z/home/round-03-mobile.png"
+          ],
+          "consoleErrors": [],
+          "pass": false
+        },
+        {
+          "round": 4,
+          "url": "http://localhost:3401/",
+          "diagnostics": {
+            "h1": "Data products for operating decisions, not dashboard theater.",
+            "chartCount": 10,
+            "loadingTextVisible": false,
+            "title": "Vaibhav Bapat | Decision Intelligence Portfolio",
+            "minFunctionalFontPx": 11,
+            "kpiValueMaxPx": 46.4,
+            "heroCopyLeftFirst": true,
+            "evidenceBadgeCount": 6,
+            "provenanceCount": 6,
+            "cardCtaCount": 6,
+            "chartAxisCount": 2,
+            "chartLegendCount": 3,
+            "dataIntegrityVisible": true
+          },
+          "scores": {
+            "readabilityScore": 65,
+            "affordanceScore": 100,
+            "evidenceScore": 100,
+            "chartClarityScore": 100
+          },
+          "failures": [
+            "small_functional_text",
+            "strict_score_failed:readabilityScore"
+          ],
+          "screenshotPaths": [
+            "tmp/visual-loops/2026-02-22T19-23-51.170Z/home/round-04-desktop.png",
+            "tmp/visual-loops/2026-02-22T19-23-51.170Z/home/round-04-mobile.png"
+          ],
+          "consoleErrors": [],
+          "pass": false
+        },
+        {
+          "round": 5,
+          "url": "http://localhost:3401/",
+          "diagnostics": {
+            "h1": "Data products for operating decisions, not dashboard theater.",
+            "chartCount": 10,
+            "loadingTextVisible": false,
+            "title": "Vaibhav Bapat | Decision Intelligence Portfolio",
+            "minFunctionalFontPx": 11,
+            "kpiValueMaxPx": 46.4,
+            "heroCopyLeftFirst": true,
+            "evidenceBadgeCount": 6,
+            "provenanceCount": 6,
+            "cardCtaCount": 6,
+            "chartAxisCount": 2,
+            "chartLegendCount": 3,
+            "dataIntegrityVisible": true
+          },
+          "scores": {
+            "readabilityScore": 65,
+            "affordanceScore": 100,
+            "evidenceScore": 100,
+            "chartClarityScore": 100
+          },
+          "failures": [
+            "small_functional_text",
+            "strict_score_failed:readabilityScore"
+          ],
+          "screenshotPaths": [
+            "tmp/visual-loops/2026-02-22T19-23-51.170Z/home/round-05-desktop.png",
+            "tmp/visual-loops/2026-02-22T19-23-51.170Z/home/round-05-mobile.png"
+          ],
+          "consoleErrors": [],
+          "pass": false
+        },
+        {
+          "round": 6,
+          "url": "http://localhost:3401/",
+          "diagnostics": {
+            "h1": "Data products for operating decisions, not dashboard theater.",
+            "chartCount": 10,
+            "loadingTextVisible": false,
+            "title": "Vaibhav Bapat | Decision Intelligence Portfolio",
+            "minFunctionalFontPx": 11,
+            "kpiValueMaxPx": 46.4,
+            "heroCopyLeftFirst": true,
+            "evidenceBadgeCount": 6,
+            "provenanceCount": 6,
+            "cardCtaCount": 6,
+            "chartAxisCount": 2,
+            "chartLegendCount": 3,
+            "dataIntegrityVisible": true
+          },
+          "scores": {
+            "readabilityScore": 65,
+            "affordanceScore": 100,
+            "evidenceScore": 100,
+            "chartClarityScore": 100
+          },
+          "failures": [
+            "small_functional_text",
+            "strict_score_failed:readabilityScore"
+          ],
+          "screenshotPaths": [
+            "tmp/visual-loops/2026-02-22T19-23-51.170Z/home/round-06-desktop.png",
+            "tmp/visual-loops/2026-02-22T19-23-51.170Z/home/round-06-mobile.png"
+          ],
+          "consoleErrors": [],
+          "pass": false
+        },
+        {
+          "round": 7,
+          "url": "http://localhost:3401/",
+          "diagnostics": {
+            "h1": "Data products for operating decisions, not dashboard theater.",
+            "chartCount": 10,
+            "loadingTextVisible": false,
+            "title": "Vaibhav Bapat | Decision Intelligence Portfolio",
+            "minFunctionalFontPx": 11,
+            "kpiValueMaxPx": 46.4,
+            "heroCopyLeftFirst": true,
+            "evidenceBadgeCount": 6,
+            "provenanceCount": 6,
+            "cardCtaCount": 6,
+            "chartAxisCount": 2,
+            "chartLegendCount": 3,
+            "dataIntegrityVisible": true
+          },
+          "scores": {
+            "readabilityScore": 65,
+            "affordanceScore": 100,
+            "evidenceScore": 100,
+            "chartClarityScore": 100
+          },
+          "failures": [
+            "small_functional_text",
+            "strict_score_failed:readabilityScore"
+          ],
+          "screenshotPaths": [
+            "tmp/visual-loops/2026-02-22T19-23-51.170Z/home/round-07-desktop.png",
+            "tmp/visual-loops/2026-02-22T19-23-51.170Z/home/round-07-mobile.png"
+          ],
+          "consoleErrors": [],
+          "pass": false
+        },
+        {
+          "round": 8,
+          "url": "http://localhost:3401/",
+          "diagnostics": {
+            "h1": "Data products for operating decisions, not dashboard theater.",
+            "chartCount": 10,
+            "loadingTextVisible": false,
+            "title": "Vaibhav Bapat | Decision Intelligence Portfolio",
+            "minFunctionalFontPx": 11,
+            "kpiValueMaxPx": 46.4,
+            "heroCopyLeftFirst": true,
+            "evidenceBadgeCount": 6,
+            "provenanceCount": 6,
+            "cardCtaCount": 6,
+            "chartAxisCount": 2,
+            "chartLegendCount": 3,
+            "dataIntegrityVisible": true
+          },
+          "scores": {
+            "readabilityScore": 65,
+            "affordanceScore": 100,
+            "evidenceScore": 100,
+            "chartClarityScore": 100
+          },
+          "failures": [
+            "small_functional_text",
+            "strict_score_failed:readabilityScore"
+          ],
+          "screenshotPaths": [
+            "tmp/visual-loops/2026-02-22T19-23-51.170Z/home/round-08-desktop.png",
+            "tmp/visual-loops/2026-02-22T19-23-51.170Z/home/round-08-mobile.png"
+          ],
+          "consoleErrors": [],
+          "pass": false
+        },
+        {
+          "round": 9,
+          "url": "http://localhost:3401/",
+          "diagnostics": {
+            "h1": "Data products for operating decisions, not dashboard theater.",
+            "chartCount": 10,
+            "loadingTextVisible": false,
+            "title": "Vaibhav Bapat | Decision Intelligence Portfolio",
+            "minFunctionalFontPx": 11,
+            "kpiValueMaxPx": 46.4,
+            "heroCopyLeftFirst": true,
+            "evidenceBadgeCount": 6,
+            "provenanceCount": 6,
+            "cardCtaCount": 6,
+            "chartAxisCount": 2,
+            "chartLegendCount": 3,
+            "dataIntegrityVisible": true
+          },
+          "scores": {
+            "readabilityScore": 65,
+            "affordanceScore": 100,
+            "evidenceScore": 100,
+            "chartClarityScore": 100
+          },
+          "failures": [
+            "small_functional_text",
+            "strict_score_failed:readabilityScore"
+          ],
+          "screenshotPaths": [
+            "tmp/visual-loops/2026-02-22T19-23-51.170Z/home/round-09-desktop.png",
+            "tmp/visual-loops/2026-02-22T19-23-51.170Z/home/round-09-mobile.png"
+          ],
+          "consoleErrors": [],
+          "pass": false
+        },
+        {
+          "round": 10,
+          "url": "http://localhost:3401/",
+          "diagnostics": {
+            "h1": "Data products for operating decisions, not dashboard theater.",
+            "chartCount": 10,
+            "loadingTextVisible": false,
+            "title": "Vaibhav Bapat | Decision Intelligence Portfolio",
+            "minFunctionalFontPx": 11,
+            "kpiValueMaxPx": 46.4,
+            "heroCopyLeftFirst": true,
+            "evidenceBadgeCount": 6,
+            "provenanceCount": 6,
+            "cardCtaCount": 6,
+            "chartAxisCount": 2,
+            "chartLegendCount": 3,
+            "dataIntegrityVisible": true
+          },
+          "scores": {
+            "readabilityScore": 65,
+            "affordanceScore": 100,
+            "evidenceScore": 100,
+            "chartClarityScore": 100
+          },
+          "failures": [
+            "small_functional_text",
+            "strict_score_failed:readabilityScore"
+          ],
+          "screenshotPaths": [
+            "tmp/visual-loops/2026-02-22T19-23-51.170Z/home/round-10-desktop.png",
+            "tmp/visual-loops/2026-02-22T19-23-51.170Z/home/round-10-mobile.png"
+          ],
+          "consoleErrors": [],
+          "pass": false
+        }
+      ]
+    },
+    {
+      "route": "/projects",
+      "rounds": [
+        {
+          "round": 1,
+          "url": "http://localhost:3401/projects",
+          "diagnostics": {
+            "h1": "Interactive decision war rooms",
+            "chartCount": 3,
+            "loadingTextVisible": false,
+            "title": "Projects | Vaibhav Bapat",
+            "minFunctionalFontPx": 10,
+            "kpiValueMaxPx": 0,
+            "heroCopyLeftFirst": true,
+            "evidenceBadgeCount": 0,
+            "provenanceCount": 0,
+            "cardCtaCount": 0,
+            "chartAxisCount": 0,
+            "chartLegendCount": 0,
+            "dataIntegrityVisible": true
+          },
+          "scores": {
+            "readabilityScore": 82,
+            "affordanceScore": 100,
+            "evidenceScore": 100,
+            "chartClarityScore": 100
+          },
+          "failures": [
+            "small_functional_text"
+          ],
+          "screenshotPaths": [
+            "tmp/visual-loops/2026-02-22T19-23-51.170Z/projects/round-01-desktop.png",
+            "tmp/visual-loops/2026-02-22T19-23-51.170Z/projects/round-01-mobile.png"
+          ],
+          "consoleErrors": [],
+          "pass": false
+        },
+        {
+          "round": 2,
+          "url": "http://localhost:3401/projects",
+          "diagnostics": {
+            "h1": "Interactive decision war rooms",
+            "chartCount": 3,
+            "loadingTextVisible": false,
+            "title": "Projects | Vaibhav Bapat",
+            "minFunctionalFontPx": 10,
+            "kpiValueMaxPx": 0,
+            "heroCopyLeftFirst": true,
+            "evidenceBadgeCount": 0,
+            "provenanceCount": 0,
+            "cardCtaCount": 0,
+            "chartAxisCount": 0,
+            "chartLegendCount": 0,
+            "dataIntegrityVisible": true
+          },
+          "scores": {
+            "readabilityScore": 82,
+            "affordanceScore": 100,
+            "evidenceScore": 100,
+            "chartClarityScore": 100
+          },
+          "failures": [
+            "small_functional_text"
+          ],
+          "screenshotPaths": [
+            "tmp/visual-loops/2026-02-22T19-23-51.170Z/projects/round-02-desktop.png",
+            "tmp/visual-loops/2026-02-22T19-23-51.170Z/projects/round-02-mobile.png"
+          ],
+          "consoleErrors": [],
+          "pass": false
+        },
+        {
+          "round": 3,
+          "url": "http://localhost:3401/projects",
+          "diagnostics": {
+            "h1": "Interactive decision war rooms",
+            "chartCount": 3,
+            "loadingTextVisible": false,
+            "title": "Projects | Vaibhav Bapat",
+            "minFunctionalFontPx": 10,
+            "kpiValueMaxPx": 0,
+            "heroCopyLeftFirst": true,
+            "evidenceBadgeCount": 0,
+            "provenanceCount": 0,
+            "cardCtaCount": 0,
+            "chartAxisCount": 0,
+            "chartLegendCount": 0,
+            "dataIntegrityVisible": true
+          },
+          "scores": {
+            "readabilityScore": 82,
+            "affordanceScore": 100,
+            "evidenceScore": 100,
+            "chartClarityScore": 100
+          },
+          "failures": [
+            "small_functional_text"
+          ],
+          "screenshotPaths": [
+            "tmp/visual-loops/2026-02-22T19-23-51.170Z/projects/round-03-desktop.png",
+            "tmp/visual-loops/2026-02-22T19-23-51.170Z/projects/round-03-mobile.png"
+          ],
+          "consoleErrors": [],
+          "pass": false
+        },
+        {
+          "round": 4,
+          "url": "http://localhost:3401/projects",
+          "diagnostics": {
+            "h1": "Interactive decision war rooms",
+            "chartCount": 3,
+            "loadingTextVisible": false,
+            "title": "Projects | Vaibhav Bapat",
+            "minFunctionalFontPx": 10,
+            "kpiValueMaxPx": 0,
+            "heroCopyLeftFirst": true,
+            "evidenceBadgeCount": 0,
+            "provenanceCount": 0,
+            "cardCtaCount": 0,
+            "chartAxisCount": 0,
+            "chartLegendCount": 0,
+            "dataIntegrityVisible": true
+          },
+          "scores": {
+            "readabilityScore": 82,
+            "affordanceScore": 100,
+            "evidenceScore": 100,
+            "chartClarityScore": 100
+          },
+          "failures": [
+            "small_functional_text"
+          ],
+          "screenshotPaths": [
+            "tmp/visual-loops/2026-02-22T19-23-51.170Z/projects/round-04-desktop.png",
+            "tmp/visual-loops/2026-02-22T19-23-51.170Z/projects/round-04-mobile.png"
+          ],
+          "consoleErrors": [],
+          "pass": false
+        },
+        {
+          "round": 5,
+          "url": "http://localhost:3401/projects",
+          "diagnostics": {
+            "h1": "Interactive decision war rooms",
+            "chartCount": 3,
+            "loadingTextVisible": false,
+            "title": "Projects | Vaibhav Bapat",
+            "minFunctionalFontPx": 10,
+            "kpiValueMaxPx": 0,
+            "heroCopyLeftFirst": true,
+            "evidenceBadgeCount": 0,
+            "provenanceCount": 0,
+            "cardCtaCount": 0,
+            "chartAxisCount": 0,
+            "chartLegendCount": 0,
+            "dataIntegrityVisible": true
+          },
+          "scores": {
+            "readabilityScore": 82,
+            "affordanceScore": 100,
+            "evidenceScore": 100,
+            "chartClarityScore": 100
+          },
+          "failures": [
+            "small_functional_text"
+          ],
+          "screenshotPaths": [
+            "tmp/visual-loops/2026-02-22T19-23-51.170Z/projects/round-05-desktop.png",
+            "tmp/visual-loops/2026-02-22T19-23-51.170Z/projects/round-05-mobile.png"
+          ],
+          "consoleErrors": [],
+          "pass": false
+        },
+        {
+          "round": 6,
+          "url": "http://localhost:3401/projects",
+          "diagnostics": {
+            "h1": "Interactive decision war rooms",
+            "chartCount": 3,
+            "loadingTextVisible": false,
+            "title": "Projects | Vaibhav Bapat",
+            "minFunctionalFontPx": 10,
+            "kpiValueMaxPx": 0,
+            "heroCopyLeftFirst": true,
+            "evidenceBadgeCount": 0,
+            "provenanceCount": 0,
+            "cardCtaCount": 0,
+            "chartAxisCount": 0,
+            "chartLegendCount": 0,
+            "dataIntegrityVisible": true
+          },
+          "scores": {
+            "readabilityScore": 82,
+            "affordanceScore": 100,
+            "evidenceScore": 100,
+            "chartClarityScore": 100
+          },
+          "failures": [
+            "small_functional_text"
+          ],
+          "screenshotPaths": [
+            "tmp/visual-loops/2026-02-22T19-23-51.170Z/projects/round-06-desktop.png",
+            "tmp/visual-loops/2026-02-22T19-23-51.170Z/projects/round-06-mobile.png"
+          ],
+          "consoleErrors": [],
+          "pass": false
+        },
+        {
+          "round": 7,
+          "url": "http://localhost:3401/projects",
+          "diagnostics": {
+            "h1": "Interactive decision war rooms",
+            "chartCount": 3,
+            "loadingTextVisible": false,
+            "title": "Projects | Vaibhav Bapat",
+            "minFunctionalFontPx": 10,
+            "kpiValueMaxPx": 0,
+            "heroCopyLeftFirst": true,
+            "evidenceBadgeCount": 0,
+            "provenanceCount": 0,
+            "cardCtaCount": 0,
+            "chartAxisCount": 0,
+            "chartLegendCount": 0,
+            "dataIntegrityVisible": true
+          },
+          "scores": {
+            "readabilityScore": 82,
+            "affordanceScore": 100,
+            "evidenceScore": 100,
+            "chartClarityScore": 100
+          },
+          "failures": [
+            "small_functional_text"
+          ],
+          "screenshotPaths": [
+            "tmp/visual-loops/2026-02-22T19-23-51.170Z/projects/round-07-desktop.png",
+            "tmp/visual-loops/2026-02-22T19-23-51.170Z/projects/round-07-mobile.png"
+          ],
+          "consoleErrors": [],
+          "pass": false
+        },
+        {
+          "round": 8,
+          "url": "http://localhost:3401/projects",
+          "diagnostics": {
+            "h1": "Interactive decision war rooms",
+            "chartCount": 3,
+            "loadingTextVisible": false,
+            "title": "Projects | Vaibhav Bapat",
+            "minFunctionalFontPx": 10,
+            "kpiValueMaxPx": 0,
+            "heroCopyLeftFirst": true,
+            "evidenceBadgeCount": 0,
+            "provenanceCount": 0,
+            "cardCtaCount": 0,
+            "chartAxisCount": 0,
+            "chartLegendCount": 0,
+            "dataIntegrityVisible": true
+          },
+          "scores": {
+            "readabilityScore": 82,
+            "affordanceScore": 100,
+            "evidenceScore": 100,
+            "chartClarityScore": 100
+          },
+          "failures": [
+            "small_functional_text"
+          ],
+          "screenshotPaths": [
+            "tmp/visual-loops/2026-02-22T19-23-51.170Z/projects/round-08-desktop.png",
+            "tmp/visual-loops/2026-02-22T19-23-51.170Z/projects/round-08-mobile.png"
+          ],
+          "consoleErrors": [],
+          "pass": false
+        },
+        {
+          "round": 9,
+          "url": "http://localhost:3401/projects",
+          "diagnostics": {
+            "h1": "Interactive decision war rooms",
+            "chartCount": 3,
+            "loadingTextVisible": false,
+            "title": "Projects | Vaibhav Bapat",
+            "minFunctionalFontPx": 10,
+            "kpiValueMaxPx": 0,
+            "heroCopyLeftFirst": true,
+            "evidenceBadgeCount": 0,
+            "provenanceCount": 0,
+            "cardCtaCount": 0,
+            "chartAxisCount": 0,
+            "chartLegendCount": 0,
+            "dataIntegrityVisible": true
+          },
+          "scores": {
+            "readabilityScore": 82,
+            "affordanceScore": 100,
+            "evidenceScore": 100,
+            "chartClarityScore": 100
+          },
+          "failures": [
+            "small_functional_text"
+          ],
+          "screenshotPaths": [
+            "tmp/visual-loops/2026-02-22T19-23-51.170Z/projects/round-09-desktop.png",
+            "tmp/visual-loops/2026-02-22T19-23-51.170Z/projects/round-09-mobile.png"
+          ],
+          "consoleErrors": [],
+          "pass": false
+        },
+        {
+          "round": 10,
+          "url": "http://localhost:3401/projects",
+          "diagnostics": {
+            "h1": "Interactive decision war rooms",
+            "chartCount": 3,
+            "loadingTextVisible": false,
+            "title": "Projects | Vaibhav Bapat",
+            "minFunctionalFontPx": 10,
+            "kpiValueMaxPx": 0,
+            "heroCopyLeftFirst": true,
+            "evidenceBadgeCount": 0,
+            "provenanceCount": 0,
+            "cardCtaCount": 0,
+            "chartAxisCount": 0,
+            "chartLegendCount": 0,
+            "dataIntegrityVisible": true
+          },
+          "scores": {
+            "readabilityScore": 82,
+            "affordanceScore": 100,
+            "evidenceScore": 100,
+            "chartClarityScore": 100
+          },
+          "failures": [
+            "small_functional_text"
+          ],
+          "screenshotPaths": [
+            "tmp/visual-loops/2026-02-22T19-23-51.170Z/projects/round-10-desktop.png",
+            "tmp/visual-loops/2026-02-22T19-23-51.170Z/projects/round-10-mobile.png"
+          ],
+          "consoleErrors": [],
+          "pass": false
+        }
+      ]
+    },
+    {
+      "route": "/projects/ord-lga-price-war",
+      "rounds": [
+        {
+          "round": 1,
+          "url": "http://localhost:3401/projects/ord-lga-price-war",
+          "diagnostics": {
+            "h1": "United vs. Delta:ORD–LGA price war simulator",
+            "chartCount": 4,
+            "loadingTextVisible": false,
+            "title": "ORD–LGA Price War Simulator | Vaibhav Bapat",
+            "minFunctionalFontPx": 10,
+            "kpiValueMaxPx": 0,
+            "heroCopyLeftFirst": true,
+            "evidenceBadgeCount": 0,
+            "provenanceCount": 0,
+            "cardCtaCount": 0,
+            "chartAxisCount": 0,
+            "chartLegendCount": 0,
+            "dataIntegrityVisible": true
+          },
+          "scores": {
+            "readabilityScore": 82,
+            "affordanceScore": 100,
+            "evidenceScore": 100,
+            "chartClarityScore": 100
+          },
+          "failures": [
+            "small_functional_text"
+          ],
+          "screenshotPaths": [
+            "tmp/visual-loops/2026-02-22T19-23-51.170Z/projects_ord-lga-price-war/round-01-desktop.png",
+            "tmp/visual-loops/2026-02-22T19-23-51.170Z/projects_ord-lga-price-war/round-01-mobile.png"
+          ],
+          "consoleErrors": [],
+          "pass": false
+        },
+        {
+          "round": 2,
+          "url": "http://localhost:3401/projects/ord-lga-price-war",
+          "diagnostics": {
+            "h1": "United vs. Delta:ORD–LGA price war simulator",
+            "chartCount": 4,
+            "loadingTextVisible": false,
+            "title": "ORD–LGA Price War Simulator | Vaibhav Bapat",
+            "minFunctionalFontPx": 10,
+            "kpiValueMaxPx": 0,
+            "heroCopyLeftFirst": true,
+            "evidenceBadgeCount": 0,
+            "provenanceCount": 0,
+            "cardCtaCount": 0,
+            "chartAxisCount": 0,
+            "chartLegendCount": 0,
+            "dataIntegrityVisible": true
+          },
+          "scores": {
+            "readabilityScore": 82,
+            "affordanceScore": 100,
+            "evidenceScore": 100,
+            "chartClarityScore": 100
+          },
+          "failures": [
+            "small_functional_text"
+          ],
+          "screenshotPaths": [
+            "tmp/visual-loops/2026-02-22T19-23-51.170Z/projects_ord-lga-price-war/round-02-desktop.png",
+            "tmp/visual-loops/2026-02-22T19-23-51.170Z/projects_ord-lga-price-war/round-02-mobile.png"
+          ],
+          "consoleErrors": [],
+          "pass": false
+        },
+        {
+          "round": 3,
+          "url": "http://localhost:3401/projects/ord-lga-price-war",
+          "diagnostics": {
+            "h1": "United vs. Delta:ORD–LGA price war simulator",
+            "chartCount": 4,
+            "loadingTextVisible": false,
+            "title": "ORD–LGA Price War Simulator | Vaibhav Bapat",
+            "minFunctionalFontPx": 10,
+            "kpiValueMaxPx": 0,
+            "heroCopyLeftFirst": true,
+            "evidenceBadgeCount": 0,
+            "provenanceCount": 0,
+            "cardCtaCount": 0,
+            "chartAxisCount": 0,
+            "chartLegendCount": 0,
+            "dataIntegrityVisible": true
+          },
+          "scores": {
+            "readabilityScore": 82,
+            "affordanceScore": 100,
+            "evidenceScore": 100,
+            "chartClarityScore": 100
+          },
+          "failures": [
+            "small_functional_text"
+          ],
+          "screenshotPaths": [
+            "tmp/visual-loops/2026-02-22T19-23-51.170Z/projects_ord-lga-price-war/round-03-desktop.png",
+            "tmp/visual-loops/2026-02-22T19-23-51.170Z/projects_ord-lga-price-war/round-03-mobile.png"
+          ],
+          "consoleErrors": [],
+          "pass": false
+        },
+        {
+          "round": 4,
+          "url": "http://localhost:3401/projects/ord-lga-price-war",
+          "diagnostics": {
+            "h1": "United vs. Delta:ORD–LGA price war simulator",
+            "chartCount": 4,
+            "loadingTextVisible": false,
+            "title": "ORD–LGA Price War Simulator | Vaibhav Bapat",
+            "minFunctionalFontPx": 10,
+            "kpiValueMaxPx": 0,
+            "heroCopyLeftFirst": true,
+            "evidenceBadgeCount": 0,
+            "provenanceCount": 0,
+            "cardCtaCount": 0,
+            "chartAxisCount": 0,
+            "chartLegendCount": 0,
+            "dataIntegrityVisible": true
+          },
+          "scores": {
+            "readabilityScore": 82,
+            "affordanceScore": 100,
+            "evidenceScore": 100,
+            "chartClarityScore": 100
+          },
+          "failures": [
+            "small_functional_text"
+          ],
+          "screenshotPaths": [
+            "tmp/visual-loops/2026-02-22T19-23-51.170Z/projects_ord-lga-price-war/round-04-desktop.png",
+            "tmp/visual-loops/2026-02-22T19-23-51.170Z/projects_ord-lga-price-war/round-04-mobile.png"
+          ],
+          "consoleErrors": [],
+          "pass": false
+        },
+        {
+          "round": 5,
+          "url": "http://localhost:3401/projects/ord-lga-price-war",
+          "diagnostics": {
+            "h1": "United vs. Delta:ORD–LGA price war simulator",
+            "chartCount": 4,
+            "loadingTextVisible": false,
+            "title": "ORD–LGA Price War Simulator | Vaibhav Bapat",
+            "minFunctionalFontPx": 10,
+            "kpiValueMaxPx": 0,
+            "heroCopyLeftFirst": true,
+            "evidenceBadgeCount": 0,
+            "provenanceCount": 0,
+            "cardCtaCount": 0,
+            "chartAxisCount": 0,
+            "chartLegendCount": 0,
+            "dataIntegrityVisible": true
+          },
+          "scores": {
+            "readabilityScore": 82,
+            "affordanceScore": 100,
+            "evidenceScore": 100,
+            "chartClarityScore": 100
+          },
+          "failures": [
+            "small_functional_text"
+          ],
+          "screenshotPaths": [
+            "tmp/visual-loops/2026-02-22T19-23-51.170Z/projects_ord-lga-price-war/round-05-desktop.png",
+            "tmp/visual-loops/2026-02-22T19-23-51.170Z/projects_ord-lga-price-war/round-05-mobile.png"
+          ],
+          "consoleErrors": [],
+          "pass": false
+        },
+        {
+          "round": 6,
+          "url": "http://localhost:3401/projects/ord-lga-price-war",
+          "diagnostics": {
+            "h1": "United vs. Delta:ORD–LGA price war simulator",
+            "chartCount": 4,
+            "loadingTextVisible": false,
+            "title": "ORD–LGA Price War Simulator | Vaibhav Bapat",
+            "minFunctionalFontPx": 10,
+            "kpiValueMaxPx": 0,
+            "heroCopyLeftFirst": true,
+            "evidenceBadgeCount": 0,
+            "provenanceCount": 0,
+            "cardCtaCount": 0,
+            "chartAxisCount": 0,
+            "chartLegendCount": 0,
+            "dataIntegrityVisible": true
+          },
+          "scores": {
+            "readabilityScore": 82,
+            "affordanceScore": 100,
+            "evidenceScore": 100,
+            "chartClarityScore": 100
+          },
+          "failures": [
+            "small_functional_text"
+          ],
+          "screenshotPaths": [
+            "tmp/visual-loops/2026-02-22T19-23-51.170Z/projects_ord-lga-price-war/round-06-desktop.png",
+            "tmp/visual-loops/2026-02-22T19-23-51.170Z/projects_ord-lga-price-war/round-06-mobile.png"
+          ],
+          "consoleErrors": [],
+          "pass": false
+        },
+        {
+          "round": 7,
+          "url": "http://localhost:3401/projects/ord-lga-price-war",
+          "diagnostics": {
+            "h1": "United vs. Delta:ORD–LGA price war simulator",
+            "chartCount": 4,
+            "loadingTextVisible": false,
+            "title": "ORD–LGA Price War Simulator | Vaibhav Bapat",
+            "minFunctionalFontPx": 10,
+            "kpiValueMaxPx": 0,
+            "heroCopyLeftFirst": true,
+            "evidenceBadgeCount": 0,
+            "provenanceCount": 0,
+            "cardCtaCount": 0,
+            "chartAxisCount": 0,
+            "chartLegendCount": 0,
+            "dataIntegrityVisible": true
+          },
+          "scores": {
+            "readabilityScore": 82,
+            "affordanceScore": 100,
+            "evidenceScore": 100,
+            "chartClarityScore": 100
+          },
+          "failures": [
+            "small_functional_text"
+          ],
+          "screenshotPaths": [
+            "tmp/visual-loops/2026-02-22T19-23-51.170Z/projects_ord-lga-price-war/round-07-desktop.png",
+            "tmp/visual-loops/2026-02-22T19-23-51.170Z/projects_ord-lga-price-war/round-07-mobile.png"
+          ],
+          "consoleErrors": [],
+          "pass": false
+        },
+        {
+          "round": 8,
+          "url": "http://localhost:3401/projects/ord-lga-price-war",
+          "diagnostics": {
+            "h1": "United vs. Delta:ORD–LGA price war simulator",
+            "chartCount": 4,
+            "loadingTextVisible": false,
+            "title": "ORD–LGA Price War Simulator | Vaibhav Bapat",
+            "minFunctionalFontPx": 10,
+            "kpiValueMaxPx": 0,
+            "heroCopyLeftFirst": true,
+            "evidenceBadgeCount": 0,
+            "provenanceCount": 0,
+            "cardCtaCount": 0,
+            "chartAxisCount": 0,
+            "chartLegendCount": 0,
+            "dataIntegrityVisible": true
+          },
+          "scores": {
+            "readabilityScore": 82,
+            "affordanceScore": 100,
+            "evidenceScore": 100,
+            "chartClarityScore": 100
+          },
+          "failures": [
+            "small_functional_text"
+          ],
+          "screenshotPaths": [
+            "tmp/visual-loops/2026-02-22T19-23-51.170Z/projects_ord-lga-price-war/round-08-desktop.png",
+            "tmp/visual-loops/2026-02-22T19-23-51.170Z/projects_ord-lga-price-war/round-08-mobile.png"
+          ],
+          "consoleErrors": [],
+          "pass": false
+        },
+        {
+          "round": 9,
+          "url": "http://localhost:3401/projects/ord-lga-price-war",
+          "diagnostics": {
+            "h1": "United vs. Delta:ORD–LGA price war simulator",
+            "chartCount": 4,
+            "loadingTextVisible": false,
+            "title": "ORD–LGA Price War Simulator | Vaibhav Bapat",
+            "minFunctionalFontPx": 10,
+            "kpiValueMaxPx": 0,
+            "heroCopyLeftFirst": true,
+            "evidenceBadgeCount": 0,
+            "provenanceCount": 0,
+            "cardCtaCount": 0,
+            "chartAxisCount": 0,
+            "chartLegendCount": 0,
+            "dataIntegrityVisible": true
+          },
+          "scores": {
+            "readabilityScore": 82,
+            "affordanceScore": 100,
+            "evidenceScore": 100,
+            "chartClarityScore": 100
+          },
+          "failures": [
+            "small_functional_text"
+          ],
+          "screenshotPaths": [
+            "tmp/visual-loops/2026-02-22T19-23-51.170Z/projects_ord-lga-price-war/round-09-desktop.png",
+            "tmp/visual-loops/2026-02-22T19-23-51.170Z/projects_ord-lga-price-war/round-09-mobile.png"
+          ],
+          "consoleErrors": [],
+          "pass": false
+        },
+        {
+          "round": 10,
+          "url": "http://localhost:3401/projects/ord-lga-price-war",
+          "diagnostics": {
+            "h1": "United vs. Delta:ORD–LGA price war simulator",
+            "chartCount": 4,
+            "loadingTextVisible": false,
+            "title": "ORD–LGA Price War Simulator | Vaibhav Bapat",
+            "minFunctionalFontPx": 10,
+            "kpiValueMaxPx": 0,
+            "heroCopyLeftFirst": true,
+            "evidenceBadgeCount": 0,
+            "provenanceCount": 0,
+            "cardCtaCount": 0,
+            "chartAxisCount": 0,
+            "chartLegendCount": 0,
+            "dataIntegrityVisible": true
+          },
+          "scores": {
+            "readabilityScore": 82,
+            "affordanceScore": 100,
+            "evidenceScore": 100,
+            "chartClarityScore": 100
+          },
+          "failures": [
+            "small_functional_text"
+          ],
+          "screenshotPaths": [
+            "tmp/visual-loops/2026-02-22T19-23-51.170Z/projects_ord-lga-price-war/round-10-desktop.png",
+            "tmp/visual-loops/2026-02-22T19-23-51.170Z/projects_ord-lga-price-war/round-10-mobile.png"
+          ],
+          "consoleErrors": [],
+          "pass": false
+        }
+      ]
+    },
+    {
+      "route": "/projects/fraud-radar",
+      "rounds": [
+        {
+          "round": 1,
+          "url": "http://localhost:3401/projects/fraud-radar",
+          "diagnostics": {
+            "h1": "Fraud Radar:forensic pre-collapse signal board",
+            "chartCount": 5,
+            "loadingTextVisible": false,
+            "title": "Fraud Radar | Vaibhav Bapat",
+            "minFunctionalFontPx": 10,
+            "kpiValueMaxPx": 0,
+            "heroCopyLeftFirst": true,
+            "evidenceBadgeCount": 0,
+            "provenanceCount": 0,
+            "cardCtaCount": 0,
+            "chartAxisCount": 0,
+            "chartLegendCount": 0,
+            "dataIntegrityVisible": true
+          },
+          "scores": {
+            "readabilityScore": 82,
+            "affordanceScore": 100,
+            "evidenceScore": 100,
+            "chartClarityScore": 100
+          },
+          "failures": [
+            "small_functional_text"
+          ],
+          "screenshotPaths": [
+            "tmp/visual-loops/2026-02-22T19-23-51.170Z/projects_fraud-radar/round-01-desktop.png",
+            "tmp/visual-loops/2026-02-22T19-23-51.170Z/projects_fraud-radar/round-01-mobile.png"
+          ],
+          "consoleErrors": [],
+          "pass": false
+        },
+        {
+          "round": 2,
+          "url": "http://localhost:3401/projects/fraud-radar",
+          "diagnostics": {
+            "h1": "Fraud Radar:forensic pre-collapse signal board",
+            "chartCount": 5,
+            "loadingTextVisible": false,
+            "title": "Fraud Radar | Vaibhav Bapat",
+            "minFunctionalFontPx": 10,
+            "kpiValueMaxPx": 0,
+            "heroCopyLeftFirst": true,
+            "evidenceBadgeCount": 0,
+            "provenanceCount": 0,
+            "cardCtaCount": 0,
+            "chartAxisCount": 0,
+            "chartLegendCount": 0,
+            "dataIntegrityVisible": true
+          },
+          "scores": {
+            "readabilityScore": 82,
+            "affordanceScore": 100,
+            "evidenceScore": 100,
+            "chartClarityScore": 100
+          },
+          "failures": [
+            "small_functional_text"
+          ],
+          "screenshotPaths": [
+            "tmp/visual-loops/2026-02-22T19-23-51.170Z/projects_fraud-radar/round-02-desktop.png",
+            "tmp/visual-loops/2026-02-22T19-23-51.170Z/projects_fraud-radar/round-02-mobile.png"
+          ],
+          "consoleErrors": [],
+          "pass": false
+        },
+        {
+          "round": 3,
+          "url": "http://localhost:3401/projects/fraud-radar",
+          "diagnostics": {
+            "h1": "Fraud Radar:forensic pre-collapse signal board",
+            "chartCount": 5,
+            "loadingTextVisible": false,
+            "title": "Fraud Radar | Vaibhav Bapat",
+            "minFunctionalFontPx": 10,
+            "kpiValueMaxPx": 0,
+            "heroCopyLeftFirst": true,
+            "evidenceBadgeCount": 0,
+            "provenanceCount": 0,
+            "cardCtaCount": 0,
+            "chartAxisCount": 0,
+            "chartLegendCount": 0,
+            "dataIntegrityVisible": true
+          },
+          "scores": {
+            "readabilityScore": 82,
+            "affordanceScore": 100,
+            "evidenceScore": 100,
+            "chartClarityScore": 100
+          },
+          "failures": [
+            "small_functional_text"
+          ],
+          "screenshotPaths": [
+            "tmp/visual-loops/2026-02-22T19-23-51.170Z/projects_fraud-radar/round-03-desktop.png",
+            "tmp/visual-loops/2026-02-22T19-23-51.170Z/projects_fraud-radar/round-03-mobile.png"
+          ],
+          "consoleErrors": [],
+          "pass": false
+        },
+        {
+          "round": 4,
+          "url": "http://localhost:3401/projects/fraud-radar",
+          "diagnostics": {
+            "h1": "Fraud Radar:forensic pre-collapse signal board",
+            "chartCount": 5,
+            "loadingTextVisible": false,
+            "title": "Fraud Radar | Vaibhav Bapat",
+            "minFunctionalFontPx": 10,
+            "kpiValueMaxPx": 0,
+            "heroCopyLeftFirst": true,
+            "evidenceBadgeCount": 0,
+            "provenanceCount": 0,
+            "cardCtaCount": 0,
+            "chartAxisCount": 0,
+            "chartLegendCount": 0,
+            "dataIntegrityVisible": true
+          },
+          "scores": {
+            "readabilityScore": 82,
+            "affordanceScore": 100,
+            "evidenceScore": 100,
+            "chartClarityScore": 100
+          },
+          "failures": [
+            "small_functional_text"
+          ],
+          "screenshotPaths": [
+            "tmp/visual-loops/2026-02-22T19-23-51.170Z/projects_fraud-radar/round-04-desktop.png",
+            "tmp/visual-loops/2026-02-22T19-23-51.170Z/projects_fraud-radar/round-04-mobile.png"
+          ],
+          "consoleErrors": [],
+          "pass": false
+        },
+        {
+          "round": 5,
+          "url": "http://localhost:3401/projects/fraud-radar",
+          "diagnostics": {
+            "h1": "Fraud Radar:forensic pre-collapse signal board",
+            "chartCount": 5,
+            "loadingTextVisible": false,
+            "title": "Fraud Radar | Vaibhav Bapat",
+            "minFunctionalFontPx": 10,
+            "kpiValueMaxPx": 0,
+            "heroCopyLeftFirst": true,
+            "evidenceBadgeCount": 0,
+            "provenanceCount": 0,
+            "cardCtaCount": 0,
+            "chartAxisCount": 0,
+            "chartLegendCount": 0,
+            "dataIntegrityVisible": true
+          },
+          "scores": {
+            "readabilityScore": 82,
+            "affordanceScore": 100,
+            "evidenceScore": 100,
+            "chartClarityScore": 100
+          },
+          "failures": [
+            "small_functional_text"
+          ],
+          "screenshotPaths": [
+            "tmp/visual-loops/2026-02-22T19-23-51.170Z/projects_fraud-radar/round-05-desktop.png",
+            "tmp/visual-loops/2026-02-22T19-23-51.170Z/projects_fraud-radar/round-05-mobile.png"
+          ],
+          "consoleErrors": [],
+          "pass": false
+        },
+        {
+          "round": 6,
+          "url": "http://localhost:3401/projects/fraud-radar",
+          "diagnostics": {
+            "h1": "Fraud Radar:forensic pre-collapse signal board",
+            "chartCount": 5,
+            "loadingTextVisible": false,
+            "title": "Fraud Radar | Vaibhav Bapat",
+            "minFunctionalFontPx": 10,
+            "kpiValueMaxPx": 0,
+            "heroCopyLeftFirst": true,
+            "evidenceBadgeCount": 0,
+            "provenanceCount": 0,
+            "cardCtaCount": 0,
+            "chartAxisCount": 0,
+            "chartLegendCount": 0,
+            "dataIntegrityVisible": true
+          },
+          "scores": {
+            "readabilityScore": 82,
+            "affordanceScore": 100,
+            "evidenceScore": 100,
+            "chartClarityScore": 100
+          },
+          "failures": [
+            "small_functional_text"
+          ],
+          "screenshotPaths": [
+            "tmp/visual-loops/2026-02-22T19-23-51.170Z/projects_fraud-radar/round-06-desktop.png",
+            "tmp/visual-loops/2026-02-22T19-23-51.170Z/projects_fraud-radar/round-06-mobile.png"
+          ],
+          "consoleErrors": [],
+          "pass": false
+        },
+        {
+          "round": 7,
+          "url": "http://localhost:3401/projects/fraud-radar",
+          "diagnostics": {
+            "h1": "Fraud Radar:forensic pre-collapse signal board",
+            "chartCount": 5,
+            "loadingTextVisible": false,
+            "title": "Fraud Radar | Vaibhav Bapat",
+            "minFunctionalFontPx": 10,
+            "kpiValueMaxPx": 0,
+            "heroCopyLeftFirst": true,
+            "evidenceBadgeCount": 0,
+            "provenanceCount": 0,
+            "cardCtaCount": 0,
+            "chartAxisCount": 0,
+            "chartLegendCount": 0,
+            "dataIntegrityVisible": true
+          },
+          "scores": {
+            "readabilityScore": 82,
+            "affordanceScore": 100,
+            "evidenceScore": 100,
+            "chartClarityScore": 100
+          },
+          "failures": [
+            "small_functional_text"
+          ],
+          "screenshotPaths": [
+            "tmp/visual-loops/2026-02-22T19-23-51.170Z/projects_fraud-radar/round-07-desktop.png",
+            "tmp/visual-loops/2026-02-22T19-23-51.170Z/projects_fraud-radar/round-07-mobile.png"
+          ],
+          "consoleErrors": [],
+          "pass": false
+        },
+        {
+          "round": 8,
+          "url": "http://localhost:3401/projects/fraud-radar",
+          "diagnostics": {
+            "h1": "Fraud Radar:forensic pre-collapse signal board",
+            "chartCount": 5,
+            "loadingTextVisible": false,
+            "title": "Fraud Radar | Vaibhav Bapat",
+            "minFunctionalFontPx": 10,
+            "kpiValueMaxPx": 0,
+            "heroCopyLeftFirst": true,
+            "evidenceBadgeCount": 0,
+            "provenanceCount": 0,
+            "cardCtaCount": 0,
+            "chartAxisCount": 0,
+            "chartLegendCount": 0,
+            "dataIntegrityVisible": true
+          },
+          "scores": {
+            "readabilityScore": 82,
+            "affordanceScore": 100,
+            "evidenceScore": 100,
+            "chartClarityScore": 100
+          },
+          "failures": [
+            "small_functional_text"
+          ],
+          "screenshotPaths": [
+            "tmp/visual-loops/2026-02-22T19-23-51.170Z/projects_fraud-radar/round-08-desktop.png",
+            "tmp/visual-loops/2026-02-22T19-23-51.170Z/projects_fraud-radar/round-08-mobile.png"
+          ],
+          "consoleErrors": [],
+          "pass": false
+        },
+        {
+          "round": 9,
+          "url": "http://localhost:3401/projects/fraud-radar",
+          "diagnostics": {
+            "h1": "Fraud Radar:forensic pre-collapse signal board",
+            "chartCount": 5,
+            "loadingTextVisible": false,
+            "title": "Fraud Radar | Vaibhav Bapat",
+            "minFunctionalFontPx": 10,
+            "kpiValueMaxPx": 0,
+            "heroCopyLeftFirst": true,
+            "evidenceBadgeCount": 0,
+            "provenanceCount": 0,
+            "cardCtaCount": 0,
+            "chartAxisCount": 0,
+            "chartLegendCount": 0,
+            "dataIntegrityVisible": true
+          },
+          "scores": {
+            "readabilityScore": 82,
+            "affordanceScore": 100,
+            "evidenceScore": 100,
+            "chartClarityScore": 100
+          },
+          "failures": [
+            "small_functional_text"
+          ],
+          "screenshotPaths": [
+            "tmp/visual-loops/2026-02-22T19-23-51.170Z/projects_fraud-radar/round-09-desktop.png",
+            "tmp/visual-loops/2026-02-22T19-23-51.170Z/projects_fraud-radar/round-09-mobile.png"
+          ],
+          "consoleErrors": [],
+          "pass": false
+        },
+        {
+          "round": 10,
+          "url": "http://localhost:3401/projects/fraud-radar",
+          "diagnostics": {
+            "h1": "Fraud Radar:forensic pre-collapse signal board",
+            "chartCount": 5,
+            "loadingTextVisible": false,
+            "title": "Fraud Radar | Vaibhav Bapat",
+            "minFunctionalFontPx": 10,
+            "kpiValueMaxPx": 0,
+            "heroCopyLeftFirst": true,
+            "evidenceBadgeCount": 0,
+            "provenanceCount": 0,
+            "cardCtaCount": 0,
+            "chartAxisCount": 0,
+            "chartLegendCount": 0,
+            "dataIntegrityVisible": true
+          },
+          "scores": {
+            "readabilityScore": 82,
+            "affordanceScore": 100,
+            "evidenceScore": 100,
+            "chartClarityScore": 100
+          },
+          "failures": [
+            "small_functional_text"
+          ],
+          "screenshotPaths": [
+            "tmp/visual-loops/2026-02-22T19-23-51.170Z/projects_fraud-radar/round-10-desktop.png",
+            "tmp/visual-loops/2026-02-22T19-23-51.170Z/projects_fraud-radar/round-10-mobile.png"
+          ],
+          "consoleErrors": [],
+          "pass": false
+        }
+      ]
+    },
+    {
+      "route": "/projects/target-shrink",
+      "rounds": [
+        {
+          "round": 1,
+          "url": "http://localhost:3401/projects/target-shrink",
+          "diagnostics": {
+            "h1": "Target Shrink Simulator:operations floor intervention engine",
+            "chartCount": 5,
+            "loadingTextVisible": false,
+            "title": "Target Shrink Simulator | Vaibhav Bapat",
+            "minFunctionalFontPx": 10,
+            "kpiValueMaxPx": 0,
+            "heroCopyLeftFirst": true,
+            "evidenceBadgeCount": 0,
+            "provenanceCount": 0,
+            "cardCtaCount": 0,
+            "chartAxisCount": 0,
+            "chartLegendCount": 0,
+            "dataIntegrityVisible": true
+          },
+          "scores": {
+            "readabilityScore": 82,
+            "affordanceScore": 100,
+            "evidenceScore": 100,
+            "chartClarityScore": 100
+          },
+          "failures": [
+            "small_functional_text"
+          ],
+          "screenshotPaths": [
+            "tmp/visual-loops/2026-02-22T19-23-51.170Z/projects_target-shrink/round-01-desktop.png",
+            "tmp/visual-loops/2026-02-22T19-23-51.170Z/projects_target-shrink/round-01-mobile.png"
+          ],
+          "consoleErrors": [],
+          "pass": false
+        },
+        {
+          "round": 2,
+          "url": "http://localhost:3401/projects/target-shrink",
+          "diagnostics": {
+            "h1": "Target Shrink Simulator:operations floor intervention engine",
+            "chartCount": 5,
+            "loadingTextVisible": false,
+            "title": "Target Shrink Simulator | Vaibhav Bapat",
+            "minFunctionalFontPx": 10,
+            "kpiValueMaxPx": 0,
+            "heroCopyLeftFirst": true,
+            "evidenceBadgeCount": 0,
+            "provenanceCount": 0,
+            "cardCtaCount": 0,
+            "chartAxisCount": 0,
+            "chartLegendCount": 0,
+            "dataIntegrityVisible": true
+          },
+          "scores": {
+            "readabilityScore": 82,
+            "affordanceScore": 100,
+            "evidenceScore": 100,
+            "chartClarityScore": 100
+          },
+          "failures": [
+            "small_functional_text"
+          ],
+          "screenshotPaths": [
+            "tmp/visual-loops/2026-02-22T19-23-51.170Z/projects_target-shrink/round-02-desktop.png",
+            "tmp/visual-loops/2026-02-22T19-23-51.170Z/projects_target-shrink/round-02-mobile.png"
+          ],
+          "consoleErrors": [],
+          "pass": false
+        },
+        {
+          "round": 3,
+          "url": "http://localhost:3401/projects/target-shrink",
+          "diagnostics": {
+            "h1": "Target Shrink Simulator:operations floor intervention engine",
+            "chartCount": 5,
+            "loadingTextVisible": false,
+            "title": "Target Shrink Simulator | Vaibhav Bapat",
+            "minFunctionalFontPx": 10,
+            "kpiValueMaxPx": 0,
+            "heroCopyLeftFirst": true,
+            "evidenceBadgeCount": 0,
+            "provenanceCount": 0,
+            "cardCtaCount": 0,
+            "chartAxisCount": 0,
+            "chartLegendCount": 0,
+            "dataIntegrityVisible": true
+          },
+          "scores": {
+            "readabilityScore": 82,
+            "affordanceScore": 100,
+            "evidenceScore": 100,
+            "chartClarityScore": 100
+          },
+          "failures": [
+            "small_functional_text"
+          ],
+          "screenshotPaths": [
+            "tmp/visual-loops/2026-02-22T19-23-51.170Z/projects_target-shrink/round-03-desktop.png",
+            "tmp/visual-loops/2026-02-22T19-23-51.170Z/projects_target-shrink/round-03-mobile.png"
+          ],
+          "consoleErrors": [],
+          "pass": false
+        },
+        {
+          "round": 4,
+          "url": "http://localhost:3401/projects/target-shrink",
+          "diagnostics": {
+            "h1": "Target Shrink Simulator:operations floor intervention engine",
+            "chartCount": 5,
+            "loadingTextVisible": false,
+            "title": "Target Shrink Simulator | Vaibhav Bapat",
+            "minFunctionalFontPx": 10,
+            "kpiValueMaxPx": 0,
+            "heroCopyLeftFirst": true,
+            "evidenceBadgeCount": 0,
+            "provenanceCount": 0,
+            "cardCtaCount": 0,
+            "chartAxisCount": 0,
+            "chartLegendCount": 0,
+            "dataIntegrityVisible": true
+          },
+          "scores": {
+            "readabilityScore": 82,
+            "affordanceScore": 100,
+            "evidenceScore": 100,
+            "chartClarityScore": 100
+          },
+          "failures": [
+            "small_functional_text"
+          ],
+          "screenshotPaths": [
+            "tmp/visual-loops/2026-02-22T19-23-51.170Z/projects_target-shrink/round-04-desktop.png",
+            "tmp/visual-loops/2026-02-22T19-23-51.170Z/projects_target-shrink/round-04-mobile.png"
+          ],
+          "consoleErrors": [],
+          "pass": false
+        },
+        {
+          "round": 5,
+          "url": "http://localhost:3401/projects/target-shrink",
+          "diagnostics": {
+            "h1": "Target Shrink Simulator:operations floor intervention engine",
+            "chartCount": 5,
+            "loadingTextVisible": false,
+            "title": "Target Shrink Simulator | Vaibhav Bapat",
+            "minFunctionalFontPx": 10,
+            "kpiValueMaxPx": 0,
+            "heroCopyLeftFirst": true,
+            "evidenceBadgeCount": 0,
+            "provenanceCount": 0,
+            "cardCtaCount": 0,
+            "chartAxisCount": 0,
+            "chartLegendCount": 0,
+            "dataIntegrityVisible": true
+          },
+          "scores": {
+            "readabilityScore": 82,
+            "affordanceScore": 100,
+            "evidenceScore": 100,
+            "chartClarityScore": 100
+          },
+          "failures": [
+            "small_functional_text"
+          ],
+          "screenshotPaths": [
+            "tmp/visual-loops/2026-02-22T19-23-51.170Z/projects_target-shrink/round-05-desktop.png",
+            "tmp/visual-loops/2026-02-22T19-23-51.170Z/projects_target-shrink/round-05-mobile.png"
+          ],
+          "consoleErrors": [],
+          "pass": false
+        },
+        {
+          "round": 6,
+          "url": "http://localhost:3401/projects/target-shrink",
+          "diagnostics": {
+            "h1": "Target Shrink Simulator:operations floor intervention engine",
+            "chartCount": 5,
+            "loadingTextVisible": false,
+            "title": "Target Shrink Simulator | Vaibhav Bapat",
+            "minFunctionalFontPx": 10,
+            "kpiValueMaxPx": 0,
+            "heroCopyLeftFirst": true,
+            "evidenceBadgeCount": 0,
+            "provenanceCount": 0,
+            "cardCtaCount": 0,
+            "chartAxisCount": 0,
+            "chartLegendCount": 0,
+            "dataIntegrityVisible": true
+          },
+          "scores": {
+            "readabilityScore": 82,
+            "affordanceScore": 100,
+            "evidenceScore": 100,
+            "chartClarityScore": 100
+          },
+          "failures": [
+            "small_functional_text"
+          ],
+          "screenshotPaths": [
+            "tmp/visual-loops/2026-02-22T19-23-51.170Z/projects_target-shrink/round-06-desktop.png",
+            "tmp/visual-loops/2026-02-22T19-23-51.170Z/projects_target-shrink/round-06-mobile.png"
+          ],
+          "consoleErrors": [],
+          "pass": false
+        },
+        {
+          "round": 7,
+          "url": "http://localhost:3401/projects/target-shrink",
+          "diagnostics": {
+            "h1": "Target Shrink Simulator:operations floor intervention engine",
+            "chartCount": 5,
+            "loadingTextVisible": false,
+            "title": "Target Shrink Simulator | Vaibhav Bapat",
+            "minFunctionalFontPx": 10,
+            "kpiValueMaxPx": 0,
+            "heroCopyLeftFirst": true,
+            "evidenceBadgeCount": 0,
+            "provenanceCount": 0,
+            "cardCtaCount": 0,
+            "chartAxisCount": 0,
+            "chartLegendCount": 0,
+            "dataIntegrityVisible": true
+          },
+          "scores": {
+            "readabilityScore": 82,
+            "affordanceScore": 100,
+            "evidenceScore": 100,
+            "chartClarityScore": 100
+          },
+          "failures": [
+            "small_functional_text"
+          ],
+          "screenshotPaths": [
+            "tmp/visual-loops/2026-02-22T19-23-51.170Z/projects_target-shrink/round-07-desktop.png",
+            "tmp/visual-loops/2026-02-22T19-23-51.170Z/projects_target-shrink/round-07-mobile.png"
+          ],
+          "consoleErrors": [],
+          "pass": false
+        },
+        {
+          "round": 8,
+          "url": "http://localhost:3401/projects/target-shrink",
+          "diagnostics": {
+            "h1": "Target Shrink Simulator:operations floor intervention engine",
+            "chartCount": 5,
+            "loadingTextVisible": false,
+            "title": "Target Shrink Simulator | Vaibhav Bapat",
+            "minFunctionalFontPx": 10,
+            "kpiValueMaxPx": 0,
+            "heroCopyLeftFirst": true,
+            "evidenceBadgeCount": 0,
+            "provenanceCount": 0,
+            "cardCtaCount": 0,
+            "chartAxisCount": 0,
+            "chartLegendCount": 0,
+            "dataIntegrityVisible": true
+          },
+          "scores": {
+            "readabilityScore": 82,
+            "affordanceScore": 100,
+            "evidenceScore": 100,
+            "chartClarityScore": 100
+          },
+          "failures": [
+            "small_functional_text"
+          ],
+          "screenshotPaths": [
+            "tmp/visual-loops/2026-02-22T19-23-51.170Z/projects_target-shrink/round-08-desktop.png",
+            "tmp/visual-loops/2026-02-22T19-23-51.170Z/projects_target-shrink/round-08-mobile.png"
+          ],
+          "consoleErrors": [],
+          "pass": false
+        },
+        {
+          "round": 9,
+          "url": "http://localhost:3401/projects/target-shrink",
+          "diagnostics": {
+            "h1": "Target Shrink Simulator:operations floor intervention engine",
+            "chartCount": 5,
+            "loadingTextVisible": false,
+            "title": "Target Shrink Simulator | Vaibhav Bapat",
+            "minFunctionalFontPx": 10,
+            "kpiValueMaxPx": 0,
+            "heroCopyLeftFirst": true,
+            "evidenceBadgeCount": 0,
+            "provenanceCount": 0,
+            "cardCtaCount": 0,
+            "chartAxisCount": 0,
+            "chartLegendCount": 0,
+            "dataIntegrityVisible": true
+          },
+          "scores": {
+            "readabilityScore": 82,
+            "affordanceScore": 100,
+            "evidenceScore": 100,
+            "chartClarityScore": 100
+          },
+          "failures": [
+            "small_functional_text"
+          ],
+          "screenshotPaths": [
+            "tmp/visual-loops/2026-02-22T19-23-51.170Z/projects_target-shrink/round-09-desktop.png",
+            "tmp/visual-loops/2026-02-22T19-23-51.170Z/projects_target-shrink/round-09-mobile.png"
+          ],
+          "consoleErrors": [],
+          "pass": false
+        },
+        {
+          "round": 10,
+          "url": "http://localhost:3401/projects/target-shrink",
+          "diagnostics": {
+            "h1": "Target Shrink Simulator:operations floor intervention engine",
+            "chartCount": 5,
+            "loadingTextVisible": false,
+            "title": "Target Shrink Simulator | Vaibhav Bapat",
+            "minFunctionalFontPx": 10,
+            "kpiValueMaxPx": 0,
+            "heroCopyLeftFirst": true,
+            "evidenceBadgeCount": 0,
+            "provenanceCount": 0,
+            "cardCtaCount": 0,
+            "chartAxisCount": 0,
+            "chartLegendCount": 0,
+            "dataIntegrityVisible": true
+          },
+          "scores": {
+            "readabilityScore": 82,
+            "affordanceScore": 100,
+            "evidenceScore": 100,
+            "chartClarityScore": 100
+          },
+          "failures": [
+            "small_functional_text"
+          ],
+          "screenshotPaths": [
+            "tmp/visual-loops/2026-02-22T19-23-51.170Z/projects_target-shrink/round-10-desktop.png",
+            "tmp/visual-loops/2026-02-22T19-23-51.170Z/projects_target-shrink/round-10-mobile.png"
+          ],
+          "consoleErrors": [],
+          "pass": false
+        }
+      ]
+    },
+    {
+      "route": "/projects/starbucks-pivot",
+      "rounds": [
+        {
+          "round": 1,
+          "url": "http://localhost:3401/projects/starbucks-pivot",
+          "diagnostics": {
+            "h1": "Starbucks Pivot:geo-strategy operating board",
+            "chartCount": 5,
+            "loadingTextVisible": false,
+            "title": "Starbucks Suburban Pivot | Vaibhav Bapat",
+            "minFunctionalFontPx": 10,
+            "kpiValueMaxPx": 0,
+            "heroCopyLeftFirst": true,
+            "evidenceBadgeCount": 0,
+            "provenanceCount": 0,
+            "cardCtaCount": 0,
+            "chartAxisCount": 0,
+            "chartLegendCount": 0,
+            "dataIntegrityVisible": true
+          },
+          "scores": {
+            "readabilityScore": 82,
+            "affordanceScore": 100,
+            "evidenceScore": 100,
+            "chartClarityScore": 100
+          },
+          "failures": [
+            "small_functional_text"
+          ],
+          "screenshotPaths": [
+            "tmp/visual-loops/2026-02-22T19-23-51.170Z/projects_starbucks-pivot/round-01-desktop.png",
+            "tmp/visual-loops/2026-02-22T19-23-51.170Z/projects_starbucks-pivot/round-01-mobile.png"
+          ],
+          "consoleErrors": [],
+          "pass": false
+        },
+        {
+          "round": 2,
+          "url": "http://localhost:3401/projects/starbucks-pivot",
+          "diagnostics": {
+            "h1": "Starbucks Pivot:geo-strategy operating board",
+            "chartCount": 5,
+            "loadingTextVisible": false,
+            "title": "Starbucks Suburban Pivot | Vaibhav Bapat",
+            "minFunctionalFontPx": 10,
+            "kpiValueMaxPx": 0,
+            "heroCopyLeftFirst": true,
+            "evidenceBadgeCount": 0,
+            "provenanceCount": 0,
+            "cardCtaCount": 0,
+            "chartAxisCount": 0,
+            "chartLegendCount": 0,
+            "dataIntegrityVisible": true
+          },
+          "scores": {
+            "readabilityScore": 82,
+            "affordanceScore": 100,
+            "evidenceScore": 100,
+            "chartClarityScore": 100
+          },
+          "failures": [
+            "small_functional_text"
+          ],
+          "screenshotPaths": [
+            "tmp/visual-loops/2026-02-22T19-23-51.170Z/projects_starbucks-pivot/round-02-desktop.png",
+            "tmp/visual-loops/2026-02-22T19-23-51.170Z/projects_starbucks-pivot/round-02-mobile.png"
+          ],
+          "consoleErrors": [],
+          "pass": false
+        },
+        {
+          "round": 3,
+          "url": "http://localhost:3401/projects/starbucks-pivot",
+          "diagnostics": {
+            "h1": "Starbucks Pivot:geo-strategy operating board",
+            "chartCount": 5,
+            "loadingTextVisible": false,
+            "title": "Starbucks Suburban Pivot | Vaibhav Bapat",
+            "minFunctionalFontPx": 10,
+            "kpiValueMaxPx": 0,
+            "heroCopyLeftFirst": true,
+            "evidenceBadgeCount": 0,
+            "provenanceCount": 0,
+            "cardCtaCount": 0,
+            "chartAxisCount": 0,
+            "chartLegendCount": 0,
+            "dataIntegrityVisible": true
+          },
+          "scores": {
+            "readabilityScore": 82,
+            "affordanceScore": 100,
+            "evidenceScore": 100,
+            "chartClarityScore": 100
+          },
+          "failures": [
+            "small_functional_text"
+          ],
+          "screenshotPaths": [
+            "tmp/visual-loops/2026-02-22T19-23-51.170Z/projects_starbucks-pivot/round-03-desktop.png",
+            "tmp/visual-loops/2026-02-22T19-23-51.170Z/projects_starbucks-pivot/round-03-mobile.png"
+          ],
+          "consoleErrors": [],
+          "pass": false
+        },
+        {
+          "round": 4,
+          "url": "http://localhost:3401/projects/starbucks-pivot",
+          "diagnostics": {
+            "h1": "Starbucks Pivot:geo-strategy operating board",
+            "chartCount": 5,
+            "loadingTextVisible": false,
+            "title": "Starbucks Suburban Pivot | Vaibhav Bapat",
+            "minFunctionalFontPx": 10,
+            "kpiValueMaxPx": 0,
+            "heroCopyLeftFirst": true,
+            "evidenceBadgeCount": 0,
+            "provenanceCount": 0,
+            "cardCtaCount": 0,
+            "chartAxisCount": 0,
+            "chartLegendCount": 0,
+            "dataIntegrityVisible": true
+          },
+          "scores": {
+            "readabilityScore": 82,
+            "affordanceScore": 100,
+            "evidenceScore": 100,
+            "chartClarityScore": 100
+          },
+          "failures": [
+            "small_functional_text"
+          ],
+          "screenshotPaths": [
+            "tmp/visual-loops/2026-02-22T19-23-51.170Z/projects_starbucks-pivot/round-04-desktop.png",
+            "tmp/visual-loops/2026-02-22T19-23-51.170Z/projects_starbucks-pivot/round-04-mobile.png"
+          ],
+          "consoleErrors": [],
+          "pass": false
+        },
+        {
+          "round": 5,
+          "url": "http://localhost:3401/projects/starbucks-pivot",
+          "diagnostics": {
+            "h1": "Starbucks Pivot:geo-strategy operating board",
+            "chartCount": 5,
+            "loadingTextVisible": false,
+            "title": "Starbucks Suburban Pivot | Vaibhav Bapat",
+            "minFunctionalFontPx": 10,
+            "kpiValueMaxPx": 0,
+            "heroCopyLeftFirst": true,
+            "evidenceBadgeCount": 0,
+            "provenanceCount": 0,
+            "cardCtaCount": 0,
+            "chartAxisCount": 0,
+            "chartLegendCount": 0,
+            "dataIntegrityVisible": true
+          },
+          "scores": {
+            "readabilityScore": 82,
+            "affordanceScore": 100,
+            "evidenceScore": 100,
+            "chartClarityScore": 100
+          },
+          "failures": [
+            "small_functional_text"
+          ],
+          "screenshotPaths": [
+            "tmp/visual-loops/2026-02-22T19-23-51.170Z/projects_starbucks-pivot/round-05-desktop.png",
+            "tmp/visual-loops/2026-02-22T19-23-51.170Z/projects_starbucks-pivot/round-05-mobile.png"
+          ],
+          "consoleErrors": [],
+          "pass": false
+        },
+        {
+          "round": 6,
+          "url": "http://localhost:3401/projects/starbucks-pivot",
+          "diagnostics": {
+            "h1": "Starbucks Pivot:geo-strategy operating board",
+            "chartCount": 5,
+            "loadingTextVisible": false,
+            "title": "Starbucks Suburban Pivot | Vaibhav Bapat",
+            "minFunctionalFontPx": 10,
+            "kpiValueMaxPx": 0,
+            "heroCopyLeftFirst": true,
+            "evidenceBadgeCount": 0,
+            "provenanceCount": 0,
+            "cardCtaCount": 0,
+            "chartAxisCount": 0,
+            "chartLegendCount": 0,
+            "dataIntegrityVisible": true
+          },
+          "scores": {
+            "readabilityScore": 82,
+            "affordanceScore": 100,
+            "evidenceScore": 100,
+            "chartClarityScore": 100
+          },
+          "failures": [
+            "small_functional_text"
+          ],
+          "screenshotPaths": [
+            "tmp/visual-loops/2026-02-22T19-23-51.170Z/projects_starbucks-pivot/round-06-desktop.png",
+            "tmp/visual-loops/2026-02-22T19-23-51.170Z/projects_starbucks-pivot/round-06-mobile.png"
+          ],
+          "consoleErrors": [],
+          "pass": false
+        },
+        {
+          "round": 7,
+          "url": "http://localhost:3401/projects/starbucks-pivot",
+          "diagnostics": {
+            "h1": "Starbucks Pivot:geo-strategy operating board",
+            "chartCount": 5,
+            "loadingTextVisible": false,
+            "title": "Starbucks Suburban Pivot | Vaibhav Bapat",
+            "minFunctionalFontPx": 10,
+            "kpiValueMaxPx": 0,
+            "heroCopyLeftFirst": true,
+            "evidenceBadgeCount": 0,
+            "provenanceCount": 0,
+            "cardCtaCount": 0,
+            "chartAxisCount": 0,
+            "chartLegendCount": 0,
+            "dataIntegrityVisible": true
+          },
+          "scores": {
+            "readabilityScore": 82,
+            "affordanceScore": 100,
+            "evidenceScore": 100,
+            "chartClarityScore": 100
+          },
+          "failures": [
+            "small_functional_text"
+          ],
+          "screenshotPaths": [
+            "tmp/visual-loops/2026-02-22T19-23-51.170Z/projects_starbucks-pivot/round-07-desktop.png",
+            "tmp/visual-loops/2026-02-22T19-23-51.170Z/projects_starbucks-pivot/round-07-mobile.png"
+          ],
+          "consoleErrors": [],
+          "pass": false
+        },
+        {
+          "round": 8,
+          "url": "http://localhost:3401/projects/starbucks-pivot",
+          "diagnostics": {
+            "h1": "Starbucks Pivot:geo-strategy operating board",
+            "chartCount": 5,
+            "loadingTextVisible": false,
+            "title": "Starbucks Suburban Pivot | Vaibhav Bapat",
+            "minFunctionalFontPx": 10,
+            "kpiValueMaxPx": 0,
+            "heroCopyLeftFirst": true,
+            "evidenceBadgeCount": 0,
+            "provenanceCount": 0,
+            "cardCtaCount": 0,
+            "chartAxisCount": 0,
+            "chartLegendCount": 0,
+            "dataIntegrityVisible": true
+          },
+          "scores": {
+            "readabilityScore": 82,
+            "affordanceScore": 100,
+            "evidenceScore": 100,
+            "chartClarityScore": 100
+          },
+          "failures": [
+            "small_functional_text"
+          ],
+          "screenshotPaths": [
+            "tmp/visual-loops/2026-02-22T19-23-51.170Z/projects_starbucks-pivot/round-08-desktop.png",
+            "tmp/visual-loops/2026-02-22T19-23-51.170Z/projects_starbucks-pivot/round-08-mobile.png"
+          ],
+          "consoleErrors": [],
+          "pass": false
+        },
+        {
+          "round": 9,
+          "url": "http://localhost:3401/projects/starbucks-pivot",
+          "diagnostics": {
+            "h1": "Starbucks Pivot:geo-strategy operating board",
+            "chartCount": 5,
+            "loadingTextVisible": false,
+            "title": "Starbucks Suburban Pivot | Vaibhav Bapat",
+            "minFunctionalFontPx": 10,
+            "kpiValueMaxPx": 0,
+            "heroCopyLeftFirst": true,
+            "evidenceBadgeCount": 0,
+            "provenanceCount": 0,
+            "cardCtaCount": 0,
+            "chartAxisCount": 0,
+            "chartLegendCount": 0,
+            "dataIntegrityVisible": true
+          },
+          "scores": {
+            "readabilityScore": 82,
+            "affordanceScore": 100,
+            "evidenceScore": 100,
+            "chartClarityScore": 100
+          },
+          "failures": [
+            "small_functional_text"
+          ],
+          "screenshotPaths": [
+            "tmp/visual-loops/2026-02-22T19-23-51.170Z/projects_starbucks-pivot/round-09-desktop.png",
+            "tmp/visual-loops/2026-02-22T19-23-51.170Z/projects_starbucks-pivot/round-09-mobile.png"
+          ],
+          "consoleErrors": [],
+          "pass": false
+        },
+        {
+          "round": 10,
+          "url": "http://localhost:3401/projects/starbucks-pivot",
+          "diagnostics": {
+            "h1": "Starbucks Pivot:geo-strategy operating board",
+            "chartCount": 5,
+            "loadingTextVisible": false,
+            "title": "Starbucks Suburban Pivot | Vaibhav Bapat",
+            "minFunctionalFontPx": 10,
+            "kpiValueMaxPx": 0,
+            "heroCopyLeftFirst": true,
+            "evidenceBadgeCount": 0,
+            "provenanceCount": 0,
+            "cardCtaCount": 0,
+            "chartAxisCount": 0,
+            "chartLegendCount": 0,
+            "dataIntegrityVisible": true
+          },
+          "scores": {
+            "readabilityScore": 82,
+            "affordanceScore": 100,
+            "evidenceScore": 100,
+            "chartClarityScore": 100
+          },
+          "failures": [
+            "small_functional_text"
+          ],
+          "screenshotPaths": [
+            "tmp/visual-loops/2026-02-22T19-23-51.170Z/projects_starbucks-pivot/round-10-desktop.png",
+            "tmp/visual-loops/2026-02-22T19-23-51.170Z/projects_starbucks-pivot/round-10-mobile.png"
+          ],
+          "consoleErrors": [],
+          "pass": false
+        }
+      ]
+    },
+    {
+      "route": "/projects/tesla-nacs",
+      "rounds": [
+        {
+          "round": 1,
+          "url": "http://localhost:3401/projects/tesla-nacs",
+          "diagnostics": {
+            "h1": "Tesla NACS War Board:corridor build-order simulator",
+            "chartCount": 5,
+            "loadingTextVisible": false,
+            "title": "Tesla NACS War Game | Vaibhav Bapat",
+            "minFunctionalFontPx": 10,
+            "kpiValueMaxPx": 0,
+            "heroCopyLeftFirst": true,
+            "evidenceBadgeCount": 0,
+            "provenanceCount": 0,
+            "cardCtaCount": 0,
+            "chartAxisCount": 0,
+            "chartLegendCount": 0,
+            "dataIntegrityVisible": true
+          },
+          "scores": {
+            "readabilityScore": 82,
+            "affordanceScore": 100,
+            "evidenceScore": 100,
+            "chartClarityScore": 100
+          },
+          "failures": [
+            "small_functional_text"
+          ],
+          "screenshotPaths": [
+            "tmp/visual-loops/2026-02-22T19-23-51.170Z/projects_tesla-nacs/round-01-desktop.png",
+            "tmp/visual-loops/2026-02-22T19-23-51.170Z/projects_tesla-nacs/round-01-mobile.png"
+          ],
+          "consoleErrors": [],
+          "pass": false
+        },
+        {
+          "round": 2,
+          "url": "http://localhost:3401/projects/tesla-nacs",
+          "diagnostics": {
+            "h1": "Tesla NACS War Board:corridor build-order simulator",
+            "chartCount": 5,
+            "loadingTextVisible": false,
+            "title": "Tesla NACS War Game | Vaibhav Bapat",
+            "minFunctionalFontPx": 10,
+            "kpiValueMaxPx": 0,
+            "heroCopyLeftFirst": true,
+            "evidenceBadgeCount": 0,
+            "provenanceCount": 0,
+            "cardCtaCount": 0,
+            "chartAxisCount": 0,
+            "chartLegendCount": 0,
+            "dataIntegrityVisible": true
+          },
+          "scores": {
+            "readabilityScore": 82,
+            "affordanceScore": 100,
+            "evidenceScore": 100,
+            "chartClarityScore": 100
+          },
+          "failures": [
+            "small_functional_text"
+          ],
+          "screenshotPaths": [
+            "tmp/visual-loops/2026-02-22T19-23-51.170Z/projects_tesla-nacs/round-02-desktop.png",
+            "tmp/visual-loops/2026-02-22T19-23-51.170Z/projects_tesla-nacs/round-02-mobile.png"
+          ],
+          "consoleErrors": [],
+          "pass": false
+        },
+        {
+          "round": 3,
+          "url": "http://localhost:3401/projects/tesla-nacs",
+          "diagnostics": {
+            "h1": "Tesla NACS War Board:corridor build-order simulator",
+            "chartCount": 5,
+            "loadingTextVisible": false,
+            "title": "Tesla NACS War Game | Vaibhav Bapat",
+            "minFunctionalFontPx": 10,
+            "kpiValueMaxPx": 0,
+            "heroCopyLeftFirst": true,
+            "evidenceBadgeCount": 0,
+            "provenanceCount": 0,
+            "cardCtaCount": 0,
+            "chartAxisCount": 0,
+            "chartLegendCount": 0,
+            "dataIntegrityVisible": true
+          },
+          "scores": {
+            "readabilityScore": 82,
+            "affordanceScore": 100,
+            "evidenceScore": 100,
+            "chartClarityScore": 100
+          },
+          "failures": [
+            "small_functional_text"
+          ],
+          "screenshotPaths": [
+            "tmp/visual-loops/2026-02-22T19-23-51.170Z/projects_tesla-nacs/round-03-desktop.png",
+            "tmp/visual-loops/2026-02-22T19-23-51.170Z/projects_tesla-nacs/round-03-mobile.png"
+          ],
+          "consoleErrors": [],
+          "pass": false
+        },
+        {
+          "round": 4,
+          "url": "http://localhost:3401/projects/tesla-nacs",
+          "diagnostics": {
+            "h1": "Tesla NACS War Board:corridor build-order simulator",
+            "chartCount": 5,
+            "loadingTextVisible": false,
+            "title": "Tesla NACS War Game | Vaibhav Bapat",
+            "minFunctionalFontPx": 10,
+            "kpiValueMaxPx": 0,
+            "heroCopyLeftFirst": true,
+            "evidenceBadgeCount": 0,
+            "provenanceCount": 0,
+            "cardCtaCount": 0,
+            "chartAxisCount": 0,
+            "chartLegendCount": 0,
+            "dataIntegrityVisible": true
+          },
+          "scores": {
+            "readabilityScore": 82,
+            "affordanceScore": 100,
+            "evidenceScore": 100,
+            "chartClarityScore": 100
+          },
+          "failures": [
+            "small_functional_text"
+          ],
+          "screenshotPaths": [
+            "tmp/visual-loops/2026-02-22T19-23-51.170Z/projects_tesla-nacs/round-04-desktop.png",
+            "tmp/visual-loops/2026-02-22T19-23-51.170Z/projects_tesla-nacs/round-04-mobile.png"
+          ],
+          "consoleErrors": [],
+          "pass": false
+        },
+        {
+          "round": 5,
+          "url": "http://localhost:3401/projects/tesla-nacs",
+          "diagnostics": {
+            "h1": "Tesla NACS War Board:corridor build-order simulator",
+            "chartCount": 5,
+            "loadingTextVisible": false,
+            "title": "Tesla NACS War Game | Vaibhav Bapat",
+            "minFunctionalFontPx": 10,
+            "kpiValueMaxPx": 0,
+            "heroCopyLeftFirst": true,
+            "evidenceBadgeCount": 0,
+            "provenanceCount": 0,
+            "cardCtaCount": 0,
+            "chartAxisCount": 0,
+            "chartLegendCount": 0,
+            "dataIntegrityVisible": true
+          },
+          "scores": {
+            "readabilityScore": 82,
+            "affordanceScore": 100,
+            "evidenceScore": 100,
+            "chartClarityScore": 100
+          },
+          "failures": [
+            "small_functional_text"
+          ],
+          "screenshotPaths": [
+            "tmp/visual-loops/2026-02-22T19-23-51.170Z/projects_tesla-nacs/round-05-desktop.png",
+            "tmp/visual-loops/2026-02-22T19-23-51.170Z/projects_tesla-nacs/round-05-mobile.png"
+          ],
+          "consoleErrors": [],
+          "pass": false
+        },
+        {
+          "round": 6,
+          "url": "http://localhost:3401/projects/tesla-nacs",
+          "diagnostics": {
+            "h1": "Tesla NACS War Board:corridor build-order simulator",
+            "chartCount": 5,
+            "loadingTextVisible": false,
+            "title": "Tesla NACS War Game | Vaibhav Bapat",
+            "minFunctionalFontPx": 10,
+            "kpiValueMaxPx": 0,
+            "heroCopyLeftFirst": true,
+            "evidenceBadgeCount": 0,
+            "provenanceCount": 0,
+            "cardCtaCount": 0,
+            "chartAxisCount": 0,
+            "chartLegendCount": 0,
+            "dataIntegrityVisible": true
+          },
+          "scores": {
+            "readabilityScore": 82,
+            "affordanceScore": 100,
+            "evidenceScore": 100,
+            "chartClarityScore": 100
+          },
+          "failures": [
+            "small_functional_text"
+          ],
+          "screenshotPaths": [
+            "tmp/visual-loops/2026-02-22T19-23-51.170Z/projects_tesla-nacs/round-06-desktop.png",
+            "tmp/visual-loops/2026-02-22T19-23-51.170Z/projects_tesla-nacs/round-06-mobile.png"
+          ],
+          "consoleErrors": [],
+          "pass": false
+        },
+        {
+          "round": 7,
+          "url": "http://localhost:3401/projects/tesla-nacs",
+          "diagnostics": {
+            "h1": "Tesla NACS War Board:corridor build-order simulator",
+            "chartCount": 5,
+            "loadingTextVisible": false,
+            "title": "Tesla NACS War Game | Vaibhav Bapat",
+            "minFunctionalFontPx": 10,
+            "kpiValueMaxPx": 0,
+            "heroCopyLeftFirst": true,
+            "evidenceBadgeCount": 0,
+            "provenanceCount": 0,
+            "cardCtaCount": 0,
+            "chartAxisCount": 0,
+            "chartLegendCount": 0,
+            "dataIntegrityVisible": true
+          },
+          "scores": {
+            "readabilityScore": 82,
+            "affordanceScore": 100,
+            "evidenceScore": 100,
+            "chartClarityScore": 100
+          },
+          "failures": [
+            "small_functional_text"
+          ],
+          "screenshotPaths": [
+            "tmp/visual-loops/2026-02-22T19-23-51.170Z/projects_tesla-nacs/round-07-desktop.png",
+            "tmp/visual-loops/2026-02-22T19-23-51.170Z/projects_tesla-nacs/round-07-mobile.png"
+          ],
+          "consoleErrors": [],
+          "pass": false
+        },
+        {
+          "round": 8,
+          "url": "http://localhost:3401/projects/tesla-nacs",
+          "diagnostics": {
+            "h1": "Tesla NACS War Board:corridor build-order simulator",
+            "chartCount": 5,
+            "loadingTextVisible": false,
+            "title": "Tesla NACS War Game | Vaibhav Bapat",
+            "minFunctionalFontPx": 10,
+            "kpiValueMaxPx": 0,
+            "heroCopyLeftFirst": true,
+            "evidenceBadgeCount": 0,
+            "provenanceCount": 0,
+            "cardCtaCount": 0,
+            "chartAxisCount": 0,
+            "chartLegendCount": 0,
+            "dataIntegrityVisible": true
+          },
+          "scores": {
+            "readabilityScore": 82,
+            "affordanceScore": 100,
+            "evidenceScore": 100,
+            "chartClarityScore": 100
+          },
+          "failures": [
+            "small_functional_text"
+          ],
+          "screenshotPaths": [
+            "tmp/visual-loops/2026-02-22T19-23-51.170Z/projects_tesla-nacs/round-08-desktop.png",
+            "tmp/visual-loops/2026-02-22T19-23-51.170Z/projects_tesla-nacs/round-08-mobile.png"
+          ],
+          "consoleErrors": [],
+          "pass": false
+        },
+        {
+          "round": 9,
+          "url": "http://localhost:3401/projects/tesla-nacs",
+          "diagnostics": {
+            "h1": "Tesla NACS War Board:corridor build-order simulator",
+            "chartCount": 5,
+            "loadingTextVisible": false,
+            "title": "Tesla NACS War Game | Vaibhav Bapat",
+            "minFunctionalFontPx": 10,
+            "kpiValueMaxPx": 0,
+            "heroCopyLeftFirst": true,
+            "evidenceBadgeCount": 0,
+            "provenanceCount": 0,
+            "cardCtaCount": 0,
+            "chartAxisCount": 0,
+            "chartLegendCount": 0,
+            "dataIntegrityVisible": true
+          },
+          "scores": {
+            "readabilityScore": 82,
+            "affordanceScore": 100,
+            "evidenceScore": 100,
+            "chartClarityScore": 100
+          },
+          "failures": [
+            "small_functional_text"
+          ],
+          "screenshotPaths": [
+            "tmp/visual-loops/2026-02-22T19-23-51.170Z/projects_tesla-nacs/round-09-desktop.png",
+            "tmp/visual-loops/2026-02-22T19-23-51.170Z/projects_tesla-nacs/round-09-mobile.png"
+          ],
+          "consoleErrors": [],
+          "pass": false
+        },
+        {
+          "round": 10,
+          "url": "http://localhost:3401/projects/tesla-nacs",
+          "diagnostics": {
+            "h1": "Tesla NACS War Board:corridor build-order simulator",
+            "chartCount": 5,
+            "loadingTextVisible": false,
+            "title": "Tesla NACS War Game | Vaibhav Bapat",
+            "minFunctionalFontPx": 10,
+            "kpiValueMaxPx": 0,
+            "heroCopyLeftFirst": true,
+            "evidenceBadgeCount": 0,
+            "provenanceCount": 0,
+            "cardCtaCount": 0,
+            "chartAxisCount": 0,
+            "chartLegendCount": 0,
+            "dataIntegrityVisible": true
+          },
+          "scores": {
+            "readabilityScore": 82,
+            "affordanceScore": 100,
+            "evidenceScore": 100,
+            "chartClarityScore": 100
+          },
+          "failures": [
+            "small_functional_text"
+          ],
+          "screenshotPaths": [
+            "tmp/visual-loops/2026-02-22T19-23-51.170Z/projects_tesla-nacs/round-10-desktop.png",
+            "tmp/visual-loops/2026-02-22T19-23-51.170Z/projects_tesla-nacs/round-10-mobile.png"
+          ],
+          "consoleErrors": [],
+          "pass": false
+        }
+      ]
+    },
+    {
+      "route": "/projects/netflix-roi",
+      "rounds": [
+        {
+          "round": 1,
+          "url": "http://localhost:3401/projects/netflix-roi",
+          "diagnostics": {
+            "h1": "Netflix ROI Autopsy:capital committee decision deck",
+            "chartCount": 4,
+            "loadingTextVisible": false,
+            "title": "Netflix Content ROI Autopsy | Vaibhav Bapat",
+            "minFunctionalFontPx": 10,
+            "kpiValueMaxPx": 0,
+            "heroCopyLeftFirst": true,
+            "evidenceBadgeCount": 0,
+            "provenanceCount": 0,
+            "cardCtaCount": 0,
+            "chartAxisCount": 0,
+            "chartLegendCount": 0,
+            "dataIntegrityVisible": true
+          },
+          "scores": {
+            "readabilityScore": 82,
+            "affordanceScore": 100,
+            "evidenceScore": 100,
+            "chartClarityScore": 100
+          },
+          "failures": [
+            "small_functional_text"
+          ],
+          "screenshotPaths": [
+            "tmp/visual-loops/2026-02-22T19-23-51.170Z/projects_netflix-roi/round-01-desktop.png",
+            "tmp/visual-loops/2026-02-22T19-23-51.170Z/projects_netflix-roi/round-01-mobile.png"
+          ],
+          "consoleErrors": [],
+          "pass": false
+        },
+        {
+          "round": 2,
+          "url": "http://localhost:3401/projects/netflix-roi",
+          "diagnostics": {
+            "h1": "Netflix ROI Autopsy:capital committee decision deck",
+            "chartCount": 4,
+            "loadingTextVisible": false,
+            "title": "Netflix Content ROI Autopsy | Vaibhav Bapat",
+            "minFunctionalFontPx": 10,
+            "kpiValueMaxPx": 0,
+            "heroCopyLeftFirst": true,
+            "evidenceBadgeCount": 0,
+            "provenanceCount": 0,
+            "cardCtaCount": 0,
+            "chartAxisCount": 0,
+            "chartLegendCount": 0,
+            "dataIntegrityVisible": true
+          },
+          "scores": {
+            "readabilityScore": 82,
+            "affordanceScore": 100,
+            "evidenceScore": 100,
+            "chartClarityScore": 100
+          },
+          "failures": [
+            "small_functional_text"
+          ],
+          "screenshotPaths": [
+            "tmp/visual-loops/2026-02-22T19-23-51.170Z/projects_netflix-roi/round-02-desktop.png",
+            "tmp/visual-loops/2026-02-22T19-23-51.170Z/projects_netflix-roi/round-02-mobile.png"
+          ],
+          "consoleErrors": [],
+          "pass": false
+        },
+        {
+          "round": 3,
+          "url": "http://localhost:3401/projects/netflix-roi",
+          "diagnostics": {
+            "h1": "Netflix ROI Autopsy:capital committee decision deck",
+            "chartCount": 4,
+            "loadingTextVisible": false,
+            "title": "Netflix Content ROI Autopsy | Vaibhav Bapat",
+            "minFunctionalFontPx": 10,
+            "kpiValueMaxPx": 0,
+            "heroCopyLeftFirst": true,
+            "evidenceBadgeCount": 0,
+            "provenanceCount": 0,
+            "cardCtaCount": 0,
+            "chartAxisCount": 0,
+            "chartLegendCount": 0,
+            "dataIntegrityVisible": true
+          },
+          "scores": {
+            "readabilityScore": 82,
+            "affordanceScore": 100,
+            "evidenceScore": 100,
+            "chartClarityScore": 100
+          },
+          "failures": [
+            "small_functional_text"
+          ],
+          "screenshotPaths": [
+            "tmp/visual-loops/2026-02-22T19-23-51.170Z/projects_netflix-roi/round-03-desktop.png",
+            "tmp/visual-loops/2026-02-22T19-23-51.170Z/projects_netflix-roi/round-03-mobile.png"
+          ],
+          "consoleErrors": [],
+          "pass": false
+        },
+        {
+          "round": 4,
+          "url": "http://localhost:3401/projects/netflix-roi",
+          "diagnostics": {
+            "h1": "Netflix ROI Autopsy:capital committee decision deck",
+            "chartCount": 4,
+            "loadingTextVisible": false,
+            "title": "Netflix Content ROI Autopsy | Vaibhav Bapat",
+            "minFunctionalFontPx": 10,
+            "kpiValueMaxPx": 0,
+            "heroCopyLeftFirst": true,
+            "evidenceBadgeCount": 0,
+            "provenanceCount": 0,
+            "cardCtaCount": 0,
+            "chartAxisCount": 0,
+            "chartLegendCount": 0,
+            "dataIntegrityVisible": true
+          },
+          "scores": {
+            "readabilityScore": 82,
+            "affordanceScore": 100,
+            "evidenceScore": 100,
+            "chartClarityScore": 100
+          },
+          "failures": [
+            "small_functional_text"
+          ],
+          "screenshotPaths": [
+            "tmp/visual-loops/2026-02-22T19-23-51.170Z/projects_netflix-roi/round-04-desktop.png",
+            "tmp/visual-loops/2026-02-22T19-23-51.170Z/projects_netflix-roi/round-04-mobile.png"
+          ],
+          "consoleErrors": [],
+          "pass": false
+        },
+        {
+          "round": 5,
+          "url": "http://localhost:3401/projects/netflix-roi",
+          "diagnostics": {
+            "h1": "Netflix ROI Autopsy:capital committee decision deck",
+            "chartCount": 4,
+            "loadingTextVisible": false,
+            "title": "Netflix Content ROI Autopsy | Vaibhav Bapat",
+            "minFunctionalFontPx": 10,
+            "kpiValueMaxPx": 0,
+            "heroCopyLeftFirst": true,
+            "evidenceBadgeCount": 0,
+            "provenanceCount": 0,
+            "cardCtaCount": 0,
+            "chartAxisCount": 0,
+            "chartLegendCount": 0,
+            "dataIntegrityVisible": true
+          },
+          "scores": {
+            "readabilityScore": 82,
+            "affordanceScore": 100,
+            "evidenceScore": 100,
+            "chartClarityScore": 100
+          },
+          "failures": [
+            "small_functional_text"
+          ],
+          "screenshotPaths": [
+            "tmp/visual-loops/2026-02-22T19-23-51.170Z/projects_netflix-roi/round-05-desktop.png",
+            "tmp/visual-loops/2026-02-22T19-23-51.170Z/projects_netflix-roi/round-05-mobile.png"
+          ],
+          "consoleErrors": [],
+          "pass": false
+        },
+        {
+          "round": 6,
+          "url": "http://localhost:3401/projects/netflix-roi",
+          "diagnostics": {
+            "h1": "Netflix ROI Autopsy:capital committee decision deck",
+            "chartCount": 4,
+            "loadingTextVisible": false,
+            "title": "Netflix Content ROI Autopsy | Vaibhav Bapat",
+            "minFunctionalFontPx": 10,
+            "kpiValueMaxPx": 0,
+            "heroCopyLeftFirst": true,
+            "evidenceBadgeCount": 0,
+            "provenanceCount": 0,
+            "cardCtaCount": 0,
+            "chartAxisCount": 0,
+            "chartLegendCount": 0,
+            "dataIntegrityVisible": true
+          },
+          "scores": {
+            "readabilityScore": 82,
+            "affordanceScore": 100,
+            "evidenceScore": 100,
+            "chartClarityScore": 100
+          },
+          "failures": [
+            "small_functional_text"
+          ],
+          "screenshotPaths": [
+            "tmp/visual-loops/2026-02-22T19-23-51.170Z/projects_netflix-roi/round-06-desktop.png",
+            "tmp/visual-loops/2026-02-22T19-23-51.170Z/projects_netflix-roi/round-06-mobile.png"
+          ],
+          "consoleErrors": [],
+          "pass": false
+        },
+        {
+          "round": 7,
+          "url": "http://localhost:3401/projects/netflix-roi",
+          "diagnostics": {
+            "h1": "Netflix ROI Autopsy:capital committee decision deck",
+            "chartCount": 4,
+            "loadingTextVisible": false,
+            "title": "Netflix Content ROI Autopsy | Vaibhav Bapat",
+            "minFunctionalFontPx": 10,
+            "kpiValueMaxPx": 0,
+            "heroCopyLeftFirst": true,
+            "evidenceBadgeCount": 0,
+            "provenanceCount": 0,
+            "cardCtaCount": 0,
+            "chartAxisCount": 0,
+            "chartLegendCount": 0,
+            "dataIntegrityVisible": true
+          },
+          "scores": {
+            "readabilityScore": 82,
+            "affordanceScore": 100,
+            "evidenceScore": 100,
+            "chartClarityScore": 100
+          },
+          "failures": [
+            "small_functional_text"
+          ],
+          "screenshotPaths": [
+            "tmp/visual-loops/2026-02-22T19-23-51.170Z/projects_netflix-roi/round-07-desktop.png",
+            "tmp/visual-loops/2026-02-22T19-23-51.170Z/projects_netflix-roi/round-07-mobile.png"
+          ],
+          "consoleErrors": [],
+          "pass": false
+        },
+        {
+          "round": 8,
+          "url": "http://localhost:3401/projects/netflix-roi",
+          "diagnostics": {
+            "h1": "Netflix ROI Autopsy:capital committee decision deck",
+            "chartCount": 4,
+            "loadingTextVisible": false,
+            "title": "Netflix Content ROI Autopsy | Vaibhav Bapat",
+            "minFunctionalFontPx": 10,
+            "kpiValueMaxPx": 0,
+            "heroCopyLeftFirst": true,
+            "evidenceBadgeCount": 0,
+            "provenanceCount": 0,
+            "cardCtaCount": 0,
+            "chartAxisCount": 0,
+            "chartLegendCount": 0,
+            "dataIntegrityVisible": true
+          },
+          "scores": {
+            "readabilityScore": 82,
+            "affordanceScore": 100,
+            "evidenceScore": 100,
+            "chartClarityScore": 100
+          },
+          "failures": [
+            "small_functional_text"
+          ],
+          "screenshotPaths": [
+            "tmp/visual-loops/2026-02-22T19-23-51.170Z/projects_netflix-roi/round-08-desktop.png",
+            "tmp/visual-loops/2026-02-22T19-23-51.170Z/projects_netflix-roi/round-08-mobile.png"
+          ],
+          "consoleErrors": [],
+          "pass": false
+        },
+        {
+          "round": 9,
+          "url": "http://localhost:3401/projects/netflix-roi",
+          "diagnostics": {
+            "h1": "Netflix ROI Autopsy:capital committee decision deck",
+            "chartCount": 4,
+            "loadingTextVisible": false,
+            "title": "Netflix Content ROI Autopsy | Vaibhav Bapat",
+            "minFunctionalFontPx": 10,
+            "kpiValueMaxPx": 0,
+            "heroCopyLeftFirst": true,
+            "evidenceBadgeCount": 0,
+            "provenanceCount": 0,
+            "cardCtaCount": 0,
+            "chartAxisCount": 0,
+            "chartLegendCount": 0,
+            "dataIntegrityVisible": true
+          },
+          "scores": {
+            "readabilityScore": 82,
+            "affordanceScore": 100,
+            "evidenceScore": 100,
+            "chartClarityScore": 100
+          },
+          "failures": [
+            "small_functional_text"
+          ],
+          "screenshotPaths": [
+            "tmp/visual-loops/2026-02-22T19-23-51.170Z/projects_netflix-roi/round-09-desktop.png",
+            "tmp/visual-loops/2026-02-22T19-23-51.170Z/projects_netflix-roi/round-09-mobile.png"
+          ],
+          "consoleErrors": [],
+          "pass": false
+        },
+        {
+          "round": 10,
+          "url": "http://localhost:3401/projects/netflix-roi",
+          "diagnostics": {
+            "h1": "Netflix ROI Autopsy:capital committee decision deck",
+            "chartCount": 4,
+            "loadingTextVisible": false,
+            "title": "Netflix Content ROI Autopsy | Vaibhav Bapat",
+            "minFunctionalFontPx": 10,
+            "kpiValueMaxPx": 0,
+            "heroCopyLeftFirst": true,
+            "evidenceBadgeCount": 0,
+            "provenanceCount": 0,
+            "cardCtaCount": 0,
+            "chartAxisCount": 0,
+            "chartLegendCount": 0,
+            "dataIntegrityVisible": true
+          },
+          "scores": {
+            "readabilityScore": 82,
+            "affordanceScore": 100,
+            "evidenceScore": 100,
+            "chartClarityScore": 100
+          },
+          "failures": [
+            "small_functional_text"
+          ],
+          "screenshotPaths": [
+            "tmp/visual-loops/2026-02-22T19-23-51.170Z/projects_netflix-roi/round-10-desktop.png",
+            "tmp/visual-loops/2026-02-22T19-23-51.170Z/projects_netflix-roi/round-10-mobile.png"
+          ],
+          "consoleErrors": [],
+          "pass": false
+        }
+      ]
+    }
+  ],
+  "summary": {
+    "totalRounds": 80,
+    "failedRounds": 80,
+    "failedReasonsByType": {
+      "small_functional_text": 80,
+      "strict_score_failed:readabilityScore": 10
+    },
+    "averageScores": {
+      "readabilityScore": 79.88,
+      "affordanceScore": 100,
+      "evidenceScore": 100,
+      "chartClarityScore": 100
+    }
+  }
+}

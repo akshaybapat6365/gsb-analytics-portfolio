@@ -14,8 +14,8 @@ const styleByStatus: Record<DataStatus, string> = {
 
 const labelByStatus: Record<DataStatus, string> = {
   ok: "Real data: live",
-  stale: "Real data: stale",
-  unavailable: "Real data: unavailable",
+  stale: "Live feed: stale",
+  unavailable: "Live feed: unavailable",
 };
 
 export function DataBadge({ status, className }: DataBadgeProps) {
@@ -31,4 +31,3 @@ export function DataBadge({ status, className }: DataBadgeProps) {
     </span>
   );
 }
-

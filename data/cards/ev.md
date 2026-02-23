@@ -1,7 +1,7 @@
 # Tesla NACS — Data Card
 
 ## Status
-Synthetic (default)
+Mode-aware baseline payload (supports strict-real and baseline-fallback enrichment)
 
 ## What’s included
 - Existing stations (brand + price) and candidate build sites
@@ -15,4 +15,3 @@ Synthetic (default)
 ## Real-world swap
 - DOE AFDC station inventory + NREL demand models (EVI-Pro)
 - Traffic + pricing from public sources / partnerships
-

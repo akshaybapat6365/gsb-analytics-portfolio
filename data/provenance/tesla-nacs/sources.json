@@ -1,0 +1,51 @@
+{
+  "discoveredAt": "2026-02-19T20:16:52+00:00",
+  "mode": "open-only",
+  "opennessPotentialScore": 88.67,
+  "projectSlug": "tesla-nacs",
+  "projectTitle": "Tesla NACS Gambit",
+  "qualityRubric": {
+    "coverage": 35,
+    "freshness": 20,
+    "modelDepth": 25,
+    "provenance": 20
+  },
+  "sources": [
+    {
+      "expectedSignalIds": [
+        "ca_ev_station_count"
+      ],
+      "id": "nrel_ca_ev",
+      "kind": "station_inventory_primary",
+      "label": "NREL AFDC CA station count",
+      "opennessScore": 92,
+      "sourceKey": "nrel:afdc",
+      "status": "configured",
+      "url": "https://developer.nrel.gov/docs/transportation/alt-fuel-stations-v1/"
+    },
+    {
+      "expectedSignalIds": [
+        "i5_corridor_stations"
+      ],
+      "id": "nrel_i5_corridor",
+      "kind": "corridor_density_primary",
+      "label": "NREL AFDC I-5 corridor station estimate",
+      "opennessScore": 92,
+      "sourceKey": "nrel:afdc",
+      "status": "configured",
+      "url": "https://developer.nrel.gov/docs/transportation/alt-fuel-stations-v1/"
+    },
+    {
+      "expectedSignalIds": [
+        "tsla_30d_return"
+      ],
+      "id": "stooq_tsla",
+      "kind": "market_context",
+      "label": "Stooq TSLA daily prices",
+      "opennessScore": 82,
+      "sourceKey": "stooq:TSLA",
+      "status": "configured",
+      "url": "https://stooq.com/"
+    }
+  ]
+}

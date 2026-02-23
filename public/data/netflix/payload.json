@@ -1,4 +1,109 @@
 {
+  "annotations": [
+    {
+      "body": "Net modeled contribution 193.0M under current acquisition-retention weighting.",
+      "evidenceRefs": [
+        {
+          "asOf": "2026-02-19",
+          "seriesId": "nflx_30d_return",
+          "source": "stooq:NFLX",
+          "value": "-15.32"
+        },
+        {
+          "asOf": "2026-01-23",
+          "seriesId": "nflx_recent_10k_10q",
+          "source": "sec:0001065280",
+          "value": "4"
+        }
+      ],
+      "id": "netflix-title-1",
+      "moduleId": "content-allocation-frontier",
+      "timestampOrIndex": "t05",
+      "title": "Grey\u2019s: Rewatch Effect (Synthetic) net contribution",
+      "type": "inflection"
+    },
+    {
+      "body": "Net modeled contribution 181.0M under current acquisition-retention weighting.",
+      "evidenceRefs": [
+        {
+          "asOf": "2026-02-19",
+          "seriesId": "nflx_30d_return",
+          "source": "stooq:NFLX",
+          "value": "-15.32"
+        },
+        {
+          "asOf": "2026-01-23",
+          "seriesId": "nflx_recent_10k_10q",
+          "source": "sec:0001065280",
+          "value": "4"
+        }
+      ],
+      "id": "netflix-title-2",
+      "moduleId": "content-allocation-frontier",
+      "timestampOrIndex": "t04",
+      "title": "The Residence net contribution",
+      "type": "inflection"
+    },
+    {
+      "body": "Net modeled contribution 151.0M under current acquisition-retention weighting.",
+      "evidenceRefs": [
+        {
+          "asOf": "2026-02-19",
+          "seriesId": "nflx_30d_return",
+          "source": "stooq:NFLX",
+          "value": "-15.32"
+        },
+        {
+          "asOf": "2026-01-23",
+          "seriesId": "nflx_recent_10k_10q",
+          "source": "sec:0001065280",
+          "value": "4"
+        }
+      ],
+      "id": "netflix-title-3",
+      "moduleId": "content-allocation-frontier",
+      "timestampOrIndex": "t10",
+      "title": "YA Spinoff (Synthetic) net contribution",
+      "type": "inflection"
+    }
+  ],
+  "dataReadiness": [
+    {
+      "lastSuccessfulRealRunAt": "2026-02-19T20:20:20+00:00",
+      "minRequiredSeries": [
+        "nflx_30d_return"
+      ],
+      "missingSeries": [],
+      "moduleId": "nflx_30d_return",
+      "realCoveragePct": 100,
+      "status": "ready"
+    },
+    {
+      "lastSuccessfulRealRunAt": "2026-02-19T20:20:27+00:00",
+      "minRequiredSeries": [
+        "nflx_recent_10k_10q"
+      ],
+      "missingSeries": [],
+      "moduleId": "nflx_recent_10k_10q",
+      "realCoveragePct": 100,
+      "status": "ready"
+    }
+  ],
+  "decisionEvidence": [
+    {
+      "confidenceBand": [
+        0.47,
+        0.79
+      ],
+      "counterfactualDelta": "460.0% retention lift",
+      "drivers": [
+        "acquisition lift",
+        "retention value",
+        "content cost efficiency"
+      ],
+      "recommendationId": "netflix-content-allocation"
+    }
+  ],
   "headline": {
     "ciAddsM": [
       0.6,
@@ -9,20 +114,12 @@
     "retentionLiftPct": 4.6
   },
   "meta": {
-    "generatedAt": "2026-02-17T16:06:17+00:00",
+    "generatedAt": "2026-02-19T20:20:20+00:00",
     "modules": {
-      "netflix_daily_trend_presence": {
-        "provenance": {
-          "fetchedAt": "2026-02-17T16:06:54+00:00",
-          "source": "google-trends:dailytrends"
-        },
-        "reasonCode": "fetch_error:HTTPError",
-        "status": "unavailable"
-      },
       "nflx_30d_return": {
         "provenance": {
-          "asOf": "2026-02-17",
-          "fetchedAt": "2026-02-17T16:06:52+00:00",
+          "asOf": "2026-02-19",
+          "fetchedAt": "2026-02-19T20:20:20+00:00",
           "note": "30d total return",
           "source": "stooq:NFLX"
         },
@@ -31,15 +128,17 @@
       "nflx_recent_10k_10q": {
         "provenance": {
           "asOf": "2026-01-23",
-          "fetchedAt": "2026-02-17T16:06:55+00:00",
+          "fetchedAt": "2026-02-19T20:20:27+00:00",
           "note": "10-K/10-Q count in last 365d",
           "source": "sec:0001065280"
         },
         "status": "ok"
       }
     },
-    "overallStatus": "stale",
-    "runId": "real-20260217160617"
+    "overallStatus": "ok",
+    "policyDecision": "Strict real-feed mode with stale-real cache continuity.",
+    "policyMode": "strict-real",
+    "runId": "real-20260219202020"
   },
   "model": {
     "acquisitionAddsCoeff": {
@@ -93,23 +192,25 @@
       "id": "nflx_30d_return",
       "label": "NFLX 30d return",
       "provenance": {
-        "asOf": "2026-02-17",
-        "fetchedAt": "2026-02-17T16:06:52+00:00",
+        "asOf": "2026-02-19",
+        "fetchedAt": "2026-02-19T20:20:20+00:00",
         "note": "30d total return",
         "source": "stooq:NFLX"
       },
+      "required": true,
       "status": "ok",
       "unit": "%",
-      "value": "-16.13"
+      "value": "-15.32"
     },
     {
       "id": "netflix_daily_trend_presence",
       "label": "Google Trends daily presence (Netflix)",
       "provenance": {
-        "fetchedAt": "2026-02-17T16:06:54+00:00",
+        "fetchedAt": "2026-02-19T20:20:23+00:00",
         "source": "google-trends:dailytrends"
       },
       "reasonCode": "fetch_error:HTTPError",
+      "required": false,
       "status": "unavailable"
     },
     {
@@ -118,10 +219,11 @@
       "label": "NFLX 10-K/10-Q filings (365d)",
       "provenance": {
         "asOf": "2026-01-23",
-        "fetchedAt": "2026-02-17T16:06:55+00:00",
+        "fetchedAt": "2026-02-19T20:20:27+00:00",
         "note": "10-K/10-Q count in last 365d",
         "source": "sec:0001065280"
       },
+      "required": true,
       "status": "ok",
       "value": "4"
     }

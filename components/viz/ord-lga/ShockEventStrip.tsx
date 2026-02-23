@@ -12,8 +12,8 @@ type ShockEventStripProps = {
 };
 
 const severityColor: Record<OrdShockEvent["severity"], string> = {
-  low: "rgba(251,191,36,0.92)",
-  med: "rgba(251,113,133,0.95)",
+  low: "rgba(139,107,62,0.92)",
+  med: "rgba(157,49,49,0.95)",
   high: "rgba(244,63,94,0.98)",
 };
 
@@ -53,7 +53,7 @@ export function ShockEventStrip({
           x2={width - margin.right}
           y1={height - margin.bottom}
           y2={height - margin.bottom}
-          stroke="rgba(148,163,184,0.24)"
+          stroke="rgba(182,169,151,0.24)"
           strokeWidth={1.4}
         />
 

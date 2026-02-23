@@ -43,9 +43,9 @@ export function RegretHeatLattice({
       const bound = Math.max(Math.abs(minValue), Math.abs(maxValue), 1);
       return scaleDiverging([-bound, 0, bound], (t) =>
         interpolateRgbBasis([
-          "rgba(251,113,133,0.88)",
+          "rgba(157,49,49,0.88)",
           "rgba(255,255,255,0.09)",
-          "rgba(34,211,238,0.9)",
+          "rgba(139,107,62,0.9)",
         ])(t),
       );
     }
@@ -53,7 +53,7 @@ export function RegretHeatLattice({
     const lo = Math.min(minValue, maxValue);
     const hi = Math.max(minValue, maxValue);
     return scaleSequential([lo, hi], (t) =>
-      interpolateRgbBasis(["rgba(15,23,42,0.55)", "rgba(34,211,238,0.9)"])(t),
+      interpolateRgbBasis(["rgba(15,23,42,0.55)", "rgba(139,107,62,0.9)"])(t),
     );
   }, [maxValue, minValue, mode]);
 
@@ -65,7 +65,7 @@ export function RegretHeatLattice({
         <p className="font-feature text-xs uppercase tracking-[0.2em] text-slate-300">
           Booking-Window Regret Lattice
         </p>
-        <p className="font-mono text-sm text-cyan-100">
+        <p className="font-mono text-sm text-amber-100">
           {hovered
             ? `${hovered.dow} · ${hovered.window}d · ${formatUSD(hovered.value, { compact: false })}`
             : `Mode: ${mode.toUpperCase()}`}
@@ -78,7 +78,7 @@ export function RegretHeatLattice({
           y={margin.top}
           width={width - margin.left - margin.right}
           height={height - margin.top - margin.bottom}
-          fill="rgba(2,6,23,0.42)"
+          fill="rgba(12,10,9,0.42)"
           rx={14}
         />
 
@@ -91,7 +91,7 @@ export function RegretHeatLattice({
               y={yy + 4}
               textAnchor="end"
               fontSize={12}
-              fill={activeDow === dow ? "rgba(34,211,238,0.95)" : "rgba(148,163,184,0.9)"}
+              fill={activeDow === dow ? "rgba(139,107,62,0.95)" : "rgba(182,169,151,0.9)"}
               style={{ letterSpacing: "0.04em" }}
             >
               {dow}
@@ -108,7 +108,7 @@ export function RegretHeatLattice({
               y={height - margin.bottom + 22}
               textAnchor="middle"
               fontSize={11}
-              fill="rgba(148,163,184,0.95)"
+              fill="rgba(182,169,151,0.95)"
               style={{ letterSpacing: "0.05em" }}
             >
               {window}d
@@ -133,7 +133,7 @@ export function RegretHeatLattice({
                 hovered?.dow === cell.dow && hovered.window === cell.window
                   ? "rgba(226,232,240,0.95)"
                   : isActiveDow
-                    ? "rgba(34,211,238,0.45)"
+                    ? "rgba(139,107,62,0.45)"
                     : "rgba(255,255,255,0.08)"
               }
               strokeWidth={hovered?.dow === cell.dow && hovered.window === cell.window ? 1.8 : 1}
@@ -144,13 +144,13 @@ export function RegretHeatLattice({
       </svg>
 
       <div className="mt-4 flex flex-wrap items-center gap-3">
-        <div className="h-2.5 w-28 rounded-full bg-[linear-gradient(to_right,rgba(251,113,133,0.9),rgba(255,255,255,0.12),rgba(34,211,238,0.95))]" />
+        <div className="h-2.5 w-28 rounded-full bg-[linear-gradient(to_right,rgba(157,49,49,0.9),rgba(255,255,255,0.12),rgba(139,107,62,0.95))]" />
         <p className="text-xs text-slate-300">
           {mode === "delta"
             ? `Price delta scale: -${formatUSD(maxAbs, { compact: false })} to +${formatUSD(maxAbs, {
                 compact: false,
               })}`
-            : "Lower values map to steel; higher values map to cyan intensity."}
+            : "Lower values map to deep slate; higher values map to brass intensity."}
         </p>
       </div>
     </section>

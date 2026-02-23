@@ -2,11 +2,12 @@ import { getProject } from "@/lib/projects/catalog";
 import { loadNetflixPayload } from "@/lib/server/payloads";
 
 import { Hero } from "./Hero";
-import NetflixClient from "./NetflixClient";
+import { NetflixShell } from "./NetflixShell";
 import { BlufPanel } from "@/components/story/BlufPanel";
 import { AssumptionsDrawer } from "@/components/story/AssumptionsDrawer";
-import { StoryVisual } from "@/components/projects/StoryVisual";
 import { RealSignalsPanel } from "@/components/story/RealSignalsPanel";
+import { NetflixInteractiveSection } from "./InteractiveSection";
+import { DataIntegrityDrawer } from "@/components/story/DataIntegrityDrawer";
 
 export const metadata = {
   title: "Netflix Content ROI Autopsy",
@@ -15,6 +16,7 @@ export const metadata = {
 export default async function NetflixRoiPage() {
   const project = getProject("netflix-roi");
   const payload = await loadNetflixPayload();
+  const summary = project.homepage;
 
   return (
     <div className="space-y-9">
@@ -24,29 +26,27 @@ export default async function NetflixRoiPage() {
         eyebrow="Studio BLUF"
         question={project.businessQuestion}
         bluf={project.bluf}
+        keyOutputLabel={summary.resultLabel}
+        keyOutputValue={summary.resultValue}
+        evidenceLine={`${summary.evidenceLevel.toUpperCase()} · ${summary.source} · as-of ${summary.asOf}`}
+        limitation={summary.limitation}
       />
-      <RealSignalsPanel meta={payload.meta} signals={payload.realSignals} />
 
-      <NetflixClient payload={payload} />
+      <NetflixShell payload={payload} />
 
-      <section className="grid gap-4 lg:grid-cols-2">
-        <StoryVisual
-          slug="netflix-roi"
-          asset="overlay"
-          title="Frontier Overlay"
-          caption="Replicate-generated cinematic overlay for acquisition-retention frontier storytelling."
+      <NetflixInteractiveSection payload={payload} />
+
+      <DataIntegrityDrawer>
+        <RealSignalsPanel
+          meta={payload.meta}
+          signals={payload.realSignals}
+          readiness={payload.dataReadiness}
         />
-        <StoryVisual
-          slug="netflix-roi"
-          asset="diagram"
-          title="Portfolio Matrix Diagram"
-          caption="Cost-to-LTV matrix and committee-style greenlight logic framing."
-        />
-      </section>
+      </DataIntegrityDrawer>
 
       <AssumptionsDrawer
         items={[
-          "Synthetic by default: title-level LTV and model coefficients are illustrative offline exports.",
+          "Real market and filing signals set readiness state; unavailable feeds lower recommendation confidence.",
           "Retention priority and buzz-decay sliders express portfolio preference, not observed causal certainty.",
           "Greenlight score is a decision aid blending acquisition and retention under current assumptions.",
           "Real-world swap path: Nielsen/JustWatch/Trends with synthetic-control/BSTS calibration and churn attribution.",

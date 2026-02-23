@@ -1,0 +1,35 @@
+{
+  "generatedAt": "2026-02-19T20:21:11+00:00",
+  "knownLimitations": [
+    "Open datasets do not fully capture proprietary charger utilization and dynamic queue behavior."
+  ],
+  "missingOrStaleSignals": [],
+  "overallStatus": "ok",
+  "projectSlug": "tesla-nacs",
+  "projectTitle": "Tesla NACS Gambit",
+  "runId": "real-20260219202020",
+  "scores": {
+    "components": {
+      "coverage": 100.0,
+      "freshness": 100.0,
+      "modelDepth": 100.0,
+      "provenance": 100.0
+    },
+    "finalScore": 97.17,
+    "openDataAvailability": 88.67,
+    "rubric": {
+      "coverage": 35,
+      "freshness": 20,
+      "modelDepth": 25,
+      "provenance": 20
+    },
+    "tier": "excellent",
+    "weightedQuality": 100.0
+  },
+  "signalSummary": {
+    "okRequiredSignals": 3,
+    "requiredSignals": 3,
+    "staleRequiredSignals": 0,
+    "unavailableRequiredSignals": 0
+  }
+}

@@ -19,7 +19,7 @@ export default defineConfig({
     },
   ],
   webServer: {
-    command: `npm run build && PORT=${port} ./node_modules/.bin/next start --port ${port}`,
+    command: `if [ ! -f .next/BUILD_ID ]; then npm run build; fi; PORT=${port} ./node_modules/.bin/next start --port ${port}`,
     port,
     reuseExistingServer: !process.env.CI,
     timeout: 240_000,

@@ -1,4 +1,72 @@
 {
+  "annotations": [
+    {
+      "body": "Baseline NPV -0.1M with capture/cannibalization trade-offs.",
+      "evidenceRefs": [
+        {
+          "asOf": "2026-02-19",
+          "seriesId": "tsla_30d_return",
+          "source": "stooq:TSLA",
+          "value": "-5.17"
+        },
+        {
+          "asOf": "2026-02-19T20:20:43+00:00",
+          "seriesId": "i5_corridor_stations",
+          "source": "osm:overpass",
+          "value": "2229"
+        }
+      ],
+      "id": "tesla-site-1",
+      "moduleId": "corridor-economics-board",
+      "timestampOrIndex": "harris",
+      "title": "Harris Ranch, CA strategic node",
+      "type": "recommendation"
+    },
+    {
+      "body": "Baseline NPV -0.5M with capture/cannibalization trade-offs.",
+      "evidenceRefs": [
+        {
+          "asOf": "2026-02-19",
+          "seriesId": "tsla_30d_return",
+          "source": "stooq:TSLA",
+          "value": "-5.17"
+        },
+        {
+          "asOf": "2026-02-19T20:20:43+00:00",
+          "seriesId": "i5_corridor_stations",
+          "source": "osm:overpass",
+          "value": "2229"
+        }
+      ],
+      "id": "tesla-site-2",
+      "moduleId": "corridor-economics-board",
+      "timestampOrIndex": "bakers",
+      "title": "Bakersfield, CA strategic node",
+      "type": "recommendation"
+    },
+    {
+      "body": "Baseline NPV -1.2M with capture/cannibalization trade-offs.",
+      "evidenceRefs": [
+        {
+          "asOf": "2026-02-19",
+          "seriesId": "tsla_30d_return",
+          "source": "stooq:TSLA",
+          "value": "-5.17"
+        },
+        {
+          "asOf": "2026-02-19T20:20:43+00:00",
+          "seriesId": "i5_corridor_stations",
+          "source": "osm:overpass",
+          "value": "2229"
+        }
+      ],
+      "id": "tesla-site-3",
+      "moduleId": "corridor-economics-board",
+      "timestampOrIndex": "la",
+      "title": "Los Angeles, CA strategic node",
+      "type": "recommendation"
+    }
+  ],
   "candidateSites": [
     {
       "cannibalizesTeslaUnitsPerMonth": 1.4,
@@ -95,6 +163,53 @@
     "focus": "Harris Ranch, CA",
     "name": "I-5 Corridor (CA)"
   },
+  "dataReadiness": [
+    {
+      "lastSuccessfulRealRunAt": "2026-02-19T20:20:20+00:00",
+      "minRequiredSeries": [
+        "tsla_30d_return"
+      ],
+      "missingSeries": [],
+      "moduleId": "tsla_30d_return",
+      "realCoveragePct": 100,
+      "status": "ready"
+    },
+    {
+      "lastSuccessfulRealRunAt": "2026-02-19T20:20:22+00:00",
+      "minRequiredSeries": [
+        "ca_ev_station_count"
+      ],
+      "missingSeries": [],
+      "moduleId": "ca_ev_station_count",
+      "realCoveragePct": 100,
+      "status": "ready"
+    },
+    {
+      "lastSuccessfulRealRunAt": "2026-02-19T20:20:43+00:00",
+      "minRequiredSeries": [
+        "i5_corridor_stations"
+      ],
+      "missingSeries": [],
+      "moduleId": "i5_corridor_stations",
+      "realCoveragePct": 100,
+      "status": "ready"
+    }
+  ],
+  "decisionEvidence": [
+    {
+      "confidenceBand": [
+        0.8,
+        0.98
+      ],
+      "counterfactualDelta": "-0.10M top site NPV",
+      "drivers": [
+        "site capture rate",
+        "cannibalization",
+        "capex multiplier"
+      ],
+      "recommendationId": "tesla-corridor-build-order"
+    }
+  ],
   "flows": [
     {
       "brand": "Tesla",
@@ -2114,30 +2229,30 @@
     }
   ],
   "meta": {
-    "generatedAt": "2026-02-17T16:06:17+00:00",
+    "generatedAt": "2026-02-19T20:20:20+00:00",
     "modules": {
       "ca_ev_station_count": {
         "provenance": {
-          "asOf": "2026-02-17T16:06:33+00:00",
-          "fetchedAt": "2026-02-17T16:06:33+00:00",
-          "note": "CA public EV stations",
-          "source": "nrel:afdc"
+          "asOf": "2026-02-19T20:20:22+00:00",
+          "fetchedAt": "2026-02-19T20:20:22+00:00",
+          "note": "CA charging-station count (OSM Overpass); fallback from nrel:afdc (fetch_error:HTTPError)",
+          "source": "osm:overpass"
         },
         "status": "ok"
       },
       "i5_corridor_stations": {
         "provenance": {
-          "asOf": "2026-02-17T16:06:44+00:00",
-          "fetchedAt": "2026-02-17T16:06:44+00:00",
-          "note": "Approximate I-5 CA corridor EV stations",
-          "source": "nrel:afdc"
+          "asOf": "2026-02-19T20:20:43+00:00",
+          "fetchedAt": "2026-02-19T20:20:43+00:00",
+          "note": "Approximate I-5 corridor charging-station count (OSM Overpass); fallback from nrel:afdc (fetch_error:HTTPError)",
+          "source": "osm:overpass"
         },
         "status": "ok"
       },
       "tsla_30d_return": {
         "provenance": {
-          "asOf": "2026-02-17",
-          "fetchedAt": "2026-02-17T16:06:32+00:00",
+          "asOf": "2026-02-19",
+          "fetchedAt": "2026-02-19T20:20:20+00:00",
           "note": "30d total return",
           "source": "stooq:TSLA"
         },
@@ -2145,7 +2260,9 @@
       }
     },
     "overallStatus": "ok",
-    "runId": "real-20260217160617"
+    "policyDecision": "Strict real-feed mode with stale-real cache continuity.",
+    "policyMode": "strict-real",
+    "runId": "real-20260219202020"
   },
   "realSignals": [
     {
@@ -2153,40 +2270,43 @@
       "id": "tsla_30d_return",
       "label": "TSLA 30d return",
       "provenance": {
-        "asOf": "2026-02-17",
-        "fetchedAt": "2026-02-17T16:06:32+00:00",
+        "asOf": "2026-02-19",
+        "fetchedAt": "2026-02-19T20:20:20+00:00",
         "note": "30d total return",
         "source": "stooq:TSLA"
       },
+      "required": true,
       "status": "ok",
       "unit": "%",
-      "value": "-7.83"
+      "value": "-5.17"
     },
     {
-      "change": "CA public EV stations",
+      "change": "CA charging-station count (OSM Overpass); fallback from nrel:afdc (fetch_error:HTTPError)",
       "id": "ca_ev_station_count",
       "label": "CA public EV stations",
       "provenance": {
-        "asOf": "2026-02-17T16:06:33+00:00",
-        "fetchedAt": "2026-02-17T16:06:33+00:00",
-        "note": "CA public EV stations",
-        "source": "nrel:afdc"
+        "asOf": "2026-02-19T20:20:22+00:00",
+        "fetchedAt": "2026-02-19T20:20:22+00:00",
+        "note": "CA charging-station count (OSM Overpass); fallback from nrel:afdc (fetch_error:HTTPError)",
+        "source": "osm:overpass"
       },
+      "required": true,
       "status": "ok",
-      "value": "18929"
+      "value": "2277"
     },
     {
-      "change": "Approximate I-5 CA corridor EV stations",
+      "change": "Approximate I-5 corridor charging-station count (OSM Overpass); fallback from nrel:afdc (fetch_error:HTTPError)",
       "id": "i5_corridor_stations",
       "label": "I-5 corridor EV stations",
       "provenance": {
-        "asOf": "2026-02-17T16:06:44+00:00",
-        "fetchedAt": "2026-02-17T16:06:44+00:00",
-        "note": "Approximate I-5 CA corridor EV stations",
-        "source": "nrel:afdc"
+        "asOf": "2026-02-19T20:20:43+00:00",
+        "fetchedAt": "2026-02-19T20:20:43+00:00",
+        "note": "Approximate I-5 corridor charging-station count (OSM Overpass); fallback from nrel:afdc (fetch_error:HTTPError)",
+        "source": "osm:overpass"
       },
+      "required": true,
       "status": "ok",
-      "value": "18290"
+      "value": "2229"
     }
   ],
   "stations": [

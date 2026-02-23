@@ -1,0 +1,79 @@
+name: quality-gates
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+jobs:
+  quality:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Install Playwright Chromium
+        run: npx playwright install --with-deps chromium
+
+      - name: Contract checks
+        run: npm run contracts:check
+
+      - name: Hygiene checks
+        run: npm run hygiene:check
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Typecheck
+        run: npm run typecheck
+
+      - name: Unit tests
+        run: npm test
+
+      - name: Build
+        run: npm run build
+
+      - name: Strict contract checks
+        run: npm run contracts:check:strict
+
+      - name: Strict perf budget checks
+        run: npm run perf:check:strict
+
+      - name: Start production server
+        run: |
+          npm run start > /tmp/next-start.log 2>&1 &
+          for i in {1..60}; do
+            if curl -fsS "http://127.0.0.1:3401" > /dev/null; then
+              echo "server-ready"
+              exit 0
+            fi
+            sleep 1
+          done
+          cat /tmp/next-start.log
+          exit 1
+
+      - name: 10-round visual quality loop (strict)
+        run: npm run qa:visual:10:strict -- --base-url=http://127.0.0.1:3401
+
+      - name: E2E smoke
+        run: CI=1 PW_TEST_PORT=3501 npm run test:e2e
+
+      - name: Upload visual loop artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: visual-loop-artifacts
+          path: tmp/visual-loops
+          if-no-files-found: ignore

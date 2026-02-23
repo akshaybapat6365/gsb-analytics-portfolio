@@ -1,0 +1,91 @@
+{
+  "generatedAt": "2026-02-19T20:16:52+00:00",
+  "meta": {
+    "generatedAt": "2026-02-19T20:16:52+00:00",
+    "modules": {
+      "nkla_recent_10k_10q": {
+        "provenance": {
+          "asOf": "2025-10-09",
+          "fetchedAt": "2026-02-19T20:16:56+00:00",
+          "note": "10-K/10-Q count in last 365d",
+          "source": "sec:0001731289"
+        },
+        "status": "ok"
+      },
+      "spy_30d_return": {
+        "provenance": {
+          "asOf": "2026-02-19",
+          "fetchedAt": "2026-02-19T20:16:52+00:00",
+          "note": "30d total return",
+          "source": "stooq:SPY"
+        },
+        "status": "ok"
+      }
+    },
+    "overallStatus": "ok",
+    "policyDecision": "Strict real-feed mode with stale-real cache continuity.",
+    "policyMode": "strict-real",
+    "runId": "real-20260219201652"
+  },
+  "mode": "open-only",
+  "projectSlug": "fraud-radar",
+  "projectTitle": "Shorting Nikola: Pre-Collapse Fraud Detection",
+  "qualityRubric": {
+    "coverage": 35,
+    "freshness": 20,
+    "modelDepth": 25,
+    "provenance": 20
+  },
+  "runId": "real-20260219201652",
+  "sourceStatuses": [
+    {
+      "expectedSignalIds": [
+        "nkla_recent_10k_10q"
+      ],
+      "id": "sec_nkla",
+      "kind": "filings_primary",
+      "label": "SEC EDGAR filings (NKLA)",
+      "matchedSignalStatuses": [
+        {
+          "id": "nkla_recent_10k_10q",
+          "reasonCode": null,
+          "status": "ok"
+        }
+      ],
+      "opennessScore": 96,
+      "sourceKey": "sec:0001731289",
+      "status": "ok",
+      "url": "https://data.sec.gov/"
+    },
+    {
+      "expectedSignalIds": [
+        "spy_30d_return"
+      ],
+      "id": "stooq_spy",
+      "kind": "market_context",
+      "label": "Stooq SPY daily prices",
+      "matchedSignalStatuses": [
+        {
+          "id": "spy_30d_return",
+          "reasonCode": null,
+          "status": "ok"
+        }
+      ],
+      "opennessScore": 82,
+      "sourceKey": "stooq:SPY",
+      "status": "ok",
+      "url": "https://stooq.com/"
+    },
+    {
+      "expectedSignalIds": [],
+      "id": "sec_api_docs",
+      "kind": "governance_reference",
+      "label": "SEC API docs",
+      "matchedSignalStatuses": [],
+      "opennessScore": 100,
+      "sourceKey": "sec:api-docs",
+      "status": "reference",
+      "url": "https://www.sec.gov/search-filings/edgar-application-programming-interfaces"
+    }
+  ]
+}

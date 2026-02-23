@@ -74,6 +74,51 @@ export function ActualVsAlgoTimeline({
     .x((d) => xCurve(d.window))
     .y((d) => yCurve(d.counterfactual));
 
+  const defaultRow: OrdDerivedDay = rows[0] ?? {
+    index: 0,
+    date: "n/a",
+    dow: "n/a",
+    week: 0,
+    shock: 0,
+    actualPrice: 0,
+    algoPrice: 0,
+    policyPrice: 0,
+    competitorPrice: 0,
+    actualPax: 0,
+    policyPax: 0,
+    actualRevenue: 0,
+    policyRevenue: 0,
+    policyRegret: 0,
+    uaShare: 0,
+  };
+
+  const annotations = [
+    {
+      key: "max-regret",
+      label: "Max policy lift",
+      row: rows.reduce(
+        (best, row) => (row.policyRegret > best.policyRegret ? row : best),
+        defaultRow,
+      ),
+      tone: "text-emerald-200",
+    },
+    {
+      key: "max-leak",
+      label: "Max leakage day",
+      row: rows.reduce(
+        (best, row) => (row.policyRegret < best.policyRegret ? row : best),
+        defaultRow,
+      ),
+      tone: "text-rose-200",
+    },
+    {
+      key: "max-shock",
+      label: "Strongest demand shock",
+      row: rows.reduce((best, row) => (row.shock > best.shock ? row : best), defaultRow),
+      tone: "text-amber-100",
+    },
+  ];
+
   return (
     <section className="space-y-4">
       <section className="neo-panel p-4 sm:p-5">
@@ -81,7 +126,7 @@ export function ActualVsAlgoTimeline({
           <p className="font-feature text-xs uppercase tracking-[0.2em] text-slate-300">
             Daily Fare Strip
           </p>
-          <p className="font-mono text-sm text-cyan-100">
+          <p className="font-mono text-sm text-amber-100">
             {selected?.date ?? "—"} · Policy {formatUSD(selected?.policyPrice ?? 0)}
           </p>
         </div>
@@ -96,15 +141,15 @@ export function ActualVsAlgoTimeline({
                 x2={width - margin.right}
                 y1={yy}
                 y2={yy}
-                stroke="rgba(148,163,184,0.14)"
+                stroke="rgba(182,169,151,0.14)"
                 strokeDasharray="4 6"
               />
             );
           })}
 
-          <path d={lineGen(rows) ?? ""} fill="none" stroke="rgba(148,163,184,0.95)" strokeWidth={2.1} />
-          <path d={algoLineGen(rows) ?? ""} fill="none" stroke="rgba(52,211,153,0.95)" strokeWidth={2.4} />
-          <path d={policyLineGen(rows) ?? ""} fill="none" stroke="rgba(34,211,238,1)" strokeWidth={3} />
+          <path d={lineGen(rows) ?? ""} fill="none" stroke="rgba(182,169,151,0.95)" strokeWidth={2.1} />
+          <path d={algoLineGen(rows) ?? ""} fill="none" stroke="rgba(73,95,69,0.95)" strokeWidth={2.4} />
+          <path d={policyLineGen(rows) ?? ""} fill="none" stroke="rgba(139,107,62,1)" strokeWidth={3} />
 
           {selected ? (
             <g>
@@ -116,7 +161,7 @@ export function ActualVsAlgoTimeline({
                 stroke="rgba(226,232,240,0.55)"
                 strokeDasharray="4 5"
               />
-              <circle cx={x(selected.index)} cy={y(selected.policyPrice)} r={4.8} fill="rgba(34,211,238,1)" />
+              <circle cx={x(selected.index)} cy={y(selected.policyPrice)} r={4.8} fill="rgba(139,107,62,1)" />
             </g>
           ) : null}
 
@@ -153,17 +198,17 @@ export function ActualVsAlgoTimeline({
                   x2={curveWidth - curveMargin.right}
                   y1={yy}
                   y2={yy}
-                  stroke="rgba(148,163,184,0.14)"
+                  stroke="rgba(182,169,151,0.14)"
                   strokeDasharray="3 5"
                 />
               );
             })}
-            <path d={actualCurvePath(sortedCurve) ?? ""} fill="none" stroke="rgba(148,163,184,0.95)" strokeWidth={2.4} />
-            <path d={counterfactualCurvePath(sortedCurve) ?? ""} fill="none" stroke="rgba(34,211,238,0.98)" strokeWidth={2.9} />
+            <path d={actualCurvePath(sortedCurve) ?? ""} fill="none" stroke="rgba(182,169,151,0.95)" strokeWidth={2.4} />
+            <path d={counterfactualCurvePath(sortedCurve) ?? ""} fill="none" stroke="rgba(139,107,62,0.98)" strokeWidth={2.9} />
             {sortedCurve.map((point) => (
               <g key={point.window}>
-                <circle cx={xCurve(point.window)} cy={yCurve(point.actual)} r={3.2} fill="rgba(148,163,184,0.95)" />
-                <circle cx={xCurve(point.window)} cy={yCurve(point.counterfactual)} r={3.2} fill="rgba(34,211,238,0.95)" />
+                <circle cx={xCurve(point.window)} cy={yCurve(point.actual)} r={3.2} fill="rgba(182,169,151,0.95)" />
+                <circle cx={xCurve(point.window)} cy={yCurve(point.counterfactual)} r={3.2} fill="rgba(139,107,62,0.95)" />
               </g>
             ))}
           </svg>
@@ -193,6 +238,25 @@ export function ActualVsAlgoTimeline({
             </p>
           </div>
         </section>
+      </section>
+
+      <section className="grid gap-3 lg:grid-cols-3">
+        {annotations.map((item) => (
+          <article
+            key={item.key}
+            className="rounded-2xl border border-white/10 bg-black/20 px-4 py-3"
+          >
+            <p className="font-mono text-[10px] uppercase tracking-[0.14em] text-slate-400">
+              {item.label}
+            </p>
+            <p className="mt-1 text-sm text-slate-200">
+              {item.row.date} · {item.row.dow}
+            </p>
+            <p className={`mt-1 font-mono text-sm ${item.tone}`}>
+              {formatUSD(item.row.policyRegret)}
+            </p>
+          </article>
+        ))}
       </section>
     </section>
   );

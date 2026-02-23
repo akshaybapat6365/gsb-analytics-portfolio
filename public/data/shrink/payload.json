@@ -1,4 +1,109 @@
 {
+  "annotations": [
+    {
+      "body": "Theft pressure index 92.0 drives threshold sensitivity.",
+      "evidenceRefs": [
+        {
+          "asOf": "2026-02-19",
+          "seriesId": "tgt_30d_return",
+          "source": "stooq:TGT",
+          "value": "10.84"
+        },
+        {
+          "asOf": "2026-02-19",
+          "seriesId": "wmt_30d_return",
+          "source": "stooq:WMT",
+          "value": "10.20"
+        }
+      ],
+      "id": "shrink-zone-1",
+      "moduleId": "zone-pressure-map",
+      "timestampOrIndex": "zone-z1",
+      "title": "Self-checkout pressure hotspot",
+      "type": "inflection"
+    },
+    {
+      "body": "Theft pressure index 72.0 drives threshold sensitivity.",
+      "evidenceRefs": [
+        {
+          "asOf": "2026-02-19",
+          "seriesId": "tgt_30d_return",
+          "source": "stooq:TGT",
+          "value": "10.84"
+        },
+        {
+          "asOf": "2026-02-19",
+          "seriesId": "wmt_30d_return",
+          "source": "stooq:WMT",
+          "value": "10.20"
+        }
+      ],
+      "id": "shrink-zone-2",
+      "moduleId": "zone-pressure-map",
+      "timestampOrIndex": "zone-z2",
+      "title": "Electronics pressure hotspot",
+      "type": "inflection"
+    },
+    {
+      "body": "Theft pressure index 66.0 drives threshold sensitivity.",
+      "evidenceRefs": [
+        {
+          "asOf": "2026-02-19",
+          "seriesId": "tgt_30d_return",
+          "source": "stooq:TGT",
+          "value": "10.84"
+        },
+        {
+          "asOf": "2026-02-19",
+          "seriesId": "wmt_30d_return",
+          "source": "stooq:WMT",
+          "value": "10.20"
+        }
+      ],
+      "id": "shrink-zone-3",
+      "moduleId": "zone-pressure-map",
+      "timestampOrIndex": "zone-z4",
+      "title": "Cosmetics pressure hotspot",
+      "type": "inflection"
+    }
+  ],
+  "dataReadiness": [
+    {
+      "lastSuccessfulRealRunAt": "2026-02-19T20:20:20+00:00",
+      "minRequiredSeries": [
+        "tgt_30d_return"
+      ],
+      "missingSeries": [],
+      "moduleId": "tgt_30d_return",
+      "realCoveragePct": 100,
+      "status": "ready"
+    },
+    {
+      "lastSuccessfulRealRunAt": "2026-02-19T20:20:23+00:00",
+      "minRequiredSeries": [
+        "wmt_30d_return"
+      ],
+      "missingSeries": [],
+      "moduleId": "wmt_30d_return",
+      "realCoveragePct": 100,
+      "status": "ready"
+    }
+  ],
+  "decisionEvidence": [
+    {
+      "confidenceBand": [
+        0.8,
+        0.98
+      ],
+      "counterfactualDelta": "-0.95x best ROI frontier point",
+      "drivers": [
+        "zone theft pressure",
+        "false-positive cost",
+        "event volume"
+      ],
+      "recommendationId": "shrink-threshold-policy"
+    }
+  ],
   "economics": {
     "avgBasket": 42.0,
     "customerLtv": 450.0,
@@ -931,12 +1036,12 @@
     }
   ],
   "meta": {
-    "generatedAt": "2026-02-17T16:06:17+00:00",
+    "generatedAt": "2026-02-19T20:20:20+00:00",
     "modules": {
       "tgt_30d_return": {
         "provenance": {
-          "asOf": "2026-02-17",
-          "fetchedAt": "2026-02-17T16:06:24+00:00",
+          "asOf": "2026-02-19",
+          "fetchedAt": "2026-02-19T20:20:20+00:00",
           "note": "30d total return",
           "source": "stooq:TGT"
         },
@@ -944,8 +1049,8 @@
       },
       "wmt_30d_return": {
         "provenance": {
-          "asOf": "2026-02-17",
-          "fetchedAt": "2026-02-17T16:06:27+00:00",
+          "asOf": "2026-02-19",
+          "fetchedAt": "2026-02-19T20:20:23+00:00",
           "note": "30d total return",
           "source": "stooq:WMT"
         },
@@ -953,7 +1058,9 @@
       }
     },
     "overallStatus": "ok",
-    "runId": "real-20260217160617"
+    "policyDecision": "Strict real-feed mode with stale-real cache continuity.",
+    "policyMode": "strict-real",
+    "runId": "real-20260219202020"
   },
   "policy": {
     "outcomes": [
@@ -1016,28 +1123,30 @@
       "id": "tgt_30d_return",
       "label": "TGT 30d return",
       "provenance": {
-        "asOf": "2026-02-17",
-        "fetchedAt": "2026-02-17T16:06:24+00:00",
+        "asOf": "2026-02-19",
+        "fetchedAt": "2026-02-19T20:20:20+00:00",
         "note": "30d total return",
         "source": "stooq:TGT"
       },
+      "required": true,
       "status": "ok",
       "unit": "%",
-      "value": "14.01"
+      "value": "10.84"
     },
     {
       "change": "30d total return",
       "id": "wmt_30d_return",
       "label": "WMT 30d return",
       "provenance": {
-        "asOf": "2026-02-17",
-        "fetchedAt": "2026-02-17T16:06:27+00:00",
+        "asOf": "2026-02-19",
+        "fetchedAt": "2026-02-19T20:20:23+00:00",
         "note": "30d total return",
         "source": "stooq:WMT"
       },
+      "required": true,
       "status": "ok",
       "unit": "%",
-      "value": "15.88"
+      "value": "10.20"
     }
   ],
   "store": {

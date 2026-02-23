@@ -1,4 +1,72 @@
 {
+  "annotations": [
+    {
+      "body": "Convert scenario with delta profit 72.5k.",
+      "evidenceRefs": [
+        {
+          "asOf": "2026-02-19",
+          "seriesId": "sbux_30d_return",
+          "source": "stooq:SBUX",
+          "value": "6.66"
+        },
+        {
+          "asOf": "2023",
+          "seriesId": "denver_remote_share",
+          "source": "census:acs1:B08006",
+          "value": "22.34"
+        }
+      ],
+      "id": "sbux-store-1",
+      "moduleId": "portfolio-surgery-board",
+      "timestampOrIndex": "den-48",
+      "title": "Denver Store 48 recommendation pressure",
+      "type": "recommendation"
+    },
+    {
+      "body": "Convert scenario with delta profit 50.2k.",
+      "evidenceRefs": [
+        {
+          "asOf": "2026-02-19",
+          "seriesId": "sbux_30d_return",
+          "source": "stooq:SBUX",
+          "value": "6.66"
+        },
+        {
+          "asOf": "2023",
+          "seriesId": "denver_remote_share",
+          "source": "census:acs1:B08006",
+          "value": "22.34"
+        }
+      ],
+      "id": "sbux-store-2",
+      "moduleId": "portfolio-surgery-board",
+      "timestampOrIndex": "den-21",
+      "title": "Denver Store 21 recommendation pressure",
+      "type": "recommendation"
+    },
+    {
+      "body": "Convert scenario with delta profit 50.2k.",
+      "evidenceRefs": [
+        {
+          "asOf": "2026-02-19",
+          "seriesId": "sbux_30d_return",
+          "source": "stooq:SBUX",
+          "value": "6.66"
+        },
+        {
+          "asOf": "2023",
+          "seriesId": "denver_remote_share",
+          "source": "census:acs1:B08006",
+          "value": "22.34"
+        }
+      ],
+      "id": "sbux-store-3",
+      "moduleId": "portfolio-surgery-board",
+      "timestampOrIndex": "den-25",
+      "title": "Denver Store 25 recommendation pressure",
+      "type": "recommendation"
+    }
+  ],
   "city": {
     "center": [
       -104.9903,
@@ -7,6 +75,43 @@
     "name": "Denver Metro",
     "zoom": 9.8
   },
+  "dataReadiness": [
+    {
+      "lastSuccessfulRealRunAt": "2026-02-19T20:20:20+00:00",
+      "minRequiredSeries": [
+        "sbux_30d_return"
+      ],
+      "missingSeries": [],
+      "moduleId": "sbux_30d_return",
+      "realCoveragePct": 100,
+      "status": "ready"
+    },
+    {
+      "lastSuccessfulRealRunAt": "2026-02-19T20:20:23+00:00",
+      "minRequiredSeries": [
+        "denver_remote_share"
+      ],
+      "missingSeries": [],
+      "moduleId": "denver_remote_share",
+      "realCoveragePct": 100,
+      "status": "ready"
+    }
+  ],
+  "decisionEvidence": [
+    {
+      "confidenceBand": [
+        0.8,
+        0.98
+      ],
+      "counterfactualDelta": "1,500.1k portfolio profit delta",
+      "drivers": [
+        "wfh exposure",
+        "segment mix",
+        "store-level unit economics"
+      ],
+      "recommendationId": "starbucks-portfolio-surgery"
+    }
+  ],
   "did": {
     "ate": -0.18,
     "ci": [
@@ -16,12 +121,12 @@
     "pretrendP": 0.42
   },
   "meta": {
-    "generatedAt": "2026-02-17T16:06:17+00:00",
+    "generatedAt": "2026-02-19T20:20:20+00:00",
     "modules": {
       "denver_remote_share": {
         "provenance": {
           "asOf": "2023",
-          "fetchedAt": "2026-02-17T16:06:31+00:00",
+          "fetchedAt": "2026-02-19T20:20:23+00:00",
           "note": "Denver MSA remote-work commuter share",
           "source": "census:acs1:B08006"
         },
@@ -29,8 +134,8 @@
       },
       "sbux_30d_return": {
         "provenance": {
-          "asOf": "2026-02-17",
-          "fetchedAt": "2026-02-17T16:06:29+00:00",
+          "asOf": "2026-02-19",
+          "fetchedAt": "2026-02-19T20:20:20+00:00",
           "note": "30d total return",
           "source": "stooq:SBUX"
         },
@@ -38,7 +143,9 @@
       }
     },
     "overallStatus": "ok",
-    "runId": "real-20260217160617"
+    "policyDecision": "Strict real-feed mode with stale-real cache continuity.",
+    "policyMode": "strict-real",
+    "runId": "real-20260219202020"
   },
   "realSignals": [
     {
@@ -46,14 +153,15 @@
       "id": "sbux_30d_return",
       "label": "SBUX 30d return",
       "provenance": {
-        "asOf": "2026-02-17",
-        "fetchedAt": "2026-02-17T16:06:29+00:00",
+        "asOf": "2026-02-19",
+        "fetchedAt": "2026-02-19T20:20:20+00:00",
         "note": "30d total return",
         "source": "stooq:SBUX"
       },
+      "required": true,
       "status": "ok",
       "unit": "%",
-      "value": "11.87"
+      "value": "6.66"
     },
     {
       "change": "Denver MSA remote-work commuter share",
@@ -61,10 +169,11 @@
       "label": "Denver remote-work share",
       "provenance": {
         "asOf": "2023",
-        "fetchedAt": "2026-02-17T16:06:31+00:00",
+        "fetchedAt": "2026-02-19T20:20:23+00:00",
         "note": "Denver MSA remote-work commuter share",
         "source": "census:acs1:B08006"
       },
+      "required": true,
       "status": "ok",
       "unit": "%",
       "value": "22.34"

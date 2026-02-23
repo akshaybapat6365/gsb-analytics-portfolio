@@ -20,6 +20,7 @@ type DeckMapProps = {
   height?: number;
   mapStyle?: string;
   getTooltip?: (info: PickingInfo) => string | null;
+  dataTestId?: string;
 };
 
 const defaultStyle = "https://demotiles.maplibre.org/style.json";
@@ -46,14 +47,17 @@ export function DeckMap({
   height = 420,
   mapStyle = defaultStyle,
   getTooltip,
+  dataTestId = "primary-chart",
 }: DeckMapProps) {
+  const resolvedHeight = Math.max(height, 560);
   const webglReady = detectWebglSupport();
 
   if (!webglReady) {
     return (
       <section
         className={cn("glass overflow-hidden rounded-2xl", className)}
-        style={{ height }}
+        style={{ height: resolvedHeight }}
+        data-testid={dataTestId}
       >
         <div className="flex h-full items-center justify-center px-6 text-center">
           <div className="max-w-lg space-y-2 rounded-xl border border-white/10 bg-white/5 p-5">
@@ -72,12 +76,13 @@ export function DeckMap({
   return (
     <section
       className={cn("glass overflow-hidden rounded-2xl", className)}
-      style={{ height }}
+      style={{ height: resolvedHeight }}
+      data-testid={dataTestId}
     >
       <VizErrorBoundary
         fallbackTitle="Map rendering error"
         fallbackMessage="The interactive map could not mount. Use the surrounding KPIs/charts to continue the scenario analysis."
-        height={height}
+        height={resolvedHeight}
       >
         <DeckGL
           initialViewState={initialViewState}

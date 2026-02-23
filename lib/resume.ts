@@ -4,7 +4,7 @@ export const resumeData = {
   phone: "(210) 201-4314",
   email: "vaibhavb@worktechmail.com",
   summary:
-    "Data Analyst with 6+ years across cloud data engineering, advanced analytics, and business analysis. Builds HIPAA-compliant data systems on AWS/Snowflake/PySpark and translates statistical insight into measurable operating impact.",
+    "Decision science and analytics product operator with 6+ years across cloud data engineering, experimentation, and business analysis. Builds reliable data systems and simulator-grade analytics that convert uncertainty into operating recommendations.",
   skills: {
     programming: [
       "Python (Pandas, NumPy, scikit-learn, statsmodels)",

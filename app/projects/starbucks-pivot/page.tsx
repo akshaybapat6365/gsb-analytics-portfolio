@@ -2,11 +2,12 @@ import { getProject } from "@/lib/projects/catalog";
 import { loadStarbucksPayload } from "@/lib/server/payloads";
 
 import { Hero } from "./Hero";
-import StarbucksClient from "./StarbucksClient";
+import { StarbucksShell } from "./StarbucksShell";
 import { BlufPanel } from "@/components/story/BlufPanel";
 import { AssumptionsDrawer } from "@/components/story/AssumptionsDrawer";
-import { StoryVisual } from "@/components/projects/StoryVisual";
 import { RealSignalsPanel } from "@/components/story/RealSignalsPanel";
+import { StarbucksInteractiveSection } from "./InteractiveSection";
+import { DataIntegrityDrawer } from "@/components/story/DataIntegrityDrawer";
 
 export const metadata = {
   title: "Starbucks Suburban Pivot",
@@ -15,6 +16,7 @@ export const metadata = {
 export default async function StarbucksPivotPage() {
   const project = getProject("starbucks-pivot");
   const payload = await loadStarbucksPayload();
+  const summary = project.homepage;
 
   return (
     <div className="space-y-9">
@@ -24,29 +26,27 @@ export default async function StarbucksPivotPage() {
         eyebrow="Geo BLUF"
         question={project.businessQuestion}
         bluf={project.bluf}
+        keyOutputLabel={summary.resultLabel}
+        keyOutputValue={summary.resultValue}
+        evidenceLine={`${summary.evidenceLevel.toUpperCase()} · ${summary.source} · as-of ${summary.asOf}`}
+        limitation={summary.limitation}
       />
-      <RealSignalsPanel meta={payload.meta} signals={payload.realSignals} />
 
-      <StarbucksClient payload={payload} />
+      <StarbucksShell payload={payload} />
 
-      <section className="grid gap-4 lg:grid-cols-2">
-        <StoryVisual
-          slug="starbucks-pivot"
-          asset="overlay"
-          title="Isochrone Overlay"
-          caption="Replicate-generated geospatial overlay used for commute-collapse and suburban-shift storytelling."
+      <StarbucksInteractiveSection payload={payload} />
+
+      <DataIntegrityDrawer>
+        <RealSignalsPanel
+          meta={payload.meta}
+          signals={payload.realSignals}
+          readiness={payload.dataReadiness}
         />
-        <StoryVisual
-          slug="starbucks-pivot"
-          asset="diagram"
-          title="Causal Surgery Diagram"
-          caption="Difference-in-differences evidence translated into convert, lockers, and close actions."
-        />
-      </section>
+      </DataIntegrityDrawer>
 
       <AssumptionsDrawer
         items={[
-          "Synthetic by default: WFH exposure and segment-level shock coefficients drive traffic/profit deltas.",
+          "Real mobility and market signals govern module readiness and confidence.",
           "DiD headline is illustrative and should be interpreted as directional in this simulator payload.",
           "Recommendation confidence reflects model certainty under current scenario assumptions.",
           "Real-world swap path: SafeGraph + Placer + LODES with robust DiD diagnostics and unit-level financial mapping.",

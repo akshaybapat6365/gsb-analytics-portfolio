@@ -1,0 +1,35 @@
+{
+  "generatedAt": "2026-02-19T20:21:11+00:00",
+  "knownLimitations": [
+    "Earnings-call transcript quality varies without licensed transcript feeds; filing text remains strongest open signal."
+  ],
+  "missingOrStaleSignals": [],
+  "overallStatus": "ok",
+  "projectSlug": "fraud-radar",
+  "projectTitle": "Shorting Nikola: Pre-Collapse Fraud Detection",
+  "runId": "real-20260219202020",
+  "scores": {
+    "components": {
+      "coverage": 100.0,
+      "freshness": 77.5,
+      "modelDepth": 100.0,
+      "provenance": 100.0
+    },
+    "finalScore": 94.79,
+    "openDataAvailability": 92.67,
+    "rubric": {
+      "coverage": 35,
+      "freshness": 20,
+      "modelDepth": 25,
+      "provenance": 20
+    },
+    "tier": "excellent",
+    "weightedQuality": 95.5
+  },
+  "signalSummary": {
+    "okRequiredSignals": 2,
+    "requiredSignals": 2,
+    "staleRequiredSignals": 0,
+    "unavailableRequiredSignals": 0
+  }
+}

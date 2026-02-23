@@ -1,0 +1,48 @@
+{
+  "generatedAt": "2026-02-19T20:21:11+00:00",
+  "mode": "open-only",
+  "ranking": [
+    {
+      "projectSlug": "tesla-nacs",
+      "projectTitle": "Tesla NACS Gambit",
+      "rank": 1,
+      "score": 97.17,
+      "tier": "excellent"
+    },
+    {
+      "projectSlug": "netflix-roi",
+      "projectTitle": "Netflix Content ROI Autopsy",
+      "rank": 2,
+      "score": 95.62,
+      "tier": "excellent"
+    },
+    {
+      "projectSlug": "ord-lga-price-war",
+      "projectTitle": "United vs. Delta: ORD-LGA Price War",
+      "rank": 3,
+      "score": 95.56,
+      "tier": "excellent"
+    },
+    {
+      "projectSlug": "fraud-radar",
+      "projectTitle": "Shorting Nikola: Pre-Collapse Fraud Detection",
+      "rank": 4,
+      "score": 94.79,
+      "tier": "excellent"
+    },
+    {
+      "projectSlug": "starbucks-pivot",
+      "projectTitle": "Starbucks Suburban Pivot",
+      "rank": 5,
+      "score": 93.12,
+      "tier": "excellent"
+    },
+    {
+      "projectSlug": "target-shrink",
+      "projectTitle": "Target Shrink: Loss Prevention Economics",
+      "rank": 6,
+      "score": 92.42,
+      "tier": "excellent"
+    }
+  ]
+}

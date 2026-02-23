@@ -1,5 +1,11 @@
 import { z } from "zod";
-import { PayloadMetaSchema, RealSignalSchema } from "@/lib/schemas/common";
+import {
+  AnnotationSchema,
+  DecisionEvidenceSchema,
+  ModuleReadinessSchema,
+  PayloadMetaSchema,
+  RealSignalSchema,
+} from "@/lib/schemas/common";
 
 export const StarbucksPayloadSchema = z.object({
   city: z.object({
@@ -34,6 +40,9 @@ export const StarbucksPayloadSchema = z.object({
   ),
   meta: PayloadMetaSchema.optional(),
   realSignals: z.array(RealSignalSchema).optional(),
+  dataReadiness: z.array(ModuleReadinessSchema).optional(),
+  annotations: z.array(AnnotationSchema).optional(),
+  decisionEvidence: z.array(DecisionEvidenceSchema).optional(),
 });
 
 export type StarbucksPayload = z.infer<typeof StarbucksPayloadSchema>;

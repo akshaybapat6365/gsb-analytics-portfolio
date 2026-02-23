@@ -1,7 +1,7 @@
 # Target Shrink — Data Card
 
 ## Status
-Synthetic (default)
+Mode-aware baseline payload (supports strict-real and baseline-fallback enrichment)
 
 ## What’s included
 - Store layout with zones and theft-pressure levels
@@ -16,4 +16,3 @@ Synthetic (default)
 ## Real-world swap
 - Incident data (LPRC or internal LP logs)
 - CV model outputs (YOLO + temporal classifier) to estimate P(theft)
-

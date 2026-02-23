@@ -1,0 +1,49 @@
+{
+  "discoveredAt": "2026-02-19T20:16:52+00:00",
+  "mode": "open-only",
+  "opennessPotentialScore": 89.0,
+  "projectSlug": "starbucks-pivot",
+  "projectTitle": "Starbucks Suburban Pivot",
+  "qualityRubric": {
+    "coverage": 30,
+    "freshness": 20,
+    "modelDepth": 30,
+    "provenance": 20
+  },
+  "sources": [
+    {
+      "expectedSignalIds": [
+        "denver_remote_share"
+      ],
+      "id": "census_denver_remote",
+      "kind": "commute_primary",
+      "label": "Census ACS remote commuter share (Denver MSA)",
+      "opennessScore": 95,
+      "sourceKey": "census:acs1:B08006",
+      "status": "configured",
+      "url": "https://api.census.gov/data/2023/acs/acs1"
+    },
+    {
+      "expectedSignalIds": [
+        "sbux_30d_return"
+      ],
+      "id": "stooq_sbux",
+      "kind": "market_context",
+      "label": "Stooq SBUX daily prices",
+      "opennessScore": 82,
+      "sourceKey": "stooq:SBUX",
+      "status": "configured",
+      "url": "https://stooq.com/"
+    },
+    {
+      "expectedSignalIds": [],
+      "id": "lodes_reference",
+      "kind": "geo_commute_reference",
+      "label": "LEHD/LODES download access",
+      "opennessScore": 90,
+      "sourceKey": "census:lodes",
+      "status": "configured",
+      "url": "https://lehd.ces.census.gov/php/inc_lodesDownloadTool.php"
+    }
+  ]
+}

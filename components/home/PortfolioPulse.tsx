@@ -108,7 +108,7 @@ export function PortfolioPulse() {
                 onClick={() => setMode(item.id)}
                 className={
                   active
-                    ? "rounded-full border border-cyan-300/35 bg-cyan-300/12 px-3 py-1.5 text-[11px] font-semibold uppercase tracking-[0.15em] text-cyan-100"
+                    ? "rounded-full border border-amber-300/35 bg-amber-300/12 px-3 py-1.5 text-[11px] font-semibold uppercase tracking-[0.15em] text-amber-100"
                     : "rounded-full border border-white/10 bg-white/[0.04] px-3 py-1.5 text-[11px] font-semibold uppercase tracking-[0.15em] text-slate-300 hover:bg-white/[0.08]"
                 }
               >
@@ -122,8 +122,8 @@ export function PortfolioPulse() {
       <svg viewBox={`0 0 ${width} ${height}`} className="mt-4 h-auto w-full">
         <defs>
           <linearGradient id="pulse-fill" x1="0%" x2="0%" y1="0%" y2="100%">
-            <stop offset="0%" stopColor="rgba(34,211,238,0.35)" />
-            <stop offset="100%" stopColor="rgba(34,211,238,0.02)" />
+            <stop offset="0%" stopColor="rgba(139,107,62,0.35)" />
+            <stop offset="100%" stopColor="rgba(139,107,62,0.02)" />
           </linearGradient>
         </defs>
 
@@ -136,7 +136,7 @@ export function PortfolioPulse() {
               x2={width - margin.right}
               y1={yy}
               y2={yy}
-              stroke="rgba(148,163,184,0.15)"
+              stroke="rgba(182,169,151,0.15)"
               strokeDasharray="4 6"
             />
           );
@@ -152,7 +152,7 @@ export function PortfolioPulse() {
         <motion.path
           d={lineStress(series) ?? ""}
           fill="none"
-          stroke="rgba(251,113,133,0.78)"
+          stroke="rgba(157,49,49,0.78)"
           strokeWidth={1.8}
           strokeDasharray="8 8"
           initial={{ pathLength: 0 }}
@@ -162,7 +162,7 @@ export function PortfolioPulse() {
         <motion.path
           d={lineSecondary(series) ?? ""}
           fill="none"
-          stroke="rgba(52,211,153,0.95)"
+          stroke="rgba(73,95,69,0.95)"
           strokeWidth={2.2}
           initial={{ pathLength: 0 }}
           animate={{ pathLength: 1 }}
@@ -171,7 +171,7 @@ export function PortfolioPulse() {
         <motion.path
           d={linePrimary(series) ?? ""}
           fill="none"
-          stroke="rgba(34,211,238,0.95)"
+          stroke="rgba(139,107,62,0.95)"
           strokeWidth={3}
           initial={{ pathLength: 0 }}
           animate={{ pathLength: 1 }}
@@ -182,7 +182,7 @@ export function PortfolioPulse() {
       <div className="grid gap-3 pt-2 sm:grid-cols-3">
         <div className="rounded-2xl border border-white/10 bg-black/20 p-3">
           <p className="font-mono text-[10px] uppercase tracking-[0.17em] text-slate-400">Composite Lift</p>
-          <p className="mt-2 font-mono text-lg text-cyan-100">{delta.toFixed(1)} pts</p>
+          <p className="mt-2 font-mono text-lg text-amber-100">{delta.toFixed(1)} pts</p>
         </div>
         <div className="rounded-2xl border border-white/10 bg-black/20 p-3">
           <p className="font-mono text-[10px] uppercase tracking-[0.17em] text-slate-400">Active Signal</p>

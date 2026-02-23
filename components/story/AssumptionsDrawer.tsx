@@ -9,7 +9,7 @@ type AssumptionsDrawerProps = {
 
 export function AssumptionsDrawer({
   title = "Assumptions & Data Provenance",
-  subtitle = "Synthetic by default. Swap in real datasets per the data card.",
+  subtitle = "Strict real-data mode. Review feed provenance, assumptions, and readiness caveats.",
   items,
   className,
 }: AssumptionsDrawerProps) {

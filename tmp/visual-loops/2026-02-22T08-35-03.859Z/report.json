@@ -1,0 +1,1331 @@
+{
+  "baseUrl": "http://localhost:3401",
+  "rounds": 10,
+  "generatedAt": "2026-02-22T08:35:04.735Z",
+  "routes": [
+    {
+      "route": "/",
+      "rounds": [
+        {
+          "round": 1,
+          "url": "http://localhost:3401/",
+          "diagnostics": {
+            "h1": "Strategic analytics narratives built for operating decisions.",
+            "chartCount": 10,
+            "loadingTextVisible": false,
+            "title": "Vaibhav Bapat | Decision Intelligence Portfolio"
+          },
+          "screenshotPaths": [
+            "tmp/visual-loops/2026-02-22T08-35-03.859Z/home/round-01-desktop.png",
+            "tmp/visual-loops/2026-02-22T08-35-03.859Z/home/round-01-mobile.png"
+          ],
+          "consoleErrors": [],
+          "pass": true
+        },
+        {
+          "round": 2,
+          "url": "http://localhost:3401/",
+          "diagnostics": {
+            "h1": "Strategic analytics narratives built for operating decisions.",
+            "chartCount": 10,
+            "loadingTextVisible": false,
+            "title": "Vaibhav Bapat | Decision Intelligence Portfolio"
+          },
+          "screenshotPaths": [
+            "tmp/visual-loops/2026-02-22T08-35-03.859Z/home/round-02-desktop.png",
+            "tmp/visual-loops/2026-02-22T08-35-03.859Z/home/round-02-mobile.png"
+          ],
+          "consoleErrors": [],
+          "pass": true
+        },
+        {
+          "round": 3,
+          "url": "http://localhost:3401/",
+          "diagnostics": {
+            "h1": "Strategic analytics narratives built for operating decisions.",
+            "chartCount": 10,
+            "loadingTextVisible": false,
+            "title": "Vaibhav Bapat | Decision Intelligence Portfolio"
+          },
+          "screenshotPaths": [
+            "tmp/visual-loops/2026-02-22T08-35-03.859Z/home/round-03-desktop.png",
+            "tmp/visual-loops/2026-02-22T08-35-03.859Z/home/round-03-mobile.png"
+          ],
+          "consoleErrors": [],
+          "pass": true
+        },
+        {
+          "round": 4,
+          "url": "http://localhost:3401/",
+          "diagnostics": {
+            "h1": "Strategic analytics narratives built for operating decisions.",
+            "chartCount": 10,
+            "loadingTextVisible": false,
+            "title": "Vaibhav Bapat | Decision Intelligence Portfolio"
+          },
+          "screenshotPaths": [
+            "tmp/visual-loops/2026-02-22T08-35-03.859Z/home/round-04-desktop.png",
+            "tmp/visual-loops/2026-02-22T08-35-03.859Z/home/round-04-mobile.png"
+          ],
+          "consoleErrors": [],
+          "pass": true
+        },
+        {
+          "round": 5,
+          "url": "http://localhost:3401/",
+          "diagnostics": {
+            "h1": "Strategic analytics narratives built for operating decisions.",
+            "chartCount": 10,
+            "loadingTextVisible": false,
+            "title": "Vaibhav Bapat | Decision Intelligence Portfolio"
+          },
+          "screenshotPaths": [
+            "tmp/visual-loops/2026-02-22T08-35-03.859Z/home/round-05-desktop.png",
+            "tmp/visual-loops/2026-02-22T08-35-03.859Z/home/round-05-mobile.png"
+          ],
+          "consoleErrors": [],
+          "pass": true
+        },
+        {
+          "round": 6,
+          "url": "http://localhost:3401/",
+          "diagnostics": {
+            "h1": "Strategic analytics narratives built for operating decisions.",
+            "chartCount": 10,
+            "loadingTextVisible": false,
+            "title": "Vaibhav Bapat | Decision Intelligence Portfolio"
+          },
+          "screenshotPaths": [
+            "tmp/visual-loops/2026-02-22T08-35-03.859Z/home/round-06-desktop.png",
+            "tmp/visual-loops/2026-02-22T08-35-03.859Z/home/round-06-mobile.png"
+          ],
+          "consoleErrors": [],
+          "pass": true
+        },
+        {
+          "round": 7,
+          "url": "http://localhost:3401/",
+          "diagnostics": {
+            "h1": "Strategic analytics narratives built for operating decisions.",
+            "chartCount": 10,
+            "loadingTextVisible": false,
+            "title": "Vaibhav Bapat | Decision Intelligence Portfolio"
+          },
+          "screenshotPaths": [
+            "tmp/visual-loops/2026-02-22T08-35-03.859Z/home/round-07-desktop.png",
+            "tmp/visual-loops/2026-02-22T08-35-03.859Z/home/round-07-mobile.png"
+          ],
+          "consoleErrors": [],
+          "pass": true
+        },
+        {
+          "round": 8,
+          "url": "http://localhost:3401/",
+          "diagnostics": {
+            "h1": "Strategic analytics narratives built for operating decisions.",
+            "chartCount": 10,
+            "loadingTextVisible": false,
+            "title": "Vaibhav Bapat | Decision Intelligence Portfolio"
+          },
+          "screenshotPaths": [
+            "tmp/visual-loops/2026-02-22T08-35-03.859Z/home/round-08-desktop.png",
+            "tmp/visual-loops/2026-02-22T08-35-03.859Z/home/round-08-mobile.png"
+          ],
+          "consoleErrors": [],
+          "pass": true
+        },
+        {
+          "round": 9,
+          "url": "http://localhost:3401/",
+          "diagnostics": {
+            "h1": "Strategic analytics narratives built for operating decisions.",
+            "chartCount": 10,
+            "loadingTextVisible": false,
+            "title": "Vaibhav Bapat | Decision Intelligence Portfolio"
+          },
+          "screenshotPaths": [
+            "tmp/visual-loops/2026-02-22T08-35-03.859Z/home/round-09-desktop.png",
+            "tmp/visual-loops/2026-02-22T08-35-03.859Z/home/round-09-mobile.png"
+          ],
+          "consoleErrors": [],
+          "pass": true
+        },
+        {
+          "round": 10,
+          "url": "http://localhost:3401/",
+          "diagnostics": {
+            "h1": "Strategic analytics narratives built for operating decisions.",
+            "chartCount": 10,
+            "loadingTextVisible": false,
+            "title": "Vaibhav Bapat | Decision Intelligence Portfolio"
+          },
+          "screenshotPaths": [
+            "tmp/visual-loops/2026-02-22T08-35-03.859Z/home/round-10-desktop.png",
+            "tmp/visual-loops/2026-02-22T08-35-03.859Z/home/round-10-mobile.png"
+          ],
+          "consoleErrors": [],
+          "pass": true
+        }
+      ]
+    },
+    {
+      "route": "/projects",
+      "rounds": [
+        {
+          "round": 1,
+          "url": "http://localhost:3401/projects",
+          "diagnostics": {
+            "h1": "Interactive decision war rooms",
+            "chartCount": 3,
+            "loadingTextVisible": false,
+            "title": "Projects | Vaibhav Bapat"
+          },
+          "screenshotPaths": [
+            "tmp/visual-loops/2026-02-22T08-35-03.859Z/projects/round-01-desktop.png",
+            "tmp/visual-loops/2026-02-22T08-35-03.859Z/projects/round-01-mobile.png"
+          ],
+          "consoleErrors": [],
+          "pass": true
+        },
+        {
+          "round": 2,
+          "url": "http://localhost:3401/projects",
+          "diagnostics": {
+            "h1": "Interactive decision war rooms",
+            "chartCount": 3,
+            "loadingTextVisible": false,
+            "title": "Projects | Vaibhav Bapat"
+          },
+          "screenshotPaths": [
+            "tmp/visual-loops/2026-02-22T08-35-03.859Z/projects/round-02-desktop.png",
+            "tmp/visual-loops/2026-02-22T08-35-03.859Z/projects/round-02-mobile.png"
+          ],
+          "consoleErrors": [],
+          "pass": true
+        },
+        {
+          "round": 3,
+          "url": "http://localhost:3401/projects",
+          "diagnostics": {
+            "h1": "Interactive decision war rooms",
+            "chartCount": 3,
+            "loadingTextVisible": false,
+            "title": "Projects | Vaibhav Bapat"
+          },
+          "screenshotPaths": [
+            "tmp/visual-loops/2026-02-22T08-35-03.859Z/projects/round-03-desktop.png",
+            "tmp/visual-loops/2026-02-22T08-35-03.859Z/projects/round-03-mobile.png"
+          ],
+          "consoleErrors": [],
+          "pass": true
+        },
+        {
+          "round": 4,
+          "url": "http://localhost:3401/projects",
+          "diagnostics": {
+            "h1": "Interactive decision war rooms",
+            "chartCount": 3,
+            "loadingTextVisible": false,
+            "title": "Projects | Vaibhav Bapat"
+          },
+          "screenshotPaths": [
+            "tmp/visual-loops/2026-02-22T08-35-03.859Z/projects/round-04-desktop.png",
+            "tmp/visual-loops/2026-02-22T08-35-03.859Z/projects/round-04-mobile.png"
+          ],
+          "consoleErrors": [],
+          "pass": true
+        },
+        {
+          "round": 5,
+          "url": "http://localhost:3401/projects",
+          "diagnostics": {
+            "h1": "Interactive decision war rooms",
+            "chartCount": 3,
+            "loadingTextVisible": false,
+            "title": "Projects | Vaibhav Bapat"
+          },
+          "screenshotPaths": [
+            "tmp/visual-loops/2026-02-22T08-35-03.859Z/projects/round-05-desktop.png",
+            "tmp/visual-loops/2026-02-22T08-35-03.859Z/projects/round-05-mobile.png"
+          ],
+          "consoleErrors": [],
+          "pass": true
+        },
+        {
+          "round": 6,
+          "url": "http://localhost:3401/projects",
+          "diagnostics": {
+            "h1": "Interactive decision war rooms",
+            "chartCount": 3,
+            "loadingTextVisible": false,
+            "title": "Projects | Vaibhav Bapat"
+          },
+          "screenshotPaths": [
+            "tmp/visual-loops/2026-02-22T08-35-03.859Z/projects/round-06-desktop.png",
+            "tmp/visual-loops/2026-02-22T08-35-03.859Z/projects/round-06-mobile.png"
+          ],
+          "consoleErrors": [],
+          "pass": true
+        },
+        {
+          "round": 7,
+          "url": "http://localhost:3401/projects",
+          "diagnostics": {
+            "h1": "Interactive decision war rooms",
+            "chartCount": 3,
+            "loadingTextVisible": false,
+            "title": "Projects | Vaibhav Bapat"
+          },
+          "screenshotPaths": [
+            "tmp/visual-loops/2026-02-22T08-35-03.859Z/projects/round-07-desktop.png",
+            "tmp/visual-loops/2026-02-22T08-35-03.859Z/projects/round-07-mobile.png"
+          ],
+          "consoleErrors": [],
+          "pass": true
+        },
+        {
+          "round": 8,
+          "url": "http://localhost:3401/projects",
+          "diagnostics": {
+            "h1": "Interactive decision war rooms",
+            "chartCount": 3,
+            "loadingTextVisible": false,
+            "title": "Projects | Vaibhav Bapat"
+          },
+          "screenshotPaths": [
+            "tmp/visual-loops/2026-02-22T08-35-03.859Z/projects/round-08-desktop.png",
+            "tmp/visual-loops/2026-02-22T08-35-03.859Z/projects/round-08-mobile.png"
+          ],
+          "consoleErrors": [],
+          "pass": true
+        },
+        {
+          "round": 9,
+          "url": "http://localhost:3401/projects",
+          "diagnostics": {
+            "h1": "Interactive decision war rooms",
+            "chartCount": 3,
+            "loadingTextVisible": false,
+            "title": "Projects | Vaibhav Bapat"
+          },
+          "screenshotPaths": [
+            "tmp/visual-loops/2026-02-22T08-35-03.859Z/projects/round-09-desktop.png",
+            "tmp/visual-loops/2026-02-22T08-35-03.859Z/projects/round-09-mobile.png"
+          ],
+          "consoleErrors": [],
+          "pass": true
+        },
+        {
+          "round": 10,
+          "url": "http://localhost:3401/projects",
+          "diagnostics": {
+            "h1": "Interactive decision war rooms",
+            "chartCount": 3,
+            "loadingTextVisible": false,
+            "title": "Projects | Vaibhav Bapat"
+          },
+          "screenshotPaths": [
+            "tmp/visual-loops/2026-02-22T08-35-03.859Z/projects/round-10-desktop.png",
+            "tmp/visual-loops/2026-02-22T08-35-03.859Z/projects/round-10-mobile.png"
+          ],
+          "consoleErrors": [],
+          "pass": true
+        }
+      ]
+    },
+    {
+      "route": "/projects/ord-lga-price-war",
+      "rounds": [
+        {
+          "round": 1,
+          "url": "http://localhost:3401/projects/ord-lga-price-war",
+          "diagnostics": {
+            "h1": "United vs. Delta:ORD–LGA price war simulator",
+            "chartCount": 4,
+            "loadingTextVisible": false,
+            "title": "ORD–LGA Price War Simulator | Vaibhav Bapat"
+          },
+          "screenshotPaths": [
+            "tmp/visual-loops/2026-02-22T08-35-03.859Z/projects_ord-lga-price-war/round-01-desktop.png",
+            "tmp/visual-loops/2026-02-22T08-35-03.859Z/projects_ord-lga-price-war/round-01-mobile.png"
+          ],
+          "consoleErrors": [],
+          "pass": true
+        },
+        {
+          "round": 2,
+          "url": "http://localhost:3401/projects/ord-lga-price-war",
+          "diagnostics": {
+            "h1": "United vs. Delta:ORD–LGA price war simulator",
+            "chartCount": 4,
+            "loadingTextVisible": false,
+            "title": "ORD–LGA Price War Simulator | Vaibhav Bapat"
+          },
+          "screenshotPaths": [
+            "tmp/visual-loops/2026-02-22T08-35-03.859Z/projects_ord-lga-price-war/round-02-desktop.png",
+            "tmp/visual-loops/2026-02-22T08-35-03.859Z/projects_ord-lga-price-war/round-02-mobile.png"
+          ],
+          "consoleErrors": [],
+          "pass": true
+        },
+        {
+          "round": 3,
+          "url": "http://localhost:3401/projects/ord-lga-price-war",
+          "diagnostics": {
+            "h1": "United vs. Delta:ORD–LGA price war simulator",
+            "chartCount": 4,
+            "loadingTextVisible": false,
+            "title": "ORD–LGA Price War Simulator | Vaibhav Bapat"
+          },
+          "screenshotPaths": [
+            "tmp/visual-loops/2026-02-22T08-35-03.859Z/projects_ord-lga-price-war/round-03-desktop.png",
+            "tmp/visual-loops/2026-02-22T08-35-03.859Z/projects_ord-lga-price-war/round-03-mobile.png"
+          ],
+          "consoleErrors": [],
+          "pass": true
+        },
+        {
+          "round": 4,
+          "url": "http://localhost:3401/projects/ord-lga-price-war",
+          "diagnostics": {
+            "h1": "United vs. Delta:ORD–LGA price war simulator",
+            "chartCount": 4,
+            "loadingTextVisible": false,
+            "title": "ORD–LGA Price War Simulator | Vaibhav Bapat"
+          },
+          "screenshotPaths": [
+            "tmp/visual-loops/2026-02-22T08-35-03.859Z/projects_ord-lga-price-war/round-04-desktop.png",
+            "tmp/visual-loops/2026-02-22T08-35-03.859Z/projects_ord-lga-price-war/round-04-mobile.png"
+          ],
+          "consoleErrors": [],
+          "pass": true
+        },
+        {
+          "round": 5,
+          "url": "http://localhost:3401/projects/ord-lga-price-war",
+          "diagnostics": {
+            "h1": "United vs. Delta:ORD–LGA price war simulator",
+            "chartCount": 4,
+            "loadingTextVisible": false,
+            "title": "ORD–LGA Price War Simulator | Vaibhav Bapat"
+          },
+          "screenshotPaths": [
+            "tmp/visual-loops/2026-02-22T08-35-03.859Z/projects_ord-lga-price-war/round-05-desktop.png",
+            "tmp/visual-loops/2026-02-22T08-35-03.859Z/projects_ord-lga-price-war/round-05-mobile.png"
+          ],
+          "consoleErrors": [],
+          "pass": true
+        },
+        {
+          "round": 6,
+          "url": "http://localhost:3401/projects/ord-lga-price-war",
+          "diagnostics": {
+            "h1": "United vs. Delta:ORD–LGA price war simulator",
+            "chartCount": 4,
+            "loadingTextVisible": false,
+            "title": "ORD–LGA Price War Simulator | Vaibhav Bapat"
+          },
+          "screenshotPaths": [
+            "tmp/visual-loops/2026-02-22T08-35-03.859Z/projects_ord-lga-price-war/round-06-desktop.png",
+            "tmp/visual-loops/2026-02-22T08-35-03.859Z/projects_ord-lga-price-war/round-06-mobile.png"
+          ],
+          "consoleErrors": [],
+          "pass": true
+        },
+        {
+          "round": 7,
+          "url": "http://localhost:3401/projects/ord-lga-price-war",
+          "diagnostics": {
+            "h1": "United vs. Delta:ORD–LGA price war simulator",
+            "chartCount": 4,
+            "loadingTextVisible": false,
+            "title": "ORD–LGA Price War Simulator | Vaibhav Bapat"
+          },
+          "screenshotPaths": [
+            "tmp/visual-loops/2026-02-22T08-35-03.859Z/projects_ord-lga-price-war/round-07-desktop.png",
+            "tmp/visual-loops/2026-02-22T08-35-03.859Z/projects_ord-lga-price-war/round-07-mobile.png"
+          ],
+          "consoleErrors": [],
+          "pass": true
+        },
+        {
+          "round": 8,
+          "url": "http://localhost:3401/projects/ord-lga-price-war",
+          "diagnostics": {
+            "h1": "United vs. Delta:ORD–LGA price war simulator",
+            "chartCount": 4,
+            "loadingTextVisible": false,
+            "title": "ORD–LGA Price War Simulator | Vaibhav Bapat"
+          },
+          "screenshotPaths": [
+            "tmp/visual-loops/2026-02-22T08-35-03.859Z/projects_ord-lga-price-war/round-08-desktop.png",
+            "tmp/visual-loops/2026-02-22T08-35-03.859Z/projects_ord-lga-price-war/round-08-mobile.png"
+          ],
+          "consoleErrors": [],
+          "pass": true
+        },
+        {
+          "round": 9,
+          "url": "http://localhost:3401/projects/ord-lga-price-war",
+          "diagnostics": {
+            "h1": "United vs. Delta:ORD–LGA price war simulator",
+            "chartCount": 4,
+            "loadingTextVisible": false,
+            "title": "ORD–LGA Price War Simulator | Vaibhav Bapat"
+          },
+          "screenshotPaths": [
+            "tmp/visual-loops/2026-02-22T08-35-03.859Z/projects_ord-lga-price-war/round-09-desktop.png",
+            "tmp/visual-loops/2026-02-22T08-35-03.859Z/projects_ord-lga-price-war/round-09-mobile.png"
+          ],
+          "consoleErrors": [],
+          "pass": true
+        },
+        {
+          "round": 10,
+          "url": "http://localhost:3401/projects/ord-lga-price-war",
+          "diagnostics": {
+            "h1": "United vs. Delta:ORD–LGA price war simulator",
+            "chartCount": 4,
+            "loadingTextVisible": false,
+            "title": "ORD–LGA Price War Simulator | Vaibhav Bapat"
+          },
+          "screenshotPaths": [
+            "tmp/visual-loops/2026-02-22T08-35-03.859Z/projects_ord-lga-price-war/round-10-desktop.png",
+            "tmp/visual-loops/2026-02-22T08-35-03.859Z/projects_ord-lga-price-war/round-10-mobile.png"
+          ],
+          "consoleErrors": [],
+          "pass": true
+        }
+      ]
+    },
+    {
+      "route": "/projects/fraud-radar",
+      "rounds": [
+        {
+          "round": 1,
+          "url": "http://localhost:3401/projects/fraud-radar",
+          "diagnostics": {
+            "h1": "Fraud Radar:forensic pre-collapse signal board",
+            "chartCount": 5,
+            "loadingTextVisible": false,
+            "title": "Fraud Radar | Vaibhav Bapat"
+          },
+          "screenshotPaths": [
+            "tmp/visual-loops/2026-02-22T08-35-03.859Z/projects_fraud-radar/round-01-desktop.png",
+            "tmp/visual-loops/2026-02-22T08-35-03.859Z/projects_fraud-radar/round-01-mobile.png"
+          ],
+          "consoleErrors": [],
+          "pass": true
+        },
+        {
+          "round": 2,
+          "url": "http://localhost:3401/projects/fraud-radar",
+          "diagnostics": {
+            "h1": "Fraud Radar:forensic pre-collapse signal board",
+            "chartCount": 5,
+            "loadingTextVisible": false,
+            "title": "Fraud Radar | Vaibhav Bapat"
+          },
+          "screenshotPaths": [
+            "tmp/visual-loops/2026-02-22T08-35-03.859Z/projects_fraud-radar/round-02-desktop.png",
+            "tmp/visual-loops/2026-02-22T08-35-03.859Z/projects_fraud-radar/round-02-mobile.png"
+          ],
+          "consoleErrors": [],
+          "pass": true
+        },
+        {
+          "round": 3,
+          "url": "http://localhost:3401/projects/fraud-radar",
+          "diagnostics": {
+            "h1": "Fraud Radar:forensic pre-collapse signal board",
+            "chartCount": 5,
+            "loadingTextVisible": false,
+            "title": "Fraud Radar | Vaibhav Bapat"
+          },
+          "screenshotPaths": [
+            "tmp/visual-loops/2026-02-22T08-35-03.859Z/projects_fraud-radar/round-03-desktop.png",
+            "tmp/visual-loops/2026-02-22T08-35-03.859Z/projects_fraud-radar/round-03-mobile.png"
+          ],
+          "consoleErrors": [],
+          "pass": true
+        },
+        {
+          "round": 4,
+          "url": "http://localhost:3401/projects/fraud-radar",
+          "diagnostics": {
+            "h1": "Fraud Radar:forensic pre-collapse signal board",
+            "chartCount": 5,
+            "loadingTextVisible": false,
+            "title": "Fraud Radar | Vaibhav Bapat"
+          },
+          "screenshotPaths": [
+            "tmp/visual-loops/2026-02-22T08-35-03.859Z/projects_fraud-radar/round-04-desktop.png",
+            "tmp/visual-loops/2026-02-22T08-35-03.859Z/projects_fraud-radar/round-04-mobile.png"
+          ],
+          "consoleErrors": [],
+          "pass": true
+        },
+        {
+          "round": 5,
+          "url": "http://localhost:3401/projects/fraud-radar",
+          "diagnostics": {
+            "h1": "Fraud Radar:forensic pre-collapse signal board",
+            "chartCount": 5,
+            "loadingTextVisible": false,
+            "title": "Fraud Radar | Vaibhav Bapat"
+          },
+          "screenshotPaths": [
+            "tmp/visual-loops/2026-02-22T08-35-03.859Z/projects_fraud-radar/round-05-desktop.png",
+            "tmp/visual-loops/2026-02-22T08-35-03.859Z/projects_fraud-radar/round-05-mobile.png"
+          ],
+          "consoleErrors": [],
+          "pass": true
+        },
+        {
+          "round": 6,
+          "url": "http://localhost:3401/projects/fraud-radar",
+          "diagnostics": {
+            "h1": "Fraud Radar:forensic pre-collapse signal board",
+            "chartCount": 5,
+            "loadingTextVisible": false,
+            "title": "Fraud Radar | Vaibhav Bapat"
+          },
+          "screenshotPaths": [
+            "tmp/visual-loops/2026-02-22T08-35-03.859Z/projects_fraud-radar/round-06-desktop.png",
+            "tmp/visual-loops/2026-02-22T08-35-03.859Z/projects_fraud-radar/round-06-mobile.png"
+          ],
+          "consoleErrors": [],
+          "pass": true
+        },
+        {
+          "round": 7,
+          "url": "http://localhost:3401/projects/fraud-radar",
+          "diagnostics": {
+            "h1": "Fraud Radar:forensic pre-collapse signal board",
+            "chartCount": 5,
+            "loadingTextVisible": false,
+            "title": "Fraud Radar | Vaibhav Bapat"
+          },
+          "screenshotPaths": [
+            "tmp/visual-loops/2026-02-22T08-35-03.859Z/projects_fraud-radar/round-07-desktop.png",
+            "tmp/visual-loops/2026-02-22T08-35-03.859Z/projects_fraud-radar/round-07-mobile.png"
+          ],
+          "consoleErrors": [],
+          "pass": true
+        },
+        {
+          "round": 8,
+          "url": "http://localhost:3401/projects/fraud-radar",
+          "diagnostics": {
+            "h1": "Fraud Radar:forensic pre-collapse signal board",
+            "chartCount": 5,
+            "loadingTextVisible": false,
+            "title": "Fraud Radar | Vaibhav Bapat"
+          },
+          "screenshotPaths": [
+            "tmp/visual-loops/2026-02-22T08-35-03.859Z/projects_fraud-radar/round-08-desktop.png",
+            "tmp/visual-loops/2026-02-22T08-35-03.859Z/projects_fraud-radar/round-08-mobile.png"
+          ],
+          "consoleErrors": [],
+          "pass": true
+        },
+        {
+          "round": 9,
+          "url": "http://localhost:3401/projects/fraud-radar",
+          "diagnostics": {
+            "h1": "Fraud Radar:forensic pre-collapse signal board",
+            "chartCount": 5,
+            "loadingTextVisible": false,
+            "title": "Fraud Radar | Vaibhav Bapat"
+          },
+          "screenshotPaths": [
+            "tmp/visual-loops/2026-02-22T08-35-03.859Z/projects_fraud-radar/round-09-desktop.png",
+            "tmp/visual-loops/2026-02-22T08-35-03.859Z/projects_fraud-radar/round-09-mobile.png"
+          ],
+          "consoleErrors": [],
+          "pass": true
+        },
+        {
+          "round": 10,
+          "url": "http://localhost:3401/projects/fraud-radar",
+          "diagnostics": {
+            "h1": "Fraud Radar:forensic pre-collapse signal board",
+            "chartCount": 5,
+            "loadingTextVisible": false,
+            "title": "Fraud Radar | Vaibhav Bapat"
+          },
+          "screenshotPaths": [
+            "tmp/visual-loops/2026-02-22T08-35-03.859Z/projects_fraud-radar/round-10-desktop.png",
+            "tmp/visual-loops/2026-02-22T08-35-03.859Z/projects_fraud-radar/round-10-mobile.png"
+          ],
+          "consoleErrors": [],
+          "pass": true
+        }
+      ]
+    },
+    {
+      "route": "/projects/target-shrink",
+      "rounds": [
+        {
+          "round": 1,
+          "url": "http://localhost:3401/projects/target-shrink",
+          "diagnostics": {
+            "h1": "Target Shrink Simulator:operations floor intervention engine",
+            "chartCount": 5,
+            "loadingTextVisible": false,
+            "title": "Target Shrink Simulator | Vaibhav Bapat"
+          },
+          "screenshotPaths": [
+            "tmp/visual-loops/2026-02-22T08-35-03.859Z/projects_target-shrink/round-01-desktop.png",
+            "tmp/visual-loops/2026-02-22T08-35-03.859Z/projects_target-shrink/round-01-mobile.png"
+          ],
+          "consoleErrors": [],
+          "pass": true
+        },
+        {
+          "round": 2,
+          "url": "http://localhost:3401/projects/target-shrink",
+          "diagnostics": {
+            "h1": "Target Shrink Simulator:operations floor intervention engine",
+            "chartCount": 5,
+            "loadingTextVisible": false,
+            "title": "Target Shrink Simulator | Vaibhav Bapat"
+          },
+          "screenshotPaths": [
+            "tmp/visual-loops/2026-02-22T08-35-03.859Z/projects_target-shrink/round-02-desktop.png",
+            "tmp/visual-loops/2026-02-22T08-35-03.859Z/projects_target-shrink/round-02-mobile.png"
+          ],
+          "consoleErrors": [],
+          "pass": true
+        },
+        {
+          "round": 3,
+          "url": "http://localhost:3401/projects/target-shrink",
+          "diagnostics": {
+            "h1": "Target Shrink Simulator:operations floor intervention engine",
+            "chartCount": 5,
+            "loadingTextVisible": false,
+            "title": "Target Shrink Simulator | Vaibhav Bapat"
+          },
+          "screenshotPaths": [
+            "tmp/visual-loops/2026-02-22T08-35-03.859Z/projects_target-shrink/round-03-desktop.png",
+            "tmp/visual-loops/2026-02-22T08-35-03.859Z/projects_target-shrink/round-03-mobile.png"
+          ],
+          "consoleErrors": [],
+          "pass": true
+        },
+        {
+          "round": 4,
+          "url": "http://localhost:3401/projects/target-shrink",
+          "diagnostics": {
+            "h1": "Target Shrink Simulator:operations floor intervention engine",
+            "chartCount": 5,
+            "loadingTextVisible": false,
+            "title": "Target Shrink Simulator | Vaibhav Bapat"
+          },
+          "screenshotPaths": [
+            "tmp/visual-loops/2026-02-22T08-35-03.859Z/projects_target-shrink/round-04-desktop.png",
+            "tmp/visual-loops/2026-02-22T08-35-03.859Z/projects_target-shrink/round-04-mobile.png"
+          ],
+          "consoleErrors": [],
+          "pass": true
+        },
+        {
+          "round": 5,
+          "url": "http://localhost:3401/projects/target-shrink",
+          "diagnostics": {
+            "h1": "Target Shrink Simulator:operations floor intervention engine",
+            "chartCount": 5,
+            "loadingTextVisible": false,
+            "title": "Target Shrink Simulator | Vaibhav Bapat"
+          },
+          "screenshotPaths": [
+            "tmp/visual-loops/2026-02-22T08-35-03.859Z/projects_target-shrink/round-05-desktop.png",
+            "tmp/visual-loops/2026-02-22T08-35-03.859Z/projects_target-shrink/round-05-mobile.png"
+          ],
+          "consoleErrors": [],
+          "pass": true
+        },
+        {
+          "round": 6,
+          "url": "http://localhost:3401/projects/target-shrink",
+          "diagnostics": {
+            "h1": "Target Shrink Simulator:operations floor intervention engine",
+            "chartCount": 5,
+            "loadingTextVisible": false,
+            "title": "Target Shrink Simulator | Vaibhav Bapat"
+          },
+          "screenshotPaths": [
+            "tmp/visual-loops/2026-02-22T08-35-03.859Z/projects_target-shrink/round-06-desktop.png",
+            "tmp/visual-loops/2026-02-22T08-35-03.859Z/projects_target-shrink/round-06-mobile.png"
+          ],
+          "consoleErrors": [],
+          "pass": true
+        },
+        {
+          "round": 7,
+          "url": "http://localhost:3401/projects/target-shrink",
+          "diagnostics": {
+            "h1": "Target Shrink Simulator:operations floor intervention engine",
+            "chartCount": 5,
+            "loadingTextVisible": false,
+            "title": "Target Shrink Simulator | Vaibhav Bapat"
+          },
+          "screenshotPaths": [
+            "tmp/visual-loops/2026-02-22T08-35-03.859Z/projects_target-shrink/round-07-desktop.png",
+            "tmp/visual-loops/2026-02-22T08-35-03.859Z/projects_target-shrink/round-07-mobile.png"
+          ],
+          "consoleErrors": [],
+          "pass": true
+        },
+        {
+          "round": 8,
+          "url": "http://localhost:3401/projects/target-shrink",
+          "diagnostics": {
+            "h1": "Target Shrink Simulator:operations floor intervention engine",
+            "chartCount": 5,
+            "loadingTextVisible": false,
+            "title": "Target Shrink Simulator | Vaibhav Bapat"
+          },
+          "screenshotPaths": [
+            "tmp/visual-loops/2026-02-22T08-35-03.859Z/projects_target-shrink/round-08-desktop.png",
+            "tmp/visual-loops/2026-02-22T08-35-03.859Z/projects_target-shrink/round-08-mobile.png"
+          ],
+          "consoleErrors": [],
+          "pass": true
+        },
+        {
+          "round": 9,
+          "url": "http://localhost:3401/projects/target-shrink",
+          "diagnostics": {
+            "h1": "Target Shrink Simulator:operations floor intervention engine",
+            "chartCount": 5,
+            "loadingTextVisible": false,
+            "title": "Target Shrink Simulator | Vaibhav Bapat"
+          },
+          "screenshotPaths": [
+            "tmp/visual-loops/2026-02-22T08-35-03.859Z/projects_target-shrink/round-09-desktop.png",
+            "tmp/visual-loops/2026-02-22T08-35-03.859Z/projects_target-shrink/round-09-mobile.png"
+          ],
+          "consoleErrors": [],
+          "pass": true
+        },
+        {
+          "round": 10,
+          "url": "http://localhost:3401/projects/target-shrink",
+          "diagnostics": {
+            "h1": "Target Shrink Simulator:operations floor intervention engine",
+            "chartCount": 5,
+            "loadingTextVisible": false,
+            "title": "Target Shrink Simulator | Vaibhav Bapat"
+          },
+          "screenshotPaths": [
+            "tmp/visual-loops/2026-02-22T08-35-03.859Z/projects_target-shrink/round-10-desktop.png",
+            "tmp/visual-loops/2026-02-22T08-35-03.859Z/projects_target-shrink/round-10-mobile.png"
+          ],
+          "consoleErrors": [],
+          "pass": true
+        }
+      ]
+    },
+    {
+      "route": "/projects/starbucks-pivot",
+      "rounds": [
+        {
+          "round": 1,
+          "url": "http://localhost:3401/projects/starbucks-pivot",
+          "diagnostics": {
+            "h1": "Starbucks Pivot:geo-strategy operating board",
+            "chartCount": 5,
+            "loadingTextVisible": false,
+            "title": "Starbucks Suburban Pivot | Vaibhav Bapat"
+          },
+          "screenshotPaths": [
+            "tmp/visual-loops/2026-02-22T08-35-03.859Z/projects_starbucks-pivot/round-01-desktop.png",
+            "tmp/visual-loops/2026-02-22T08-35-03.859Z/projects_starbucks-pivot/round-01-mobile.png"
+          ],
+          "consoleErrors": [],
+          "pass": true
+        },
+        {
+          "round": 2,
+          "url": "http://localhost:3401/projects/starbucks-pivot",
+          "diagnostics": {
+            "h1": "Starbucks Pivot:geo-strategy operating board",
+            "chartCount": 5,
+            "loadingTextVisible": false,
+            "title": "Starbucks Suburban Pivot | Vaibhav Bapat"
+          },
+          "screenshotPaths": [
+            "tmp/visual-loops/2026-02-22T08-35-03.859Z/projects_starbucks-pivot/round-02-desktop.png",
+            "tmp/visual-loops/2026-02-22T08-35-03.859Z/projects_starbucks-pivot/round-02-mobile.png"
+          ],
+          "consoleErrors": [],
+          "pass": true
+        },
+        {
+          "round": 3,
+          "url": "http://localhost:3401/projects/starbucks-pivot",
+          "diagnostics": {
+            "h1": "Starbucks Pivot:geo-strategy operating board",
+            "chartCount": 5,
+            "loadingTextVisible": false,
+            "title": "Starbucks Suburban Pivot | Vaibhav Bapat"
+          },
+          "screenshotPaths": [
+            "tmp/visual-loops/2026-02-22T08-35-03.859Z/projects_starbucks-pivot/round-03-desktop.png",
+            "tmp/visual-loops/2026-02-22T08-35-03.859Z/projects_starbucks-pivot/round-03-mobile.png"
+          ],
+          "consoleErrors": [],
+          "pass": true
+        },
+        {
+          "round": 4,
+          "url": "http://localhost:3401/projects/starbucks-pivot",
+          "diagnostics": {
+            "h1": "Starbucks Pivot:geo-strategy operating board",
+            "chartCount": 5,
+            "loadingTextVisible": false,
+            "title": "Starbucks Suburban Pivot | Vaibhav Bapat"
+          },
+          "screenshotPaths": [
+            "tmp/visual-loops/2026-02-22T08-35-03.859Z/projects_starbucks-pivot/round-04-desktop.png",
+            "tmp/visual-loops/2026-02-22T08-35-03.859Z/projects_starbucks-pivot/round-04-mobile.png"
+          ],
+          "consoleErrors": [],
+          "pass": true
+        },
+        {
+          "round": 5,
+          "url": "http://localhost:3401/projects/starbucks-pivot",
+          "diagnostics": {
+            "h1": "Starbucks Pivot:geo-strategy operating board",
+            "chartCount": 5,
+            "loadingTextVisible": false,
+            "title": "Starbucks Suburban Pivot | Vaibhav Bapat"
+          },
+          "screenshotPaths": [
+            "tmp/visual-loops/2026-02-22T08-35-03.859Z/projects_starbucks-pivot/round-05-desktop.png",
+            "tmp/visual-loops/2026-02-22T08-35-03.859Z/projects_starbucks-pivot/round-05-mobile.png"
+          ],
+          "consoleErrors": [],
+          "pass": true
+        },
+        {
+          "round": 6,
+          "url": "http://localhost:3401/projects/starbucks-pivot",
+          "diagnostics": {
+            "h1": "Starbucks Pivot:geo-strategy operating board",
+            "chartCount": 5,
+            "loadingTextVisible": false,
+            "title": "Starbucks Suburban Pivot | Vaibhav Bapat"
+          },
+          "screenshotPaths": [
+            "tmp/visual-loops/2026-02-22T08-35-03.859Z/projects_starbucks-pivot/round-06-desktop.png",
+            "tmp/visual-loops/2026-02-22T08-35-03.859Z/projects_starbucks-pivot/round-06-mobile.png"
+          ],
+          "consoleErrors": [],
+          "pass": true
+        },
+        {
+          "round": 7,
+          "url": "http://localhost:3401/projects/starbucks-pivot",
+          "diagnostics": {
+            "h1": "Starbucks Pivot:geo-strategy operating board",
+            "chartCount": 5,
+            "loadingTextVisible": false,
+            "title": "Starbucks Suburban Pivot | Vaibhav Bapat"
+          },
+          "screenshotPaths": [
+            "tmp/visual-loops/2026-02-22T08-35-03.859Z/projects_starbucks-pivot/round-07-desktop.png",
+            "tmp/visual-loops/2026-02-22T08-35-03.859Z/projects_starbucks-pivot/round-07-mobile.png"
+          ],
+          "consoleErrors": [],
+          "pass": true
+        },
+        {
+          "round": 8,
+          "url": "http://localhost:3401/projects/starbucks-pivot",
+          "diagnostics": {
+            "h1": "Starbucks Pivot:geo-strategy operating board",
+            "chartCount": 5,
+            "loadingTextVisible": false,
+            "title": "Starbucks Suburban Pivot | Vaibhav Bapat"
+          },
+          "screenshotPaths": [
+            "tmp/visual-loops/2026-02-22T08-35-03.859Z/projects_starbucks-pivot/round-08-desktop.png",
+            "tmp/visual-loops/2026-02-22T08-35-03.859Z/projects_starbucks-pivot/round-08-mobile.png"
+          ],
+          "consoleErrors": [],
+          "pass": true
+        },
+        {
+          "round": 9,
+          "url": "http://localhost:3401/projects/starbucks-pivot",
+          "diagnostics": {
+            "h1": "Starbucks Pivot:geo-strategy operating board",
+            "chartCount": 5,
+            "loadingTextVisible": false,
+            "title": "Starbucks Suburban Pivot | Vaibhav Bapat"
+          },
+          "screenshotPaths": [
+            "tmp/visual-loops/2026-02-22T08-35-03.859Z/projects_starbucks-pivot/round-09-desktop.png",
+            "tmp/visual-loops/2026-02-22T08-35-03.859Z/projects_starbucks-pivot/round-09-mobile.png"
+          ],
+          "consoleErrors": [],
+          "pass": true
+        },
+        {
+          "round": 10,
+          "url": "http://localhost:3401/projects/starbucks-pivot",
+          "diagnostics": {
+            "h1": "Starbucks Pivot:geo-strategy operating board",
+            "chartCount": 5,
+            "loadingTextVisible": false,
+            "title": "Starbucks Suburban Pivot | Vaibhav Bapat"
+          },
+          "screenshotPaths": [
+            "tmp/visual-loops/2026-02-22T08-35-03.859Z/projects_starbucks-pivot/round-10-desktop.png",
+            "tmp/visual-loops/2026-02-22T08-35-03.859Z/projects_starbucks-pivot/round-10-mobile.png"
+          ],
+          "consoleErrors": [],
+          "pass": true
+        }
+      ]
+    },
+    {
+      "route": "/projects/tesla-nacs",
+      "rounds": [
+        {
+          "round": 1,
+          "url": "http://localhost:3401/projects/tesla-nacs",
+          "diagnostics": {
+            "h1": "Tesla NACS War Board:corridor build-order simulator",
+            "chartCount": 5,
+            "loadingTextVisible": false,
+            "title": "Tesla NACS War Game | Vaibhav Bapat"
+          },
+          "screenshotPaths": [
+            "tmp/visual-loops/2026-02-22T08-35-03.859Z/projects_tesla-nacs/round-01-desktop.png",
+            "tmp/visual-loops/2026-02-22T08-35-03.859Z/projects_tesla-nacs/round-01-mobile.png"
+          ],
+          "consoleErrors": [],
+          "pass": true
+        },
+        {
+          "round": 2,
+          "url": "http://localhost:3401/projects/tesla-nacs",
+          "diagnostics": {
+            "h1": "Tesla NACS War Board:corridor build-order simulator",
+            "chartCount": 5,
+            "loadingTextVisible": false,
+            "title": "Tesla NACS War Game | Vaibhav Bapat"
+          },
+          "screenshotPaths": [
+            "tmp/visual-loops/2026-02-22T08-35-03.859Z/projects_tesla-nacs/round-02-desktop.png",
+            "tmp/visual-loops/2026-02-22T08-35-03.859Z/projects_tesla-nacs/round-02-mobile.png"
+          ],
+          "consoleErrors": [],
+          "pass": true
+        },
+        {
+          "round": 3,
+          "url": "http://localhost:3401/projects/tesla-nacs",
+          "diagnostics": {
+            "h1": "Tesla NACS War Board:corridor build-order simulator",
+            "chartCount": 5,
+            "loadingTextVisible": false,
+            "title": "Tesla NACS War Game | Vaibhav Bapat"
+          },
+          "screenshotPaths": [
+            "tmp/visual-loops/2026-02-22T08-35-03.859Z/projects_tesla-nacs/round-03-desktop.png",
+            "tmp/visual-loops/2026-02-22T08-35-03.859Z/projects_tesla-nacs/round-03-mobile.png"
+          ],
+          "consoleErrors": [],
+          "pass": true
+        },
+        {
+          "round": 4,
+          "url": "http://localhost:3401/projects/tesla-nacs",
+          "diagnostics": {
+            "h1": "Tesla NACS War Board:corridor build-order simulator",
+            "chartCount": 5,
+            "loadingTextVisible": false,
+            "title": "Tesla NACS War Game | Vaibhav Bapat"
+          },
+          "screenshotPaths": [
+            "tmp/visual-loops/2026-02-22T08-35-03.859Z/projects_tesla-nacs/round-04-desktop.png",
+            "tmp/visual-loops/2026-02-22T08-35-03.859Z/projects_tesla-nacs/round-04-mobile.png"
+          ],
+          "consoleErrors": [],
+          "pass": true
+        },
+        {
+          "round": 5,
+          "url": "http://localhost:3401/projects/tesla-nacs",
+          "diagnostics": {
+            "h1": "Tesla NACS War Board:corridor build-order simulator",
+            "chartCount": 5,
+            "loadingTextVisible": false,
+            "title": "Tesla NACS War Game | Vaibhav Bapat"
+          },
+          "screenshotPaths": [
+            "tmp/visual-loops/2026-02-22T08-35-03.859Z/projects_tesla-nacs/round-05-desktop.png",
+            "tmp/visual-loops/2026-02-22T08-35-03.859Z/projects_tesla-nacs/round-05-mobile.png"
+          ],
+          "consoleErrors": [],
+          "pass": true
+        },
+        {
+          "round": 6,
+          "url": "http://localhost:3401/projects/tesla-nacs",
+          "diagnostics": {
+            "h1": "Tesla NACS War Board:corridor build-order simulator",
+            "chartCount": 5,
+            "loadingTextVisible": false,
+            "title": "Tesla NACS War Game | Vaibhav Bapat"
+          },
+          "screenshotPaths": [
+            "tmp/visual-loops/2026-02-22T08-35-03.859Z/projects_tesla-nacs/round-06-desktop.png",
+            "tmp/visual-loops/2026-02-22T08-35-03.859Z/projects_tesla-nacs/round-06-mobile.png"
+          ],
+          "consoleErrors": [],
+          "pass": true
+        },
+        {
+          "round": 7,
+          "url": "http://localhost:3401/projects/tesla-nacs",
+          "diagnostics": {
+            "h1": "Tesla NACS War Board:corridor build-order simulator",
+            "chartCount": 5,
+            "loadingTextVisible": false,
+            "title": "Tesla NACS War Game | Vaibhav Bapat"
+          },
+          "screenshotPaths": [
+            "tmp/visual-loops/2026-02-22T08-35-03.859Z/projects_tesla-nacs/round-07-desktop.png",
+            "tmp/visual-loops/2026-02-22T08-35-03.859Z/projects_tesla-nacs/round-07-mobile.png"
+          ],
+          "consoleErrors": [],
+          "pass": true
+        },
+        {
+          "round": 8,
+          "url": "http://localhost:3401/projects/tesla-nacs",
+          "diagnostics": {
+            "h1": "Tesla NACS War Board:corridor build-order simulator",
+            "chartCount": 5,
+            "loadingTextVisible": false,
+            "title": "Tesla NACS War Game | Vaibhav Bapat"
+          },
+          "screenshotPaths": [
+            "tmp/visual-loops/2026-02-22T08-35-03.859Z/projects_tesla-nacs/round-08-desktop.png",
+            "tmp/visual-loops/2026-02-22T08-35-03.859Z/projects_tesla-nacs/round-08-mobile.png"
+          ],
+          "consoleErrors": [],
+          "pass": true
+        },
+        {
+          "round": 9,
+          "url": "http://localhost:3401/projects/tesla-nacs",
+          "diagnostics": {
+            "h1": "Tesla NACS War Board:corridor build-order simulator",
+            "chartCount": 5,
+            "loadingTextVisible": false,
+            "title": "Tesla NACS War Game | Vaibhav Bapat"
+          },
+          "screenshotPaths": [
+            "tmp/visual-loops/2026-02-22T08-35-03.859Z/projects_tesla-nacs/round-09-desktop.png",
+            "tmp/visual-loops/2026-02-22T08-35-03.859Z/projects_tesla-nacs/round-09-mobile.png"
+          ],
+          "consoleErrors": [],
+          "pass": true
+        },
+        {
+          "round": 10,
+          "url": "http://localhost:3401/projects/tesla-nacs",
+          "diagnostics": {
+            "h1": "Tesla NACS War Board:corridor build-order simulator",
+            "chartCount": 5,
+            "loadingTextVisible": false,
+            "title": "Tesla NACS War Game | Vaibhav Bapat"
+          },
+          "screenshotPaths": [
+            "tmp/visual-loops/2026-02-22T08-35-03.859Z/projects_tesla-nacs/round-10-desktop.png",
+            "tmp/visual-loops/2026-02-22T08-35-03.859Z/projects_tesla-nacs/round-10-mobile.png"
+          ],
+          "consoleErrors": [],
+          "pass": true
+        }
+      ]
+    },
+    {
+      "route": "/projects/netflix-roi",
+      "rounds": [
+        {
+          "round": 1,
+          "url": "http://localhost:3401/projects/netflix-roi",
+          "diagnostics": {
+            "h1": "Netflix ROI Autopsy:capital committee decision deck",
+            "chartCount": 4,
+            "loadingTextVisible": false,
+            "title": "Netflix Content ROI Autopsy | Vaibhav Bapat"
+          },
+          "screenshotPaths": [
+            "tmp/visual-loops/2026-02-22T08-35-03.859Z/projects_netflix-roi/round-01-desktop.png",
+            "tmp/visual-loops/2026-02-22T08-35-03.859Z/projects_netflix-roi/round-01-mobile.png"
+          ],
+          "consoleErrors": [],
+          "pass": true
+        },
+        {
+          "round": 2,
+          "url": "http://localhost:3401/projects/netflix-roi",
+          "diagnostics": {
+            "h1": "Netflix ROI Autopsy:capital committee decision deck",
+            "chartCount": 4,
+            "loadingTextVisible": false,
+            "title": "Netflix Content ROI Autopsy | Vaibhav Bapat"
+          },
+          "screenshotPaths": [
+            "tmp/visual-loops/2026-02-22T08-35-03.859Z/projects_netflix-roi/round-02-desktop.png",
+            "tmp/visual-loops/2026-02-22T08-35-03.859Z/projects_netflix-roi/round-02-mobile.png"
+          ],
+          "consoleErrors": [],
+          "pass": true
+        },
+        {
+          "round": 3,
+          "url": "http://localhost:3401/projects/netflix-roi",
+          "diagnostics": {
+            "h1": "Netflix ROI Autopsy:capital committee decision deck",
+            "chartCount": 4,
+            "loadingTextVisible": false,
+            "title": "Netflix Content ROI Autopsy | Vaibhav Bapat"
+          },
+          "screenshotPaths": [
+            "tmp/visual-loops/2026-02-22T08-35-03.859Z/projects_netflix-roi/round-03-desktop.png",
+            "tmp/visual-loops/2026-02-22T08-35-03.859Z/projects_netflix-roi/round-03-mobile.png"
+          ],
+          "consoleErrors": [],
+          "pass": true
+        },
+        {
+          "round": 4,
+          "url": "http://localhost:3401/projects/netflix-roi",
+          "diagnostics": {
+            "h1": "Netflix ROI Autopsy:capital committee decision deck",
+            "chartCount": 4,
+            "loadingTextVisible": false,
+            "title": "Netflix Content ROI Autopsy | Vaibhav Bapat"
+          },
+          "screenshotPaths": [
+            "tmp/visual-loops/2026-02-22T08-35-03.859Z/projects_netflix-roi/round-04-desktop.png",
+            "tmp/visual-loops/2026-02-22T08-35-03.859Z/projects_netflix-roi/round-04-mobile.png"
+          ],
+          "consoleErrors": [],
+          "pass": true
+        },
+        {
+          "round": 5,
+          "url": "http://localhost:3401/projects/netflix-roi",
+          "diagnostics": {
+            "h1": "Netflix ROI Autopsy:capital committee decision deck",
+            "chartCount": 4,
+            "loadingTextVisible": false,
+            "title": "Netflix Content ROI Autopsy | Vaibhav Bapat"
+          },
+          "screenshotPaths": [
+            "tmp/visual-loops/2026-02-22T08-35-03.859Z/projects_netflix-roi/round-05-desktop.png",
+            "tmp/visual-loops/2026-02-22T08-35-03.859Z/projects_netflix-roi/round-05-mobile.png"
+          ],
+          "consoleErrors": [],
+          "pass": true
+        },
+        {
+          "round": 6,
+          "url": "http://localhost:3401/projects/netflix-roi",
+          "diagnostics": {
+            "h1": "Netflix ROI Autopsy:capital committee decision deck",
+            "chartCount": 4,
+            "loadingTextVisible": false,
+            "title": "Netflix Content ROI Autopsy | Vaibhav Bapat"
+          },
+          "screenshotPaths": [
+            "tmp/visual-loops/2026-02-22T08-35-03.859Z/projects_netflix-roi/round-06-desktop.png",
+            "tmp/visual-loops/2026-02-22T08-35-03.859Z/projects_netflix-roi/round-06-mobile.png"
+          ],
+          "consoleErrors": [],
+          "pass": true
+        },
+        {
+          "round": 7,
+          "url": "http://localhost:3401/projects/netflix-roi",
+          "diagnostics": {
+            "h1": "Netflix ROI Autopsy:capital committee decision deck",
+            "chartCount": 4,
+            "loadingTextVisible": false,
+            "title": "Netflix Content ROI Autopsy | Vaibhav Bapat"
+          },
+          "screenshotPaths": [
+            "tmp/visual-loops/2026-02-22T08-35-03.859Z/projects_netflix-roi/round-07-desktop.png",
+            "tmp/visual-loops/2026-02-22T08-35-03.859Z/projects_netflix-roi/round-07-mobile.png"
+          ],
+          "consoleErrors": [],
+          "pass": true
+        },
+        {
+          "round": 8,
+          "url": "http://localhost:3401/projects/netflix-roi",
+          "diagnostics": {
+            "h1": "Netflix ROI Autopsy:capital committee decision deck",
+            "chartCount": 4,
+            "loadingTextVisible": false,
+            "title": "Netflix Content ROI Autopsy | Vaibhav Bapat"
+          },
+          "screenshotPaths": [
+            "tmp/visual-loops/2026-02-22T08-35-03.859Z/projects_netflix-roi/round-08-desktop.png",
+            "tmp/visual-loops/2026-02-22T08-35-03.859Z/projects_netflix-roi/round-08-mobile.png"
+          ],
+          "consoleErrors": [],
+          "pass": true
+        },
+        {
+          "round": 9,
+          "url": "http://localhost:3401/projects/netflix-roi",
+          "diagnostics": {
+            "h1": "Netflix ROI Autopsy:capital committee decision deck",
+            "chartCount": 4,
+            "loadingTextVisible": false,
+            "title": "Netflix Content ROI Autopsy | Vaibhav Bapat"
+          },
+          "screenshotPaths": [
+            "tmp/visual-loops/2026-02-22T08-35-03.859Z/projects_netflix-roi/round-09-desktop.png",
+            "tmp/visual-loops/2026-02-22T08-35-03.859Z/projects_netflix-roi/round-09-mobile.png"
+          ],
+          "consoleErrors": [],
+          "pass": true
+        },
+        {
+          "round": 10,
+          "url": "http://localhost:3401/projects/netflix-roi",
+          "diagnostics": {
+            "h1": "Netflix ROI Autopsy:capital committee decision deck",
+            "chartCount": 4,
+            "loadingTextVisible": false,
+            "title": "Netflix Content ROI Autopsy | Vaibhav Bapat"
+          },
+          "screenshotPaths": [
+            "tmp/visual-loops/2026-02-22T08-35-03.859Z/projects_netflix-roi/round-10-desktop.png",
+            "tmp/visual-loops/2026-02-22T08-35-03.859Z/projects_netflix-roi/round-10-mobile.png"
+          ],
+          "consoleErrors": [],
+          "pass": true
+        }
+      ]
+    }
+  ],
+  "summary": {
+    "totalRounds": 80,
+    "failedRounds": 0
+  }
+}

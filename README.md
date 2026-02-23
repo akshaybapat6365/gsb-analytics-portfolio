@@ -25,6 +25,11 @@ Quick check:
 npm run env:check
 ```
 
+Optional dev overlay diagnostics:
+```bash
+export NEXT_PUBLIC_SHOW_PERF_DIAGNOSTICS=1
+```
+
 ## Run
 ```bash
 cd ~/gsb-analytics-portfolio
@@ -65,6 +70,17 @@ nvm use 20
 npm run dev
 ```
 
+### Runtime Data Policy
+The UI and payload pipeline support three explicit modes:
+- `strict-real`
+- `baseline-fallback` (default)
+- `synthetic-demo`
+
+Set mode in local dev with:
+```bash
+export NEXT_PUBLIC_DATA_POLICY_MODE=baseline-fallback
+```
+
 ## Generate Data (Synthetic)
 The site ships with synthetic payloads already committed under `public/data/**`.
 
@@ -73,7 +89,44 @@ To regenerate:
 npm run data:build
 ```
 
-To enrich all projects with strict real-only partial coverage metadata/signals:
+To discover open sources and generate per-project source manifests:
+```bash
+npm run data:discover
+```
+
+To run open-data enrichment in parallel (6 workers by default):
+```bash
+npm run data:build:open
+```
+This mode preserves the current payload as stale-cache input for stricter resilience.
+
+To force a fresh synthetic rebuild before open-data enrichment:
+```bash
+npm run data:build:open:fresh
+```
+
+To score/rank open-data quality across all six projects:
+```bash
+npm run data:quality
+```
+
+To run full open-only refresh end-to-end:
+```bash
+npm run data:refresh:open
+```
+
+To run Project 1 (ORD-LGA) research diagnostics directly:
+```bash
+npm run airline:fit-baselines
+npm run airline:fit-policy
+npm run airline:ablation
+npm run airline:sensitivity
+npm run airline:research-tables
+# or all:
+npm run airline:research
+```
+
+To enrich all projects with strict real-only partial coverage metadata/signals (legacy single-process path):
 ```bash
 npm run data:build:real
 ```
@@ -84,8 +137,16 @@ It also writes run health files to:
 - `public/data/_health.json`
 - `public/data/_runs/<runId>.json`
 
+Open-only pipeline artifacts are persisted to:
+- `data/raw/<project>/<signal>/<runId>.json`
+- `data/processed/<project>/real_signals_<runId>.json`
+- `data/provenance/<project>/sources.json`
+- `data/provenance/<project>/runs/<runId>.json`
+- `data/quality/<project>/quality_report.json`
+- `data/quality/rankings.json`
+
 ## VM Scheduler Helpers
-- `scripts/ops/refresh_data.sh` runs synthetic build + strict real enrichment.
+- `scripts/ops/refresh_data.sh` runs the full open-only refresh pipeline (`data:refresh:open`).
 - `scripts/ops/refresh_media.sh` runs Replicate media generation.
 - `scripts/ops/vm_crontab.example` provides sample cron entries for a single-server VM deployment.
 
@@ -109,4 +170,27 @@ npm run typecheck
 npm run lint
 npm test
 PW_TEST_PORT=3501 npm run test:e2e
+npm run qa:visual:10
+```
+
+Visual loop outputs are written to:
+`tmp/visual-loops/<timestamp>/report.json` and `tmp/visual-loops/<timestamp>/*.png`.
+
+## Quality Gates
+Run architecture + hygiene + build/perf checks:
+```bash
+npm run qa
+```
+
+Run individual gate groups:
+```bash
+npm run contracts:check
+npm run hygiene:check
+npm run perf:check
+npm run perf:check:strict
+```
+
+Cleanup local runtime artifacts:
+```bash
+npm run hygiene:clean
 ```

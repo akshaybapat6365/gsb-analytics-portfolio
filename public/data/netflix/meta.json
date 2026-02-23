@@ -1,18 +1,10 @@
 {
-  "generatedAt": "2026-02-17T16:06:17+00:00",
+  "generatedAt": "2026-02-19T20:20:20+00:00",
   "modules": {
-    "netflix_daily_trend_presence": {
-      "provenance": {
-        "fetchedAt": "2026-02-17T16:06:54+00:00",
-        "source": "google-trends:dailytrends"
-      },
-      "reasonCode": "fetch_error:HTTPError",
-      "status": "unavailable"
-    },
     "nflx_30d_return": {
       "provenance": {
-        "asOf": "2026-02-17",
-        "fetchedAt": "2026-02-17T16:06:52+00:00",
+        "asOf": "2026-02-19",
+        "fetchedAt": "2026-02-19T20:20:20+00:00",
         "note": "30d total return",
         "source": "stooq:NFLX"
       },
@@ -21,13 +13,15 @@
     "nflx_recent_10k_10q": {
       "provenance": {
         "asOf": "2026-01-23",
-        "fetchedAt": "2026-02-17T16:06:55+00:00",
+        "fetchedAt": "2026-02-19T20:20:27+00:00",
         "note": "10-K/10-Q count in last 365d",
         "source": "sec:0001065280"
       },
       "status": "ok"
     }
   },
-  "overallStatus": "stale",
-  "runId": "real-20260217160617"
+  "overallStatus": "ok",
+  "policyDecision": "Strict real-feed mode with stale-real cache continuity.",
+  "policyMode": "strict-real",
+  "runId": "real-20260219202020"
 }

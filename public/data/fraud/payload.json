@@ -1,4 +1,72 @@
 {
+  "annotations": [
+    {
+      "body": "Risk score 100.0% with deception marker intensity shift.",
+      "evidenceRefs": [
+        {
+          "asOf": "2026-02-19",
+          "seriesId": "spy_30d_return",
+          "source": "stooq:SPY",
+          "value": "-1.24"
+        },
+        {
+          "asOf": "2025-10-09",
+          "seriesId": "nkla_recent_10k_10q",
+          "source": "sec:0001731289",
+          "value": "1"
+        }
+      ],
+      "id": "fraud-risk-1",
+      "moduleId": "forensic-risk-timeline",
+      "timestampOrIndex": "2020-05-15",
+      "title": "NKLA risk spike",
+      "type": "anomaly"
+    },
+    {
+      "body": "Risk score 100.0% with deception marker intensity shift.",
+      "evidenceRefs": [
+        {
+          "asOf": "2026-02-19",
+          "seriesId": "spy_30d_return",
+          "source": "stooq:SPY",
+          "value": "-1.24"
+        },
+        {
+          "asOf": "2025-10-09",
+          "seriesId": "nkla_recent_10k_10q",
+          "source": "sec:0001731289",
+          "value": "1"
+        }
+      ],
+      "id": "fraud-risk-2",
+      "moduleId": "forensic-risk-timeline",
+      "timestampOrIndex": "2020-04-15",
+      "title": "LKNCY risk spike",
+      "type": "anomaly"
+    },
+    {
+      "body": "Risk score 100.0% with deception marker intensity shift.",
+      "evidenceRefs": [
+        {
+          "asOf": "2026-02-19",
+          "seriesId": "spy_30d_return",
+          "source": "stooq:SPY",
+          "value": "-1.24"
+        },
+        {
+          "asOf": "2025-10-09",
+          "seriesId": "nkla_recent_10k_10q",
+          "source": "sec:0001731289",
+          "value": "1"
+        }
+      ],
+      "id": "fraud-risk-3",
+      "moduleId": "forensic-risk-timeline",
+      "timestampOrIndex": "2022-11-15",
+      "title": "FTX risk spike",
+      "type": "anomaly"
+    }
+  ],
   "backtest": {
     "annualizedAlpha": 0.34,
     "benchmark": [
@@ -272,6 +340,43 @@
     {
       "name": "Growth SaaS (Synthetic)",
       "ticker": "ABCD"
+    }
+  ],
+  "dataReadiness": [
+    {
+      "lastSuccessfulRealRunAt": "2026-02-19T20:20:20+00:00",
+      "minRequiredSeries": [
+        "spy_30d_return"
+      ],
+      "missingSeries": [],
+      "moduleId": "spy_30d_return",
+      "realCoveragePct": 100,
+      "status": "ready"
+    },
+    {
+      "lastSuccessfulRealRunAt": "2026-02-19T20:20:24+00:00",
+      "minRequiredSeries": [
+        "nkla_recent_10k_10q"
+      ],
+      "missingSeries": [],
+      "moduleId": "nkla_recent_10k_10q",
+      "realCoveragePct": 100,
+      "status": "ready"
+    }
+  ],
+  "decisionEvidence": [
+    {
+      "confidenceBand": [
+        0.47,
+        0.79
+      ],
+      "counterfactualDelta": "100.0% peak risk score",
+      "drivers": [
+        "beneish-score drift",
+        "deception marker slope",
+        "similarity cluster weight"
+      ],
+      "recommendationId": "fraud-short-basket"
     }
   ],
   "filings": [
@@ -4983,20 +5088,12 @@
     ]
   },
   "meta": {
-    "generatedAt": "2026-02-17T16:06:17+00:00",
+    "generatedAt": "2026-02-19T20:20:20+00:00",
     "modules": {
-      "nkla_30d_return": {
-        "provenance": {
-          "fetchedAt": "2026-02-17T16:06:23+00:00",
-          "source": "stooq:NKLA"
-        },
-        "reasonCode": "insufficient_history",
-        "status": "unavailable"
-      },
       "nkla_recent_10k_10q": {
         "provenance": {
           "asOf": "2025-10-09",
-          "fetchedAt": "2026-02-17T16:06:24+00:00",
+          "fetchedAt": "2026-02-19T20:20:24+00:00",
           "note": "10-K/10-Q count in last 365d",
           "source": "sec:0001731289"
         },
@@ -5004,16 +5101,18 @@
       },
       "spy_30d_return": {
         "provenance": {
-          "asOf": "2026-02-17",
-          "fetchedAt": "2026-02-17T16:06:21+00:00",
+          "asOf": "2026-02-19",
+          "fetchedAt": "2026-02-19T20:20:20+00:00",
           "note": "30d total return",
           "source": "stooq:SPY"
         },
         "status": "ok"
       }
     },
-    "overallStatus": "stale",
-    "runId": "real-20260217160617"
+    "overallStatus": "ok",
+    "policyDecision": "Strict real-feed mode with stale-real cache continuity.",
+    "policyMode": "strict-real",
+    "runId": "real-20260219202020"
   },
   "realSignals": [
     {
@@ -5021,23 +5120,25 @@
       "id": "spy_30d_return",
       "label": "SPY 30d return",
       "provenance": {
-        "asOf": "2026-02-17",
-        "fetchedAt": "2026-02-17T16:06:21+00:00",
+        "asOf": "2026-02-19",
+        "fetchedAt": "2026-02-19T20:20:20+00:00",
         "note": "30d total return",
         "source": "stooq:SPY"
       },
+      "required": true,
       "status": "ok",
       "unit": "%",
-      "value": "-0.86"
+      "value": "-1.24"
     },
     {
       "id": "nkla_30d_return",
       "label": "NKLA 30d return",
       "provenance": {
-        "fetchedAt": "2026-02-17T16:06:23+00:00",
+        "fetchedAt": "2026-02-19T20:20:22+00:00",
         "source": "stooq:NKLA"
       },
-      "reasonCode": "insufficient_history",
+      "reasonCode": "stooq:insufficient_history;yahoo:insufficient_history",
+      "required": false,
       "status": "unavailable",
       "unit": "%"
     },
@@ -5047,10 +5148,11 @@
       "label": "NKLA 10-K/10-Q filings (365d)",
       "provenance": {
         "asOf": "2025-10-09",
-        "fetchedAt": "2026-02-17T16:06:24+00:00",
+        "fetchedAt": "2026-02-19T20:20:24+00:00",
         "note": "10-K/10-Q count in last 365d",
         "source": "sec:0001731289"
       },
+      "required": true,
       "status": "ok",
       "value": "1"
     }

@@ -1,0 +1,35 @@
+{
+  "generatedAt": "2026-02-19T20:21:11+00:00",
+  "knownLimitations": [
+    "Route-level fare microdata from consumer booking engines is mostly non-open; current route dynamics rely on modeled disaggregation."
+  ],
+  "missingOrStaleSignals": [],
+  "overallStatus": "ok",
+  "projectSlug": "ord-lga-price-war",
+  "projectTitle": "United vs. Delta: ORD-LGA Price War",
+  "runId": "real-20260219202020",
+  "scores": {
+    "components": {
+      "coverage": 100.0,
+      "freshness": 91.67,
+      "modelDepth": 100.0,
+      "provenance": 100.0
+    },
+    "finalScore": 95.56,
+    "openDataAvailability": 87.25,
+    "rubric": {
+      "coverage": 30,
+      "freshness": 20,
+      "modelDepth": 30,
+      "provenance": 20
+    },
+    "tier": "excellent",
+    "weightedQuality": 98.33
+  },
+  "signalSummary": {
+    "okRequiredSignals": 3,
+    "requiredSignals": 3,
+    "staleRequiredSignals": 0,
+    "unavailableRequiredSignals": 0
+  }
+}

@@ -1,7 +1,7 @@
 # Netflix Content ROI — Data Card
 
 ## Status
-Synthetic (default)
+Mode-aware baseline payload (supports strict-real and baseline-fallback enrichment)
 
 ## What’s included
 - A small title slate with costs, acquisition LTV, retention LTV, and acclaim
@@ -15,4 +15,3 @@ Synthetic (default)
 ## Real-world swap
 - Nielsen/JustWatch/Trends/10-K metrics + robust causal design (synth control / BSTS)
 - Title-level viewership and churn attribution
-

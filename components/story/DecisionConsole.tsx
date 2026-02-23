@@ -15,7 +15,7 @@ type DecisionConsoleProps = {
 
 const toneClass: Record<NonNullable<DecisionLine["tone"]>, string> = {
   neutral: "text-slate-100",
-  cyan: "text-cyan-200",
+  cyan: "text-amber-200",
   emerald: "text-emerald-200",
   crimson: "text-rose-200",
   amber: "text-amber-100",
@@ -23,23 +23,23 @@ const toneClass: Record<NonNullable<DecisionLine["tone"]>, string> = {
 
 export function DecisionConsole({ title = "Decision Console", lines, className }: DecisionConsoleProps) {
   return (
-    <section className={cn("terminal overflow-hidden", className)}>
+    <section className={cn("terminal overflow-hidden", className)} data-testid="decision-console">
       <div className="border-b border-white/10 bg-white/5 px-6 py-4">
-        <p className="font-sans text-xs font-medium uppercase tracking-[0.18em] text-slate-400">
+        <p className="font-sans text-[12px] font-medium uppercase tracking-[0.16em] text-slate-300">
           {title}
         </p>
       </div>
-      <div className="space-y-3 px-6 py-6 text-sm text-slate-300">
+      <div className="space-y-3 px-6 py-6 text-[15px] text-slate-200">
         {lines.map((line) => (
           <div key={`${line.label}:${line.value}`}>
             <div className="flex items-baseline justify-between gap-3">
-              <span className="text-slate-400">{line.label}</span>
-              <span className={cn("font-mono text-sm tabular-nums", toneClass[line.tone ?? "neutral"])}>
+              <span className="text-slate-300">{line.label}</span>
+              <span className={cn("font-mono text-[15px] tabular-nums", toneClass[line.tone ?? "neutral"])}>
                 {line.value}
               </span>
             </div>
             {line.hint ? (
-              <div className="mt-1 text-xs text-slate-500">{line.hint}</div>
+              <div className="mt-1 text-[13px] text-slate-400">{line.hint}</div>
             ) : null}
           </div>
         ))}
@@ -47,4 +47,3 @@ export function DecisionConsole({ title = "Decision Console", lines, className }
     </section>
   );
 }
-

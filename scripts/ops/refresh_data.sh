@@ -9,8 +9,6 @@ LOG_FILE="logs/pipeline/data-refresh-$(date -u +%Y%m%dT%H%M%SZ).log"
 
 {
   echo "[data-refresh] start $(date -u +%Y-%m-%dT%H:%M:%SZ)"
-  npm run data:build
-  npm run data:build:real
+  npm run data:refresh:open
   echo "[data-refresh] done $(date -u +%Y-%m-%dT%H:%M:%SZ)"
 } | tee "$LOG_FILE"
-

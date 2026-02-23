@@ -1,28 +1,28 @@
 {
-  "generatedAt": "2026-02-17T16:06:17+00:00",
+  "generatedAt": "2026-02-19T20:20:20+00:00",
   "modules": {
     "ca_ev_station_count": {
       "provenance": {
-        "asOf": "2026-02-17T16:06:33+00:00",
-        "fetchedAt": "2026-02-17T16:06:33+00:00",
-        "note": "CA public EV stations",
-        "source": "nrel:afdc"
+        "asOf": "2026-02-19T20:20:22+00:00",
+        "fetchedAt": "2026-02-19T20:20:22+00:00",
+        "note": "CA charging-station count (OSM Overpass); fallback from nrel:afdc (fetch_error:HTTPError)",
+        "source": "osm:overpass"
       },
       "status": "ok"
     },
     "i5_corridor_stations": {
       "provenance": {
-        "asOf": "2026-02-17T16:06:44+00:00",
-        "fetchedAt": "2026-02-17T16:06:44+00:00",
-        "note": "Approximate I-5 CA corridor EV stations",
-        "source": "nrel:afdc"
+        "asOf": "2026-02-19T20:20:43+00:00",
+        "fetchedAt": "2026-02-19T20:20:43+00:00",
+        "note": "Approximate I-5 corridor charging-station count (OSM Overpass); fallback from nrel:afdc (fetch_error:HTTPError)",
+        "source": "osm:overpass"
       },
       "status": "ok"
     },
     "tsla_30d_return": {
       "provenance": {
-        "asOf": "2026-02-17",
-        "fetchedAt": "2026-02-17T16:06:32+00:00",
+        "asOf": "2026-02-19",
+        "fetchedAt": "2026-02-19T20:20:20+00:00",
         "note": "30d total return",
         "source": "stooq:TSLA"
       },
@@ -30,5 +30,7 @@
     }
   },
   "overallStatus": "ok",
-  "runId": "real-20260217160617"
+  "policyDecision": "Strict real-feed mode with stale-real cache continuity.",
+  "policyMode": "strict-real",
+  "runId": "real-20260219202020"
 }

@@ -1,0 +1,119 @@
+{
+  "generatedAt": "2026-02-19T19:50:26+00:00",
+  "meta": {
+    "generatedAt": "2026-02-19T19:50:26+00:00",
+    "modules": {
+      "airfare_cpi_yoy": {
+        "provenance": {
+          "asOf": "2026-01-01",
+          "fetchedAt": "2026-02-19T19:50:26+00:00",
+          "note": "Airfare CPI YoY",
+          "source": "fred:CUSR0000SETG01"
+        },
+        "status": "ok"
+      },
+      "dal_30d_return": {
+        "provenance": {
+          "asOf": "2026-02-19",
+          "fetchedAt": "2026-02-19T19:50:29+00:00",
+          "note": "30d total return",
+          "source": "stooq:DAL"
+        },
+        "status": "ok"
+      },
+      "ual_30d_return": {
+        "provenance": {
+          "asOf": "2026-02-19",
+          "fetchedAt": "2026-02-19T19:50:27+00:00",
+          "note": "30d total return",
+          "source": "stooq:UAL"
+        },
+        "status": "ok"
+      }
+    },
+    "overallStatus": "ok",
+    "policyDecision": "Strict real-feed mode with stale-real cache continuity.",
+    "policyMode": "strict-real",
+    "runId": "real-20260219195026"
+  },
+  "mode": "open-only",
+  "projectSlug": "ord-lga-price-war",
+  "projectTitle": "United vs. Delta: ORD-LGA Price War",
+  "qualityRubric": {
+    "coverage": 30,
+    "freshness": 20,
+    "modelDepth": 30,
+    "provenance": 20
+  },
+  "runId": "real-20260219195026",
+  "sourceStatuses": [
+    {
+      "expectedSignalIds": [
+        "airfare_cpi_yoy"
+      ],
+      "id": "fred_airfare_cpi",
+      "kind": "macro_price_index",
+      "label": "FRED Airfare CPI YoY",
+      "matchedSignalStatuses": [
+        {
+          "id": "airfare_cpi_yoy",
+          "reasonCode": null,
+          "status": "ok"
+        }
+      ],
+      "opennessScore": 95,
+      "sourceKey": "fred:CUSR0000SETG01",
+      "status": "ok",
+      "url": "https://fred.stlouisfed.org/series/CUSR0000SETG01"
+    },
+    {
+      "expectedSignalIds": [
+        "ual_30d_return"
+      ],
+      "id": "stooq_ual",
+      "kind": "market_proxy",
+      "label": "Stooq UAL daily prices",
+      "matchedSignalStatuses": [
+        {
+          "id": "ual_30d_return",
+          "reasonCode": null,
+          "status": "ok"
+        }
+      ],
+      "opennessScore": 82,
+      "sourceKey": "stooq:UAL",
+      "status": "ok",
+      "url": "https://stooq.com/"
+    },
+    {
+      "expectedSignalIds": [
+        "dal_30d_return"
+      ],
+      "id": "stooq_dal",
+      "kind": "market_proxy",
+      "label": "Stooq DAL daily prices",
+      "matchedSignalStatuses": [
+        {
+          "id": "dal_30d_return",
+          "reasonCode": null,
+          "status": "ok"
+        }
+      ],
+      "opennessScore": 82,
+      "sourceKey": "stooq:DAL",
+      "status": "ok",
+      "url": "https://stooq.com/"
+    },
+    {
+      "expectedSignalIds": [],
+      "id": "bts_odb",
+      "kind": "route_ground_truth_reference",
+      "label": "BTS O&D/DB route aggregates",
+      "matchedSignalStatuses": [],
+      "opennessScore": 90,
+      "sourceKey": "bts:od-data",
+      "status": "reference",
+      "url": "https://www.bts.gov/topics/airlines-and-airports/origin-and-destination-survey-data"
+    }
+  ]
+}

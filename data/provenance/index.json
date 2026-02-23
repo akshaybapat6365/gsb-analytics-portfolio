@@ -1,0 +1,36 @@
+{
+  "discoveredAt": "2026-02-19T20:16:52+00:00",
+  "mode": "open-only",
+  "projects": {
+    "fraud-radar": {
+      "opennessPotentialScore": 92.67,
+      "projectTitle": "Shorting Nikola: Pre-Collapse Fraud Detection",
+      "sourceCount": 3
+    },
+    "netflix-roi": {
+      "opennessPotentialScore": 85.5,
+      "projectTitle": "Netflix Content ROI Autopsy",
+      "sourceCount": 4
+    },
+    "ord-lga-price-war": {
+      "opennessPotentialScore": 87.25,
+      "projectTitle": "United vs. Delta: ORD-LGA Price War",
+      "sourceCount": 4
+    },
+    "starbucks-pivot": {
+      "opennessPotentialScore": 89.0,
+      "projectTitle": "Starbucks Suburban Pivot",
+      "sourceCount": 3
+    },
+    "target-shrink": {
+      "opennessPotentialScore": 69.67,
+      "projectTitle": "Target Shrink: Loss Prevention Economics",
+      "sourceCount": 3
+    },
+    "tesla-nacs": {
+      "opennessPotentialScore": 88.67,
+      "projectTitle": "Tesla NACS Gambit",
+      "sourceCount": 3
+    }
+  }
+}

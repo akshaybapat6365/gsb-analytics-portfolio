@@ -1,5 +1,11 @@
 import { z } from "zod";
-import { PayloadMetaSchema, RealSignalSchema } from "@/lib/schemas/common";
+import {
+  AnnotationSchema,
+  DecisionEvidenceSchema,
+  ModuleReadinessSchema,
+  PayloadMetaSchema,
+  RealSignalSchema,
+} from "@/lib/schemas/common";
 
 export const ShrinkPayloadSchema = z.object({
   store: z.object({
@@ -53,6 +59,9 @@ export const ShrinkPayloadSchema = z.object({
   }),
   meta: PayloadMetaSchema.optional(),
   realSignals: z.array(RealSignalSchema).optional(),
+  dataReadiness: z.array(ModuleReadinessSchema).optional(),
+  annotations: z.array(AnnotationSchema).optional(),
+  decisionEvidence: z.array(DecisionEvidenceSchema).optional(),
 });
 
 export type ShrinkPayload = z.infer<typeof ShrinkPayloadSchema>;

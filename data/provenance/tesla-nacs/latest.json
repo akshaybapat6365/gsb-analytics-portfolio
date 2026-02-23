@@ -1,0 +1,108 @@
+{
+  "generatedAt": "2026-02-19T20:20:20+00:00",
+  "meta": {
+    "generatedAt": "2026-02-19T20:20:20+00:00",
+    "modules": {
+      "ca_ev_station_count": {
+        "provenance": {
+          "asOf": "2026-02-19T20:20:22+00:00",
+          "fetchedAt": "2026-02-19T20:20:22+00:00",
+          "note": "CA charging-station count (OSM Overpass); fallback from nrel:afdc (fetch_error:HTTPError)",
+          "source": "osm:overpass"
+        },
+        "status": "ok"
+      },
+      "i5_corridor_stations": {
+        "provenance": {
+          "asOf": "2026-02-19T20:20:43+00:00",
+          "fetchedAt": "2026-02-19T20:20:43+00:00",
+          "note": "Approximate I-5 corridor charging-station count (OSM Overpass); fallback from nrel:afdc (fetch_error:HTTPError)",
+          "source": "osm:overpass"
+        },
+        "status": "ok"
+      },
+      "tsla_30d_return": {
+        "provenance": {
+          "asOf": "2026-02-19",
+          "fetchedAt": "2026-02-19T20:20:20+00:00",
+          "note": "30d total return",
+          "source": "stooq:TSLA"
+        },
+        "status": "ok"
+      }
+    },
+    "overallStatus": "ok",
+    "policyDecision": "Strict real-feed mode with stale-real cache continuity.",
+    "policyMode": "strict-real",
+    "runId": "real-20260219202020"
+  },
+  "mode": "open-only",
+  "projectSlug": "tesla-nacs",
+  "projectTitle": "Tesla NACS Gambit",
+  "qualityRubric": {
+    "coverage": 35,
+    "freshness": 20,
+    "modelDepth": 25,
+    "provenance": 20
+  },
+  "runId": "real-20260219202020",
+  "sourceStatuses": [
+    {
+      "expectedSignalIds": [
+        "ca_ev_station_count"
+      ],
+      "id": "nrel_ca_ev",
+      "kind": "station_inventory_primary",
+      "label": "NREL AFDC CA station count",
+      "matchedSignalStatuses": [
+        {
+          "id": "ca_ev_station_count",
+          "reasonCode": null,
+          "status": "ok"
+        }
+      ],
+      "opennessScore": 92,
+      "sourceKey": "nrel:afdc",
+      "status": "ok",
+      "url": "https://developer.nrel.gov/docs/transportation/alt-fuel-stations-v1/"
+    },
+    {
+      "expectedSignalIds": [
+        "i5_corridor_stations"
+      ],
+      "id": "nrel_i5_corridor",
+      "kind": "corridor_density_primary",
+      "label": "NREL AFDC I-5 corridor station estimate",
+      "matchedSignalStatuses": [
+        {
+          "id": "i5_corridor_stations",
+          "reasonCode": null,
+          "status": "ok"
+        }
+      ],
+      "opennessScore": 92,
+      "sourceKey": "nrel:afdc",
+      "status": "ok",
+      "url": "https://developer.nrel.gov/docs/transportation/alt-fuel-stations-v1/"
+    },
+    {
+      "expectedSignalIds": [
+        "tsla_30d_return"
+      ],
+      "id": "stooq_tsla",
+      "kind": "market_context",
+      "label": "Stooq TSLA daily prices",
+      "matchedSignalStatuses": [
+        {
+          "id": "tsla_30d_return",
+          "reasonCode": null,
+          "status": "ok"
+        }
+      ],
+      "opennessScore": 82,
+      "sourceKey": "stooq:TSLA",
+      "status": "ok",
+      "url": "https://stooq.com/"
+    }
+  ]
+}

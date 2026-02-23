@@ -1,7 +1,7 @@
 # Fraud Radar — Data Card
 
 ## Status
-Synthetic (default)
+Mode-aware baseline payload (supports strict-real and baseline-fallback enrichment)
 
 ## What’s included
 - A small company universe with quarterly “filings” from 2018–2024
@@ -19,4 +19,3 @@ Synthetic (default)
 - SEC EDGAR 10-K/10-Q text + financial statements
 - FinBERT or modern embedding-based language features
 - Event labels from enforcement actions + robust cross-validation
-

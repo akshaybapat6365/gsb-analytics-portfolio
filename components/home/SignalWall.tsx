@@ -14,11 +14,11 @@ const contextLine: Record<ProjectSlug, string> = {
 };
 
 const accentGlow: Record<ProjectSlug, string> = {
-  "ord-lga-price-war": "from-cyan-300/30 via-cyan-500/8 to-transparent",
+  "ord-lga-price-war": "from-amber-300/30 via-amber-500/8 to-transparent",
   "fraud-radar": "from-rose-300/30 via-rose-500/8 to-transparent",
   "target-shrink": "from-amber-300/30 via-amber-500/8 to-transparent",
   "starbucks-pivot": "from-emerald-300/32 via-emerald-500/8 to-transparent",
-  "tesla-nacs": "from-cyan-300/28 via-emerald-500/8 to-transparent",
+  "tesla-nacs": "from-amber-300/28 via-emerald-500/8 to-transparent",
   "netflix-roi": "from-amber-300/28 via-slate-300/8 to-transparent",
 };
 
@@ -41,7 +41,7 @@ export function SignalWall() {
               accentGlow[project.slug],
             )}
           />
-          <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgba(2,6,23,0.24),rgba(2,6,23,0.72)_48%,rgba(2,6,23,0.9)_100%)]" />
+          <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgba(12,10,9,0.24),rgba(12,10,9,0.72)_48%,rgba(12,10,9,0.9)_100%)]" />
 
           <div className="relative z-10 flex h-full flex-col justify-end p-5">
             <p className="font-feature text-[10px] uppercase tracking-[0.2em] text-slate-300">

@@ -1,14 +1,15 @@
 import type { Metadata } from "next";
 import {
+  IBM_Plex_Mono,
   Instrument_Sans,
   Instrument_Serif,
-  JetBrains_Mono,
 } from "next/font/google";
 import "./globals.css";
 import "maplibre-gl/dist/maplibre-gl.css";
 import { SiteFooter } from "@/components/ui/SiteFooter";
 import { TopNav } from "@/components/ui/TopNav";
 import { DevEnvBanner } from "@/components/ui/DevEnvBanner";
+import { PerfDiagnosticsBoundary } from "@/components/perf/PerfDiagnosticsBoundary";
 
 const instrumentSerif = Instrument_Serif({
   variable: "--font-instrument-serif",
@@ -25,10 +26,10 @@ const instrumentSans = Instrument_Sans({
   display: "swap",
 });
 
-const jetbrainsMono = JetBrains_Mono({
-  variable: "--font-jetbrains-mono",
+const ibmPlexMono = IBM_Plex_Mono({
+  variable: "--font-ibm-plex-mono",
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
+  weight: ["400", "500", "600"],
   display: "swap",
 });
 
@@ -49,12 +50,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${instrumentSerif.variable} ${instrumentSans.variable} ${jetbrainsMono.variable} font-serif antialiased`}
+        className={`${instrumentSerif.variable} ${instrumentSans.variable} ${ibmPlexMono.variable} font-sans antialiased`}
       >
         <div className="site-shell min-h-screen">
           <TopNav />
           <DevEnvBanner />
-          <main className="mx-auto w-full max-w-[1420px] px-5 pb-24 pt-8 sm:px-7 lg:px-10">
+          <PerfDiagnosticsBoundary />
+          <main className="mx-auto w-full max-w-[1420px] px-5 pb-16 pt-6 sm:px-7 sm:pt-8 lg:px-10">
             {children}
           </main>
           <SiteFooter />

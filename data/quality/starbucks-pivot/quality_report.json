@@ -1,0 +1,35 @@
+{
+  "generatedAt": "2026-02-19T20:21:11+00:00",
+  "knownLimitations": [
+    "High-resolution commercial foot-traffic feeds are not open; commuting and market proxies dominate."
+  ],
+  "missingOrStaleSignals": [],
+  "overallStatus": "ok",
+  "projectSlug": "starbucks-pivot",
+  "projectTitle": "Starbucks Suburban Pivot",
+  "runId": "real-20260219202020",
+  "scores": {
+    "components": {
+      "coverage": 100.0,
+      "freshness": 72.5,
+      "modelDepth": 100.0,
+      "provenance": 100.0
+    },
+    "finalScore": 93.12,
+    "openDataAvailability": 89.0,
+    "rubric": {
+      "coverage": 30,
+      "freshness": 20,
+      "modelDepth": 30,
+      "provenance": 20
+    },
+    "tier": "excellent",
+    "weightedQuality": 94.5
+  },
+  "signalSummary": {
+    "okRequiredSignals": 2,
+    "requiredSignals": 2,
+    "staleRequiredSignals": 0,
+    "unavailableRequiredSignals": 0
+  }
+}

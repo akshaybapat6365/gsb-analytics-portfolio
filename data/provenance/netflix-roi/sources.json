@@ -1,0 +1,61 @@
+{
+  "discoveredAt": "2026-02-19T20:16:52+00:00",
+  "mode": "open-only",
+  "opennessPotentialScore": 85.5,
+  "projectSlug": "netflix-roi",
+  "projectTitle": "Netflix Content ROI Autopsy",
+  "qualityRubric": {
+    "coverage": 30,
+    "freshness": 20,
+    "modelDepth": 30,
+    "provenance": 20
+  },
+  "sources": [
+    {
+      "expectedSignalIds": [
+        "nflx_recent_10k_10q"
+      ],
+      "id": "sec_nflx",
+      "kind": "filings_primary",
+      "label": "SEC EDGAR filings (NFLX)",
+      "opennessScore": 96,
+      "sourceKey": "sec:0001065280",
+      "status": "configured",
+      "url": "https://data.sec.gov/"
+    },
+    {
+      "expectedSignalIds": [
+        "nflx_30d_return"
+      ],
+      "id": "stooq_nflx",
+      "kind": "market_context",
+      "label": "Stooq NFLX daily prices",
+      "opennessScore": 82,
+      "sourceKey": "stooq:NFLX",
+      "status": "configured",
+      "url": "https://stooq.com/"
+    },
+    {
+      "expectedSignalIds": [
+        "netflix_daily_trend_presence"
+      ],
+      "id": "google_trends_daily",
+      "kind": "attention_proxy",
+      "label": "Google Trends daily presence",
+      "opennessScore": 78,
+      "sourceKey": "google-trends:dailytrends",
+      "status": "configured",
+      "url": "https://developers.google.com/search/apis/trends"
+    },
+    {
+      "expectedSignalIds": [],
+      "id": "imdb_noncommercial",
+      "kind": "title_reference",
+      "label": "IMDb non-commercial datasets",
+      "opennessScore": 86,
+      "sourceKey": "imdb:noncommercial",
+      "status": "configured",
+      "url": "https://developer.imdb.com/non-commercial-datasets/"
+    }
+  ]
+}

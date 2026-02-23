@@ -1,0 +1,35 @@
+{
+  "generatedAt": "2026-02-19T20:21:11+00:00",
+  "knownLimitations": [
+    "High-quality public theft/CV labeled datasets are sparse; core event behavior remains partially modeled."
+  ],
+  "missingOrStaleSignals": [],
+  "overallStatus": "ok",
+  "projectSlug": "target-shrink",
+  "projectTitle": "Target Shrink: Loss Prevention Economics",
+  "runId": "real-20260219202020",
+  "scores": {
+    "components": {
+      "coverage": 100.0,
+      "freshness": 100.0,
+      "modelDepth": 100.0,
+      "provenance": 100.0
+    },
+    "finalScore": 92.42,
+    "openDataAvailability": 69.67,
+    "rubric": {
+      "coverage": 40,
+      "freshness": 20,
+      "modelDepth": 25,
+      "provenance": 15
+    },
+    "tier": "excellent",
+    "weightedQuality": 100.0
+  },
+  "signalSummary": {
+    "okRequiredSignals": 2,
+    "requiredSignals": 2,
+    "staleRequiredSignals": 0,
+    "unavailableRequiredSignals": 0
+  }
+}

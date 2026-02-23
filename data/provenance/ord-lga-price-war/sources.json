@@ -1,0 +1,61 @@
+{
+  "discoveredAt": "2026-02-19T20:16:52+00:00",
+  "mode": "open-only",
+  "opennessPotentialScore": 87.25,
+  "projectSlug": "ord-lga-price-war",
+  "projectTitle": "United vs. Delta: ORD-LGA Price War",
+  "qualityRubric": {
+    "coverage": 30,
+    "freshness": 20,
+    "modelDepth": 30,
+    "provenance": 20
+  },
+  "sources": [
+    {
+      "expectedSignalIds": [
+        "airfare_cpi_yoy"
+      ],
+      "id": "fred_airfare_cpi",
+      "kind": "macro_price_index",
+      "label": "FRED Airfare CPI YoY",
+      "opennessScore": 95,
+      "sourceKey": "fred:CUSR0000SETG01",
+      "status": "configured",
+      "url": "https://fred.stlouisfed.org/series/CUSR0000SETG01"
+    },
+    {
+      "expectedSignalIds": [
+        "ual_30d_return"
+      ],
+      "id": "stooq_ual",
+      "kind": "market_proxy",
+      "label": "Stooq UAL daily prices",
+      "opennessScore": 82,
+      "sourceKey": "stooq:UAL",
+      "status": "configured",
+      "url": "https://stooq.com/"
+    },
+    {
+      "expectedSignalIds": [
+        "dal_30d_return"
+      ],
+      "id": "stooq_dal",
+      "kind": "market_proxy",
+      "label": "Stooq DAL daily prices",
+      "opennessScore": 82,
+      "sourceKey": "stooq:DAL",
+      "status": "configured",
+      "url": "https://stooq.com/"
+    },
+    {
+      "expectedSignalIds": [],
+      "id": "bts_odb",
+      "kind": "route_ground_truth_reference",
+      "label": "BTS O&D/DB route aggregates",
+      "opennessScore": 90,
+      "sourceKey": "bts:od-data",
+      "status": "configured",
+      "url": "https://www.bts.gov/topics/airlines-and-airports/origin-and-destination-survey-data"
+    }
+  ]
+}

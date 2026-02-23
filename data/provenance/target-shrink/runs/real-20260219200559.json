@@ -1,0 +1,91 @@
+{
+  "generatedAt": "2026-02-19T20:05:59+00:00",
+  "meta": {
+    "generatedAt": "2026-02-19T20:05:59+00:00",
+    "modules": {
+      "tgt_30d_return": {
+        "provenance": {
+          "asOf": "2026-02-19",
+          "fetchedAt": "2026-02-19T20:05:59+00:00",
+          "note": "30d total return",
+          "source": "stooq:TGT"
+        },
+        "status": "ok"
+      },
+      "wmt_30d_return": {
+        "provenance": {
+          "asOf": "2026-02-19",
+          "fetchedAt": "2026-02-19T20:06:01+00:00",
+          "note": "30d total return",
+          "source": "stooq:WMT"
+        },
+        "status": "ok"
+      }
+    },
+    "overallStatus": "ok",
+    "policyDecision": "Strict real-feed mode with stale-real cache continuity.",
+    "policyMode": "strict-real",
+    "runId": "real-20260219200559"
+  },
+  "mode": "open-only",
+  "projectSlug": "target-shrink",
+  "projectTitle": "Target Shrink: Loss Prevention Economics",
+  "qualityRubric": {
+    "coverage": 40,
+    "freshness": 20,
+    "modelDepth": 25,
+    "provenance": 15
+  },
+  "runId": "real-20260219200559",
+  "sourceStatuses": [
+    {
+      "expectedSignalIds": [
+        "tgt_30d_return"
+      ],
+      "id": "stooq_tgt",
+      "kind": "market_context",
+      "label": "Stooq TGT daily prices",
+      "matchedSignalStatuses": [
+        {
+          "id": "tgt_30d_return",
+          "reasonCode": null,
+          "status": "ok"
+        }
+      ],
+      "opennessScore": 82,
+      "sourceKey": "stooq:TGT",
+      "status": "ok",
+      "url": "https://stooq.com/"
+    },
+    {
+      "expectedSignalIds": [
+        "wmt_30d_return"
+      ],
+      "id": "stooq_wmt",
+      "kind": "market_context",
+      "label": "Stooq WMT daily prices",
+      "matchedSignalStatuses": [
+        {
+          "id": "wmt_30d_return",
+          "reasonCode": null,
+          "status": "ok"
+        }
+      ],
+      "opennessScore": 82,
+      "sourceKey": "stooq:WMT",
+      "status": "ok",
+      "url": "https://stooq.com/"
+    },
+    {
+      "expectedSignalIds": [],
+      "id": "lprc_public_notes",
+      "kind": "domain_reference_limited",
+      "label": "Public retail-loss reference corpus",
+      "matchedSignalStatuses": [],
+      "opennessScore": 45,
+      "sourceKey": "retail-loss:public-reference",
+      "status": "reference",
+      "url": "https://lpresearch.org/"
+    }
+  ]
+}

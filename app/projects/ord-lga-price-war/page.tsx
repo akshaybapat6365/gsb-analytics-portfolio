@@ -2,11 +2,12 @@ import { getProject } from "@/lib/projects/catalog";
 import { loadAirlinePayload } from "@/lib/server/payloads";
 
 import { Hero } from "./Hero";
-import PriceWarClient from "./PriceWarClient";
+import { OrdLgaShell } from "./OrdLgaShell";
 import { BlufPanel } from "@/components/story/BlufPanel";
 import { AssumptionsDrawer } from "@/components/story/AssumptionsDrawer";
 import { RealSignalsPanel } from "@/components/story/RealSignalsPanel";
-import { StoryVisual } from "@/components/projects/StoryVisual";
+import { OrdLgaInteractiveSection } from "./InteractiveSection";
+import { DataIntegrityDrawer } from "@/components/story/DataIntegrityDrawer";
 
 export const metadata = {
   title: "ORD–LGA Price War Simulator",
@@ -15,6 +16,7 @@ export const metadata = {
 export default async function OrdLgaPriceWarPage() {
   const project = getProject("ord-lga-price-war");
   const payload = await loadAirlinePayload();
+  const summary = project.homepage;
 
   return (
     <div className="space-y-9">
@@ -24,25 +26,23 @@ export default async function OrdLgaPriceWarPage() {
         eyebrow="War-Room BLUF"
         question={project.businessQuestion}
         bluf={project.bluf}
+        keyOutputLabel={summary.resultLabel}
+        keyOutputValue={summary.resultValue}
+        evidenceLine={`${summary.evidenceLevel.toUpperCase()} · ${summary.source} · as-of ${summary.asOf}`}
+        limitation={summary.limitation}
       />
 
-      <PriceWarClient payload={payload} />
-      <RealSignalsPanel meta={payload.meta} signals={payload.realSignals} />
+      <OrdLgaShell payload={payload} />
 
-      <section className="grid gap-4 lg:grid-cols-2">
-        <StoryVisual
-          slug="ord-lga-price-war"
-          asset="overlay"
-          title="War-Room Overlay"
-          caption="Replicate-generated decision overlay: shock vectors, booking-window pressure, and competitor response lattice."
+      <OrdLgaInteractiveSection payload={payload} />
+
+      <DataIntegrityDrawer>
+        <RealSignalsPanel
+          meta={payload.meta}
+          signals={payload.realSignals}
+          readiness={payload.dataReadiness}
         />
-        <StoryVisual
-          slug="ord-lga-price-war"
-          asset="diagram"
-          title="Counterfactual Policy Diagram"
-          caption="Policy loop from market state to pricing action, regret tracking, and equilibrium response."
-        />
-      </section>
+      </DataIntegrityDrawer>
 
       <AssumptionsDrawer
         items={[

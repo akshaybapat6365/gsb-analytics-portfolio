@@ -1,5 +1,11 @@
 import { z } from "zod";
-import { PayloadMetaSchema, RealSignalSchema } from "@/lib/schemas/common";
+import {
+  AnnotationSchema,
+  DecisionEvidenceSchema,
+  ModuleReadinessSchema,
+  PayloadMetaSchema,
+  RealSignalSchema,
+} from "@/lib/schemas/common";
 
 export const AirlinePayloadSchema = z.object({
   route: z.object({
@@ -82,8 +88,117 @@ export const AirlinePayloadSchema = z.object({
       convergenceDay: z.number(),
     })
     .optional(),
+  methodMeta: z
+    .object({
+      modelVersion: z.string(),
+      calibrationWindow: z.object({
+        start: z.string().nullable().optional(),
+        end: z.string().nullable().optional(),
+        count: z.number(),
+      }),
+      validationWindow: z.object({
+        start: z.string().nullable().optional(),
+        end: z.string().nullable().optional(),
+        count: z.number(),
+      }),
+      objective: z.string(),
+    })
+    .optional(),
+  dataLineage: z
+    .object({
+      observedPct: z.number(),
+      inferredPct: z.number(),
+      modeledPct: z.number(),
+    })
+    .optional(),
+  uncertainty: z
+    .object({
+      samples: z.number().optional(),
+      revenueLiftCi: z.tuple([z.number(), z.number()]),
+      shareImpactCi: z.tuple([z.number(), z.number()]),
+      regretCi: z.tuple([z.number(), z.number()]),
+    })
+    .optional(),
+  validationSummary: z
+    .object({
+      trainWindow: z.object({
+        start: z.string().nullable().optional(),
+        end: z.string().nullable().optional(),
+        count: z.number(),
+      }),
+      validationWindow: z.object({
+        start: z.string().nullable().optional(),
+        end: z.string().nullable().optional(),
+        count: z.number(),
+      }),
+      metrics: z.object({
+        staticBaseline: z.object({
+          maeRevenue: z.number(),
+          mapeRevenue: z.number(),
+          meanRegret: z.number(),
+        }),
+        stickyBaseline: z.object({
+          maeRevenue: z.number(),
+          mapeRevenue: z.number(),
+          meanRegret: z.number(),
+        }),
+        policyModel: z.object({
+          maeRevenue: z.number(),
+          mapeRevenue: z.number(),
+          meanRegret: z.number(),
+        }),
+      }),
+      oosLiftDeltaVsStatic: z.number(),
+      oosLiftDeltaVsSticky: z.number(),
+    })
+    .optional(),
+  ablationSummary: z
+    .array(
+      z.object({
+        scenario: z.string(),
+        incrementalRevenue: z.number(),
+        actualRevenue: z.number(),
+        simRevenue: z.number(),
+        liftPct: z.number(),
+        meanRegret: z.number(),
+      }),
+    )
+    .optional(),
+  sensitivitySummary: z
+    .object({
+      grid: z.array(
+        z.object({
+          elasticity: z.number(),
+          competitorReactivity: z.number(),
+          incrementalRevenue: z.number(),
+          liftPct: z.number(),
+        }),
+      ),
+      bestCase: z
+        .object({
+          elasticity: z.number(),
+          competitorReactivity: z.number(),
+          incrementalRevenue: z.number(),
+          liftPct: z.number(),
+        })
+        .nullable()
+        .optional(),
+      worstCase: z
+        .object({
+          elasticity: z.number(),
+          competitorReactivity: z.number(),
+          incrementalRevenue: z.number(),
+          liftPct: z.number(),
+        })
+        .nullable()
+        .optional(),
+    })
+    .optional(),
   meta: PayloadMetaSchema.optional(),
   realSignals: z.array(RealSignalSchema).optional(),
+  dataReadiness: z.array(ModuleReadinessSchema).optional(),
+  annotations: z.array(AnnotationSchema).optional(),
+  decisionEvidence: z.array(DecisionEvidenceSchema).optional(),
 });
 
 export type AirlinePayload = z.infer<typeof AirlinePayloadSchema>;

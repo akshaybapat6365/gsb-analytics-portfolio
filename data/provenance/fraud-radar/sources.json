@@ -1,0 +1,49 @@
+{
+  "discoveredAt": "2026-02-19T20:16:52+00:00",
+  "mode": "open-only",
+  "opennessPotentialScore": 92.67,
+  "projectSlug": "fraud-radar",
+  "projectTitle": "Shorting Nikola: Pre-Collapse Fraud Detection",
+  "qualityRubric": {
+    "coverage": 35,
+    "freshness": 20,
+    "modelDepth": 25,
+    "provenance": 20
+  },
+  "sources": [
+    {
+      "expectedSignalIds": [
+        "nkla_recent_10k_10q"
+      ],
+      "id": "sec_nkla",
+      "kind": "filings_primary",
+      "label": "SEC EDGAR filings (NKLA)",
+      "opennessScore": 96,
+      "sourceKey": "sec:0001731289",
+      "status": "configured",
+      "url": "https://data.sec.gov/"
+    },
+    {
+      "expectedSignalIds": [
+        "spy_30d_return"
+      ],
+      "id": "stooq_spy",
+      "kind": "market_context",
+      "label": "Stooq SPY daily prices",
+      "opennessScore": 82,
+      "sourceKey": "stooq:SPY",
+      "status": "configured",
+      "url": "https://stooq.com/"
+    },
+    {
+      "expectedSignalIds": [],
+      "id": "sec_api_docs",
+      "kind": "governance_reference",
+      "label": "SEC API docs",
+      "opennessScore": 100,
+      "sourceKey": "sec:api-docs",
+      "status": "configured",
+      "url": "https://www.sec.gov/search-filings/edgar-application-programming-interfaces"
+    }
+  ]
+}

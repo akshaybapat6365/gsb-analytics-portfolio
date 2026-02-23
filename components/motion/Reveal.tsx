@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, type Transition } from "framer-motion";
+import { motion, type Transition, useReducedMotion } from "framer-motion";
 import { cn } from "@/lib/cn";
 
 type RevealProps = {
@@ -16,16 +16,20 @@ const transition: Transition = {
 };
 
 export function Reveal({ children, className, delay = 0, y = 18 }: RevealProps) {
+  const reducedMotion = useReducedMotion();
+
+  if (reducedMotion) {
+    return <div className={cn(className)}>{children}</div>;
+  }
+
   return (
     <motion.div
       className={cn(className)}
       initial={{ opacity: 0, y }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.35 }}
+      animate={{ opacity: 1, y: 0 }}
       transition={{ ...transition, delay }}
     >
       {children}
     </motion.div>
   );
 }
-

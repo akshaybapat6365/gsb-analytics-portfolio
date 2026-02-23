@@ -1,0 +1,35 @@
+{
+  "generatedAt": "2026-02-19T20:21:11+00:00",
+  "knownLimitations": [
+    "Subscriber-level viewership and churn attribution data are largely commercial/restricted."
+  ],
+  "missingOrStaleSignals": [],
+  "overallStatus": "ok",
+  "projectSlug": "netflix-roi",
+  "projectTitle": "Netflix Content ROI Autopsy",
+  "runId": "real-20260219202020",
+  "scores": {
+    "components": {
+      "coverage": 100.0,
+      "freshness": 95.0,
+      "modelDepth": 100.0,
+      "provenance": 100.0
+    },
+    "finalScore": 95.62,
+    "openDataAvailability": 85.5,
+    "rubric": {
+      "coverage": 30,
+      "freshness": 20,
+      "modelDepth": 30,
+      "provenance": 20
+    },
+    "tier": "excellent",
+    "weightedQuality": 99.0
+  },
+  "signalSummary": {
+    "okRequiredSignals": 2,
+    "requiredSignals": 2,
+    "staleRequiredSignals": 0,
+    "unavailableRequiredSignals": 0
+  }
+}

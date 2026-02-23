@@ -1,0 +1,319 @@
+{
+  "baseUrl": "http://localhost:3401",
+  "rounds": 1,
+  "strict": false,
+  "generatedAt": "2026-02-23T00:40:49.156Z",
+  "routes": [
+    {
+      "route": "/",
+      "rounds": [
+        {
+          "round": 1,
+          "url": "http://localhost:3401/",
+          "diagnostics": {
+            "h1": "Data products for operating decisions, not dashboard theater.",
+            "chartCount": 10,
+            "loadingTextVisible": false,
+            "title": "Vaibhav Bapat | Decision Intelligence Portfolio",
+            "minFunctionalFontPx": 10,
+            "kpiValueMaxPx": 44,
+            "heroCopyLeftFirst": true,
+            "evidenceBadgeCount": 12,
+            "provenanceCount": 6,
+            "cardCtaCount": 6,
+            "chartAxisCount": 2,
+            "chartLegendCount": 3,
+            "dataIntegrityVisible": true
+          },
+          "scores": {
+            "readabilityScore": 85,
+            "affordanceScore": 100,
+            "evidenceScore": 100,
+            "chartClarityScore": 100
+          },
+          "failures": [
+            "small_functional_text"
+          ],
+          "screenshotPaths": [
+            "tmp/visual-loops/2026-02-23T00-40-48.493Z/home/round-01-desktop.png",
+            "tmp/visual-loops/2026-02-23T00-40-48.493Z/home/round-01-mobile.png"
+          ],
+          "consoleErrors": [],
+          "pass": false
+        }
+      ]
+    },
+    {
+      "route": "/projects",
+      "rounds": [
+        {
+          "round": 1,
+          "url": "http://localhost:3401/projects",
+          "diagnostics": {
+            "h1": "Interactive decision war rooms",
+            "chartCount": 3,
+            "loadingTextVisible": false,
+            "title": "Projects | Vaibhav Bapat",
+            "minFunctionalFontPx": 10,
+            "kpiValueMaxPx": 0,
+            "heroCopyLeftFirst": true,
+            "evidenceBadgeCount": 0,
+            "provenanceCount": 0,
+            "cardCtaCount": 0,
+            "chartAxisCount": 0,
+            "chartLegendCount": 0,
+            "dataIntegrityVisible": true
+          },
+          "scores": {
+            "readabilityScore": 96,
+            "affordanceScore": 100,
+            "evidenceScore": 100,
+            "chartClarityScore": 100
+          },
+          "failures": [],
+          "screenshotPaths": [
+            "tmp/visual-loops/2026-02-23T00-40-48.493Z/projects/round-01-desktop.png",
+            "tmp/visual-loops/2026-02-23T00-40-48.493Z/projects/round-01-mobile.png"
+          ],
+          "consoleErrors": [],
+          "pass": true
+        }
+      ]
+    },
+    {
+      "route": "/projects/ord-lga-price-war",
+      "rounds": [
+        {
+          "round": 1,
+          "url": "http://localhost:3401/projects/ord-lga-price-war",
+          "diagnostics": {
+            "h1": "United vs. Delta:ORD–LGA price war simulator",
+            "chartCount": 10,
+            "loadingTextVisible": false,
+            "title": "ORD–LGA Price War Simulator | Vaibhav Bapat",
+            "minFunctionalFontPx": 10,
+            "kpiValueMaxPx": 44,
+            "heroCopyLeftFirst": true,
+            "evidenceBadgeCount": 1,
+            "provenanceCount": 0,
+            "cardCtaCount": 0,
+            "chartAxisCount": 0,
+            "chartLegendCount": 0,
+            "dataIntegrityVisible": true
+          },
+          "scores": {
+            "readabilityScore": 100,
+            "affordanceScore": 100,
+            "evidenceScore": 100,
+            "chartClarityScore": 100
+          },
+          "failures": [],
+          "screenshotPaths": [
+            "tmp/visual-loops/2026-02-23T00-40-48.493Z/projects_ord-lga-price-war/round-01-desktop.png",
+            "tmp/visual-loops/2026-02-23T00-40-48.493Z/projects_ord-lga-price-war/round-01-mobile.png"
+          ],
+          "consoleErrors": [],
+          "pass": true
+        }
+      ]
+    },
+    {
+      "route": "/projects/fraud-radar",
+      "rounds": [
+        {
+          "round": 1,
+          "url": "http://localhost:3401/projects/fraud-radar",
+          "diagnostics": {
+            "h1": "Fraud Radar:forensic pre-collapse signal board",
+            "chartCount": 9,
+            "loadingTextVisible": false,
+            "title": "Fraud Radar | Vaibhav Bapat",
+            "minFunctionalFontPx": 10,
+            "kpiValueMaxPx": 44,
+            "heroCopyLeftFirst": true,
+            "evidenceBadgeCount": 1,
+            "provenanceCount": 0,
+            "cardCtaCount": 0,
+            "chartAxisCount": 0,
+            "chartLegendCount": 0,
+            "dataIntegrityVisible": true
+          },
+          "scores": {
+            "readabilityScore": 100,
+            "affordanceScore": 100,
+            "evidenceScore": 100,
+            "chartClarityScore": 100
+          },
+          "failures": [],
+          "screenshotPaths": [
+            "tmp/visual-loops/2026-02-23T00-40-48.493Z/projects_fraud-radar/round-01-desktop.png",
+            "tmp/visual-loops/2026-02-23T00-40-48.493Z/projects_fraud-radar/round-01-mobile.png"
+          ],
+          "consoleErrors": [],
+          "pass": true
+        }
+      ]
+    },
+    {
+      "route": "/projects/target-shrink",
+      "rounds": [
+        {
+          "round": 1,
+          "url": "http://localhost:3401/projects/target-shrink",
+          "diagnostics": {
+            "h1": "Target Shrink Simulator:operations floor intervention engine",
+            "chartCount": 10,
+            "loadingTextVisible": false,
+            "title": "Target Shrink Simulator | Vaibhav Bapat",
+            "minFunctionalFontPx": 10,
+            "kpiValueMaxPx": 44,
+            "heroCopyLeftFirst": true,
+            "evidenceBadgeCount": 1,
+            "provenanceCount": 0,
+            "cardCtaCount": 0,
+            "chartAxisCount": 0,
+            "chartLegendCount": 0,
+            "dataIntegrityVisible": true
+          },
+          "scores": {
+            "readabilityScore": 100,
+            "affordanceScore": 100,
+            "evidenceScore": 100,
+            "chartClarityScore": 100
+          },
+          "failures": [],
+          "screenshotPaths": [
+            "tmp/visual-loops/2026-02-23T00-40-48.493Z/projects_target-shrink/round-01-desktop.png",
+            "tmp/visual-loops/2026-02-23T00-40-48.493Z/projects_target-shrink/round-01-mobile.png"
+          ],
+          "consoleErrors": [],
+          "pass": true
+        }
+      ]
+    },
+    {
+      "route": "/projects/starbucks-pivot",
+      "rounds": [
+        {
+          "round": 1,
+          "url": "http://localhost:3401/projects/starbucks-pivot",
+          "diagnostics": {
+            "h1": "Starbucks Pivot:geo-strategy operating board",
+            "chartCount": 9,
+            "loadingTextVisible": false,
+            "title": "Starbucks Suburban Pivot | Vaibhav Bapat",
+            "minFunctionalFontPx": 10,
+            "kpiValueMaxPx": 44,
+            "heroCopyLeftFirst": true,
+            "evidenceBadgeCount": 1,
+            "provenanceCount": 0,
+            "cardCtaCount": 0,
+            "chartAxisCount": 0,
+            "chartLegendCount": 0,
+            "dataIntegrityVisible": true
+          },
+          "scores": {
+            "readabilityScore": 100,
+            "affordanceScore": 100,
+            "evidenceScore": 100,
+            "chartClarityScore": 100
+          },
+          "failures": [],
+          "screenshotPaths": [
+            "tmp/visual-loops/2026-02-23T00-40-48.493Z/projects_starbucks-pivot/round-01-desktop.png",
+            "tmp/visual-loops/2026-02-23T00-40-48.493Z/projects_starbucks-pivot/round-01-mobile.png"
+          ],
+          "consoleErrors": [],
+          "pass": true
+        }
+      ]
+    },
+    {
+      "route": "/projects/tesla-nacs",
+      "rounds": [
+        {
+          "round": 1,
+          "url": "http://localhost:3401/projects/tesla-nacs",
+          "diagnostics": {
+            "h1": "Tesla NACS War Board:corridor build-order simulator",
+            "chartCount": 8,
+            "loadingTextVisible": false,
+            "title": "Tesla NACS War Game | Vaibhav Bapat",
+            "minFunctionalFontPx": 10,
+            "kpiValueMaxPx": 44,
+            "heroCopyLeftFirst": true,
+            "evidenceBadgeCount": 1,
+            "provenanceCount": 0,
+            "cardCtaCount": 0,
+            "chartAxisCount": 0,
+            "chartLegendCount": 0,
+            "dataIntegrityVisible": true
+          },
+          "scores": {
+            "readabilityScore": 100,
+            "affordanceScore": 100,
+            "evidenceScore": 100,
+            "chartClarityScore": 100
+          },
+          "failures": [],
+          "screenshotPaths": [
+            "tmp/visual-loops/2026-02-23T00-40-48.493Z/projects_tesla-nacs/round-01-desktop.png",
+            "tmp/visual-loops/2026-02-23T00-40-48.493Z/projects_tesla-nacs/round-01-mobile.png"
+          ],
+          "consoleErrors": [],
+          "pass": true
+        }
+      ]
+    },
+    {
+      "route": "/projects/netflix-roi",
+      "rounds": [
+        {
+          "round": 1,
+          "url": "http://localhost:3401/projects/netflix-roi",
+          "diagnostics": {
+            "h1": "Netflix ROI Autopsy:capital committee decision deck",
+            "chartCount": 8,
+            "loadingTextVisible": false,
+            "title": "Netflix Content ROI Autopsy | Vaibhav Bapat",
+            "minFunctionalFontPx": 10,
+            "kpiValueMaxPx": 44,
+            "heroCopyLeftFirst": true,
+            "evidenceBadgeCount": 1,
+            "provenanceCount": 0,
+            "cardCtaCount": 0,
+            "chartAxisCount": 0,
+            "chartLegendCount": 0,
+            "dataIntegrityVisible": true
+          },
+          "scores": {
+            "readabilityScore": 100,
+            "affordanceScore": 100,
+            "evidenceScore": 100,
+            "chartClarityScore": 100
+          },
+          "failures": [],
+          "screenshotPaths": [
+            "tmp/visual-loops/2026-02-23T00-40-48.493Z/projects_netflix-roi/round-01-desktop.png",
+            "tmp/visual-loops/2026-02-23T00-40-48.493Z/projects_netflix-roi/round-01-mobile.png"
+          ],
+          "consoleErrors": [],
+          "pass": true
+        }
+      ]
+    }
+  ],
+  "summary": {
+    "totalRounds": 8,
+    "failedRounds": 1,
+    "failedReasonsByType": {
+      "small_functional_text": 1
+    },
+    "averageScores": {
+      "readabilityScore": 97.63,
+      "affordanceScore": 100,
+      "evidenceScore": 100,
+      "chartClarityScore": 100
+    }
+  }
+}

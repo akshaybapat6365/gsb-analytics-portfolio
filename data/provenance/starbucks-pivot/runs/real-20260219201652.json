@@ -1,0 +1,91 @@
+{
+  "generatedAt": "2026-02-19T20:16:52+00:00",
+  "meta": {
+    "generatedAt": "2026-02-19T20:16:52+00:00",
+    "modules": {
+      "denver_remote_share": {
+        "provenance": {
+          "asOf": "2023",
+          "fetchedAt": "2026-02-19T20:16:54+00:00",
+          "note": "Denver MSA remote-work commuter share",
+          "source": "census:acs1:B08006"
+        },
+        "status": "ok"
+      },
+      "sbux_30d_return": {
+        "provenance": {
+          "asOf": "2026-02-19",
+          "fetchedAt": "2026-02-19T20:16:52+00:00",
+          "note": "30d total return",
+          "source": "stooq:SBUX"
+        },
+        "status": "ok"
+      }
+    },
+    "overallStatus": "ok",
+    "policyDecision": "Strict real-feed mode with stale-real cache continuity.",
+    "policyMode": "strict-real",
+    "runId": "real-20260219201652"
+  },
+  "mode": "open-only",
+  "projectSlug": "starbucks-pivot",
+  "projectTitle": "Starbucks Suburban Pivot",
+  "qualityRubric": {
+    "coverage": 30,
+    "freshness": 20,
+    "modelDepth": 30,
+    "provenance": 20
+  },
+  "runId": "real-20260219201652",
+  "sourceStatuses": [
+    {
+      "expectedSignalIds": [
+        "denver_remote_share"
+      ],
+      "id": "census_denver_remote",
+      "kind": "commute_primary",
+      "label": "Census ACS remote commuter share (Denver MSA)",
+      "matchedSignalStatuses": [
+        {
+          "id": "denver_remote_share",
+          "reasonCode": null,
+          "status": "ok"
+        }
+      ],
+      "opennessScore": 95,
+      "sourceKey": "census:acs1:B08006",
+      "status": "ok",
+      "url": "https://api.census.gov/data/2023/acs/acs1"
+    },
+    {
+      "expectedSignalIds": [
+        "sbux_30d_return"
+      ],
+      "id": "stooq_sbux",
+      "kind": "market_context",
+      "label": "Stooq SBUX daily prices",
+      "matchedSignalStatuses": [
+        {
+          "id": "sbux_30d_return",
+          "reasonCode": null,
+          "status": "ok"
+        }
+      ],
+      "opennessScore": 82,
+      "sourceKey": "stooq:SBUX",
+      "status": "ok",
+      "url": "https://stooq.com/"
+    },
+    {
+      "expectedSignalIds": [],
+      "id": "lodes_reference",
+      "kind": "geo_commute_reference",
+      "label": "LEHD/LODES download access",
+      "matchedSignalStatuses": [],
+      "opennessScore": 90,
+      "sourceKey": "census:lodes",
+      "status": "reference",
+      "url": "https://lehd.ces.census.gov/php/inc_lodesDownloadTool.php"
+    }
+  ]
+}

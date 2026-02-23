@@ -75,7 +75,7 @@ export function MarketPulseHero({
     <section className="neo-panel overflow-hidden p-4 sm:p-6">
       <div className="flex flex-wrap items-center justify-between gap-3">
         <div>
-          <p className="font-feature text-xs uppercase tracking-[0.22em] text-cyan-100/80">
+          <p className="font-feature text-xs uppercase tracking-[0.22em] text-amber-100/80">
             Market Pulse Engine
           </p>
           <p className="mt-2 font-mono text-sm text-slate-300">
@@ -86,7 +86,7 @@ export function MarketPulseHero({
           <span className="rounded-full border border-slate-300/25 bg-slate-400/10 px-3 py-1 font-mono uppercase tracking-[0.14em] text-slate-200">
             Actual
           </span>
-          <span className="rounded-full border border-cyan-300/35 bg-cyan-300/12 px-3 py-1 font-mono uppercase tracking-[0.14em] text-cyan-100">
+          <span className="rounded-full border border-amber-300/35 bg-amber-300/12 px-3 py-1 font-mono uppercase tracking-[0.14em] text-amber-100">
             Policy
           </span>
           <span className="rounded-full border border-amber-300/30 bg-amber-300/10 px-3 py-1 font-mono uppercase tracking-[0.14em] text-amber-100">
@@ -98,8 +98,8 @@ export function MarketPulseHero({
       <svg viewBox={`0 0 ${width} ${height}`} className="mt-4 h-auto w-full">
         <defs>
           <linearGradient id="ord-regret-fill" x1="0%" x2="0%" y1="0%" y2="100%">
-            <stop offset="0%" stopColor="rgba(56,189,248,0.40)" />
-            <stop offset="100%" stopColor="rgba(56,189,248,0.02)" />
+            <stop offset="0%" stopColor="rgba(171,78,54,0.34)" />
+            <stop offset="100%" stopColor="rgba(171,78,54,0.04)" />
           </linearGradient>
         </defs>
 
@@ -112,22 +112,22 @@ export function MarketPulseHero({
               x2={width - margin.right}
               y1={yy}
               y2={yy}
-              stroke="rgba(148,163,184,0.16)"
+              stroke="rgba(182,169,151,0.16)"
               strokeDasharray="4 7"
             />
           );
         })}
 
         <path d={regretArea(rows) ?? ""} fill="url(#ord-regret-fill)" />
-        <path d={actualLine(rows) ?? ""} fill="none" stroke="rgba(148,163,184,0.95)" strokeWidth={2.1} />
+        <path d={actualLine(rows) ?? ""} fill="none" stroke="rgba(182,169,151,0.95)" strokeWidth={2.1} />
         <path
           d={competitorLine(rows) ?? ""}
           fill="none"
-          stroke="rgba(251,191,36,0.85)"
+          stroke="rgba(139,107,62,0.85)"
           strokeWidth={2.2}
           strokeDasharray="8 6"
         />
-        <path d={policyLine(rows) ?? ""} fill="none" stroke="rgba(34,211,238,1)" strokeWidth={3} />
+        <path d={policyLine(rows) ?? ""} fill="none" stroke="rgba(139,107,62,1)" strokeWidth={3} />
 
         {rows
           .filter((row) => row.shock > 0)
@@ -137,8 +137,8 @@ export function MarketPulseHero({
               cx={x(row.index)}
               cy={y(row.policyPrice)}
               r={4 + row.shock * 4}
-              fill="rgba(251,113,133,0.18)"
-              stroke="rgba(251,113,133,0.95)"
+              fill="rgba(157,49,49,0.18)"
+              stroke="rgba(157,49,49,0.95)"
               strokeWidth={1.5}
             />
           ))}
@@ -153,7 +153,7 @@ export function MarketPulseHero({
               stroke="rgba(226,232,240,0.56)"
               strokeDasharray="4 6"
             />
-            <circle cx={x(selected.index)} cy={y(selected.policyPrice)} r={5.5} fill="rgba(34,211,238,1)" />
+            <circle cx={x(selected.index)} cy={y(selected.policyPrice)} r={5.5} fill="rgba(139,107,62,1)" />
           </g>
         ) : null}
 
@@ -161,7 +161,7 @@ export function MarketPulseHero({
           x={margin.left}
           y={height - 16}
           fontSize={11}
-          fill="rgba(148,163,184,0.92)"
+          fill="rgba(182,169,151,0.92)"
           style={{ letterSpacing: "0.14em", textTransform: "uppercase" }}
         >
           Q2 timeline
@@ -170,7 +170,7 @@ export function MarketPulseHero({
           x={margin.left}
           y={margin.top - 8}
           fontSize={11}
-          fill="rgba(148,163,184,0.92)"
+          fill="rgba(182,169,151,0.92)"
           style={{ letterSpacing: "0.14em", textTransform: "uppercase" }}
         >
           Fare ($)
@@ -202,7 +202,7 @@ export function MarketPulseHero({
           <p className="font-mono text-[10px] uppercase tracking-[0.17em] text-slate-400">
             UAL Share (Avg)
           </p>
-          <p className="mt-2 font-mono text-xl text-cyan-200">{formatPct(avgShare, { digits: 0 })}</p>
+          <p className="mt-2 font-mono text-xl text-amber-200">{formatPct(avgShare, { digits: 0 })}</p>
         </div>
         <div className="rounded-2xl border border-white/10 bg-black/25 p-4">
           <p className="font-mono text-[10px] uppercase tracking-[0.17em] text-slate-400">

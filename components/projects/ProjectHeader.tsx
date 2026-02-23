@@ -6,14 +6,16 @@ export function ProjectHeader({
 }: {
   project: Project;
 }) {
-  const tone =
-    project.accent === "cyan"
-      ? "cyan"
-      : project.accent === "emerald"
-        ? "emerald"
-        : project.accent === "crimson"
-          ? "crimson"
-          : "amber";
+  const toneMap: Record<Project["accent"], "neutral" | "cyan" | "emerald" | "crimson" | "amber"> = {
+    "market-competition": "amber",
+    "forensic-risk": "crimson",
+    "retail-operations": "amber",
+    "geo-portfolio": "emerald",
+    "infrastructure-strategy": "cyan",
+    "content-capital": "amber",
+  };
+
+  const tone = toneMap[project.accent];
 
   return (
     <header className="space-y-4">
@@ -48,4 +50,3 @@ export function ProjectHeader({
     </header>
   );
 }
-
