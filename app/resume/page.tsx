@@ -1,8 +1,14 @@
+import type { Metadata } from "next";
 import { resumeData } from "@/lib/resume";
+import { buildPageMetadata } from "@/lib/seo";
 
-export const metadata = {
+export const metadata: Metadata = buildPageMetadata({
   title: "Resume",
-};
+  description:
+    "Decision science, analytics product, and data engineering experience with measurable project impact.",
+  path: "/resume",
+  theme: "target-shrink",
+});
 
 const skillSections = [
   { label: "Programming", values: resumeData.skills.programming },

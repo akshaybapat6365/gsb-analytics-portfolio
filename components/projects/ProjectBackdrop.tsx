@@ -6,12 +6,12 @@ type ProjectBackdropProps = {
 };
 
 const slugTint: Record<string, string> = {
-  "ord-lga-price-war": "from-[rgba(126,52,34,0.5)] via-transparent to-[rgba(162,124,74,0.45)]",
-  "fraud-radar": "from-[rgba(123,31,31,0.56)] via-transparent to-[rgba(145,98,51,0.4)]",
-  "target-shrink": "from-[rgba(142,92,32,0.56)] via-transparent to-[rgba(125,58,45,0.44)]",
-  "starbucks-pivot": "from-[rgba(68,87,58,0.52)] via-transparent to-[rgba(130,104,66,0.44)]",
-  "tesla-nacs": "from-[rgba(74,70,66,0.54)] via-transparent to-[rgba(133,80,52,0.42)]",
-  "netflix-roi": "from-[rgba(97,31,31,0.56)] via-transparent to-[rgba(154,114,60,0.44)]",
+  "ord-lga-price-war": "from-[rgba(246,178,74,0.48)] via-transparent to-[rgba(52,211,153,0.42)]",
+  "fraud-radar": "from-[rgba(255,45,170,0.54)] via-transparent to-[rgba(255,194,71,0.4)]",
+  "target-shrink": "from-[rgba(245,200,75,0.52)] via-transparent to-[rgba(88,196,221,0.4)]",
+  "starbucks-pivot": "from-[rgba(47,191,113,0.5)] via-transparent to-[rgba(242,194,107,0.42)]",
+  "tesla-nacs": "from-[rgba(0,229,255,0.52)] via-transparent to-[rgba(166,255,0,0.4)]",
+  "netflix-roi": "from-[rgba(229,9,20,0.54)] via-transparent to-[rgba(212,175,55,0.42)]",
 };
 
 export function ProjectBackdrop({ slug, className }: ProjectBackdropProps) {

@@ -179,12 +179,12 @@ function buildKpis(input: Project[]): HomeKpiItem[] {
 
 function buildEvidenceBadge(level: HomepageEvidenceLevel): HomeEvidenceBadge {
   if (level === "real") {
-    return { level, label: "REAL", icon: "✓", tone: "real" };
+    return { level, label: "REAL", icon: "●", tone: "real" };
   }
   if (level === "mixed") {
-    return { level, label: "MIXED", icon: "⚠", tone: "mixed" };
+    return { level, label: "MIXED", icon: "▲", tone: "mixed" };
   }
-  return { level, label: "MODELED", icon: "🔬", tone: "modeled" };
+  return { level, label: "MODELED", icon: "■", tone: "modeled" };
 }
 
 function validateProjectHomepage(project: Project) {

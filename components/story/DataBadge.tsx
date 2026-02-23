@@ -18,6 +18,12 @@ const labelByStatus: Record<DataStatus, string> = {
   unavailable: "Live feed: unavailable",
 };
 
+const symbolByStatus: Record<DataStatus, string> = {
+  ok: "●",
+  stale: "▲",
+  unavailable: "■",
+};
+
 export function DataBadge({ status, className }: DataBadgeProps) {
   return (
     <span
@@ -27,6 +33,7 @@ export function DataBadge({ status, className }: DataBadgeProps) {
         className,
       )}
     >
+      <span aria-hidden="true">{symbolByStatus[status]}</span>
       {labelByStatus[status]}
     </span>
   );

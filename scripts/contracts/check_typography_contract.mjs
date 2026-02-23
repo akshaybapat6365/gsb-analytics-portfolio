@@ -6,7 +6,7 @@ import path from "node:path";
 const rootDir = process.cwd();
 const layoutPath = path.join(rootDir, "app", "layout.tsx");
 const scanRoots = ["app", "components", "lib"];
-const bannedPatterns = [/\bInter\s*\(/, /\bRoboto\s*\(/, /\bArial\b/i];
+const bannedPatterns = [/\bRoboto\s*\(/, /\bArial\b/i];
 const errors = [];
 
 function readUtf8(filePath) {
@@ -19,13 +19,41 @@ if (!fs.existsSync(layoutPath)) {
 }
 
 const layoutSource = readUtf8(layoutPath);
-for (const requiredFont of ["Instrument_Serif", "Instrument_Sans", "IBM_Plex_Mono"]) {
+for (const requiredFont of [
+  "Playfair_Display",
+  "DM_Sans",
+  "Crimson_Pro",
+  "Space_Grotesk",
+  "Oswald",
+  "Inter",
+  "Lora",
+  "Source_Sans_3",
+  "Rajdhani",
+  "Outfit",
+  "Merriweather",
+  "Nunito_Sans",
+  "IBM_Plex_Mono",
+]) {
   if (!layoutSource.includes(requiredFont)) {
     errors.push(`app/layout.tsx missing required font import: ${requiredFont}`);
   }
 }
 
-for (const requiredVar of ["--font-instrument-serif", "--font-instrument-sans", "--font-ibm-plex-mono"]) {
+for (const requiredVar of [
+  "--font-display-ord",
+  "--font-ui-ord",
+  "--font-display-fraud",
+  "--font-ui-fraud",
+  "--font-display-shrink",
+  "--font-ui-shrink",
+  "--font-display-starbucks",
+  "--font-ui-starbucks",
+  "--font-display-tesla",
+  "--font-ui-tesla",
+  "--font-display-netflix",
+  "--font-ui-netflix",
+  "--font-mono-core",
+]) {
   if (!layoutSource.includes(requiredVar)) {
     errors.push(`app/layout.tsx missing required font variable: ${requiredVar}`);
   }

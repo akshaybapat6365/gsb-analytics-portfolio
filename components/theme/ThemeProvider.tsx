@@ -19,6 +19,7 @@ export function ThemeProvider({ slug, children }: ThemeProviderProps) {
       style={themeToStyleVars(theme)}
     >
       <div aria-hidden="true" className="project-backdrop absolute inset-0 -z-10" />
+      <div aria-hidden="true" className="project-motion-layer absolute inset-0 -z-10" />
       {children}
     </div>
   );

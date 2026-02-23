@@ -15,7 +15,14 @@ Next.js (App Router) portfolio with 6 interactive “war-room” dashboards:
 - Apache ECharts + deck.gl (MapLibre)
 - Offline data/model pipeline exporting static JSON into `public/data/**`
 
-Primary typography: **Instrument Serif** (paired with **Instrument Sans** for UI).
+Project-specific typography via `next/font/google`:
+- ORD-LGA: Playfair Display + DM Sans
+- Fraud: Crimson Pro + Space Grotesk
+- Target Shrink: Oswald + Inter
+- Starbucks Pivot: Lora + Source Sans 3
+- Tesla NACS: Rajdhani + Outfit
+- Netflix ROI: Merriweather + Nunito Sans
+- Shared mono: IBM Plex Mono
 
 ## Prereqs
 - Node: `20.x` (recommended). Repo includes `.nvmrc` and `package.json#engines`.

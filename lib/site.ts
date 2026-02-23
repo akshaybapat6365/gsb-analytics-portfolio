@@ -22,6 +22,7 @@ export const site = {
   role: "Decision Science · Business Analytics",
   tagline: "Interactive simulation products for pricing, risk, and operating strategy",
   location: "United States",
+  url: "https://vb-labs.vercel.app",
   dataPolicy: runtimeDataPolicy,
   links: {
     email: "mailto:vaibhavb@worktechmail.com",

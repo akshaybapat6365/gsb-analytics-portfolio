@@ -1,4 +1,5 @@
 import { cn } from "@/lib/cn";
+import { MetricCount } from "@/components/motion/MetricCount";
 
 type KpiCardProps = {
   label: string;
@@ -6,6 +7,8 @@ type KpiCardProps = {
   hint?: string;
   accent?: "cyan" | "emerald" | "crimson" | "amber";
   className?: string;
+  countValue?: number;
+  countPad?: number;
 };
 
 const accentClass: Record<NonNullable<KpiCardProps["accent"]>, string> = {
@@ -21,6 +24,8 @@ export function KpiCard({
   hint,
   accent = "cyan",
   className,
+  countValue,
+  countPad,
 }: KpiCardProps) {
   const longTextValue =
     typeof value === "string" && value.trim().length > 18;
@@ -49,7 +54,11 @@ export function KpiCard({
           accentClass[accent],
         )}
       >
-        {value}
+        {typeof countValue === "number" ? (
+          <MetricCount value={countValue} pad={countPad} />
+        ) : (
+          value
+        )}
       </div>
       {hint ? <p className="mt-2 text-[14px] leading-6 text-slate-200 sm:text-[15px] sm:leading-7">{hint}</p> : null}
     </div>

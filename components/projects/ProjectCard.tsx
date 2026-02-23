@@ -9,7 +9,7 @@ const accentRing: Record<Project["accent"], string> = {
   "forensic-risk": "hover:border-rose-300/35",
   "retail-operations": "hover:border-amber-300/35",
   "geo-portfolio": "hover:border-emerald-300/35",
-  "infrastructure-strategy": "hover:border-slate-300/35",
+  "infrastructure-strategy": "hover:border-cyan-300/35",
   "content-capital": "hover:border-amber-300/35",
 };
 
@@ -28,7 +28,7 @@ const accentGlow: Record<Project["accent"], string> = {
   "forensic-risk": "from-rose-300/26 via-rose-500/4 to-transparent",
   "retail-operations": "from-amber-300/30 via-amber-500/4 to-transparent",
   "geo-portfolio": "from-emerald-300/30 via-emerald-500/4 to-transparent",
-  "infrastructure-strategy": "from-slate-300/25 via-slate-500/4 to-transparent",
+  "infrastructure-strategy": "from-cyan-300/30 via-lime-300/6 to-transparent",
   "content-capital": "from-amber-300/30 via-amber-500/4 to-transparent",
 };
 
@@ -37,27 +37,27 @@ const accentText: Record<Project["accent"], string> = {
   "forensic-risk": "text-rose-100",
   "retail-operations": "text-amber-100",
   "geo-portfolio": "text-emerald-100",
-  "infrastructure-strategy": "text-slate-100",
+  "infrastructure-strategy": "text-cyan-100",
   "content-capital": "text-amber-100",
 };
 
 function evidenceBadge(project: Project) {
   if (project.homepage.evidenceLevel === "real") {
     return {
-      icon: "✓",
+      icon: "●",
       label: "Real",
       className: "border-emerald-300/45 bg-emerald-300/15 text-emerald-100",
     };
   }
   if (project.homepage.evidenceLevel === "mixed") {
     return {
-      icon: "⚠",
+      icon: "▲",
       label: "Mixed",
       className: "border-amber-300/45 bg-amber-300/15 text-amber-100",
     };
   }
   return {
-    icon: "🔬",
+    icon: "■",
     label: "Modeled",
     className: "border-rose-300/45 bg-rose-300/14 text-rose-100",
   };

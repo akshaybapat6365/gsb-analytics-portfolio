@@ -45,24 +45,24 @@ function patternCss(theme: ThemePack): string {
 }
 
 const displayStack = {
-  ord: '"PP Editorial New", "S\u00f6hne", "Instrument Serif", serif',
-  fraud: '"Freigeist", "S\u00f6hne", "Instrument Serif", serif',
-  shrink: '"FK Grotesk Neue", "S\u00f6hne", "Instrument Sans", sans-serif',
-  starbucks: '"PP Editorial New", "Graphik", "Instrument Serif", serif',
-  tesla: '"Neue Haas Grotesk", "GT America", "Instrument Sans", sans-serif',
-  netflix: '"Times Now", "Messina Sans", "Instrument Serif", serif',
+  ord: 'var(--font-display-ord), "Playfair Display", serif',
+  fraud: 'var(--font-display-fraud), "Crimson Pro", serif',
+  shrink: 'var(--font-display-shrink), "Oswald", sans-serif',
+  starbucks: 'var(--font-display-starbucks), "Lora", serif',
+  tesla: 'var(--font-display-tesla), "Rajdhani", sans-serif',
+  netflix: 'var(--font-display-netflix), "Merriweather", serif',
 } as const;
 
 const uiStack = {
-  ord: '"S\u00f6hne", "Graphik", "Instrument Sans", sans-serif',
-  fraud: '"Diatype", "Untitled Sans", "Instrument Sans", sans-serif',
-  shrink: '"FK Grotesk Neue", "Switzer", "Instrument Sans", sans-serif',
-  starbucks: '"Messina Sans", "Basel Grotesk", "Instrument Sans", sans-serif',
-  tesla: '"GT America", "Aeonik", "Instrument Sans", sans-serif',
-  netflix: '"Suisse Int\'l", "TWK Lausanne", "Instrument Sans", sans-serif',
+  ord: 'var(--font-ui-ord), "DM Sans", sans-serif',
+  fraud: 'var(--font-ui-fraud), "Space Grotesk", sans-serif',
+  shrink: 'var(--font-ui-shrink), "Inter", sans-serif',
+  starbucks: 'var(--font-ui-starbucks), "Source Sans 3", sans-serif',
+  tesla: 'var(--font-ui-tesla), "Outfit", sans-serif',
+  netflix: 'var(--font-ui-netflix), "Nunito Sans", sans-serif',
 } as const;
 
-const monoStack = '"GT America Mono", "Geist Mono", "IBM Plex Mono", monospace';
+const monoStack = 'var(--font-mono-core), "IBM Plex Mono", monospace';
 
 export const themePacks: Record<ProjectSlug, ThemePack> = {
   "ord-lga-price-war": {

@@ -1,10 +1,16 @@
+import type { Metadata } from "next";
 import { Reveal } from "@/components/motion/Reveal";
 import { ProjectsIndexGrid } from "@/components/projects/ProjectsIndexGrid";
 import { projects } from "@/lib/projects/catalog";
+import { buildPageMetadata } from "@/lib/seo";
 
-export const metadata = {
-  title: "Projects",
-};
+export const metadata: Metadata = buildPageMetadata({
+  title: "Interactive Decision Simulators",
+  description:
+    "Six interactive strategy war rooms spanning pricing, fraud risk, retail operations, geospatial pivots, infrastructure planning, and content ROI.",
+  path: "/projects",
+  theme: "ord-lga-price-war",
+});
 
 export default function ProjectsIndexPage() {
   return (
