@@ -76,7 +76,7 @@ export function HomeProjectGrid({ cards }: HomeProjectGridProps) {
                 <div className="project-card-glow" aria-hidden="true" />
                 <div className="project-card-topline" aria-hidden="true" />
 
-                <p className="relative z-[1] font-mono text-[11px] uppercase tracking-[0.2em] text-slate-500">
+                <p className="project-method-pill relative z-[1] inline-flex items-center">
                   {domainBySlug[card.slug]}
                 </p>
 
@@ -87,11 +87,21 @@ export function HomeProjectGrid({ cards }: HomeProjectGridProps) {
                   {card.subtitle}
                 </p>
 
-                <div className="relative z-[1] mt-10">
-                  <p className="font-mono text-[11px] uppercase tracking-[0.16em] text-slate-500">
-                    {card.resultLabel}
-                  </p>
-                  <p className="mt-2 text-[36px] font-bold leading-[1.02] tracking-tight text-[rgba(var(--card-accent),0.98)]">
+                <div className="project-result-block relative z-[1] mt-12">
+                  <div className="flex items-start justify-between gap-3">
+                    <p className="font-mono text-[11px] uppercase tracking-[0.16em] text-slate-500">
+                      {card.resultLabel}
+                    </p>
+                    <span
+                      className={`${evidenceClass(card.evidenceLevel)} home-evidence-badge`}
+                      data-evidence-badge
+                      title={`${card.evidenceMeta}\n${card.provenanceLong}`}
+                    >
+                      <span aria-hidden="true">{card.evidenceBadge.icon}</span>
+                      <span>{card.evidenceBadge.label}</span>
+                    </span>
+                  </div>
+                  <p className="mt-3 text-[34px] font-bold leading-[1.02] tracking-tight text-[rgba(var(--card-accent),0.98)]">
                     {card.resultValue}
                   </p>
                   <p className="sr-only">{card.claimFraming}</p>
@@ -101,13 +111,8 @@ export function HomeProjectGrid({ cards }: HomeProjectGridProps) {
                   <span className="font-mono text-[12px] uppercase tracking-[0.14em] text-slate-200">
                     Explore →
                   </span>
-                  <span
-                    className={`${evidenceClass(card.evidenceLevel)} home-evidence-badge`}
-                    data-evidence-badge
-                    title={`${card.evidenceMeta}\n${card.provenanceLong}`}
-                  >
-                    <span aria-hidden="true">{card.evidenceBadge.icon}</span>
-                    <span>{card.evidenceBadge.label}</span>
+                  <span className="font-mono text-[10px] uppercase tracking-[0.16em] text-slate-500">
+                    {card.methodPlain}
                   </span>
                 </div>
               </Link>
