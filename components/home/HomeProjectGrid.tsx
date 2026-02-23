@@ -4,7 +4,6 @@ import Link from "next/link";
 import type { CSSProperties } from "react";
 import { motion, useReducedMotion } from "framer-motion";
 import type { HomeProjectCardVM } from "@/lib/viewmodels/home";
-import { HomeProjectGlyph } from "@/components/viz/home/HomeProjectGlyph";
 
 type HomeProjectGridProps = {
   cards: HomeProjectCardVM[];
@@ -18,105 +17,101 @@ function evidenceClass(level: HomeProjectCardVM["evidenceLevel"]) {
 
 const accentBySlug: Record<HomeProjectCardVM["slug"], string> = {
   "ord-lga-price-war": "246,178,74",
-  "fraud-radar": "255,45,170",
+  "fraud-radar": "220,60,180",
   "target-shrink": "245,200,75",
   "starbucks-pivot": "47,191,113",
-  "tesla-nacs": "0,229,255",
-  "netflix-roi": "229,9,20",
+  "tesla-nacs": "0,210,255",
+  "netflix-roi": "229,50,50",
+};
+
+const domainBySlug: Record<HomeProjectCardVM["slug"], string> = {
+  "ord-lga-price-war": "Pricing Strategy",
+  "fraud-radar": "Forensic Risk",
+  "target-shrink": "Retail Operations",
+  "starbucks-pivot": "Geo Portfolio",
+  "tesla-nacs": "Infrastructure",
+  "netflix-roi": "Capital Allocation",
 };
 
 export function HomeProjectGrid({ cards }: HomeProjectGridProps) {
   const reduceMotion = useReducedMotion();
 
   return (
-    <section id="projects" className="space-y-7 sm:space-y-8">
-      <div className="flex flex-wrap items-end justify-between gap-3">
+    <section id="projects" className="space-y-8 sm:space-y-10">
+      <div className="flex flex-wrap items-end justify-between gap-4">
         <div>
-          <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-slate-300">Projects</p>
-          <h2 className="mt-2 font-display text-[32px] leading-[1.03] text-slate-50 sm:text-[46px]">
+          <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-slate-500">Projects</p>
+          <h2 className="mt-2 font-display text-[32px] leading-[1.02] text-white sm:text-[46px]">
             The Work
           </h2>
         </div>
-        <span className="rounded-full border border-white/16 bg-white/[0.04] px-3 py-1 font-mono text-[11px] uppercase tracking-[0.14em] text-slate-300">
+        <span className="rounded-full border border-white/[0.08] bg-white/[0.02] px-3 py-1 font-mono text-[11px] uppercase tracking-[0.14em] text-slate-400">
           {cards.length} projects
         </span>
       </div>
 
-      <div className="grid gap-6 md:grid-cols-2">
+      <div className="grid gap-8 sm:gap-6 lg:grid-cols-3">
         {cards.map((card, idx) => {
-          const featured = idx === 0;
           const cardStyle = {
             "--card-accent": accentBySlug[card.slug],
           } as CSSProperties;
 
           return (
-            <motion.div
+            <motion.article
               key={card.slug}
-              className={featured ? "md:col-span-2" : undefined}
-              initial={reduceMotion ? undefined : { opacity: 0, y: 24 }}
+              initial={reduceMotion ? undefined : { opacity: 0, y: 16 }}
               whileInView={reduceMotion ? undefined : { opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-60px" }}
               transition={
                 reduceMotion
                   ? { duration: 0 }
-                  : { duration: 0.5, delay: idx * 0.08, ease: [0.22, 1, 0.36, 1] }
+                  : { duration: 0.45, delay: idx * 0.06, ease: [0.22, 1, 0.36, 1] }
               }
             >
               <Link
                 href={card.href}
                 style={cardStyle}
-                className="project-card group block rounded-3xl border border-white/18 bg-[rgba(14,14,22,0.84)] p-5 no-underline hover:no-underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[rgba(var(--card-accent),0.68)] sm:p-6"
+                className="project-card group relative block overflow-hidden rounded-2xl border border-white/[0.06] bg-[rgba(12,12,20,0.6)] p-6 no-underline backdrop-blur-sm hover:no-underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[rgba(var(--card-accent),0.55)] sm:p-7"
               >
-                <div className="flex flex-wrap items-center justify-between gap-2.5">
-                  <p className="rounded-full border border-white/16 bg-white/[0.04] px-2.5 py-1 font-mono text-[11px] uppercase tracking-[0.12em] text-slate-300">
-                    {card.methodPlain}
-                  </p>
-                </div>
+                <div className="project-card-glow" aria-hidden="true" />
+                <div className="project-card-topline" aria-hidden="true" />
 
-                <h3 className={`mt-4 leading-[1.1] text-slate-50 ${featured ? "text-[31px] font-semibold" : "text-[24px] font-semibold"}`}>
+                <p className="relative z-[1] font-mono text-[11px] uppercase tracking-[0.2em] text-slate-500">
+                  {domainBySlug[card.slug]}
+                </p>
+
+                <h3 className="relative z-[1] mt-4 text-[20px] font-semibold leading-[1.12] text-white sm:text-[22px]">
                   {card.title}
                 </h3>
-                <p className="mt-2 text-[15px] leading-7 text-slate-200">{card.subtitle}</p>
+                <p className="relative z-[1] mt-3 line-clamp-2 text-[14px] leading-6 text-slate-400">
+                  {card.subtitle}
+                </p>
 
-                <div className="mt-5 rounded-2xl border border-white/14 bg-black/34 px-4 py-3.5">
-                  <div className="flex flex-wrap items-center justify-between gap-2">
-                    <p className="font-mono text-[11px] uppercase tracking-[0.12em] text-slate-300">
-                      {card.resultLabel}
-                    </p>
-                    <span
-                      className={evidenceClass(card.evidenceLevel)}
-                      data-evidence-badge
-                      title={`${card.evidenceMeta}\n${card.provenanceLong}`}
-                    >
-                      <span aria-hidden="true">{card.evidenceBadge.icon}</span>
-                      <span>{card.evidenceBadge.label}</span>
-                    </span>
-                  </div>
-                  <p className="mt-2 text-[28px] font-semibold leading-[1.02] text-[rgba(var(--card-accent),0.98)]">
+                <div className="relative z-[1] mt-10">
+                  <p className="font-mono text-[11px] uppercase tracking-[0.16em] text-slate-500">
+                    {card.resultLabel}
+                  </p>
+                  <p className="mt-2 text-[36px] font-bold leading-[1.02] tracking-tight text-[rgba(var(--card-accent),0.98)]">
                     {card.resultValue}
                   </p>
-                  <p className="mt-1 text-[13px] leading-6 text-slate-200">{card.claimFraming}</p>
+                  <p className="sr-only">{card.claimFraming}</p>
                 </div>
 
-                <div className="mt-4">
-                  <HomeProjectGlyph
-                    vizType={card.vizType}
-                    series={card.spark}
-                    markerLabel={card.markerLabel}
-                    annotation={card.claim}
-                  />
-                </div>
-
-                <div className="mt-4 flex items-center justify-between rounded-xl border border-white/14 bg-white/[0.03] px-4 py-3 transition-colors duration-300 group-hover:border-[rgba(var(--card-accent),0.4)] group-hover:bg-white/[0.06]">
-                  <span className="font-mono text-[12px] uppercase tracking-[0.14em] text-slate-100">
-                    Open Simulator
+                <div className="relative z-[1] mt-8 flex items-center justify-between gap-3">
+                  <span className="font-mono text-[12px] uppercase tracking-[0.14em] text-slate-200">
+                    Explore →
                   </span>
-                  <span className="text-[20px] text-[rgba(var(--card-accent),0.95)] transition-transform duration-300 group-hover:translate-x-1">
-                    →
+                  <span
+                    className={`${evidenceClass(card.evidenceLevel)} home-evidence-badge`}
+                    data-evidence-badge
+                    title={`${card.evidenceMeta}\n${card.provenanceLong}`}
+                  >
+                    <span aria-hidden="true">{card.evidenceBadge.icon}</span>
+                    <span>{card.evidenceBadge.label}</span>
                   </span>
                 </div>
               </Link>
-            </motion.div>
+            </motion.article>
           );
         })}
       </div>
