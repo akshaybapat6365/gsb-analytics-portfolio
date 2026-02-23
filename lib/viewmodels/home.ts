@@ -43,7 +43,6 @@ export type HomeProjectCardVM = {
   slug: ProjectSlug;
   title: string;
   subtitle: string;
-  problem: string;
   methodPlain: string;
   resultLabel: string;
   resultValue: string;
@@ -51,9 +50,7 @@ export type HomeProjectCardVM = {
   claimFraming: string;
   evidenceLevel: HomepageEvidenceLevel;
   evidenceBadge: HomeEvidenceBadge;
-  source: string;
-  asOf: string;
-  provenanceShort: string;
+  evidenceMeta: string;
   provenanceLong: string;
   vizType: HomeVizType;
   spark: number[];
@@ -64,31 +61,13 @@ export type HomeProjectCardVM = {
 };
 
 export type HomeCredibilityVM = {
-  dataPolicy: string;
-  deliverables: string[];
-  validationSteps: string[];
-  audience: string[];
-  trustNotes: string[];
-  cta: { label: string; href: string };
+  trustMetrics: string[];
 };
 
 export type HomeHeroVM = {
   eyebrow: string;
   headline: string;
-  identityLine: string;
   subhead: string;
-  proofLine: string;
-  proofCards: Array<{ title: string; detail: string }>;
-  featured: {
-    title: string;
-    decision: string;
-    outputLabel: string;
-    outputValue: string;
-    evidenceLabel: string;
-    source: string;
-    asOf: string;
-    href: string;
-  };
   ctaPrimary: { label: string; href: string };
   ctaSecondary: { label: string; href: string };
   modes: HomeSignalMode[];
@@ -191,7 +170,6 @@ function validateProjectHomepage(project: Project) {
   const requiredFields = [
     project.homepage.homepageTitle,
     project.homepage.homepageSubtitle,
-    project.homepage.problem,
     project.homepage.methodPlain,
     project.homepage.resultLabel,
     project.homepage.resultValue,
@@ -218,7 +196,6 @@ function buildCards(input: Project[]): HomeProjectCardVM[] {
       slug: project.slug,
       title: project.homepage.homepageTitle,
       subtitle: project.homepage.homepageSubtitle,
-      problem: project.homepage.problem,
       methodPlain: project.homepage.methodPlain,
       resultLabel: project.homepage.resultLabel,
       resultValue: project.homepage.resultValue,
@@ -226,9 +203,7 @@ function buildCards(input: Project[]): HomeProjectCardVM[] {
       claimFraming: project.homepage.claimFraming,
       evidenceLevel: project.homepage.evidenceLevel,
       evidenceBadge,
-      source: project.homepage.source,
-      asOf: project.homepage.asOf,
-      provenanceShort: `${project.homepage.source} · as-of ${project.homepage.asOf}`,
+      evidenceMeta: `${project.homepage.evidenceLevel.toUpperCase()} · ${project.homepage.source} · as-of ${project.homepage.asOf}`,
       provenanceLong: project.homepage.provenanceLong,
       vizType: project.homepage.vizType,
       spark: project.homepage.spark,
@@ -240,72 +215,32 @@ function buildCards(input: Project[]): HomeProjectCardVM[] {
   });
 }
 
-function buildCredibility(): HomeCredibilityVM {
+function buildCredibility(input: Project[]): HomeCredibilityVM {
+  const modeledCount = input.filter((project) => project.homepage.evidenceLevel === "modeled").length;
   return {
-    dataPolicy: site.dataPolicy.mode,
-    deliverables: [
-      "Scenario controls with sensitivity rails",
-      "Evidence-tagged outputs with provenance",
-      "Decision memo style recommendation blocks",
+    trustMetrics: [
+      `${String(input.length)} simulators`,
+      "4 decision outputs",
+      "all evidence-tagged",
+      `${modeledCount} modeled with explicit framing`,
+      site.dataPolicy.mode,
     ],
-    validationSteps: [
-      "Data coverage and provenance checks",
-      "Assumption stress testing per scenario",
-      "Decision recommendation with uncertainty bounds",
-    ],
-    audience: [
-      "MBB strategy and operations",
-      "PE/VC value creation",
-      "Big Tech strategy and finance",
-    ],
-    trustNotes: [
-      "All modeled outputs are explicitly labeled to avoid false certainty.",
-      "Each thesis includes data provenance and as-of dates.",
-      "Project pages expose assumptions before recommendations.",
-    ],
-    cta: { label: "Contact for Strategy Discussion", href: site.links.email },
   };
 }
 
 export function buildHomePageViewModel(inputProjects: Project[] = projects): HomePageViewModel {
-  const featured = inputProjects[0];
-
   return {
     hero: {
-      eyebrow: "Decision Intelligence Portfolio",
-      headline: "Data products for operating decisions, not dashboard theater.",
-      identityLine:
-        "Decision science and analytics product design. End-to-end: data → model → simulator UI → decision memo.",
+      eyebrow: "Decision Science · Strategy Simulation · Analytics Engineering",
+      headline: "Strategy simulators that move real capital.",
       subhead:
-        "Interactive strategy simulators that show what changed, what it is worth, and what action to take now.",
-      proofLine:
-        "6 simulator theses across pricing, fraud, shrink, geospatial strategy, infrastructure, and content allocation.",
-      proofCards: [
-        {
-          title: "Evidence tags on every claim",
-          detail: "Each numeric output shows evidence level, source lineage, and as-of date before click-through.",
-        },
-        {
-          title: "Decision output contract",
-          detail: "Every simulator resolves to recommendation + sensitivity rails + uncertainty notes.",
-        },
-      ],
-      featured: {
-        title: featured.homepage.homepageTitle,
-        decision: featured.homepage.problem,
-        outputLabel: featured.homepage.resultLabel,
-        outputValue: featured.homepage.resultValue,
-        evidenceLabel: featured.homepage.evidenceLevel.toUpperCase(),
-        source: featured.homepage.source,
-        asOf: featured.homepage.asOf,
-        href: `/projects/${featured.slug}`,
-      },
+        "I design decision-intelligence products that turn complex operating choices into quantified actions with clear evidence framing.",
       ctaPrimary: { label: "Explore Simulators", href: "/projects" },
       ctaSecondary: { label: "View Resume", href: "/resume" },
       modes: buildHeroModes(),
     },
     kpis: buildKpis(inputProjects),
     cards: buildCards(inputProjects),
-    credibility: buildCredibility(),
+    credibility: buildCredibility(inputProjects),
   };
 }
