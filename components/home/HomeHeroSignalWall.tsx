@@ -185,7 +185,7 @@ export function HomeHeroSignalWall({ hero, kpis }: Props) {
               </p>
 
               <svg
-                viewBox={`-40 0 ${c.w + 100} ${c.h + 16}`}
+                viewBox={`-40 0 ${c.w + 130} ${c.h + 16}`}
                 className="h-[200px] w-full sm:h-[260px]"
                 preserveAspectRatio="none"
                 role="img"
@@ -286,25 +286,35 @@ export function HomeHeroSignalWall({ hero, kpis }: Props) {
                   strokeDasharray="4 3"
                 />
                 <circle cx={annX} cy={annY} r={4} fill="rgba(140,160,240,0.9)" stroke="rgba(10,10,14,1)" strokeWidth={2} />
+                {/* Annotation label — positioned well above line to avoid overlap */}
                 <text
-                  x={annX + 8}
-                  y={Math.max(annY - 14, 20)}
-                  fill="rgba(255,255,255,0.7)"
-                  fontSize="10"
+                  x={annX + 10}
+                  y={Math.min(annY - 40, c.h * 0.15)}
+                  fill="rgba(255,255,255,0.65)"
+                  fontSize="9"
                   fontFamily="var(--font-mono)"
                   fontWeight="500"
                 >
                   {mode.annotationTitle}
                 </text>
                 <text
-                  x={annX + 8}
-                  y={Math.max(annY - 2, 33)}
-                  fill="rgba(255,255,255,0.35)"
+                  x={annX + 10}
+                  y={Math.min(annY - 28, c.h * 0.15 + 12)}
+                  fill="rgba(255,255,255,0.3)"
                   fontSize="8"
                   fontFamily="var(--font-mono)"
                 >
-                  {mode.annotationDetail.substring(0, 50)}
+                  {mode.annotationDetail.substring(0, 42)}
                 </text>
+                {/* Thin connector line from label to dot */}
+                <line
+                  x1={annX + 8}
+                  y1={Math.min(annY - 26, c.h * 0.15 + 14)}
+                  x2={annX}
+                  y2={annY - 5}
+                  stroke="rgba(255,255,255,0.08)"
+                  strokeWidth={0.5}
+                />
 
                 {/* ── Direct endpoint labels on lines ── */}
                 <text x={c.primaryEnd[0] + 8} y={c.primaryEnd[1] + 1} fill="rgba(140,160,240,0.8)" fontSize="10" fontFamily="var(--font-mono)" fontWeight="500" dominantBaseline="middle">
