@@ -1,15 +1,25 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
+/**
+ * Dev-only banner. Renders ONLY on the client after mount to avoid
+ * hydration mismatch (process.versions.node exists on the server
+ * but is undefined in the browser).
+ */
 export function DevEnvBanner() {
   const [dismissed, setDismissed] = useState(false);
+  const [mounted, setMounted] = useState(false);
 
-  if (process.env.NODE_ENV === "production" || dismissed) {
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  /* Always return null until after mount — prevents SSR/client mismatch */
+  if (!mounted || process.env.NODE_ENV === "production" || dismissed) {
     return null;
   }
 
-  /* process.versions is undefined on the client — guard access */
   const nodeVersion =
     typeof process !== "undefined" && process.versions?.node
       ? process.versions.node
