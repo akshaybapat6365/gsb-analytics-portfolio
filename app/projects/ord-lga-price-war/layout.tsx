@@ -1,3 +1,5 @@
+"use client";
+
 import { ThemeProvider } from "@/components/theme/ThemeProvider";
 import "./neural-theme.css";
 import dynamic from "next/dynamic";
