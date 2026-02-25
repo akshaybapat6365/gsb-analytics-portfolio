@@ -2,6 +2,7 @@
 
 import { useMemo } from "react";
 import { motion } from "framer-motion";
+import { cn } from "@/lib/utils";
 import type { CompetitorLagPoint } from "./transforms";
 import { NeuralEyebrow } from "./Typography";
 
@@ -20,13 +21,13 @@ export function CompetitorDelayMatrix({ data }: { data: CompetitorLagPoint[] }) 
         if (!data?.length) return { grid: Array.from({ length: 10 }, () => new Array(10).fill(0)), max: 1 };
 
         data.forEach(d => {
-            if (!d || d.spread == null || d.delayDays == null) return;
-            // Mapping spread to X (0-9)
-            const spreadAbs = Math.abs(d.spread);
+            if (!d || d.uaPriceChange == null || d.dlResponseDays == null) return;
+            // Mapping price change to X (0-9)
+            const spreadAbs = Math.abs(d.uaPriceChange);
             const x = Math.min(9, Math.floor((spreadAbs / 50) * 10));
 
             // Mapping delay days to Y (0-9)
-            const delayVal = Number(d.delayDays);
+            const delayVal = Number(d.dlResponseDays);
             if (isNaN(delayVal)) return;
             const delay = Math.min(9, Math.max(0, Math.floor(delayVal)));
 
