@@ -42,10 +42,8 @@ export function MarketPulseHero({
     .range([margin.left, width - margin.right]);
   const y = scaleLinear()
     .domain([
-      (min(rows, (d) => Math.min(d.actualPrice, d.policyPrice, d.competitorPrice)) ?? 200) -
-        9,
-      (max(rows, (d) => Math.max(d.actualPrice, d.policyPrice, d.competitorPrice)) ?? 360) +
-        8,
+      (min(rows, (d) => Math.min(d.actualPrice, d.policyPrice, d.competitorPrice)) ?? 200) - 9,
+      (max(rows, (d) => Math.max(d.actualPrice, d.policyPrice, d.competitorPrice)) ?? 360) + 8,
     ])
     .nice()
     .range([height - margin.bottom, margin.top]);
@@ -72,24 +70,31 @@ export function MarketPulseHero({
   const totalPolicyRevenue = rows.reduce((acc, row) => acc + row.policyRevenue, 0);
 
   return (
-    <section className="neo-panel overflow-hidden p-4 sm:p-6">
+    <div className="radar-chart">
       <div className="flex flex-wrap items-center justify-between gap-3">
         <div>
-          <p className="font-feature text-xs uppercase tracking-[0.22em] text-amber-100/80">
-            Market Pulse Engine
-          </p>
-          <p className="mt-2 font-mono text-sm text-slate-300">
+          <p className="radar-eyebrow">Market Pulse Engine</p>
+          <p className="mt-1 font-mono text-[12px] text-slate-400">
             {selected?.date ?? "—"} · {selected?.dow ?? "—"}
           </p>
         </div>
-        <div className="flex flex-wrap gap-2 text-[11px]">
-          <span className="rounded-full border border-slate-300/25 bg-slate-400/10 px-3 py-1 font-mono uppercase tracking-[0.14em] text-slate-200">
+        <div className="flex flex-wrap gap-2 text-[10px]">
+          <span
+            className="rounded-full border px-3 py-1 font-mono uppercase tracking-[0.14em]"
+            style={{ borderColor: "rgba(148,163,184,0.25)", background: "rgba(148,163,184,0.08)", color: "rgba(148,163,184,0.9)" }}
+          >
             Actual
           </span>
-          <span className="rounded-full border border-amber-300/35 bg-amber-300/12 px-3 py-1 font-mono uppercase tracking-[0.14em] text-amber-100">
+          <span
+            className="rounded-full border px-3 py-1 font-mono uppercase tracking-[0.14em]"
+            style={{ borderColor: "var(--radar-amber-50)", background: "var(--radar-amber-08)", color: "var(--radar-amber)" }}
+          >
             Policy
           </span>
-          <span className="rounded-full border border-amber-300/30 bg-amber-300/10 px-3 py-1 font-mono uppercase tracking-[0.14em] text-amber-100">
+          <span
+            className="rounded-full border px-3 py-1 font-mono uppercase tracking-[0.14em]"
+            style={{ borderColor: "var(--radar-cyan-20)", background: "rgba(77,184,217,0.06)", color: "var(--radar-cyan)" }}
+          >
             Competitor
           </span>
         </div>
@@ -98,37 +103,48 @@ export function MarketPulseHero({
       <svg viewBox={`0 0 ${width} ${height}`} className="mt-4 h-auto w-full">
         <defs>
           <linearGradient id="ord-regret-fill" x1="0%" x2="0%" y1="0%" y2="100%">
-            <stop offset="0%" stopColor="rgba(171,78,54,0.34)" />
-            <stop offset="100%" stopColor="rgba(171,78,54,0.04)" />
+            <stop offset="0%" stopColor="rgba(224,69,58,0.22)" />
+            <stop offset="100%" stopColor="rgba(224,69,58,0.02)" />
           </linearGradient>
         </defs>
 
-        {[0, 0.25, 0.5, 0.75, 1].map((tick) => {
-          const yy = margin.top + tick * (height - margin.bottom - margin.top);
-          return (
+        {/* Grid lines */}
+        {y.ticks(5).map((tick) => (
+          <g key={tick}>
             <line
-              key={tick}
               x1={margin.left}
               x2={width - margin.right}
-              y1={yy}
-              y2={yy}
-              stroke="rgba(182,169,151,0.16)"
-              strokeDasharray="4 7"
+              y1={y(tick)}
+              y2={y(tick)}
+              stroke="rgba(148,163,184,0.06)"
+              strokeDasharray="3 5"
             />
-          );
-        })}
+            <text
+              x={margin.left - 8}
+              y={y(tick) + 4}
+              textAnchor="end"
+              fontSize={10}
+              fill="rgba(148,163,184,0.5)"
+              fontFamily="JetBrains Mono, monospace"
+            >
+              ${Math.round(tick)}
+            </text>
+          </g>
+        ))}
 
         <path d={regretArea(rows) ?? ""} fill="url(#ord-regret-fill)" />
-        <path d={actualLine(rows) ?? ""} fill="none" stroke="rgba(182,169,151,0.95)" strokeWidth={2.1} />
+        <path d={actualLine(rows) ?? ""} fill="none" stroke="rgba(148,163,184,0.75)" strokeWidth={1.8} />
         <path
           d={competitorLine(rows) ?? ""}
           fill="none"
-          stroke="rgba(139,107,62,0.85)"
-          strokeWidth={2.2}
-          strokeDasharray="8 6"
+          stroke="var(--radar-cyan)"
+          strokeWidth={1.8}
+          strokeDasharray="6 4"
+          opacity={0.7}
         />
-        <path d={policyLine(rows) ?? ""} fill="none" stroke="rgba(139,107,62,1)" strokeWidth={3} />
+        <path d={policyLine(rows) ?? ""} fill="none" stroke="var(--radar-amber)" strokeWidth={2.6} />
 
+        {/* Shock markers */}
         {rows
           .filter((row) => row.shock > 0)
           .map((row) => (
@@ -137,12 +153,13 @@ export function MarketPulseHero({
               cx={x(row.index)}
               cy={y(row.policyPrice)}
               r={4 + row.shock * 4}
-              fill="rgba(157,49,49,0.18)"
-              stroke="rgba(157,49,49,0.95)"
+              fill="var(--radar-crimson-20)"
+              stroke="var(--radar-crimson)"
               strokeWidth={1.5}
             />
           ))}
 
+        {/* Selected day crosshair */}
         {selected ? (
           <g>
             <line
@@ -150,38 +167,43 @@ export function MarketPulseHero({
               x2={x(selected.index)}
               y1={margin.top}
               y2={height - margin.bottom}
-              stroke="rgba(226,232,240,0.56)"
-              strokeDasharray="4 6"
+              stroke="rgba(226,232,240,0.35)"
+              strokeDasharray="3 5"
             />
-            <circle cx={x(selected.index)} cy={y(selected.policyPrice)} r={5.5} fill="rgba(139,107,62,1)" />
+            <circle cx={x(selected.index)} cy={y(selected.policyPrice)} r={5} fill="var(--radar-amber)" stroke="rgba(226,232,240,0.6)" strokeWidth={1.2} />
           </g>
         ) : null}
 
+        {/* Axis labels */}
         <text
           x={margin.left}
-          y={height - 16}
-          fontSize={11}
-          fill="rgba(182,169,151,0.92)"
-          style={{ letterSpacing: "0.14em", textTransform: "uppercase" }}
+          y={height - 12}
+          fontSize={10}
+          fill="rgba(148,163,184,0.45)"
+          fontFamily="JetBrains Mono, monospace"
+          style={{ letterSpacing: "0.16em", textTransform: "uppercase" }}
         >
-          Q2 timeline
+          Q2 2023 Timeline
         </text>
         <text
           x={margin.left}
           y={margin.top - 8}
-          fontSize={11}
-          fill="rgba(182,169,151,0.92)"
-          style={{ letterSpacing: "0.14em", textTransform: "uppercase" }}
+          fontSize={10}
+          fill="rgba(148,163,184,0.45)"
+          fontFamily="JetBrains Mono, monospace"
+          style={{ letterSpacing: "0.16em", textTransform: "uppercase" }}
         >
           Fare ($)
         </text>
 
+        {/* Interaction overlay */}
         <rect
           x={margin.left}
           y={margin.top}
           width={width - margin.left - margin.right}
           height={height - margin.top - margin.bottom}
           fill="transparent"
+          style={{ cursor: "crosshair" }}
           onMouseMove={(event) =>
             onSelectIndex(nearestIndex(event, width, margin.left, margin.right, rows.length))
           }
@@ -191,30 +213,30 @@ export function MarketPulseHero({
         />
       </svg>
 
+      {/* KPI strip */}
       <div className="mt-4 grid gap-3 sm:grid-cols-3">
-        <div className="rounded-2xl border border-white/10 bg-black/25 p-4">
-          <p className="font-mono text-[10px] uppercase tracking-[0.17em] text-slate-400">
+        <div className="radar-kpi radar-glow-green">
+          <p className="font-mono text-[10px] uppercase tracking-[0.16em]" style={{ color: "var(--radar-green)" }}>
             Counterfactual Lift
           </p>
-          <p className="mt-2 font-mono text-xl text-emerald-200">{formatUSD(totalRegret)}</p>
+          <p className="mt-1 font-mono text-xl" style={{ color: "var(--radar-green)" }}>{formatUSD(totalRegret)}</p>
         </div>
-        <div className="rounded-2xl border border-white/10 bg-black/25 p-4">
-          <p className="font-mono text-[10px] uppercase tracking-[0.17em] text-slate-400">
+        <div className="radar-kpi radar-glow-amber">
+          <p className="font-mono text-[10px] uppercase tracking-[0.16em]" style={{ color: "var(--radar-amber)" }}>
             UAL Share (Avg)
           </p>
-          <p className="mt-2 font-mono text-xl text-amber-200">{formatPct(avgShare, { digits: 0 })}</p>
+          <p className="mt-1 font-mono text-xl" style={{ color: "var(--radar-amber)" }}>{formatPct(avgShare, { digits: 0 })}</p>
         </div>
-        <div className="rounded-2xl border border-white/10 bg-black/25 p-4">
-          <p className="font-mono text-[10px] uppercase tracking-[0.17em] text-slate-400">
+        <div className="radar-kpi">
+          <p className="font-mono text-[10px] uppercase tracking-[0.16em] text-slate-400">
             Policy Revenue
           </p>
-          <p className="mt-2 font-mono text-xl text-amber-100">{formatUSD(totalPolicyRevenue)}</p>
-          <p className="mt-1 text-xs text-slate-400">
-            Selected regret: {formatUSD(selected?.policyRegret ?? 0)} ·{" "}
-            {formatNumber(selected?.policyPax ?? 0)} pax
+          <p className="mt-1 font-mono text-xl text-slate-200">{formatUSD(totalPolicyRevenue)}</p>
+          <p className="mt-1 text-[10px] text-slate-500">
+            Day Δ: {formatUSD(selected?.policyRegret ?? 0)} · {formatNumber(selected?.policyPax ?? 0)} pax
           </p>
         </div>
       </div>
-    </section>
+    </div>
   );
 }

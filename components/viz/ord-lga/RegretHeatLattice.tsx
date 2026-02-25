@@ -60,12 +60,12 @@ export function RegretHeatLattice({
   const maxAbs = Math.max(Math.abs(minValue), Math.abs(maxValue), 1);
 
   return (
-    <section className="neo-panel p-4 sm:p-5">
+    <div className="radar-chart">
       <div className="flex flex-wrap items-center justify-between gap-3">
-        <p className="font-feature text-xs uppercase tracking-[0.2em] text-slate-300">
+        <p className="radar-eyebrow">
           Booking-Window Regret Lattice
         </p>
-        <p className="font-mono text-sm text-amber-100">
+        <p className="font-mono text-[12px]" style={{ color: "var(--radar-amber)" }}>
           {hovered
             ? `${hovered.dow} · ${hovered.window}d · ${formatUSD(hovered.value, { compact: false })}`
             : `Mode: ${mode.toUpperCase()}`}
@@ -91,7 +91,7 @@ export function RegretHeatLattice({
               y={yy + 4}
               textAnchor="end"
               fontSize={12}
-              fill={activeDow === dow ? "rgba(139,107,62,0.95)" : "rgba(182,169,151,0.9)"}
+              fill={activeDow === dow ? "var(--radar-amber)" : "rgba(148,163,184,0.7)"}
               style={{ letterSpacing: "0.04em" }}
             >
               {dow}
@@ -108,7 +108,7 @@ export function RegretHeatLattice({
               y={height - margin.bottom + 22}
               textAnchor="middle"
               fontSize={11}
-              fill="rgba(182,169,151,0.95)"
+              fill="rgba(148,163,184,0.7)"
               style={{ letterSpacing: "0.05em" }}
             >
               {window}d
@@ -133,8 +133,8 @@ export function RegretHeatLattice({
                 hovered?.dow === cell.dow && hovered.window === cell.window
                   ? "rgba(226,232,240,0.95)"
                   : isActiveDow
-                    ? "rgba(139,107,62,0.45)"
-                    : "rgba(255,255,255,0.08)"
+                    ? "var(--radar-amber-50)"
+                    : "rgba(255,255,255,0.06)"
               }
               strokeWidth={hovered?.dow === cell.dow && hovered.window === cell.window ? 1.8 : 1}
               onMouseEnter={() => setHovered(cell)}
@@ -143,16 +143,14 @@ export function RegretHeatLattice({
         })}
       </svg>
 
-      <div className="mt-4 flex flex-wrap items-center gap-3">
-        <div className="h-2.5 w-28 rounded-full bg-[linear-gradient(to_right,rgba(157,49,49,0.9),rgba(255,255,255,0.12),rgba(139,107,62,0.95))]" />
-        <p className="text-xs text-slate-300">
+      <div className="mt-3 flex flex-wrap items-center gap-3">
+        <div className="h-2 w-28 rounded-full" style={{ background: "linear-gradient(90deg, var(--radar-crimson), rgba(15,20,36,0.6), var(--radar-amber), var(--radar-green))" }} />
+        <p className="font-mono text-[10px] text-slate-500">
           {mode === "delta"
-            ? `Price delta scale: -${formatUSD(maxAbs, { compact: false })} to +${formatUSD(maxAbs, {
-                compact: false,
-              })}`
-            : "Lower values map to deep slate; higher values map to brass intensity."}
+            ? `Delta: -${formatUSD(maxAbs, { compact: false })} to +${formatUSD(maxAbs, { compact: false })}`
+            : "Lower → slate | Higher → amber intensity"}
         </p>
       </div>
-    </section>
+    </div>
   );
 }

@@ -12,9 +12,9 @@ type ShockEventStripProps = {
 };
 
 const severityColor: Record<OrdShockEvent["severity"], string> = {
-  low: "rgba(139,107,62,0.92)",
-  med: "rgba(157,49,49,0.95)",
-  high: "rgba(244,63,94,0.98)",
+  low: "var(--radar-amber)",
+  med: "var(--radar-crimson)",
+  high: "#f43e5e",
 };
 
 export function ShockEventStrip({
@@ -37,12 +37,10 @@ export function ShockEventStrip({
     events.find((event) => event.dayIndex === selectedIndex) ?? events[0] ?? null;
 
   return (
-    <section className="neo-panel p-4 sm:p-5">
+    <div className="radar-chart">
       <div className="flex flex-wrap items-center justify-between gap-3">
-        <p className="font-feature text-xs uppercase tracking-[0.2em] text-slate-300">
-          Shock Timeline
-        </p>
-        <p className="font-mono text-sm text-rose-100">
+        <p className="radar-eyebrow">Shock Timeline</p>
+        <p className="font-mono text-[12px]" style={{ color: "var(--radar-crimson)" }}>
           {selectedEvent ? `${selectedEvent.date} · ${selectedEvent.severity.toUpperCase()}` : "No shock markers"}
         </p>
       </div>
@@ -53,8 +51,8 @@ export function ShockEventStrip({
           x2={width - margin.right}
           y1={height - margin.bottom}
           y2={height - margin.bottom}
-          stroke="rgba(182,169,151,0.24)"
-          strokeWidth={1.4}
+          stroke="rgba(148,163,184,0.12)"
+          strokeWidth={1}
         />
 
         {events.map((event) => {
@@ -69,26 +67,28 @@ export function ShockEventStrip({
                 y1={height - margin.bottom}
                 y2={yy}
                 stroke={severityColor[event.severity]}
-                strokeOpacity={active ? 0.9 : 0.45}
-                strokeWidth={active ? 2.2 : 1.4}
+                strokeOpacity={active ? 0.9 : 0.4}
+                strokeWidth={active ? 2.2 : 1.2}
               />
               <circle
                 cx={xx}
                 cy={yy}
-                r={active ? 7 : 5}
+                r={active ? 7 : 4.5}
                 fill={severityColor[event.severity]}
-                stroke="rgba(248,250,252,0.92)"
-                strokeWidth={active ? 1.8 : 1}
+                stroke="rgba(226,232,240,0.7)"
+                strokeWidth={active ? 1.8 : 0.8}
                 onClick={() => onSelectIndex(event.dayIndex)}
                 onMouseEnter={() => onSelectIndex(event.dayIndex)}
+                style={{ cursor: "crosshair" }}
               />
               {active ? (
                 <text
                   x={xx}
-                  y={yy - 10}
+                  y={yy - 12}
                   textAnchor="middle"
-                  fontSize={11}
-                  fill="rgba(226,232,240,0.95)"
+                  fontSize={10}
+                  fill="rgba(226,232,240,0.85)"
+                  fontFamily="JetBrains Mono, monospace"
                 >
                   {event.date}
                 </text>
@@ -98,26 +98,27 @@ export function ShockEventStrip({
         })}
       </svg>
 
-      <div className="mt-4 rounded-2xl border border-white/10 bg-black/25 p-4">
-        <p className="font-feature text-xs uppercase tracking-[0.18em] text-slate-300">Selected Shock Memo</p>
+      {/* Shock memo */}
+      <div className="mt-3 radar-kpi">
+        <p className="font-mono text-[10px] uppercase tracking-[0.16em] text-slate-500">Selected Shock Memo</p>
         {selectedEvent ? (
           <>
-            <p className="mt-2 text-sm text-slate-100">
+            <p className="mt-2 text-[13px] text-slate-200">
               {selectedEvent.label} ·{" "}
-              <span className="text-rose-200">
-                Regret signal {formatUSD(selectedEvent.regret)}
+              <span style={{ color: "var(--radar-crimson)" }}>
+                Signal {formatUSD(selectedEvent.regret)}
               </span>
             </p>
-            <p className="mt-2 text-sm leading-relaxed text-slate-400">
+            <p className="mt-1 text-[12px] leading-relaxed text-slate-400">
               {selectedEvent.narrative}
             </p>
           </>
         ) : (
-          <p className="mt-2 text-sm text-slate-400">
-            No explicit shocks in this sample. Regret distribution still highlights reactive pricing gaps.
+          <p className="mt-2 text-[12px] text-slate-500">
+            No explicit shocks. Regret distribution still highlights reactive pricing gaps.
           </p>
         )}
       </div>
-    </section>
+    </div>
   );
 }

@@ -2,22 +2,16 @@ import type { Metadata } from "next";
 import { getProject } from "@/lib/projects/catalog";
 import { loadAirlinePayload } from "@/lib/server/payloads";
 import { buildProjectMetadata, buildProjectSchema } from "@/lib/seo";
+import { StructuredDataScript } from "@/components/seo/StructuredDataScript";
 
 import { Hero } from "./Hero";
-import { OrdLgaShell } from "./OrdLgaShell";
-import { BlufPanel } from "@/components/story/BlufPanel";
-import { AssumptionsDrawer } from "@/components/story/AssumptionsDrawer";
-import { RealSignalsPanel } from "@/components/story/RealSignalsPanel";
 import { OrdLgaInteractiveSection } from "./InteractiveSection";
-import { DataIntegrityDrawer } from "@/components/story/DataIntegrityDrawer";
-import { StructuredDataScript } from "@/components/seo/StructuredDataScript";
 
 const project = getProject("ord-lga-price-war");
 export const metadata: Metadata = buildProjectMetadata(project);
 
 export default async function OrdLgaPriceWarPage() {
   const payload = await loadAirlinePayload();
-  const summary = project.homepage;
 
   return (
     <>
@@ -25,39 +19,38 @@ export default async function OrdLgaPriceWarPage() {
         id="project-jsonld-ord-lga-price-war"
         data={buildProjectSchema(project)}
       />
-      <div className="space-y-9">
+      <div className="space-y-8">
         <Hero payload={payload} />
 
-        <BlufPanel
-          eyebrow="War-Room BLUF"
-          question={project.businessQuestion}
-          bluf={project.bluf}
-          keyOutputLabel={summary.resultLabel}
-          keyOutputValue={summary.resultValue}
-          evidenceLine={`${summary.evidenceLevel.toUpperCase()} · ${summary.source} · as-of ${summary.asOf}`}
-          limitation={summary.limitation}
-        />
+        {/* BLUF strip — integrated into radar theme */}
+        <section className="radar-panel p-5 sm:p-6">
+          <div className="flex flex-wrap items-center justify-between gap-3">
+            <div>
+              <p className="radar-eyebrow">War-Room BLUF</p>
+              <p className="mt-3 max-w-3xl text-[15px] leading-7 text-slate-300/90">
+                {project.businessQuestion}
+              </p>
+            </div>
+          </div>
+          <div className="radar-chapter-line mt-4" />
+          <div className="mt-4 grid gap-4 sm:grid-cols-[minmax(0,1fr)_280px]">
+            <p className="text-[14px] leading-7 text-slate-400">{project.bluf}</p>
+            <div className="radar-kpi radar-glow-green">
+              <p className="font-mono text-[10px] uppercase tracking-[0.16em]" style={{ color: "var(--radar-green)" }}>
+                {project.homepage.resultLabel}
+              </p>
+              <p className="mt-1 font-mono text-2xl" style={{ color: "var(--radar-green)" }}>
+                {project.homepage.resultValue}
+              </p>
+              <p className="mt-1 font-mono text-[9px] uppercase tracking-[0.12em] text-slate-500">
+                {project.homepage.evidenceLevel.toUpperCase()} · {project.homepage.source} · as-of {project.homepage.asOf}
+              </p>
+            </div>
+          </div>
+        </section>
 
-        <OrdLgaShell payload={payload} />
-
+        {/* Full interactive experience */}
         <OrdLgaInteractiveSection payload={payload} />
-
-        <DataIntegrityDrawer>
-          <RealSignalsPanel
-            meta={payload.meta}
-            signals={payload.realSignals}
-            readiness={payload.dataReadiness}
-          />
-        </DataIntegrityDrawer>
-
-        <AssumptionsDrawer
-          items={[
-            "Demand is modeled with isoelastic response plus stochastic shocks and a bounded fare surface to avoid unrealistic policy jumps.",
-            "Competitor reaction is a constrained response function to emulate price desk latency and protect against unstable oscillations.",
-            "All heavy model fitting runs offline; browser interactions recompute scenario outcomes instantly from validated payloads.",
-            "Production calibration path: DOT DB1B + fare history ingestion + route-specific elasticity priors per booking cohort.",
-          ]}
-        />
       </div>
     </>
   );

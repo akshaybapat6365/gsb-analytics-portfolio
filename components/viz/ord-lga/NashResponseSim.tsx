@@ -40,12 +40,12 @@ export function NashResponseSim({ states, convergenceDay }: NashResponseSimProps
   const impliedNpv = states.reduce((acc, row) => acc + row.regret, 0) * 44 - 1_900_000;
 
   return (
-    <section className="neo-panel p-4 sm:p-5">
+    <div className="radar-chart">
       <div className="flex flex-wrap items-center justify-between gap-3">
-        <p className="font-feature text-xs uppercase tracking-[0.2em] text-slate-300">
+        <p className="radar-eyebrow">
           Nash Response Simulator
         </p>
-        <p className="font-mono text-sm text-amber-100">
+        <p className="font-mono text-[12px]" style={{ color: "var(--radar-amber)" }}>
           Convergence day: {formatNumber(convergenceDay)}
         </p>
       </div>
@@ -83,53 +83,53 @@ export function NashResponseSim({ states, convergenceDay }: NashResponseSimProps
           y1={y(x.domain()[0])}
           x2={x(x.domain()[1])}
           y2={y(x.domain()[1])}
-          stroke="rgba(182,169,151,0.4)"
+          stroke="rgba(148,163,184,0.2)"
           strokeDasharray="6 6"
         />
 
-        <path d={path(states) ?? ""} fill="none" stroke="rgba(139,107,62,0.95)" strokeWidth={2.8} />
+        <path d={path(states) ?? ""} fill="none" stroke="var(--radar-amber)" strokeWidth={2.8} />
         {states.map((state, index) => (
           <circle
             key={state.dayIndex}
             cx={x(state.uaPrice)}
             cy={y(state.dlPrice)}
             r={index === states.length - 1 ? 6 : 3.6}
-            fill={index === states.length - 1 ? "rgba(73,95,69,0.95)" : "rgba(139,107,62,0.85)"}
+            fill={index === states.length - 1 ? "var(--radar-green)" : "var(--radar-amber)"}
             stroke="rgba(226,232,240,0.8)"
             strokeWidth={0.8}
           />
         ))}
 
         {first ? (
-          <text x={x(first.uaPrice) + 8} y={y(first.dlPrice) - 8} fontSize={11} fill="rgba(182,169,151,0.95)">
+          <text x={x(first.uaPrice) + 8} y={y(first.dlPrice) - 8} fontSize={10} fill="rgba(148,163,184,0.7)" fontFamily="JetBrains Mono, monospace">
             Start
           </text>
         ) : null}
         {last ? (
-          <text x={x(last.uaPrice) + 8} y={y(last.dlPrice) - 8} fontSize={11} fill="rgba(73,95,69,0.95)">
+          <text x={x(last.uaPrice) + 8} y={y(last.dlPrice) - 8} fontSize={10} fill="var(--radar-green)" fontFamily="JetBrains Mono, monospace">
             Equilibrium
           </text>
         ) : null}
       </svg>
 
-      <div className="mt-4 grid gap-3 sm:grid-cols-3">
-        <div className="rounded-2xl border border-white/10 bg-black/25 p-4">
-          <p className="font-feature text-xs uppercase tracking-[0.18em] text-slate-300">UAL Capture</p>
-          <p className="mt-2 font-mono text-lg text-amber-200">{formatPct(avgCapture, { digits: 1 })}</p>
+      <div className="mt-3 grid gap-3 sm:grid-cols-3">
+        <div className="radar-kpi">
+          <p className="font-mono text-[10px] uppercase tracking-[0.16em] text-slate-500">UAL Capture</p>
+          <p className="mt-1 font-mono text-lg" style={{ color: "var(--radar-amber)" }}>{formatPct(avgCapture, { digits: 1 })}</p>
         </div>
-        <div className="rounded-2xl border border-white/10 bg-black/25 p-4">
-          <p className="font-feature text-xs uppercase tracking-[0.18em] text-slate-300">Price Spread</p>
-          <p className="mt-2 font-mono text-lg text-amber-100">
+        <div className="radar-kpi">
+          <p className="font-mono text-[10px] uppercase tracking-[0.16em] text-slate-500">Price Spread</p>
+          <p className="mt-1 font-mono text-lg" style={{ color: "var(--radar-amber)" }}>
             {formatUSD((last?.dlPrice ?? 0) - (last?.uaPrice ?? 0), { compact: false })}
           </p>
         </div>
-        <div className="rounded-2xl border border-white/10 bg-black/25 p-4">
-          <p className="font-feature text-xs uppercase tracking-[0.18em] text-slate-300">Implied NPV</p>
-          <p className={`mt-2 font-mono text-lg ${impliedNpv >= 0 ? "text-emerald-200" : "text-rose-200"}`}>
+        <div className="radar-kpi">
+          <p className="font-mono text-[10px] uppercase tracking-[0.16em] text-slate-500">Implied NPV</p>
+          <p className="mt-1 font-mono text-lg" style={{ color: impliedNpv >= 0 ? "var(--radar-green)" : "var(--radar-crimson)" }}>
             {formatUSD(impliedNpv)}
           </p>
         </div>
       </div>
-    </section>
+    </div>
   );
 }

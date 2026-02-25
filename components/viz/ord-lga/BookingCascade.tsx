@@ -1,20 +1,19 @@
 "use client";
 
 /**
- * BookingCascade — Stacked area chart showing actual vs algo
- * bookings across booking windows over time.
- * Data source: payload.bookingCurve
+ * BookingCascade — Line chart showing actual vs policy bookings
+ * across booking windows for the selected day.
+ * Data source: bookingCurve from useOrdLgaScrollytelling
  */
 
-import { useMemo, useState } from "react";
-import { area, curveMonotoneX, line, max, scaleLinear } from "d3";
+import { useState } from "react";
+import { curveMonotoneX, line, max, scaleLinear } from "d3";
 import { formatNumber } from "@/lib/metrics/format";
 
 type BookingPoint = {
-    date: string;
     window: number;
-    actualBookings: number;
-    algoBookings: number;
+    actual: number;
+    counterfactual: number;
 };
 
 type Props = {
@@ -22,54 +21,33 @@ type Props = {
 };
 
 export function BookingCascade({ curve }: Props) {
-    const [hoveredWindow, setHoveredWindow] = useState<number | null>(null);
+    const [hoveredIdx, setHoveredIdx] = useState<number | null>(null);
 
     const width = 720;
     const height = 380;
     const margin = { top: 28, right: 24, bottom: 52, left: 64 };
 
-    // Group by window
-    const windows = useMemo(() => {
-        const windowSet = [...new Set(curve.map((c) => c.window))].sort((a, b) => a - b);
-        return windowSet;
-    }, [curve]);
+    // Sort by window ascending
+    const sorted = [...curve].sort((a, b) => a.window - b.window);
 
-    // Aggregate by window for summary
-    const windowSummary = useMemo(() => {
-        return windows.map((w) => {
-            const points = curve.filter((c) => c.window === w);
-            const totalActual = points.reduce((acc, p) => acc + p.actualBookings, 0);
-            const totalAlgo = points.reduce((acc, p) => acc + p.algoBookings, 0);
-            return { window: w, totalActual, totalAlgo, delta: totalAlgo - totalActual, count: points.length };
-        });
-    }, [curve, windows]);
-
-    const maxBooking = max(curve, (d) => Math.max(d.actualBookings, d.algoBookings)) ?? 300;
+    const maxVal = max(sorted, (d) => Math.max(d.actual, d.counterfactual)) ?? 300;
 
     const x = scaleLinear()
-        .domain([0, windows.length - 1])
+        .domain([0, Math.max(1, sorted.length - 1)])
         .range([margin.left, width - margin.right]);
     const y = scaleLinear()
-        .domain([0, maxBooking * 1.1])
+        .domain([0, maxVal * 1.15])
         .nice()
         .range([height - margin.bottom, margin.top]);
 
-    // Line generators for aggregate view by window
-    const actualLine = line<{ window: number; totalActual: number }>()
+    const actualLine = line<BookingPoint>()
         .curve(curveMonotoneX)
         .x((_, i) => x(i))
-        .y((d) => y(d.totalActual / (d as { count: number } & typeof d).count));
-    const algoLine = line<{ window: number; totalAlgo: number }>()
+        .y((d) => y(d.actual));
+    const policyLine = line<BookingPoint>()
         .curve(curveMonotoneX)
         .x((_, i) => x(i))
-        .y((d) => y(d.totalAlgo / (d as { count: number } & typeof d).count));
-
-    // Area between actual and algo
-    const deltaArea = area<typeof windowSummary[0]>()
-        .curve(curveMonotoneX)
-        .x((_, i) => x(i))
-        .y0((d) => y(d.totalActual / d.count))
-        .y1((d) => y(d.totalAlgo / d.count));
+        .y((d) => y(d.counterfactual));
 
     return (
         <div className="radar-chart">
@@ -124,53 +102,47 @@ export function BookingCascade({ curve }: Props) {
                     </g>
                 ))}
 
-                {/* Delta fill area */}
-                <path d={deltaArea(windowSummary) ?? ""} fill="url(#booking-delta-fill)" />
-
                 {/* Lines */}
                 <path
-                    d={actualLine(windowSummary as any) ?? ""}
+                    d={actualLine(sorted) ?? ""}
                     fill="none"
                     stroke="rgba(148,163,184,0.7)"
                     strokeWidth={2}
                 />
                 <path
-                    d={algoLine(windowSummary as any) ?? ""}
+                    d={policyLine(sorted) ?? ""}
                     fill="none"
                     stroke="var(--radar-amber)"
                     strokeWidth={2.5}
                 />
 
                 {/* Data points */}
-                {windowSummary.map((ws, i) => {
-                    const isHovered = hoveredWindow === ws.window;
+                {sorted.map((point, i) => {
+                    const isHovered = hoveredIdx === i;
                     return (
-                        <g key={ws.window}>
-                            {/* Actual point */}
+                        <g key={point.window}>
                             <circle
                                 cx={x(i)}
-                                cy={y(ws.totalActual / ws.count)}
+                                cy={y(point.actual)}
                                 r={isHovered ? 5 : 3}
                                 fill="rgba(148,163,184,0.8)"
                                 stroke="rgba(226,232,240,0.5)"
                                 strokeWidth={0.8}
-                                onMouseEnter={() => setHoveredWindow(ws.window)}
-                                onMouseLeave={() => setHoveredWindow(null)}
+                                onMouseEnter={() => setHoveredIdx(i)}
+                                onMouseLeave={() => setHoveredIdx(null)}
                                 style={{ cursor: "crosshair" }}
                             />
-                            {/* Algo point */}
                             <circle
                                 cx={x(i)}
-                                cy={y(ws.totalAlgo / ws.count)}
+                                cy={y(point.counterfactual)}
                                 r={isHovered ? 5 : 3.5}
                                 fill="var(--radar-amber)"
                                 stroke="rgba(226,232,240,0.5)"
                                 strokeWidth={0.8}
-                                onMouseEnter={() => setHoveredWindow(ws.window)}
-                                onMouseLeave={() => setHoveredWindow(null)}
+                                onMouseEnter={() => setHoveredIdx(i)}
+                                onMouseLeave={() => setHoveredIdx(null)}
                                 style={{ cursor: "crosshair" }}
                             />
-                            {/* Window label */}
                             <text
                                 x={x(i)}
                                 y={height - margin.bottom + 20}
@@ -179,35 +151,35 @@ export function BookingCascade({ curve }: Props) {
                                 fill={isHovered ? "rgba(226,232,240,0.9)" : "rgba(148,163,184,0.7)"}
                                 fontFamily="JetBrains Mono, monospace"
                             >
-                                {ws.window}d
+                                {point.window}d
                             </text>
                         </g>
                     );
                 })}
 
                 {/* Hover tooltip line */}
-                {hoveredWindow !== null && (() => {
-                    const idx = windows.indexOf(hoveredWindow);
-                    if (idx < 0) return null;
-                    const ws = windowSummary[idx];
+                {hoveredIdx !== null && (() => {
+                    const point = sorted[hoveredIdx];
+                    if (!point) return null;
+                    const delta = point.counterfactual - point.actual;
                     return (
                         <g>
                             <line
-                                x1={x(idx)}
-                                x2={x(idx)}
+                                x1={x(hoveredIdx)}
+                                x2={x(hoveredIdx)}
                                 y1={margin.top}
                                 y2={height - margin.bottom}
                                 stroke="rgba(226,232,240,0.25)"
                                 strokeDasharray="3 4"
                             />
                             <text
-                                x={x(idx) + 8}
+                                x={x(hoveredIdx) + 8}
                                 y={margin.top + 16}
                                 fontSize={10}
                                 fill="rgba(226,232,240,0.85)"
                                 fontFamily="JetBrains Mono, monospace"
                             >
-                                Δ +{formatNumber(ws.delta / ws.count, { digits: 0 })} avg pax
+                                Δ {delta >= 0 ? "+" : ""}{formatNumber(delta, { digits: 0 })} pax
                             </text>
                         </g>
                     );

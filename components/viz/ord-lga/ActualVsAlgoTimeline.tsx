@@ -75,81 +75,71 @@ export function ActualVsAlgoTimeline({
     .y((d) => yCurve(d.counterfactual));
 
   const defaultRow: OrdDerivedDay = rows[0] ?? {
-    index: 0,
-    date: "n/a",
-    dow: "n/a",
-    week: 0,
-    shock: 0,
-    actualPrice: 0,
-    algoPrice: 0,
-    policyPrice: 0,
-    competitorPrice: 0,
-    actualPax: 0,
-    policyPax: 0,
-    actualRevenue: 0,
-    policyRevenue: 0,
-    policyRegret: 0,
-    uaShare: 0,
+    index: 0, date: "n/a", dow: "n/a", week: 0, shock: 0,
+    actualPrice: 0, algoPrice: 0, policyPrice: 0, competitorPrice: 0,
+    actualPax: 0, policyPax: 0, actualRevenue: 0, policyRevenue: 0,
+    policyRegret: 0, uaShare: 0,
   };
 
   const annotations = [
     {
       key: "max-regret",
       label: "Max policy lift",
-      row: rows.reduce(
-        (best, row) => (row.policyRegret > best.policyRegret ? row : best),
-        defaultRow,
-      ),
-      tone: "text-emerald-200",
+      row: rows.reduce((best, row) => (row.policyRegret > best.policyRegret ? row : best), defaultRow),
+      color: "var(--radar-green)",
     },
     {
       key: "max-leak",
       label: "Max leakage day",
-      row: rows.reduce(
-        (best, row) => (row.policyRegret < best.policyRegret ? row : best),
-        defaultRow,
-      ),
-      tone: "text-rose-200",
+      row: rows.reduce((best, row) => (row.policyRegret < best.policyRegret ? row : best), defaultRow),
+      color: "var(--radar-crimson)",
     },
     {
       key: "max-shock",
       label: "Strongest demand shock",
       row: rows.reduce((best, row) => (row.shock > best.shock ? row : best), defaultRow),
-      tone: "text-amber-100",
+      color: "var(--radar-amber)",
     },
   ];
 
   return (
     <section className="space-y-4">
-      <section className="neo-panel p-4 sm:p-5">
+      {/* Daily Fare Strip */}
+      <div className="radar-chart">
         <div className="flex flex-wrap items-center justify-between gap-3">
-          <p className="font-feature text-xs uppercase tracking-[0.2em] text-slate-300">
-            Daily Fare Strip
-          </p>
-          <p className="font-mono text-sm text-amber-100">
+          <p className="radar-eyebrow">Daily Fare Strip</p>
+          <p className="font-mono text-[12px]" style={{ color: "var(--radar-amber)" }}>
             {selected?.date ?? "—"} · Policy {formatUSD(selected?.policyPrice ?? 0)}
           </p>
         </div>
 
         <svg viewBox={`0 0 ${width} ${height}`} className="mt-4 h-auto w-full">
-          {[0, 0.25, 0.5, 0.75, 1].map((tick) => {
-            const yy = margin.top + tick * (height - margin.bottom - margin.top);
-            return (
+          {y.ticks(5).map((tick) => (
+            <g key={tick}>
               <line
-                key={tick}
                 x1={margin.left}
                 x2={width - margin.right}
-                y1={yy}
-                y2={yy}
-                stroke="rgba(182,169,151,0.14)"
-                strokeDasharray="4 6"
+                y1={y(tick)}
+                y2={y(tick)}
+                stroke="rgba(148,163,184,0.06)"
+                strokeDasharray="3 5"
               />
-            );
-          })}
+              <text
+                x={margin.left - 8}
+                y={y(tick) + 4}
+                textAnchor="end"
+                fontSize={10}
+                fill="rgba(148,163,184,0.5)"
+                fontFamily="JetBrains Mono, monospace"
+              >
+                ${Math.round(tick)}
+              </text>
+            </g>
+          ))}
 
-          <path d={lineGen(rows) ?? ""} fill="none" stroke="rgba(182,169,151,0.95)" strokeWidth={2.1} />
-          <path d={algoLineGen(rows) ?? ""} fill="none" stroke="rgba(73,95,69,0.95)" strokeWidth={2.4} />
-          <path d={policyLineGen(rows) ?? ""} fill="none" stroke="rgba(139,107,62,1)" strokeWidth={3} />
+          <path d={lineGen(rows) ?? ""} fill="none" stroke="rgba(148,163,184,0.6)" strokeWidth={1.8} />
+          <path d={algoLineGen(rows) ?? ""} fill="none" stroke="var(--radar-green)" strokeWidth={2} opacity={0.7} />
+          <path d={policyLineGen(rows) ?? ""} fill="none" stroke="var(--radar-amber)" strokeWidth={2.6} />
 
           {selected ? (
             <g>
@@ -158,10 +148,10 @@ export function ActualVsAlgoTimeline({
                 x2={x(selected.index)}
                 y1={margin.top}
                 y2={height - margin.bottom}
-                stroke="rgba(226,232,240,0.55)"
-                strokeDasharray="4 5"
+                stroke="rgba(226,232,240,0.3)"
+                strokeDasharray="3 5"
               />
-              <circle cx={x(selected.index)} cy={y(selected.policyPrice)} r={4.8} fill="rgba(139,107,62,1)" />
+              <circle cx={x(selected.index)} cy={y(selected.policyPrice)} r={4.5} fill="var(--radar-amber)" stroke="rgba(226,232,240,0.5)" strokeWidth={1} />
             </g>
           ) : null}
 
@@ -171,6 +161,7 @@ export function ActualVsAlgoTimeline({
             width={width - margin.left - margin.right}
             height={height - margin.top - margin.bottom}
             fill="transparent"
+            style={{ cursor: "crosshair" }}
             onMouseMove={(event) => {
               const bounds = event.currentTarget.getBoundingClientRect();
               onSelectIndex(indexFromPointer(event.clientX, bounds.left, bounds.width, rows.length));
@@ -181,13 +172,12 @@ export function ActualVsAlgoTimeline({
             }}
           />
         </svg>
-      </section>
+      </div>
 
+      {/* Booking Curve + Selected Day Readout */}
       <section className="grid gap-4 xl:grid-cols-[minmax(0,1fr)_330px]">
-        <section className="neo-panel p-4">
-          <p className="font-feature text-xs uppercase tracking-[0.2em] text-slate-300">
-            Booking Curve
-          </p>
+        <div className="radar-chart">
+          <p className="radar-eyebrow">Booking Curve</p>
           <svg viewBox={`0 0 ${curveWidth} ${curveHeight}`} className="mt-3 h-auto w-full">
             {[0, 0.33, 0.66, 1].map((tick) => {
               const yy = curveMargin.top + tick * (curveHeight - curveMargin.bottom - curveMargin.top);
@@ -198,29 +188,27 @@ export function ActualVsAlgoTimeline({
                   x2={curveWidth - curveMargin.right}
                   y1={yy}
                   y2={yy}
-                  stroke="rgba(182,169,151,0.14)"
+                  stroke="rgba(148,163,184,0.06)"
                   strokeDasharray="3 5"
                 />
               );
             })}
-            <path d={actualCurvePath(sortedCurve) ?? ""} fill="none" stroke="rgba(182,169,151,0.95)" strokeWidth={2.4} />
-            <path d={counterfactualCurvePath(sortedCurve) ?? ""} fill="none" stroke="rgba(139,107,62,0.98)" strokeWidth={2.9} />
+            <path d={actualCurvePath(sortedCurve) ?? ""} fill="none" stroke="rgba(148,163,184,0.6)" strokeWidth={1.8} />
+            <path d={counterfactualCurvePath(sortedCurve) ?? ""} fill="none" stroke="var(--radar-amber)" strokeWidth={2.4} />
             {sortedCurve.map((point) => (
               <g key={point.window}>
-                <circle cx={xCurve(point.window)} cy={yCurve(point.actual)} r={3.2} fill="rgba(182,169,151,0.95)" />
-                <circle cx={xCurve(point.window)} cy={yCurve(point.counterfactual)} r={3.2} fill="rgba(139,107,62,0.95)" />
+                <circle cx={xCurve(point.window)} cy={yCurve(point.actual)} r={3} fill="rgba(148,163,184,0.7)" />
+                <circle cx={xCurve(point.window)} cy={yCurve(point.counterfactual)} r={3} fill="var(--radar-amber)" />
               </g>
             ))}
           </svg>
-        </section>
+        </div>
 
-        <section className="terminal overflow-hidden">
-          <div className="border-b border-white/10 bg-white/5 px-5 py-4">
-            <p className="font-feature text-xs uppercase tracking-[0.18em] text-slate-300">
-              Selected Day Readout
-            </p>
+        <div className="radar-panel overflow-hidden">
+          <div className="px-5 py-4" style={{ borderBottom: "1px solid var(--radar-border)", background: "rgba(15,20,36,0.5)" }}>
+            <p className="radar-eyebrow">Selected Day Readout</p>
           </div>
-          <div className="space-y-3 px-5 py-5 text-sm">
+          <div className="space-y-2.5 px-5 py-4 text-[12px]">
             <p className="text-slate-300">
               <span className="text-slate-100">Actual:</span>{" "}
               {formatUSD(selected?.actualPrice ?? 0)} · {formatNumber(selected?.actualPax ?? 0)} pax
@@ -231,31 +219,27 @@ export function ActualVsAlgoTimeline({
             </p>
             <p className="text-slate-300">
               <span className="text-slate-100">Revenue delta:</span>{" "}
-              <span className="text-emerald-200">{formatUSD(selected?.policyRegret ?? 0)}</span>
+              <span style={{ color: (selected?.policyRegret ?? 0) >= 0 ? "var(--radar-green)" : "var(--radar-crimson)" }}>
+                {formatUSD(selected?.policyRegret ?? 0)}
+              </span>
             </p>
-            <p className="text-slate-400">
-              Selected day captures {formatNumber((selected?.uaShare ?? 0) * 100, { digits: 1 })}% share.
+            <p className="text-slate-500">
+              Day captures {formatNumber((selected?.uaShare ?? 0) * 100, { digits: 1 })}% share
             </p>
           </div>
-        </section>
+        </div>
       </section>
 
+      {/* Annotation cards */}
       <section className="grid gap-3 lg:grid-cols-3">
         {annotations.map((item) => (
-          <article
-            key={item.key}
-            className="rounded-2xl border border-white/10 bg-black/20 px-4 py-3"
-          >
-            <p className="font-mono text-[10px] uppercase tracking-[0.14em] text-slate-400">
-              {item.label}
-            </p>
-            <p className="mt-1 text-sm text-slate-200">
-              {item.row.date} · {item.row.dow}
-            </p>
-            <p className={`mt-1 font-mono text-sm ${item.tone}`}>
+          <div key={item.key} className="radar-kpi">
+            <p className="font-mono text-[10px] uppercase tracking-[0.14em] text-slate-500">{item.label}</p>
+            <p className="mt-1 text-[12px] text-slate-300">{item.row.date} · {item.row.dow}</p>
+            <p className="mt-1 font-mono text-[13px]" style={{ color: item.color }}>
               {formatUSD(item.row.policyRegret)}
             </p>
-          </article>
+          </div>
         ))}
       </section>
     </section>
