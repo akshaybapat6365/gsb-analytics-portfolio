@@ -1,7 +1,15 @@
 import { ThemeProvider } from "@/components/theme/ThemeProvider";
 import "./neural-theme.css";
-import { WebGLBackground } from "@/components/viz/ord-lga/WebGLBackground";
-import { TelemetryBar } from "@/components/viz/ord-lga/TelemetryBar";
+import dynamic from "next/dynamic";
+
+const WebGLBackground = dynamic(
+  () => import("@/components/viz/ord-lga/WebGLBackground").then(m => ({ default: m.WebGLBackground })),
+  { ssr: false }
+);
+const TelemetryBar = dynamic(
+  () => import("@/components/viz/ord-lga/TelemetryBar").then(m => ({ default: m.TelemetryBar })),
+  { ssr: false }
+);
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   return (
