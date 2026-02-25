@@ -43,7 +43,7 @@ export default function AnimatedNumber({
     const [display, setDisplay] = useState(value);
     const prevRef = useRef(value);
     const [delta, setDelta] = useState<"up" | "down" | null>(null);
-    const deltaTimer = useRef<ReturnType<typeof setTimeout>>();
+    const deltaTimer = useRef<ReturnType<typeof setTimeout>>(undefined);
 
     useEffect(() => {
         const from = prevRef.current;
