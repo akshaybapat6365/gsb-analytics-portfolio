@@ -69,7 +69,7 @@ export function AlluvialFlow3D({ data }: { data: WeeklyBin[] }) {
                         key={i}
                         d={d}
                         fill="none"
-                        stroke="#00F0FF"
+                        stroke="#6B9FD4"
                         strokeWidth="20"
                         strokeLinecap="round"
                         filter="url(#alluvialGlow)"

@@ -40,8 +40,8 @@ export function VolumeProfile({ data }: { data: OrdDerivedDay[] }) {
             <svg viewBox={`0 0 ${W} ${H}`} className="w-full h-full mt-8" style={{ mixBlendMode: 'screen' }}>
                 <defs>
                     <linearGradient id="volGrad" x1="0" y1="0" x2="1" y2="0">
-                        <stop offset="0%" stopColor="#00F0FF" stopOpacity="0.8" />
-                        <stop offset="100%" stopColor="#FF007F" stopOpacity="0.1" />
+                        <stop offset="0%" stopColor="#6B9FD4" stopOpacity="0.8" />
+                        <stop offset="100%" stopColor="#C75B5B" stopOpacity="0.1" />
                     </linearGradient>
                     <filter id="volGlow">
                         <feGaussianBlur stdDeviation="2" result="blur" />
@@ -53,7 +53,7 @@ export function VolumeProfile({ data }: { data: OrdDerivedDay[] }) {
                 </defs>
 
                 {/* Y Axis Line */}
-                <line x1={40} y1={0} x2={40} y2={H} stroke="#00F0FF" strokeWidth="1" className="opacity-40" />
+                <line x1={40} y1={0} x2={40} y2={H} stroke="#6B9FD4" strokeWidth="1" className="opacity-40" />
 
                 {bins.map((b, i) => {
                     const y = H - ((i + 1) / bins.length) * H;

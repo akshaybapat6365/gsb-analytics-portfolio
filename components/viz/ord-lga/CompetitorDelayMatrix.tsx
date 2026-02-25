@@ -51,7 +51,7 @@ export function CompetitorDelayMatrix({ data }: { data: CompetitorLagPoint[] }) 
                                 key={`${x}-${y}`}
                                 className={cn("w-full h-full rounded-[1px] mix-blend-screen")}
                                 style={{
-                                    backgroundColor: intensity > 0 ? "#8B00FF" : "rgba(139, 0, 255, 0.05)",
+                                    backgroundColor: intensity > 0 ? "#8B8FAE" : "rgba(139, 143, 174, 0.05)",
                                     opacity: intensity > 0 ? 0.3 + intensity * 0.7 : 0.5
                                 }}
                                 initial={{ scale: 0 }}

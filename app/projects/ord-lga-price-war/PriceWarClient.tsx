@@ -97,7 +97,7 @@ function ChapterDivider() {
     <div className="my-16">
       <div
         className="h-px w-full"
-        style={{ background: "linear-gradient(90deg, transparent 0%, rgba(0, 240, 255, 0.12) 30%, rgba(0, 240, 255, 0.12) 70%, transparent 100%)" }}
+        style={{ background: "linear-gradient(90deg, transparent 0%, rgba(107, 159, 212, 0.1) 30%, rgba(107, 159, 212, 0.1) 70%, transparent 100%)" }}
       />
     </div>
   );

@@ -56,7 +56,7 @@ export function ShockConstellation({ events }: { events: OrdShockEvent[] }) {
                         key={i}
                         x1={link.source.x} y1={link.source.y}
                         x2={link.target.x} y2={link.target.y}
-                        stroke={link.source.severity === "high" ? "#FF007F" : "#00F0FF"}
+                        stroke={link.source.severity === "high" ? "#C75B5B" : "#6B9FD4"}
                         strokeWidth={link.source.severity === "high" ? 1.5 : 0.5}
                         className="opacity-30"
                         initial={{ pathLength: 0 }}
@@ -72,12 +72,12 @@ export function ShockConstellation({ events }: { events: OrdShockEvent[] }) {
                         <circle
                             cx={node.x} cy={node.y}
                             r={node.severity === "high" ? 6 : 3}
-                            fill={node.severity === "high" ? "#FF007F" : "#00F0FF"}
+                            fill={node.severity === "high" ? "#C75B5B" : "#6B9FD4"}
                             filter="url(#nodeGlow)"
                             className="animate-pulse"
                         />
                         {node.severity === "high" && (
-                            <text x={node.x + 10} y={node.y + 3} fill="#FF007F" fontSize={8} fontFamily="monospace" className="opacity-80">
+                            <text x={node.x + 10} y={node.y + 3} fill="#C75B5B" fontSize={8} fontFamily="monospace" className="opacity-80">
                                 SHOCK_{node.dayIndex}
                             </text>
                         )}

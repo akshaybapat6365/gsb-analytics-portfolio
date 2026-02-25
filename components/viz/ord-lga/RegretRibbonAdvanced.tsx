@@ -3,7 +3,7 @@
 import { useMemo } from "react";
 import { motion } from "framer-motion";
 import { NeuralEyebrow } from "./Typography";
-import type { CumRegretDay } from "./transforms";
+import type { CumulativeRegretPoint } from "./transforms";
 import { scaleLinear } from "d3-scale";
 import { area, curveMonotoneX } from "d3-shape";
 
@@ -13,7 +13,7 @@ import { area, curveMonotoneX } from "d3-shape";
  * intense mix-blend-mode layering and continuous D3 splines.
  */
 
-export function RegretRibbonAdvanced({ data }: { data: CumRegretDay[] }) {
+export function RegretRibbonAdvanced({ data }: { data: CumulativeRegretPoint[] }) {
 
     const width = 800;
     const height = 300;
@@ -28,7 +28,7 @@ export function RegretRibbonAdvanced({ data }: { data: CumRegretDay[] }) {
         const xScale = scaleLinear().domain([0, xMax]).range([padding.left, width - padding.right]);
         const yScale = scaleLinear().domain([0, yMax * 1.1]).range([height - padding.bottom, padding.top]);
 
-        const areaBuilder = area<CumRegretDay>()
+        const areaBuilder = area<CumulativeRegretPoint>()
             .x((d, i) => xScale(i))
             .y0(yScale(0))
             .y1(d => yScale(d.cumRegret))
@@ -50,9 +50,9 @@ export function RegretRibbonAdvanced({ data }: { data: CumRegretDay[] }) {
             <svg viewBox={`0 0 ${width} ${height}`} className="w-full h-full" style={{ mixBlendMode: 'screen' }}>
                 <defs>
                     <linearGradient id="ribbonGrad" x1="0" y1="0" x2="0" y2="1">
-                        <stop offset="0%" stopColor="#8B00FF" stopOpacity="0.8" />
-                        <stop offset="50%" stopColor="#FF007F" stopOpacity="0.4" />
-                        <stop offset="100%" stopColor="#00F0FF" stopOpacity="0.0" />
+                        <stop offset="0%" stopColor="#8B8FAE" stopOpacity="0.8" />
+                        <stop offset="50%" stopColor="#C75B5B" stopOpacity="0.4" />
+                        <stop offset="100%" stopColor="#6B9FD4" stopOpacity="0.0" />
                     </linearGradient>
                     <filter id="ribbonGlow">
                         <feGaussianBlur stdDeviation="4" result="blur" />
@@ -64,16 +64,16 @@ export function RegretRibbonAdvanced({ data }: { data: CumRegretDay[] }) {
                 </defs>
 
                 {/* Grid / Crosshairs */}
-                <line x1={padding.left} y1={height - padding.bottom} x2={width - padding.right} y2={height - padding.bottom} stroke="#00F0FF" strokeWidth="1" className="opacity-40" />
-                <line x1={padding.left} y1={padding.top} x2={padding.left} y2={height - padding.bottom} stroke="#00F0FF" strokeWidth="1" className="opacity-40" />
+                <line x1={padding.left} y1={height - padding.bottom} x2={width - padding.right} y2={height - padding.bottom} stroke="#6B9FD4" strokeWidth="1" className="opacity-40" />
+                <line x1={padding.left} y1={padding.top} x2={padding.left} y2={height - padding.bottom} stroke="#6B9FD4" strokeWidth="1" className="opacity-40" />
 
-                <text x={padding.left - 10} y={padding.top} fill="#00F0FF" fontSize={10} fontFamily="monospace" textAnchor="end" className="opacity-60">${(maxY / 1000).toFixed(0)}k</text>
+                <text x={padding.left - 10} y={padding.top} fill="#6B9FD4" fontSize={10} fontFamily="monospace" textAnchor="end" className="opacity-60">${(maxY / 1000).toFixed(0)}k</text>
 
                 {/* The Area Spline */}
                 <motion.path
                     d={pathDef}
                     fill="url(#ribbonGrad)"
-                    stroke="#8B00FF"
+                    stroke="#8B8FAE"
                     strokeWidth="2"
                     filter="url(#ribbonGlow)"
                     initial={{ opacity: 0, pathLength: 0 }}

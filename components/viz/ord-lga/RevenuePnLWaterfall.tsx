@@ -44,8 +44,8 @@ export function NeuralPnLWaterfall({ data }: { data: any[] }) {
                     const val = yMin + tick * yRange;
                     return (
                         <g key={tick} className="opacity-30">
-                            <line x1={0} x2={width} y1={yPos} y2={yPos} stroke="#00F0FF" strokeWidth="0.5" strokeDasharray="4 4" />
-                            <text x={0} y={yPos - 4} fill="#00F0FF" fontSize={12} fontFamily="monospace">
+                            <line x1={0} x2={width} y1={yPos} y2={yPos} stroke="#6B9FD4" strokeWidth="0.5" strokeDasharray="4 4" />
+                            <text x={0} y={yPos - 4} fill="#6B9FD4" fontSize={12} fontFamily="monospace">
                                 ${(val / 1000).toFixed(0)}k
                             </text>
                         </g>
@@ -67,10 +67,10 @@ export function NeuralPnLWaterfall({ data }: { data: any[] }) {
                     const isTotal = (category ?? "").toLowerCase().includes("total");
                     const isUp = end > start;
 
-                    let fill = "#8B00FF"; // Purple for neutral/total
+                    let fill = "#8B8FAE"; // Pewter for neutral/total
                     let glow = "url(#glowPurple)";
                     if (!isTotal) {
-                        fill = isUp ? "#00F0FF" : "#FF007F";
+                        fill = isUp ? "#4CAF7D" : "#C75B5B";
                         glow = isUp ? "url(#glowCyan)" : "url(#glowMagenta)";
                     }
 

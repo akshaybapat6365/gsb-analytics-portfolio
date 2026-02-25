@@ -53,12 +53,12 @@ export function DecisionMatrixTerminal({ decision }: TerminalProps) {
         <div className="w-full relative neural-glass-panel border-plasma-cyan/40 p-6 sm:p-8 bg-black/50 overflow-hidden font-mono text-xs sm:text-sm shadow-[0_0_30px_-5px_var(--plasma-cyan)]">
             {/* Background Grid Scanline */}
             <div className="absolute inset-0 pointer-events-none opacity-10"
-                style={{ backgroundImage: 'repeating-linear-gradient(0deg, transparent, transparent 2px, #00F0FF 2px, #00F0FF 4px)' }}>
+                style={{ backgroundImage: 'repeating-linear-gradient(0deg, transparent, transparent 2px, #6B9FD4 2px, #6B9FD4 4px)' }}>
             </div>
 
             <NeuralEyebrow className="text-plasma-cyan mb-6">EXECUTION_TERMINAL_V2.0</NeuralEyebrow>
 
-            <pre className="whitespace-pre-wrap text-[#00F0FF] leading-relaxed drop-shadow-[0_0_4px_#00F0FF]">
+            <pre className="whitespace-pre-wrap text-[#6B9FD4] leading-relaxed drop-shadow-[0_0_4px_#6B9FD4]">
                 {outputText}
                 <span className="animate-pulse">_</span>
             </pre>
