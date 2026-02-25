@@ -1,20 +1,25 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { ProjectCard } from "@/components/projects/ProjectCard";
-import type { HomepageEvidenceLevel, Project, ProjectDomain, ProjectOutputType } from "@/lib/projects/catalog";
+import type {
+  HomepageEvidenceLevel,
+  Project,
+  ProjectDomain,
+  ProjectOutputType,
+} from "@/lib/projects/catalog";
 
-type ProjectsIndexGridProps = {
-  projects: Project[];
-};
-
+type Props = { projects: Project[] };
 type AnyFilter = "all";
+
+/* ── Label maps ─────────────────────────────────────── */
 
 const domainLabels: Record<ProjectDomain, string> = {
   pricing: "Pricing",
   fraud: "Fraud",
-  ops: "Ops",
-  geo: "Geo",
+  ops: "Retail Ops",
+  geo: "Geospatial",
   infra: "Infrastructure",
   portfolio: "Portfolio",
 };
@@ -32,22 +37,53 @@ const evidenceLabels: Record<HomepageEvidenceLevel, string> = {
   modeled: "Modeled",
 };
 
-function filterButtonClass(active: boolean) {
-  return active
-    ? "rounded-full border border-amber-200/45 bg-amber-300/18 px-3 py-1.5 text-[11px] font-semibold uppercase tracking-[0.12em] text-amber-100"
-    : "rounded-full border border-white/16 bg-white/[0.05] px-3 py-1.5 text-[11px] font-semibold uppercase tracking-[0.12em] text-slate-200 transition hover:border-amber-200/30 hover:text-amber-100";
+/* ── Filter pill component ──────────────────────────── */
+
+function Pill({
+  active,
+  onClick,
+  children,
+}: {
+  active: boolean;
+  onClick: () => void;
+  children: React.ReactNode;
+}) {
+  return (
+    <button
+      type="button"
+      onClick={onClick}
+      className={
+        active
+          ? "rounded-full border border-white/25 bg-white/[0.10] px-3 py-1.5 font-mono text-[10px] font-medium uppercase tracking-[0.13em] text-slate-100 transition"
+          : "rounded-full border border-white/[0.08] bg-transparent px-3 py-1.5 font-mono text-[10px] font-medium uppercase tracking-[0.13em] text-slate-500 transition hover:border-white/20 hover:text-slate-300"
+      }
+    >
+      {children}
+    </button>
+  );
 }
 
-export function ProjectsIndexGrid({ projects }: ProjectsIndexGridProps) {
+/* ── Grid component ─────────────────────────────────── */
+
+const cardVariants = {
+  hidden: { opacity: 0, y: 16, scale: 0.97 },
+  visible: (i: number) => ({
+    opacity: 1, y: 0, scale: 1,
+    transition: { delay: i * 0.06, duration: 0.35, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] },
+  }),
+  exit: { opacity: 0, y: -8, scale: 0.97, transition: { duration: 0.2 } },
+};
+
+export function ProjectsIndexGrid({ projects }: Props) {
   const [domain, setDomain] = useState<ProjectDomain | AnyFilter>("all");
   const [evidence, setEvidence] = useState<HomepageEvidenceLevel | AnyFilter>("all");
   const [outputType, setOutputType] = useState<ProjectOutputType | AnyFilter>("all");
 
   const filtered = useMemo(() => {
-    return projects.filter((project) => {
-      if (domain !== "all" && project.domain !== domain) return false;
-      if (evidence !== "all" && project.homepage.evidenceLevel !== evidence) return false;
-      if (outputType !== "all" && project.outputType !== outputType) return false;
+    return projects.filter((p) => {
+      if (domain !== "all" && p.domain !== domain) return false;
+      if (evidence !== "all" && p.homepage.evidenceLevel !== evidence) return false;
+      if (outputType !== "all" && p.outputType !== outputType) return false;
       return true;
     });
   }, [projects, domain, evidence, outputType]);
@@ -57,84 +93,78 @@ export function ProjectsIndexGrid({ projects }: ProjectsIndexGridProps) {
   const evidences = Object.keys(evidenceLabels) as HomepageEvidenceLevel[];
 
   return (
-    <section className="space-y-6" aria-label="Project index filters and cards">
-      <div className="surface-primary p-4 sm:p-5">
-        <div className="grid gap-4 lg:grid-cols-3">
+    <section className="space-y-6" aria-label="Project index">
+      {/* ── Filter bar ── */}
+      <div className="rounded-xl border border-white/[0.05] bg-[#0e0e13] p-4 sm:p-5">
+        <div className="grid gap-5 sm:grid-cols-3">
+          {/* Domain */}
           <div>
-            <p className="font-mono text-[11px] uppercase tracking-[0.14em] text-slate-300">Domain</p>
-            <div className="mt-2 flex flex-wrap gap-2">
-              <button type="button" onClick={() => setDomain("all")} className={filterButtonClass(domain === "all")}>
-                All
-              </button>
-              {domains.map((value) => (
-                <button
-                  key={value}
-                  type="button"
-                  onClick={() => setDomain(value)}
-                  className={filterButtonClass(domain === value)}
-                >
-                  {domainLabels[value]}
-                </button>
+            <p className="mb-2 font-mono text-[9px] uppercase tracking-[0.16em] text-slate-500">
+              Domain
+            </p>
+            <div className="flex flex-wrap gap-1.5">
+              <Pill active={domain === "all"} onClick={() => setDomain("all")}>All</Pill>
+              {domains.map((v) => (
+                <Pill key={v} active={domain === v} onClick={() => setDomain(v)}>
+                  {domainLabels[v]}
+                </Pill>
               ))}
             </div>
           </div>
 
+          {/* Evidence */}
           <div>
-            <p className="font-mono text-[11px] uppercase tracking-[0.14em] text-slate-300">Evidence</p>
-            <div className="mt-2 flex flex-wrap gap-2">
-              <button
-                type="button"
-                onClick={() => setEvidence("all")}
-                className={filterButtonClass(evidence === "all")}
-              >
-                All
-              </button>
-              {evidences.map((value) => (
-                <button
-                  key={value}
-                  type="button"
-                  onClick={() => setEvidence(value)}
-                  className={filterButtonClass(evidence === value)}
-                >
-                  {evidenceLabels[value]}
-                </button>
+            <p className="mb-2 font-mono text-[9px] uppercase tracking-[0.16em] text-slate-500">
+              Evidence
+            </p>
+            <div className="flex flex-wrap gap-1.5">
+              <Pill active={evidence === "all"} onClick={() => setEvidence("all")}>All</Pill>
+              {evidences.map((v) => (
+                <Pill key={v} active={evidence === v} onClick={() => setEvidence(v)}>
+                  {evidenceLabels[v]}
+                </Pill>
               ))}
             </div>
           </div>
 
+          {/* Output */}
           <div>
-            <p className="font-mono text-[11px] uppercase tracking-[0.14em] text-slate-300">Output</p>
-            <div className="mt-2 flex flex-wrap gap-2">
-              <button
-                type="button"
-                onClick={() => setOutputType("all")}
-                className={filterButtonClass(outputType === "all")}
-              >
-                All
-              </button>
-              {outputs.map((value) => (
-                <button
-                  key={value}
-                  type="button"
-                  onClick={() => setOutputType(value)}
-                  className={filterButtonClass(outputType === value)}
-                >
-                  {outputLabels[value]}
-                </button>
+            <p className="mb-2 font-mono text-[9px] uppercase tracking-[0.16em] text-slate-500">
+              Output
+            </p>
+            <div className="flex flex-wrap gap-1.5">
+              <Pill active={outputType === "all"} onClick={() => setOutputType("all")}>All</Pill>
+              {outputs.map((v) => (
+                <Pill key={v} active={outputType === v} onClick={() => setOutputType(v)}>
+                  {outputLabels[v]}
+                </Pill>
               ))}
             </div>
           </div>
         </div>
 
-        <p className="mt-4 font-mono text-[12px] text-slate-300">
-          Showing {filtered.length} of {projects.length} simulations.
+        <p className="mt-4 font-mono text-[10px] tracking-[0.08em] text-slate-600">
+          Showing {filtered.length} of {projects.length} simulators
         </p>
       </div>
 
-      <div className="grid gap-4 md:grid-cols-2">
-        {filtered.map((project) => (
-          <ProjectCard key={project.slug} project={project} />
-        ))}
+      {/* ── Card grid with staggered animation ── */}
+      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <AnimatePresence mode="popLayout">
+          {filtered.map((project, i) => (
+            <motion.div
+              key={project.slug}
+              layout
+              custom={i}
+              variants={cardVariants}
+              initial="hidden"
+              animate="visible"
+              exit="exit"
+            >
+              <ProjectCard project={project} />
+            </motion.div>
+          ))}
+        </AnimatePresence>
       </div>
     </section>
   );

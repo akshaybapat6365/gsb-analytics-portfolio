@@ -4,31 +4,10 @@ import Link from "next/link";
 import type { CSSProperties } from "react";
 import { motion, useReducedMotion } from "framer-motion";
 import type { HomeProjectCardVM } from "@/lib/viewmodels/home";
+import { ACCENT_BY_SLUG, DOMAIN_BY_SLUG } from "@/lib/chartTheme";
 import { CardMiniViz } from "./CardMiniViz";
 
 type Props = { cards: HomeProjectCardVM[] };
-
-/* ── Per-project accent RGB ──────────────────────────── */
-
-/* Curated desaturated palette — cohesive on dark backgrounds,
-   all within a similar luminance band. Not random primaries. */
-const accentBySlug: Record<HomeProjectCardVM["slug"], string> = {
-  "ord-lga-price-war": "160,175,220",   /* dusty blue   */
-  "fraud-radar": "180,155,210",         /* soft lavender */
-  "target-shrink": "155,190,170",       /* sage          */
-  "starbucks-pivot": "190,178,150",     /* warm stone    */
-  "tesla-nacs": "140,195,210",          /* steel teal    */
-  "netflix-roi": "200,160,168",         /* dusty rose    */
-};
-
-const domainBySlug: Record<HomeProjectCardVM["slug"], string> = {
-  "ord-lga-price-war": "Pricing Strategy",
-  "fraud-radar": "Forensic Risk",
-  "target-shrink": "Retail Operations",
-  "starbucks-pivot": "Geospatial Strategy",
-  "tesla-nacs": "Infrastructure",
-  "netflix-roi": "Capital Allocation",
-};
 
 /* ── Component ───────────────────────────────────────── */
 
@@ -50,7 +29,7 @@ export function HomeProjectGrid({ cards }: Props) {
       {/* 3-column grid */}
       <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
         {cards.map((card, idx) => {
-          const accent = accentBySlug[card.slug];
+          const accent = ACCENT_BY_SLUG[card.slug];
           const style = { "--card-accent": accent } as CSSProperties;
 
           return (
@@ -90,7 +69,7 @@ export function HomeProjectGrid({ cards }: Props) {
                   </div>
                   {/* Domain tag */}
                   <p className="absolute left-4 top-3 z-10 font-mono text-[10px] uppercase tracking-[0.2em] text-slate-500">
-                    {domainBySlug[card.slug]}
+                    {DOMAIN_BY_SLUG[card.slug]}
                   </p>
                 </div>
 
