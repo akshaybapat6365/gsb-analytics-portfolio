@@ -155,8 +155,8 @@ export function buildHeatCells(
       : mode === "counterfactual"
         ? payload.heatmap.algo
         : payload.heatmap.algo.map((row, y) =>
-            row.map((value, x) => value - payload.heatmap.actual[y]![x]!),
-          );
+          row.map((value, x) => value - payload.heatmap.actual[y]![x]!),
+        );
 
   const cells: OrdHeatCell[] = [];
   for (let y = 0; y < matrix.length; y++) {
@@ -299,4 +299,389 @@ export function buildNashSeries(
   }
 
   return { states, convergenceDay: 18 };
+}
+
+// ──────────────────────────────────────────────────────────────
+// Phase 1: New types & transforms for 100× overhaul
+// ──────────────────────────────────────────────────────────────
+
+// Step 1: Daily P&L decomposition
+export type DailyPnLRow = {
+  date: string;
+  dayIndex: number;
+  baseRevenue: number;
+  algorithmicUplift: number;
+  competitorCapture: number;
+  shockLoss: number;
+  netLift: number;
+  cumulative: number;
+};
+
+// Step 2: buildDailyPnL
+export function buildDailyPnL(rows: OrdDerivedDay[]): DailyPnLRow[] {
+  let cumulative = 0;
+  return rows.map((row) => {
+    const totalDelta = row.policyRevenue - row.actualRevenue;
+    // Decompose: algo uplift is the idealized gain, competitor capture is share-adjusted loss,
+    // shock loss is the shock-weighted penalty
+    const idealUplift = row.algoRevenue - row.actualRevenue;
+    const shareAdjustment = (row.uaShare - 0.5) * row.policyPrice * row.policyPax * 0.15;
+    const shockPenalty = row.shock > 0 ? row.shock * Math.abs(totalDelta) * 0.25 : 0;
+    const competitorEffect = totalDelta - idealUplift + shareAdjustment + shockPenalty;
+
+    const algorithmicUplift = Math.max(0, idealUplift);
+    const competitorCapture = Math.min(0, competitorEffect);
+    const shockLoss = -shockPenalty;
+    const netLift = totalDelta;
+    cumulative += netLift;
+
+    return {
+      date: row.date,
+      dayIndex: row.index,
+      baseRevenue: row.actualRevenue,
+      algorithmicUplift,
+      competitorCapture,
+      shockLoss,
+      netLift,
+      cumulative,
+    };
+  });
+}
+
+// Step 3 & 4: Fare distribution (KDE)
+export type FareDistPoint = {
+  price: number;
+  density: number;
+};
+
+export type FareDistByDow = {
+  dow: string;
+  actual: FareDistPoint[];
+  policy: FareDistPoint[];
+  actualMean: number;
+  policyMean: number;
+};
+
+function gaussianKDE(
+  values: number[],
+  bandwidth: number,
+  gridMin: number,
+  gridMax: number,
+  nPoints: number,
+): FareDistPoint[] {
+  const step = (gridMax - gridMin) / (nPoints - 1);
+  return Array.from({ length: nPoints }, (_, i) => {
+    const x = gridMin + i * step;
+    let density = 0;
+    for (const v of values) {
+      const z = (x - v) / bandwidth;
+      density += Math.exp(-0.5 * z * z) / (bandwidth * Math.sqrt(2 * Math.PI));
+    }
+    density /= Math.max(1, values.length);
+    return { price: x, density };
+  });
+}
+
+export function buildFareDistribution(rows: OrdDerivedDay[]): FareDistByDow[] {
+  const dowOrder = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
+  const grouped = new Map<string, OrdDerivedDay[]>();
+  for (const row of rows) {
+    const arr = grouped.get(row.dow) ?? [];
+    arr.push(row);
+    grouped.set(row.dow, arr);
+  }
+
+  const allPrices = rows.flatMap((r) => [r.actualPrice, r.policyPrice]);
+  const gridMin = Math.min(...allPrices) - 20;
+  const gridMax = Math.max(...allPrices) + 20;
+  const bandwidth = (gridMax - gridMin) / 12;
+
+  return dowOrder
+    .filter((dow) => grouped.has(dow))
+    .map((dow) => {
+      const dayRows = grouped.get(dow)!;
+      const actualPrices = dayRows.map((r) => r.actualPrice);
+      const policyPrices = dayRows.map((r) => r.policyPrice);
+      return {
+        dow,
+        actual: gaussianKDE(actualPrices, bandwidth, gridMin, gridMax, 50),
+        policy: gaussianKDE(policyPrices, bandwidth, gridMin, gridMax, 50),
+        actualMean:
+          actualPrices.reduce((a, b) => a + b, 0) / Math.max(1, actualPrices.length),
+        policyMean:
+          policyPrices.reduce((a, b) => a + b, 0) / Math.max(1, policyPrices.length),
+      };
+    });
+}
+
+// Step 5 & 6: Cumulative regret with CI
+export type CumulativeRegretPoint = {
+  dayIndex: number;
+  date: string;
+  dailyRegret: number;
+  cumRegret: number;
+  ciLow: number;
+  ciHigh: number;
+  hasShock: boolean;
+};
+
+export function buildCumulativeRegret(
+  rows: OrdDerivedDay[],
+  uncertainty?: { revenueLiftCi: [number, number] },
+): CumulativeRegretPoint[] {
+  const totalRegret = rows.reduce((acc, r) => acc + r.policyRegret, 0);
+  const ciSpread = uncertainty
+    ? (uncertainty.revenueLiftCi[1] - uncertainty.revenueLiftCi[0]) / 2
+    : totalRegret * 0.15;
+  const spreadPerDay = ciSpread / Math.max(1, Math.sqrt(rows.length));
+
+  let cumRegret = 0;
+  return rows.map((row) => {
+    cumRegret += row.policyRegret;
+    const dayFrac = (row.index + 1) / rows.length;
+    const ciWidth = spreadPerDay * Math.sqrt(row.index + 1);
+    return {
+      dayIndex: row.index,
+      date: row.date,
+      dailyRegret: row.policyRegret,
+      cumRegret,
+      ciLow: cumRegret - ciWidth,
+      ciHigh: cumRegret + ciWidth,
+      hasShock: row.shock > 0,
+    };
+  });
+}
+
+// Step 7 & 8: Competitor response lag
+export type CompetitorLagPoint = {
+  dayIndex: number;
+  date: string;
+  uaPriceChange: number;
+  dlResponseDays: number;
+  dlPriceChange: number;
+  uaPrice: number;
+  dlPrice: number;
+};
+
+export function buildCompetitorLagSeries(rows: OrdDerivedDay[]): CompetitorLagPoint[] {
+  const result: CompetitorLagPoint[] = [];
+  for (let i = 1; i < rows.length; i++) {
+    const uaChange = rows[i]!.policyPrice - rows[i - 1]!.policyPrice;
+    if (Math.abs(uaChange) < 3) continue;
+
+    const direction = uaChange > 0 ? 1 : -1;
+    let lagDays = 6; // default "no response"
+    let dlChange = 0;
+
+    for (let j = i + 1; j < Math.min(i + 6, rows.length); j++) {
+      const dChange = rows[j]!.competitorPrice - rows[j - 1]!.competitorPrice;
+      if (dChange * direction > 2) {
+        lagDays = j - i;
+        dlChange = dChange;
+        break;
+      }
+    }
+
+    result.push({
+      dayIndex: rows[i]!.index,
+      date: rows[i]!.date,
+      uaPriceChange: uaChange,
+      dlResponseDays: lagDays,
+      dlPriceChange: dlChange,
+      uaPrice: rows[i]!.policyPrice,
+      dlPrice: rows[i]!.competitorPrice,
+    });
+  }
+  return result;
+}
+
+// Step 9 & 10: Validation comparison
+export type ValidationBar = {
+  model: string;
+  metric: string;
+  value: number;
+  isBest: boolean;
+};
+
+export type ValidationComparison = {
+  bars: ValidationBar[];
+  trainDays: number;
+  valDays: number;
+  trainStart: string;
+  trainEnd: string;
+  valStart: string;
+  valEnd: string;
+  oosLiftStatic: number;
+  oosLiftSticky: number;
+};
+
+export function buildValidationComparison(
+  payload: AirlinePayload,
+): ValidationComparison | null {
+  const vs = payload.validationSummary;
+  if (!vs) return null;
+
+  const models = ["Static Baseline", "Sticky Baseline", "Policy Model"] as const;
+  const metricKeys = ["maeRevenue", "mapeRevenue", "meanRegret"] as const;
+  const metricLabels = ["MAE Revenue", "MAPE Revenue", "Mean Regret"];
+  const sources = [vs.metrics.staticBaseline, vs.metrics.stickyBaseline, vs.metrics.policyModel];
+
+  const bars: ValidationBar[] = [];
+  for (let m = 0; m < metricKeys.length; m++) {
+    const key = metricKeys[m]!;
+    const values = sources.map((s) => Math.abs(s[key]));
+    const bestIdx = values.indexOf(Math.min(...values));
+    for (let i = 0; i < models.length; i++) {
+      bars.push({
+        model: models[i]!,
+        metric: metricLabels[m]!,
+        value: sources[i]![key],
+        isBest: i === bestIdx,
+      });
+    }
+  }
+
+  return {
+    bars,
+    trainDays: vs.trainWindow.count,
+    valDays: vs.validationWindow.count,
+    trainStart: vs.trainWindow.start ?? "",
+    trainEnd: vs.trainWindow.end ?? "",
+    valStart: vs.validationWindow.start ?? "",
+    valEnd: vs.validationWindow.end ?? "",
+    oosLiftStatic: vs.oosLiftDeltaVsStatic,
+    oosLiftSticky: vs.oosLiftDeltaVsSticky,
+  };
+}
+
+// Step 11 & 12: Narrative timeline
+export type NarrativeNode = {
+  date: string;
+  dayIndex: number;
+  type: "narrative" | "shock" | "annotation";
+  title: string;
+  body: string;
+  metric?: number;
+  severity?: "low" | "med" | "high";
+};
+
+export function buildNarrativeTimeline(
+  payload: AirlinePayload,
+  rows: OrdDerivedDay[],
+): NarrativeNode[] {
+  const nodes: NarrativeNode[] = [];
+  const findDay = (date: string) => rows.findIndex((r) => r.date === date);
+
+  // Narrative entries
+  for (const n of payload.narrative) {
+    const idx = findDay(n.date);
+    nodes.push({
+      date: n.date,
+      dayIndex: Math.max(0, idx),
+      type: "narrative",
+      title: `Policy: $${n.recommendedPrice} vs Actual: $${n.actualPrice}`,
+      body: n.reason,
+      metric: n.incrementalRevenue,
+    });
+  }
+
+  // Shock events
+  for (const s of payload.shockEvents ?? []) {
+    const idx = findDay(s.date);
+    const row = rows[Math.max(0, idx)] ?? rows[0];
+    nodes.push({
+      date: s.date,
+      dayIndex: Math.max(0, idx),
+      type: "shock",
+      title: s.label,
+      body: s.narrative,
+      metric: row?.policyRegret,
+      severity: s.severity,
+    });
+  }
+
+  // Annotations
+  for (const a of payload.annotations ?? []) {
+    const idx = findDay(a.timestampOrIndex);
+    nodes.push({
+      date: a.timestampOrIndex,
+      dayIndex: Math.max(0, idx),
+      type: "annotation",
+      title: a.title,
+      body: a.body,
+    });
+  }
+
+  return nodes.sort((a, b) => a.dayIndex - b.dayIndex);
+}
+
+// Step 13 & 14: Weekly rollup
+export type WeeklyBin = {
+  weekIndex: number;
+  weekStart: string;
+  weekEnd: string;
+  avgActualPrice: number;
+  avgPolicyPrice: number;
+  avgCompetitorPrice: number;
+  totalRevenue: number;
+  totalPolicyRevenue: number;
+  avgRegret: number;
+  avgUaShare: number;
+  shockCount: number;
+  dayCount: number;
+};
+
+export function buildWeeklyRollup(rows: OrdDerivedDay[]): WeeklyBin[] {
+  const bins: WeeklyBin[] = [];
+  for (let i = 0; i < rows.length; i += 7) {
+    const chunk = rows.slice(i, i + 7);
+    const n = chunk.length;
+    bins.push({
+      weekIndex: Math.floor(i / 7),
+      weekStart: chunk[0]!.date,
+      weekEnd: chunk[n - 1]!.date,
+      avgActualPrice: chunk.reduce((a, r) => a + r.actualPrice, 0) / n,
+      avgPolicyPrice: chunk.reduce((a, r) => a + r.policyPrice, 0) / n,
+      avgCompetitorPrice: chunk.reduce((a, r) => a + r.competitorPrice, 0) / n,
+      totalRevenue: chunk.reduce((a, r) => a + r.actualRevenue, 0),
+      totalPolicyRevenue: chunk.reduce((a, r) => a + r.policyRevenue, 0),
+      avgRegret: chunk.reduce((a, r) => a + r.policyRegret, 0) / n,
+      avgUaShare: chunk.reduce((a, r) => a + r.uaShare, 0) / n,
+      shockCount: chunk.filter((r) => r.shock > 0).length,
+      dayCount: n,
+    });
+  }
+  return bins;
+}
+
+// Step 15: Price spread series (for sparklines)
+export type PriceSpreadPoint = {
+  dayIndex: number;
+  spread: number;
+  spreadPct: number;
+};
+
+export function buildPriceSpreadSeries(rows: OrdDerivedDay[]): PriceSpreadPoint[] {
+  return rows.map((row) => ({
+    dayIndex: row.index,
+    spread: row.competitorPrice - row.policyPrice,
+    spreadPct: (row.competitorPrice - row.policyPrice) / Math.max(1, row.policyPrice),
+  }));
+}
+
+// Step 16: Share oscillation series (for sparklines)
+export type SharePoint = {
+  dayIndex: number;
+  uaShare: number;
+  dlShare: number;
+  delta: number;
+};
+
+export function buildShareOscillation(rows: OrdDerivedDay[]): SharePoint[] {
+  return rows.map((row) => ({
+    dayIndex: row.index,
+    uaShare: row.uaShare,
+    dlShare: row.dlShare,
+    delta: row.uaShare - row.dlShare,
+  }));
 }

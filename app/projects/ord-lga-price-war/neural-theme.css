@@ -1,0 +1,237 @@
+/* ═══════════════════════════════════════════════════════════════
+   ORD-LGA Price War V2 — Aerospace Glassmorphism & Neural Interface
+   ═══════════════════════════════════════════════════════════════ */
+
+/* ── Google Fonts — ACTUALLY LOADED ── */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&family=Outfit:wght@300;400;500;600;700;800;900&display=swap');
+
+:root {
+    /* ── Core Deep Space Palette ── */
+    --neural-bg: #050a12;
+    --neural-bg-glass: rgba(4, 11, 22, 0.4);
+    --neural-surface: #0a1628;
+    --neural-surface-glass: rgba(7, 21, 42, 0.35);
+    --neural-border: rgba(255, 255, 255, 0.06);
+    --neural-border-active: rgba(0, 240, 255, 0.4);
+
+    /* ── Plasma Data Colors ── */
+    --plasma-magenta: #FF007F;
+    --plasma-magenta-50: rgba(255, 0, 127, 0.5);
+    --plasma-magenta-20: rgba(255, 0, 127, 0.2);
+    --plasma-magenta-glow: 0 0 16px rgba(255, 0, 127, 0.6);
+
+    --plasma-cyan: #00F0FF;
+    --plasma-cyan-50: rgba(0, 240, 255, 0.5);
+    --plasma-cyan-20: rgba(0, 240, 255, 0.2);
+    --plasma-cyan-glow: 0 0 16px rgba(0, 240, 255, 0.6);
+
+    --plasma-purple: #8B00FF;
+    --plasma-purple-50: rgba(139, 0, 255, 0.5);
+    --plasma-purple-glow: 0 0 16px rgba(139, 0, 255, 0.6);
+
+    --frost-white: #E2E8F0;
+    --frost-white-50: rgba(226, 232, 240, 0.5);
+
+    /* ── Grid & Depth ── */
+    --neural-grid-major: rgba(0, 240, 255, 0.08);
+    --neural-grid-minor: rgba(0, 240, 255, 0.03);
+
+    /* ── Typography ── */
+    --font-display: 'Outfit', system-ui, sans-serif;
+    --font-body: 'Inter', system-ui, sans-serif;
+    --font-mono: 'JetBrains Mono', 'SF Mono', 'Fira Code', monospace;
+}
+
+/* ── App Shell ── */
+.neural-page {
+    background-color: var(--neural-bg);
+    color: var(--frost-white);
+    min-height: 100vh;
+    position: relative;
+    overflow-x: hidden;
+    font-family: var(--font-body);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+}
+
+/* Base deep space gradient */
+.neural-page::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background: radial-gradient(circle at 50% 0%, #0c2041 0%, transparent 60%),
+        radial-gradient(circle at 10% 80%, rgba(139, 0, 255, 0.05) 0%, transparent 40%);
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* ── Glassmorphism Panels — FLAT, NO NESTING ── */
+.neural-glass-panel {
+    background: var(--neural-surface-glass);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border: 1px solid var(--neural-border);
+    border-radius: 12px;
+    position: relative;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5), inset 0 1px 1px rgba(255, 255, 255, 0.03);
+    overflow: hidden;
+}
+
+/* Tech / Hacker corner brackets - SUBTLER */
+.neural-glass-panel::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    pointer-events: none;
+    border: 1px solid transparent;
+    background:
+        linear-gradient(var(--plasma-cyan), var(--plasma-cyan)) top left / 10px 1px no-repeat,
+        linear-gradient(var(--plasma-cyan), var(--plasma-cyan)) top left / 1px 10px no-repeat,
+        linear-gradient(var(--plasma-cyan), var(--plasma-cyan)) bottom right / 10px 1px no-repeat,
+        linear-gradient(var(--plasma-cyan), var(--plasma-cyan)) bottom right / 1px 10px no-repeat;
+    opacity: 0.3;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   TYPOGRAPHY — Steve-Jobs-tier type system
+   ═══════════════════════════════════════════════════════════════ */
+
+.neural-title {
+    font-family: var(--font-display);
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    line-height: 1.05;
+    color: #ffffff;
+}
+
+.neural-mono-data {
+    font-family: var(--font-mono);
+    font-variant-numeric: tabular-nums;
+    font-weight: 500;
+    letter-spacing: -0.02em;
+}
+
+.neural-eyebrow {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--plasma-cyan-50);
+}
+
+/* Body text */
+.neural-body {
+    font-family: var(--font-body);
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 1.7;
+    color: rgba(226, 232, 240, 0.7);
+    letter-spacing: 0.01em;
+}
+
+/* Chapter subtitle */
+.neural-subtitle {
+    font-family: var(--font-body);
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.6;
+    color: rgba(226, 232, 240, 0.55);
+    letter-spacing: 0.01em;
+}
+
+/* ── Glow Classes ── */
+.glow-magenta {
+    filter: drop-shadow(0 0 8px var(--plasma-magenta));
+}
+
+.glow-cyan {
+    filter: drop-shadow(0 0 8px var(--plasma-cyan));
+}
+
+.text-glow-magenta {
+    text-shadow: 0 0 12px var(--plasma-magenta);
+}
+
+.text-glow-cyan {
+    text-shadow: 0 0 12px var(--plasma-cyan);
+}
+
+/* ── Custom Scrollbar ── */
+.neural-page ::-webkit-scrollbar {
+    width: 4px;
+    height: 4px;
+}
+
+.neural-page ::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.neural-page ::-webkit-scrollbar-thumb {
+    background: rgba(0, 240, 255, 0.2);
+    border-radius: 2px;
+}
+
+.neural-page ::-webkit-scrollbar-thumb:hover {
+    background: var(--plasma-cyan);
+}
+
+/* ── Fullscreen WebGL Canvas Layer ── */
+#gl-canvas-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 1;
+    pointer-events: none;
+}
+
+#gl-canvas-container.interactive {
+    pointer-events: auto;
+}
+
+/* Make sure HTML content sits on top of WebGL */
+.neural-html-layer {
+    position: relative;
+    z-index: 10;
+    pointer-events: auto;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   X-RAY MODE — strips all styling to raw data
+   ═══════════════════════════════════════════════════════════════ */
+body.xray-mode .neural-glass-panel {
+    background: transparent !important;
+    backdrop-filter: none !important;
+    border-color: rgba(255, 255, 255, 0.15) !important;
+    box-shadow: none !important;
+}
+
+body.xray-mode .neural-glass-panel::after {
+    display: none !important;
+}
+
+body.xray-mode .neural-page::before {
+    display: none !important;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   CHAPTER SECTION — FLAT, no card-in-card, pure vertical flow
+   ═══════════════════════════════════════════════════════════════ */
+.chapter-section {
+    padding: 0;
+    border: none;
+    background: transparent;
+}
+
+.chapter-divider {
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent 0%, rgba(0, 240, 255, 0.15) 30%, rgba(0, 240, 255, 0.15) 70%, transparent 100%);
+    margin: 3rem 0;
+}

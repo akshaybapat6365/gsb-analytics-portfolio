@@ -16,6 +16,7 @@ export const AirlinePayloadSchema = z.object({
     .object({
       name: z.string(),
       dailyAggressiveness: z.array(z.number()),
+      dailyPrices: z.array(z.number()).optional(),
       inferredPolicyLabel: z.string(),
     })
     .optional(),
