@@ -1,0 +1,230 @@
+"use client";
+
+/**
+ * BookingCascade — Stacked area chart showing actual vs algo
+ * bookings across booking windows over time.
+ * Data source: payload.bookingCurve
+ */
+
+import { useMemo, useState } from "react";
+import { area, curveMonotoneX, line, max, scaleLinear } from "d3";
+import { formatNumber } from "@/lib/metrics/format";
+
+type BookingPoint = {
+    date: string;
+    window: number;
+    actualBookings: number;
+    algoBookings: number;
+};
+
+type Props = {
+    curve: BookingPoint[];
+};
+
+export function BookingCascade({ curve }: Props) {
+    const [hoveredWindow, setHoveredWindow] = useState<number | null>(null);
+
+    const width = 720;
+    const height = 380;
+    const margin = { top: 28, right: 24, bottom: 52, left: 64 };
+
+    // Group by window
+    const windows = useMemo(() => {
+        const windowSet = [...new Set(curve.map((c) => c.window))].sort((a, b) => a - b);
+        return windowSet;
+    }, [curve]);
+
+    // Aggregate by window for summary
+    const windowSummary = useMemo(() => {
+        return windows.map((w) => {
+            const points = curve.filter((c) => c.window === w);
+            const totalActual = points.reduce((acc, p) => acc + p.actualBookings, 0);
+            const totalAlgo = points.reduce((acc, p) => acc + p.algoBookings, 0);
+            return { window: w, totalActual, totalAlgo, delta: totalAlgo - totalActual, count: points.length };
+        });
+    }, [curve, windows]);
+
+    const maxBooking = max(curve, (d) => Math.max(d.actualBookings, d.algoBookings)) ?? 300;
+
+    const x = scaleLinear()
+        .domain([0, windows.length - 1])
+        .range([margin.left, width - margin.right]);
+    const y = scaleLinear()
+        .domain([0, maxBooking * 1.1])
+        .nice()
+        .range([height - margin.bottom, margin.top]);
+
+    // Line generators for aggregate view by window
+    const actualLine = line<{ window: number; totalActual: number }>()
+        .curve(curveMonotoneX)
+        .x((_, i) => x(i))
+        .y((d) => y(d.totalActual / (d as { count: number } & typeof d).count));
+    const algoLine = line<{ window: number; totalAlgo: number }>()
+        .curve(curveMonotoneX)
+        .x((_, i) => x(i))
+        .y((d) => y(d.totalAlgo / (d as { count: number } & typeof d).count));
+
+    // Area between actual and algo
+    const deltaArea = area<typeof windowSummary[0]>()
+        .curve(curveMonotoneX)
+        .x((_, i) => x(i))
+        .y0((d) => y(d.totalActual / d.count))
+        .y1((d) => y(d.totalAlgo / d.count));
+
+    return (
+        <div className="radar-chart">
+            <div className="flex flex-wrap items-center justify-between gap-3">
+                <div>
+                    <p className="radar-eyebrow">Booking Window Cascade</p>
+                    <p className="mt-1 font-mono text-[12px] text-slate-400">
+                        Avg bookings by window: actual vs algorithmic policy
+                    </p>
+                </div>
+                <div className="flex gap-3">
+                    <span className="flex items-center gap-1.5 font-mono text-[10px] text-slate-400">
+                        <span className="inline-block h-[2px] w-4 rounded" style={{ background: "rgba(148,163,184,0.7)" }} />
+                        Actual
+                    </span>
+                    <span className="flex items-center gap-1.5 font-mono text-[10px]" style={{ color: "var(--radar-amber)" }}>
+                        <span className="inline-block h-[2px] w-4 rounded" style={{ background: "var(--radar-amber)" }} />
+                        Policy
+                    </span>
+                </div>
+            </div>
+
+            <svg viewBox={`0 0 ${width} ${height}`} className="mt-3 h-auto w-full">
+                <defs>
+                    <linearGradient id="booking-delta-fill" x1="0%" x2="0%" y1="0%" y2="100%">
+                        <stop offset="0%" stopColor="rgba(62,221,143,0.22)" />
+                        <stop offset="100%" stopColor="rgba(62,221,143,0.02)" />
+                    </linearGradient>
+                </defs>
+
+                {/* Grid */}
+                {y.ticks(5).map((tick) => (
+                    <g key={tick}>
+                        <line
+                            x1={margin.left}
+                            x2={width - margin.right}
+                            y1={y(tick)}
+                            y2={y(tick)}
+                            stroke="rgba(148,163,184,0.06)"
+                            strokeDasharray="3 5"
+                        />
+                        <text
+                            x={margin.left - 10}
+                            y={y(tick) + 4}
+                            textAnchor="end"
+                            fontSize={10}
+                            fill="rgba(148,163,184,0.5)"
+                            fontFamily="JetBrains Mono, monospace"
+                        >
+                            {formatNumber(tick, { digits: 0 })}
+                        </text>
+                    </g>
+                ))}
+
+                {/* Delta fill area */}
+                <path d={deltaArea(windowSummary) ?? ""} fill="url(#booking-delta-fill)" />
+
+                {/* Lines */}
+                <path
+                    d={actualLine(windowSummary as any) ?? ""}
+                    fill="none"
+                    stroke="rgba(148,163,184,0.7)"
+                    strokeWidth={2}
+                />
+                <path
+                    d={algoLine(windowSummary as any) ?? ""}
+                    fill="none"
+                    stroke="var(--radar-amber)"
+                    strokeWidth={2.5}
+                />
+
+                {/* Data points */}
+                {windowSummary.map((ws, i) => {
+                    const isHovered = hoveredWindow === ws.window;
+                    return (
+                        <g key={ws.window}>
+                            {/* Actual point */}
+                            <circle
+                                cx={x(i)}
+                                cy={y(ws.totalActual / ws.count)}
+                                r={isHovered ? 5 : 3}
+                                fill="rgba(148,163,184,0.8)"
+                                stroke="rgba(226,232,240,0.5)"
+                                strokeWidth={0.8}
+                                onMouseEnter={() => setHoveredWindow(ws.window)}
+                                onMouseLeave={() => setHoveredWindow(null)}
+                                style={{ cursor: "crosshair" }}
+                            />
+                            {/* Algo point */}
+                            <circle
+                                cx={x(i)}
+                                cy={y(ws.totalAlgo / ws.count)}
+                                r={isHovered ? 5 : 3.5}
+                                fill="var(--radar-amber)"
+                                stroke="rgba(226,232,240,0.5)"
+                                strokeWidth={0.8}
+                                onMouseEnter={() => setHoveredWindow(ws.window)}
+                                onMouseLeave={() => setHoveredWindow(null)}
+                                style={{ cursor: "crosshair" }}
+                            />
+                            {/* Window label */}
+                            <text
+                                x={x(i)}
+                                y={height - margin.bottom + 20}
+                                textAnchor="middle"
+                                fontSize={10}
+                                fill={isHovered ? "rgba(226,232,240,0.9)" : "rgba(148,163,184,0.7)"}
+                                fontFamily="JetBrains Mono, monospace"
+                            >
+                                {ws.window}d
+                            </text>
+                        </g>
+                    );
+                })}
+
+                {/* Hover tooltip line */}
+                {hoveredWindow !== null && (() => {
+                    const idx = windows.indexOf(hoveredWindow);
+                    if (idx < 0) return null;
+                    const ws = windowSummary[idx];
+                    return (
+                        <g>
+                            <line
+                                x1={x(idx)}
+                                x2={x(idx)}
+                                y1={margin.top}
+                                y2={height - margin.bottom}
+                                stroke="rgba(226,232,240,0.25)"
+                                strokeDasharray="3 4"
+                            />
+                            <text
+                                x={x(idx) + 8}
+                                y={margin.top + 16}
+                                fontSize={10}
+                                fill="rgba(226,232,240,0.85)"
+                                fontFamily="JetBrains Mono, monospace"
+                            >
+                                Δ +{formatNumber(ws.delta / ws.count, { digits: 0 })} avg pax
+                            </text>
+                        </g>
+                    );
+                })()}
+
+                {/* Axis title */}
+                <text
+                    x={width / 2}
+                    y={height - 6}
+                    textAnchor="middle"
+                    fontSize={10}
+                    fill="rgba(148,163,184,0.45)"
+                    style={{ letterSpacing: "0.16em", textTransform: "uppercase" }}
+                >
+                    Booking Window (days before departure)
+                </text>
+            </svg>
+        </div>
+    );
+}
