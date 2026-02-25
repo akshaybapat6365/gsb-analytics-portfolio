@@ -36,6 +36,17 @@ export const AirlinePayloadSchema = z.object({
         revenue: z.number(),
       }),
       regret: z.number(),
+      weather: z.object({
+        tempF: z.number(),
+        windKts: z.number(),
+        precip: z.number(),
+        event: z.string().optional(),
+      }).optional(),
+      coords3d: z.object({
+        x: z.number(),
+        y: z.number(),
+        z: z.number(),
+      }).optional(),
     }),
   ),
   heatmap: z.object({
@@ -200,6 +211,22 @@ export const AirlinePayloadSchema = z.object({
   dataReadiness: z.array(ModuleReadinessSchema).optional(),
   annotations: z.array(AnnotationSchema).optional(),
   decisionEvidence: z.array(DecisionEvidenceSchema).optional(),
+  weatherShocks: z.array(
+    z.object({
+      date: z.string(),
+      airport: z.enum(["ORD", "LGA"]),
+      event: z.string(),
+      severity: z.number().min(0).max(1),
+      description: z.string(),
+    }),
+  ).optional(),
+  monteCarlo: z.object({
+    samples: z.number(),
+    fareDistributions: z.array(z.number()),
+    revenueDistributions: z.array(z.number()),
+    regretDistributions: z.array(z.number()),
+    confidenceLevel: z.number().default(0.95),
+  }).optional(),
 });
 
 export type AirlinePayload = z.infer<typeof AirlinePayloadSchema>;

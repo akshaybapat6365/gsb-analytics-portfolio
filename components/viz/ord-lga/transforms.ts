@@ -685,3 +685,212 @@ export function buildShareOscillation(rows: OrdDerivedDay[]): SharePoint[] {
     delta: row.uaShare - row.dlShare,
   }));
 }
+
+// ──────────────────────────────────────────────────────────────
+// Monte Carlo: 50K-point fare distribution via bootstrap resampling
+// ──────────────────────────────────────────────────────────────
+
+export type MonteCarloResult = {
+  samples: number;
+  fareDistributions: number[];
+  revenueDistributions: number[];
+  regretDistributions: number[];
+  fareMean: number;
+  fareStd: number;
+  revenueMean: number;
+  revenueStd: number;
+  ci95: [number, number];
+};
+
+/** Seeded PRNG for reproducible Monte Carlo (xoshiro128**) */
+function mulberry32(seed: number) {
+  return function () {
+    seed |= 0; seed = (seed + 0x6D2B79F5) | 0;
+    let t = Math.imul(seed ^ (seed >>> 15), 1 | seed);
+    t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
+    return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+  };
+}
+
+export function buildMonteCarloDistribution(
+  rows: OrdDerivedDay[],
+  nSamples = 50000,
+  seed = 42,
+): MonteCarloResult {
+  const rng = mulberry32(seed);
+  const prices = rows.map(r => r.policyPrice);
+  const revenues = rows.map(r => r.policyRevenue);
+  const regrets = rows.map(r => r.policyRegret);
+  const n = prices.length;
+
+  const fareDist: number[] = new Array(nSamples);
+  const revDist: number[] = new Array(nSamples);
+  const regDist: number[] = new Array(nSamples);
+
+  // Bootstrap resampling with log-normal noise perturbation
+  for (let i = 0; i < nSamples; i++) {
+    const idx = Math.floor(rng() * n);
+    // Add small log-normal perturbation for continuous distribution
+    const noise = Math.exp((rng() - 0.5) * 0.1);
+    fareDist[i] = prices[idx]! * noise;
+    revDist[i] = revenues[idx]! * noise;
+    regDist[i] = regrets[idx]! * (1 + (rng() - 0.5) * 0.15);
+  }
+
+  // Sort for percentile computation
+  const sortedFares = [...fareDist].sort((a, b) => a - b);
+  const fareMean = sortedFares.reduce((s, v) => s + v, 0) / nSamples;
+  const fareStd = Math.sqrt(sortedFares.reduce((s, v) => s + (v - fareMean) ** 2, 0) / nSamples);
+  const revMean = revDist.reduce((s, v) => s + v, 0) / nSamples;
+  const revStd = Math.sqrt(revDist.reduce((s, v) => s + (v - revMean) ** 2, 0) / nSamples);
+
+  return {
+    samples: nSamples,
+    fareDistributions: fareDist,
+    revenueDistributions: revDist,
+    regretDistributions: regDist,
+    fareMean,
+    fareStd,
+    revenueMean: revMean,
+    revenueStd: revStd,
+    ci95: [sortedFares[Math.floor(nSamples * 0.025)]!, sortedFares[Math.floor(nSamples * 0.975)]!],
+  };
+}
+
+// ──────────────────────────────────────────────────────────────
+// Non-linear competitor response decay model
+// ──────────────────────────────────────────────────────────────
+
+export type DecayModelParams = {
+  lambda: number;       // exponential decay rate
+  halfLife: number;     // half-life in days
+  r2: number;           // fit quality
+  residuals: number[];  // per-observation residuals
+};
+
+export type EnrichedLagPoint = CompetitorLagPoint & {
+  decayPrediction: number;  // predicted response magnitude from decay model
+  decayResidual: number;    // actual - predicted
+  decayWeight: number;      // exp(-lambda * lag)
+};
+
+/**
+ * Fit exponential decay model to competitor response data:
+ *   response_magnitude = A * exp(-lambda * lag_days)
+ * Uses least-squares via log-linearization.
+ */
+export function fitNonLinearDecay(lagData: CompetitorLagPoint[]): DecayModelParams {
+  const withResponse = lagData.filter(d => d.dlResponseDays < 6 && Math.abs(d.dlPriceChange) > 0);
+
+  if (withResponse.length < 3) {
+    return { lambda: 0.5, halfLife: 1.39, r2: 0, residuals: [] };
+  }
+
+  // Log-linearize: ln(|response|) = ln(A) - lambda * lag
+  const logResponses = withResponse.map(d => Math.log(Math.abs(d.dlPriceChange)));
+  const lags = withResponse.map(d => d.dlResponseDays);
+  const n = withResponse.length;
+
+  const meanX = lags.reduce((s, v) => s + v, 0) / n;
+  const meanY = logResponses.reduce((s, v) => s + v, 0) / n;
+
+  let numerator = 0, denominator = 0;
+  for (let i = 0; i < n; i++) {
+    numerator += (lags[i]! - meanX) * (logResponses[i]! - meanY);
+    denominator += (lags[i]! - meanX) ** 2;
+  }
+
+  const lambda = denominator !== 0 ? -numerator / denominator : 0.5;
+  const halfLife = Math.LN2 / Math.max(lambda, 0.01);
+  const lnA = meanY + lambda * meanX;
+  const A = Math.exp(lnA);
+
+  // Compute R² and residuals
+  const residuals = withResponse.map(d => {
+    const predicted = A * Math.exp(-lambda * d.dlResponseDays);
+    return Math.abs(d.dlPriceChange) - predicted;
+  });
+
+  const ssRes = residuals.reduce((s, r) => s + r * r, 0);
+  const ssTot = logResponses.reduce((s, v) => s + (v - meanY) ** 2, 0);
+  const r2 = ssTot > 0 ? 1 - ssRes / (ssTot * A * A) : 0;
+
+  return { lambda: clamp(lambda, 0.01, 5), halfLife, r2: clamp(r2, 0, 1), residuals };
+}
+
+/**
+ * Enrich lag data with non-linear decay predictions.
+ */
+export function enrichCompetitorLagWithDecay(
+  lagData: CompetitorLagPoint[],
+): EnrichedLagPoint[] {
+  const decay = fitNonLinearDecay(lagData);
+  const A = lagData.length > 0
+    ? lagData.reduce((s, d) => s + Math.abs(d.dlPriceChange), 0) / lagData.length
+    : 10;
+
+  return lagData.map(d => {
+    const weight = Math.exp(-decay.lambda * d.dlResponseDays);
+    const prediction = A * weight;
+    return {
+      ...d,
+      decayPrediction: prediction,
+      decayResidual: Math.abs(d.dlPriceChange) - prediction,
+      decayWeight: weight,
+    };
+  });
+}
+
+// ──────────────────────────────────────────────────────────────
+// Weather impact correlation
+// ──────────────────────────────────────────────────────────────
+
+export type WeatherImpactPoint = {
+  dayIndex: number;
+  date: string;
+  severity: number;
+  fareDeviation: number;    // how much actual fare deviated from trend
+  revenueImpact: number;    // estimated revenue impact of weather
+  event?: string;
+};
+
+export function buildWeatherImpact(
+  rows: OrdDerivedDay[],
+  weatherShocks: Array<{ date: string; severity: number; event?: string }>,
+): WeatherImpactPoint[] {
+  if (!weatherShocks?.length || !rows?.length) return [];
+
+  // Build a rolling 7-day average as "trend"
+  const trendPrices: number[] = [];
+  for (let i = 0; i < rows.length; i++) {
+    const start = Math.max(0, i - 3);
+    const end = Math.min(rows.length - 1, i + 3);
+    let sum = 0, count = 0;
+    for (let j = start; j <= end; j++) {
+      sum += rows[j]!.policyPrice;
+      count++;
+    }
+    trendPrices.push(sum / count);
+  }
+
+  const dateMap = new Map(rows.map((r, i) => [r.date, i]));
+
+  const results: WeatherImpactPoint[] = [];
+  for (const shock of weatherShocks) {
+    const idx = dateMap.get(shock.date);
+    if (idx === undefined) continue;
+    const row = rows[idx]!;
+    const trend = trendPrices[idx]!;
+    const fareDeviation = row.policyPrice - trend;
+    const revenueImpact = fareDeviation * row.policyPax;
+    results.push({
+      dayIndex: row.index,
+      date: shock.date,
+      severity: shock.severity,
+      fareDeviation,
+      revenueImpact,
+      event: shock.event,
+    });
+  }
+  return results;
+}
