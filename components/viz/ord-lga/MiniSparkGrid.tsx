@@ -155,7 +155,7 @@ export default function MiniSparkGrid({
     return (
         <div className="mini-spark-grid" style={{
             display: "grid",
-            gridTemplateColumns: "1fr 1fr",
+            gridTemplateColumns: "1fr",
             gap: "8px",
         }}>
             {sparks.map((spark, i) => (

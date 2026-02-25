@@ -17,13 +17,18 @@ export function CompetitorDelayMatrix({ data }: { data: CompetitorLagPoint[] }) 
         const grid = Array.from({ length: 10 }, () => new Array(10).fill(0));
         let max = 1;
 
+        if (!data?.length) return { grid: Array.from({ length: 10 }, () => new Array(10).fill(0)), max: 1 };
+
         data.forEach(d => {
+            if (!d || d.spread == null || d.delayDays == null) return;
             // Mapping spread to X (0-9)
             const spreadAbs = Math.abs(d.spread);
             const x = Math.min(9, Math.floor((spreadAbs / 50) * 10));
 
             // Mapping delay days to Y (0-9)
-            const delay = Math.min(9, Math.max(0, Math.floor(d.delayDays)));
+            const delayVal = Number(d.delayDays);
+            if (isNaN(delayVal)) return;
+            const delay = Math.min(9, Math.max(0, Math.floor(delayVal)));
 
             grid[delay][x] += 1;
             if (grid[delay][x] > max) max = grid[delay][x];
