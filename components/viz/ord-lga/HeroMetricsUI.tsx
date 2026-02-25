@@ -12,7 +12,7 @@ export function HeroMetricsUI() {
     const aggressiveness = usePriceWarStore((s) => s.aggressiveness);
 
     return (
-        <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-8 pt-32 pb-16 w-full max-w-7xl mx-auto px-6 lg:px-12 pointer-events-auto">
+        <div className="relative z-10 space-y-8 pt-32 pb-16 w-full max-w-7xl mx-auto px-6 lg:px-12 pointer-events-auto">
 
             {/* Title & Narrative Left Column */}
             <div className="flex flex-col space-y-8">

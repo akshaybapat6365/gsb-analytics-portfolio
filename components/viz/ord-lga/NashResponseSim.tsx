@@ -112,7 +112,7 @@ export function NashResponseSim({ states, convergenceDay }: NashResponseSimProps
         ) : null}
       </svg>
 
-      <div className="mt-3 grid gap-3 sm:grid-cols-3">
+      <div className="mt-3 space-y-3">
         <div className="radar-kpi">
           <p className="font-mono text-[10px] uppercase tracking-[0.16em] text-slate-500">UAL Capture</p>
           <p className="mt-1 font-mono text-lg" style={{ color: "var(--radar-amber)" }}>{formatPct(avgCapture, { digits: 1 })}</p>

@@ -35,7 +35,7 @@ export function StoryChapterShell({
   return (
     <section
       className={cn(
-        "grid gap-5 xl:grid-cols-[280px_minmax(0,1fr)] 2xl:grid-cols-[320px_minmax(0,1fr)]",
+        "space-y-5",
         className,
       )}
     >

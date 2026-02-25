@@ -214,7 +214,7 @@ export function MarketPulseHero({
       </svg>
 
       {/* KPI strip */}
-      <div className="mt-4 grid gap-3 sm:grid-cols-3">
+      <div className="mt-4 space-y-3">
         <div className="radar-kpi radar-glow-green">
           <p className="font-mono text-[10px] uppercase tracking-[0.16em]" style={{ color: "var(--radar-green)" }}>
             Counterfactual Lift

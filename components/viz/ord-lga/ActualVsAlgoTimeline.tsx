@@ -175,7 +175,7 @@ export function ActualVsAlgoTimeline({
       </div>
 
       {/* Booking Curve + Selected Day Readout */}
-      <section className="grid gap-4 xl:grid-cols-[minmax(0,1fr)_330px]">
+      <section className="space-y-4">
         <div className="radar-chart">
           <p className="radar-eyebrow">Booking Curve</p>
           <svg viewBox={`0 0 ${curveWidth} ${curveHeight}`} className="mt-3 h-auto w-full">
@@ -231,7 +231,7 @@ export function ActualVsAlgoTimeline({
       </section>
 
       {/* Annotation cards */}
-      <section className="grid gap-3 lg:grid-cols-3">
+      <section className="space-y-3">
         {annotations.map((item) => (
           <div key={item.key} className="radar-kpi">
             <p className="font-mono text-[10px] uppercase tracking-[0.14em] text-slate-500">{item.label}</p>
