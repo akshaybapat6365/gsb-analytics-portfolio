@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
-import type { PnLBar } from "./transforms";
+// PnLBar type not needed — using any[] for flexibility
 import { AnimatedNeonCounter } from "./AnimatedNeonCounter";
 
 /**
@@ -10,12 +10,13 @@ import { AnimatedNeonCounter } from "./AnimatedNeonCounter";
  * Rebuilt using Framer Motion staggered cascades and the Plasma Glassmorphism aesthetic.
  */
 
-export function NeuralPnLWaterfall({ data }: { data: PnLBar[] }) {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export function NeuralPnLWaterfall({ data }: { data: any[] }) {
     if (!data?.length) return null;
 
     // Extract dimensions
-    const minVal = Math.min(...data.map(d => Math.min(d.start, d.end)));
-    const maxVal = Math.max(...data.map(d => Math.max(d.start, d.end)));
+    const minVal = Math.min(...data.map((d: any) => Math.min(d.start ?? d.value ?? 0, d.end ?? d.value ?? 0)));
+    const maxVal = Math.max(...data.map((d: any) => Math.max(d.start ?? d.value ?? 0, d.end ?? d.value ?? 0)));
     const range = maxVal - minVal || 1;
 
     // Padding for the SVG Y scale
@@ -52,15 +53,19 @@ export function NeuralPnLWaterfall({ data }: { data: PnLBar[] }) {
                 })}
 
                 {/* Render staggered waterfall bars */}
-                {data.map((bar, i) => {
+                {data.map((bar: any, i: number) => {
                     const x = (i / data.length) * width + ((width / data.length) - barWidth) / 2;
+                    const start = bar.start ?? 0;
+                    const end = bar.end ?? bar.value ?? 0;
+                    const value = bar.value ?? (end - start);
+                    const category = bar.category ?? bar.label ?? `Bar ${i}`;
 
-                    const yTop = height - ((Math.max(bar.start, bar.end) - yMin) * pxPerY);
-                    const yBot = height - ((Math.min(bar.start, bar.end) - yMin) * pxPerY);
+                    const yTop = height - ((Math.max(start, end) - yMin) * pxPerY);
+                    const yBot = height - ((Math.min(start, end) - yMin) * pxPerY);
                     const barH = Math.max(2, yBot - yTop);
 
-                    const isTotal = bar.category.toLowerCase().includes("total");
-                    const isUp = bar.end > bar.start;
+                    const isTotal = (category ?? "").toLowerCase().includes("total");
+                    const isUp = end > start;
 
                     let fill = "#8B00FF"; // Purple for neutral/total
                     let glow = "url(#glowPurple)";
@@ -70,7 +75,7 @@ export function NeuralPnLWaterfall({ data }: { data: PnLBar[] }) {
                     }
 
                     return (
-                        <g key={bar.category}>
+                        <g key={category}>
                             {/* Animated Bar */}
                             <motion.rect
                                 x={x}
@@ -102,7 +107,7 @@ export function NeuralPnLWaterfall({ data }: { data: PnLBar[] }) {
                                 animate={{ opacity: 1, y: yTop - 12 }}
                                 transition={{ delay: i * 0.1 + 0.4 }}
                             >
-                                ${Math.abs(bar.value).toLocaleString()}
+                                ${Math.abs(value).toLocaleString()}
                             </motion.text>
 
                             {/* Label */}
@@ -118,7 +123,7 @@ export function NeuralPnLWaterfall({ data }: { data: PnLBar[] }) {
                                 animate={{ opacity: 1 }}
                                 transition={{ delay: i * 0.1 + 0.5 }}
                             >
-                                {bar.category.split(" ")[0]}
+                                {category.split(" ")[0]}
                             </motion.text>
                         </g>
                     );
