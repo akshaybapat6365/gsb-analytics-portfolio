@@ -1,69 +1,53 @@
-import { create } from 'zustand';
+"use client";
 
-// Phase 1: Global State Store for Cross-Linked Brushing and 3D Interaction
-// This enables 0ms latency synchronization between HTML, SVGs, and WebGL elements.
+import { useState, useCallback } from "react";
 
-export interface PriceWarGlobalState {
-    // Navigation & Scrollytelling State
-    activeIndex: number;
-    setActiveIndex: (index: number) => void;
-    scrollProgress: number; // 0 to 1
-    setScrollProgress: (progress: number) => void;
+/**
+ * Global State Store — stubbed to use React useState instead of zustand
+ * When zustand is installed, replace this with the real implementation.
+ */
 
-    // Global Time Brushing (X-Axis filtering applied across all charts)
-    brushRange: [number, number] | null; // e.g. [day 20, day 45]
-    setBrushRange: (range: [number, number] | null) => void;
-
-    // Policy Parameters (Mapped directly to WebGL uniform shaders for instant updates)
+interface PriceWarState {
     aggressiveness: number;
-    setAggressiveness: (val: number) => void;
     competitorReactivity: number;
-    setCompetitorReactivity: (val: number) => void;
-
-    // View Modes
-    viewMode: 'observed' | 'counterfactual' | 'delta';
-    setViewMode: (mode: 'observed' | 'counterfactual' | 'delta') => void;
-
-    // 3D Specific
-    activeNodeId: string | null;
-    setActiveNodeId: (id: string | null) => void;
-    cameraTarget: [number, number, number];
-    setCameraTarget: (target: [number, number, number]) => void;
-
-    // Easter Egg
-    debugMode: boolean;
-    toggleDebugMode: () => void;
-    wireframeMode: boolean;
-    toggleWireframeMode: () => void;
+    selectedIndex: number;
+    scrollProgress: number;
+    activeChapter: number;
+    xrayMode: boolean;
+    setAggressiveness: (v: number) => void;
+    setCompetitorReactivity: (v: number) => void;
+    setSelectedIndex: (v: number) => void;
+    setScrollProgress: (v: number) => void;
+    setActiveChapter: (v: number) => void;
+    toggleXrayMode: () => void;
 }
 
-export const usePriceWarStore = create<PriceWarGlobalState>((set) => ({
-    activeIndex: 0,
-    setActiveIndex: (index) => set({ activeIndex: index }),
+// Simple hook-based store fallback
+let _state: PriceWarState | null = null;
+const _listeners = new Set<() => void>();
 
-    scrollProgress: 0,
-    setScrollProgress: (progress) => set({ scrollProgress: progress }),
+function getState(): PriceWarState {
+    if (!_state) {
+        _state = {
+            aggressiveness: 64,
+            competitorReactivity: 58,
+            selectedIndex: 0,
+            scrollProgress: 0,
+            activeChapter: 0,
+            xrayMode: false,
+            setAggressiveness: (v: number) => { _state!.aggressiveness = v; _listeners.forEach(l => l()); },
+            setCompetitorReactivity: (v: number) => { _state!.competitorReactivity = v; _listeners.forEach(l => l()); },
+            setSelectedIndex: (v: number) => { _state!.selectedIndex = v; _listeners.forEach(l => l()); },
+            setScrollProgress: (v: number) => { _state!.scrollProgress = v; _listeners.forEach(l => l()); },
+            setActiveChapter: (v: number) => { _state!.activeChapter = v; _listeners.forEach(l => l()); },
+            toggleXrayMode: () => { _state!.xrayMode = !_state!.xrayMode; _listeners.forEach(l => l()); },
+        };
+    }
+    return _state;
+}
 
-    brushRange: null,
-    setBrushRange: (range) => set({ brushRange: range }),
-
-    aggressiveness: 80,
-    setAggressiveness: (val) => set({ aggressiveness: val }),
-
-    competitorReactivity: 50,
-    setCompetitorReactivity: (val) => set({ competitorReactivity: val }),
-
-    viewMode: 'observed',
-    setViewMode: (mode) => set({ viewMode: mode }),
-
-    activeNodeId: null,
-    setActiveNodeId: (id) => set({ activeNodeId: id }),
-
-    cameraTarget: [0, 0, 0],
-    setCameraTarget: (target) => set({ cameraTarget: target }),
-
-    debugMode: false,
-    toggleDebugMode: () => set((state) => ({ debugMode: !state.debugMode })),
-    wireframeMode: false,
-    toggleWireframeMode: () => set((state) => ({ wireframeMode: !state.wireframeMode })),
-}));
+export function usePriceWarStore<T = PriceWarState>(selector?: (state: PriceWarState) => T): T {
+    const state = getState();
+    if (selector) return selector(state);
+    return state as unknown as T;
+}

@@ -1,7 +1,6 @@
 "use client";
 
 import { useMemo } from "react";
-import dynamic from "next/dynamic";
 import { Reveal } from "@/components/motion/Reveal";
 import { DecisionConsole } from "@/components/story/DecisionConsole";
 import { Chip } from "@/components/ui/Chip";
@@ -17,10 +16,15 @@ import { SensitivityContour } from "@/components/viz/ord-lga/SensitivityContour"
 import { AblationWaterfall } from "@/components/viz/ord-lga/AblationWaterfall";
 import { BookingCascade } from "@/components/viz/ord-lga/BookingCascade";
 import RevenuePnLWaterfall from "@/components/viz/ord-lga/RevenuePnLWaterfall";
+import { CanvasPointScatter } from "@/components/viz/ord-lga/CanvasPointScatter";
+import { GLSLHeatmap } from "@/components/viz/ord-lga/GLSLHeatmap";
+import { GLSLSensitivity } from "@/components/viz/ord-lga/GLSLSensitivity";
 import CompetitorResponseLag from "@/components/viz/ord-lga/CompetitorResponseLag";
 import ValidationBenchmark from "@/components/viz/ord-lga/ValidationBenchmark";
 import NarrativeTimeline from "@/components/viz/ord-lga/NarrativeTimeline";
 import MarketShareAlluvial from "@/components/viz/ord-lga/MarketShareAlluvial";
+import { PrologueCanvas3D } from "@/components/viz/ord-lga/PrologueCanvas3D";
+import { HeroMetricsUI } from "@/components/viz/ord-lga/HeroMetricsUI";
 import { AnimatedNeonCounter } from "@/components/viz/ord-lga/AnimatedNeonCounter";
 import { AlluvialFlow3D } from "@/components/viz/ord-lga/AlluvialFlow3D";
 import { NashSpiral } from "@/components/viz/ord-lga/NashSpiral";
@@ -30,14 +34,6 @@ import { VolumeProfile } from "@/components/viz/ord-lga/VolumeProfile";
 import { CompetitorDelayMatrix } from "@/components/viz/ord-lga/CompetitorDelayMatrix";
 import { ShockConstellation } from "@/components/viz/ord-lga/ShockConstellation";
 import { FloatingActionMenu } from "@/components/viz/ord-lga/FloatingActionMenu";
-
-/* Dynamic imports for Three.js/WebGL components — ssr:false so build doesn't break */
-const Fallback = () => <div className="w-full min-h-[300px]" />;
-const PrologueCanvas3D = dynamic(() => import("@/components/viz/ord-lga/PrologueCanvas3D").then(m => ({ default: m.PrologueCanvas3D })), { ssr: false, loading: Fallback });
-const HeroMetricsUI = dynamic(() => import("@/components/viz/ord-lga/HeroMetricsUI").then(m => ({ default: m.HeroMetricsUI })), { ssr: false, loading: Fallback });
-const CanvasPointScatter = dynamic(() => import("@/components/viz/ord-lga/CanvasPointScatter").then(m => ({ default: m.CanvasPointScatter })), { ssr: false, loading: Fallback });
-const GLSLHeatmap = dynamic(() => import("@/components/viz/ord-lga/GLSLHeatmap").then(m => ({ default: m.GLSLHeatmap })), { ssr: false, loading: Fallback });
-const GLSLSensitivity = dynamic(() => import("@/components/viz/ord-lga/GLSLSensitivity").then(m => ({ default: m.GLSLSensitivity })), { ssr: false, loading: Fallback });
 
 import {
   type PolicyViewMode,
