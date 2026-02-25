@@ -25,8 +25,8 @@ export function CompetitorDelayMatrix({ data }: { data: CompetitorLagPoint[] }) 
             // Mapping delay days to Y (0-9)
             const delay = Math.min(9, Math.max(0, Math.floor(d.delayDays)));
 
-            grid[y][x] += 1;
-            if (grid[y][x] > max) max = grid[y][x];
+            grid[delay][x] += 1;
+            if (grid[delay][x] > max) max = grid[delay][x];
         });
 
         return { grid, max };
@@ -36,7 +36,7 @@ export function CompetitorDelayMatrix({ data }: { data: CompetitorLagPoint[] }) 
         <div className="w-full aspect-square relative neural-glass-panel border-plasma-purple/30 p-4">
             <NeuralEyebrow className="absolute top-4 left-6 z-10 text-plasma-purple">DELAY_ADJACENCY_MATRIX</NeuralEyebrow>
 
-            <div className="w-full h-full mt-8 grid grid-cols-10 grid-rows-10 gap-0.5">
+            <div className="w-full h-full mt-8 flex flex-wrap gap-0.5">
                 {matrix.grid.map((row, y) =>
                     row.map((val, x) => {
                         const intensity = val / matrix.max;
