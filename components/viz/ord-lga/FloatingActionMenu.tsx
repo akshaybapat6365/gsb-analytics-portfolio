@@ -11,7 +11,7 @@ import { usePriceWarStore } from "./global-state";
 
 export function FloatingActionMenu() {
     const [open, setOpen] = useState(false);
-    const { toggleDebugMode, debugMode } = usePriceWarStore();
+    const { toggleXray } = usePriceWarStore();
 
     const handleExport = () => {
         // Mock export trigger
@@ -28,10 +28,10 @@ export function FloatingActionMenu() {
                         exit={{ opacity: 0, y: 20, scale: 0.8 }}
                         className="flex flex-col gap-2 mb-2"
                     >
-                        <button onClick={handleExport} className="w-10 h-10 rounded-full neural-glass-panel border-plasma-cyan/50 text-plasma-cyan flex items-center justify-center hover:bg-plasma-cyan/20 transition-colors shadow-[0_0_15px_rgba(0,240,255,0.3)]">
+                        <button onClick={handleExport} className="w-10 h-10 rounded-full neural-glass-panel border-plasma-cyan/50 text-plasma-cyan flex items-center justify-center hover:bg-plasma-cyan/20 transition-colors">
                             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3" /></svg>
                         </button>
-                        <button onClick={toggleDebugMode} className="w-10 h-10 rounded-full neural-glass-panel border-plasma-magenta/50 text-plasma-magenta flex items-center justify-center hover:bg-plasma-magenta/20 transition-colors shadow-[0_0_15px_rgba(255,0,127,0.3)]">
+                        <button onClick={toggleXray} className="w-10 h-10 rounded-full neural-glass-panel border-plasma-cyan/50 text-plasma-cyan flex items-center justify-center hover:bg-plasma-cyan/20 transition-colors">
                             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" /></svg>
                         </button>
                     </motion.div>
