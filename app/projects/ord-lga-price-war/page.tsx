@@ -33,7 +33,7 @@ export default async function OrdLgaPriceWarPage() {
             </div>
           </div>
           <div className="radar-chapter-line mt-4" />
-          <div className="mt-4 grid gap-4 sm:grid-cols-[minmax(0,1fr)_280px]">
+          <div className="mt-4 space-y-4">
             <p className="text-[14px] leading-7 text-slate-400">{project.bluf}</p>
             <div className="radar-kpi radar-glow-green">
               <p className="font-mono text-[10px] uppercase tracking-[0.16em]" style={{ color: "var(--radar-green)" }}>

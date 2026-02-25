@@ -33,7 +33,7 @@ export function Hero({ payload }: { payload: AirlinePayload }) {
         }}
       />
 
-      <div className="relative z-10 grid gap-10 xl:grid-cols-[minmax(0,1fr)_420px] xl:items-start">
+      <div className="relative z-10 space-y-10">
         {/* Left column: Title + Subtitle + Methodology badges */}
         <div>
           {/* Tags */}

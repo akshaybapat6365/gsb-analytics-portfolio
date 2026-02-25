@@ -284,7 +284,7 @@ export default function PriceWarClient({
 
             <div className="space-y-8">
               {/* KPI row with AnimatedNumber */}
-              <div className="grid gap-3 grid-cols-2 sm:grid-cols-4">
+              <div className="space-y-3">
                 <div className="radar-kpi radar-glow-green p-3">
                   <p className="font-mono text-[10px] uppercase tracking-[0.16em]" style={{ color: "var(--radar-green)" }}>Counterfactual Lift</p>
                   <p className="mt-1 font-mono text-lg" style={{ color: "var(--radar-green)" }}>
