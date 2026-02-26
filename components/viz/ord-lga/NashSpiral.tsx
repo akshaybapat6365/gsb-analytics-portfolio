@@ -6,6 +6,12 @@ import { NeuralEyebrow } from "./Typography";
 import { cn } from "@/lib/utils";
 import type { OrdNashState } from "./transforms";
 
+const C = {
+    steel: "#6B9FD4",
+    sage: "#4CAF7D",
+    rose: "#C75B5B",
+} as const;
+
 /**
  * Phase 4 (Step 44): NashSpiral
  * Visualizes the Nash equilibrium convergence using polar coordinates,
@@ -30,7 +36,7 @@ export function NashSpiral({ states = [], convergenceDay }: { states?: OrdNashSt
             const y = CENTER + radius * Math.sin(angle);
 
             const isConverged = convergenceDay && i >= convergenceDay;
-            const color = isConverged ? "#4CAF7D" : "#C75B5B";
+            const color = isConverged ? C.sage : C.rose;
 
             return { x, y, color, radius, isConverged, angle };
         });
@@ -72,12 +78,12 @@ export function NashSpiral({ states = [], convergenceDay }: { states?: OrdNashSt
                     <circle
                         key={scale}
                         cx={CENTER} cy={CENTER} r={MAX_RADIUS * scale}
-                        fill="none" stroke="#6B9FD4" strokeWidth="0.5" strokeDasharray="2 4"
+                        fill="none" stroke={C.steel} strokeWidth="0.5" strokeDasharray="2 4"
                         className="opacity-20"
                     />
                 ))}
-                <line x1={CENTER} y1={20} x2={CENTER} y2={SIZE - 20} stroke="#6B9FD4" strokeWidth="0.5" className="opacity-20" />
-                <line x1={20} y1={CENTER} x2={SIZE - 20} y2={CENTER} stroke="#6B9FD4" strokeWidth="0.5" className="opacity-20" />
+                <line x1={CENTER} y1={20} x2={CENTER} y2={SIZE - 20} stroke={C.steel} strokeWidth="0.5" className="opacity-20" />
+                <line x1={20} y1={CENTER} x2={SIZE - 20} y2={CENTER} stroke={C.steel} strokeWidth="0.5" className="opacity-20" />
 
                 {/* Glow Filter */}
                 <defs>
@@ -103,8 +109,8 @@ export function NashSpiral({ states = [], convergenceDay }: { states?: OrdNashSt
 
                 {/* Gradient for Path */}
                 <linearGradient id="spiralGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                    <stop offset="0%" stopColor="#C75B5B" />
-                    <stop offset="100%" stopColor="#4CAF7D" />
+                    <stop offset="0%" stopColor={C.rose} />
+                    <stop offset="100%" stopColor={C.sage} />
                 </linearGradient>
 
                 {/* Nodes */}
@@ -122,7 +128,7 @@ export function NashSpiral({ states = [], convergenceDay }: { states?: OrdNashSt
                 {convergenceDay && (
                     <circle
                         cx={CENTER} cy={CENTER} r={8}
-                        fill="#4CAF7D" filter="url(#spiralGlow)"
+                        fill={C.sage} filter="url(#spiralGlow)"
                         className="animate-pulse"
                     />
                 )}

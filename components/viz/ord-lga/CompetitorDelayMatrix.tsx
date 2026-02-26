@@ -6,6 +6,10 @@ import { cn } from "@/lib/utils";
 import type { CompetitorLagPoint } from "./transforms";
 import { NeuralEyebrow } from "./Typography";
 
+const C = {
+    pewter: "#8B8FAE",
+} as const;
+
 /**
  * Phase 4 (Step 46): CompetitorDelayMatrix
  * An adjacency matrix layout showing UAL price moves against DL response delays.
@@ -51,7 +55,7 @@ export function CompetitorDelayMatrix({ data }: { data: CompetitorLagPoint[] }) 
                                 key={`${x}-${y}`}
                                 className={cn("w-full h-full rounded-[1px] mix-blend-screen")}
                                 style={{
-                                    backgroundColor: intensity > 0 ? "#8B8FAE" : "rgba(139, 143, 174, 0.05)",
+                                    backgroundColor: intensity > 0 ? C.pewter : "rgba(139, 143, 174, 0.05)",
                                     opacity: intensity > 0 ? 0.3 + intensity * 0.7 : 0.5
                                 }}
                                 initial={{ scale: 0 }}

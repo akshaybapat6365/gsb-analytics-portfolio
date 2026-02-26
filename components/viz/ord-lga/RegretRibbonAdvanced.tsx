@@ -7,6 +7,12 @@ import type { CumulativeRegretPoint } from "./transforms";
 import { scaleLinear } from "d3-scale";
 import { area, curveMonotoneX } from "d3-shape";
 
+const C = {
+    steel: "#6B9FD4",
+    rose: "#C75B5B",
+    pewter: "#8B8FAE",
+} as const;
+
 /**
  * Phase 4 (Step 45): RegretRibbonAdvanced
  * A ribbon chart spanning structural confidence intervals with 
@@ -50,9 +56,9 @@ export function RegretRibbonAdvanced({ data }: { data: CumulativeRegretPoint[] }
             <svg viewBox={`0 0 ${width} ${height}`} className="w-full h-full" style={{ mixBlendMode: 'screen' }}>
                 <defs>
                     <linearGradient id="ribbonGrad" x1="0" y1="0" x2="0" y2="1">
-                        <stop offset="0%" stopColor="#8B8FAE" stopOpacity="0.8" />
-                        <stop offset="50%" stopColor="#C75B5B" stopOpacity="0.4" />
-                        <stop offset="100%" stopColor="#6B9FD4" stopOpacity="0.0" />
+                        <stop offset="0%" stopColor={C.pewter} stopOpacity="0.8" />
+                        <stop offset="50%" stopColor={C.rose} stopOpacity="0.4" />
+                        <stop offset="100%" stopColor={C.steel} stopOpacity="0.0" />
                     </linearGradient>
                     <filter id="ribbonGlow">
                         <feGaussianBlur stdDeviation="4" result="blur" />
@@ -64,16 +70,16 @@ export function RegretRibbonAdvanced({ data }: { data: CumulativeRegretPoint[] }
                 </defs>
 
                 {/* Grid / Crosshairs */}
-                <line x1={padding.left} y1={height - padding.bottom} x2={width - padding.right} y2={height - padding.bottom} stroke="#6B9FD4" strokeWidth="1" className="opacity-40" />
-                <line x1={padding.left} y1={padding.top} x2={padding.left} y2={height - padding.bottom} stroke="#6B9FD4" strokeWidth="1" className="opacity-40" />
+                <line x1={padding.left} y1={height - padding.bottom} x2={width - padding.right} y2={height - padding.bottom} stroke={C.steel} strokeWidth="1" className="opacity-40" />
+                <line x1={padding.left} y1={padding.top} x2={padding.left} y2={height - padding.bottom} stroke={C.steel} strokeWidth="1" className="opacity-40" />
 
-                <text x={padding.left - 10} y={padding.top} fill="#6B9FD4" fontSize={10} fontFamily="monospace" textAnchor="end" className="opacity-60">${(maxY / 1000).toFixed(0)}k</text>
+                <text x={padding.left - 10} y={padding.top} fill={C.steel} fontSize={10} fontFamily="monospace" textAnchor="end" className="opacity-60">${(maxY / 1000).toFixed(0)}k</text>
 
                 {/* The Area Spline */}
                 <motion.path
                     d={pathDef}
                     fill="url(#ribbonGrad)"
-                    stroke="#8B8FAE"
+                    stroke={C.pewter}
                     strokeWidth="2"
                     filter="url(#ribbonGlow)"
                     initial={{ opacity: 0, pathLength: 0 }}

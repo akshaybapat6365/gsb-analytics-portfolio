@@ -5,6 +5,11 @@ import { motion } from "framer-motion";
 import { NeuralEyebrow } from "./Typography";
 import type { WeeklyBin } from "./transforms";
 
+const C = {
+    steel: "#6B9FD4",
+    frost: "#E2E8F0",
+} as const;
+
 /**
  * Phase 4 (Step 43): AlluvialFlow3D
  * Overlapping bezier ribbons showing fluid market share transitioning with screen blend.
@@ -69,7 +74,7 @@ export function AlluvialFlow3D({ data }: { data: WeeklyBin[] }) {
                         key={i}
                         d={d}
                         fill="none"
-                        stroke="#6B9FD4"
+                        stroke={C.steel}
                         strokeWidth="20"
                         strokeLinecap="round"
                         filter="url(#alluvialGlow)"
@@ -86,7 +91,7 @@ export function AlluvialFlow3D({ data }: { data: WeeklyBin[] }) {
                         key={`core-${i}`}
                         d={d}
                         fill="none"
-                        stroke="#E2E8F0"
+                        stroke={C.frost}
                         strokeWidth="2"
                         strokeLinecap="round"
                         className="opacity-80"

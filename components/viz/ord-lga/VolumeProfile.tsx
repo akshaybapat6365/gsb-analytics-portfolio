@@ -5,6 +5,12 @@ import { motion } from "framer-motion";
 import type { OrdDerivedDay } from "./transforms";
 import { NeuralEyebrow } from "./Typography";
 
+const C = {
+    steel: "#6B9FD4",
+    rose: "#C75B5B",
+    frost: "#E2E8F0",
+} as const;
+
 /**
  * Phase 4 (Step 51): VolumeProfile
  * A horizontal histogram representing aggregate volumes at specific price nodes,
@@ -40,8 +46,8 @@ export function VolumeProfile({ data }: { data: OrdDerivedDay[] }) {
             <svg viewBox={`0 0 ${W} ${H}`} className="w-full h-full mt-8" style={{ mixBlendMode: 'screen' }}>
                 <defs>
                     <linearGradient id="volGrad" x1="0" y1="0" x2="1" y2="0">
-                        <stop offset="0%" stopColor="#6B9FD4" stopOpacity="0.8" />
-                        <stop offset="100%" stopColor="#C75B5B" stopOpacity="0.1" />
+                        <stop offset="0%" stopColor={C.steel} stopOpacity="0.8" />
+                        <stop offset="100%" stopColor={C.rose} stopOpacity="0.1" />
                     </linearGradient>
                     <filter id="volGlow">
                         <feGaussianBlur stdDeviation="2" result="blur" />
@@ -53,7 +59,7 @@ export function VolumeProfile({ data }: { data: OrdDerivedDay[] }) {
                 </defs>
 
                 {/* Y Axis Line */}
-                <line x1={40} y1={0} x2={40} y2={H} stroke="#6B9FD4" strokeWidth="1" className="opacity-40" />
+                <line x1={40} y1={0} x2={40} y2={H} stroke={C.steel} strokeWidth="1" className="opacity-40" />
 
                 {bins.map((b, i) => {
                     const y = H - ((i + 1) / bins.length) * H;
@@ -64,7 +70,7 @@ export function VolumeProfile({ data }: { data: OrdDerivedDay[] }) {
 
                     return (
                         <g key={i}>
-                            <text x={35} y={y + barH / 2 + 3} fill="#E2E8F0" fontSize={8} fontFamily="monospace" textAnchor="end" className="opacity-60">
+                            <text x={35} y={y + barH / 2 + 3} fill={C.frost} fontSize={8} fontFamily="monospace" textAnchor="end" className="opacity-60">
                                 ${b.priceBin}
                             </text>
                             <motion.rect

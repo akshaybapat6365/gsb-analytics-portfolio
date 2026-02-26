@@ -465,19 +465,34 @@ export type CompetitorLagPoint = {
 
 export function buildCompetitorLagSeries(rows: OrdDerivedDay[]): CompetitorLagPoint[] {
   const result: CompetitorLagPoint[] = [];
+  // Non-linear decay constant: competitor response intensity decays exponentially
+  // λ=0.4 means ~67% of response occurs within first 2 days
+  const DECAY_LAMBDA = 0.4;
+  const MIN_PRICE_MOVE = 3;
+  const MAX_LAG_WINDOW = 6;
+
   for (let i = 1; i < rows.length; i++) {
     const uaChange = rows[i]!.policyPrice - rows[i - 1]!.policyPrice;
-    if (Math.abs(uaChange) < 3) continue;
+    if (Math.abs(uaChange) < MIN_PRICE_MOVE) continue;
 
     const direction = uaChange > 0 ? 1 : -1;
-    let lagDays = 6; // default "no response"
+    let lagDays = MAX_LAG_WINDOW; // default "no response"
     let dlChange = 0;
 
-    for (let j = i + 1; j < Math.min(i + 6, rows.length); j++) {
+    // Scan forward for competitor response with non-linear decay weighting
+    let bestDecayScore = 0;
+    for (let j = i + 1; j < Math.min(i + MAX_LAG_WINDOW, rows.length); j++) {
       const dChange = rows[j]!.competitorPrice - rows[j - 1]!.competitorPrice;
-      if (dChange * direction > 2) {
-        lagDays = j - i;
-        dlChange = dChange;
+      const lag = j - i;
+      // Exponential decay: response impact = |dChange| * exp(-λ * lag)
+      const decayWeight = Math.exp(-DECAY_LAMBDA * lag);
+      const decayScore = Math.abs(dChange) * decayWeight;
+
+      if (dChange * direction > 2 && decayScore > bestDecayScore) {
+        bestDecayScore = decayScore;
+        lagDays = lag;
+        // Apply decay to the effective price change (non-linear dampening)
+        dlChange = dChange * decayWeight;
         break;
       }
     }
@@ -487,7 +502,7 @@ export function buildCompetitorLagSeries(rows: OrdDerivedDay[]): CompetitorLagPo
       date: rows[i]!.date,
       uaPriceChange: uaChange,
       dlResponseDays: lagDays,
-      dlPriceChange: dlChange,
+      dlPriceChange: parseFloat(dlChange.toFixed(2)),
       uaPrice: rows[i]!.policyPrice,
       dlPrice: rows[i]!.competitorPrice,
     });

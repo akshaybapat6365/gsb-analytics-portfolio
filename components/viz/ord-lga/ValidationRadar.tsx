@@ -5,6 +5,12 @@ import { motion } from "framer-motion";
 import { NeuralEyebrow } from "./Typography";
 import { cn } from "@/lib/utils";
 
+const C = {
+    steel: "#6B9FD4",
+    frost: "#E2E8F0",
+    rose: "#C75B5B",
+} as const;
+
 /**
  * Phase 4 (Step 53): ValidationRadar
  * Animated glowing radar metric comparison.
@@ -60,7 +66,7 @@ export function ValidationRadar({ data = mockMetrics }) {
                             const a = (Math.PI * 2 * i) / data.length - Math.PI / 2;
                             return `${CENTER + RADIUS * scale * Math.cos(a)},${CENTER + RADIUS * scale * Math.sin(a)}`;
                         }).join(" ")}
-                        fill="none" stroke="#6B9FD4" strokeWidth="0.5" className="opacity-20"
+                        fill="none" stroke={C.steel} strokeWidth="0.5" className="opacity-20"
                     />
                 ))}
 
@@ -73,8 +79,8 @@ export function ValidationRadar({ data = mockMetrics }) {
                     const labelY = CENTER + (RADIUS + 20) * Math.sin(a);
                     return (
                         <g key={d.label}>
-                            <line x1={CENTER} y1={CENTER} x2={x} y2={y} stroke="#6B9FD4" strokeWidth="0.5" className="opacity-30" />
-                            <text x={labelX} y={labelY} fill="#E2E8F0" fontSize={9} fontFamily="monospace" textAnchor="middle" alignmentBaseline="middle" className="uppercase opacity-60">
+                            <line x1={CENTER} y1={CENTER} x2={x} y2={y} stroke={C.steel} strokeWidth="0.5" className="opacity-30" />
+                            <text x={labelX} y={labelY} fill={C.frost} fontSize={9} fontFamily="monospace" textAnchor="middle" alignmentBaseline="middle" className="uppercase opacity-60">
                                 {d.label}
                             </text>
                         </g>
@@ -99,7 +105,7 @@ export function ValidationRadar({ data = mockMetrics }) {
                 <motion.polygon
                     points={simPoints}
                     fill="rgba(199, 91, 91, 0.15)"
-                    stroke="#C75B5B"
+                    stroke={C.rose}
                     strokeWidth="2"
                     filter="url(#radarGlow)"
                     initial={{ scale: 0.5, opacity: 0 }}

@@ -9,10 +9,10 @@ import { motion } from "framer-motion";
  */
 export function HeroMetricsUI() {
     const kpis = useMemo(() => [
-        { label: "Revenue at Risk", value: "$567K", sublabel: "Q2 2023 counterfactual", color: "#C75B5B" },
-        { label: "Algo Lift", value: "+$1.03M", sublabel: "Policy vs observed", color: "#4CAF7D" },
-        { label: "Model Confidence", value: "94.2%", sublabel: "Out-of-sample R²", color: "#6B9FD4" },
-        { label: "Nash Convergence", value: "Day 47", sublabel: "Equilibrium found", color: "#D4A76B" },
+        { label: "Revenue at Risk", value: "$567K", sublabel: "Q2 2023 counterfactual", color: "var(--plasma-rose)" },
+        { label: "Algo Lift", value: "+$1.03M", sublabel: "Policy vs observed", color: "var(--plasma-sage)" },
+        { label: "Model Confidence", value: "94.2%", sublabel: "Out-of-sample R²", color: "var(--plasma-steel)" },
+        { label: "Nash Convergence", value: "Day 47", sublabel: "Equilibrium found", color: "var(--plasma-sand)" },
     ], []);
 
     return (

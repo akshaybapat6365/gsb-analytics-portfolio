@@ -158,7 +158,7 @@ export function PrologueCanvas3D() {
         <canvas
             ref={canvasRef}
             className="absolute inset-0 z-0 pointer-events-none w-full h-full"
-            style={{ opacity: 0.8 }}
+            style={{ opacity: 0.8, filter: "brightness(1.1) contrast(1.05) blur(0.3px)" }}
         />
     );
 }

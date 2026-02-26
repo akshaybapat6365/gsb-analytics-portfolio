@@ -71,7 +71,7 @@ function ChapterHeader({
     <div>
       <p
         className="text-[11px] font-semibold uppercase tracking-[0.15em]"
-        style={{ fontFamily: "var(--font-mono)", color: "rgba(0, 240, 255, 0.45)" }}
+        style={{ fontFamily: "var(--font-mono)", color: "var(--plasma-steel-50)" }}
       >
         {number}
       </p>
@@ -117,7 +117,7 @@ function ControlBlock({
     <div className="py-3">
       <p
         className="text-[11px] font-semibold uppercase tracking-[0.15em]"
-        style={{ fontFamily: "var(--font-mono)", color: "rgba(0, 240, 255, 0.4)" }}
+        style={{ fontFamily: "var(--font-mono)", color: "var(--plasma-steel-50)" }}
       >
         {title}
       </p>

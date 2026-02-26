@@ -5,6 +5,11 @@ import { motion } from "framer-motion";
 import type { OrdShockEvent } from "./transforms";
 import { NeuralEyebrow } from "./Typography";
 
+const C = {
+    steel: "#6B9FD4",
+    rose: "#C75B5B",
+} as const;
+
 /**
  * Phase 4 (Step 52): ShockConstellation
  * A network graph identifying cascading effects of shock events.
@@ -56,7 +61,7 @@ export function ShockConstellation({ events }: { events: OrdShockEvent[] }) {
                         key={i}
                         x1={link.source.x} y1={link.source.y}
                         x2={link.target.x} y2={link.target.y}
-                        stroke={link.source.severity === "high" ? "#C75B5B" : "#6B9FD4"}
+                        stroke={link.source.severity === "high" ? C.rose : C.steel}
                         strokeWidth={link.source.severity === "high" ? 1.5 : 0.5}
                         className="opacity-30"
                         initial={{ pathLength: 0 }}
@@ -72,12 +77,12 @@ export function ShockConstellation({ events }: { events: OrdShockEvent[] }) {
                         <circle
                             cx={node.x} cy={node.y}
                             r={node.severity === "high" ? 6 : 3}
-                            fill={node.severity === "high" ? "#C75B5B" : "#6B9FD4"}
+                            fill={node.severity === "high" ? C.rose : C.steel}
                             filter="url(#nodeGlow)"
                             className="animate-pulse"
                         />
                         {node.severity === "high" && (
-                            <text x={node.x + 10} y={node.y + 3} fill="#C75B5B" fontSize={8} fontFamily="monospace" className="opacity-80">
+                            <text x={node.x + 10} y={node.y + 3} fill={C.rose} fontSize={8} fontFamily="monospace" className="opacity-80">
                                 SHOCK_{node.dayIndex}
                             </text>
                         )}

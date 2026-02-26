@@ -1,14 +1,18 @@
 "use client";
 
-import { useEffect, useRef, useMemo } from "react";
+import { useEffect, useRef, useMemo, useState, useCallback } from "react";
 import { NeuralEyebrow } from "./Typography";
 
 /**
  * Canvas2D scatter plot optimized for 50K+ points.
  * Uses requestAnimationFrame batching with simulated bloom effect.
+ * Supports click-to-inspect (Canvas2D raycasting equivalent).
  */
 export function CanvasPointScatter() {
     const canvasRef = useRef<HTMLCanvasElement>(null);
+    const [tooltip, setTooltip] = useState<{
+        x: number; y: number; fare: string; day: string; rev: string;
+    } | null>(null);
 
     // Generate 50K Monte Carlo fare distribution points
     const points = useMemo(() => {
@@ -38,6 +42,48 @@ export function CanvasPointScatter() {
         }
         return result;
     }, []);
+
+    // Click-to-inspect: find nearest point within 10px radius
+    const handleClick = useCallback((e: React.MouseEvent<HTMLCanvasElement>) => {
+        const canvas = canvasRef.current;
+        if (!canvas) return;
+        const rect = canvas.getBoundingClientRect();
+        const scaleX = 800 / rect.width;
+        const scaleY = 400 / rect.height;
+        const cx = (e.clientX - rect.left) * scaleX;
+        const cy = (e.clientY - rect.top) * scaleY;
+
+        let best = Infinity;
+        let bestPt: typeof points[0] | null = null;
+        const RADIUS = 10;
+
+        // Spatial search (sample every 5th point for perf on 50K)
+        for (let i = 0; i < points.length; i += 5) {
+            const p = points[i]!;
+            const px = p.x * 800;
+            const py = (1 - p.y) * 400;
+            const dist = Math.hypot(px - cx, py - cy);
+            if (dist < RADIUS && dist < best) {
+                best = dist;
+                bestPt = p;
+            }
+        }
+
+        if (bestPt) {
+            const fare = (bestPt.y * 300 + 100).toFixed(0);
+            const day = Math.round(bestPt.x * 91);
+            const rev = (bestPt.value * 400).toFixed(0);
+            setTooltip({
+                x: e.clientX - rect.left,
+                y: e.clientY - rect.top,
+                fare: `$${fare}`,
+                day: `Day ${day}`,
+                rev: `$${rev}/seat`,
+            });
+        } else {
+            setTooltip(null);
+        }
+    }, [points]);
 
     useEffect(() => {
         const canvas = canvasRef.current;
@@ -115,16 +161,34 @@ export function CanvasPointScatter() {
     }, [points]);
 
     return (
-        <div className="w-full neural-glass-panel p-4 border-plasma-cyan/20">
+        <div className="w-full neural-glass-panel p-4 border-plasma-cyan/20 relative">
             <NeuralEyebrow className="text-plasma-steel mb-1">FARE_DISTRIBUTION_50K</NeuralEyebrow>
             <p className="text-[10px] font-mono text-slate-500 mb-3">
-                50,000-point Monte Carlo fare simulation · bootstrap resampled from observed Q2 fares
+                50,000-point Monte Carlo fare simulation · click to inspect · bootstrap resampled from observed Q2 fares
             </p>
             <canvas
                 ref={canvasRef}
-                className="w-full rounded-lg"
+                className="w-full rounded-lg cursor-crosshair"
                 style={{ aspectRatio: "2/1", imageRendering: "auto" }}
+                onClick={handleClick}
             />
+            {tooltip && (
+                <div
+                    className="absolute z-20 rounded-lg border px-3 py-2 font-mono text-[10px] pointer-events-none"
+                    style={{
+                        left: tooltip.x + 12,
+                        top: tooltip.y - 8,
+                        borderColor: "var(--neural-border)",
+                        background: "rgba(7, 21, 42, 0.9)",
+                        backdropFilter: "blur(8px)",
+                        color: "var(--frost-white)",
+                    }}
+                >
+                    <p style={{ color: "var(--plasma-sand)" }}>{tooltip.day}</p>
+                    <p>Fare: <span style={{ color: "var(--plasma-steel)" }}>{tooltip.fare}</span></p>
+                    <p>Rev: <span style={{ color: "var(--plasma-sage)" }}>{tooltip.rev}</span></p>
+                </div>
+            )}
         </div>
     );
 }
