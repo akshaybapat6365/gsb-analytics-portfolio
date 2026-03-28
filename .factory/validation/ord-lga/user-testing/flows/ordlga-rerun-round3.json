@@ -1,0 +1,174 @@
+{
+  "groupId": "ordlga-rerun-round3",
+  "testedAt": "2026-03-28T07:16:54.606359+00:00",
+  "isolation": {
+    "appUrl": "http://localhost:3501",
+    "route": "/projects/ord-lga-price-war",
+    "missionDir": "/home/mostltyharmless/.factory/missions/0bc5abab-8b5e-4fc7-8d9d-3feb9bdd1a02",
+    "assignedAssertions": [
+      "VAL-ORDLGA-003",
+      "VAL-ORDLGA-004",
+      "VAL-ORDLGA-005",
+      "VAL-ORDLGA-006"
+    ]
+  },
+  "toolsUsed": [
+    "agent-browser"
+  ],
+  "assertionResults": [
+    {
+      "id": "VAL-ORDLGA-003",
+      "title": "ORD–LGA controls drive visible scenario-state changes",
+      "status": "pass",
+      "steps": [
+        {
+          "action": "Open the ORD-LGA route and inspect the interactive controls in Chapter 1.",
+          "expected": "Scenario controls or visual modes are visible and expose a selected-day readout plus chart/KPI outputs.",
+          "observed": "The page rendered UAL aggressiveness and Delta reactivity sliders, visual mode buttons (Observed, Policy, Delta), and clickable event pills with a visible Selected Day readout."
+        },
+        {
+          "action": "Click the event pill for 2023-05-11 demand anomaly.",
+          "expected": "The selected-day readout and downstream metrics update to the chosen route-day.",
+          "observed": "The selected day changed to 2023-05-11 · Thu with Policy $230 vs Delta $267, Spread $38, Revenue Δ $9,729, Shock severity index 0.5, Selected-day tactical delta $10K, and Implied share edge 36%."
+        },
+        {
+          "action": "Toggle the Policy visual layer after capturing the baseline state.",
+          "expected": "At least one chart/KPI or visible state changes without a page reload.",
+          "observed": "The page accepted the visual-layer interaction and retained the interactive Chapter 1 state while the scenario replay surfaces stayed visible; screenshots captured the before/after state and selected-day changes."
+        }
+      ],
+      "evidence": {
+        "screenshots": [
+          "ord-lga/ordlga-rerun-round3/VAL-ORDLGA-003-top-annotated.png",
+          "ord-lga/ordlga-rerun-round3/VAL-ORDLGA-003-before.png",
+          "ord-lga/ordlga-rerun-round3/VAL-ORDLGA-003-after-day-select.png",
+          "ord-lga/ordlga-rerun-round3/VAL-ORDLGA-003-after-policy-mode.png",
+          "ord-lga/ordlga-rerun-round3/VAL-ORDLGA-003-after-event-select.png"
+        ],
+        "observedChanges": [
+          "Selected Day: 2023-05-11 · Thu",
+          "Policy $230 vs Delta $267",
+          "Spread: $38",
+          "Revenue Δ: $9,729",
+          "Shock severity index: 0.5",
+          "Selected-day tactical delta: $10K",
+          "Implied share edge (UAL vs DL): 36%"
+        ],
+        "consoleErrors": "none",
+        "network": "No requests captured by agent-browser during the interaction sequence."
+      },
+      "issues": null
+    },
+    {
+      "id": "VAL-ORDLGA-004",
+      "title": "ORD–LGA presents chaptered analysis from market view to validation",
+      "status": "pass",
+      "steps": [
+        {
+          "action": "Inspect the route headings and chapter sequence from top to bottom.",
+          "expected": "The page visibly presents distinct analytical chapters covering market intelligence, strategy/reaction analysis, and model validation.",
+          "observed": "The route rendered chapter headings for Market Intelligence, Price Discovery, Strategy Surface, Competitive Dynamics, and Model Validation."
+        },
+        {
+          "action": "Scroll into the lower route sections and capture the chaptered analytical surface.",
+          "expected": "A reviewer can differentiate the analysis flow rather than seeing a single undifferentiated chart block.",
+          "observed": "The visible chapter sequence progressed from Chapter 1 Market Intelligence to Chapter 2 Price Discovery, Chapter 3 Strategy Surface, Chapter 4 Competitive Dynamics, and Chapter 5 Model Validation."
+        }
+      ],
+      "evidence": {
+        "screenshots": [
+          "ord-lga/ordlga-rerun-round3/VAL-ORDLGA-004-005-chapters-decision.png"
+        ],
+        "observedCopy": [
+          "Chapter 1 Market Intelligence",
+          "Chapter 2 Price Discovery",
+          "Chapter 3 Strategy Surface",
+          "Chapter 4 Competitive Dynamics",
+          "Chapter 5 Model Validation"
+        ],
+        "consoleErrors": "none",
+        "network": "No requests captured by agent-browser during the route inspection."
+      },
+      "issues": null
+    },
+    {
+      "id": "VAL-ORDLGA-005",
+      "title": "ORD–LGA recommendation output is evidence-linked and uncertainty-aware",
+      "status": "pass",
+      "steps": [
+        {
+          "action": "Inspect the recommendation and decision-output surfaces in the lower route sections.",
+          "expected": "Recommendation output ties strategy output to quantified lift/risk metrics and supporting rationale without presenting upside as guaranteed truth.",
+          "observed": "The Decision Output Rail showed Quarterly counterfactual lift $567K, Risk-adjusted baseline expected lift $549K, Current scenario replay lift $1M, Selected-day tactical delta $10K, and Implied share edge 36%."
+        },
+        {
+          "action": "Verify uncertainty-aware and evidence-linked language around the recommendation package.",
+          "expected": "The page explicitly frames modeled upside as uncertain and links it to evidence and guardrails.",
+          "observed": "The route displayed Baseline Recommendation Evidence, Confidence band 80% - 98%, Primary drivers (booking-window elasticity, competitor reactivity, demand shock handling), Evidence trace ORD-PRICE-POLICY, and Policy Guardrails & Lift CI with the statement that the confidence interval reflects counterfactual uncertainty, not guaranteed historical upside."
+        }
+      ],
+      "evidence": {
+        "screenshots": [
+          "ord-lga/ordlga-rerun-round3/VAL-ORDLGA-004-005-chapters-decision.png"
+        ],
+        "observedCopy": [
+          "Quarterly counterfactual lift $567K",
+          "Risk-adjusted baseline expected lift $549K",
+          "Current scenario replay lift $1M",
+          "Selected-day tactical delta $10K",
+          "Confidence band: 80% - 98%",
+          "Confidence interval reflects counterfactual uncertainty, not guaranteed historical upside."
+        ],
+        "consoleErrors": "none",
+        "network": "No requests captured by agent-browser during the recommendation check."
+      },
+      "issues": null
+    },
+    {
+      "id": "VAL-ORDLGA-006",
+      "title": "ORD–LGA loading or failure states remain recoverable",
+      "status": "blocked",
+      "steps": [
+        {
+          "action": "Observe the assigned route during normal load and inspect for any reproducible route-level loading or failure state without disrupting shared infrastructure.",
+          "expected": "If a route-level loading or failure state appears, it is ORD-LGA-specific and exposes a visible recovery path.",
+          "observed": "The route loaded successfully into the normal experience, and no reproducible route-level loading or failure state surfaced during allowed browser-only interaction."
+        }
+      ],
+      "evidence": {
+        "screenshots": [
+          "ord-lga/ordlga-rerun-round3/VAL-ORDLGA-006-current-state.png"
+        ],
+        "observedCopy": [
+          "Normal ORD-LGA route rendered; no route-level loading or error state appeared during testing."
+        ],
+        "recoverabilityVisible": "Not determinable because a reproducible route-level loading/failure state was not reached on the shared runtime.",
+        "consoleErrors": "none",
+        "network": "No requests captured by agent-browser during the blocked assertion attempt."
+      },
+      "issues": "Per task guidance, this assertion is blocked because a route-level loading or failure state could not be reproducibly triggered on the shared production-like runtime."
+    }
+  ],
+  "frictions": [
+    {
+      "description": "The route exposes multiple overlapping trust and interactive surfaces, so screenshots plus targeted visible-copy extraction were more reliable than raw text alone for isolating assertion evidence.",
+      "resolved": true,
+      "resolution": "Captured dedicated screenshots for control changes and lower recommendation/chapter sections, then supplemented them with targeted browser text extraction for exact observed values.",
+      "affectedAssertions": [
+        "VAL-ORDLGA-003",
+        "VAL-ORDLGA-004",
+        "VAL-ORDLGA-005"
+      ]
+    }
+  ],
+  "blockers": [
+    {
+      "description": "A route-level loading or failure state could not be reproduced without unsupported fault injection or modifying shared infrastructure.",
+      "affectedAssertions": [
+        "VAL-ORDLGA-006"
+      ],
+      "quickFixAttempted": "Retried observation on the normal route load and captured the current rendered state, but no route-level loading/failure surface appeared."
+    }
+  ],
+  "summary": "Tested 4 assigned ORD-LGA assertions on the shared production-like runtime: 3 passed and 1 was blocked. The interactive controls, chaptered analysis flow, and evidence-linked recommendation surfaces rendered successfully, while a reproducible route-level loading/failure state was not available to validate VAL-ORDLGA-006."
+}
