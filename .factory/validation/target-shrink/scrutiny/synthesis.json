@@ -1,7 +1,7 @@
 {
   "milestone": "target-shrink",
-  "round": 1,
-  "status": "fail",
+  "round": 2,
+  "status": "pass",
   "validatorsRun": {
     "test": {
       "passed": true,
@@ -21,32 +21,13 @@
   },
   "reviewsSummary": {
     "total": 1,
-    "passed": 0,
-    "failed": 1,
-    "failedFeatures": [
-      "target-shrink-upgrade"
-    ]
+    "passed": 1,
+    "failed": 0,
+    "failedFeatures": []
   },
-  "blockingIssues": [
-    {
-      "featureId": "target-shrink-upgrade",
-      "severity": "blocking",
-      "description": "The Intervention Evidence panel claims to trace the active zone/posture/threshold recommendation, but it always renders static payload decision evidence and never changes with scenario state."
-    },
-    {
-      "featureId": "target-shrink-upgrade",
-      "severity": "blocking",
-      "description": "The shrink payload exposes only a single static evidence record, so observe/detain/escalate posture states and zone-specific recommendations have no scenario-specific evidence rows to justify the active UI state."
-    }
-  ],
-  "appliedUpdates": [
-    {
-      "target": "library",
-      "description": "Documented the Target Shrink recoverability probe URLs in .factory/library/user-testing.md for future validators.",
-      "sourceFeature": "target-shrink-upgrade"
-    }
-  ],
+  "blockingIssues": [],
+  "appliedUpdates": [],
   "suggestedGuidanceUpdates": [],
   "rejectedObservations": [],
-  "previousRound": null
+  "previousRound": ".factory/validation/target-shrink/scrutiny/synthesis.round1.json"
 }

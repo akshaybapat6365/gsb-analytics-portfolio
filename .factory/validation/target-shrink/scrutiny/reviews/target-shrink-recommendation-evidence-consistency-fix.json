@@ -1,0 +1,15 @@
+{
+  "featureId": "target-shrink-recommendation-evidence-consistency-fix",
+  "reviewedAt": "2026-03-28T14:12:00Z",
+  "commitId": "5327c067d28117c9b49792fe434a54705497ff4b",
+  "transcriptSkeletonReviewed": true,
+  "diffReviewed": true,
+  "status": "pass",
+  "codeReview": {
+    "summary": "The fix adequately resolves the prior blocking evidence-trace failure. The Target Shrink route no longer feeds `DecisionEvidencePanel` from the static payload row; instead it builds recommendation-specific evidence from the active zone/posture/threshold scenario and explicitly relegates the old payload evidence to baseline lineage only. The updated tests cover observe, detain, and escalate recommendation IDs and verify the live contract no longer reuses the static payload recommendation row.",
+    "issues": []
+  },
+  "sharedStateObservations": [],
+  "addressesFailureFrom": ".factory/validation/target-shrink/scrutiny/reviews/target-shrink-upgrade.json",
+  "summary": "Pass. I reviewed the prior failure, the original upgrade diff, the fix diff, the fix transcript skeleton, mission guidance, and the relevant Target Shrink code/tests. The fix rewires the Intervention Evidence panel to a scenario-derived recommendation contract (`lib/viewmodels/shrink.ts`, `app/projects/target-shrink/ShrinkClient.tsx`) and adds direct tests proving the active recommendation ID changes with visible posture states instead of reusing the single static payload row. Report written to `.factory/validation/target-shrink/scrutiny/reviews/target-shrink-recommendation-evidence-consistency-fix.json`."
+}

@@ -1,0 +1,52 @@
+{
+  "milestone": "target-shrink",
+  "round": 1,
+  "status": "fail",
+  "validatorsRun": {
+    "test": {
+      "passed": true,
+      "command": "source /home/mostltyharmless/.nvm/nvm.sh && nvm use 20.20.0 >/dev/null && ./node_modules/.bin/vitest run --maxWorkers=4",
+      "exitCode": 0
+    },
+    "typecheck": {
+      "passed": true,
+      "command": "source /home/mostltyharmless/.nvm/nvm.sh && nvm use 20.20.0 >/dev/null && npm run typecheck",
+      "exitCode": 0
+    },
+    "lint": {
+      "passed": true,
+      "command": "source /home/mostltyharmless/.nvm/nvm.sh && nvm use 20.20.0 >/dev/null && npm run lint",
+      "exitCode": 0
+    }
+  },
+  "reviewsSummary": {
+    "total": 1,
+    "passed": 0,
+    "failed": 1,
+    "failedFeatures": [
+      "target-shrink-upgrade"
+    ]
+  },
+  "blockingIssues": [
+    {
+      "featureId": "target-shrink-upgrade",
+      "severity": "blocking",
+      "description": "The Intervention Evidence panel claims to trace the active zone/posture/threshold recommendation, but it always renders static payload decision evidence and never changes with scenario state."
+    },
+    {
+      "featureId": "target-shrink-upgrade",
+      "severity": "blocking",
+      "description": "The shrink payload exposes only a single static evidence record, so observe/detain/escalate posture states and zone-specific recommendations have no scenario-specific evidence rows to justify the active UI state."
+    }
+  ],
+  "appliedUpdates": [
+    {
+      "target": "library",
+      "description": "Documented the Target Shrink recoverability probe URLs in .factory/library/user-testing.md for future validators.",
+      "sourceFeature": "target-shrink-upgrade"
+    }
+  ],
+  "suggestedGuidanceUpdates": [],
+  "rejectedObservations": [],
+  "previousRound": null
+}
