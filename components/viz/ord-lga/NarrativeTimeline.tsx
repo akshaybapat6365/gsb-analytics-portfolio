@@ -55,7 +55,6 @@ export default function NarrativeTimeline({
                 {nodes.map((node, i) => {
                     const isActive = node.dayIndex === selectedIndex;
                     const isExpanded = expandedNode === i;
-                    const side = i % 2 === 0; // alternate left/right visually, but keep vertical
 
                     return (
                         <div

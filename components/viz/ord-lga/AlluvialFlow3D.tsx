@@ -18,7 +18,7 @@ const C = {
 export function AlluvialFlow3D({ data }: { data: WeeklyBin[] }) {
     const width = 800;
     const height = 300;
-    const padding = { top: 60, bottom: 40, left: 20, right: 20 };
+    const padding = { top: 60, bottom: 40, left: 20, right: 20 } as const;
 
     const paths = useMemo(() => {
         if (!data || data.length === 0) return [];
@@ -47,7 +47,7 @@ export function AlluvialFlow3D({ data }: { data: WeeklyBin[] }) {
             flows.push(d);
         }
         return flows;
-    }, [data]);
+    }, [data, padding.bottom, padding.left, padding.right, padding.top]);
 
     return (
         <div className="w-full aspect-[8/3] relative neural-glass-panel border-plasma-cyan/30 p-4 overflow-hidden group">

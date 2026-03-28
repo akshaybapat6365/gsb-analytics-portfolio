@@ -15,8 +15,6 @@ const C = {
  * An adjacency matrix layout showing UAL price moves against DL response delays.
  */
 export function CompetitorDelayMatrix({ data }: { data: CompetitorLagPoint[] }) {
-    const SIZE = 300;
-
     // Create a 10x10 heat matrix representing delay density
     const matrix = useMemo(() => {
         const grid = Array.from({ length: 10 }, () => new Array(10).fill(0));

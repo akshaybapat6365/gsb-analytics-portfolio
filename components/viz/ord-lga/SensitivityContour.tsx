@@ -7,8 +7,8 @@
  */
 
 import { useMemo, useState } from "react";
-import { scaleLinear, scaleBand, interpolateRgbBasis, scaleSequential, extent } from "d3";
-import { formatPct, formatUSD } from "@/lib/metrics/format";
+import { scaleBand, interpolateRgbBasis, scaleSequential, extent } from "d3";
+import { formatUSD } from "@/lib/metrics/format";
 
 type GridPoint = {
     elasticity: number;

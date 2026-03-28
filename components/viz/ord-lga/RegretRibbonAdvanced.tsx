@@ -23,10 +23,10 @@ export function RegretRibbonAdvanced({ data }: { data: CumulativeRegretPoint[] }
 
     const width = 800;
     const height = 300;
-    const padding = { top: 40, right: 20, bottom: 40, left: 60 };
+    const padding = { top: 40, right: 20, bottom: 40, left: 60 } as const;
 
-    const { pathDef, maxX, maxY } = useMemo(() => {
-        if (!data?.length) return { pathDef: "", maxX: 0, maxY: 0 };
+    const { pathDef, maxY } = useMemo(() => {
+        if (!data?.length) return { pathDef: "", maxY: 0 };
 
         const xMax = data.length - 1;
         const yMax = Math.max(...data.map(d => d.cumRegret));
@@ -42,10 +42,9 @@ export function RegretRibbonAdvanced({ data }: { data: CumulativeRegretPoint[] }
 
         return {
             pathDef: areaBuilder(data) || "",
-            maxX: xMax,
             maxY: yMax
         };
-    }, [data]);
+    }, [data, padding.bottom, padding.left, padding.right, padding.top]);
 
     if (!data?.length) return null;
 

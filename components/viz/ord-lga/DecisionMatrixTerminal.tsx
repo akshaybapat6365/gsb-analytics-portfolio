@@ -2,7 +2,6 @@
 
 import { useMemo, useEffect, useState } from "react";
 import { NeuralEyebrow } from "./Typography";
-import { cn } from "@/lib/utils";
 import type { DecisionEngineResult } from "@/lib/decision-engines/types";
 
 /**
@@ -22,11 +21,12 @@ export function DecisionMatrixTerminal({ decision }: TerminalProps) {
         return [
             `> SYSTEM DIAGNOSTICS: ALGORITHMIC ADVANTAGE VALIDATED`,
             `> TIER: [${(decision.recommendationTier || "BALANCED").toUpperCase()}]`,
+            `> LIFT CI: ${Math.round(decision.confidenceBand[0] * 100)}% - ${Math.round(decision.confidenceBand[1] * 100)}% confidence band`,
             `> ----------------------------------------------------`,
             `> NARRATIVE_ANALYSIS:`,
             ...(decision.drivers || ["Baseline trajectory acquired."]).map(d => `  * ${d}`),
             `> ----------------------------------------------------`,
-            `> EXECUTING PROTOCOL COMMANDS:`,
+            `> POLICY GUARDRAILS:`,
             ...(decision.policyGuardrails || ["Engage default rate bounds."]).map((item, i) => `  [0${i + 1}] ${item}`),
             `>`,
             `> _AWAITING_FURTHER_INPUT_`

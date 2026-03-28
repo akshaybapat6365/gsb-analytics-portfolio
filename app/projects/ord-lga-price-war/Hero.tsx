@@ -1,6 +1,6 @@
 import { Chip } from "@/components/ui/Chip";
 import { RadarGrid } from "@/components/viz/ord-lga/RadarGrid";
-import { formatPct, formatUSD } from "@/lib/metrics/format";
+import { formatUSD } from "@/lib/metrics/format";
 import type { AirlinePayload } from "@/lib/schemas/airline";
 import HeroFlightPath from "@/components/viz/ord-lga/HeroFlightPath";
 import MiniSparkGrid from "@/components/viz/ord-lga/MiniSparkGrid";
@@ -14,6 +14,7 @@ export function Hero({ payload }: { payload: AirlinePayload }) {
   const lift = algo - actual;
   const liftCi = payload.uncertainty?.revenueLiftCi;
   const lineage = payload.dataLineage;
+  const policyContext = payload.competitor?.inferredPolicyLabel ?? "Modeled competitor response";
 
   // Derive rows for sparks
   const rows = derivePolicyDays(payload, 64, 58);
@@ -56,38 +57,49 @@ export function Hero({ payload }: { payload: AirlinePayload }) {
             </span>
           </h1>
           <p className="mt-5 max-w-2xl text-[15px] leading-7 text-slate-300/90 sm:text-[16px]">
-            Multi-agent pricing simulation with a DQN-style policy lens and
-            inferred competitor response. Explore day-by-day counterfactual
-            pricing, booking-window leakage, and equilibrium dynamics.
+            Premium war-room replay of the United–Delta ORD–LGA fare fight. This
+            route blends observed market anchors with inferred competitor behavior
+            and a modeled pricing policy so reviewers can inspect where the
+            recommendation is observed, inferred, and simulated before accepting
+            the upside story.
           </p>
 
-          {/* Data lineage bar */}
-          {lineage && (
-            <div className="mt-6 max-w-md">
-              <p className="mb-2 font-mono text-[9px] uppercase tracking-[0.16em] text-slate-500">
-                Data Lineage
-              </p>
-              <div className="flex h-2 overflow-hidden rounded-full">
-                <div className="transition-all" style={{ width: `${lineage.observedPct * 100}%`, background: "var(--radar-green)" }} title={`Observed: ${Math.round(lineage.observedPct * 100)}%`} />
-                <div className="transition-all" style={{ width: `${lineage.inferredPct * 100}%`, background: "var(--radar-amber)" }} title={`Inferred: ${Math.round(lineage.inferredPct * 100)}%`} />
-                <div className="transition-all" style={{ width: `${lineage.modeledPct * 100}%`, background: "var(--radar-cyan)" }} title={`Modeled: ${Math.round(lineage.modeledPct * 100)}%`} />
+          <div className="mt-6 grid gap-4 lg:grid-cols-[minmax(0,1.2fr)_minmax(0,0.8fr)]">
+            {lineage && (
+              <div className="max-w-md rounded-2xl border border-white/[0.06] bg-black/25 p-4">
+                <p className="mb-2 font-mono text-[9px] uppercase tracking-[0.16em] text-slate-500">
+                  Evidence Lineage
+                </p>
+                <div className="flex h-2 overflow-hidden rounded-full">
+                  <div className="transition-all" style={{ width: `${lineage.observedPct * 100}%`, background: "var(--radar-green)" }} title={`Observed: ${Math.round(lineage.observedPct * 100)}%`} />
+                  <div className="transition-all" style={{ width: `${lineage.inferredPct * 100}%`, background: "var(--radar-amber)" }} title={`Inferred: ${Math.round(lineage.inferredPct * 100)}%`} />
+                  <div className="transition-all" style={{ width: `${lineage.modeledPct * 100}%`, background: "var(--radar-cyan)" }} title={`Modeled: ${Math.round(lineage.modeledPct * 100)}%`} />
+                </div>
+                <div className="mt-1.5 flex justify-between font-mono text-[9px] text-slate-500">
+                  <span>obs {Math.round(lineage.observedPct * 100)}%</span>
+                  <span>inf {Math.round(lineage.inferredPct * 100)}%</span>
+                  <span>mod {Math.round(lineage.modeledPct * 100)}%</span>
+                </div>
+                <p className="mt-3 text-[12px] leading-6 text-slate-400">
+                  Policy context: {policyContext}. Treat the modeled share and revenue uplift as
+                  an uncertainty-bounded counterfactual, not direct historical truth.
+                </p>
               </div>
-              <div className="mt-1.5 flex justify-between font-mono text-[9px] text-slate-500">
-                <span>obs {Math.round(lineage.observedPct * 100)}%</span>
-                <span>inf {Math.round(lineage.inferredPct * 100)}%</span>
-                <span>mod {Math.round(lineage.modeledPct * 100)}%</span>
-              </div>
-            </div>
-          )}
+            )}
 
-          {/* CI strip */}
-          <div className="mt-4 max-w-md rounded-xl border border-white/[0.05] bg-black/25 p-3 text-xs">
-            <p className="font-mono text-[9px] uppercase tracking-[0.16em] text-slate-500">
-              Revenue Lift CI
-            </p>
-            <p className="mt-1 font-mono text-slate-300">
-              {liftCi ? `${formatUSD(liftCi[0])} — ${formatUSD(liftCi[1])}` : "n/a"}
-            </p>
+            <div className="max-w-md rounded-2xl border border-white/[0.06] bg-black/25 p-4 text-xs">
+              <p className="font-mono text-[9px] uppercase tracking-[0.16em] text-slate-500">
+                Uncertainty Envelope
+              </p>
+              <p className="mt-1 font-mono text-slate-300">
+                {liftCi ? `${formatUSD(liftCi[0])} — ${formatUSD(liftCi[1])}` : "n/a"}
+              </p>
+              <p className="mt-3 text-[12px] leading-6 text-slate-400">
+                Central estimate: {formatUSD(lift)} modeled Q2 lift versus the observed desk.
+                Inspect the validation and sensitivity chapters before escalating to an
+                aggressive policy rollout.
+              </p>
+            </div>
           </div>
         </div>
 

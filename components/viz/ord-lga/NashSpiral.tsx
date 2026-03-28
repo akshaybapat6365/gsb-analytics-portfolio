@@ -40,7 +40,7 @@ export function NashSpiral({ states = [], convergenceDay }: { states?: OrdNashSt
 
             return { x, y, color, radius, isConverged, angle };
         });
-    }, [states, convergenceDay]);
+    }, [CENTER, MAX_RADIUS, states, convergenceDay]);
 
     const pathData = useMemo(() => {
         if (spiralPoints.length < 2) return "";

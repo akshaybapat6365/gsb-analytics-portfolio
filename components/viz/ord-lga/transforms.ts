@@ -438,7 +438,6 @@ export function buildCumulativeRegret(
   let cumRegret = 0;
   return rows.map((row) => {
     cumRegret += row.policyRegret;
-    const dayFrac = (row.index + 1) / rows.length;
     const ciWidth = spreadPerDay * Math.sqrt(row.index + 1);
     return {
       dayIndex: row.index,

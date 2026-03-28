@@ -3,8 +3,7 @@
 import { useMemo } from "react";
 import { Reveal } from "@/components/motion/Reveal";
 import { DecisionConsole } from "@/components/story/DecisionConsole";
-import { Chip } from "@/components/ui/Chip";
-import { KpiCard } from "@/components/ui/KpiCard";
+import { DecisionEvidencePanel } from "@/components/story/DecisionEvidencePanel";
 import { Slider } from "@/components/ui/Slider";
 import { ActualVsAlgoTimeline } from "@/components/viz/ord-lga/ActualVsAlgoTimeline";
 import { DecisionMatrixTerminal } from "@/components/viz/ord-lga/DecisionMatrixTerminal";
@@ -22,14 +21,11 @@ import { GLSLSensitivity } from "@/components/viz/ord-lga/GLSLSensitivity";
 import CompetitorResponseLag from "@/components/viz/ord-lga/CompetitorResponseLag";
 import ValidationBenchmark from "@/components/viz/ord-lga/ValidationBenchmark";
 import NarrativeTimeline from "@/components/viz/ord-lga/NarrativeTimeline";
-import MarketShareAlluvial from "@/components/viz/ord-lga/MarketShareAlluvial";
 import { PrologueCanvas3D } from "@/components/viz/ord-lga/PrologueCanvas3D";
 import { HeroMetricsUI } from "@/components/viz/ord-lga/HeroMetricsUI";
 import { AnimatedNeonCounter } from "@/components/viz/ord-lga/AnimatedNeonCounter";
 import { AlluvialFlow3D } from "@/components/viz/ord-lga/AlluvialFlow3D";
-import { NashSpiral } from "@/components/viz/ord-lga/NashSpiral";
 import { RegretRibbonAdvanced } from "@/components/viz/ord-lga/RegretRibbonAdvanced";
-import { ValidationRadar } from "@/components/viz/ord-lga/ValidationRadar";
 import { VolumeProfile } from "@/components/viz/ord-lga/VolumeProfile";
 import { CompetitorDelayMatrix } from "@/components/viz/ord-lga/CompetitorDelayMatrix";
 import { ShockConstellation } from "@/components/viz/ord-lga/ShockConstellation";
@@ -38,7 +34,6 @@ import { FloatingActionMenu } from "@/components/viz/ord-lga/FloatingActionMenu"
 import {
   type PolicyViewMode,
   buildDailyPnL,
-  buildFareDistribution,
   buildCumulativeRegret,
   buildCompetitorLagSeries,
   buildValidationComparison,
@@ -163,14 +158,13 @@ export default function PriceWarClient({
   const selectedSpread = selectedDay.competitorPrice - selectedDay.policyPrice;
   const selectedShockLabel = selectedDay.shock > 0 ? formatNumber(selectedDay.shock, { digits: 2 }) : "0.00";
   const topAnnotations = (payload.annotations ?? []).slice(0, 4);
-  const recommendationTier = (decision.recommendationTier ?? "balanced").toUpperCase();
+  const recommendationTier = decision.recommendationTier ?? "balanced";
   const recommendationTone =
-    decision.recommendationTier === "aggressive" ? "emerald"
-      : decision.recommendationTier === "defensive" ? "crimson" : "amber";
+    recommendationTier === "aggressive" ? "emerald"
+      : recommendationTier === "defensive" ? "crimson" : "amber";
 
   // Derived data for new components
   const pnlData = useMemo(() => buildDailyPnL(rows), [rows]);
-  const fareDistData = useMemo(() => buildFareDistribution(rows), [rows]);
   const cumRegretData = useMemo(() => buildCumulativeRegret(rows, payload.uncertainty), [rows, payload.uncertainty]);
   const lagData = useMemo(() => buildCompetitorLagSeries(rows), [rows]);
   const validationData = useMemo(() => buildValidationComparison(payload), [payload]);
@@ -277,8 +271,29 @@ export default function PriceWarClient({
                       <AnimatedNeonCounter glow="cyan" value={selectedDay.policyRegret} format="usd" duration={400} />
                     </span>
                   </p>
+                  <p>Shock severity index: {selectedShockLabel}</p>
                 </div>
               </ControlBlock>
+
+              <div className="rounded-2xl border border-white/[0.06] bg-black/20 p-4">
+                <p className="font-mono text-[10px] uppercase tracking-[0.16em] text-slate-500">
+                  Scenario posture
+                </p>
+                <div className="mt-3 flex flex-wrap items-center gap-2">
+                  <span className="rounded-full border px-2.5 py-1 font-mono text-[10px] uppercase tracking-[0.12em]" style={{ borderColor: "rgba(255,255,255,0.08)", color: "rgba(226,232,240,0.78)" }}>
+                    Tier {recommendationTier.toUpperCase()}
+                  </span>
+                  <span className="rounded-full border px-2.5 py-1 font-mono text-[10px] uppercase tracking-[0.12em]" style={{ borderColor: "rgba(255,255,255,0.08)", color: "rgba(226,232,240,0.78)" }}>
+                    Mode {mode}
+                  </span>
+                  <span className="rounded-full border px-2.5 py-1 font-mono text-[10px] uppercase tracking-[0.12em]" style={{ borderColor: selectedDay.shock > 0 ? "var(--radar-crimson-50)" : "rgba(255,255,255,0.08)", color: selectedDay.shock > 0 ? "var(--radar-crimson)" : "rgba(226,232,240,0.78)" }}>
+                    {selectedDay.shock > 0 ? "Shock day" : "Base day"}
+                  </span>
+                </div>
+                <p className="mt-3 text-[12px] leading-6 text-slate-400">
+                  Recommendation confidence remains conditional on modeled competitor response, validation error, and sensitivity stability. Use the chapter sequence below as an audit trail.
+                </p>
+              </div>
             </aside>
 
             <div className="space-y-8">
@@ -354,6 +369,17 @@ export default function PriceWarClient({
             <CanvasPointScatter />
             <RevenuePnLWaterfall data={pnlData} />
           </div>
+          <div className="mt-8">
+            <RegretHeatLattice
+              mode={mode}
+              bookingWindows={payload.heatmap.bookingWindows}
+              dows={payload.heatmap.dows}
+              cells={heat.cells}
+              minValue={heat.min}
+              maxValue={heat.max}
+              activeDow={selectedDay.dow}
+            />
+          </div>
         </section>
       </Reveal>
 
@@ -404,7 +430,7 @@ export default function PriceWarClient({
               />
               <ShockConstellation events={shocks} />
             </div>
-            <NashSpiral
+            <NashResponseSim
               states={nash.states}
               convergenceDay={nash.convergenceDay}
             />
@@ -435,9 +461,19 @@ export default function PriceWarClient({
           {/* Validation Benchmark */}
           {validationData && (
             <div className="mt-5">
-              <ValidationRadar data={undefined /* Uses built-in mock metrics for now */} />
+              <ValidationBenchmark data={validationData} />
             </div>
           )}
+
+          {payload.sensitivitySummary?.grid?.length ? (
+            <div className="mt-5">
+              <SensitivityContour
+                grid={payload.sensitivitySummary.grid}
+                bestCase={payload.sensitivitySummary.bestCase}
+                worstCase={payload.sensitivitySummary.worstCase}
+              />
+            </div>
+          ) : null}
 
           {/* Ablation waterfall */}
           {payload.ablationSummary && payload.ablationSummary.length > 0 && (
@@ -500,15 +536,55 @@ export default function PriceWarClient({
 
       {/* Decision Output Rail */}
       <Reveal delay={0.18}>
-        <DecisionConsole
-          title="Decision Output Rail"
-          lines={[
-            { label: "Quarterly counterfactual lift", value: formatUSD(summary.incrementalRevenue), tone: "emerald" },
-            { label: "Risk-adjusted expected lift", value: formatUSD(decision.riskAdjustedLift ?? summary.incrementalRevenue), tone: "amber" },
-            { label: "Selected-day tactical delta", value: formatUSD(selectedDay.policyRegret), tone: selectedDay.policyRegret >= 0 ? "emerald" : "crimson" },
-            { label: "Implied share edge (UAL vs DL)", value: formatPct(selectedDay.uaShare - selectedDay.dlShare, { digits: 1 }), tone: selectedDay.uaShare >= selectedDay.dlShare ? "amber" : "crimson" },
-          ]}
-        />
+        <div className="space-y-6 px-4 sm:px-6">
+          <DecisionConsole
+            title="Decision Output Rail"
+            lines={[
+              {
+                label: "Quarterly counterfactual lift",
+                value: formatUSD(summary.incrementalRevenue),
+                tone: "emerald",
+                hint: "Modeled Q2 policy replay versus the observed desk baseline.",
+              },
+              {
+                label: "Risk-adjusted expected lift",
+                value: formatUSD(decision.riskAdjustedLift ?? summary.incrementalRevenue),
+                tone: recommendationTone,
+                hint: `Adjusted for CI width and current policy-model MAPE of ${formatPct(payload.validationSummary?.metrics.policyModel.mapeRevenue ?? 0.12, { digits: 1 })}.`,
+              },
+              {
+                label: "Selected-day tactical delta",
+                value: formatUSD(selectedDay.policyRegret),
+                tone: selectedDay.policyRegret >= 0 ? "emerald" : "crimson",
+                hint: `${selectedDay.date} scenario state with ${selectedDay.shock > 0 ? "shock handling engaged" : "base conditions"}.`,
+              },
+              {
+                label: "Implied share edge (UAL vs DL)",
+                value: formatPct(selectedDay.uaShare - selectedDay.dlShare, { digits: 1 }),
+                tone: selectedDay.uaShare >= selectedDay.dlShare ? "amber" : "crimson",
+                hint: `Spread vs ${competitorName}: ${formatUSD(selectedSpread, { compact: false })}.`,
+              },
+            ]}
+          />
+          <DecisionEvidencePanel title="Recommendation Evidence" evidence={payload.decisionEvidence} />
+          <DecisionConsole
+            title="Policy Guardrails & Lift CI"
+            lines={[
+              {
+                label: "Lift CI",
+                value: `${Math.round(decision.confidenceBand[0] * 100)}% – ${Math.round(decision.confidenceBand[1] * 100)}%`,
+                tone: "amber",
+                hint: "Confidence interval reflects counterfactual uncertainty, not guaranteed historical upside.",
+              },
+              {
+                label: "Policy guardrails",
+                value: `${decision.policyGuardrails?.length ?? 0} active`,
+                tone: "neutral",
+                hint: (decision.policyGuardrails ?? []).join(" "),
+              },
+            ]}
+          />
+        </div>
       </Reveal>
     </div>
   );
