@@ -1,0 +1,34 @@
+{
+  "featureId": "fraud-radar-upgrade",
+  "reviewedAt": "2026-03-28T07:49:26+00:00",
+  "commitId": "f02a6c61e2cd2e1b8206380fe2f950a2be12f3d5",
+  "transcriptSkeletonReviewed": true,
+  "diffReviewed": true,
+  "status": "fail",
+  "codeReview": {
+    "summary": "The route upgrade meaningfully improves triage-not-verdict framing, adds coherent company/scenario controls, and introduces deterministic recoverability probes. However, the new recommendation evidence surface still renders the static payload evidence pack unchanged across scenarios, so the recommendation console is not actually evidence-backed by the current interaction state.",
+    "issues": [
+      {
+        "file": "app/projects/fraud-radar/FraudClient.tsx",
+        "line": 778,
+        "severity": "blocking",
+        "description": "The new 'Triage Evidence Pack' claims to support the active recommendation regime, but it always passes the unchanged `payload.decisionEvidence` into `DecisionEvidencePanel`. None of the company/scenario/slider-derived state is reflected in that evidence panel, so the recommendation console is not genuinely evidence-backed for the currently selected scenario as the feature intent requires."
+      },
+      {
+        "file": "public/data/fraud/payload.json",
+        "line": 367,
+        "severity": "blocking",
+        "description": "The fraud payload contains only a single static evidence item (`recommendationId: \"fraud-short-basket\"`). Because the UI now presents scenario-specific triage recommendations such as 'Observe only', 'Keep on watchlist', and 'Escalate forensic review', the evidence rail cannot trace or justify those interaction-specific outputs."
+      }
+    ]
+  },
+  "sharedStateObservations": [
+    {
+      "area": "knowledge",
+      "observation": "The mission shared testing guidance documents ORD-LGA recoverability probes but does not yet document the newly added Fraud Radar `?routeProbe=loading|error` validation path, even though this feature now depends on those probes for recoverability verification.",
+      "evidence": ".factory/library/user-testing.md documents only `/projects/ord-lga-price-war?routeProbe=loading|error`, while `app/projects/fraud-radar/page.tsx:23-26` and `app/projects/fraud-radar/recoverability.ts:1-13` add equivalent Fraud Radar probe support."
+    }
+  ],
+  "addressesFailureFrom": null,
+  "summary": "Fail. The feature improves trust framing, control coupling, and route recoverability, but it does not honestly satisfy the 'recommendation console stays evidence-backed' requirement because the evidence panel remains static and disconnected from the selected scenario/company state. Review report written to the fraud-radar scrutiny reviews directory."
+}
