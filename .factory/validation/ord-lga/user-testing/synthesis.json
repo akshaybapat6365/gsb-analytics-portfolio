@@ -1,37 +1,34 @@
 {
   "milestone": "ord-lga",
-  "round": 1,
+  "round": 2,
   "status": "fail",
   "assertionsSummary": {
-    "total": 6,
-    "passed": 2,
+    "total": 4,
+    "passed": 0,
     "failed": 3,
     "blocked": 1
   },
-  "passedAssertions": [
-    "VAL-ORDLGA-001",
-    "VAL-ORDLGA-002"
-  ],
+  "passedAssertions": [],
   "failedAssertions": [
     {
       "id": "VAL-ORDLGA-003",
-      "reason": "The required interactive controls for scenario state changes did not become available in the real user surface. The page stayed on the lazy gate placeholder ('Interactive controls are loading') with data-state=idle, so no selected-day readout, chart, or KPI change could be validated through the intended controls."
+      "reason": "The rerun on the shared production-like runtime still did not expose working scenario controls or a visible selected-day interaction. The lower ORD-LGA interactive sandbox remained on 'Interactive controls are loading', so no chart, KPI, or selected-day output change could be validated from the real user surface."
     },
     {
       "id": "VAL-ORDLGA-004",
-      "reason": "The real user surface did not present the full chaptered analysis sequence from market intelligence through strategy/reaction analysis and model validation. Only the top trust stack, Chapter A, and the idle lazy-gate placeholder were visible during validation."
+      "reason": "The rerun still did not visibly deliver the full chapter sequence from market intelligence through strategy/reaction analysis and model validation. The route showed Chapter A, trust/provenance surfaces, and a placeholder for Interactive Chapter B, but the deeper strategy/validation content remained collapsed behind the unloaded sandbox."
     },
     {
       "id": "VAL-ORDLGA-005",
-      "reason": "A dedicated recommendation output area tying strategy output to quantified lift/risk metrics and supporting evidence was not reachable in the browser session because the deeper interactive modules did not mount. Top-of-page BLUF and lift/limitation text were present, but the recommendation area required by the assertion was not available from the user surface."
+      "reason": "Top-of-page uncertainty language remains visible, but the dedicated recommendation output area required by the assertion was still not rendered on the tested runtime. The lower sandbox never mounted beyond the placeholder announcing an incoming recommendation console, so evidence-linked recommendation output was not reachable in the browser."
     }
   ],
   "blockedAssertions": [
     {
       "id": "VAL-ORDLGA-006",
-      "blockedBy": "A reproducible route-level loading or failure state for the full ORD-LGA route was not triggered during validation. The only reliably reproducible loading surface was the lower lazy interactive gate, which is not sufficient evidence for a route-level recoverability assertion under the stated constraints."
+      "blockedBy": "A route-level loading or failure state still could not be reproduced without disrupting the shared validation runtime or using unsupported fault injection. The only consistently visible loading copy was the lower lazy placeholder for interactive controls, which is insufficient evidence for the route-level recoverability assertion."
     }
   ],
   "appliedUpdates": [],
-  "previousRound": null
+  "previousRound": ".factory/validation/ord-lga/user-testing/synthesis.round1.json"
 }

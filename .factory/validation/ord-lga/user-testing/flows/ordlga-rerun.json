@@ -1,0 +1,181 @@
+{
+  "groupId": "ordlga-rerun",
+  "testedAt": "2026-03-28T06:48:21+00:00",
+  "isolation": {
+    "appUrl": "http://localhost:3501",
+    "route": "/projects/ord-lga-price-war",
+    "missionDir": "/home/mostltyharmless/.factory/missions/0bc5abab-8b5e-4fc7-8d9d-3feb9bdd1a02",
+    "assignedAssertions": [
+      "VAL-ORDLGA-003",
+      "VAL-ORDLGA-004",
+      "VAL-ORDLGA-005",
+      "VAL-ORDLGA-006"
+    ]
+  },
+  "toolsUsed": [
+    "agent-browser"
+  ],
+  "assertionResults": [
+    {
+      "id": "VAL-ORDLGA-003",
+      "title": "ORD–LGA controls drive visible scenario-state changes",
+      "status": "fail",
+      "steps": [
+        {
+          "action": "Open the ORD-LGA route on the shared runtime and inspect visible controls near the pricing evidence rail and chapter sections.",
+          "expected": "Scenario controls or visual modes are present and lead to visible changes in selected-day readout plus at least one chart or KPI.",
+          "observed": "The visible controls were limited to the pricing evidence rail filters: all, shock, anomaly, inflection, and recommendation. No scenario sliders or selected-day interaction surfaced in the real browser session."
+        },
+        {
+          "action": "Scroll further and wait for the lower interactive sandbox to mount.",
+          "expected": "Interactive Chapter B mounts with scenario sliders, stress charts, and recommendation console.",
+          "observed": "The lower section remained on the placeholder copy 'Interactive controls are loading. Scroll a bit further or wait one moment for the full simulator.' with supporting text 'Incoming modules Scenario sliders, stress charts, and recommendation console.'"
+        },
+        {
+          "action": "Click the visible recommendation filter in the pricing evidence rail.",
+          "expected": "At least one visible label, value, chart state, or selected-day readout changes.",
+          "observed": "No user-visible state change was confirmed in the browser output or text capture after clicking the recommendation filter."
+        }
+      ],
+      "evidence": {
+        "screenshots": [
+          "ord-lga/ordlga-rerun/ordlga-initial-annotated.png",
+          "ord-lga/ordlga-rerun/ordlga-controls-before.png",
+          "ord-lga/ordlga-rerun/ordlga-controls-after-recommendation.png",
+          "ord-lga/ordlga-rerun/ordlga-full-after-deep-scroll.png"
+        ],
+        "observedCopy": [
+          "Interactive Chapter B · Counterfactual Command Sandbox",
+          "Interactive controls are loading. Scroll a bit further or wait one moment for the full simulator.",
+          "Incoming modules Scenario sliders, stress charts, and recommendation console."
+        ],
+        "changedLabelsOrValues": "No confirmed change after clicking the visible recommendation filter; selected-day readout never became user-interactable.",
+        "consoleIssues": "none",
+        "network": "No requests captured by agent-browser during the interaction sequence."
+      },
+      "issues": "The real user surface did not expose working scenario controls or a visible selected-day interaction that changed the live outputs."
+    },
+    {
+      "id": "VAL-ORDLGA-004",
+      "title": "ORD–LGA presents chaptered analysis from market view to validation",
+      "status": "fail",
+      "steps": [
+        {
+          "action": "Inspect the full route from hero through the lower interactive sections.",
+          "expected": "The route presents distinct analytical chapters spanning market intelligence, strategy/reaction analysis, and model validation.",
+          "observed": "The route shows top-level trust/provenance and assumptions surfaces, then 'Interactive Chapter A Counterfactual Pricing Simulator' and a placeholder for 'Interactive Chapter B · Counterfactual Command Sandbox'."
+        },
+        {
+          "action": "Look for visible validation-specific or reaction-analysis chapters beyond the first simulator section.",
+          "expected": "A reviewer can visibly distinguish market view, strategy/reaction analysis, and validation chapters from the rendered page.",
+          "observed": "A separate validation chapter was not visibly rendered; the only validation-specific visible copy was the inline note 'Validation MAPE: 5.49%' inside the evidence rail area."
+        }
+      ],
+      "evidence": {
+        "screenshots": [
+          "ord-lga/ordlga-rerun/ordlga-full-after-deep-scroll.png",
+          "ord-lga/ordlga-rerun/ordlga-after-scroll-annotated.png"
+        ],
+        "observedCopy": [
+          "Interactive Chapter A Counterfactual Pricing Simulator",
+          "Annotation Intent Each callout ties to route-day outcomes and provenance. Validation MAPE: 5.49%",
+          "Interactive Chapter B · Counterfactual Command Sandbox"
+        ],
+        "consoleIssues": "none",
+        "network": "No requests captured by agent-browser during the route inspection."
+      },
+      "issues": "The rendered route did not visibly deliver the full chapter sequence required by the assertion; validation and deeper strategy/reaction content remained collapsed behind an unloaded placeholder."
+    },
+    {
+      "id": "VAL-ORDLGA-005",
+      "title": "ORD–LGA recommendation output is evidence-linked and uncertainty-aware",
+      "status": "fail",
+      "steps": [
+        {
+          "action": "Inspect the top summary and trust surfaces for recommendation framing.",
+          "expected": "Recommendation output is tied to lift/risk metrics and rationale while preserving modeled and uncertainty-aware language.",
+          "observed": "Top-of-page framing is uncertainty-aware: 'Revenue Lift CI $58K — $96K', 'Modeled incremental Q2 lift $567K', and 'Limitation: Competitor policy is inferred, not observed from internal airline systems.'"
+        },
+        {
+          "action": "Scroll to the lower recommendation area expected from the interactive sandbox.",
+          "expected": "A dedicated recommendation area is visibly rendered with supporting evidence and risk-linked outputs.",
+          "observed": "The lower section never mounted beyond placeholder text announcing an incoming recommendation console, so a recommendation area tied to visible supporting evidence was not reachable."
+        }
+      ],
+      "evidence": {
+        "screenshots": [
+          "ord-lga/ordlga-rerun/ordlga-initial-annotated.png",
+          "ord-lga/ordlga-rerun/ordlga-full-after-deep-scroll.png"
+        ],
+        "observedCopy": [
+          "Revenue Lift CI $58K — $96K",
+          "Modeled incremental Q2 lift $567K",
+          "Limitation: Competitor policy is inferred, not observed from internal airline systems.",
+          "Incoming modules Scenario sliders, stress charts, and recommendation console."
+        ],
+        "changedLabelsOrValues": "Visible uncertainty framing exists near the top, but no rendered recommendation console or risk-linked interactive output became available.",
+        "consoleIssues": "none",
+        "network": "No requests captured by agent-browser during the recommendation-area check."
+      },
+      "issues": "The page preserves uncertainty-aware language, but the dedicated recommendation output area required by the assertion was not present in the tested runtime."
+    },
+    {
+      "id": "VAL-ORDLGA-006",
+      "title": "ORD–LGA loading or failure states remain recoverable",
+      "status": "blocked",
+      "steps": [
+        {
+          "action": "Attempt to observe a reproducible route-level loading or failure state on the assigned route without disrupting shared infrastructure.",
+          "expected": "If a loading or failure state appears, it is ORD-LGA-specific and offers a visible recovery path.",
+          "observed": "A route-level loading or failure state was not reproducibly triggered. The only consistently visible loading copy was the lower lazy placeholder for interactive controls, not a route-level failure or recovery flow."
+        }
+      ],
+      "evidence": {
+        "screenshots": [
+          "ord-lga/ordlga-rerun/ordlga-full-after-deep-scroll.png"
+        ],
+        "observedCopy": [
+          "Interactive controls are loading. Scroll a bit further or wait one moment for the full simulator."
+        ],
+        "recoverabilityVisible": "Not determinable for a route-level state because no reproducible route-level loading/failure surface was reached.",
+        "consoleIssues": "none",
+        "network": "No requests captured by agent-browser during the blocked assertion attempt."
+      },
+      "issues": "Per task guidance, the assertion is blocked because a route-level loading or failure state could not be triggered reproducibly on the shared validation surface."
+    }
+  ],
+  "frictions": [
+    {
+      "description": "Visible page text extraction on this Next.js App Router route included streamed payload/script text after the visible content, so screenshots were the primary trustworthy evidence surface.",
+      "resolved": true,
+      "resolution": "Used multiple screenshots plus direct visible-copy capture from the rendered page instead of relying on raw body text alone.",
+      "affectedAssertions": [
+        "VAL-ORDLGA-003",
+        "VAL-ORDLGA-004",
+        "VAL-ORDLGA-005",
+        "VAL-ORDLGA-006"
+      ]
+    },
+    {
+      "description": "The lower ORD-LGA interactive sandbox never mounted beyond a loading placeholder despite additional scrolling and waiting on the production-like runtime.",
+      "resolved": false,
+      "resolution": "None during this rerun; evidence recorded as observed.",
+      "affectedAssertions": [
+        "VAL-ORDLGA-003",
+        "VAL-ORDLGA-004",
+        "VAL-ORDLGA-005",
+        "VAL-ORDLGA-006"
+      ]
+    }
+  ],
+  "blockers": [
+    {
+      "description": "A route-level loading or failure state could not be reproduced without modifying shared infrastructure or forcing unsupported fault injection on the mission-managed runtime.",
+      "affectedAssertions": [
+        "VAL-ORDLGA-006"
+      ],
+      "quickFixAttempted": "Retried by scrolling deeper, waiting several additional seconds, and re-checking the rendered lower section, but no route-level recovery state surfaced."
+    }
+  ],
+  "summary": "Tested 4 assigned assertions on the real ORD-LGA route: 0 passed, 3 failed, 1 blocked. The page still exposes top-level trust and uncertainty copy, but the deeper interactive sandbox and recommendation console did not mount on the shared 3501 runtime, and a reproducible route-level loading/failure state was not available."
+}
