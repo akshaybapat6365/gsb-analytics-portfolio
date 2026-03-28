@@ -1,11 +1,11 @@
 {
   "milestone": "fraud-radar",
-  "round": 1,
-  "status": "fail",
+  "round": 2,
+  "status": "pass",
   "validatorsRun": {
     "test": {
       "passed": true,
-      "command": "source /home/mostltyharmless/.nvm/nvm.sh && nvm use 20.20.0 >/dev/null && ./node_modules/.bin/vitest run --maxWorkers=4",
+      "command": "source /home/mostltyharmless/.nvm/nvm.sh && nvm use 20.20.0 >/dev/null && npm test",
       "exitCode": 0
     },
     "typecheck": {
@@ -21,32 +21,13 @@
   },
   "reviewsSummary": {
     "total": 1,
-    "passed": 0,
-    "failed": 1,
-    "failedFeatures": [
-      "fraud-radar-upgrade"
-    ]
+    "passed": 1,
+    "failed": 0,
+    "failedFeatures": []
   },
-  "blockingIssues": [
-    {
-      "featureId": "fraud-radar-upgrade",
-      "severity": "blocking",
-      "description": "app/projects/fraud-radar/FraudClient.tsx:778 renders the Triage Evidence Pack from static payload.decisionEvidence, so recommendation evidence does not change with company/scenario/slider state and is not genuinely tied to the active recommendation."
-    },
-    {
-      "featureId": "fraud-radar-upgrade",
-      "severity": "blocking",
-      "description": "public/data/fraud/payload.json:367 contains only one static evidence item (recommendationId: \"fraud-short-basket\"), which cannot justify the route's scenario-specific triage outputs such as Observe only, Keep on watchlist, and Escalate forensic review."
-    }
-  ],
-  "appliedUpdates": [
-    {
-      "target": "library",
-      "description": "Documented Fraud Radar routeProbe loading/error URLs in .factory/library/user-testing.md for future recoverability validation.",
-      "sourceFeature": "fraud-radar-upgrade"
-    }
-  ],
+  "blockingIssues": [],
+  "appliedUpdates": [],
   "suggestedGuidanceUpdates": [],
   "rejectedObservations": [],
-  "previousRound": null
+  "previousRound": ".factory/validation/fraud-radar/scrutiny/synthesis.round1.json"
 }

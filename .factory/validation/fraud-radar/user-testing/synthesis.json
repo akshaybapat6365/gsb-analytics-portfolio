@@ -1,0 +1,22 @@
+{
+  "milestone": "fraud-radar",
+  "round": 1,
+  "status": "pass",
+  "assertionsSummary": {
+    "total": 5,
+    "passed": 5,
+    "failed": 0,
+    "blocked": 0
+  },
+  "passedAssertions": [
+    "VAL-FRAUD-001",
+    "VAL-FRAUD-002",
+    "VAL-FRAUD-003",
+    "VAL-FRAUD-004",
+    "VAL-FRAUD-005"
+  ],
+  "failedAssertions": [],
+  "blockedAssertions": [],
+  "appliedUpdates": [],
+  "previousRound": null
+}

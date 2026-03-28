@@ -1,0 +1,15 @@
+{
+  "featureId": "fraud-radar-evidence-traceability-fix",
+  "reviewedAt": "2026-03-28T07:28:12-06:00",
+  "commitId": "4681dec2b21d3e498425e80e8862b6e1a0967ee8",
+  "transcriptSkeletonReviewed": true,
+  "diffReviewed": true,
+  "status": "pass",
+  "codeReview": {
+    "summary": "The fix directly addresses the prior blocking evidence-traceability failure. Fraud Radar now derives a recommendation contract from the active company/scenario state, filters the evidence panel to the posture-specific recommendation ID for that state, and the payload now contains honest recommendation-specific evidence rows for each exposed posture.",
+    "issues": []
+  },
+  "sharedStateObservations": [],
+  "addressesFailureFrom": "/home/mostltyharmless/projects/gsb-analytics-portfolio-git/.factory/validation/fraud-radar/scrutiny/reviews/fraud-radar-upgrade.json",
+  "summary": "Pass. The original blocking gap was that the recommendation console always rendered a static evidence pack unrelated to the active triage state. In commit 4681dec2b21d3e498425e80e8862b6e1a0967ee8, `app/projects/fraud-radar/FraudClient.tsx` now builds the evidence surface from `buildFraudRecommendationContract`, `lib/viewmodels/fraud.ts` maps each exposed posture to a specific evidence ID and filtered evidence row, and `public/data/fraud/payload.json` now supplies posture-specific evidence records for observe/watchlist/escalate outputs. The added tests in `tests/fraud-recommendation-contract.test.ts` and `tests/decision-engines.test.ts` also cover the repaired contract and payload completeness, so the prior scrutiny failure is adequately resolved."
+}

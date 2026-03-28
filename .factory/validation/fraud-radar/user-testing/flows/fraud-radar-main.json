@@ -1,0 +1,164 @@
+{
+  "groupId": "fraud-radar-main",
+  "testedAt": "2026-03-28T13:36:36.546707+00:00",
+  "isolation": {
+    "appUrl": "http://localhost:3501",
+    "route": "/projects/fraud-radar",
+    "allowedProbes": [
+      "/projects/fraud-radar?routeProbe=loading",
+      "/projects/fraud-radar?routeProbe=error"
+    ],
+    "missionDir": "/home/mostltyharmless/.factory/missions/0bc5abab-8b5e-4fc7-8d9d-3feb9bdd1a02"
+  },
+  "toolsUsed": [
+    "agent-browser",
+    "curl"
+  ],
+  "assertions": [
+    {
+      "id": "VAL-FRAUD-001",
+      "title": "Fraud Radar establishes an early-warning triage workflow",
+      "status": "pass",
+      "steps": [
+        {
+          "action": "Open /projects/fraud-radar on the shared production-like runtime",
+          "expected": "The page should frame itself as a forensic triage board and show flagged companies or events",
+          "observed": "The hero labeled the page 'Fraud Radar: forensic pre-collapse signal board' and the case board listed flagged names including NKLA, LKNCY, and FTX with dated anomaly summaries."
+        },
+        {
+          "action": "Inspect the top summary and recommendation framing",
+          "expected": "The route should distinguish triage from legal proof",
+          "observed": "The hero and top summary explicitly said 'Investigate before verdict' and described the goal as deciding who merits deeper forensic review, not claiming legal proof or accusing a company of fraud."
+        }
+      ],
+      "evidence": {
+        "screenshots": [
+          "fraud-radar/fraud-radar-main/VAL-FRAUD-001-hero-flags.png"
+        ],
+        "consoleErrors": "none",
+        "network": "GET /projects/fraud-radar -> 200"
+      },
+      "issues": null
+    },
+    {
+      "id": "VAL-FRAUD-002",
+      "title": "Fraud controls drive visible company and scenario changes",
+      "status": "pass",
+      "steps": [
+        {
+          "action": "Capture the baseline AAPL / Baseline panel state after the interactive workbench hydrated",
+          "expected": "The page should show the selected company and scenario with downstream metrics",
+          "observed": "Baseline state showed AAPL with adjusted risk 30%, peak risk 36%, recommendation posture 'Observe only', and filing drawer entries such as '2023-03-31 AAPL · 36%'."
+        },
+        {
+          "action": "Change Company to NKLA and Scenario to Language whiplash without reloading the page",
+          "expected": "The selected company and at least two downstream views should update visibly in place",
+          "observed": "Without reload, the selected company changed to NKLA, adjusted risk changed to 62%, peak risk changed to 88%, the filing drawer changed to NKLA entries such as '2020-05-15 NKLA · 88%', and the recommendation section updated to the Language whiplash scenario with a 90% trigger threshold and 35% cutoff context."
+        }
+      ],
+      "evidence": {
+        "screenshots": [
+          "fraud-radar/fraud-radar-main/VAL-FRAUD-002-before.png",
+          "fraud-radar/fraud-radar-main/VAL-FRAUD-002-after.png"
+        ],
+        "consoleErrors": "none",
+        "network": "GET /projects/fraud-radar -> 200; in-page control changes occurred without a document reload"
+      },
+      "issues": null
+    },
+    {
+      "id": "VAL-FRAUD-003",
+      "title": "Fraud route translates analysis into an actionable decision console",
+      "status": "pass",
+      "steps": [
+        {
+          "action": "Inspect the baseline decision console and evidence rail",
+          "expected": "The route should expose adjusted risk, peak risk, filtered links, expected alpha, watchlist logic, and recommendation evidence in one coherent flow",
+          "observed": "The page exposed adjusted risk, peak risk, filtered cluster links, expected alpha band, trigger threshold, top watchlist ticker, review intensity, and an active triage evidence pack with primary drivers and evidence trace."
+        },
+        {
+          "action": "Re-check the decision console after switching to NKLA / Language whiplash",
+          "expected": "Recommendation evidence should remain coupled to the active state",
+          "observed": "The active evidence pack updated from 'AAPL in Baseline panel currently resolves to Observe only' to 'NKLA in Language whiplash currently resolves to Observe only' and changed its state-coupled metrics to 62% adjusted risk, 26%→42% alpha band, 90% trigger threshold, and 35% cutoff context."
+        }
+      ],
+      "evidence": {
+        "screenshots": [
+          "fraud-radar/fraud-radar-main/VAL-FRAUD-003-baseline.png",
+          "fraud-radar/fraud-radar-main/VAL-FRAUD-003-decision-console.png",
+          "fraud-radar/fraud-radar-main/VAL-FRAUD-003-kpis-decision-evidence.png",
+          "fraud-radar/fraud-radar-main/VAL-FRAUD-003-after-controls.png"
+        ],
+        "consoleErrors": "none",
+        "network": "GET /projects/fraud-radar -> 200; recommendation content updated in-page after control changes"
+      },
+      "issues": null
+    },
+    {
+      "id": "VAL-FRAUD-004",
+      "title": "Fraud trust surfaces preserve the triage-not-verdict boundary",
+      "status": "pass",
+      "steps": [
+        {
+          "action": "Inspect the hero, decision console, trust detail, and assumptions surfaces",
+          "expected": "The route should keep investigation/watchlist framing explicit and avoid accusation or legal-proof language",
+          "observed": "The hero used 'Investigate before verdict', the decision console headline read 'Recommendation console: triage, not verdict', and multiple callouts said the outputs should not trigger accusation or legal conclusion."
+        },
+        {
+          "action": "Inspect the active evidence pack after switching state",
+          "expected": "The trust language should remain explicit even when recommendation evidence changes",
+          "observed": "The updated NKLA / Language whiplash evidence pack said language swings are a prompt for transcript and filing follow-up, not standalone proof of misconduct, and the trust boundary said the alpha range and trigger threshold remain modeled triage aids that do not establish legal proof."
+        }
+      ],
+      "evidence": {
+        "screenshots": [
+          "fraud-radar/fraud-radar-main/VAL-FRAUD-004-trust-assumptions.png",
+          "fraud-radar/fraud-radar-main/VAL-FRAUD-004-trust-assumptions-full.png"
+        ],
+        "consoleErrors": "none",
+        "network": "GET /projects/fraud-radar -> 200"
+      },
+      "issues": null
+    },
+    {
+      "id": "VAL-FRAUD-005",
+      "title": "Fraud loading or route failures remain recoverable",
+      "status": "pass",
+      "steps": [
+        {
+          "action": "Open /projects/fraud-radar?routeProbe=loading",
+          "expected": "The loading state should be Fraud-specific and preserve a visible recovery path",
+          "observed": "The loading probe rendered 'Loading Fraud Radar' with probe-specific copy about the triage board re-indexing filings and a visible recovery path section."
+        },
+        {
+          "action": "Open /projects/fraud-radar?routeProbe=error",
+          "expected": "The route error state should preserve retry or return-to-projects recovery",
+          "observed": "The error probe rendered 'Route Error Fraud Radar' with copy stating the controlled failure preserved triage-not-verdict framing and showed both 'Open live route' and 'Back to projects' recovery links."
+        }
+      ],
+      "evidence": {
+        "screenshots": [
+          "fraud-radar/fraud-radar-main/VAL-FRAUD-005-loading.png",
+          "fraud-radar/fraud-radar-main/VAL-FRAUD-005-error.png"
+        ],
+        "consoleErrors": "none",
+        "network": "GET /projects/fraud-radar?routeProbe=loading -> 200; GET /projects/fraud-radar?routeProbe=error -> 200"
+      },
+      "issues": null
+    }
+  ],
+  "frictions": [
+    {
+      "description": "The lower forensic workbench controls were not immediately enumerable after first load; I had to wait a few seconds and scroll deeper before the Company and Scenario controls became interactable.",
+      "resolved": true,
+      "resolution": "Waited for hydration, scrolled to the workbench, then re-snapshotted the page before interacting with the controls.",
+      "affectedAssertions": [
+        "VAL-FRAUD-002",
+        "VAL-FRAUD-003",
+        "VAL-FRAUD-004"
+      ]
+    }
+  ],
+  "blockers": [],
+  "summary": "Tested 5 Fraud Radar assertions on http://localhost:3501: all 5 passed. Company/scenario changes updated the selected issuer plus multiple downstream views without reload, recommendation evidence stayed state-coupled, triage-not-verdict language stayed explicit, and both supported recoverability probes exposed Fraud-specific recovery paths."
+}
