@@ -1,0 +1,33 @@
+{
+  "milestone": "ord-lga",
+  "round": 2,
+  "status": "pass",
+  "validatorsRun": {
+    "test": {
+      "passed": true,
+      "command": "source /home/mostltyharmless/.nvm/nvm.sh && nvm use 20.20.0 >/dev/null && ./node_modules/.bin/vitest run --maxWorkers=4",
+      "exitCode": 0
+    },
+    "typecheck": {
+      "passed": true,
+      "command": "source /home/mostltyharmless/.nvm/nvm.sh && nvm use 20.20.0 >/dev/null && npm run typecheck",
+      "exitCode": 0
+    },
+    "lint": {
+      "passed": true,
+      "command": "source /home/mostltyharmless/.nvm/nvm.sh && nvm use 20.20.0 >/dev/null && npm run lint",
+      "exitCode": 0
+    }
+  },
+  "reviewsSummary": {
+    "total": 1,
+    "passed": 1,
+    "failed": 0,
+    "failedFeatures": []
+  },
+  "blockingIssues": [],
+  "appliedUpdates": [],
+  "suggestedGuidanceUpdates": [],
+  "rejectedObservations": [],
+  "previousRound": ".factory/validation/ord-lga/scrutiny/synthesis.round1.json"
+}

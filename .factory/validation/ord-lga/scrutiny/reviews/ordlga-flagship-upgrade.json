@@ -1,0 +1,39 @@
+{
+  "featureId": "ordlga-flagship-upgrade",
+  "reviewedAt": "2026-03-28T06:00:00Z",
+  "commitId": "63e84c63fff9b39bf605b4c86adb0f8434733368",
+  "transcriptSkeletonReviewed": true,
+  "diffReviewed": true,
+  "status": "fail",
+  "codeReview": {
+    "summary": "The feature materially improves ORD-LGA trust framing, chapter structure, and lint cleanup, but the final recommendation surfaces are internally inconsistent. The hero and decision engine still present the payload's algo-vs-actual counterfactual lift (~$567k), while the main decision rail now displays a different derived policy-vs-actual number (~$1.03M) from the scrollytelling transform. The route therefore no longer provides a single inspectable recommendation rationale, which is a blocking correctness issue for a validation-ready flagship case study.",
+    "issues": [
+      {
+        "file": "app/projects/ord-lga-price-war/PriceWarClient.tsx",
+        "line": 544,
+        "severity": "blocking",
+        "description": "The Decision Output Rail labels `summary.incrementalRevenue` as the route's `Quarterly counterfactual lift`, but `summary.incrementalRevenue` comes from `derivePolicyDays`/`summarizeRows` and represents a separate derived policy-vs-actual simulation path, not the payload's counterfactual recommendation output. With the current payload this renders about $1.03M, while the rest of the route still anchors on the payload/decision-engine lift of about $567k, so the recommendation packet is not evidence-linked to a single coherent metric."
+      },
+      {
+        "file": "app/projects/ord-lga-price-war/PriceWarClient.tsx",
+        "line": 569,
+        "severity": "blocking",
+        "description": "`DecisionEvidencePanel` is described as evidence for the current scenario, but it is always passed `payload.decisionEvidence` unchanged while the surrounding selected-day and mode-dependent decision outputs update from interactive state. That makes the evidence panel static even as the UI implies it explains the currently selected scenario, breaking the feature's requirement that recommendation rationale be clearly inspectable and validation-ready."
+      }
+    ]
+  },
+  "sharedStateObservations": [
+    {
+      "area": "skills",
+      "observation": "The case-study-worker skill says to add or update narrow tests first for changed calculations or metadata semantics, but this feature changed recommendation calculations/presentation without adding route-specific automated coverage for the new decision-rail semantics.",
+      "evidence": ".factory/skills/case-study-worker/SKILL.md:35-38 requires narrow tests first; handoff file 2026-03-28T05-59-59-355Z__ordlga-flagship-upgrade__408b192c-10a7-47a0-9220-db0e2eb3fa55.json reports `no new automated tests were added for this feature`."
+    },
+    {
+      "area": "skills",
+      "observation": "The worker's documented deviation shows the skill should better document that using an approved dev port is acceptable when the production-like manifest port is already occupied and build verification has already passed.",
+      "evidence": "Handoff file 2026-03-28T05-59-59-355Z__ordlga-flagship-upgrade__408b192c-10a7-47a0-9220-db0e2eb3fa55.json: `skillFeedback.followedProcedure` is false and `suggestedChanges` asks for this exact clarification."
+    }
+  ],
+  "addressesFailureFrom": null,
+  "summary": "Reviewed the ORD-LGA flagship upgrade handoff, transcript skeleton, skill, architecture/shared-state docs, commit diff, and resulting route code. Verdict: fail, because the upgraded recommendation section now mixes two different lift calculations and pairs interactive scenario outputs with static evidence rows, so the final recommendation rationale is not honestly or consistently inspectable."
+}

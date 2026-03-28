@@ -1,0 +1,15 @@
+{
+  "featureId": "ordlga-recommendation-consistency-fix",
+  "reviewedAt": "2026-03-28T06:30:00Z",
+  "commitId": "19d9a1aec9fa53fc86000b8dac02b71ae47d1c81",
+  "transcriptSkeletonReviewed": true,
+  "diffReviewed": true,
+  "status": "pass",
+  "codeReview": {
+    "summary": "The fix resolves both prior ORD-LGA blockers. The hero, chapter KPI, and decision rail now share one authoritative quarterly counterfactual lift from the decision engine, while the interactive scrollytelling output is explicitly separated as a current scenario replay metric. The recommendation evidence panel is also clearly reframed as baseline/static support with copy that warns slider interactions do not rewrite the evidence rows, and narrow automated tests now lock that contract in place.",
+    "issues": []
+  },
+  "sharedStateObservations": [],
+  "addressesFailureFrom": "/home/mostltyharmless/projects/gsb-analytics-portfolio-git/.factory/validation/ord-lga/scrutiny/reviews/ordlga-flagship-upgrade.json",
+  "summary": "Reviewed the prior failed review, the fix feature transcript skeleton, handoff, and commit 19d9a1aec9fa53fc86000b8dac02b71ae47d1c81. Verdict: pass — the route now distinguishes canonical baseline recommendation lift from scenario replay lift, the evidence panel no longer implies scenario-aware support, and focused contract tests cover both semantics."
+}

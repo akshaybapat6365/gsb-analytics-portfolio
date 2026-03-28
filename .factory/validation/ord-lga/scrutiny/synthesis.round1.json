@@ -1,0 +1,59 @@
+{
+  "milestone": "ord-lga",
+  "round": 1,
+  "status": "fail",
+  "validatorsRun": {
+    "test": {
+      "passed": true,
+      "command": "source /home/mostltyharmless/.nvm/nvm.sh && nvm use 20.20.0 >/dev/null && ./node_modules/.bin/vitest run --maxWorkers=4",
+      "exitCode": 0
+    },
+    "typecheck": {
+      "passed": true,
+      "command": "source /home/mostltyharmless/.nvm/nvm.sh && nvm use 20.20.0 >/dev/null && npm run typecheck",
+      "exitCode": 0
+    },
+    "lint": {
+      "passed": true,
+      "command": "source /home/mostltyharmless/.nvm/nvm.sh && nvm use 20.20.0 >/dev/null && npm run lint",
+      "exitCode": 0
+    }
+  },
+  "reviewsSummary": {
+    "total": 1,
+    "passed": 0,
+    "failed": 1,
+    "failedFeatures": [
+      "ordlga-flagship-upgrade"
+    ]
+  },
+  "blockingIssues": [
+    {
+      "featureId": "ordlga-flagship-upgrade",
+      "severity": "blocking",
+      "description": "The final decision rail labels a derived policy-vs-actual simulation value as the route's quarterly counterfactual lift while the rest of the route still anchors on the payload/decision-engine lift, so the recommendation packet mixes inconsistent metrics and is not tied to one coherent recommendation rationale."
+    },
+    {
+      "featureId": "ordlga-flagship-upgrade",
+      "severity": "blocking",
+      "description": "The recommendation evidence panel remains static (`payload.decisionEvidence`) while nearby decision outputs update from interactive scenario state, so the UI implies scenario-specific rationale that the evidence surface does not actually support."
+    }
+  ],
+  "appliedUpdates": [],
+  "suggestedGuidanceUpdates": [
+    {
+      "target": "skills",
+      "suggestion": "Clarify in the case-study-worker skill that changes to route-level recommendation calculations or metadata semantics should add or update narrow automated tests before broader validation, not only rely on manual/browser verification.",
+      "evidence": "The ORD-LGA flagship upgrade changed recommendation calculations/presentation without adding route-specific automated coverage; the reviewer traced this to the current skill guidance and the handoff explicitly states that no new automated tests were added.",
+      "isSystemic": false
+    },
+    {
+      "target": "skills",
+      "suggestion": "Clarify in the case-study-worker skill that using an approved dev port for browser validation is acceptable when the production-like manifest port is already occupied and build verification has already passed.",
+      "evidence": "The ORD-LGA worker documented a deviation and suggested this exact clarification after validating on an approved dev port because the shared production-like port could not be safely reclaimed.",
+      "isSystemic": false
+    }
+  ],
+  "rejectedObservations": [],
+  "previousRound": null
+}
