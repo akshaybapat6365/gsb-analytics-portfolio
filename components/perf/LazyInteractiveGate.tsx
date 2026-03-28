@@ -9,6 +9,7 @@ type LazyInteractiveGateProps = {
   className?: string;
   rootMargin?: string;
   autoActivateOnMobile?: boolean;
+  idleFallbackMs?: number;
 };
 
 export function LazyInteractiveGate({
@@ -17,20 +18,42 @@ export function LazyInteractiveGate({
   className,
   rootMargin = "240px",
   autoActivateOnMobile = true,
+  idleFallbackMs = 1800,
 }: LazyInteractiveGateProps) {
   const ref = useRef<HTMLDivElement | null>(null);
   const [active, setActive] = useState(false);
 
   useEffect(() => {
-    if (active || !autoActivateOnMobile || typeof window === "undefined") return;
-    if (window.matchMedia("(max-width: 768px)").matches) {
-      const timer = window.setTimeout(() => setActive(true), 120);
+    if (active || typeof window === "undefined") return;
+
+    const activate = () => setActive(true);
+    const rect = ref.current?.getBoundingClientRect();
+    const viewportHeight = window.innerHeight || document.documentElement.clientHeight;
+    const shouldActivateImmediately = Boolean(
+      rect && rect.top <= viewportHeight + 320,
+    );
+
+    if (shouldActivateImmediately) {
+      activate();
+      return;
+    }
+
+    if (autoActivateOnMobile && window.matchMedia("(max-width: 768px)").matches) {
+      const timer = window.setTimeout(activate, 120);
       return () => window.clearTimeout(timer);
     }
-  }, [active, autoActivateOnMobile]);
+
+    const fallbackTimer = window.setTimeout(activate, idleFallbackMs);
+    return () => window.clearTimeout(fallbackTimer);
+  }, [active, autoActivateOnMobile, idleFallbackMs]);
 
   useEffect(() => {
-    if (!ref.current || active) return;
+    if (!ref.current || active || typeof window === "undefined") return;
+
+    if (typeof IntersectionObserver === "undefined") {
+      const timer = window.setTimeout(() => setActive(true), 0);
+      return () => window.clearTimeout(timer);
+    }
 
     const observer = new IntersectionObserver(
       (entries) => {

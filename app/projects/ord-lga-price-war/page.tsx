@@ -7,12 +7,27 @@ import { StructuredDataScript } from "@/components/seo/StructuredDataScript";
 import { Hero } from "./Hero";
 import { OrdLgaInteractiveSection } from "./InteractiveSection";
 import { OrdLgaShell } from "./OrdLgaShell";
+import { RecoverabilityProbe } from "./RecoverabilityProbe";
+import { resolveOrdLgaRouteProbe } from "./recoverability";
 import { CaseStudyTrustStack } from "@/components/story/CaseStudyTrustStack";
 
 const project = getProject("ord-lga-price-war");
 export const metadata: Metadata = buildProjectMetadata(project);
 
-export default async function OrdLgaPriceWarPage() {
+type OrdLgaPriceWarPageProps = {
+  searchParams?: Promise<Record<string, string | string[] | undefined>>;
+};
+
+export default async function OrdLgaPriceWarPage({
+  searchParams,
+}: OrdLgaPriceWarPageProps) {
+  const resolvedSearchParams = searchParams ? await searchParams : undefined;
+  const probe = resolveOrdLgaRouteProbe(resolvedSearchParams?.routeProbe);
+
+  if (probe !== "none") {
+    return <RecoverabilityProbe probe={probe} />;
+  }
+
   const payload = await loadAirlinePayload();
 
   return (
