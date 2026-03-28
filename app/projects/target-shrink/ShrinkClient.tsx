@@ -1,6 +1,5 @@
 "use client";
 
-import { useMemo, useState } from "react";
 import type { EChartsOption } from "echarts";
 import { EChart } from "@/components/viz/EChart";
 import { KpiCard } from "@/components/ui/KpiCard";
@@ -16,9 +15,9 @@ import type { ShrinkPayload } from "@/lib/schemas/shrink";
 import { buildShrinkRecommendationContract } from "@/lib/viewmodels/shrink";
 import {
   buildShrinkEventRef,
-  deriveShrinkScenario,
   pickShrinkChapterAnnotations,
 } from "@/lib/viewmodels/shrinkScenario";
+import { useTargetShrinkScenario } from "./TargetShrinkScenarioContext";
 
 const EVENT_COLORS: Record<ShrinkPayload["events"][number]["type"], string> = {
   scan: "rgba(73,95,69,0.95)",
@@ -65,19 +64,18 @@ const EVIDENCE_MODE_COPY = {
   },
 };
 
-export default function ShrinkClient({ payload }: { payload: ShrinkPayload }) {
-  const [threshold, setThreshold] = useState(0.85);
-  const [falsePositiveMultiplier, setFalsePositiveMultiplier] = useState(100);
-  const [selectedZone, setSelectedZone] = useState<string>(payload.store.zones[0]?.id ?? "");
-  const [selectedEventRef, setSelectedEventRef] = useState(() => {
-    const firstEvent = payload.events[0];
-    return firstEvent ? buildShrinkEventRef(firstEvent, 0) : null;
-  });
-
-  const derived = useMemo(
-    () => deriveShrinkScenario(payload, threshold, falsePositiveMultiplier, selectedZone, selectedEventRef),
-    [payload, threshold, falsePositiveMultiplier, selectedZone, selectedEventRef],
-  );
+export default function ShrinkClient() {
+  const {
+    payload,
+    threshold,
+    setThreshold,
+    falsePositiveMultiplier,
+    setFalsePositiveMultiplier,
+    setSelectedZone,
+    setSelectedEventRef,
+    derived,
+    recommendationSurface,
+  } = useTargetShrinkScenario();
 
   const frontierChart: EChartsOption = {
     backgroundColor: "transparent",
@@ -354,8 +352,8 @@ export default function ShrinkClient({ payload }: { payload: ShrinkPayload }) {
           />
           <KpiCard
             label="Recommended Threshold"
-            value={formatPct(derived.recommended.threshold, { digits: 0 })}
-            hint="Frontier argmax"
+            value={recommendationSurface.recommendedThresholdLabel}
+            hint={recommendationSurface.recommendationHint}
             accent="emerald"
           />
           <KpiCard
@@ -582,7 +580,7 @@ export default function ShrinkClient({ payload }: { payload: ShrinkPayload }) {
                     label: "Recommendation state",
                     value: postureSummary.label,
                     tone: postureSummary.tone,
-                    hint: postureSummary.summary,
+                    hint: `${postureSummary.summary} ${recommendationSurface.decisionSummary}`,
                   },
                   {
                     label: "Evidence state",

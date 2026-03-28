@@ -7,6 +7,7 @@ import { Hero } from "./Hero";
 import { ShrinkShell } from "./ShrinkShell";
 import { ShrinkInteractiveSection } from "./InteractiveSection";
 import { RecoverabilityProbe } from "./RecoverabilityProbe";
+import { TargetShrinkScenarioProvider } from "./TargetShrinkScenarioContext";
 import { resolveShrinkRouteProbe } from "./recoverability";
 import { StructuredDataScript } from "@/components/seo/StructuredDataScript";
 import { CaseStudyTrustStack } from "@/components/story/CaseStudyTrustStack";
@@ -32,29 +33,31 @@ export default async function TargetShrinkPage({ searchParams }: TargetShrinkPag
   return (
     <>
       <StructuredDataScript id="project-jsonld-target-shrink" data={buildProjectSchema(project)} />
-      <div className="space-y-9">
-        <Hero payload={payload} />
+      <TargetShrinkScenarioProvider payload={payload}>
+        <div className="space-y-9">
+          <Hero payload={payload} />
 
-        <CaseStudyTrustStack
-          eyebrow="Ops BLUF"
-          question={project.businessQuestion}
-          bluf={project.bluf}
-          summary={summary}
-          meta={payload.meta}
-          signals={payload.realSignals}
-          readiness={payload.dataReadiness}
-          assumptions={[
-            "Real event and market signals drive module readiness; missing, stale, or blocked feeds are surfaced in the trust stack and decision console rather than hidden.",
-            "Threshold policy is optimized for expected value, not pure classifier precision or recall.",
-            "False-positive drag scales with customer LTV and event volume assumptions; tune via control rail before tightening posture.",
-            "Real-world swap path: CV event streams + incident adjudication + store-level economics calibration.",
-          ]}
-        />
+          <CaseStudyTrustStack
+            eyebrow="Ops BLUF"
+            question={project.businessQuestion}
+            bluf={project.bluf}
+            summary={summary}
+            meta={payload.meta}
+            signals={payload.realSignals}
+            readiness={payload.dataReadiness}
+            assumptions={[
+              "Real event and market signals drive module readiness; missing, stale, or blocked feeds are surfaced in the trust stack and decision console rather than hidden.",
+              "Threshold policy is optimized for expected value, not pure classifier precision or recall.",
+              "False-positive drag scales with customer LTV and event volume assumptions; tune via control rail before tightening posture.",
+              "Real-world swap path: CV event streams + incident adjudication + store-level economics calibration.",
+            ]}
+          />
 
-        <ShrinkShell payload={payload} />
+          <ShrinkShell payload={payload} />
 
-        <ShrinkInteractiveSection payload={payload} />
-      </div>
+          <ShrinkInteractiveSection />
+        </div>
+      </TargetShrinkScenarioProvider>
     </>
   );
 }

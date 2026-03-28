@@ -1,11 +1,13 @@
+"use client";
+
 import { ProjectFrame } from "@/components/layout/ProjectFrame";
 import { AnnotatedVizFrame } from "@/components/viz/AnnotatedVizFrame";
 import { ShrinkShellVisual } from "@/components/viz/shell/ShellPrimaryVisuals";
-import { buildShrinkViewModel } from "@/lib/viewmodels/shrink";
 import type { ShrinkPayload } from "@/lib/schemas/shrink";
+import { useTargetShrinkScenario } from "./TargetShrinkScenarioContext";
 
 export function ShrinkShell({ payload }: { payload: ShrinkPayload }) {
-  const vm = buildShrinkViewModel(payload);
+  const { recommendationSurface: recommendation } = useTargetShrinkScenario();
 
   return (
     <ProjectFrame
@@ -13,8 +15,8 @@ export function ShrinkShell({ payload }: { payload: ShrinkPayload }) {
       variant="operations"
       title="Threshold Frontier and Zone Pressure"
       subtitle="Tune policy threshold versus false-positive drag and inspect store-zone risk concentration before escalating interventions."
-      value={vm.value}
-      valueLabel={vm.valueLabel}
+      value={recommendation.shellValue}
+      valueLabel={`${recommendation.shellValueLabel} · ${recommendation.recommendationBadge}`}
     >
       <AnnotatedVizFrame
         title="Operations Evidence Rail"

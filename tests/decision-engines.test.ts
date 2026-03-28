@@ -15,7 +15,10 @@ import { runFraudDecisionEngine } from "@/lib/decision-engines/fraud";
 import { runNetflixDecisionEngine } from "@/lib/decision-engines/netflix";
 import { runShrinkDecisionEngine } from "@/lib/decision-engines/shrink";
 import { runStarbucksDecisionEngine } from "@/lib/decision-engines/starbucks";
-import { buildShrinkRecommendationContract } from "@/lib/viewmodels/shrink";
+import {
+  buildShrinkRecommendationContract,
+  buildShrinkRecommendationSurfaceModel,
+} from "@/lib/viewmodels/shrink";
 import { deriveShrinkScenario } from "@/lib/viewmodels/shrinkScenario";
 
 function loadPayload<TSchema extends z.ZodTypeAny>(relPath: string, schema: TSchema): z.infer<TSchema> {
@@ -134,6 +137,25 @@ describe("decision engines", () => {
     expect(escalateContract.evidence[0]?.recommendationId).toBe("shrink-escalate-response");
     expect(detainContract.evidenceSummary).toContain("Electronics");
     expect(escalateContract.evidenceFooter).toContain(payload.decisionEvidence?.[0]?.recommendationId ?? "shrink-threshold-policy");
+  });
+
+  it("shrink recommendation surface reports when economics change without moving the frontier argmax", () => {
+    const payload = loadPayload("data/shrink/payload.json", ShrinkPayloadSchema);
+    const baselineThreshold = deriveShrinkScenario(payload, 0.85, 100, payload.store.zones[0]?.id).recommended.threshold;
+    const scenario = deriveShrinkScenario(payload, 0.85, 180, payload.store.zones[0]?.id);
+
+    const surface = buildShrinkRecommendationSurfaceModel({
+      currentThreshold: scenario.point.threshold,
+      falsePositiveMultiplier: 180,
+      recommendedThreshold: scenario.recommended.threshold,
+      recommendedNetValue: scenario.recommended.recoveredNet,
+      currentNetValue: scenario.expectedNetValue,
+      baselineRecommendedThreshold: baselineThreshold,
+    });
+
+    expect(surface.shellValueLabel).toBe("Recommended Threshold @ 180% FP cost");
+    expect(surface.recommendationBadge).toBe("Unchanged recommendation, economics recomputed");
+    expect(surface.decisionSummary).toContain("Frontier recommendation and live threshold are aligned at 85%");
   });
 
   it("starbucks engine normalizes portfolio delta to USD", () => {

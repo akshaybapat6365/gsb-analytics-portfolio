@@ -3,7 +3,10 @@ import path from "node:path";
 
 import { describe, expect, it } from "vitest";
 
-import { buildShrinkRecommendationContract } from "@/lib/viewmodels/shrink";
+import {
+  buildShrinkRecommendationContract,
+  buildShrinkRecommendationSurfaceModel,
+} from "@/lib/viewmodels/shrink";
 import { buildShrinkEventRef, deriveShrinkScenario } from "@/lib/viewmodels/shrinkScenario";
 import { ShrinkPayloadSchema } from "@/lib/schemas/shrink";
 
@@ -84,5 +87,26 @@ describe("deriveShrinkScenario", () => {
     expect(escalateContract.evidence[0]?.recommendationId).not.toBe(payload.decisionEvidence?.[0]?.recommendationId);
     expect(observeContract.evidenceSummary).toContain("static payload row");
     expect(escalateContract.evidenceFooter).toContain("not presented as the live recommendation trace");
+  });
+
+  it("labels unchanged recommendations honestly when the false-positive assumption moves but the argmax does not", () => {
+    const payload = loadPayload();
+    const baselineThreshold = deriveShrinkScenario(payload, 0.85, 100, payload.store.zones[0]?.id).recommended.threshold;
+    const scenario = deriveShrinkScenario(payload, 0.85, 150, payload.store.zones[0]?.id);
+
+    const surface = buildShrinkRecommendationSurfaceModel({
+      currentThreshold: scenario.point.threshold,
+      falsePositiveMultiplier: 150,
+      recommendedThreshold: scenario.recommended.threshold,
+      recommendedNetValue: scenario.recommended.recoveredNet,
+      currentNetValue: scenario.expectedNetValue,
+      baselineRecommendedThreshold: baselineThreshold,
+    });
+
+    expect(surface.recommendedThresholdLabel).toBe("85%");
+    expect(surface.recommendationShifted).toBe(false);
+    expect(surface.recommendationHint).toContain("remains the frontier argmax even at 150% false-positive cost");
+    expect(surface.recommendationHint).toContain("Economics moved");
+    expect(surface.recommendationBadge).toBe("Unchanged recommendation, economics recomputed");
   });
 });

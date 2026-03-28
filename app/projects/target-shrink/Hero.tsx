@@ -1,9 +1,13 @@
+"use client";
+
 import { Chip } from "@/components/ui/Chip";
 import { ProjectBackdrop } from "@/components/projects/ProjectBackdrop";
 import { formatNumber, formatPct, formatUSD } from "@/lib/metrics/format";
 import type { ShrinkPayload } from "@/lib/schemas/shrink";
+import { useTargetShrinkScenario } from "./TargetShrinkScenarioContext";
 
 export function Hero({ payload }: { payload: ShrinkPayload }) {
+  const { derived, falsePositiveMultiplier, recommendationSurface: recommendation } = useTargetShrinkScenario();
   const best = payload.policy.outcomes.reduce((current, outcome) => {
     if (!current) return outcome;
     return outcome.roi > current.roi ? outcome : current;
@@ -87,7 +91,8 @@ export function Hero({ payload }: { payload: ShrinkPayload }) {
           <div className="mt-4 grid gap-3 sm:grid-cols-2">
             <div className="rounded-2xl border border-emerald-300/20 bg-emerald-300/10 p-3">
               <p className="font-mono text-[10px] uppercase tracking-[0.16em] text-emerald-100/90">Recommended Threshold</p>
-              <p className="mt-1 font-mono text-xl text-emerald-100">{best ? formatPct(best.threshold, { digits: 0 }) : "—"}</p>
+              <p className="mt-1 font-mono text-xl text-emerald-100">{recommendation.recommendedThresholdLabel}</p>
+              <p className="mt-2 text-xs leading-5 text-emerald-50/85">{recommendation.recommendationHint}</p>
             </div>
             <div className="rounded-2xl border border-amber-300/20 bg-amber-300/10 p-3">
               <p className="font-mono text-[10px] uppercase tracking-[0.16em] text-amber-100/90">Best ROI</p>
@@ -95,7 +100,9 @@ export function Hero({ payload }: { payload: ShrinkPayload }) {
             </div>
             <div className="rounded-2xl border border-rose-300/25 bg-rose-300/10 p-3 sm:col-span-2">
               <p className="font-mono text-[10px] uppercase tracking-[0.16em] text-rose-100/90">Monthly Net Economics Signal</p>
-              <p className="mt-1 font-mono text-xl text-rose-100">{best ? formatUSD(best.preventedLoss - best.falsePositiveRate * payload.events.length * payload.economics.falsePositiveCost) : "—"}</p>
+              <p className="mt-1 font-mono text-xl text-rose-100">{formatUSD(derived.monthlyNet)}</p>
+              <p className="mt-1 text-xs leading-5 text-slate-200">{recommendation.heroSummary}</p>
+              <p className="mt-1 text-xs text-slate-300">False-positive assumption: {falsePositiveMultiplier}% · recommended frontier point {formatPct(derived.recommended.threshold, { digits: 0 })}</p>
               <p className="mt-1 text-xs text-slate-300">Hot zones monitored: {formatNumber(hotspots.length)} · event volume {formatNumber(payload.events.length)}</p>
             </div>
           </div>
