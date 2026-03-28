@@ -1,0 +1,15 @@
+{
+  "featureId": "foundation-portfolio-discovery-surfaces",
+  "reviewedAt": "2026-03-27T22:54:16-06:00",
+  "commitId": "6026ad9",
+  "transcriptSkeletonReviewed": true,
+  "diffReviewed": true,
+  "status": "pass",
+  "codeReview": {
+    "summary": "Reviewed the feature handoff, transcript skeleton, skill instructions, and commit 6026ad9. The implementation covers the requested portfolio-discovery surfaces: the home route now uses an absolute title to satisfy the smoke expectation, home and projects cards expose claim/source/freshness framing before drill-down, the projects index adds explicit zero-result recovery, the shared shell/nav/footer remain available across portfolio routes, and the resume route remains navigable with a labeled PDF download. I did not find any correctness regressions or unmet expected-behavior gaps in the reviewed surface.",
+    "issues": []
+  },
+  "sharedStateObservations": [],
+  "addressesFailureFrom": null,
+  "summary": "Pass. Commit 6026ad9 fulfills the portfolio discovery feature as described, and I found no blocking or non-blocking correctness issues in the reviewed implementation. No shared-state gaps stood out from the transcript, handoff, skill usage, or touched files."
+}

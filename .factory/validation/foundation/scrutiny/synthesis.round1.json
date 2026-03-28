@@ -1,0 +1,46 @@
+{
+  "milestone": "foundation",
+  "round": 1,
+  "status": "fail",
+  "validatorsRun": {
+    "test": {
+      "passed": true,
+      "command": "source /home/mostltyharmless/.nvm/nvm.sh && nvm use 20.20.0 >/dev/null && ./node_modules/.bin/vitest run --maxWorkers=4",
+      "exitCode": 0
+    },
+    "typecheck": {
+      "passed": true,
+      "command": "source /home/mostltyharmless/.nvm/nvm.sh && nvm use 20.20.0 >/dev/null && npm run typecheck",
+      "exitCode": 0
+    },
+    "lint": {
+      "passed": true,
+      "command": "source /home/mostltyharmless/.nvm/nvm.sh && nvm use 20.20.0 >/dev/null && npm run lint",
+      "exitCode": 0
+    }
+  },
+  "reviewsSummary": {
+    "total": 3,
+    "passed": 2,
+    "failed": 1,
+    "failedFeatures": [
+      "foundation-baseline-reproducibility"
+    ]
+  },
+  "blockingIssues": [
+    {
+      "featureId": "foundation-baseline-reproducibility",
+      "severity": "blocking",
+      "description": "Commit 736a957 introduced .factory/init.sh in a form that was not reliably executable for later workers, contradicting the feature's requirement that shared setup guidance remain truthful and executable for later workers."
+    }
+  ],
+  "appliedUpdates": [],
+  "suggestedGuidanceUpdates": [],
+  "rejectedObservations": [
+    {
+      "observation": "Mission guidance and skill startup expectations around .factory/init.sh shell compatibility were under-specified or out of sync.",
+      "reason": "already-documented/current-state-fixed"
+    }
+  ],
+  "previousRound": null
+}

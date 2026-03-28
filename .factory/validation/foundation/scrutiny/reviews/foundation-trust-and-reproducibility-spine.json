@@ -1,0 +1,21 @@
+{
+  "featureId": "foundation-trust-and-reproducibility-spine",
+  "reviewedAt": "2026-03-28T04:54:08Z",
+  "commitId": "b7b2add",
+  "transcriptSkeletonReviewed": true,
+  "diffReviewed": true,
+  "status": "pass",
+  "codeReview": {
+    "summary": "Reviewed the feature metadata, worker transcript skeleton, handoff, skill instructions, and commit b7b2add. The implementation centralizes the trust/provenance stack into a shared component, applies it across all six case-study pages, restores the ORD-LGA shell ahead of the interactive section, and gates ORD-LGA-only diagnostics behind NEXT_PUBLIC_SHOW_PERF_DIAGNOSTICS so production-like runs no longer expose them by default. I did not find a concrete correctness or regression issue in the reviewed diff.",
+    "issues": []
+  },
+  "sharedStateObservations": [
+    {
+      "area": "knowledge",
+      "observation": "Mission guidance says `.factory/init.sh` was normalized to run under POSIX `sh`, but the reviewed worker transcript and handoff show `sh .factory/init.sh` still fails because the script uses `set -o pipefail`. Shared guidance is out of sync with runtime reality.",
+      "evidence": "Mission AGENTS.md:61 says `.factory/init.sh` has been normalized for POSIX `sh`; worker transcript skeleton and handoff for session 67254a07-41e6-43d2-a353-5efc7faefca5 record `sh /home/mostltyharmless/projects/gsb-analytics-portfolio-git/.factory/init.sh` exiting 2 with a `pipefail` shell mismatch."
+    }
+  ],
+  "addressesFailureFrom": null,
+  "summary": "Pass. The feature brings all six routes onto a discoverable shared trust-entry stack and hides ORD-LGA dev-only diagnostics in production-like mode. No blocking or non-blocking code defects were found in the reviewed diff; one shared-state documentation mismatch remains around `.factory/init.sh` POSIX-sh guidance."
+}

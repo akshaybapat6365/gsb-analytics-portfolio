@@ -1,0 +1,28 @@
+{
+  "featureId": "foundation-baseline-reproducibility",
+  "reviewedAt": "2026-03-27T23:59:00Z",
+  "commitId": "736a9574780914281c0f3fc8e97cee6b6bef020e",
+  "transcriptSkeletonReviewed": true,
+  "diffReviewed": true,
+  "status": "fail",
+  "codeReview": {
+    "summary": "The feature successfully fixed the original Node 20 build blocker by adding `@deck.gl/widgets`, regenerated the lockfile with the mission-standard install command, and narrowed Playwright failures to route-level contract issues. However, it also introduced the new shared startup helper `.factory/init.sh` in a form that was not reliably executable for later workers: the reviewed commit added it as a non-executable file and implemented it with bash-specific behavior, which later caused a worker startup failure when invoked via `sh`. Because this feature explicitly claimed to leave shared setup guidance executable for later workers, that regression means the feature did not fully satisfy its own expected behavior.",
+    "issues": [
+      {
+        "file": ".factory/init.sh",
+        "line": 1,
+        "severity": "blocking",
+        "description": "In commit `736a957`, the new startup helper was added as a non-executable file and written with a bash-specific contract, so later workers could not reliably run it as a generic shell setup step. Mission evidence shows a subsequent foundation worker hit `sh /home/mostltyharmless/projects/gsb-analytics-portfolio-git/.factory/init.sh` and failed before this was later normalized, which contradicts this feature's requirement that shared setup guidance remain truthful and executable for later workers."
+      }
+    ]
+  },
+  "sharedStateObservations": [
+    {
+      "area": "skills",
+      "observation": "The shared startup contract between worker procedures and `.factory/init.sh` was under-specified. This feature introduced an init helper that effectively required bash semantics, but the surrounding mission guidance did not make that shell requirement explicit, and a later worker treated `sh` execution as reasonable and hit a false setup blocker.",
+      "evidence": "Feature transcript for `caca141b-e173-4000-8422-dc998e9b7f1d` shows the helper being sourced from bash, while mission evidence later records `sh /home/mostltyharmless/projects/gsb-analytics-portfolio-git/.factory/init.sh` failing in worker session `67254a07-41e6-43d2-a353-5efc7faefca5`, followed by AGENTS guidance being updated to say `.factory/init.sh` had been normalized for POSIX `sh`."
+    }
+  ],
+  "addressesFailureFrom": null,
+  "summary": "Fail. The reviewed feature did repair the missing DeckGL dependency and restored build/Playwright startup under Node 20, but it also introduced a startup-helper regression: `.factory/init.sh` was not reliably executable for later workers, so the feature did not fully meet its shared-setup reliability requirement. Review report written to `.factory/validation/foundation/scrutiny/reviews/foundation-baseline-reproducibility.json`."
+}
