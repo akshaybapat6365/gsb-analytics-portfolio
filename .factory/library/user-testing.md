@@ -34,6 +34,7 @@ Additional routes in scope:
 - For every changed route, inspect BLUF/top summary, trust/provenance state, and assumptions/limitations where present.
 - Route loading/error assertions may require fault-injection or controlled validation setup; otherwise treat them as conditional and validate only when reproducibly triggerable.
 - ORD–LGA is a structural outlier relative to the shared trust-surface pattern used by the other five project routes; validators should still require top-level trust/evidence framing parity.
+- ORD-LGA recoverability validation path: on a healthy production-like runtime, validators may use `/projects/ord-lga-price-war?routeProbe=loading` and `/projects/ord-lga-price-war?routeProbe=error` as the supported, non-destructive browser-visible route-level recoverability probes for VAL-ORDLGA-006.
 
 ## URLs and Setup
 - Production-like validation surface: `http://localhost:3501`

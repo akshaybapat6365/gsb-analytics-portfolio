@@ -1,0 +1,81 @@
+{
+  "groupId": "ordlga-recoverability",
+  "testedAt": "2026-03-28T07:28:00Z",
+  "isolation": {
+    "appUrl": "http://localhost:3501",
+    "route": "/projects/ord-lga-price-war",
+    "routeProbes": [
+      "http://localhost:3501/projects/ord-lga-price-war?routeProbe=loading",
+      "http://localhost:3501/projects/ord-lga-price-war?routeProbe=error"
+    ],
+    "missionDir": "/home/mostltyharmless/.factory/missions/0bc5abab-8b5e-4fc7-8d9d-3feb9bdd1a02",
+    "assignedAssertions": [
+      "VAL-ORDLGA-006"
+    ]
+  },
+  "toolsUsed": [
+    "agent-browser"
+  ],
+  "assertions": [
+    {
+      "id": "VAL-ORDLGA-006",
+      "title": "ORD–LGA loading or failure states remain recoverable",
+      "status": "pass",
+      "steps": [
+        {
+          "action": "Open the supported loading probe URL.",
+          "expected": "ORD-LGA-specific loading messaging is visible with a recovery path.",
+          "observed": "The page showed 'ORD–LGA Price War Simulator', 'Recoverability probe active: route-level loading state remains visible before the live route is restored.', a 'Recovery path' section, and visible 'Open live route' plus 'Back to projects' actions."
+        },
+        {
+          "action": "Open the supported error probe URL.",
+          "expected": "ORD-LGA-specific error messaging is visible with a recovery path.",
+          "observed": "The page showed 'Route Error', 'ORD–LGA Price War Simulator', 'Recoverability probe active: this route-level failure view keeps the recovery path explicit so validators can confirm the fallback stays user-visible under a controlled condition.', diagnostics mentioning '?routeProbe=error', and visible 'Open live route' plus 'Back to projects' actions."
+        },
+        {
+          "action": "Check browser errors and observed requests after each probe flow.",
+          "expected": "No unexpected console errors and successful probe-route loading evidence are available.",
+          "observed": "No browser errors were captured in either probe flow. Network capture for the error probe showed GET /projects/ord-lga-price-war?routeProbe=error plus the expected Next.js static assets and follow-on fetches for live-route and navigation preloads."
+        }
+      ],
+      "evidence": {
+        "screenshots": [
+          "ord-lga/ordlga-recoverability/VAL-ORDLGA-006-loading.png",
+          "ord-lga/ordlga-recoverability/VAL-ORDLGA-006-error.png"
+        ],
+        "artifacts": [
+          "ord-lga/ordlga-recoverability/VAL-ORDLGA-006-loading.txt",
+          "ord-lga/ordlga-recoverability/VAL-ORDLGA-006-loading-errors.txt",
+          "ord-lga/ordlga-recoverability/VAL-ORDLGA-006-loading-network.txt",
+          "ord-lga/ordlga-recoverability/VAL-ORDLGA-006-error.txt",
+          "ord-lga/ordlga-recoverability/VAL-ORDLGA-006-error-errors.txt",
+          "ord-lga/ordlga-recoverability/VAL-ORDLGA-006-error-network.txt"
+        ],
+        "consoleErrors": "none",
+        "network": "Loading probe opened successfully on /projects/ord-lga-price-war?routeProbe=loading. Error probe network capture included GET /projects/ord-lga-price-war?routeProbe=error, the ORD-LGA page chunk, route error chunk, and follow-on RSC/navigation fetches; no failing requests were observed in the saved capture.",
+        "observedCopy": [
+          "Recoverability probe active: route-level loading state remains visible before the live route is restored.",
+          "Recovery path",
+          "Open live route",
+          "Back to projects",
+          "Route Error",
+          "Recoverability probe active: this route-level failure view keeps the recovery path explicit so validators can confirm the fallback stays user-visible under a controlled condition.",
+          "message: Recoverability probe triggered with ?routeProbe=error"
+        ]
+      },
+      "issues": null
+    }
+  ],
+  "frictions": [
+    {
+      "description": "On this Next.js App Router page, raw body-text capture included streamed payload/script text after the visible probe copy.",
+      "resolved": true,
+      "resolution": "Used screenshots as the primary UI evidence and relied on the leading visible-copy portion of the saved text artifacts for exact messaging verification.",
+      "affectedAssertions": [
+        "VAL-ORDLGA-006"
+      ]
+    }
+  ],
+  "blockers": [],
+  "summary": "Validated VAL-ORDLGA-006 on the shared production-like runtime using the two supported ORD-LGA routeProbe URLs. Both the loading and error probes displayed ORD-LGA-specific messaging and a visible recovery path, so the assertion passed."
+}
