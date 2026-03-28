@@ -15,6 +15,7 @@ import { runFraudDecisionEngine } from "@/lib/decision-engines/fraud";
 import { runNetflixDecisionEngine } from "@/lib/decision-engines/netflix";
 import { runShrinkDecisionEngine } from "@/lib/decision-engines/shrink";
 import { runStarbucksDecisionEngine } from "@/lib/decision-engines/starbucks";
+import { buildShrinkRecommendationContract } from "@/lib/viewmodels/shrink";
 import { deriveShrinkScenario } from "@/lib/viewmodels/shrinkScenario";
 
 function loadPayload<TSchema extends z.ZodTypeAny>(relPath: string, schema: TSchema): z.infer<TSchema> {
@@ -82,6 +83,57 @@ describe("decision engines", () => {
 
     expect(scenario.evidenceMode).toBe("sparse");
     expect(scenario.posture).toMatch(/observe|detain|escalate/);
+  });
+
+  it("shrink recommendation contract stays synchronized with active posture states", () => {
+    const payload = loadPayload("data/shrink/payload.json", ShrinkPayloadSchema);
+
+    const observeScenario = deriveShrinkScenario(payload, 0.85, 100, "z4");
+    const detainScenario = deriveShrinkScenario(payload, 0.85, 100, "z2");
+    const escalateScenario = deriveShrinkScenario(payload, 0.5, 100, "z2");
+
+    const observeContract = buildShrinkRecommendationContract({
+      payload,
+      posture: observeScenario.posture,
+      evidenceMode: observeScenario.evidenceMode,
+      zoneName: observeScenario.zone.name,
+      threshold: observeScenario.point.threshold,
+      queueCount: observeScenario.zoneTriggered.length,
+      falsePositiveMultiplier: 100,
+      monthlyNet: observeScenario.monthlyNet,
+      monthlyRecovered: observeScenario.monthlyRecovered,
+      monthlyFalsePositive: observeScenario.monthlyFalsePositive,
+    });
+    const detainContract = buildShrinkRecommendationContract({
+      payload,
+      posture: detainScenario.posture,
+      evidenceMode: detainScenario.evidenceMode,
+      zoneName: detainScenario.zone.name,
+      threshold: detainScenario.point.threshold,
+      queueCount: detainScenario.zoneTriggered.length,
+      falsePositiveMultiplier: 100,
+      monthlyNet: detainScenario.monthlyNet,
+      monthlyRecovered: detainScenario.monthlyRecovered,
+      monthlyFalsePositive: detainScenario.monthlyFalsePositive,
+    });
+    const escalateContract = buildShrinkRecommendationContract({
+      payload,
+      posture: escalateScenario.posture,
+      evidenceMode: escalateScenario.evidenceMode,
+      zoneName: escalateScenario.zone.name,
+      threshold: escalateScenario.point.threshold,
+      queueCount: escalateScenario.zoneTriggered.length,
+      falsePositiveMultiplier: 100,
+      monthlyNet: escalateScenario.monthlyNet,
+      monthlyRecovered: escalateScenario.monthlyRecovered,
+      monthlyFalsePositive: escalateScenario.monthlyFalsePositive,
+    });
+
+    expect(observeContract.evidence[0]?.recommendationId).toBe("shrink-observe-floor");
+    expect(detainContract.evidence[0]?.recommendationId).toBe("shrink-targeted-detain");
+    expect(escalateContract.evidence[0]?.recommendationId).toBe("shrink-escalate-response");
+    expect(detainContract.evidenceSummary).toContain("Electronics");
+    expect(escalateContract.evidenceFooter).toContain(payload.decisionEvidence?.[0]?.recommendationId ?? "shrink-threshold-policy");
   });
 
   it("starbucks engine normalizes portfolio delta to USD", () => {

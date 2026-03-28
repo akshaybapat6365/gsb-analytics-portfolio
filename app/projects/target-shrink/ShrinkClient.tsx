@@ -13,6 +13,7 @@ import { DecisionConsole } from "@/components/story/DecisionConsole";
 import { clamp } from "@/lib/metrics/math";
 import { formatNumber, formatPct, formatUSD } from "@/lib/metrics/format";
 import type { ShrinkPayload } from "@/lib/schemas/shrink";
+import { buildShrinkRecommendationContract } from "@/lib/viewmodels/shrink";
 import {
   buildShrinkEventRef,
   deriveShrinkScenario,
@@ -285,6 +286,18 @@ export default function ShrinkClient({ payload }: { payload: ShrinkPayload }) {
 
   const evidenceSummary = EVIDENCE_MODE_COPY[derived.evidenceMode];
   const postureSummary = POSTURE_COPY[derived.posture];
+  const recommendationContract = buildShrinkRecommendationContract({
+    payload,
+    posture: derived.posture,
+    evidenceMode: derived.evidenceMode,
+    zoneName: derived.zone.name,
+    threshold: derived.point.threshold,
+    queueCount: derived.zoneTriggered.length,
+    falsePositiveMultiplier,
+    monthlyNet: derived.monthlyNet,
+    monthlyRecovered: derived.monthlyRecovered,
+    monthlyFalsePositive: derived.monthlyFalsePositive,
+  });
   const activeEventIndex = derived.selectedEvent
     ? payload.events.findIndex((event) => event === derived.selectedEvent)
     : -1;
@@ -604,7 +617,7 @@ export default function ShrinkClient({ payload }: { payload: ShrinkPayload }) {
           chapter="Evidence"
           title="Recommendation evidence trace"
           description="Evidence and degraded-feed messaging stay inspectable even when evidence is sparse, stale, or unavailable."
-          insight={`Evidence packets available: ${formatNumber(payload.decisionEvidence?.length ?? 0)}.`}
+          insight={`Current recommendation trace uses ${formatNumber(recommendationContract.evidence.length)} evidence block${recommendationContract.evidence.length === 1 ? "" : "s"} for the active scenario.`}
           impact="Provides auditability for escalation/observe posture selection in live operations."
           annotationCount={chapterDAnnotations.length}
           tone="amber"
@@ -627,16 +640,10 @@ export default function ShrinkClient({ payload }: { payload: ShrinkPayload }) {
               </section>
             </div>
             <DecisionEvidencePanel
-              title="Intervention Evidence"
-              summary={`Current zone ${derived.zone.name} · posture ${postureSummary.label} · threshold ${formatPct(derived.point.threshold, { digits: 0 })}`}
-              footer={
-                derived.evidenceMode === "clear"
-                  ? "Current recommendation trace is fully populated for the active scenario."
-                  : derived.evidenceMode === "sparse"
-                    ? "Sparse evidence mode: use queue behavior and trust surfaces together before tightening operations."
-                    : "Degraded feed posture: keep recovery and override paths visible because one or more upstream modules are not fully trustworthy."
-              }
-              evidence={payload.decisionEvidence}
+              title={recommendationContract.evidenceTitle}
+              summary={recommendationContract.evidenceSummary}
+              footer={recommendationContract.evidenceFooter}
+              evidence={recommendationContract.evidence}
             />
           </div>
         </StoryChapterShell>
