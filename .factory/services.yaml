@@ -1,0 +1,26 @@
+commands:
+  install: source /home/mostltyharmless/.nvm/nvm.sh && nvm use 20.20.0 >/dev/null && npm install --legacy-peer-deps
+  env_check: source /home/mostltyharmless/.nvm/nvm.sh && nvm use 20.20.0 >/dev/null && npm run env:check
+  doctor: source /home/mostltyharmless/.nvm/nvm.sh && nvm use 20.20.0 >/dev/null && npm run dev:doctor
+  lint: source /home/mostltyharmless/.nvm/nvm.sh && nvm use 20.20.0 >/dev/null && npm run lint
+  typecheck: source /home/mostltyharmless/.nvm/nvm.sh && nvm use 20.20.0 >/dev/null && npm run typecheck
+  test: source /home/mostltyharmless/.nvm/nvm.sh && nvm use 20.20.0 >/dev/null && ./node_modules/.bin/vitest run --maxWorkers=4
+  build: source /home/mostltyharmless/.nvm/nvm.sh && nvm use 20.20.0 >/dev/null && npm run build
+  e2e: source /home/mostltyharmless/.nvm/nvm.sh && nvm use 20.20.0 >/dev/null && PW_TEST_PORT=3501 ./node_modules/.bin/playwright test --workers=2
+  qa: source /home/mostltyharmless/.nvm/nvm.sh && nvm use 20.20.0 >/dev/null && npm run qa
+  data_refresh_open: source /home/mostltyharmless/.nvm/nvm.sh && nvm use 20.20.0 >/dev/null && npm run data:refresh:open
+
+services:
+  web:
+    start: source /home/mostltyharmless/.nvm/nvm.sh && nvm use 20.20.0 >/dev/null && PORT=3401 npm run dev
+    stop: lsof -ti :3401 | xargs -r kill
+    healthcheck: curl -sf http://localhost:3401
+    port: 3401
+    depends_on: []
+
+  web_e2e:
+    start: source /home/mostltyharmless/.nvm/nvm.sh && nvm use 20.20.0 >/dev/null && PW_TEST_PORT=3501 npm run build && PORT=3501 ./node_modules/.bin/next start --port 3501
+    stop: lsof -ti :3501 | xargs -r kill
+    healthcheck: curl -sf http://localhost:3501
+    port: 3501
+    depends_on: []

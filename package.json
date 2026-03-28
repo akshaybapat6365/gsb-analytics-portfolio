@@ -53,6 +53,7 @@
     "@deck.gl/geo-layers": "^9.2.7",
     "@deck.gl/layers": "^9.2.7",
     "@deck.gl/react": "^9.2.7",
+    "@deck.gl/widgets": "^9.2.7",
     "@react-three/drei": "^9.121.0",
     "@react-three/fiber": "^8.17.0",
     "clsx": "^2.1.1",
