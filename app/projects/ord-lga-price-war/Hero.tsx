@@ -5,13 +5,14 @@ import type { AirlinePayload } from "@/lib/schemas/airline";
 import HeroFlightPath from "@/components/viz/ord-lga/HeroFlightPath";
 import MiniSparkGrid from "@/components/viz/ord-lga/MiniSparkGrid";
 import { derivePolicyDays } from "@/components/viz/ord-lga/transforms";
+import { runAirlineDecisionEngine } from "@/lib/decision-engines/airline";
 
 // Step 30: Restructured hero — 2-column layout with flight path + sparkline grid
 export function Hero({ payload }: { payload: AirlinePayload }) {
   const competitor = payload.competitor?.name ?? "Delta";
-  const actual = payload.days.reduce((acc, day) => acc + day.actual.revenue, 0);
-  const algo = payload.days.reduce((acc, day) => acc + day.algo.revenue, 0);
-  const lift = algo - actual;
+  const decision = runAirlineDecisionEngine(payload);
+  const lift = decision.primaryMetric.value;
+  const riskAdjustedLift = decision.riskAdjustedLift ?? lift;
   const liftCi = payload.uncertainty?.revenueLiftCi;
   const lineage = payload.dataLineage;
   const policyContext = payload.competitor?.inferredPolicyLabel ?? "Modeled competitor response";
@@ -95,7 +96,7 @@ export function Hero({ payload }: { payload: AirlinePayload }) {
                 {liftCi ? `${formatUSD(liftCi[0])} — ${formatUSD(liftCi[1])}` : "n/a"}
               </p>
               <p className="mt-3 text-[12px] leading-6 text-slate-400">
-                Central estimate: {formatUSD(lift)} modeled Q2 lift versus the observed desk.
+                Canonical baseline estimate: {formatUSD(lift)} modeled Q2 lift versus the observed desk, with {formatUSD(riskAdjustedLift)} risk-adjusted after uncertainty and validation penalties.
                 Inspect the validation and sensitivity chapters before escalating to an
                 aggressive policy rollout.
               </p>

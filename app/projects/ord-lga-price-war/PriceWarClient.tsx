@@ -44,6 +44,7 @@ import { useOrdLgaScrollytelling } from "@/components/viz/ord-lga/useOrdLgaScrol
 import { runAirlineDecisionEngine } from "@/lib/decision-engines/airline";
 import { formatNumber, formatPct, formatUSD } from "@/lib/metrics/format";
 import type { AirlinePayload } from "@/lib/schemas/airline";
+import { buildOrdLgaRecommendationContract } from "@/lib/viewmodels/ordLgaRecommendation";
 
 const MODE_OPTIONS: Array<{ id: PolicyViewMode; label: string }> = [
   { id: "observed", label: "Observed" },
@@ -155,6 +156,10 @@ export default function PriceWarClient({
   } = useOrdLgaScrollytelling(payload);
 
   const competitorName = payload.competitor?.name ?? "Delta";
+  const recommendationContract = useMemo(
+    () => buildOrdLgaRecommendationContract({ payload, decision, summary }),
+    [decision, payload, summary],
+  );
   const selectedSpread = selectedDay.competitorPrice - selectedDay.policyPrice;
   const selectedShockLabel = selectedDay.shock > 0 ? formatNumber(selectedDay.shock, { digits: 2 }) : "0.00";
   const topAnnotations = (payload.annotations ?? []).slice(0, 4);
@@ -300,18 +305,18 @@ export default function PriceWarClient({
               {/* KPI row with AnimatedNumber */}
               <div className="space-y-3">
                 <div className="radar-kpi radar-glow-green p-3">
-                  <p className="font-mono text-[10px] uppercase tracking-[0.16em]" style={{ color: "var(--radar-green)" }}>Counterfactual Lift</p>
+                  <p className="font-mono text-[10px] uppercase tracking-[0.16em]" style={{ color: "var(--radar-green)" }}>{recommendationContract.authoritativeLift.label}</p>
                   <p className="mt-1 font-mono text-lg" style={{ color: "var(--radar-green)" }}>
-                    <AnimatedNeonCounter glow="cyan" value={summary.incrementalRevenue} format="usd" showDelta />
+                    <AnimatedNeonCounter glow="cyan" value={recommendationContract.authoritativeLift.value} format="usd" showDelta />
                   </p>
-                  <p className="mt-0.5 font-mono text-[9px] text-slate-500">Policy vs observed Q2</p>
+                  <p className="mt-0.5 font-mono text-[9px] text-slate-500">Canonical baseline recommendation metric</p>
                 </div>
                 <div className="radar-kpi radar-glow-amber p-3">
-                  <p className="font-mono text-[10px] uppercase tracking-[0.16em]" style={{ color: "var(--radar-amber)" }}>Risk-Adjusted Lift</p>
+                  <p className="font-mono text-[10px] uppercase tracking-[0.16em]" style={{ color: "var(--radar-amber)" }}>{recommendationContract.riskAdjustedLift.label}</p>
                   <p className="mt-1 font-mono text-lg" style={{ color: "var(--radar-amber)" }}>
-                    <AnimatedNeonCounter glow="cyan" value={decision.riskAdjustedLift ?? summary.incrementalRevenue} format="usd" showDelta />
+                    <AnimatedNeonCounter glow="cyan" value={recommendationContract.riskAdjustedLift.value} format="usd" showDelta />
                   </p>
-                  <p className="mt-0.5 font-mono text-[9px] text-slate-500">{competitorName} response applied</p>
+                  <p className="mt-0.5 font-mono text-[9px] text-slate-500">{competitorName} response, CI width, and validation error applied</p>
                 </div>
                 <div className="radar-kpi p-3">
                   <p className="font-mono text-[10px] uppercase tracking-[0.16em]" style={{ color: "var(--radar-crimson)" }}>Peak Regret Day</p>
@@ -541,16 +546,22 @@ export default function PriceWarClient({
             title="Decision Output Rail"
             lines={[
               {
-                label: "Quarterly counterfactual lift",
-                value: formatUSD(summary.incrementalRevenue),
+                label: recommendationContract.authoritativeLift.label,
+                value: recommendationContract.authoritativeLift.formatted,
                 tone: "emerald",
-                hint: "Modeled Q2 policy replay versus the observed desk baseline.",
+                hint: recommendationContract.authoritativeLift.hint,
               },
               {
-                label: "Risk-adjusted expected lift",
-                value: formatUSD(decision.riskAdjustedLift ?? summary.incrementalRevenue),
+                label: recommendationContract.riskAdjustedLift.label,
+                value: recommendationContract.riskAdjustedLift.formatted,
                 tone: recommendationTone,
-                hint: `Adjusted for CI width and current policy-model MAPE of ${formatPct(payload.validationSummary?.metrics.policyModel.mapeRevenue ?? 0.12, { digits: 1 })}.`,
+                hint: recommendationContract.riskAdjustedLift.hint,
+              },
+              {
+                label: recommendationContract.scenarioLift.label,
+                value: recommendationContract.scenarioLift.formatted,
+                tone: summary.incrementalRevenue >= 0 ? "amber" : "crimson",
+                hint: recommendationContract.scenarioLift.hint,
               },
               {
                 label: "Selected-day tactical delta",
@@ -566,7 +577,12 @@ export default function PriceWarClient({
               },
             ]}
           />
-          <DecisionEvidencePanel title="Recommendation Evidence" evidence={payload.decisionEvidence} />
+          <DecisionEvidencePanel
+            title={recommendationContract.evidence.title}
+            summary={recommendationContract.evidence.summary}
+            footer={recommendationContract.evidence.footer}
+            evidence={payload.decisionEvidence}
+          />
           <DecisionConsole
             title="Policy Guardrails & Lift CI"
             lines={[

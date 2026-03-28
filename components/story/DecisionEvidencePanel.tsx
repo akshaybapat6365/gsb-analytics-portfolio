@@ -2,11 +2,15 @@ import type { DecisionEvidence } from "@/lib/schemas/common";
 
 type DecisionEvidencePanelProps = {
   title?: string;
+  summary?: string;
+  footer?: string;
   evidence?: DecisionEvidence[];
 };
 
 export function DecisionEvidencePanel({
   title = "Decision Evidence",
+  summary,
+  footer,
   evidence = [],
 }: DecisionEvidencePanelProps) {
   return (
@@ -16,6 +20,11 @@ export function DecisionEvidencePanel({
           {title}
         </p>
       </div>
+      {summary ? (
+        <div className="border-b border-white/10 bg-white/[0.03] px-5 py-4 text-[13px] leading-6 text-slate-300">
+          {summary}
+        </div>
+      ) : null}
       {evidence.length === 0 ? (
         <p className="px-5 py-5 text-[14px] leading-6 text-slate-300">
           No model evidence is available for the current state.
@@ -68,6 +77,11 @@ export function DecisionEvidencePanel({
               ))}
             </div>
           </div>
+          {footer ? (
+            <p className="rounded-xl border border-amber-400/20 bg-amber-300/5 px-3 py-2 text-[12px] leading-5 text-amber-100/85">
+              {footer}
+            </p>
+          ) : null}
         </div>
       )}
     </section>

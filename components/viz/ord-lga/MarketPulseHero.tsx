@@ -217,9 +217,12 @@ export function MarketPulseHero({
       <div className="mt-4 space-y-3">
         <div className="radar-kpi radar-glow-green">
           <p className="font-mono text-[10px] uppercase tracking-[0.16em]" style={{ color: "var(--radar-green)" }}>
-            Counterfactual Lift
+            Current Scenario Replay Lift
           </p>
           <p className="mt-1 font-mono text-xl" style={{ color: "var(--radar-green)" }}>{formatUSD(totalRegret)}</p>
+          <p className="mt-1 text-[10px] text-slate-500">
+            Interactive posture only; separate from the canonical baseline recommendation metric.
+          </p>
         </div>
         <div className="radar-kpi radar-glow-amber">
           <p className="font-mono text-[10px] uppercase tracking-[0.16em]" style={{ color: "var(--radar-amber)" }}>
