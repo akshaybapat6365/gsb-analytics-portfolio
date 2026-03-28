@@ -3,7 +3,6 @@
 import { useMemo } from "react";
 import { motion } from "framer-motion";
 import { NeuralEyebrow } from "./Typography";
-import { cn } from "@/lib/utils";
 
 const C = {
     steel: "#6B9FD4",
@@ -35,17 +34,21 @@ export function ValidationRadar({ data = mockMetrics }) {
     const CENTER = SIZE / 2;
     const RADIUS = SIZE / 2 - 40;
 
-    const getPoints = (isSimulated: boolean) => {
+    const actualPoints = useMemo(() => {
         return data.map((d, i) => {
             const angle = (Math.PI * 2 * i) / data.length - Math.PI / 2;
-            const value = isSimulated ? d.simulated : d.actual;
-            const r = (value / 100) * RADIUS;
+            const r = (d.actual / 100) * RADIUS;
             return `${CENTER + r * Math.cos(angle)},${CENTER + r * Math.sin(angle)}`;
         }).join(" ");
-    };
+    }, [CENTER, RADIUS, data]);
 
-    const actualPoints = useMemo(() => getPoints(false), [data]);
-    const simPoints = useMemo(() => getPoints(true), [data]);
+    const simPoints = useMemo(() => {
+        return data.map((d, i) => {
+            const angle = (Math.PI * 2 * i) / data.length - Math.PI / 2;
+            const r = (d.simulated / 100) * RADIUS;
+            return `${CENTER + r * Math.cos(angle)},${CENTER + r * Math.sin(angle)}`;
+        }).join(" ");
+    }, [CENTER, RADIUS, data]);
 
     return (
         <div className="w-full aspect-square relative neural-glass-panel border-plasma-cyan/30 flex items-center justify-center p-6">

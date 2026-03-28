@@ -79,6 +79,12 @@ export function ProjectsIndexGrid({ projects }: Props) {
   const [evidence, setEvidence] = useState<HomepageEvidenceLevel | AnyFilter>("all");
   const [outputType, setOutputType] = useState<ProjectOutputType | AnyFilter>("all");
 
+  const resetFilters = () => {
+    setDomain("all");
+    setEvidence("all");
+    setOutputType("all");
+  };
+
   const filtered = useMemo(() => {
     return projects.filter((p) => {
       if (domain !== "all" && p.domain !== domain) return false;
@@ -92,53 +98,74 @@ export function ProjectsIndexGrid({ projects }: Props) {
   const outputs = Object.keys(outputLabels) as ProjectOutputType[];
   const evidences = Object.keys(evidenceLabels) as HomepageEvidenceLevel[];
 
+  const hasActiveFilters = domain !== "all" || evidence !== "all" || outputType !== "all";
+
   return (
     <section className="space-y-6" aria-label="Project index">
       {/* ── Filter bar ── */}
       <div className="rounded-xl border border-white/[0.05] bg-[#0e0e13] p-4 sm:p-5">
-        <div className="grid gap-5 sm:grid-cols-3">
-          {/* Domain */}
-          <div>
-            <p className="mb-2 font-mono text-[9px] uppercase tracking-[0.16em] text-slate-500">
-              Domain
-            </p>
-            <div className="flex flex-wrap gap-1.5">
-              <Pill active={domain === "all"} onClick={() => setDomain("all")}>All</Pill>
-              {domains.map((v) => (
-                <Pill key={v} active={domain === v} onClick={() => setDomain(v)}>
-                  {domainLabels[v]}
-                </Pill>
-              ))}
+        <div className="space-y-4">
+          <div className="flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
+            <div className="max-w-3xl space-y-2">
+              <p className="font-mono text-[9px] uppercase tracking-[0.16em] text-slate-500">
+                Multi-dimensional discovery
+              </p>
+              <p className="text-sm leading-6 text-slate-400">
+                Filter by domain, evidence posture, and output type without losing trust metadata on the cards.
+              </p>
             </div>
+            {hasActiveFilters ? (
+              <button
+                type="button"
+                onClick={resetFilters}
+                className="inline-flex items-center rounded-full border border-white/12 bg-white/[0.04] px-3 py-1.5 font-mono text-[10px] uppercase tracking-[0.13em] text-slate-200 transition hover:border-white/20 hover:bg-white/[0.08]"
+              >
+                Clear all filters
+              </button>
+            ) : null}
           </div>
 
-          {/* Evidence */}
-          <div>
-            <p className="mb-2 font-mono text-[9px] uppercase tracking-[0.16em] text-slate-500">
-              Evidence
-            </p>
-            <div className="flex flex-wrap gap-1.5">
-              <Pill active={evidence === "all"} onClick={() => setEvidence("all")}>All</Pill>
-              {evidences.map((v) => (
-                <Pill key={v} active={evidence === v} onClick={() => setEvidence(v)}>
-                  {evidenceLabels[v]}
-                </Pill>
-              ))}
+          <div className="grid gap-5 sm:grid-cols-3">
+            <div>
+              <p className="mb-2 font-mono text-[9px] uppercase tracking-[0.16em] text-slate-500">
+                Domain
+              </p>
+              <div className="flex flex-wrap gap-1.5">
+                <Pill active={domain === "all"} onClick={() => setDomain("all")}>All</Pill>
+                {domains.map((v) => (
+                  <Pill key={v} active={domain === v} onClick={() => setDomain(v)}>
+                    {domainLabels[v]}
+                  </Pill>
+                ))}
+              </div>
             </div>
-          </div>
 
-          {/* Output */}
-          <div>
-            <p className="mb-2 font-mono text-[9px] uppercase tracking-[0.16em] text-slate-500">
-              Output
-            </p>
-            <div className="flex flex-wrap gap-1.5">
-              <Pill active={outputType === "all"} onClick={() => setOutputType("all")}>All</Pill>
-              {outputs.map((v) => (
-                <Pill key={v} active={outputType === v} onClick={() => setOutputType(v)}>
-                  {outputLabels[v]}
-                </Pill>
-              ))}
+            <div>
+              <p className="mb-2 font-mono text-[9px] uppercase tracking-[0.16em] text-slate-500">
+                Evidence
+              </p>
+              <div className="flex flex-wrap gap-1.5">
+                <Pill active={evidence === "all"} onClick={() => setEvidence("all")}>All</Pill>
+                {evidences.map((v) => (
+                  <Pill key={v} active={evidence === v} onClick={() => setEvidence(v)}>
+                    {evidenceLabels[v]}
+                  </Pill>
+                ))}
+              </div>
+            </div>
+
+            <div>
+              <p className="mb-2 font-mono text-[9px] uppercase tracking-[0.16em] text-slate-500">
+                Output
+              </p>
+              <div className="flex flex-wrap gap-1.5">
+                <Pill active={outputType === "all"} onClick={() => setOutputType("all")}>All</Pill>
+                {outputs.map((v) => (
+                  <Pill key={v} active={outputType === v} onClick={() => setOutputType(v)}>
+                    {outputLabels[v]}
+                  </Pill>
+                ))}
+              </div>
             </div>
           </div>
         </div>
@@ -148,24 +175,41 @@ export function ProjectsIndexGrid({ projects }: Props) {
         </p>
       </div>
 
-      {/* ── Card grid with staggered animation ── */}
-      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-        <AnimatePresence mode="popLayout">
-          {filtered.map((project, i) => (
-            <motion.div
-              key={project.slug}
-              layout
-              custom={i}
-              variants={cardVariants}
-              initial="hidden"
-              animate="visible"
-              exit="exit"
-            >
-              <ProjectCard project={project} />
-            </motion.div>
-          ))}
-        </AnimatePresence>
-      </div>
+      {filtered.length === 0 ? (
+        <div className="rounded-xl border border-dashed border-white/12 bg-white/[0.03] px-5 py-8 text-center">
+          <p className="font-mono text-[10px] uppercase tracking-[0.16em] text-slate-500">
+            No matching projects
+          </p>
+          <p className="mt-3 text-sm leading-6 text-slate-300">
+            This filter combination currently hides all six case studies. Reset the discovery controls to restore the full library.
+          </p>
+          <button
+            type="button"
+            onClick={resetFilters}
+            className="mt-5 inline-flex items-center rounded-full border border-white/15 bg-white/[0.04] px-4 py-2 font-mono text-[10px] uppercase tracking-[0.14em] text-slate-100 transition hover:border-white/25 hover:bg-white/[0.08]"
+          >
+            Reset filters
+          </button>
+        </div>
+      ) : (
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          <AnimatePresence mode="popLayout">
+            {filtered.map((project, i) => (
+              <motion.div
+                key={project.slug}
+                layout
+                custom={i}
+                variants={cardVariants}
+                initial="hidden"
+                animate="visible"
+                exit="exit"
+              >
+                <ProjectCard project={project} />
+              </motion.div>
+            ))}
+          </AnimatePresence>
+        </div>
+      )}
     </section>
   );
 }

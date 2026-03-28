@@ -5,11 +5,9 @@ import { useEffect, useRef, useState } from "react";
 // Steps 19–22: Animated ORD→LGA flight path with great-circle arc
 export default function HeroFlightPath({ liftAmount = 567000 }: { liftAmount?: number }) {
     const pathRef = useRef<SVGPathElement>(null);
-    const [mounted, setMounted] = useState(false);
     const [counter, setCounter] = useState(0);
 
     useEffect(() => {
-        setMounted(true);
         // Animate counter from 0 to liftAmount
         const start = performance.now();
         const duration = 1800;
@@ -27,7 +25,7 @@ export default function HeroFlightPath({ liftAmount = 567000 }: { liftAmount?: n
             const len = pathRef.current.getTotalLength();
             pathRef.current.style.setProperty("--path-length", `${len}`);
         }
-    }, [mounted]);
+    }, []);
 
     // ORD: Chicago (projected to simple x,y)
     // LGA: New York
@@ -63,7 +61,7 @@ export default function HeroFlightPath({ liftAmount = 567000 }: { liftAmount?: n
                 stroke="var(--radar-amber, #c9962b)"
                 strokeWidth="2"
                 strokeLinecap="round"
-                className={mounted ? "flight-arc-animate" : "flight-arc-hidden"}
+                className="flight-arc-animate"
             />
 
             {/* Subtle shadow arc */}

@@ -63,44 +63,64 @@ export function ProjectCard({ project }: { project: Project }) {
 
       {/* ── Content Zone ── */}
       <div className="flex flex-1 flex-col justify-between p-4 sm:p-5">
-        {/* Title + subtitle */}
         <div>
-          <h3 className="text-[17px] font-semibold leading-snug tracking-tight text-slate-50 sm:text-[18px]">
+          <div className="flex flex-wrap items-center gap-2">
+            <span className={cn("inline-flex items-center gap-1 rounded-full border px-1.5 py-0.5 font-mono text-[9px] uppercase tracking-[0.1em]", badge.cls)}>
+              <span aria-hidden="true">{badge.icon}</span>
+              {badge.label}
+            </span>
+            <span className="font-mono text-[9px] uppercase tracking-[0.14em] text-slate-500">
+              {project.homepage.homepageSubtitle}
+            </span>
+          </div>
+
+          <h3 className="mt-3 text-[17px] font-semibold leading-snug tracking-tight text-slate-50 sm:text-[18px]">
             {project.title}
           </h3>
           <p className="mt-1.5 line-clamp-2 text-[13px] leading-relaxed text-slate-400">
             {project.homepage.claim}
           </p>
+
+          <dl className="mt-4 grid gap-3 text-[12px] leading-6 text-slate-300">
+            <div>
+              <dt className="font-mono text-[9px] uppercase tracking-[0.14em] text-slate-500">
+                Decision claim
+              </dt>
+              <dd className="mt-1">{project.homepage.claimFraming}</dd>
+            </div>
+            <div>
+              <dt className="font-mono text-[9px] uppercase tracking-[0.14em] text-slate-500">
+                Method + source
+              </dt>
+              <dd className="mt-1">{project.homepage.methodPlain} {project.homepage.source}.</dd>
+            </div>
+            <div>
+              <dt className="font-mono text-[9px] uppercase tracking-[0.14em] text-slate-500">
+                Freshness
+              </dt>
+              <dd className="mt-1">As-of {project.homepage.asOf}</dd>
+            </div>
+          </dl>
         </div>
 
-        {/* Metric + evidence strip */}
         <div className="mt-4">
+          <p className="font-mono text-[10px] uppercase tracking-[0.14em] text-slate-500">
+            {project.homepage.resultLabel}
+          </p>
           <p
-            className="font-mono text-[20px] font-semibold leading-tight tracking-tight"
+            className="mt-2 font-mono text-[20px] font-semibold leading-tight tracking-tight"
             style={{ color: `rgb(${accent})` }}
           >
             {project.homepage.resultValue}
           </p>
-
-          <div className="mt-2 flex flex-wrap items-center gap-x-2 gap-y-1 font-mono text-[9px] uppercase tracking-[0.1em] text-slate-500">
-            <span className={cn("inline-flex items-center gap-1 rounded-full border px-1.5 py-0.5", badge.cls)}>
-              <span aria-hidden="true">{badge.icon}</span>
-              {badge.label}
-            </span>
-            <span>·</span>
-            <span>{project.homepage.source}</span>
-            <span>·</span>
-            <span>As-of {project.homepage.asOf}</span>
-          </div>
         </div>
 
-        {/* CTA */}
         <div className="mt-4 border-t border-white/[0.04] pt-3">
           <span
             className="font-mono text-[11px] uppercase tracking-[0.14em] transition-colors group-hover:brightness-125"
             style={{ color: `rgba(${accent}, 0.7)` }}
           >
-            Explore →
+            Open case study →
           </span>
         </div>
       </div>

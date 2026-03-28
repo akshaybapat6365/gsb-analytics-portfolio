@@ -19,7 +19,8 @@ export function ShockConstellation({ events }: { events: OrdShockEvent[] }) {
         return events.map((e, i) => {
             // Procedural layout logic for a network constellation
             const angle = (i / events.length) * Math.PI * 2;
-            const radius = 80 + (e.severity === "high" ? 40 : 10) + Math.random() * 20;
+            const deterministicOffset = ((i * 17) % 5) * 4;
+            const radius = 80 + (e.severity === "high" ? 40 : 10) + deterministicOffset;
             return {
                 ...e,
                 x: 150 + Math.cos(angle) * radius,

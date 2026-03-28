@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 /**
  * Dev-only banner. Renders ONLY on the client after mount to avoid
@@ -9,14 +9,9 @@ import { useState, useEffect } from "react";
  */
 export function DevEnvBanner() {
   const [dismissed, setDismissed] = useState(false);
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
 
   /* Always return null until after mount — prevents SSR/client mismatch */
-  if (!mounted || process.env.NODE_ENV === "production" || dismissed) {
+  if (typeof window === "undefined" || process.env.NODE_ENV === "production" || dismissed) {
     return null;
   }
 

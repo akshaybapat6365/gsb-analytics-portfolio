@@ -17,10 +17,18 @@ export function HomeProjectGrid({ cards }: Props) {
   return (
     <section id="projects">
       {/* Section header */}
-      <div className="mb-10 flex items-end justify-between">
-        <h2 className="font-display text-[clamp(1.75rem,3.5vw,2.2rem)] leading-none tracking-[-0.02em] text-white">
-          The Work
-        </h2>
+      <div className="mb-10 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
+        <div className="max-w-3xl space-y-3">
+          <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-slate-500">
+            Evidence-rich case library
+          </p>
+          <h2 className="font-display text-[clamp(1.75rem,3.5vw,2.2rem)] leading-none tracking-[-0.02em] text-white">
+            Six decision packets built for skeptical peer review.
+          </h2>
+          <p className="text-sm leading-7 text-slate-400 sm:text-[15px]">
+            Every preview carries the decision claim, source posture, evidence level, and freshness cue before you drill into the route.
+          </p>
+        </div>
         <span className="font-mono text-[11px] uppercase tracking-[0.14em] text-slate-600">
           {cards.length} projects
         </span>
@@ -75,38 +83,66 @@ export function HomeProjectGrid({ cards }: Props) {
 
                 {/* ── Card Body ──────────────────────── */}
                 <div className="flex flex-1 flex-col px-6 py-5">
-                  {/* Title */}
-                  <h3 className="text-[18px] font-semibold leading-snug tracking-tight text-white">
+                  <div className="flex flex-wrap items-center gap-2">
+                    <span className="rounded-full border border-white/10 bg-white/[0.05] px-2.5 py-1 font-mono text-[9px] uppercase tracking-[0.18em] text-slate-300">
+                      {card.evidenceBadge.icon} {card.evidenceBadge.label}
+                    </span>
+                    <span className="font-mono text-[9px] uppercase tracking-[0.18em] text-slate-500">
+                      {card.subtitle}
+                    </span>
+                  </div>
+
+                  <h3 className="mt-4 text-[18px] font-semibold leading-snug tracking-tight text-white">
                     {card.title}
                   </h3>
 
-                  {/* One-line decision */}
                   <p className="mt-2 line-clamp-2 text-[13px] leading-[1.55] text-slate-400">
                     {card.claim}
                   </p>
 
-                  {/* Metric + Evidence strip */}
+                  <dl className="mt-5 grid gap-3 text-[12px] leading-6 text-slate-300">
+                    <div>
+                      <dt className="font-mono text-[9px] uppercase tracking-[0.16em] text-slate-500">
+                        Decision claim
+                      </dt>
+                      <dd className="mt-1 text-[13px] leading-6 text-slate-300">{card.claimFraming}</dd>
+                    </div>
+                    <div>
+                      <dt className="font-mono text-[9px] uppercase tracking-[0.16em] text-slate-500">
+                        Method + source
+                      </dt>
+                      <dd className="mt-1 text-[13px] leading-6 text-slate-300">
+                        {card.methodPlain} {card.evidenceMeta.split("·").slice(1, 2).join("·").trim()}.
+                      </dd>
+                    </div>
+                    <div>
+                      <dt className="font-mono text-[9px] uppercase tracking-[0.16em] text-slate-500">
+                        Freshness
+                      </dt>
+                      <dd className="mt-1 text-[13px] leading-6 text-slate-300">
+                        As-of {card.evidenceMeta.split("·").slice(2).join("·").replace(/^as-of\s*/i, "")}
+                      </dd>
+                    </div>
+                  </dl>
+
                   <div className="mt-auto pt-5">
+                    <p className="font-mono text-[10px] uppercase tracking-[0.16em] text-slate-500">
+                      {card.resultLabel}
+                    </p>
                     <p
-                      className="text-[22px] font-bold leading-none tracking-tight"
+                      className="mt-2 text-[22px] font-bold leading-none tracking-tight"
                       style={{ color: `rgba(${accent}, 0.92)` }}
                     >
                       {card.resultValue}
                     </p>
-
-                    <p className="mt-2 font-mono text-[10px] uppercase tracking-[0.08em] text-slate-500">
-                      {card.evidenceBadge.icon}{" "}
-                      {card.evidenceLevel.toUpperCase()} · {card.evidenceMeta.split("·").slice(1).join("·").trim()}
-                    </p>
                   </div>
 
-                  {/* CTA */}
                   <div className="mt-4 flex items-center justify-between border-t border-white/[0.04] pt-3">
                     <span
                       className="font-mono text-[11px] uppercase tracking-[0.12em] transition-all duration-200 group-hover:translate-x-0.5"
                       style={{ color: `rgba(${accent}, 0.7)` }}
                     >
-                      Explore →
+                      Open decision packet →
                     </span>
                   </div>
                 </div>

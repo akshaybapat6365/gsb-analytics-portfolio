@@ -1,6 +1,9 @@
 import { describe, expect, it } from "vitest";
 import fs from "node:fs";
 import path from "node:path";
+import { projects } from "@/lib/projects/catalog";
+import { buildHomePageViewModel } from "@/lib/viewmodels/home";
+import { buildPageMetadata } from "@/lib/seo";
 import { AirlinePayloadSchema } from "@/lib/schemas/airline";
 import { FraudPayloadSchema } from "@/lib/schemas/fraud";
 import { ShrinkPayloadSchema } from "@/lib/schemas/shrink";
@@ -13,6 +16,34 @@ function readJson(rel: string) {
   const raw = fs.readFileSync(p, "utf8");
   return JSON.parse(raw) as unknown;
 }
+
+describe("portfolio discovery metadata", () => {
+  it("portfolio cards preserve trust framing across the home viewmodel", () => {
+    const vm = buildHomePageViewModel(projects);
+
+    expect(vm.cards).toHaveLength(projects.length);
+    for (const card of vm.cards) {
+      expect(card.claimFraming.length).toBeGreaterThan(0);
+      expect(card.methodPlain.length).toBeGreaterThan(0);
+      expect(card.evidenceMeta).toContain("as-of");
+      expect(card.href).toMatch(/^\/projects\//);
+    }
+  });
+
+  it("home metadata stays route-specific with an absolute portfolio title", () => {
+    const metadata = buildPageMetadata({
+      title: { absolute: "Vaibhav Bapat | Decision Intelligence Portfolio" },
+      description: "Trust-rich home route metadata.",
+      path: "/",
+      theme: "ord-lga-price-war",
+    });
+
+    expect(metadata.title).toEqual({ absolute: "Vaibhav Bapat | Decision Intelligence Portfolio" });
+    expect(metadata.openGraph?.title).toBe("Vaibhav Bapat | Decision Intelligence Portfolio");
+    expect(metadata.twitter?.title).toBe("Vaibhav Bapat | Decision Intelligence Portfolio");
+    expect(metadata.alternates?.canonical).toBe("https://vb-labs.vercel.app");
+  });
+});
 
 describe("public payloads", () => {
   it("airline payload matches schema", () => {

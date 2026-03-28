@@ -1,9 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { cn } from "@/lib/utils";
-// PnLBar type not needed — using any[] for flexibility
-import { AnimatedNeonCounter } from "./AnimatedNeonCounter";
+import type { DailyPnLRow } from "./transforms";
 
 /* ── Palette (sourced from neural-theme.css vars) ── */
 const C = {
@@ -11,21 +9,51 @@ const C = {
     sage: "#4CAF7D",
     rose: "#C75B5B",
     pewter: "#8B8FAE",
-    frost: "#E2E8F0",
 } as const;
+
+type WaterfallDatum = DailyPnLRow | {
+    start?: number;
+    end?: number;
+    value?: number;
+    category?: string;
+    label?: string;
+};
+
+function toWaterfallBar(bar: WaterfallDatum, index: number) {
+    if ("algorithmicUplift" in bar) {
+        const start = bar.baseRevenue;
+        const end = bar.baseRevenue + bar.netLift;
+        return {
+            start,
+            end,
+            value: bar.netLift,
+            category: `Day ${bar.dayIndex}`,
+            label: bar.date,
+        };
+    }
+
+    return {
+        start: bar.start ?? 0,
+        end: bar.end ?? bar.value ?? 0,
+        value: bar.value ?? (bar.end ?? 0) - (bar.start ?? 0),
+        category: bar.category ?? bar.label ?? `Bar ${index}`,
+        label: bar.label ?? bar.category ?? `Bar ${index}`,
+    };
+}
 
 /**
  * Phase 4: Extreme Density SVG Refactor (Revenue PnL Waterfall)
  * Rebuilt using Framer Motion staggered cascades and the Plasma Glassmorphism aesthetic.
  */
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export function NeuralPnLWaterfall({ data }: { data: any[] }) {
+export function NeuralPnLWaterfall({ data }: { data: WaterfallDatum[] }) {
     if (!data?.length) return null;
 
+    const bars = data.map((bar, index) => toWaterfallBar(bar, index));
+
     // Extract dimensions
-    const minVal = Math.min(...data.map((d: any) => Math.min(d.start ?? d.value ?? 0, d.end ?? d.value ?? 0)));
-    const maxVal = Math.max(...data.map((d: any) => Math.max(d.start ?? d.value ?? 0, d.end ?? d.value ?? 0)));
+    const minVal = Math.min(...bars.map((d) => Math.min(d.start, d.value, d.end)));
+    const maxVal = Math.max(...bars.map((d) => Math.max(d.start, d.value, d.end)));
     const range = maxVal - minVal || 1;
 
     // Padding for the SVG Y scale
@@ -36,13 +64,13 @@ export function NeuralPnLWaterfall({ data }: { data: any[] }) {
     const width = 800;
     const height = 400;
     const pxPerY = height / yRange;
-    const barWidth = (width / data.length) * 0.6; // 60% width
+    const barWidth = (width / bars.length) * 0.6; // 60% width
 
     return (
         <div className="w-full aspect-[2/1] relative neural-glass-panel border-plasma-cyan/30 p-6 overflow-hidden">
             <div className="absolute top-4 left-6 z-10">
                 <span className="neural-eyebrow text-plasma-cyan tracking-widest">REVENUE_DECOMPOSITION_MATRIX</span>
-                <h4 className="text-frost-white font-mono mt-2">ALGORITHMIC ALPHA GENERATION</h4>
+                <h4 className="mt-2 font-mono text-slate-100">ALGORITHMIC ALPHA GENERATION</h4>
             </div>
 
             <svg viewBox={`0 0 ${width} ${height}`} className="w-full h-full overflow-visible mt-8" preserveAspectRatio="none">
@@ -62,12 +90,12 @@ export function NeuralPnLWaterfall({ data }: { data: any[] }) {
                 })}
 
                 {/* Render staggered waterfall bars */}
-                {data.map((bar: any, i: number) => {
-                    const x = (i / data.length) * width + ((width / data.length) - barWidth) / 2;
-                    const start = bar.start ?? 0;
-                    const end = bar.end ?? bar.value ?? 0;
-                    const value = bar.value ?? (end - start);
-                    const category = bar.category ?? bar.label ?? `Bar ${i}`;
+                {bars.map((bar, i: number) => {
+                    const x = (i / bars.length) * width + ((width / bars.length) - barWidth) / 2;
+                    const start = bar.start;
+                    const end = bar.end;
+                    const value = bar.value;
+                    const category = bar.category;
 
                     const yTop = height - ((Math.max(start, end) - yMin) * pxPerY);
                     const yBot = height - ((Math.min(start, end) - yMin) * pxPerY);
@@ -124,7 +152,7 @@ export function NeuralPnLWaterfall({ data }: { data: any[] }) {
                                 x={x + barWidth / 2}
                                 y={height + 24}
                                 textAnchor="middle"
-                                fill={C.frost}
+                                fill="#E2E8F0"
                                 fontSize={12}
                                 fontFamily="Space Mono, monospace"
                                 className="opacity-60"

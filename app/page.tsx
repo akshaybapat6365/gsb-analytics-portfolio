@@ -9,7 +9,7 @@ import { projects } from "@/lib/projects/catalog";
 import { buildPageMetadata, buildPersonSchema } from "@/lib/seo";
 
 export const metadata: Metadata = buildPageMetadata({
-  title: "Decision Intelligence Portfolio",
+  title: { absolute: "Vaibhav Bapat | Decision Intelligence Portfolio" },
   description:
     "Interactive decision simulators for pricing, fraud, operations, geospatial strategy, infrastructure planning, and content portfolio allocation.",
   path: "/",

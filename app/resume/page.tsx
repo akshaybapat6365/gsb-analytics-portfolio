@@ -26,18 +26,32 @@ export default function ResumePage() {
   return (
     <div className="space-y-8 pb-8">
       <section className="neo-panel p-6 sm:p-8">
-        <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-slate-400">
-          Profile
-        </p>
-        <h1 className="mt-3 text-4xl font-semibold tracking-tight text-slate-50 sm:text-5xl">
-          {resumeData.name}
-        </h1>
-        <p className="mt-2 font-mono text-[12px] uppercase tracking-[0.16em] text-amber-100">
-          Decision Science · Analytics Product · Data Engineering
-        </p>
-        <p className="mt-4 max-w-4xl text-base leading-relaxed text-slate-300">
-          {resumeData.summary}
-        </p>
+        <div className="flex flex-col gap-6 lg:flex-row lg:items-start lg:justify-between">
+          <div className="max-w-4xl">
+            <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-slate-400">
+              Live credibility surface
+            </p>
+            <h1 className="mt-3 text-4xl font-semibold tracking-tight text-slate-50 sm:text-5xl">
+              {resumeData.name}
+            </h1>
+            <p className="mt-2 font-mono text-[12px] uppercase tracking-[0.16em] text-amber-100">
+              Decision Science · Analytics Product · Data Engineering
+            </p>
+            <p className="mt-4 max-w-4xl text-base leading-relaxed text-slate-300">
+              {resumeData.summary}
+            </p>
+          </div>
+
+          <div className="surface-secondary max-w-sm p-5">
+            <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-slate-500">
+              Why this page exists
+            </p>
+            <p className="mt-3 text-sm leading-6 text-slate-300">
+              The resume stays in-product so peers can verify operating scope, quantified outcomes, and contact paths without leaving the portfolio shell.
+            </p>
+          </div>
+        </div>
+
         <div className="mt-5 flex flex-wrap gap-2 text-xs text-slate-300">
           <span className="rounded-full border border-white/12 bg-white/[0.05] px-3 py-1">
             {resumeData.location}
@@ -57,6 +71,7 @@ export default function ResumePage() {
           <a
             href="/assets/resume/vaibhav-bapat-resume.pdf"
             download
+            aria-label="Download PDF resume"
             className="inline-flex items-center justify-center rounded-full border border-amber-200/35 bg-amber-300 px-5 py-2.5 text-sm font-semibold text-slate-950 no-underline hover:no-underline hover:bg-amber-200"
           >
             Download PDF Resume
@@ -68,6 +83,42 @@ export default function ResumePage() {
             Contact
           </a>
         </div>
+      </section>
+
+      <section className="grid gap-4 lg:grid-cols-[1.2fr_0.8fr]">
+        <article className="glass rounded-2xl p-5">
+          <p className="font-mono text-[11px] uppercase tracking-[0.16em] text-emerald-100/90">
+            Credibility at a glance
+          </p>
+          <div className="mt-4 grid gap-4 sm:grid-cols-2">
+            <div className="rounded-2xl border border-white/10 bg-white/[0.04] p-4">
+              <p className="font-mono text-[10px] uppercase tracking-[0.14em] text-slate-500">Experience window</p>
+              <p className="mt-2 text-2xl font-semibold text-slate-50">6+ years</p>
+              <p className="mt-2 text-sm leading-6 text-slate-400">Analytics, experimentation, and data-platform delivery across healthcare, operations, and finance-adjacent teams.</p>
+            </div>
+            <div className="rounded-2xl border border-white/10 bg-white/[0.04] p-4">
+              <p className="font-mono text-[10px] uppercase tracking-[0.14em] text-slate-500">Delivery posture</p>
+              <p className="mt-2 text-2xl font-semibold text-slate-50">Hands-on operator</p>
+              <p className="mt-2 text-sm leading-6 text-slate-400">Works across pipeline engineering, experiment design, and executive-facing decision support.</p>
+            </div>
+          </div>
+        </article>
+
+        <article className="glass rounded-2xl p-5">
+          <p className="font-mono text-[11px] uppercase tracking-[0.16em] text-amber-100/90">
+            Direct actions
+          </p>
+          <div className="mt-4 space-y-3 text-sm text-slate-300">
+            <a href={`mailto:${resumeData.email}`} className="flex items-center justify-between rounded-xl border border-white/10 bg-white/[0.04] px-4 py-3 transition hover:border-white/20 hover:bg-white/[0.08]">
+              <span>Email</span>
+              <span className="font-mono text-[10px] uppercase tracking-[0.14em] text-slate-500">Reply directly</span>
+            </a>
+            <a href="/assets/resume/vaibhav-bapat-resume.pdf" download className="flex items-center justify-between rounded-xl border border-white/10 bg-white/[0.04] px-4 py-3 transition hover:border-white/20 hover:bg-white/[0.08]">
+              <span>PDF resume</span>
+              <span className="font-mono text-[10px] uppercase tracking-[0.14em] text-slate-500">150 KB</span>
+            </a>
+          </div>
+        </article>
       </section>
 
       <section className="grid gap-4 sm:grid-cols-3">

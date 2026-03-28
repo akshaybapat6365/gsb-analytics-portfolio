@@ -2,8 +2,10 @@ import type { Metadata } from "next";
 import type { Project } from "@/lib/projects/catalog";
 import { site } from "@/lib/site";
 
+type PageMetadataTitle = string | { absolute: string };
+
 type PageMetadataInput = {
-  title: string;
+  title: PageMetadataTitle;
   description: string;
   path: string;
   theme?: string;
@@ -18,6 +20,10 @@ const THEME_TO_OG = {
   infra: "tesla-nacs",
   portfolio: "netflix-roi",
 } as const;
+
+function resolveMetadataTitle(title: PageMetadataTitle) {
+  return typeof title === "string" ? title : title.absolute;
+}
 
 function buildOgImageUrl(title: string, theme: string) {
   const params = new URLSearchParams({
@@ -39,7 +45,8 @@ export function buildPageMetadata({
   theme = THEME_TO_OG.default,
 }: PageMetadataInput): Metadata {
   const absoluteUrl = canonicalUrl(path);
-  const imageUrl = buildOgImageUrl(title, theme);
+  const resolvedTitle = resolveMetadataTitle(title);
+  const imageUrl = buildOgImageUrl(resolvedTitle, theme);
 
   return {
     title,
@@ -48,7 +55,7 @@ export function buildPageMetadata({
       canonical: absoluteUrl,
     },
     openGraph: {
-      title,
+      title: resolvedTitle,
       description,
       url: absoluteUrl,
       siteName: "VB Labs",
@@ -58,13 +65,13 @@ export function buildPageMetadata({
           url: imageUrl,
           width: 1200,
           height: 630,
-          alt: title,
+          alt: resolvedTitle,
         },
       ],
     },
     twitter: {
       card: "summary_large_image",
-      title,
+      title: resolvedTitle,
       description,
       images: [imageUrl],
     },

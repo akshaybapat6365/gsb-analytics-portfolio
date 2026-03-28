@@ -42,20 +42,23 @@ export default function AnimatedNumber({
 }: AnimatedNumberProps) {
     const [display, setDisplay] = useState(value);
     const prevRef = useRef(value);
-    const [delta, setDelta] = useState<"up" | "down" | null>(null);
     const deltaTimer = useRef<ReturnType<typeof setTimeout>>(undefined);
+    const [deltaDirection, setDeltaDirection] = useState<"up" | "down" | null>(null);
+    const [showDeltaArrow, setShowDeltaArrow] = useState(false);
 
     useEffect(() => {
         const from = prevRef.current;
         const to = value;
-        if (from === to) return;
-
-        // Step 29: Show delta arrow
-        if (showDelta) {
-            setDelta(to > from ? "up" : "down");
-            if (deltaTimer.current) clearTimeout(deltaTimer.current);
-            deltaTimer.current = setTimeout(() => setDelta(null), 1200);
+        if (showDelta && from !== to) {
+            const nextDirection = to > from ? "up" : "down";
+            requestAnimationFrame(() => {
+                setDeltaDirection(nextDirection);
+                setShowDeltaArrow(true);
+                if (deltaTimer.current) clearTimeout(deltaTimer.current);
+                deltaTimer.current = setTimeout(() => setShowDeltaArrow(false), 1200);
+            });
         }
+        if (from === to) return;
 
         const start = performance.now();
         const tick = (now: number) => {
@@ -79,16 +82,16 @@ export default function AnimatedNumber({
             style={{ fontVariantNumeric: "tabular-nums", display: "inline-flex", alignItems: "center", gap: 4 }}
         >
             {prefix}{formatValue(display, format)}{suffix}
-            {delta && (
+            {showDeltaArrow && deltaDirection && (
                 <span
-                    className={`animated-number-delta ${delta}`}
+                    className={`animated-number-delta ${deltaDirection}`}
                     style={{
                         fontSize: "0.65em",
-                        color: delta === "up" ? "var(--radar-green, #3edd8f)" : "var(--radar-crimson, #e0453a)",
+                        color: deltaDirection === "up" ? "var(--radar-green, #3edd8f)" : "var(--radar-crimson, #e0453a)",
                         animation: "deltaFade 1.2s ease-out forwards",
                     }}
                 >
-                    {delta === "up" ? "↑" : "↓"}
+                    {deltaDirection === "up" ? "↑" : "↓"}
                 </span>
             )}
         </span>
