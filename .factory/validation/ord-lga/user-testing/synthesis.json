@@ -1,0 +1,37 @@
+{
+  "milestone": "ord-lga",
+  "round": 1,
+  "status": "fail",
+  "assertionsSummary": {
+    "total": 6,
+    "passed": 2,
+    "failed": 3,
+    "blocked": 1
+  },
+  "passedAssertions": [
+    "VAL-ORDLGA-001",
+    "VAL-ORDLGA-002"
+  ],
+  "failedAssertions": [
+    {
+      "id": "VAL-ORDLGA-003",
+      "reason": "The required interactive controls for scenario state changes did not become available in the real user surface. The page stayed on the lazy gate placeholder ('Interactive controls are loading') with data-state=idle, so no selected-day readout, chart, or KPI change could be validated through the intended controls."
+    },
+    {
+      "id": "VAL-ORDLGA-004",
+      "reason": "The real user surface did not present the full chaptered analysis sequence from market intelligence through strategy/reaction analysis and model validation. Only the top trust stack, Chapter A, and the idle lazy-gate placeholder were visible during validation."
+    },
+    {
+      "id": "VAL-ORDLGA-005",
+      "reason": "A dedicated recommendation output area tying strategy output to quantified lift/risk metrics and supporting evidence was not reachable in the browser session because the deeper interactive modules did not mount. Top-of-page BLUF and lift/limitation text were present, but the recommendation area required by the assertion was not available from the user surface."
+    }
+  ],
+  "blockedAssertions": [
+    {
+      "id": "VAL-ORDLGA-006",
+      "blockedBy": "A reproducible route-level loading or failure state for the full ORD-LGA route was not triggered during validation. The only reliably reproducible loading surface was the lower lazy interactive gate, which is not sufficient evidence for a route-level recoverability assertion under the stated constraints."
+    }
+  ],
+  "appliedUpdates": [],
+  "previousRound": null
+}

@@ -1,0 +1,82 @@
+{
+  "assertionResults": [
+    {
+      "id": "VAL-ORDLGA-001",
+      "status": "pass",
+      "reason": "The hero immediately identifies the route as an ORD→LGA price-war simulator, names United vs. Delta, and frames the surface as a modeled policy/war-room experience.",
+      "evidence": [
+        "Screenshot: /home/mostltyharmless/.factory/missions/0bc5abab-8b5e-4fc7-8d9d-3feb9bdd1a02/evidence/ord-lga/ordlga-core/VAL-ORDLGA-001-hero.png",
+        "Observed visible copy: 'Route War Room ORD → LGA Q2 2023 Delta reaction modeled', 'United vs. Delta: ORD–LGA price war simulator', and 'Multi-agent pricing simulation with a DQN-style policy lens and inferred competitor response.'",
+        "Console/errors check: browser console showed three failed-resource 500s during reload, but the hero still rendered and remained usable."
+      ]
+    },
+    {
+      "id": "VAL-ORDLGA-002",
+      "status": "pass",
+      "reason": "Near the top, the page shows explicit lineage shares, a revenue lift confidence interval, mixed/model wording, and limitation language instead of an unqualified upside claim.",
+      "evidence": [
+        "Screenshot: /home/mostltyharmless/.factory/missions/0bc5abab-8b5e-4fc7-8d9d-3feb9bdd1a02/evidence/ord-lga/ordlga-core/VAL-ORDLGA-002-lineage-top.png",
+        "Observed visible copy: 'Data Lineage obs 37% inf 24% mod 39%', 'Revenue Lift CI $58K — $96K', 'MIXED · DOT DB1B anchors + modeled policy simulation', and 'Limitation: Competitor policy is inferred, not observed from internal airline systems.'",
+        "Console/errors check: browser console showed three failed-resource 500s during reload; no page crash occurred."
+      ]
+    },
+    {
+      "id": "VAL-ORDLGA-003",
+      "status": "fail",
+      "reason": "The required interactive controls for scenario state changes did not become available in the real user surface. The page stayed on the lazy gate placeholder ('Interactive controls are loading') with data-state=idle, so no selected-day readout, chart, or KPI change could be validated through the intended controls.",
+      "evidence": [
+        "Screenshot: /home/mostltyharmless/.factory/missions/0bc5abab-8b5e-4fc7-8d9d-3feb9bdd1a02/evidence/ord-lga/ordlga-core/VAL-ORDLGA-003-after-recommendation-filter.png",
+        "Observed DOM state near the interactive section: data-testid='lazy-interactive-gate', data-state='idle'.",
+        "Observed visible placeholder copy: 'Interactive Chapter B · Counterfactual Command Sandbox', 'Interactive controls are loading. Scroll a bit further or wait one moment for the full simulator.', 'Incoming modules: Scenario sliders, stress charts, and recommendation console.'",
+        "Only visible buttons during validation were annotation-rail filters ('all', 'shock', 'anomaly', 'inflection', 'recommendation'); no visible selected-day output or KPI changed after interaction.",
+        "Console/errors check: three failed-resource 500s were present during reload."
+      ]
+    },
+    {
+      "id": "VAL-ORDLGA-004",
+      "status": "fail",
+      "reason": "The real user surface did not present the full chaptered analysis sequence from market intelligence through strategy/reaction analysis and model validation. Only the top trust stack, Chapter A, and the idle lazy-gate placeholder were visible during validation.",
+      "evidence": [
+        "Screenshot: /home/mostltyharmless/.factory/missions/0bc5abab-8b5e-4fc7-8d9d-3feb9bdd1a02/evidence/ord-lga/ordlga-core/VAL-ORDLGA-004-chapters.png",
+        "Observed visible headings/text in the rendered page: 'Current Run Trust Detail', 'Counterfactual Pricing Simulator', and the idle 'Interactive Chapter B · Counterfactual Command Sandbox' placeholder.",
+        "Expected later user-visible chapter coverage for strategy/reaction and validation was not surfaced in the loaded page during this run.",
+        "Console/errors check: three failed-resource 500s were present during reload."
+      ]
+    },
+    {
+      "id": "VAL-ORDLGA-005",
+      "status": "fail",
+      "reason": "A dedicated recommendation output area tying strategy output to quantified lift/risk metrics and supporting evidence was not reachable in the browser session because the deeper interactive modules did not mount. Top-of-page BLUF and lift/limitation text were present, but the recommendation area required by the assertion was not available from the user surface.",
+      "evidence": [
+        "Screenshot: /home/mostltyharmless/.factory/missions/0bc5abab-8b5e-4fc7-8d9d-3feb9bdd1a02/evidence/ord-lga/ordlga-core/VAL-ORDLGA-005-decision-area.png",
+        "Observed top-level uncertainty-aware copy: 'Modeled incremental Q2 lift $567K' and 'Limitation: Competitor policy is inferred, not observed from internal airline systems.'",
+        "Observed blocker in the same run: the lazy interactive section remained in 'Interactive controls are loading' state, so the deeper recommendation console/evidence-linked output did not appear for validation.",
+        "Console/errors check: three failed-resource 500s were present during reload."
+      ]
+    },
+    {
+      "id": "VAL-ORDLGA-006",
+      "status": "blocked",
+      "reason": "A reproducible route-level loading or failure state for the full ORD-LGA route was not triggered during validation. The only reliably reproducible loading surface was the lower lazy interactive gate, which is not sufficient evidence for a route-level recoverability assertion under the stated constraints.",
+      "evidence": [
+        "Screenshot: /home/mostltyharmless/.factory/missions/0bc5abab-8b5e-4fc7-8d9d-3feb9bdd1a02/evidence/ord-lga/ordlga-core/VAL-ORDLGA-006-loading-state.png",
+        "Observed lazy-gate placeholder copy: 'Interactive controls are loading. Scroll a bit further or wait one moment for the full simulator.'",
+        "Observed DOM state at the placeholder: data-testid='lazy-interactive-gate', data-state='idle'.",
+        "No reproducible route-level error page or full-route loading shell was encountered through normal browsing on the shared production-like app."
+      ]
+    }
+  ],
+  "frictions": [
+    "agent-browser text capture on this Next.js App Router page included streamed payload/script text, so validation relied primarily on screenshots and targeted DOM checks.",
+    "The lower interactive ORD-LGA surface remained stuck at the lazy gate placeholder during the session, preventing user-surface validation of the intended sliders and recommendation console."
+  ],
+  "blockers": [
+    "The page consistently emitted three browser console 'Failed to load resource: the server responded with a status of 500' messages during reloads.",
+    "VAL-ORDLGA-006 could not be fully exercised because no reproducible route-level loading/failure state was triggerable through normal browsing on the shared localhost:3501 runtime."
+  ],
+  "toolsUsed": [
+    "agent-browser",
+    "curl"
+  ],
+  "summary": "Validated 6 ORD-LGA assertions on http://localhost:3501/projects/ord-lga-price-war: 2 passed, 3 failed, and 1 was blocked. The route identity and top-of-page lineage/uncertainty framing are clear, but the deeper interactive ORD-LGA experience did not mount in the user surface, preventing control-driven state changes and hiding later chapter/recommendation content."
+}
