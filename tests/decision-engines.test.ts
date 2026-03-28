@@ -48,6 +48,19 @@ describe("decision engines", () => {
     }
   });
 
+  it("fraud payload exposes recommendation evidence rows for each triage posture", () => {
+    const payload = loadPayload("data/fraud/payload.json", FraudPayloadSchema);
+    const recommendationIds = new Set(payload.decisionEvidence?.map((item) => item.recommendationId));
+
+    expect(recommendationIds).toEqual(
+      new Set([
+        "fraud-observe-only",
+        "fraud-watchlist-monitor",
+        "fraud-escalate-review",
+      ]),
+    );
+  });
+
   it("shrink engine computes finite ROI outputs", () => {
     const payload = loadPayload("data/shrink/payload.json", ShrinkPayloadSchema);
     const result = runShrinkDecisionEngine(payload);

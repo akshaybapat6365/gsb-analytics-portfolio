@@ -13,6 +13,10 @@ import { DecisionConsole } from "@/components/story/DecisionConsole";
 import { formatNumber, formatPct } from "@/lib/metrics/format";
 import type { FraudPayload } from "@/lib/schemas/fraud";
 import { clamp } from "@/lib/metrics/math";
+import {
+  buildFraudRecommendationContract,
+  type FraudRecommendationLabel,
+} from "@/lib/viewmodels/fraud";
 
 const ACCOUNTING_KEYS = [
   "revenue",
@@ -219,7 +223,7 @@ export default function FraudClient({ payload }: { payload: FraudPayload }) {
     ];
     const triggerThreshold = clamp(0.64 + shortIntensity / 250 + scenarioConfig.riskLift / 2, 0.55, 0.92);
     const watchlistEntry = watchlist[0] ?? null;
-    const recommendation =
+    const recommendation: FraudRecommendationLabel =
       !latest || latest.adjustedRisk < 0.62
         ? "Observe only"
         : latest.adjustedRisk >= triggerThreshold + 0.08
@@ -232,13 +236,20 @@ export default function FraudClient({ payload }: { payload: FraudPayload }) {
           ? `Current signals are elevated but still suited to triage monitoring while investigators wait for another corroborating event or disclosure.`
           : `Current evidence does not support an immediate escalation; preserve monitoring and avoid over-reading modeled anomalies as verdicts.`;
 
-    const recommendationEvidence = [
-      `${scenarioConfig.label} keeps the posture ${scenarioConfig.reviewPosture.toLowerCase()}`,
-      watchlistEntry
-        ? `${watchlistEntry.ticker} leads the queue at ${formatPct(watchlistEntry.score, { digits: 0 })} adjusted risk.`
-        : "No watchlist leader available for the current scenario.",
-      `${formatNumber(links.length)} similarity links survive the current ${Math.round(threshold * 100)}% cutoff.`,
-    ];
+    const recommendationContract = buildFraudRecommendationContract({
+      payload,
+      recommendation,
+      scenarioLabel: scenarioConfig.label,
+      reviewPosture: scenarioConfig.reviewPosture,
+      selectedTicker,
+      latestAdjustedRisk: latest?.adjustedRisk ?? null,
+      triggerThreshold,
+      topWatchlistTicker: watchlistEntry?.ticker ?? null,
+      topWatchlistScore: watchlistEntry?.score ?? null,
+      retainedLinkCount: links.length,
+      linkCutoffPct: Math.round(threshold * 100),
+      alphaBand,
+    });
 
     return {
       scenarioConfig,
@@ -258,7 +269,7 @@ export default function FraudClient({ payload }: { payload: FraudPayload }) {
       alphaCenter,
       recommendation,
       recommendationReason,
-      recommendationEvidence,
+      recommendationContract,
     };
   }, [payload, ticker, scenario, deceptionWeight, linkCutoff, shortIntensity]);
 
@@ -742,7 +753,7 @@ export default function FraudClient({ payload }: { payload: FraudPayload }) {
             <section className="glass rounded-2xl p-5">
               <p className="font-mono text-[11px] uppercase tracking-[0.16em] text-emerald-100/85">Why this recommendation remains bounded</p>
               <div className="mt-4 space-y-3 text-sm leading-relaxed text-slate-300">
-                {derived.recommendationEvidence.map((note) => (
+                {derived.recommendationContract.boundedNotes.map((note) => (
                   <p key={note} className="rounded-xl border border-white/10 bg-white/[0.03] px-3 py-3">
                     {note}
                   </p>
@@ -758,7 +769,7 @@ export default function FraudClient({ payload }: { payload: FraudPayload }) {
           chapter="Evidence"
           title="Evidence and recommendation trace"
           description="Evidence rail binds recommendation IDs to confidence bands, primary drivers, and source-linked annotations."
-          insight={`Current recommendation trace uses ${formatNumber(payload.decisionEvidence?.length ?? 0)} evidence blocks.`}
+          insight={`Current recommendation trace uses ${formatNumber(derived.recommendationContract.evidence.length)} evidence block${derived.recommendationContract.evidence.length === 1 ? "" : "s"} for the active posture.`}
           impact="Provides auditable handoff from forensic signal stack to portfolio action recommendation."
           annotationCount={chapterDAnnotations.length}
           tone="crimson"
@@ -772,10 +783,10 @@ export default function FraudClient({ payload }: { payload: FraudPayload }) {
               maxItems={6}
             />
             <DecisionEvidencePanel
-              title="Triage Evidence Pack"
-              summary="Evidence blocks support an investigative queue. They rank who deserves deeper review; they do not establish fraud as a legal fact."
-              footer="Trust boundary: similarity links, score bands, and alpha ranges remain modeled decision aids built from filing proxies and synthetic backtest labels."
-              evidence={payload.decisionEvidence}
+              title={derived.recommendationContract.evidenceTitle}
+              summary={derived.recommendationContract.evidenceSummary}
+              footer={derived.recommendationContract.evidenceFooter}
+              evidence={derived.recommendationContract.evidence}
             />
           </div>
         </StoryChapterShell>

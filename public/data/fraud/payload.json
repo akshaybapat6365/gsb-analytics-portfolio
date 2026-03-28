@@ -367,16 +367,42 @@
   "decisionEvidence": [
     {
       "confidenceBand": [
-        0.47,
-        0.79
+        0.28,
+        0.52
       ],
-      "counterfactualDelta": "100.0% peak risk score",
+      "counterfactualDelta": "Stand-down posture keeps the current filing on passive watch while adjusted risk remains below the escalation bands.",
       "drivers": [
-        "beneish-score drift",
-        "deception marker slope",
-        "similarity cluster weight"
+        "latest adjusted risk stays below the escalation threshold",
+        "watchlist queue lacks a corroborated lead case",
+        "similarity links remain sparse enough to treat the pattern as weak context"
       ],
-      "recommendationId": "fraud-short-basket"
+      "recommendationId": "fraud-observe-only"
+    },
+    {
+      "confidenceBand": [
+        0.46,
+        0.72
+      ],
+      "counterfactualDelta": "Watchlist posture keeps the issuer in the review queue while investigators wait for another corroborating filing or transcript event.",
+      "drivers": [
+        "adjusted risk clears the monitor band but not the full escalation band",
+        "top watchlist score identifies who should stay at the front of the queue",
+        "similarity cluster density supports triage follow-up without implying proof"
+      ],
+      "recommendationId": "fraud-watchlist-monitor"
+    },
+    {
+      "confidenceBand": [
+        0.58,
+        0.84
+      ],
+      "counterfactualDelta": "Escalation posture is triggered when adjusted risk and corroborating network pressure rise high enough to justify deeper forensic review.",
+      "drivers": [
+        "adjusted risk exceeds the current escalation band",
+        "deception marker acceleration compounds accounting drift",
+        "similarity cluster pressure supports a deeper forensic review queue"
+      ],
+      "recommendationId": "fraud-escalate-review"
     }
   ],
   "filings": [
