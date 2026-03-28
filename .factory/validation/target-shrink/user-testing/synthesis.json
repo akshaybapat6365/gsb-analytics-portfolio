@@ -1,0 +1,26 @@
+{
+  "milestone": "target-shrink",
+  "round": 1,
+  "status": "fail",
+  "assertionsSummary": {
+    "total": 5,
+    "passed": 4,
+    "failed": 1,
+    "blocked": 0
+  },
+  "passedAssertions": [
+    "VAL-SHRINK-001",
+    "VAL-SHRINK-003",
+    "VAL-SHRINK-004",
+    "VAL-SHRINK-005"
+  ],
+  "failedAssertions": [
+    {
+      "id": "VAL-SHRINK-002",
+      "reason": "Changing the threshold and false-positive cost controls updated the current threshold, expected net value, and triggered incidents, but the recommended threshold remained 50%, so the required live recommendation update was not observed."
+    }
+  ],
+  "blockedAssertions": [],
+  "appliedUpdates": [],
+  "previousRound": null
+}

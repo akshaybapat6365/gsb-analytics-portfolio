@@ -1,0 +1,116 @@
+{
+  "groupId": "shrink-route",
+  "testedAt": "2026-03-28T08:18:05-06:00",
+  "isolation": {
+    "appUrl": "http://localhost:3501",
+    "route": "/projects/target-shrink",
+    "missionDir": "/home/mostltyharmless/.factory/missions/0bc5abab-8b5e-4fc7-8d9d-3feb9bdd1a02",
+    "evidenceDir": "/home/mostltyharmless/.factory/missions/0bc5abab-8b5e-4fc7-8d9d-3feb9bdd1a02/evidence/target-shrink/shrink-route"
+  },
+  "toolsUsed": [
+    "agent-browser",
+    "curl"
+  ],
+  "assertionResults": [
+    {
+      "id": "VAL-SHRINK-001",
+      "title": "Target Shrink frames the simulator as expected-value loss prevention",
+      "status": "pass",
+      "observed": "The hero and BLUF explicitly frame the route as a threshold-policy net-value simulator rather than an accuracy dashboard. Visible copy included \"Target Shrink Simulator: operations floor intervention engine\", \"Zone pressure and stop-rule economics unified in one control room so intervention posture is tuned for net value, not classifier vanity.\", and the BLUF line \"The optimal stop rule is not 'maximize accuracy' but 'maximize expected value'\".",
+      "evidence": {
+        "screenshots": [
+          "target-shrink/shrink-route/VAL-SHRINK-001-hero-annotated.png"
+        ],
+        "consoleErrors": "none",
+        "network": "GET /projects/target-shrink -> 200 (validated via curl before browser run)"
+      },
+      "issues": null
+    },
+    {
+      "id": "VAL-SHRINK-002",
+      "title": "Threshold and false-positive controls update economics live",
+      "status": "fail",
+      "observed": "Changing controls visibly updated some but not all expected outputs. Before change: current threshold 85%, expected net value -$2K, recommended threshold 50%, triggered incidents 3. After setting detain threshold to 50% and false-positive multiplier to 180%: current threshold 50%, expected net value -$9K, recommended threshold stayed 50%, triggered incidents increased to 7. Because the recommended threshold did not visibly change under the tested assumption change, the full assertion was not satisfied.",
+      "evidence": {
+        "screenshots": [
+          "target-shrink/shrink-route/VAL-SHRINK-001-hero-annotated.png",
+          "target-shrink/shrink-route/VAL-SHRINK-002-after-controls.png"
+        ],
+        "consoleErrors": "none",
+        "network": "No additional XHR/fetch requests captured; updates appeared client-side in the rendered route"
+      },
+      "issues": "Recommended threshold remained 50% after changing both the threshold and false-positive cost controls, while current threshold and economics changed visibly."
+    },
+    {
+      "id": "VAL-SHRINK-003",
+      "title": "Zone and incident exploration stay synchronized",
+      "status": "pass",
+      "observed": "Selecting the Cosmetics zone changed the synchronized operator views from Self-checkout to Cosmetics. The selected zone card gained the highlighted state, the insight text changed to \"Cosmetics pressure 66% with 23 incidents.\", the timeline entries switched to Cosmetics events (for example \"t+12s · sweep Cosmetics 66% theft likelihood · crosses threshold\"), the zone event index advanced from 0 to 1 after selecting an event, and the event-detail area exposed the Cosmetics-specific counterfactual \"Counterfactual delta: -$35K monthly net after 5 threshold-crossing incidents justify active intervention in Cosmetics\".",
+      "evidence": {
+        "screenshots": [
+          "target-shrink/shrink-route/VAL-SHRINK-003-zone-cosmetics.png",
+          "target-shrink/shrink-route/VAL-SHRINK-003-event-detail-cosmetics.png"
+        ],
+        "consoleErrors": "none",
+        "network": "No additional XHR/fetch requests captured; zone/event synchronization occurred in-page"
+      },
+      "issues": null
+    },
+    {
+      "id": "VAL-SHRINK-004",
+      "title": "Shrink recommendation state and evidence remain inspectable under sparse data",
+      "status": "pass",
+      "observed": "The decision/evidence area stayed explicit under the current route data conditions. The route surfaced \"Recommendation evidence trace\", the message \"Evidence and degraded-feed messaging stay inspectable even when evidence is sparse, stale, or unavailable.\", and the current-state note \"Current recommendation trace uses 1 evidence block for the active scenario.\" The selected scenario also kept a visible decision summary with a counterfactual delta rather than silently collapsing evidence state.",
+      "evidence": {
+        "screenshots": [
+          "target-shrink/shrink-route/VAL-SHRINK-004-decision-evidence-full.png"
+        ],
+        "consoleErrors": "none",
+        "network": "No additional XHR/fetch requests captured while inspecting the decision/evidence area"
+      },
+      "issues": null
+    },
+    {
+      "id": "VAL-SHRINK-005",
+      "title": "Shrink loading or route failures remain recoverable",
+      "status": "pass",
+      "observed": "Both supported recoverability probes showed route-specific copy and visible exit paths. The loading probe displayed \"LOADING\", \"Target Shrink Simulator\", and \"Recoverability probe active: threshold frontier and incident queue are rehydrating while the recovery path stays visible\" with \"Open live route\" and \"Back to projects\" links. The error probe displayed \"ROUTE ERROR\", a Target Shrink-specific recoverability message, diagnostics text \"message: Recoverability probe triggered with ?routeProbe=error\", and the same recovery links.",
+      "evidence": {
+        "screenshots": [
+          "target-shrink/shrink-route/VAL-SHRINK-005-loading-probe.png",
+          "target-shrink/shrink-route/VAL-SHRINK-005-error-probe.png"
+        ],
+        "consoleErrors": "none",
+        "network": "GET /projects/target-shrink?routeProbe=loading -> 200; GET /projects/target-shrink?routeProbe=error -> 200"
+      },
+      "issues": null
+    }
+  ],
+  "frictions": [
+    {
+      "description": "Raw body-text extraction on this Next.js App Router page included streamed payload/script text, so screenshots plus targeted DOM text checks were needed to capture exact visible labels and values reliably.",
+      "resolved": true,
+      "resolution": "Used annotated screenshots and focused in-browser DOM queries for the exact visible threshold/evidence/recoverability copy.",
+      "affectedAssertions": [
+        "VAL-SHRINK-001",
+        "VAL-SHRINK-002",
+        "VAL-SHRINK-003",
+        "VAL-SHRINK-004",
+        "VAL-SHRINK-005"
+      ]
+    }
+  ],
+  "blockers": [],
+  "evidence": {
+    "files": [
+      "/home/mostltyharmless/.factory/missions/0bc5abab-8b5e-4fc7-8d9d-3feb9bdd1a02/evidence/target-shrink/shrink-route/VAL-SHRINK-001-hero-annotated.png",
+      "/home/mostltyharmless/.factory/missions/0bc5abab-8b5e-4fc7-8d9d-3feb9bdd1a02/evidence/target-shrink/shrink-route/VAL-SHRINK-002-after-controls.png",
+      "/home/mostltyharmless/.factory/missions/0bc5abab-8b5e-4fc7-8d9d-3feb9bdd1a02/evidence/target-shrink/shrink-route/VAL-SHRINK-003-zone-cosmetics.png",
+      "/home/mostltyharmless/.factory/missions/0bc5abab-8b5e-4fc7-8d9d-3feb9bdd1a02/evidence/target-shrink/shrink-route/VAL-SHRINK-003-event-detail-cosmetics.png",
+      "/home/mostltyharmless/.factory/missions/0bc5abab-8b5e-4fc7-8d9d-3feb9bdd1a02/evidence/target-shrink/shrink-route/VAL-SHRINK-004-decision-evidence-full.png",
+      "/home/mostltyharmless/.factory/missions/0bc5abab-8b5e-4fc7-8d9d-3feb9bdd1a02/evidence/target-shrink/shrink-route/VAL-SHRINK-005-loading-probe.png",
+      "/home/mostltyharmless/.factory/missions/0bc5abab-8b5e-4fc7-8d9d-3feb9bdd1a02/evidence/target-shrink/shrink-route/VAL-SHRINK-005-error-probe.png"
+    ]
+  },
+  "summary": "Tested 5 assigned Target Shrink assertions on http://localhost:3501. Passed VAL-SHRINK-001, VAL-SHRINK-003, VAL-SHRINK-004, and VAL-SHRINK-005. Failed VAL-SHRINK-002 because current threshold and net economics changed after control updates, but the recommended threshold remained 50% under the tested assumption change."
+}
