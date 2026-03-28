@@ -10,9 +10,14 @@ import { RouteReveal } from "@/components/motion/RouteReveal";
 import { NarrativeStrip } from "@/components/story/NarrativeStrip";
 import { DecisionEvidencePanel } from "@/components/story/DecisionEvidencePanel";
 import { DecisionConsole } from "@/components/story/DecisionConsole";
-import { clamp, lerp } from "@/lib/metrics/math";
+import { clamp } from "@/lib/metrics/math";
 import { formatNumber, formatPct, formatUSD } from "@/lib/metrics/format";
 import type { ShrinkPayload } from "@/lib/schemas/shrink";
+import {
+  buildShrinkEventRef,
+  deriveShrinkScenario,
+  pickShrinkChapterAnnotations,
+} from "@/lib/viewmodels/shrinkScenario";
 
 const EVENT_COLORS: Record<ShrinkPayload["events"][number]["type"], string> = {
   scan: "rgba(73,95,69,0.95)",
@@ -20,135 +25,58 @@ const EVENT_COLORS: Record<ShrinkPayload["events"][number]["type"], string> = {
   switch: "rgba(157,49,49,0.95)",
 };
 
-function interp(
-  left: { threshold: number; preventedLoss: number; falsePositiveRate: number; roi: number },
-  right: { threshold: number; preventedLoss: number; falsePositiveRate: number; roi: number },
-  alpha: number,
-) {
-  return {
-    threshold: lerp(left.threshold, right.threshold, alpha),
-    preventedLoss: lerp(left.preventedLoss, right.preventedLoss, alpha),
-    falsePositiveRate: lerp(left.falsePositiveRate, right.falsePositiveRate, alpha),
-    roi: lerp(left.roi, right.roi, alpha),
-  };
-}
+const POSTURE_COPY = {
+  observe: {
+    label: "observe",
+    tone: "amber" as const,
+    title: "Observe with low-friction interventions",
+    summary: "Queue pressure remains light, so keep floor coverage visible while avoiding unnecessary detains.",
+  },
+  detain: {
+    label: "detain",
+    tone: "amber" as const,
+    title: "Targeted detain workflow",
+    summary: "Trigger volume is meaningful enough to hold the zone on targeted checks and manager-ready response scripts.",
+  },
+  escalate: {
+    label: "escalate",
+    tone: "crimson" as const,
+    title: "Escalate store-floor posture",
+    summary: "Triggered queue and expected-value upside justify active intervention, asset protection staffing, and incident logging discipline.",
+  },
+};
 
-function pickChapterAnnotations(
-  annotations: NonNullable<ShrinkPayload["annotations"]>,
-  keywords: string[],
-) {
-  const pool = annotations.filter((annotation) =>
-    keywords.some((keyword) => annotation.moduleId.includes(keyword)),
-  );
-  return pool.length > 0 ? pool : annotations;
-}
+const EVIDENCE_MODE_COPY = {
+  clear: {
+    label: "Evidence coverage healthy",
+    tone: "emerald" as const,
+    summary: "Current trust inputs are ready and recommendation evidence is populated for the active operating state.",
+  },
+  sparse: {
+    label: "Sparse evidence mode",
+    tone: "amber" as const,
+    summary: "Some decision evidence or readiness signals are thin; keep the posture visible but interpret confidence conservatively.",
+  },
+  degraded: {
+    label: "Degraded feed posture",
+    tone: "crimson" as const,
+    summary: "At least one upstream module is stale, blocked, or unavailable; preserve the queue workflow, but treat economics as partial guidance only.",
+  },
+};
 
 export default function ShrinkClient({ payload }: { payload: ShrinkPayload }) {
   const [threshold, setThreshold] = useState(0.85);
   const [falsePositiveMultiplier, setFalsePositiveMultiplier] = useState(100);
   const [selectedZone, setSelectedZone] = useState<string>(payload.store.zones[0]?.id ?? "");
-  const [eventCursor, setEventCursor] = useState(0);
+  const [selectedEventRef, setSelectedEventRef] = useState(() => {
+    const firstEvent = payload.events[0];
+    return firstEvent ? buildShrinkEventRef(firstEvent, 0) : null;
+  });
 
-  const derived = useMemo(() => {
-    const outcomes = [...payload.policy.outcomes].sort((a, b) => a.threshold - b.threshold);
-
-    const target = clamp(
-      threshold,
-      outcomes[0]?.threshold ?? threshold,
-      outcomes.at(-1)?.threshold ?? threshold,
-    );
-
-    let left = outcomes[0]!;
-    let right = outcomes.at(-1)!;
-    for (let index = 0; index < outcomes.length - 1; index += 1) {
-      const a = outcomes[index]!;
-      const b = outcomes[index + 1]!;
-      if (target >= a.threshold && target <= b.threshold) {
-        left = a;
-        right = b;
-        break;
-      }
-    }
-
-    const alpha =
-      right.threshold === left.threshold
-        ? 0
-        : (target - left.threshold) / (right.threshold - left.threshold);
-    const point = interp(left, right, alpha);
-
-    const fpMultiplier = clamp(falsePositiveMultiplier / 100, 0.4, 2.2);
-    const adjustedFalsePositiveCost = payload.economics.falsePositiveCost * fpMultiplier;
-    const eventVolume = payload.events.length;
-
-    const objectiveCurve = outcomes.map((outcome) => {
-      const falsePositiveCost =
-        outcome.falsePositiveRate * eventVolume * adjustedFalsePositiveCost;
-      const recoveredNet = outcome.preventedLoss - falsePositiveCost;
-      return {
-        ...outcome,
-        falsePositiveCost,
-        recoveredNet,
-      };
-    });
-
-    const expectedFalsePositiveCost =
-      point.falsePositiveRate * eventVolume * adjustedFalsePositiveCost;
-    const expectedNetValue = point.preventedLoss - expectedFalsePositiveCost;
-
-    const recommended =
-      objectiveCurve.reduce((best, value) =>
-        value.recoveredNet > best.recoveredNet ? value : best,
-      ) ?? objectiveCurve[0];
-
-    const eventCountsByZone = payload.store.zones.reduce<Record<string, number>>(
-      (acc, zone) => {
-        acc[zone.id] = 0;
-        return acc;
-      },
-      {},
-    );
-    for (const event of payload.events) {
-      eventCountsByZone[event.zoneId] = (eventCountsByZone[event.zoneId] ?? 0) + 1;
-    }
-
-    const zone = payload.store.zones.find((item) => item.id === selectedZone) ?? payload.store.zones[0]!;
-    const zoneEvents = payload.events.filter((event) => event.zoneId === zone.id);
-    const zoneTriggered = zoneEvents.filter((event) => event.pTheft >= target);
-
-    const zoneMix = zoneEvents.reduce<Record<string, number>>((acc, event) => {
-      acc[event.type] = (acc[event.type] ?? 0) + 1;
-      return acc;
-    }, {});
-
-    const cursor = clamp(eventCursor, 0, Math.max(0, zoneEvents.length - 1));
-    const selectedEvent = zoneEvents[cursor] ?? null;
-
-    const monthlyRecovered = point.preventedLoss * 4;
-    const monthlyFalsePositive = expectedFalsePositiveCost * 4;
-    const monthlyNet = monthlyRecovered - monthlyFalsePositive;
-
-    return {
-      outcomes,
-      point,
-      fpMultiplier,
-      adjustedFalsePositiveCost,
-      expectedFalsePositiveCost,
-      expectedNetValue,
-      objectiveCurve,
-      recommended,
-      eventCountsByZone,
-      zone,
-      zoneEvents,
-      zoneTriggered,
-      zoneMix,
-      eventVolume,
-      selectedEvent,
-      cursor,
-      monthlyRecovered,
-      monthlyFalsePositive,
-      monthlyNet,
-    };
-  }, [payload, threshold, falsePositiveMultiplier, selectedZone, eventCursor]);
+  const derived = useMemo(
+    () => deriveShrinkScenario(payload, threshold, falsePositiveMultiplier, selectedZone, selectedEventRef),
+    [payload, threshold, falsePositiveMultiplier, selectedZone, selectedEventRef],
+  );
 
   const frontierChart: EChartsOption = {
     backgroundColor: "transparent",
@@ -350,10 +278,16 @@ export default function ShrinkClient({ payload }: { payload: ShrinkPayload }) {
   }
 
   const annotations = payload.annotations ?? [];
-  const chapterAAnnotations = pickChapterAnnotations(annotations, ["zone", "map", "pressure"]);
-  const chapterBAnnotations = pickChapterAnnotations(annotations, ["policy", "frontier", "event", "threshold"]);
-  const chapterCAnnotations = pickChapterAnnotations(annotations, ["recommendation", "decision"]);
-  const chapterDAnnotations = pickChapterAnnotations(annotations, ["evidence", "recommendation"]);
+  const chapterAAnnotations = pickShrinkChapterAnnotations(annotations, ["zone", "map", "pressure"]);
+  const chapterBAnnotations = pickShrinkChapterAnnotations(annotations, ["policy", "frontier", "event", "threshold"]);
+  const chapterCAnnotations = pickShrinkChapterAnnotations(annotations, ["recommendation", "decision"]);
+  const chapterDAnnotations = pickShrinkChapterAnnotations(annotations, ["evidence", "recommendation"]);
+
+  const evidenceSummary = EVIDENCE_MODE_COPY[derived.evidenceMode];
+  const postureSummary = POSTURE_COPY[derived.posture];
+  const activeEventIndex = derived.selectedEvent
+    ? payload.events.findIndex((event) => event === derived.selectedEvent)
+    : -1;
 
   return (
     <div className="space-y-8">
@@ -455,7 +389,12 @@ export default function ShrinkClient({ payload }: { payload: ShrinkPayload }) {
                         strokeWidth={active ? 2 : 1}
                         onClick={() => {
                           setSelectedZone(zone.id);
-                          setEventCursor(0);
+                          const nextEvent = payload.events.find((event) => event.zoneId === zone.id) ?? null;
+                          setSelectedEventRef(
+                            nextEvent
+                              ? buildShrinkEventRef(nextEvent, payload.events.findIndex((event) => event === nextEvent))
+                              : null,
+                          );
                         }}
                       />
                       <text x={x + 12} y={y + 20} fill="rgba(226,232,240,0.9)" fontSize="12">{zone.name}</text>
@@ -483,7 +422,10 @@ export default function ShrinkClient({ payload }: { payload: ShrinkPayload }) {
                     type="button"
                     onClick={() => {
                       setSelectedZone(zone.id);
-                      setEventCursor(0);
+                      const nextIndex = payload.events.findIndex((event) => event.zoneId === zone.id);
+                      setSelectedEventRef(
+                        nextIndex >= 0 ? buildShrinkEventRef(payload.events[nextIndex]!, nextIndex) : null,
+                      );
                     }}
                     className={
                       zone.id === derived.zone.id
@@ -515,7 +457,7 @@ export default function ShrinkClient({ payload }: { payload: ShrinkPayload }) {
         <StoryChapterShell
           chapter="Stress / Scenario"
           title="Threshold frontier and incident stream"
-          description="Efficient frontier plots false-positive cost vs recovered net while event stream scrubber exposes intervention load."
+          description="Efficient frontier plots false-positive cost vs recovered net while the event stream stays synchronized with the active zone and selected incident."
           insight={`Current operating point: ${formatUSD(derived.expectedFalsePositiveCost)} FP cost vs ${formatUSD(derived.expectedNetValue)} recovered net.`}
           impact="Frontier + stream inspection prevents overreaction by tying each threshold choice to queue volume and economic drag."
           annotationCount={chapterBAnnotations.length}
@@ -530,20 +472,57 @@ export default function ShrinkClient({ payload }: { payload: ShrinkPayload }) {
               </div>
               <div className="space-y-3 px-5 py-5 text-sm text-slate-300">
                 <Slider
-                  label="Event index"
+                  label="Zone event index"
                   value={derived.cursor}
                   min={0}
                   max={Math.max(0, derived.zoneEvents.length - 1)}
                   step={1}
-                  onChange={(value) => setEventCursor(value)}
+                  onChange={(value) => {
+                    const nextIndex = Math.round(value);
+                    const nextEvent = derived.zoneEvents[nextIndex] ?? null;
+                    setSelectedEventRef(
+                      nextEvent
+                        ? buildShrinkEventRef(
+                            nextEvent,
+                            payload.events.findIndex((event) => event === nextEvent),
+                          )
+                        : null,
+                    );
+                  }}
                   formatValue={(value) => `${Math.round(value)}`}
                 />
                 <p><span className="text-slate-100">Event type:</span> {derived.selectedEvent?.type ?? "—"}</p>
                 <p><span className="text-slate-100">P(theft):</span> {derived.selectedEvent ? formatPct(derived.selectedEvent.pTheft, { digits: 0 }) : "—"}</p>
                 <p><span className="text-slate-100">Threshold crossed:</span> {derived.selectedEvent && derived.selectedEvent.pTheft >= threshold ? "yes" : "no"}</p>
+                <p><span className="text-slate-100">Global incident id:</span> {activeEventIndex >= 0 ? `#${activeEventIndex}` : "—"}</p>
                 <p><span className="text-slate-100">Trigger queue:</span> {formatNumber(derived.zoneTriggered.length)} incidents</p>
               </div>
             </section>
+          </div>
+
+          <div className="grid gap-2 md:grid-cols-2 xl:grid-cols-3">
+            {derived.zoneEvents.map((event) => {
+              const globalIndex = payload.events.findIndex((candidate) => candidate === event);
+              const isActive = derived.selectedEvent === event;
+              return (
+                <button
+                  key={`${event.zoneId}-${event.t}-${event.type}`}
+                  type="button"
+                  onClick={() => setSelectedEventRef(buildShrinkEventRef(event, globalIndex))}
+                  className={
+                    isActive
+                      ? "rounded-2xl border border-amber-300/40 bg-amber-300/12 px-3 py-3 text-left"
+                      : "rounded-2xl border border-white/10 bg-white/[0.03] px-3 py-3 text-left hover:bg-white/[0.07]"
+                  }
+                >
+                  <p className="font-mono text-[11px] uppercase tracking-[0.16em] text-slate-400">t+{event.t}s · {event.type}</p>
+                  <p className="mt-1 text-sm text-slate-100">{derived.zone.name}</p>
+                  <p className="mt-1 text-xs text-slate-400">
+                    {formatPct(event.pTheft, { digits: 0 })} theft likelihood · {event.pTheft >= threshold ? "crosses threshold" : "below threshold"}
+                  </p>
+                </button>
+              );
+            })}
           </div>
           <NarrativeStrip
             title="Scenario Notes"
@@ -559,7 +538,7 @@ export default function ShrinkClient({ payload }: { payload: ShrinkPayload }) {
         <StoryChapterShell
           chapter="Decision Console"
           title="Per-store monthly intervention economics"
-          description="Monthly economics board combining recovered loss, false-positive burden, and recommendation state."
+          description="Monthly economics board combining recovered loss, false-positive burden, operational posture, and current trust state."
           insight={`Monthly recovered ${formatUSD(derived.monthlyRecovered)} vs monthly false-positive cost ${formatUSD(derived.monthlyFalsePositive)}.`}
           impact={`Net monthly contribution ${formatUSD(derived.monthlyNet)} at ${formatPct(derived.point.threshold, { digits: 0 })} threshold.`}
           annotationCount={chapterCAnnotations.length}
@@ -567,39 +546,52 @@ export default function ShrinkClient({ payload }: { payload: ShrinkPayload }) {
         >
           <div className="grid gap-4 xl:grid-cols-[minmax(0,1fr)_360px]">
             <EChart option={zoneMixChart} height={520} title={`Incident Type Mix · ${derived.zone.name}`} className="neo-panel" />
-            <DecisionConsole
-              lines={[
-                {
-                  label: "Recovered loss (monthly)",
-                  value: formatUSD(derived.monthlyRecovered),
-                  tone: "emerald",
-                },
-                {
-                  label: "False-positive cost (monthly)",
-                  value: formatUSD(derived.monthlyFalsePositive),
-                  tone: "crimson",
-                },
-                {
-                  label: "Net impact (monthly)",
-                  value: formatUSD(derived.monthlyNet),
-                  tone: derived.monthlyNet >= 0 ? "emerald" : "crimson",
-                },
-                {
-                  label: "Recommendation state",
-                  value:
-                    derived.zoneTriggered.length >= 5
-                      ? "escalate"
-                      : derived.zoneTriggered.length >= 2
-                        ? "detain"
-                        : "observe",
-                  tone: derived.zoneTriggered.length >= 5 ? "crimson" : "amber",
-                },
-              ]}
-            />
+            <div className="space-y-4">
+              <DecisionConsole
+                title="Operational Posture"
+                lines={[
+                  {
+                    label: "Recovered loss (monthly)",
+                    value: formatUSD(derived.monthlyRecovered),
+                    tone: "emerald",
+                  },
+                  {
+                    label: "False-positive cost (monthly)",
+                    value: formatUSD(derived.monthlyFalsePositive),
+                    tone: "crimson",
+                  },
+                  {
+                    label: "Net impact (monthly)",
+                    value: formatUSD(derived.monthlyNet),
+                    tone: derived.monthlyNet >= 0 ? "emerald" : "crimson",
+                  },
+                  {
+                    label: "Recommendation state",
+                    value: postureSummary.label,
+                    tone: postureSummary.tone,
+                    hint: postureSummary.summary,
+                  },
+                  {
+                    label: "Evidence state",
+                    value: evidenceSummary.label,
+                    tone: evidenceSummary.tone,
+                    hint: evidenceSummary.summary,
+                  },
+                ]}
+              />
+              <section className="rounded-2xl border border-white/10 bg-black/25 p-4 text-sm text-slate-300">
+                <p className="font-mono text-[11px] uppercase tracking-[0.16em] text-amber-100/85">Posture brief</p>
+                <p className="mt-2 text-slate-100">{postureSummary.title}</p>
+                <p className="mt-2 leading-6">{postureSummary.summary}</p>
+                <p className="mt-3 leading-6 text-slate-400">
+                  Module status: {derived.moduleStatusSummary.length > 0 ? derived.moduleStatusSummary.join(" · ") : "No readiness modules published for this payload."}
+                </p>
+              </section>
+            </div>
           </div>
           <NarrativeStrip
             title="Decision Notes"
-            subtitle="Operational recommendation should follow economics and queue pressure together."
+            subtitle="Operational recommendation follows economics, queue pressure, and current evidence posture together."
             annotations={chapterCAnnotations}
             tone="rose"
             maxItems={4}
@@ -611,21 +603,41 @@ export default function ShrinkClient({ payload }: { payload: ShrinkPayload }) {
         <StoryChapterShell
           chapter="Evidence"
           title="Recommendation evidence trace"
-          description="Evidence and decision blocks preserving explainability across thresholds, incidents, and economic state."
+          description="Evidence and degraded-feed messaging stay inspectable even when evidence is sparse, stale, or unavailable."
           insight={`Evidence packets available: ${formatNumber(payload.decisionEvidence?.length ?? 0)}.`}
           impact="Provides auditability for escalation/observe posture selection in live operations."
           annotationCount={chapterDAnnotations.length}
           tone="amber"
         >
           <div className="grid gap-4 xl:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]">
-            <NarrativeStrip
-              title="Evidence Callouts"
-              subtitle="Contextual annotations backing the current intervention recommendation."
-              annotations={chapterDAnnotations}
-              tone="amber"
-              maxItems={6}
+            <div className="space-y-4">
+              <NarrativeStrip
+                title="Evidence Callouts"
+                subtitle="Contextual annotations backing the current intervention recommendation."
+                annotations={chapterDAnnotations}
+                tone="amber"
+                maxItems={6}
+              />
+              <section className="rounded-2xl border border-white/10 bg-black/25 p-4 text-sm text-slate-300">
+                <p className="font-mono text-[11px] uppercase tracking-[0.16em] text-amber-100/85">Trust posture under sparse feeds</p>
+                <p className="mt-2 leading-6">{evidenceSummary.summary}</p>
+                <p className="mt-2 leading-6 text-slate-400">
+                  Keep the operator workflow live, but narrow confidence when evidence rows thin out or module readiness drops below ready.
+                </p>
+              </section>
+            </div>
+            <DecisionEvidencePanel
+              title="Intervention Evidence"
+              summary={`Current zone ${derived.zone.name} · posture ${postureSummary.label} · threshold ${formatPct(derived.point.threshold, { digits: 0 })}`}
+              footer={
+                derived.evidenceMode === "clear"
+                  ? "Current recommendation trace is fully populated for the active scenario."
+                  : derived.evidenceMode === "sparse"
+                    ? "Sparse evidence mode: use queue behavior and trust surfaces together before tightening operations."
+                    : "Degraded feed posture: keep recovery and override paths visible because one or more upstream modules are not fully trustworthy."
+              }
+              evidence={payload.decisionEvidence}
             />
-            <DecisionEvidencePanel title="Intervention Evidence" evidence={payload.decisionEvidence} />
           </div>
         </StoryChapterShell>
       </RouteReveal>

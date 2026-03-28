@@ -15,6 +15,7 @@ import { runFraudDecisionEngine } from "@/lib/decision-engines/fraud";
 import { runNetflixDecisionEngine } from "@/lib/decision-engines/netflix";
 import { runShrinkDecisionEngine } from "@/lib/decision-engines/shrink";
 import { runStarbucksDecisionEngine } from "@/lib/decision-engines/starbucks";
+import { deriveShrinkScenario } from "@/lib/viewmodels/shrinkScenario";
 
 function loadPayload<TSchema extends z.ZodTypeAny>(relPath: string, schema: TSchema): z.infer<TSchema> {
   const abs = path.join(process.cwd(), "public", relPath);
@@ -68,6 +69,19 @@ describe("decision engines", () => {
     expect(result.recommendationId).toBe("shrink-threshold-policy");
     expect(result.kpis.some((kpi) => kpi.id === "best_roi")).toBe(true);
     expect(Number.isFinite(result.counterfactualDelta)).toBe(true);
+  });
+
+  it("shrink scenario exposes sparse evidence posture when evidence rows disappear", () => {
+    const payload = loadPayload("data/shrink/payload.json", ShrinkPayloadSchema);
+    const sparsePayload = {
+      ...payload,
+      decisionEvidence: [],
+    };
+
+    const scenario = deriveShrinkScenario(sparsePayload, 0.85, 100, payload.store.zones[0]?.id);
+
+    expect(scenario.evidenceMode).toBe("sparse");
+    expect(scenario.posture).toMatch(/observe|detain|escalate/);
   });
 
   it("starbucks engine normalizes portfolio delta to USD", () => {
