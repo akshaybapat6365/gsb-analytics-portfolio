@@ -1,0 +1,34 @@
+{
+  "featureId": "target-shrink-upgrade",
+  "reviewedAt": "2026-03-28T14:00:00Z",
+  "commitId": "b1311927187f8f915f9858395e19d3c8bb06f561",
+  "transcriptSkeletonReviewed": true,
+  "diffReviewed": true,
+  "status": "fail",
+  "codeReview": {
+    "summary": "The feature substantially improves Target Shrink's synchronized zone/event workflow, expected-value economics controls, and route-specific recoverability probes. However, the new evidence surface does not actually stay synchronized with the active zone/posture/threshold state: it always renders the single static payload evidence row even while the UI summary claims it represents the current scenario. That breaks the intended requirement that recommendation and evidence stay inspectable and trustworthy under active operational changes.",
+    "issues": [
+      {
+        "file": "app/projects/target-shrink/ShrinkClient.tsx",
+        "line": 629,
+        "severity": "blocking",
+        "description": "The 'Intervention Evidence' panel is presented as the current recommendation trace for the active zone/posture/threshold, but it always passes the unchanged `payload.decisionEvidence` into `DecisionEvidencePanel`. Changing threshold, false-positive cost, selected zone, and selected incident updates the summary text only; the evidence payload itself never changes with the active scenario, so the route does not provide a genuinely inspectable recommendation trace for the current operating state."
+      },
+      {
+        "file": "public/data/shrink/payload.json",
+        "line": 92,
+        "severity": "blocking",
+        "description": "The shrink payload exposes only one static evidence row (`recommendationId: \"shrink-threshold-policy\"`). Because the upgraded UI now surfaces scenario-specific posture states such as observe, detain, and escalate alongside zone-specific workflow context, there is no scenario- or posture-specific evidence record available to justify those active recommendation states."
+      }
+    ]
+  },
+  "sharedStateObservations": [
+    {
+      "area": "knowledge",
+      "observation": "Shared user-testing guidance documents ORD-LGA and Fraud Radar recoverability probes, but not the Target Shrink `?routeProbe=loading|error` path introduced by this feature.",
+      "evidence": ".factory/library/user-testing.md lists ORD-LGA and Fraud Radar probe URLs only, while `app/projects/target-shrink/page.tsx:20-25` and `app/projects/target-shrink/recoverability.ts:1-13` add equivalent Target Shrink probe support."
+    }
+  ],
+  "addressesFailureFrom": null,
+  "summary": "Fail. The route upgrade delivers synchronized zone/event interactions, live economics updates, and Target Shrink-specific recoverability probes, but its evidence panel is still static and therefore does not honestly trace the currently selected operational state. Report written to `.factory/validation/target-shrink/scrutiny/reviews/target-shrink-upgrade.json`."
+}

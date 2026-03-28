@@ -36,6 +36,7 @@ Additional routes in scope:
 - ORD–LGA is a structural outlier relative to the shared trust-surface pattern used by the other five project routes; validators should still require top-level trust/evidence framing parity.
 - ORD-LGA recoverability validation path: on a healthy production-like runtime, validators may use `/projects/ord-lga-price-war?routeProbe=loading` and `/projects/ord-lga-price-war?routeProbe=error` as the supported, non-destructive browser-visible route-level recoverability probes for VAL-ORDLGA-006.
 - Fraud Radar recoverability validation path: on a healthy production-like runtime, validators may use `/projects/fraud-radar?routeProbe=loading` and `/projects/fraud-radar?routeProbe=error` as the supported, non-destructive browser-visible route-level recoverability probes for VAL-FRAUD-005.
+- Target Shrink recoverability validation path: on a healthy production-like runtime, validators may use `/projects/target-shrink?routeProbe=loading` and `/projects/target-shrink?routeProbe=error` as the supported, non-destructive browser-visible route-level recoverability probes for VAL-SHRINK-005.
 
 ## URLs and Setup
 - Production-like validation surface: `http://localhost:3501`
