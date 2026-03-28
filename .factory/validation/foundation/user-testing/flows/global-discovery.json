@@ -1,0 +1,240 @@
+{
+  "groupId": "global-discovery",
+  "testedAt": "2026-03-28T05:12:12.710072+00:00",
+  "isolation": {
+    "appUrl": "http://localhost:3501",
+    "browserSession": "1d72f2b0c47c__u1",
+    "missionDir": "/home/mostltyharmless/.factory/missions/0bc5abab-8b5e-4fc7-8d9d-3feb9bdd1a02",
+    "routeCoverage": [
+      "/",
+      "/projects",
+      "/resume",
+      "/projects/ord-lga-price-war"
+    ],
+    "evidenceDirectory": "/home/mostltyharmless/.factory/missions/0bc5abab-8b5e-4fc7-8d9d-3feb9bdd1a02/evidence/foundation/global-shell"
+  },
+  "toolsUsed": [
+    "agent-browser",
+    "curl"
+  ],
+  "assertions": [
+    {
+      "id": "VAL-GLOBAL-001",
+      "title": "Global shell stays usable across all major routes",
+      "status": "pass",
+      "steps": [
+        {
+          "action": "Open /, /projects, /resume, and /projects/ord-lga-price-war in the shared browser session",
+          "expected": "Each route keeps working Home/Projects navigation, a keyboard-reachable skip link, and a visible footer",
+          "observed": "All four routes exposed top-nav Home/Projects links and a visible \"Skip to content\" link; home, projects, resume, and the sampled case-study route also retained the shared footer with Home/Projects/Resume and contact links."
+        }
+      ],
+      "evidence": {
+        "screenshots": [
+          "foundation/global-shell/home-shell.png",
+          "foundation/global-shell/projects-all.png",
+          "foundation/global-shell/detail-shell.png",
+          "foundation/global-shell/footer.png"
+        ],
+        "consoleErrors": "none on sampled routes",
+        "network": "Browser navigation returned rendered pages for /, /projects, /resume, and /projects/ord-lga-price-war"
+      },
+      "issues": null
+    },
+    {
+      "id": "VAL-GLOBAL-002",
+      "title": "Home and index expose portfolio-level trust framing before drill-down",
+      "status": "pass",
+      "steps": [
+        {
+          "action": "Inspect home cards and projects index cards before entering a case study",
+          "expected": "Portfolio surfaces expose evidence level, method/source, and freshness framing up front",
+          "observed": "Home exposed six case-study cards with decision claim, method + source, and freshness labels; the projects index also exposed trust metadata on cards while filters remained available."
+        }
+      ],
+      "evidence": {
+        "screenshots": [
+          "foundation/global-shell/home-shell.png",
+          "foundation/global-shell/projects-all.png"
+        ],
+        "consoleErrors": "none; browser console only showed non-user-facing CSS preload warnings on home/projects",
+        "network": "GET / and GET /projects rendered trust-rich card surfaces in browser"
+      },
+      "issues": null
+    },
+    {
+      "id": "VAL-GLOBAL-003",
+      "title": "Resume page functions as a live credibility surface",
+      "status": "pass",
+      "steps": [
+        {
+          "action": "Open /resume and inspect the top section and supporting sections",
+          "expected": "Identity, contact actions, quantified highlights, grouped skills, experience history, and labeled PDF download are present",
+          "observed": "The resume page showed Vaibhav Bapat identity, direct email/contact actions, quantified highlights, skills/experience sections, and labeled PDF resume links."
+        },
+        {
+          "action": "Request the linked PDF resume asset",
+          "expected": "PDF download resolves successfully",
+          "observed": "GET /assets/resume/vaibhav-bapat-resume.pdf returned 200 OK with application/pdf."
+        }
+      ],
+      "evidence": {
+        "screenshots": [
+          "foundation/global-shell/resume-top.png",
+          "foundation/global-shell/resume-sections.png"
+        ],
+        "consoleErrors": "none on /resume",
+        "network": "GET /assets/resume/vaibhav-bapat-resume.pdf -> 200"
+      },
+      "issues": null
+    },
+    {
+      "id": "VAL-GLOBAL-004",
+      "title": "Production-like runs do not leak dev-only diagnostics",
+      "status": "pass",
+      "steps": [
+        {
+          "action": "Review /, /projects, /resume, and /projects/ord-lga-price-war in the production-like server run",
+          "expected": "No developer overlay, environment banner, or dev-only warning appears in the user-facing UI",
+          "observed": "No route displayed a Next.js dev overlay, environment badge, or other developer-only UI. Only browser-console CSS preload warnings appeared, and they were not visible in-page."
+        }
+      ],
+      "evidence": {
+        "screenshots": [
+          "foundation/global-shell/no-dev-diagnostics.png"
+        ],
+        "consoleErrors": "none; console warnings limited to CSS preload notices on home/projects",
+        "network": "Production-like pages rendered from localhost:3501 without dev overlay assets or visible diagnostics"
+      },
+      "issues": null
+    },
+    {
+      "id": "VAL-HOME-001",
+      "title": "Home hero clearly frames the portfolio as a decision-intelligence product",
+      "status": "pass",
+      "steps": [
+        {
+          "action": "Open / and inspect hero copy and primary calls to action",
+          "expected": "Landing page communicates portfolio identity, domain breadth, and direct actions to projects and resume",
+          "observed": "The hero framed the site as a decision-intelligence portfolio and exposed direct Explore Simulators and View Resume actions instead of a generic personal homepage."
+        }
+      ],
+      "evidence": {
+        "screenshots": [
+          "foundation/global-shell/home-hero.png"
+        ],
+        "consoleErrors": "none on /",
+        "network": "GET / -> rendered hero and CTA content"
+      },
+      "issues": null
+    },
+    {
+      "id": "VAL-HOME-002",
+      "title": "Home project grid enables trust-rich case comparison",
+      "status": "pass",
+      "steps": [
+        {
+          "action": "Inspect the home project grid and extract linked case-study cards",
+          "expected": "All six case studies are present with decision claim, result, evidence framing, source framing, and detail links",
+          "observed": "The home route exposed six project cards linking to unique /projects/* routes, and each card included a headline outcome plus decision claim, method + source, and freshness framing for side-by-side trust comparison."
+        }
+      ],
+      "evidence": {
+        "screenshots": [
+          "foundation/global-shell/home-grid.png",
+          "foundation/global-shell/home-shell.png"
+        ],
+        "consoleErrors": "none on /",
+        "network": "Home card hrefs resolved to six unique case-study destinations under /projects/*"
+      },
+      "issues": null
+    },
+    {
+      "id": "VAL-INDEX-001",
+      "title": "Projects index supports multi-dimensional discovery",
+      "status": "pass",
+      "steps": [
+        {
+          "action": "Open /projects and inspect available filter groups",
+          "expected": "Users can filter by domain, evidence level, and output type while trust metadata remains visible",
+          "observed": "The projects index exposed domain filters (Pricing, Fraud, Retail Ops, Geospatial, Infrastructure, Portfolio), evidence filters (Real, Mixed, Modeled), and output filters (ROI / NPV, ATE, Risk Score, Frontier), while card trust copy remained on the page."
+        }
+      ],
+      "evidence": {
+        "screenshots": [
+          "foundation/global-shell/projects-all.png",
+          "foundation/global-shell/projects-filtered.png"
+        ],
+        "consoleErrors": "none; browser console only showed non-user-facing CSS preload warnings",
+        "network": "GET /projects -> rendered six-card library with filter controls"
+      },
+      "issues": null
+    },
+    {
+      "id": "VAL-INDEX-002",
+      "title": "Projects index counts and filters remain internally consistent",
+      "status": "pass",
+      "steps": [
+        {
+          "action": "Record the initial /projects count, then apply Fraud + Modeled filters and inspect visible results",
+          "expected": "Visible result count updates consistently and remaining card navigation still works",
+          "observed": "The page began at 6 simulators, then showed 1 of 6 simulators after Fraud + Modeled filtering, leaving only /projects/fraud-radar visible with a clear-all-filters control still available."
+        }
+      ],
+      "evidence": {
+        "screenshots": [
+          "foundation/global-shell/projects-all.png",
+          "foundation/global-shell/projects-filtered.png"
+        ],
+        "consoleErrors": "none; browser console only showed non-user-facing CSS preload warnings",
+        "network": "Filtered navigation preserved a valid visible destination: /projects/fraud-radar"
+      },
+      "issues": null
+    },
+    {
+      "id": "VAL-INDEX-003",
+      "title": "Zero-match filter states are explicit and reversible",
+      "status": "pass",
+      "steps": [
+        {
+          "action": "Apply Fraud + Real + Frontier filters to force a zero-result state on /projects",
+          "expected": "Page shows an explicit empty-state message and a clear way to restore results",
+          "observed": "The zero-result combination removed all visible project cards and the captured screenshot clearly showed the explicit heading \"NO MATCHING PROJECTS\", explanatory copy about the filter combination hiding all six case studies, and a visible \"RESET FILTERS\" action to restore results."
+        }
+      ],
+      "evidence": {
+        "screenshots": [
+          "foundation/global-shell/projects-empty-state.png"
+        ],
+        "consoleErrors": "none during zero-result filter attempt",
+        "network": "Filtered /projects state rendered with zero visible project links, explicit empty-state copy, and a visible reset affordance in screenshot evidence"
+      },
+      "issues": null
+    }
+  ],
+  "frictions": [
+    {
+      "description": "agent-browser text capture on Next.js App Router pages included streamed payload/script content after visible UI text, which made exact copy verification noisy on some routes.",
+      "resolved": true,
+      "resolution": "Used annotated/full-page screenshots plus targeted DOM checks for counts, links, and required labels; final screenshot review provided sufficient evidence to confirm the zero-state message and reset affordance as well.",
+      "affectedAssertions": [
+        "VAL-GLOBAL-002",
+        "VAL-HOME-002",
+        "VAL-INDEX-002",
+        "VAL-INDEX-003"
+      ]
+    },
+    {
+      "description": "Browser console on home/projects emitted a CSS preload warning for a preloaded stylesheet that was not used quickly after load.",
+      "resolved": true,
+      "resolution": "Recorded it as a non-user-facing console warning only; it did not surface as visible dev diagnostics and did not block route validation.",
+      "affectedAssertions": [
+        "VAL-GLOBAL-004",
+        "VAL-INDEX-001",
+        "VAL-INDEX-002"
+      ]
+    }
+  ],
+  "blockers": [],
+  "summary": "Tested 9 assigned global discovery assertions on the production-like server. All 9 passed: global shell, home hero/grid, resume credibility surface, trust framing, projects discovery/filter consistency, and the zero-match empty-state with reset path all worked as specified."
+}

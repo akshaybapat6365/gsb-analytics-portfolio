@@ -1,0 +1,149 @@
+{
+  "groupId": "trust-spine",
+  "testedAt": "2026-03-28T05:10:04.850184+00:00",
+  "isolation": {
+    "appUrl": "http://localhost:3501",
+    "browserSession": "1d72f2b0c47c__u2",
+    "missionDir": "/home/mostltyharmless/.factory/missions/0bc5abab-8b5e-4fc7-8d9d-3feb9bdd1a02",
+    "routeCoverage": [
+      "/projects/ord-lga-price-war",
+      "/projects/fraud-radar",
+      "/projects/target-shrink",
+      "/projects/starbucks-pivot",
+      "/projects/tesla-nacs",
+      "/projects/netflix-roi"
+    ],
+    "evidenceDirectory": "/home/mostltyharmless/.factory/missions/0bc5abab-8b5e-4fc7-8d9d-3feb9bdd1a02/evidence/foundation/trust-spine"
+  },
+  "toolsUsed": [
+    "agent-browser"
+  ],
+  "assertions": [
+    {
+      "id": "VAL-TRUST-001",
+      "title": "Every case study exposes a top-of-page decision summary",
+      "status": "pass",
+      "steps": [
+        {
+          "action": "Open each of the six assigned case-study routes from default load",
+          "expected": "A top-of-page decision summary is visible with business question, conclusion, key output, evidence line, and limitation language",
+          "observed": "All six routes exposed top summary content from default load; route scans found Business question, Bottom line, and Limitation text on every route, with ORD-LGA explicitly labeling the section War-Room BLUF."
+        }
+      ],
+      "evidence": {
+        "screenshots": [
+          "foundation/trust-spine/ord-lga-price-war-default.png",
+          "foundation/trust-spine/fraud-radar-default.png",
+          "foundation/trust-spine/target-shrink-default.png",
+          "foundation/trust-spine/starbucks-pivot-default.png",
+          "foundation/trust-spine/tesla-nacs-default.png",
+          "foundation/trust-spine/netflix-roi-default.png"
+        ],
+        "consoleErrors": "none across all six route checks",
+        "network": "GET case-study routes via browser -> 200 for all six sampled routes"
+      },
+      "issues": null
+    },
+    {
+      "id": "VAL-TRUST-002",
+      "title": "Every case study exposes inspectable trust/provenance UI",
+      "status": "pass",
+      "steps": [
+        {
+          "action": "Inspect each route from default page load for trust/provenance affordances and text",
+          "expected": "Each route exposes trust/provenance UI that identifies evidence state such as real, mixed, modeled, fallback, stale, or unavailable",
+          "observed": "All six routes exposed a visible \u201cTrust, provenance & current run\u201d surface plus \u201cCurrent Run Trust Detail\u201d; route text included policy, live/unavailable/fallback evidence state cues and module readiness/provenance details."
+        }
+      ],
+      "evidence": {
+        "screenshots": [
+          "foundation/trust-spine/ord-lga-price-war-default.png",
+          "foundation/trust-spine/netflix-roi-default.png"
+        ],
+        "consoleErrors": "none across all six route checks",
+        "network": "Browser route loads only; provenance/state content rendered in UI on all six routes"
+      },
+      "issues": null
+    },
+    {
+      "id": "VAL-TRUST-003",
+      "title": "Assumptions and real-world swap paths are inspectable",
+      "status": "pass",
+      "steps": [
+        {
+          "action": "Review each route for assumptions/limitations appendix content",
+          "expected": "Each route exposes limitation language, assumptions, and a reproducibility-oriented real-world upgrade path",
+          "observed": "All six routes exposed an \u201cAssumptions, limits & swap path\u201d appendix from route UI with limitation language and explicit real-world swap-path wording."
+        }
+      ],
+      "evidence": {
+        "screenshots": [
+          "foundation/trust-spine/ord-lga-full.png",
+          "foundation/trust-spine/netflix-full.png"
+        ],
+        "consoleErrors": "none across all six route checks",
+        "network": "Browser route loads only; appendix content present on all six routes"
+      },
+      "issues": null
+    },
+    {
+      "id": "VAL-TRUST-004",
+      "title": "Trust surfaces are discoverable from default page load",
+      "status": "pass",
+      "steps": [
+        {
+          "action": "Load each route without hidden gestures or custom interactions",
+          "expected": "Trust entry points are visible or obviously labeled on default load",
+          "observed": "On all six routes, trust entry points were discoverable from default load through visible trust/provenance headings and labeled appendix/trust sections; no hidden gesture or source-code inspection was required."
+        }
+      ],
+      "evidence": {
+        "screenshots": [
+          "foundation/trust-spine/ord-lga-price-war-default.png",
+          "foundation/trust-spine/fraud-radar-default.png",
+          "foundation/trust-spine/netflix-roi-default.png"
+        ],
+        "consoleErrors": "none across all six route checks",
+        "network": "GET case-study routes via browser -> 200 for all six routes"
+      },
+      "issues": null
+    },
+    {
+      "id": "VAL-TRUST-005",
+      "title": "Current-run trust details are auditable from the route UI",
+      "status": "pass",
+      "steps": [
+        {
+          "action": "Inspect trust detail content across the six routes",
+          "expected": "UI exposes current-run audit detail such as snapshot/run identity, freshness timing, and provenance for current inputs where available",
+          "observed": "All six routes exposed audit-oriented trust detail including policy, snapshot/run identifiers or generated timestamps, as-of freshness cues, and per-signal provenance/readiness entries. Some routes also explicitly showed unavailable live feeds without hiding the degraded state."
+        }
+      ],
+      "evidence": {
+        "screenshots": [
+          "foundation/trust-spine/ord-lga-full.png",
+          "foundation/trust-spine/netflix-full.png"
+        ],
+        "consoleErrors": "none across all six route checks",
+        "network": "Browser route loads only; trust detail rendered in UI with generated/as-of provenance cues across all six routes"
+      },
+      "issues": null
+    }
+  ],
+  "frictions": [
+    {
+      "description": "agent-browser get-text output included Next.js streamed payload/script text after visible route copy, so route coverage was validated by combining screenshots with targeted text-pattern checks rather than relying on raw page text alone.",
+      "resolved": true,
+      "resolution": "Used per-route annotated screenshots plus derived trust-summary checks across all six routes.",
+      "affectedAssertions": [
+        "VAL-TRUST-001",
+        "VAL-TRUST-002",
+        "VAL-TRUST-003",
+        "VAL-TRUST-004",
+        "VAL-TRUST-005"
+      ]
+    }
+  ],
+  "blockers": [],
+  "summary": "Tested 5 trust/provenance assertions across all six assigned case-study routes. All 5 passed: every route exposed visible top-of-page decision framing, inspectable trust/current-run detail, and assumptions/swap-path surfaces without console errors during validation."
+}

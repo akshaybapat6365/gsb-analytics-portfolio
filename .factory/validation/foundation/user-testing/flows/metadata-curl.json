@@ -1,0 +1,111 @@
+{
+  "groupId": "metadata-curl",
+  "testedAt": "2026-03-28T05:08:15Z",
+  "isolation": {
+    "baseUrl": "http://localhost:3501",
+    "method": "GET",
+    "routes": [
+      "/",
+      "/projects",
+      "/resume",
+      "/projects/ord-lga-price-war",
+      "/projects/fraud-radar",
+      "/projects/target-shrink",
+      "/projects/starbucks-pivot",
+      "/projects/tesla-nacs",
+      "/projects/netflix-roi"
+    ],
+    "guidanceSection": "Flow Validator Guidance: curl"
+  },
+  "toolsUsed": [
+    "curl",
+    "python3"
+  ],
+  "assertions": [
+    {
+      "id": "VAL-GLOBAL-005",
+      "title": "Route metadata stays route-specific and non-empty",
+      "status": "pass",
+      "steps": [
+        {
+          "action": "GET /",
+          "expected": "HTTP 200 HTML with non-empty route-specific title and metadata",
+          "observed": "HTTP 200; content-type text/html; charset=utf-8; title 'Vaibhav Bapat | Decision Intelligence Portfolio'; description length 143; unique_title=True; default_like=False"
+        },
+        {
+          "action": "GET /projects",
+          "expected": "HTTP 200 HTML with non-empty route-specific title and metadata",
+          "observed": "HTTP 200; content-type text/html; charset=utf-8; title 'Interactive Decision Simulators | Vaibhav Bapat'; description length 144; unique_title=True; default_like=False"
+        },
+        {
+          "action": "GET /resume",
+          "expected": "HTTP 200 HTML with non-empty route-specific title and metadata",
+          "observed": "HTTP 200; content-type text/html; charset=utf-8; title 'Resume | Vaibhav Bapat'; description length 100; unique_title=True; default_like=False"
+        },
+        {
+          "action": "GET /projects/ord-lga-price-war",
+          "expected": "HTTP 200 HTML with non-empty route-specific title and metadata",
+          "observed": "HTTP 200; content-type text/html; charset=utf-8; title 'United vs Delta ORD-LGA Pricing Simulator | Vaibhav Bapat'; description length 186; unique_title=True; default_like=False"
+        },
+        {
+          "action": "GET /projects/fraud-radar",
+          "expected": "HTTP 200 HTML with non-empty route-specific title and metadata",
+          "observed": "HTTP 200; content-type text/html; charset=utf-8; title 'Filings Risk Radar | Vaibhav Bapat'; description length 180; unique_title=True; default_like=False"
+        },
+        {
+          "action": "GET /projects/target-shrink",
+          "expected": "HTTP 200 HTML with non-empty route-specific title and metadata",
+          "observed": "HTTP 200; content-type text/html; charset=utf-8; title 'Checkout Loss Threshold Simulator | Vaibhav Bapat'; description length 176; unique_title=True; default_like=False"
+        },
+        {
+          "action": "GET /projects/starbucks-pivot",
+          "expected": "HTTP 200 HTML with non-empty route-specific title and metadata",
+          "observed": "HTTP 200; content-type text/html; charset=utf-8; title 'Suburban Portfolio Pivot Simulator | Vaibhav Bapat'; description length 185; unique_title=True; default_like=False"
+        },
+        {
+          "action": "GET /projects/tesla-nacs",
+          "expected": "HTTP 200 HTML with non-empty route-specific title and metadata",
+          "observed": "HTTP 200; content-type text/html; charset=utf-8; title 'I-5 Charging Node Economics | Vaibhav Bapat'; description length 190; unique_title=True; default_like=False"
+        },
+        {
+          "action": "GET /projects/netflix-roi",
+          "expected": "HTTP 200 HTML with non-empty route-specific title and metadata",
+          "observed": "HTTP 200; content-type text/html; charset=utf-8; title 'Content ROI Allocation Frontier | Vaibhav Bapat'; description length 172; unique_title=True; default_like=False"
+        }
+      ],
+      "evidence": {
+        "terminalOutput": [
+          "foundation/metadata-curl/route-metadata-checks.txt",
+          "foundation/metadata-curl/route-metadata-summary.json"
+        ],
+        "network": "GET / -> 200 (text/html; charset=utf-8); GET /projects -> 200 (text/html; charset=utf-8); GET /resume -> 200 (text/html; charset=utf-8); GET /projects/ord-lga-price-war -> 200 (text/html; charset=utf-8); GET /projects/fraud-radar -> 200 (text/html; charset=utf-8); GET /projects/target-shrink -> 200 (text/html; charset=utf-8); GET /projects/starbucks-pivot -> 200 (text/html; charset=utf-8); GET /projects/tesla-nacs -> 200 (text/html; charset=utf-8); GET /projects/netflix-roi -> 200 (text/html; charset=utf-8)",
+        "htmlResponses": [
+          "foundation/metadata-curl/home.html",
+          "foundation/metadata-curl/projects.html",
+          "foundation/metadata-curl/resume.html",
+          "foundation/metadata-curl/projects__ord-lga-price-war.html",
+          "foundation/metadata-curl/projects__fraud-radar.html",
+          "foundation/metadata-curl/projects__target-shrink.html",
+          "foundation/metadata-curl/projects__starbucks-pivot.html",
+          "foundation/metadata-curl/projects__tesla-nacs.html",
+          "foundation/metadata-curl/projects__netflix-roi.html"
+        ],
+        "headers": [
+          "foundation/metadata-curl/home.headers.txt",
+          "foundation/metadata-curl/projects.headers.txt",
+          "foundation/metadata-curl/resume.headers.txt",
+          "foundation/metadata-curl/projects__ord-lga-price-war.headers.txt",
+          "foundation/metadata-curl/projects__fraud-radar.headers.txt",
+          "foundation/metadata-curl/projects__target-shrink.headers.txt",
+          "foundation/metadata-curl/projects__starbucks-pivot.headers.txt",
+          "foundation/metadata-curl/projects__tesla-nacs.headers.txt",
+          "foundation/metadata-curl/projects__netflix-roi.headers.txt"
+        ]
+      },
+      "issues": null
+    }
+  ],
+  "frictions": [],
+  "blockers": [],
+  "summary": "Tested 1 assertion across 9 routes: all routes returned HTTP 200 HTML and exposed non-empty, route-specific title and description metadata without duplicated default titles."
+}

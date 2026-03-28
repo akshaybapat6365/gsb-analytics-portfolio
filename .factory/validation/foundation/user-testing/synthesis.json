@@ -1,0 +1,38 @@
+{
+  "milestone": "foundation",
+  "round": 1,
+  "status": "pass",
+  "assertionsSummary": {
+    "total": 15,
+    "passed": 15,
+    "failed": 0,
+    "blocked": 0
+  },
+  "passedAssertions": [
+    "VAL-GLOBAL-001",
+    "VAL-GLOBAL-002",
+    "VAL-GLOBAL-003",
+    "VAL-GLOBAL-004",
+    "VAL-HOME-001",
+    "VAL-HOME-002",
+    "VAL-INDEX-001",
+    "VAL-INDEX-002",
+    "VAL-INDEX-003",
+    "VAL-TRUST-001",
+    "VAL-TRUST-002",
+    "VAL-TRUST-003",
+    "VAL-TRUST-004",
+    "VAL-TRUST-005",
+    "VAL-GLOBAL-005"
+  ],
+  "failedAssertions": [],
+  "blockedAssertions": [],
+  "appliedUpdates": [
+    {
+      "target": "user-testing.md",
+      "description": "Created foundation user-testing guidance covering production-like URL, startup/stop commands, concurrency ceilings, and per-surface flow-validator isolation guidance.",
+      "source": "setup"
+    }
+  ],
+  "previousRound": null
+}

@@ -35,6 +35,13 @@ Additional routes in scope:
 - Route loading/error assertions may require fault-injection or controlled validation setup; otherwise treat them as conditional and validate only when reproducibly triggerable.
 - ORD–LGA is a structural outlier relative to the shared trust-surface pattern used by the other five project routes; validators should still require top-level trust/evidence framing parity.
 
+## URLs and Setup
+- Production-like validation surface: `http://localhost:3501`
+- Start command: `source /home/mostltyharmless/.nvm/nvm.sh && nvm use 20.20.0 >/dev/null && PW_TEST_PORT=3501 npm run build && PORT=3501 ./node_modules/.bin/next start --port 3501`
+- Healthcheck: `curl -sf http://localhost:3501`
+- Stop command: `lsof -ti :3501 | xargs -r kill`
+- Foundation user testing should use the production-like server on port 3501 so dev-only overlays do not affect assertions.
+
 ## Validation Concurrency
 
 Machine profile observed during planning dry run:
@@ -46,11 +53,15 @@ Machine profile observed during planning dry run:
 ### Browser concurrency classification
 - Surface: `agent-browser` on local web app
 - Initial max concurrent validators: **2**
-- Rationale: use a conservative 70% headroom posture on a shared workstation. Build/e2e startup is repaired, but browser concurrency should stay conservative until broader route validation is profiled.
+- Rationale: use a conservative 70% headroom posture on a shared workstation. Build/e2e startup is repaired, browser validators share one Next.js server plus browser processes, and current machine state during foundation validation showed ~7 GiB available memory.
 
 ### Playwright concurrency classification
 - Initial worker count for validation: **2**
 - Rationale: aligns with the same conservative browser budget on this machine.
+
+### curl concurrency classification
+- Initial worker count for validation: **4**
+- Rationale: metadata/reachability checks are lightweight GET-only operations with low memory overhead.
 
 ## Validation Readiness Notes
 
@@ -61,5 +72,20 @@ Latest foundation findings:
 - representative Vitest path: passed
 - `npm run build`: passes after adding `@deck.gl/widgets`
 - Playwright validation now launches against the built app on port 3501; current failures are narrowed to smoke assertions for the home title and ORD-LGA trust-surface parity
+- Foundation user-testing round 1 validated all 15 foundation assertions on the production-like server at `http://localhost:3501`
 
 Validators should treat build/e2e readiness as restored. Any remaining Playwright failures should be evaluated as route-level contract issues rather than baseline infrastructure breakage.
+
+## Flow Validator Guidance: agent-browser
+- Use the shared production-like app at `http://localhost:3501`.
+- Stay within assigned assertions and routes.
+- Do not mutate repository files outside the assigned flow report path.
+- Avoid destructive actions; interact only through normal browsing, filtering, keyboard navigation, and trust-drawer inspection.
+- Save screenshots and any browser evidence under the assigned evidence directory.
+- If a route-level loading or failure state cannot be triggered reproducibly, mark that assertion blocked rather than inventing evidence.
+- On Next.js App Router pages, raw text capture may include streamed payload/script text; prefer screenshot evidence plus targeted checks for exact visible copy.
+
+## Flow Validator Guidance: curl
+- Use `http://localhost:3501` and only GET requests.
+- Capture route-specific title/metadata evidence from returned HTML.
+- Do not test localhost ports outside mission-approved boundaries.
