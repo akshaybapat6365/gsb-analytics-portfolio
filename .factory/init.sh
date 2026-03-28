@@ -1,13 +1,14 @@
-#!/usr/bin/env bash
-set -euo pipefail
+#!/usr/bin/env sh
+set -eu
 
-ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+SCRIPT_DIR=$(CDPATH= cd -- "$(dirname -- "$0")" && pwd)
+ROOT_DIR=$(CDPATH= cd -- "$SCRIPT_DIR/.." && pwd)
 cd "$ROOT_DIR"
 
-source /home/mostltyharmless/.nvm/nvm.sh
+. /home/mostltyharmless/.nvm/nvm.sh
 nvm use 20.20.0 >/dev/null
 
-if [[ ! -d node_modules ]]; then
+if [ ! -d node_modules ]; then
   npm install --legacy-peer-deps
 fi
 

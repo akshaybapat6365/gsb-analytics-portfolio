@@ -16,3 +16,4 @@ Environment variables, external dependencies, and setup notes.
 - Mission is restricted to open/public data sources only. Do not introduce paid or private APIs.
 - Runtime data-policy modes already supported by the product: `strict-real`, `baseline-fallback`, `synthetic-demo`.
 - Optional media generation paths require `REPLICATE_API_TOKEN`, but that path is out of scope for default milestone validation unless explicitly targeted.
+- `.factory/init.sh` is intentionally POSIX-`sh` compatible so worker startup does not depend on invoking it specifically with `bash`.
