@@ -12,6 +12,11 @@ import { usePriceWarStore } from "./global-state";
 export function FloatingActionMenu() {
     const [open, setOpen] = useState(false);
     const { toggleXray } = usePriceWarStore();
+    const enabled = process.env.NEXT_PUBLIC_SHOW_PERF_DIAGNOSTICS === "1";
+
+    if (!enabled) {
+        return null;
+    }
 
     const handleExport = () => {
         // Mock export trigger

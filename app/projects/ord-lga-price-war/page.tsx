@@ -6,6 +6,8 @@ import { StructuredDataScript } from "@/components/seo/StructuredDataScript";
 
 import { Hero } from "./Hero";
 import { OrdLgaInteractiveSection } from "./InteractiveSection";
+import { OrdLgaShell } from "./OrdLgaShell";
+import { CaseStudyTrustStack } from "@/components/story/CaseStudyTrustStack";
 
 const project = getProject("ord-lga-price-war");
 export const metadata: Metadata = buildProjectMetadata(project);
@@ -19,37 +21,27 @@ export default async function OrdLgaPriceWarPage() {
         id="project-jsonld-ord-lga-price-war"
         data={buildProjectSchema(project)}
       />
-      <div className="space-y-8">
+      <div className="space-y-9">
         <Hero payload={payload} />
 
-        {/* BLUF strip — integrated into radar theme */}
-        <section className="radar-panel p-5 sm:p-6">
-          <div className="flex flex-wrap items-center justify-between gap-3">
-            <div>
-              <p className="radar-eyebrow">War-Room BLUF</p>
-              <p className="mt-3 max-w-3xl text-[15px] leading-7 text-slate-300/90">
-                {project.businessQuestion}
-              </p>
-            </div>
-          </div>
-          <div className="radar-chapter-line mt-4" />
-          <div className="mt-4 space-y-4">
-            <p className="text-[14px] leading-7 text-slate-400">{project.bluf}</p>
-            <div className="radar-kpi radar-glow-green">
-              <p className="font-mono text-[10px] uppercase tracking-[0.16em]" style={{ color: "var(--radar-green)" }}>
-                {project.homepage.resultLabel}
-              </p>
-              <p className="mt-1 font-mono text-2xl" style={{ color: "var(--radar-green)" }}>
-                {project.homepage.resultValue}
-              </p>
-              <p className="mt-1 font-mono text-[9px] uppercase tracking-[0.12em] text-slate-500">
-                {project.homepage.evidenceLevel.toUpperCase()} · {project.homepage.source} · as-of {project.homepage.asOf}
-              </p>
-            </div>
-          </div>
-        </section>
+        <CaseStudyTrustStack
+          eyebrow="War-Room BLUF"
+          question={project.businessQuestion}
+          bluf={project.bluf}
+          summary={project.homepage}
+          meta={payload.meta}
+          signals={payload.realSignals}
+          readiness={payload.dataReadiness}
+          assumptions={[
+            "Observed airfare anchors are blended with inferred competitor behavior and modeled policy outputs; treat the recommendation as a decision aid, not direct historical truth.",
+            "Revenue lift confidence bands reflect simulation uncertainty and should be read alongside competitor-response and elasticity sensitivity chapters.",
+            "When upstream market references go stale or unavailable, current-run provenance and readiness state explain which route modules remain trustworthy.",
+            "Real-world swap path: DOT DB1B or T-100 route demand, filed fare references, schedule disruption feeds, and internal booking telemetry for out-of-sample policy validation.",
+          ]}
+        />
 
-        {/* Full interactive experience */}
+        <OrdLgaShell payload={payload} />
+
         <OrdLgaInteractiveSection payload={payload} />
       </div>
     </>

@@ -11,6 +11,15 @@ import { StarbucksPayloadSchema } from "@/lib/schemas/starbucks";
 import { EvPayloadSchema } from "@/lib/schemas/ev";
 import { NetflixPayloadSchema } from "@/lib/schemas/netflix";
 
+const caseStudyPages = [
+  "app/projects/ord-lga-price-war/page.tsx",
+  "app/projects/fraud-radar/page.tsx",
+  "app/projects/target-shrink/page.tsx",
+  "app/projects/starbucks-pivot/page.tsx",
+  "app/projects/tesla-nacs/page.tsx",
+  "app/projects/netflix-roi/page.tsx",
+] as const;
+
 function readJson(rel: string) {
   const p = path.join(process.cwd(), rel);
   const raw = fs.readFileSync(p, "utf8");
@@ -42,6 +51,15 @@ describe("portfolio discovery metadata", () => {
     expect(metadata.openGraph?.title).toBe("Vaibhav Bapat | Decision Intelligence Portfolio");
     expect(metadata.twitter?.title).toBe("Vaibhav Bapat | Decision Intelligence Portfolio");
     expect(metadata.alternates?.canonical).toBe("https://vb-labs.vercel.app");
+  });
+});
+
+describe("case-study trust composition", () => {
+  it("every case study page exposes the shared trust stack entrypoints", () => {
+    for (const pagePath of caseStudyPages) {
+      const source = fs.readFileSync(path.join(process.cwd(), pagePath), "utf8");
+      expect(source).toContain("CaseStudyTrustStack");
+    }
   });
 });
 

@@ -5,6 +5,12 @@
  * Stubbed version without zustand dependency.
  */
 export function TelemetryBar() {
+    const enabled = process.env.NEXT_PUBLIC_SHOW_PERF_DIAGNOSTICS === "1";
+
+    if (!enabled) {
+        return null;
+    }
+
     return (
         <div className="fixed bottom-0 inset-x-0 z-50 flex items-center justify-between px-4 py-1.5 border-t border-white/[0.04] bg-[#050a12]/90 backdrop-blur-sm">
             <span className="text-[10px] font-semibold uppercase tracking-[0.15em]" style={{ fontFamily: "var(--font-mono)", color: "rgba(0, 240, 255, 0.3)" }}>
