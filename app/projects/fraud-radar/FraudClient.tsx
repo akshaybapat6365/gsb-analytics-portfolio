@@ -41,6 +41,7 @@ const LINGUISTIC_KEYS = [
 ];
 
 type SignalMode = "blended" | "accounting" | "linguistic";
+type InvestigationScenario = "baseline" | "balance-sheet-stress" | "language-whiplash";
 
 function pickChapterAnnotations(
   annotations: NonNullable<FraudPayload["annotations"]>,
@@ -65,6 +66,7 @@ function classifySignal(signal: string) {
 
 export default function FraudClient({ payload }: { payload: FraudPayload }) {
   const [ticker, setTicker] = useState<string>("");
+  const [scenario, setScenario] = useState<InvestigationScenario>("baseline");
   const [deceptionWeight, setDeceptionWeight] = useState(56);
   const [linkCutoff, setLinkCutoff] = useState(28);
   const [shortIntensity, setShortIntensity] = useState(62);
@@ -78,15 +80,64 @@ export default function FraudClient({ payload }: { payload: FraudPayload }) {
       .filter((f) => f.ticker === selectedTicker)
       .sort((a, b) => a.filingDate.localeCompare(b.filingDate));
 
-    const weight = clamp(deceptionWeight / 100, 0, 1);
-    const withAdjustedRisk = filings.map((filing) => ({
-      ...filing,
-      adjustedRisk: clamp(
-        filing.riskScore * (1 - weight) + filing.deception * weight,
-        0,
-        1,
-      ),
-    }));
+    const scenarioTuning: Record<
+      InvestigationScenario,
+      {
+        label: string;
+        narrative: string;
+        riskLift: number;
+        deceptionLift: number;
+        linkBias: number;
+        leverageBias: number;
+        reviewPosture: string;
+      }
+    > = {
+      baseline: {
+        label: "Baseline panel",
+        narrative: "Balanced weighting between accounting drift and filing-language anomalies for standard surveillance.",
+        riskLift: 0,
+        deceptionLift: 0,
+        linkBias: 0,
+        leverageBias: 0,
+        reviewPosture: "Monitor the issuer in the watchlist queue and wait for another corroborating filing before escalating.",
+      },
+      "balance-sheet-stress": {
+        label: "Balance-sheet stress",
+        narrative: "Overweights accrual and asset-quality concerns to surface issuers whose accounting posture is deteriorating faster than narrative signals.",
+        riskLift: 0.07,
+        deceptionLift: 0.03,
+        linkBias: -0.08,
+        leverageBias: 0.08,
+        reviewPosture: "Escalate names with sustained balance-sheet deterioration into deeper forensic review, but keep language as investigative context only.",
+      },
+      "language-whiplash": {
+        label: "Language whiplash",
+        narrative: "Assumes sudden narrative instability matters most, lifting language-sensitive risk and requiring a denser similarity network before escalation.",
+        riskLift: 0.03,
+        deceptionLift: 0.1,
+        linkBias: 0.07,
+        leverageBias: -0.05,
+        reviewPosture: "Treat abrupt disclosure-language swings as a prompt for transcript and filing follow-up, not as standalone proof of misconduct.",
+      },
+    };
+
+    const scenarioConfig = scenarioTuning[scenario];
+    const weight = clamp(deceptionWeight / 100 + scenarioConfig.deceptionLift, 0, 1);
+    const withAdjustedRisk = filings.map((filing) => {
+      const scenarioRisk = filing.riskScore + scenarioConfig.riskLift;
+      const scenarioDeception = clamp(filing.deception + scenarioConfig.deceptionLift, 0, 1);
+
+      return {
+        ...filing,
+        scenarioRisk: clamp(scenarioRisk, 0, 1),
+        scenarioDeception,
+        adjustedRisk: clamp(
+          scenarioRisk * (1 - weight) + scenarioDeception * weight,
+          0,
+          1,
+        ),
+      };
+    });
 
     const latest = withAdjustedRisk.at(-1);
     const maxRisk = withAdjustedRisk.reduce(
@@ -94,7 +145,7 @@ export default function FraudClient({ payload }: { payload: FraudPayload }) {
       0,
     );
 
-    const threshold = clamp(linkCutoff / 100, 0, 1);
+    const threshold = clamp(linkCutoff / 100 + scenarioConfig.linkBias, 0.05, 0.95);
     const links = payload.graph.links.filter((link) => link.weight >= threshold);
     const activeNodeIds = new Set(links.flatMap((link) => [link.source, link.target]));
     const nodes =
@@ -103,7 +154,7 @@ export default function FraudClient({ payload }: { payload: FraudPayload }) {
         : payload.graph.nodes;
 
     const start = payload.backtest.strategy[0] ?? 1;
-    const leverage = 0.65 + clamp(shortIntensity / 100, 0, 1) * 0.95;
+    const leverage = clamp(0.65 + shortIntensity / 100 * 0.95 + scenarioConfig.leverageBias, 0.45, 1.8);
     const adjustedStrategy = payload.backtest.strategy.map((value) => {
       const delta = value - start;
       return start + delta * leverage;
@@ -133,15 +184,19 @@ export default function FraudClient({ payload }: { payload: FraudPayload }) {
     );
 
     const watchlist = Object.values(latestByTicker)
-      .map((filing) => ({
-        ticker: filing.ticker,
-        date: filing.filingDate,
-        score: clamp(
-          filing.riskScore * (1 - weight) + filing.deception * weight,
-          0,
-          1,
-        ),
-      }))
+      .map((filing) => {
+        const scenarioRisk = filing.riskScore + scenarioConfig.riskLift;
+        const scenarioDeception = clamp(filing.deception + scenarioConfig.deceptionLift, 0, 1);
+        const score = clamp(scenarioRisk * (1 - weight) + scenarioDeception * weight, 0, 1);
+        const action = score >= 0.84 ? "Escalate review" : score >= 0.68 ? "Keep on watchlist" : "Observe only";
+
+        return {
+          ticker: filing.ticker,
+          date: filing.filingDate,
+          score,
+          action,
+        };
+      })
       .sort((a, b) => b.score - a.score)
       .slice(0, 8);
 
@@ -153,14 +208,40 @@ export default function FraudClient({ payload }: { payload: FraudPayload }) {
       .sort((a, b) => b.adjustedRisk - a.adjustedRisk)
       .slice(0, 8);
 
-    const alphaCenter = payload.backtest.annualizedAlpha * (0.72 + shortIntensity / 180);
+    const alphaCenter = clamp(
+      payload.backtest.annualizedAlpha * (0.72 + shortIntensity / 180 + scenarioConfig.leverageBias),
+      -0.5,
+      1,
+    );
     const alphaBand: [number, number] = [
       clamp(alphaCenter - 0.08, -0.5, 1),
       clamp(alphaCenter + 0.08, -0.5, 1),
     ];
-    const triggerThreshold = clamp(0.64 + shortIntensity / 250, 0.55, 0.92);
+    const triggerThreshold = clamp(0.64 + shortIntensity / 250 + scenarioConfig.riskLift / 2, 0.55, 0.92);
+    const watchlistEntry = watchlist[0] ?? null;
+    const recommendation =
+      !latest || latest.adjustedRisk < 0.62
+        ? "Observe only"
+        : latest.adjustedRisk >= triggerThreshold + 0.08
+          ? "Escalate forensic review"
+          : "Keep on watchlist";
+    const recommendationReason =
+      recommendation === "Escalate forensic review"
+        ? `Adjusted risk is ${formatPct(latest?.adjustedRisk ?? 0, { digits: 0 })}, which sits above the current escalation band and warrants a deeper filing, transcript, and exposure review.`
+        : recommendation === "Keep on watchlist"
+          ? `Current signals are elevated but still suited to triage monitoring while investigators wait for another corroborating event or disclosure.`
+          : `Current evidence does not support an immediate escalation; preserve monitoring and avoid over-reading modeled anomalies as verdicts.`;
+
+    const recommendationEvidence = [
+      `${scenarioConfig.label} keeps the posture ${scenarioConfig.reviewPosture.toLowerCase()}`,
+      watchlistEntry
+        ? `${watchlistEntry.ticker} leads the queue at ${formatPct(watchlistEntry.score, { digits: 0 })} adjusted risk.`
+        : "No watchlist leader available for the current scenario.",
+      `${formatNumber(links.length)} similarity links survive the current ${Math.round(threshold * 100)}% cutoff.`,
+    ];
 
     return {
+      scenarioConfig,
       selectedTicker,
       withAdjustedRisk,
       latest,
@@ -175,8 +256,11 @@ export default function FraudClient({ payload }: { payload: FraudPayload }) {
       alphaBand,
       triggerThreshold,
       alphaCenter,
+      recommendation,
+      recommendationReason,
+      recommendationEvidence,
     };
-  }, [payload, ticker, deceptionWeight, linkCutoff, shortIntensity]);
+  }, [payload, ticker, scenario, deceptionWeight, linkCutoff, shortIntensity]);
 
   const selectedFlag =
     derived.flaggedEvents[selectedFlagIndex] ?? derived.flaggedEvents[0] ?? null;
@@ -387,7 +471,7 @@ export default function FraudClient({ payload }: { payload: FraudPayload }) {
     <div className="space-y-8">
       <RouteReveal profile="forensic">
         <section className="neo-panel p-5">
-          <div className="grid gap-4 xl:grid-cols-[280px_minmax(0,1fr)] xl:items-end">
+          <div className="grid gap-4 xl:grid-cols-[280px_320px_minmax(0,1fr)] xl:items-end">
             <div className="space-y-2">
               <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-rose-100/85">Forensic Controls</p>
               <label className="flex flex-col gap-2 text-xs text-slate-400">
@@ -407,6 +491,26 @@ export default function FraudClient({ payload }: { payload: FraudPayload }) {
                   ))}
                 </select>
               </label>
+            </div>
+            <div className="space-y-2">
+              <label className="flex flex-col gap-2 text-xs text-slate-400">
+                Scenario
+                <select
+                  className="rounded-xl border border-white/10 bg-black/30 px-3 py-2 text-sm text-slate-100"
+                  value={scenario}
+                  onChange={(event) => {
+                    setScenario(event.target.value as InvestigationScenario);
+                    setSelectedFlagIndex(0);
+                  }}
+                >
+                  <option value="baseline">Baseline panel</option>
+                  <option value="balance-sheet-stress">Balance-sheet stress</option>
+                  <option value="language-whiplash">Language whiplash</option>
+                </select>
+              </label>
+              <p className="rounded-xl border border-white/10 bg-white/[0.03] px-3 py-2 text-sm leading-relaxed text-slate-300">
+                {derived.scenarioConfig.narrative}
+              </p>
             </div>
             <div className="grid gap-4 md:grid-cols-3">
               <Slider
@@ -428,7 +532,7 @@ export default function FraudClient({ payload }: { payload: FraudPayload }) {
                 formatValue={(value) => `${value}%`}
               />
               <Slider
-                label="Short intensity"
+                label="Review intensity"
                 value={shortIntensity}
                 min={0}
                 max={100}
@@ -462,9 +566,9 @@ export default function FraudClient({ payload }: { payload: FraudPayload }) {
             accent="cyan"
           />
           <KpiCard
-            label="Expected Alpha Band"
-            value={`${formatPct(derived.alphaBand[0], { digits: 0 })} → ${formatPct(derived.alphaBand[1], { digits: 0 })}`}
-            hint="Short basket annualized range"
+            label="Recommendation Posture"
+            value={derived.recommendation}
+            hint={derived.scenarioConfig.label}
             accent="emerald"
           />
         </div>
@@ -515,6 +619,9 @@ export default function FraudClient({ payload }: { payload: FraudPayload }) {
                 <p>
                   <span className="text-slate-100">Risk uplift:</span>{" "}
                   {selectedFlag ? formatPct(selectedFlag.delta, { digits: 1 }) : "—"}
+                </p>
+                <p className="mt-3 rounded-xl border border-rose-300/15 bg-rose-300/8 px-3 py-2 text-xs leading-relaxed text-rose-100/90">
+                  Triage note: this drawer prioritizes what to investigate next. It is not a verdict, accusation, or legal finding.
                 </p>
               </div>
             </section>
@@ -577,8 +684,8 @@ export default function FraudClient({ payload }: { payload: FraudPayload }) {
       <RouteReveal profile="forensic" delay={0.16}>
         <StoryChapterShell
           chapter="Decision Console"
-          title="Short basket recommendation board"
-          description="Translate model output into expected alpha, confidence, and trigger thresholds for portfolio actioning."
+          title="Recommendation console: triage, not verdict"
+          description="Turn the signal stack into an actionable review queue while keeping every recommendation explicitly inside investigate / watchlist / observe language."
           insight={`Backtest alpha center ${formatPct(derived.alphaCenter, { digits: 0 })} with trigger threshold ${formatPct(derived.triggerThreshold, { digits: 0 })}.`}
           impact={`Watchlist surfaces ${formatNumber(derived.watchlist.length)} names with highest deception-adjusted risk.`}
           annotationCount={chapterCAnnotations.length}
@@ -587,39 +694,62 @@ export default function FraudClient({ payload }: { payload: FraudPayload }) {
           <div className="grid gap-4 xl:grid-cols-[minmax(0,1fr)_360px]">
             <EChart option={backtestChart} height={560} title="Strategy vs Benchmark (Stress-Adjusted)" className="neo-panel" />
             <DecisionConsole
+              title="Triage Recommendation Console"
               lines={[
+                {
+                  label: "Recommended posture",
+                  value: derived.recommendation,
+                  tone: "emerald",
+                  hint: derived.recommendationReason,
+                },
                 {
                   label: "Expected alpha band",
                   value: `${formatPct(derived.alphaBand[0], { digits: 0 })} → ${formatPct(derived.alphaBand[1], { digits: 0 })}`,
                   tone: "emerald",
+                  hint: "Backtest output remains modeled portfolio evidence, not a realized enforcement outcome.",
                 },
                 {
                   label: "Trigger threshold",
                   value: formatPct(derived.triggerThreshold, { digits: 0 }),
                   tone: "amber",
-                  hint: "Escalate forensic review when adjusted risk exceeds this band.",
+                  hint: "Crossing this band should escalate forensic review, not trigger an accusation or legal conclusion.",
                 },
                 {
                   label: "Top watchlist ticker",
                   value: derived.watchlist[0]?.ticker ?? "—",
                   tone: "crimson",
-                  hint: derived.watchlist[0] ? `Score ${formatPct(derived.watchlist[0].score, { digits: 0 })}` : undefined,
+                  hint: derived.watchlist[0]
+                    ? `${derived.watchlist[0].action} at ${formatPct(derived.watchlist[0].score, { digits: 0 })} adjusted risk.`
+                    : undefined,
                 },
                 {
-                  label: "Short intensity setting",
+                  label: "Review intensity setting",
                   value: `${shortIntensity}%`,
                   tone: "neutral",
+                  hint: "Higher intensity widens the modeled payoff range but should still be paired with human review discipline.",
                 },
               ]}
             />
           </div>
-          <NarrativeStrip
-            title="Decision Notes"
-            subtitle="Operational triggers and confidence should be reviewed alongside position sizing discipline."
-            annotations={chapterCAnnotations}
-            tone="emerald"
-            maxItems={4}
-          />
+          <div className="grid gap-4 xl:grid-cols-[minmax(0,1fr)_360px]">
+            <NarrativeStrip
+              title="Decision Notes"
+              subtitle="Operational triggers and confidence should be reviewed alongside position sizing discipline."
+              annotations={chapterCAnnotations}
+              tone="emerald"
+              maxItems={4}
+            />
+            <section className="glass rounded-2xl p-5">
+              <p className="font-mono text-[11px] uppercase tracking-[0.16em] text-emerald-100/85">Why this recommendation remains bounded</p>
+              <div className="mt-4 space-y-3 text-sm leading-relaxed text-slate-300">
+                {derived.recommendationEvidence.map((note) => (
+                  <p key={note} className="rounded-xl border border-white/10 bg-white/[0.03] px-3 py-3">
+                    {note}
+                  </p>
+                ))}
+              </div>
+            </section>
+          </div>
         </StoryChapterShell>
       </RouteReveal>
 
@@ -641,7 +771,12 @@ export default function FraudClient({ payload }: { payload: FraudPayload }) {
               tone="rose"
               maxItems={6}
             />
-            <DecisionEvidencePanel title="Short Basket Evidence" evidence={payload.decisionEvidence} />
+            <DecisionEvidencePanel
+              title="Triage Evidence Pack"
+              summary="Evidence blocks support an investigative queue. They rank who deserves deeper review; they do not establish fraud as a legal fact."
+              footer="Trust boundary: similarity links, score bands, and alpha ranges remain modeled decision aids built from filing proxies and synthetic backtest labels."
+              evidence={payload.decisionEvidence}
+            />
           </div>
         </StoryChapterShell>
       </RouteReveal>

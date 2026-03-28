@@ -25,6 +25,14 @@ export function Hero({ payload }: { payload: FraudPayload }) {
     .filter((filing) => filing.ticker === focusTicker)
     .sort((a, b) => a.filingDate.localeCompare(b.filingDate))
     .slice(-18);
+  const triageShare = payload.filings.length > 0
+    ? payload.filings.filter((filing) => filing.riskScore >= 0.75).length / payload.filings.length
+    : 0;
+  const latestReadyRun = payload.dataReadiness?.reduce<string | null>((latest, module) => {
+    const current = module.lastSuccessfulRealRunAt;
+    if (!current) return latest;
+    return !latest || current > latest ? current : latest;
+  }, null);
 
   const width = 820;
   const height = 220;
@@ -63,9 +71,32 @@ export function Hero({ payload }: { payload: FraudPayload }) {
             <span className="text-rose-100">forensic pre-collapse signal board</span>
           </h1>
           <p className="mt-5 max-w-2xl text-base leading-relaxed text-slate-200/90">
-            Case-board composition of filing trajectories, deception index drift,
-            and lead-time alerts before enforcement events hit the tape.
+            Early-warning triage board for public-filing anomalies: the goal is to decide who merits deeper forensic review, not to claim legal proof or accuse a company of fraud.
           </p>
+
+          <div className="mt-6 grid gap-3 md:grid-cols-3">
+            <article className="rounded-2xl border border-rose-300/15 bg-black/30 px-4 py-3">
+              <p className="font-mono text-[10px] uppercase tracking-[0.16em] text-rose-100/75">Triage posture</p>
+              <p className="mt-2 text-lg font-semibold text-slate-50">Investigate before verdict</p>
+              <p className="mt-2 text-sm leading-relaxed text-slate-300">
+                Recommendations stay in watchlist / escalate / stand-down language and preserve the gap between suspicious patterns and legal findings.
+              </p>
+            </article>
+            <article className="rounded-2xl border border-amber-200/15 bg-black/30 px-4 py-3">
+              <p className="font-mono text-[10px] uppercase tracking-[0.16em] text-amber-100/75">Flagged share</p>
+              <p className="mt-2 text-lg font-semibold text-slate-50">{formatPct(triageShare, { digits: 0 })}</p>
+              <p className="mt-2 text-sm leading-relaxed text-slate-300">
+                Portion of tracked filings currently breaching the high-risk triage band across the synthetic evidence panel.
+              </p>
+            </article>
+            <article className="rounded-2xl border border-emerald-200/15 bg-black/30 px-4 py-3">
+              <p className="font-mono text-[10px] uppercase tracking-[0.16em] text-emerald-100/75">Latest evidence refresh</p>
+              <p className="mt-2 text-lg font-semibold text-slate-50">{latestReadyRun ? latestReadyRun.slice(0, 10) : "Unavailable"}</p>
+              <p className="mt-2 text-sm leading-relaxed text-slate-300">
+                Current board state remains auditable to the most recent filing-ingestion readiness checkpoint.
+              </p>
+            </article>
+          </div>
 
           <div className="mt-6 overflow-hidden rounded-2xl border border-white/10 bg-black/30">
             <div className="border-b border-white/10 bg-white/5 px-4 py-2">

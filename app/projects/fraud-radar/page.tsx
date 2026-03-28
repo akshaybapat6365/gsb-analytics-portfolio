@@ -6,13 +6,26 @@ import { buildProjectMetadata, buildProjectSchema } from "@/lib/seo";
 import { Hero } from "./Hero";
 import { FraudShell } from "./FraudShell";
 import { FraudInteractiveSection } from "./InteractiveSection";
+import { RecoverabilityProbe } from "./RecoverabilityProbe";
+import { resolveFraudRouteProbe } from "./recoverability";
 import { StructuredDataScript } from "@/components/seo/StructuredDataScript";
 import { CaseStudyTrustStack } from "@/components/story/CaseStudyTrustStack";
 
 const project = getProject("fraud-radar");
 export const metadata: Metadata = buildProjectMetadata(project);
 
-export default async function FraudRadarPage() {
+type FraudRadarPageProps = {
+  searchParams?: Promise<Record<string, string | string[] | undefined>>;
+};
+
+export default async function FraudRadarPage({ searchParams }: FraudRadarPageProps) {
+  const resolvedSearchParams = searchParams ? await searchParams : undefined;
+  const probe = resolveFraudRouteProbe(resolvedSearchParams?.routeProbe);
+
+  if (probe !== "none") {
+    return <RecoverabilityProbe probe={probe} />;
+  }
+
   const payload = await loadFraudPayload();
   const summary = project.homepage;
 
