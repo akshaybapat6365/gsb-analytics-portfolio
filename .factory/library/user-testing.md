@@ -38,6 +38,7 @@ Additional routes in scope:
 - Fraud Radar recoverability validation path: on a healthy production-like runtime, validators may use `/projects/fraud-radar?routeProbe=loading` and `/projects/fraud-radar?routeProbe=error` as the supported, non-destructive browser-visible route-level recoverability probes for VAL-FRAUD-005.
 - Target Shrink recoverability validation path: on a healthy production-like runtime, validators may use `/projects/target-shrink?routeProbe=loading` and `/projects/target-shrink?routeProbe=error` as the supported, non-destructive browser-visible route-level recoverability probes for VAL-SHRINK-005.
 - Tesla NACS recoverability validation path: on a healthy production-like runtime, validators may use `/projects/tesla-nacs?routeProbe=loading` and `/projects/tesla-nacs?routeProbe=error` as the supported, non-destructive browser-visible route-level recoverability probes for VAL-EV-005.
+- Netflix ROI validation note (2026-03-29): on the current production-like runtime, `/projects/netflix-roi` can render the hero/trust surfaces while leaving the allocation committee simulator in an `Interactive controls are loading` placeholder state, and `/projects/netflix-roi?routeProbe=loading|error` currently render the normal route instead of distinct recoverability surfaces.
 
 ## URLs and Setup
 - Production-like validation surface: `http://localhost:3501`

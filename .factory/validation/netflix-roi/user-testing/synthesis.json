@@ -1,0 +1,39 @@
+{
+  "milestone": "netflix-roi",
+  "round": 1,
+  "status": "fail",
+  "assertionsSummary": {
+    "total": 5,
+    "passed": 2,
+    "failed": 2,
+    "blocked": 1
+  },
+  "passedAssertions": [
+    "VAL-NETFLIX-001",
+    "VAL-NETFLIX-004"
+  ],
+  "failedAssertions": [
+    {
+      "id": "VAL-NETFLIX-002",
+      "reason": "Required simulator inputs and downstream recommendation controls were not rendered in the production-like Netflix ROI route state; the page remained in an 'Interactive controls are loading' placeholder state."
+    },
+    {
+      "id": "VAL-NETFLIX-003",
+      "reason": "The route did not expose the required recommendation packet metrics in the real user surface; only a placeholder indicated that the recommendation console was still loading/incoming."
+    }
+  ],
+  "blockedAssertions": [
+    {
+      "id": "VAL-NETFLIX-005",
+      "blockedBy": "The supported routeProbe=loading and routeProbe=error URLs rendered the normal Netflix ROI page instead of a distinct loading or error surface, so recoverability could not be verified."
+    }
+  ],
+  "appliedUpdates": [
+    {
+      "target": "user-testing.md",
+      "description": "Recorded that the current production-like Netflix ROI route can remain stuck on the interactive-controls placeholder and that the documented routeProbe URLs do not currently surface distinct recoverability states.",
+      "source": "flow-report"
+    }
+  ],
+  "previousRound": null
+}
