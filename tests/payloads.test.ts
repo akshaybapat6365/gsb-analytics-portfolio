@@ -35,6 +35,8 @@ describe("portfolio discovery metadata", () => {
       expect(card.claimFraming.length).toBeGreaterThan(0);
       expect(card.methodPlain.length).toBeGreaterThan(0);
       expect(card.evidenceMeta).toContain("as-of");
+      expect(card.source.length).toBeGreaterThan(0);
+      expect(card.asOf).toMatch(/^\d{4}-\d{2}-\d{2}$/);
       expect(card.href).toMatch(/^\/projects\//);
     }
   });

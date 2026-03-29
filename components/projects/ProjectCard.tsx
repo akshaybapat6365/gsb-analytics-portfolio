@@ -4,6 +4,7 @@ import Link from "next/link";
 import type { Project } from "@/lib/projects/catalog";
 import { cn } from "@/lib/cn";
 import { ACCENT_BY_SLUG, DOMAIN_BY_SLUG } from "@/lib/chartTheme";
+import { buildProjectTrustLabels } from "@/lib/projects/trust";
 import { CardMiniViz } from "@/components/home/CardMiniViz";
 
 /* ── Evidence badge helper ──────────────────────────── */
@@ -25,6 +26,7 @@ export function ProjectCard({ project }: { project: Project }) {
   const badge = evidenceBadge(project.homepage.evidenceLevel);
   const accent = ACCENT_BY_SLUG[project.slug] ?? "160,175,220";
   const domain = DOMAIN_BY_SLUG[project.slug] ?? project.domain;
+  const trustLabels = buildProjectTrustLabels(project.homepage);
 
   return (
     <Link
@@ -67,7 +69,7 @@ export function ProjectCard({ project }: { project: Project }) {
           <div className="flex flex-wrap items-center gap-2">
             <span className={cn("inline-flex items-center gap-1 rounded-full border px-1.5 py-0.5 font-mono text-[9px] uppercase tracking-[0.1em]", badge.cls)}>
               <span aria-hidden="true">{badge.icon}</span>
-              {badge.label}
+              {trustLabels.evidenceBadgeLabel}
             </span>
             <span className="font-mono text-[9px] uppercase tracking-[0.14em] text-slate-500">
               {project.homepage.homepageSubtitle}
@@ -92,13 +94,13 @@ export function ProjectCard({ project }: { project: Project }) {
               <dt className="font-mono text-[9px] uppercase tracking-[0.14em] text-slate-500">
                 Method + source
               </dt>
-              <dd className="mt-1">{project.homepage.methodPlain} {project.homepage.source}.</dd>
+              <dd className="mt-1">{project.homepage.methodPlain} {trustLabels.sourceLabel}.</dd>
             </div>
             <div>
               <dt className="font-mono text-[9px] uppercase tracking-[0.14em] text-slate-500">
                 Freshness
               </dt>
-              <dd className="mt-1">As-of {project.homepage.asOf}</dd>
+              <dd className="mt-1">{trustLabels.freshnessLabel}</dd>
             </div>
           </dl>
         </div>

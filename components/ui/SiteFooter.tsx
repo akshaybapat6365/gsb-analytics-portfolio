@@ -32,7 +32,11 @@ export function SiteFooter() {
               </p>
               <div className="mt-3 flex flex-col gap-2">
                 {FOOTER_LINKS.map((link) => (
-                  <Link key={link.href} href={link.href} className="text-sm text-slate-300 transition hover:text-white">
+                  <Link
+                    key={link.href}
+                    href={link.href}
+                    className="text-sm text-slate-300 transition hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/45"
+                  >
                     {link.label}
                   </Link>
                 ))}
@@ -44,7 +48,7 @@ export function SiteFooter() {
                 Contact
               </p>
               <div className="mt-3 space-y-3 text-sm text-slate-300">
-                <a href={site.links.email} className="inline-flex items-center gap-2 transition hover:text-white">
+                <a href={site.links.email} className="inline-flex items-center gap-2 transition hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/45">
                   <Mail className="h-4 w-4" />
                   vaibhavb@worktechmail.com
                 </a>
@@ -54,7 +58,7 @@ export function SiteFooter() {
                     target="_blank"
                     rel="noreferrer"
                     aria-label="LinkedIn"
-                    className="text-slate-600 transition-colors duration-200 hover:text-slate-300"
+                    className="text-slate-600 transition-colors duration-200 hover:text-slate-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/45"
                   >
                     <Linkedin className="h-4 w-4" />
                   </a>
@@ -63,7 +67,7 @@ export function SiteFooter() {
                     target="_blank"
                     rel="noreferrer"
                     aria-label="GitHub"
-                    className="text-slate-600 transition-colors duration-200 hover:text-slate-300"
+                    className="text-slate-600 transition-colors duration-200 hover:text-slate-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/45"
                   >
                     <Github className="h-4 w-4" />
                   </a>

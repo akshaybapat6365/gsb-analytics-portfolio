@@ -51,6 +51,8 @@ export type HomeProjectCardVM = {
   evidenceLevel: HomepageEvidenceLevel;
   evidenceBadge: HomeEvidenceBadge;
   evidenceMeta: string;
+  source: string;
+  asOf: string;
   provenanceLong: string;
   vizType: HomeVizType;
   spark: number[];
@@ -204,6 +206,8 @@ function buildCards(input: Project[]): HomeProjectCardVM[] {
       evidenceLevel: project.homepage.evidenceLevel,
       evidenceBadge,
       evidenceMeta: `${project.homepage.evidenceLevel.toUpperCase()} · ${project.homepage.source} · as-of ${project.homepage.asOf}`,
+      source: project.homepage.source,
+      asOf: project.homepage.asOf,
       provenanceLong: project.homepage.provenanceLong,
       vizType: project.homepage.vizType,
       spark: project.homepage.spark,

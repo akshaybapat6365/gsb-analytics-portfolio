@@ -3,6 +3,7 @@ import { Reveal } from "@/components/motion/Reveal";
 import { HomeCredibilityStrip } from "@/components/home/HomeCredibilityStrip";
 import { HomeHeroSignalWall } from "@/components/home/HomeHeroSignalWall";
 import { HomeProjectGrid } from "@/components/home/HomeProjectGrid";
+import { PortfolioTrustSummary } from "@/components/projects/PortfolioTrustSummary";
 import { StructuredDataScript } from "@/components/seo/StructuredDataScript";
 import { buildHomePageViewModel } from "@/lib/viewmodels/home";
 import { projects } from "@/lib/projects/catalog";
@@ -27,6 +28,10 @@ export default function HomePage() {
 
         <Reveal delay={0.06}>
           <HomeProjectGrid cards={vm.cards} />
+        </Reveal>
+
+        <Reveal delay={0.07}>
+          <PortfolioTrustSummary compact />
         </Reveal>
 
         <Reveal delay={0.08}>

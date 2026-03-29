@@ -52,10 +52,11 @@ function Pill({
     <button
       type="button"
       onClick={onClick}
+      aria-pressed={active}
       className={
         active
-          ? "rounded-full border border-white/25 bg-white/[0.10] px-3 py-1.5 font-mono text-[10px] font-medium uppercase tracking-[0.13em] text-slate-100 transition"
-          : "rounded-full border border-white/[0.08] bg-transparent px-3 py-1.5 font-mono text-[10px] font-medium uppercase tracking-[0.13em] text-slate-500 transition hover:border-white/20 hover:text-slate-300"
+          ? "rounded-full border border-white/25 bg-white/[0.10] px-3 py-1.5 font-mono text-[10px] font-medium uppercase tracking-[0.13em] text-slate-100 transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/45"
+          : "rounded-full border border-white/[0.08] bg-transparent px-3 py-1.5 font-mono text-[10px] font-medium uppercase tracking-[0.13em] text-slate-500 transition hover:border-white/20 hover:text-slate-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/45"
       }
     >
       {children}
@@ -118,7 +119,7 @@ export function ProjectsIndexGrid({ projects }: Props) {
               <button
                 type="button"
                 onClick={resetFilters}
-                className="inline-flex items-center rounded-full border border-white/12 bg-white/[0.04] px-3 py-1.5 font-mono text-[10px] uppercase tracking-[0.13em] text-slate-200 transition hover:border-white/20 hover:bg-white/[0.08]"
+                className="inline-flex items-center rounded-full border border-white/12 bg-white/[0.04] px-3 py-1.5 font-mono text-[10px] uppercase tracking-[0.13em] text-slate-200 transition hover:border-white/20 hover:bg-white/[0.08] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/45"
               >
                 Clear all filters
               </button>
@@ -186,7 +187,7 @@ export function ProjectsIndexGrid({ projects }: Props) {
           <button
             type="button"
             onClick={resetFilters}
-            className="mt-5 inline-flex items-center rounded-full border border-white/15 bg-white/[0.04] px-4 py-2 font-mono text-[10px] uppercase tracking-[0.14em] text-slate-100 transition hover:border-white/25 hover:bg-white/[0.08]"
+            className="mt-5 inline-flex items-center rounded-full border border-white/15 bg-white/[0.04] px-4 py-2 font-mono text-[10px] uppercase tracking-[0.14em] text-slate-100 transition hover:border-white/25 hover:bg-white/[0.08] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/45"
           >
             Reset filters
           </button>

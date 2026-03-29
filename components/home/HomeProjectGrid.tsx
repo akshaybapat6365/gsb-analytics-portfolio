@@ -5,6 +5,7 @@ import type { CSSProperties } from "react";
 import { motion, useReducedMotion } from "framer-motion";
 import type { HomeProjectCardVM } from "@/lib/viewmodels/home";
 import { ACCENT_BY_SLUG, DOMAIN_BY_SLUG } from "@/lib/chartTheme";
+import { buildProjectTrustLabels } from "@/lib/projects/trust";
 import { CardMiniViz } from "./CardMiniViz";
 
 type Props = { cards: HomeProjectCardVM[] };
@@ -39,6 +40,27 @@ export function HomeProjectGrid({ cards }: Props) {
         {cards.map((card, idx) => {
           const accent = ACCENT_BY_SLUG[card.slug];
           const style = { "--card-accent": accent } as CSSProperties;
+          const trustLabels = buildProjectTrustLabels({
+            homepageTitle: card.title,
+            homepageSubtitle: card.subtitle,
+            problem: "",
+            methodPlain: card.methodPlain,
+            resultLabel: card.resultLabel,
+            resultValue: card.resultValue,
+            claim: card.claim,
+            claimFraming: card.claimFraming,
+            claimType: "illustrative-simulation",
+            timeframe: undefined,
+            limitation: "",
+            evidenceLevel: card.evidenceLevel,
+            source: card.source,
+            asOf: card.asOf,
+            provenanceLong: card.provenanceLong,
+            vizType: card.vizType,
+            spark: card.spark,
+            markerLabel: card.markerLabel,
+            annotation: card.annotation,
+          });
 
           return (
             <motion.article
@@ -85,7 +107,7 @@ export function HomeProjectGrid({ cards }: Props) {
                 <div className="flex flex-1 flex-col px-6 py-5">
                   <div className="flex flex-wrap items-center gap-2">
                     <span className="rounded-full border border-white/10 bg-white/[0.05] px-2.5 py-1 font-mono text-[9px] uppercase tracking-[0.18em] text-slate-300">
-                      {card.evidenceBadge.icon} {card.evidenceBadge.label}
+                      {card.evidenceBadge.icon} {trustLabels.evidenceBadgeLabel}
                     </span>
                     <span className="font-mono text-[9px] uppercase tracking-[0.18em] text-slate-500">
                       {card.subtitle}
@@ -112,7 +134,7 @@ export function HomeProjectGrid({ cards }: Props) {
                         Method + source
                       </dt>
                       <dd className="mt-1 text-[13px] leading-6 text-slate-300">
-                        {card.methodPlain} {card.evidenceMeta.split("·").slice(1, 2).join("·").trim()}.
+                        {card.methodPlain} {trustLabels.sourceLabel}.
                       </dd>
                     </div>
                     <div>
@@ -120,7 +142,7 @@ export function HomeProjectGrid({ cards }: Props) {
                         Freshness
                       </dt>
                       <dd className="mt-1 text-[13px] leading-6 text-slate-300">
-                        As-of {card.evidenceMeta.split("·").slice(2).join("·").replace(/^as-of\s*/i, "")}
+                        {trustLabels.freshnessLabel}
                       </dd>
                     </div>
                   </dl>

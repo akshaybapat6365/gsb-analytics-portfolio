@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Reveal } from "@/components/motion/Reveal";
 import { ProjectsIndexGrid } from "@/components/projects/ProjectsIndexGrid";
+import { PortfolioTrustSummary } from "@/components/projects/PortfolioTrustSummary";
 import { projects } from "@/lib/projects/catalog";
 import { buildPageMetadata } from "@/lib/seo";
 
@@ -75,6 +76,10 @@ export default function ProjectsIndexPage() {
 
       {/* ── Filters + Grid ── */}
       <Reveal delay={0.05}>
+        <PortfolioTrustSummary />
+      </Reveal>
+
+      <Reveal delay={0.08}>
         <ProjectsIndexGrid projects={projects} />
       </Reveal>
     </div>

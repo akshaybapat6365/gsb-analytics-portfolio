@@ -4,6 +4,7 @@ import { BlufPanel } from "@/components/story/BlufPanel";
 import { DataIntegrityDrawer } from "@/components/story/DataIntegrityDrawer";
 import { RealSignalsPanel } from "@/components/story/RealSignalsPanel";
 import { AssumptionsDrawer } from "@/components/story/AssumptionsDrawer";
+import { buildProjectTrustLabels } from "@/lib/projects/trust";
 
 type CaseStudyTrustStackProps = {
   eyebrow: string;
@@ -26,6 +27,8 @@ export function CaseStudyTrustStack({
   signals,
   readiness,
 }: CaseStudyTrustStackProps) {
+  const trustLabels = buildProjectTrustLabels(summary);
+
   return (
     <div className="space-y-5">
       <BlufPanel
@@ -34,7 +37,7 @@ export function CaseStudyTrustStack({
         bluf={bluf}
         keyOutputLabel={summary.resultLabel}
         keyOutputValue={summary.resultValue}
-        evidenceLine={`${summary.evidenceLevel.toUpperCase()} · ${summary.source} · as-of ${summary.asOf}`}
+        evidenceLine={trustLabels.evidenceLine}
         limitation={summary.limitation}
       />
 

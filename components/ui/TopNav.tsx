@@ -37,7 +37,7 @@ export function TopNav() {
               href={site.links.linkedin}
               aria-label="LinkedIn"
               title="LinkedIn"
-              className="rounded-md p-2 hover:bg-white/[0.08] hover:text-white"
+              className="rounded-md p-2 hover:bg-white/[0.08] hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/45"
               rel="noreferrer"
               target="_blank"
             >
@@ -47,7 +47,7 @@ export function TopNav() {
               href={site.links.github}
               aria-label="GitHub"
               title="GitHub"
-              className="rounded-md p-2 hover:bg-white/[0.08] hover:text-white"
+              className="rounded-md p-2 hover:bg-white/[0.08] hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/45"
               rel="noreferrer"
               target="_blank"
             >
@@ -57,7 +57,7 @@ export function TopNav() {
               href={site.links.email}
               aria-label="Email"
               title="Email"
-              className="rounded-md p-2 hover:bg-white/[0.08] hover:text-white"
+              className="rounded-md p-2 hover:bg-white/[0.08] hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/45"
             >
               <Mail className="h-4 w-4" />
             </a>
@@ -74,7 +74,7 @@ export function TopNav() {
                   ? false
                   : pathname === item.href || pathname.startsWith(`${item.href}/`);
             const className = cn(
-              "inline-flex items-center rounded-full border px-3.5 py-1.5 text-[11px] font-semibold uppercase tracking-[0.14em] transition sm:text-xs sm:tracking-[0.15em]",
+              "inline-flex items-center rounded-full border px-3.5 py-1.5 text-[11px] font-semibold uppercase tracking-[0.14em] transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/45 sm:text-xs sm:tracking-[0.15em]",
               isActive
                 ? "border-white/25 bg-white/[0.08] text-white"
                 : "border-white/[0.08] bg-white/[0.03] text-slate-400 hover:border-white/[0.15] hover:text-white",
