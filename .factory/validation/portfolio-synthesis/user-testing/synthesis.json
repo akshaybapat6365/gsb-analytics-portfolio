@@ -1,0 +1,51 @@
+{
+  "milestone": "portfolio-synthesis",
+  "round": 1,
+  "status": "fail",
+  "assertionsSummary": {
+    "total": 8,
+    "passed": 2,
+    "failed": 4,
+    "blocked": 2
+  },
+  "passedAssertions": [
+    "VAL-CROSS-006",
+    "VAL-CROSS-003"
+  ],
+  "failedAssertions": [
+    {
+      "id": "VAL-CROSS-001",
+      "reason": "The end-to-end discovery flow is not reliably usable because navigating into /projects from the shell can strand the user on a broken client state before they can continue browsing."
+    },
+    {
+      "id": "VAL-CROSS-004",
+      "reason": "Keyboard-first traversal is not reliable across major surfaces because the projects shell and case-study flow can lose interactive focusability due to client chunk failures."
+    },
+    {
+      "id": "VAL-CROSS-007",
+      "reason": "Return-to-browsing navigation exists in the shell, but it currently leads users into a broken /projects client state instead of a dependable browsing surface."
+    },
+    {
+      "id": "VAL-CROSS-005",
+      "reason": "Route-level error recovery currently strands the user on a generic application error instead of offering retry or return-to-projects navigation."
+    }
+  ],
+  "blockedAssertions": [
+    {
+      "id": "VAL-CROSS-002",
+      "blockedBy": "Blocked by the projects index runtime failure, so consistency across home, index, and route could not be fully proven through the visible product."
+    },
+    {
+      "id": "VAL-CROSS-008",
+      "blockedBy": "Blocked because the projects index crashed before its portfolio-level trust cue could be checked; home-to-route comparison looked honest, but the assigned cross-surface assertion could not be fully proven."
+    }
+  ],
+  "appliedUpdates": [
+    {
+      "target": "user-testing.md",
+      "description": "Recorded the current production-like chunk-load regression on /projects and noted that reliable shell navigation, keyboard traversal, and route-probe recovery assertions should fail or block until it is fixed.",
+      "source": "flow-report"
+    }
+  ],
+  "previousRound": null
+}

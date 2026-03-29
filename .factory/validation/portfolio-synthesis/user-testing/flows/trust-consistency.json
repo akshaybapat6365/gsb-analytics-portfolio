@@ -1,0 +1,151 @@
+{
+  "groupId": "trust-consistency",
+  "testedAt": "2026-03-28T19:59:43-06:00",
+  "isolation": {
+    "appUrl": "http://localhost:3501",
+    "routesAllowed": ["/", "/projects", "/projects/ord-lga-price-war", "/projects/netflix-roi"],
+    "session": "trust-consistency",
+    "missionDir": "/home/mostltyharmless/.factory/missions/0bc5abab-8b5e-4fc7-8d9d-3feb9bdd1a02"
+  },
+  "toolsUsed": ["agent-browser", "curl"],
+  "assertions": [
+    {
+      "id": "VAL-CROSS-002",
+      "title": "Trust taxonomy stays consistent across portfolio surfaces",
+      "status": "blocked",
+      "steps": [
+        {
+          "action": "Open / and inspect the ORD-LGA card trust cues",
+          "expected": "Home card shows evidence level, source framing, and as-of language that can be compared to other surfaces",
+          "observed": "Home card exposed MIXED evidence, modeled policy simulation source framing, and as-of 2026-02-21 freshness for ORD-LGA."
+        },
+        {
+          "action": "Open /projects and inspect the same card on the index",
+          "expected": "Projects index card loads with matching trust taxonomy so it can be compared against home and route detail",
+          "observed": "The /projects page crashed into a client-side application error with no interactive card content available."
+        },
+        {
+          "action": "Open /projects/ord-lga-price-war and inspect the top summary",
+          "expected": "Route BLUF/top summary uses semantically matching evidence/source/freshness language",
+          "observed": "ORD-LGA route loaded a visible top summary with mixed evidence framing, modeled policy language, as-of 2026-02-21 freshness, and an explicit limitation about inferred competitor policy."
+        }
+      ],
+      "evidence": {
+        "screenshots": [
+          "portfolio-synthesis/trust-consistency/VAL-CROSS-home-annotated.png",
+          "portfolio-synthesis/trust-consistency/VAL-CROSS-projects-annotated.png",
+          "portfolio-synthesis/trust-consistency/VAL-CROSS-ordlga-annotated.png"
+        ],
+        "consoleErrors": "Home route: none observed. /projects: Loading chunk 7177 failed (/_next/static/chunks/app/layout-04004db2ab7b0e3e.js). /projects/ord-lga-price-war: repeated Loading chunk 7177 failed plus repeated Cannot read properties of null (reading 'parentNode').",
+        "network": "curl HEAD / -> 200 OK; browser document requests reached /, /projects, and /projects/ord-lga-price-war, but the projects index then failed client-side before its trust card surface could be inspected."
+      },
+      "issues": "Blocked by the projects index runtime failure, so consistency across home, index, and route could not be fully proven through the visible product."
+    },
+    {
+      "id": "VAL-CROSS-003",
+      "title": "A skeptical peer can inspect trust surfaces without source-code access",
+      "status": "pass",
+      "steps": [
+        {
+          "action": "Open /projects/ord-lga-price-war and inspect the top summary/BLUF",
+          "expected": "A reviewer can identify the business question, conclusion, evidence line, freshness cue, and limitation language from the route UI",
+          "observed": "The route visibly exposed the war-room BLUF, mixed evidence framing, modeled uplift summary, as-of 2026-02-21 cue, and a limitation that competitor policy is inferred rather than observed."
+        },
+        {
+          "action": "Inspect the trust/provenance section on the same route",
+          "expected": "The UI exposes current-run trust detail, run identity, freshness, and provenance without requiring source access",
+          "observed": "The route displayed 'Trust, provenance & current run' with current run snapshot information, module readiness, coverage, source identifiers, and explicit fallback/real-data language."
+        },
+        {
+          "action": "Inspect the assumptions/upgrade-path surface",
+          "expected": "The UI exposes assumptions, limits, and a real-world swap path so modeled output is not mistaken for observed truth",
+          "observed": "The route exposed an 'Assumptions, limits & swap path' section with decision-aid framing, uncertainty language, and a real-world upgrade path explanation."
+        }
+      ],
+      "evidence": {
+        "screenshots": [
+          "portfolio-synthesis/trust-consistency/VAL-CROSS-ordlga-annotated.png",
+          "portfolio-synthesis/trust-consistency/VAL-CROSS-003-ordlga-full.png"
+        ],
+        "consoleErrors": "The route still logged repeated Loading chunk 7177 failed errors for /_next/static/chunks/app/layout-04004db2ab7b0e3e.js plus repeated Cannot read properties of null (reading 'parentNode'), but the visible trust, provenance, and assumptions surfaces remained inspectable.",
+        "network": "Browser captured GET /projects/ord-lga-price-war (document) while the route rendered enough UI for inspection."
+      },
+      "issues": null
+    },
+    {
+      "id": "VAL-CROSS-005",
+      "title": "Route loading or failure recovery never strands the user",
+      "status": "fail",
+      "steps": [
+        {
+          "action": "Open /projects/netflix-roi?routeProbe=error",
+          "expected": "A route-specific failure state provides retry or return-to-projects recovery controls",
+          "observed": "The page collapsed to a generic 'Application error: a client-side exception has occurred while loading localhost' state with no visible recovery controls."
+        },
+        {
+          "action": "Open /projects/ord-lga-price-war?routeProbe=error",
+          "expected": "A route-specific failure state provides retry or return-to-projects recovery controls",
+          "observed": "The page again collapsed to the same generic application error with no visible recovery affordance."
+        }
+      ],
+      "evidence": {
+        "screenshots": [
+          "portfolio-synthesis/trust-consistency/VAL-CROSS-005-netflix-routeProbe-error.png",
+          "portfolio-synthesis/trust-consistency/VAL-CROSS-005-ordlga-routeProbe-error.png"
+        ],
+        "consoleErrors": "Both probe routes logged Loading chunk 7177 failed for /_next/static/chunks/app/layout-04004db2ab7b0e3e.js; Netflix probe also logged repeated Cannot read properties of null (reading 'parentNode').",
+        "network": "Browser captured GET /projects/netflix-roi and GET /projects/ord-lga-price-war, but the error probes surfaced only the generic application-error shell instead of a recoverable route-specific state."
+      },
+      "issues": "Route-level error recovery currently strands the user on a generic application error instead of offering retry or return-to-projects navigation."
+    },
+    {
+      "id": "VAL-CROSS-008",
+      "title": "Portfolio-level trust cues do not overstate route-level reproducibility",
+      "status": "blocked",
+      "steps": [
+        {
+          "action": "Inspect the ORD-LGA trust cue on /",
+          "expected": "Portfolio-level card truthfully summarizes evidence level, source framing, and freshness without overstating route certainty",
+          "observed": "The home card stated MIXED evidence, DOT DB1B anchors + modeled policy simulation, and as-of 2026-02-21, which aligned with the route's mixed and modeled framing."
+        },
+        {
+          "action": "Inspect the matching card on /projects",
+          "expected": "Projects index card is available for the same overstatement check",
+          "observed": "The /projects page failed with a client-side application error before any card-level trust cue could be inspected."
+        },
+        {
+          "action": "Inspect the route-level trust/provenance surface on /projects/ord-lga-price-war",
+          "expected": "Route-level trust details should confirm or contradict the portfolio-level trust cue",
+          "observed": "The route disclosed inferred competitor behavior, modeled policy outputs, explicit limitations, current-run metadata, and fallback/readiness language that did not materially exceed the home card's claim."
+        }
+      ],
+      "evidence": {
+        "screenshots": [
+          "portfolio-synthesis/trust-consistency/VAL-CROSS-home-annotated.png",
+          "portfolio-synthesis/trust-consistency/VAL-CROSS-projects-annotated.png",
+          "portfolio-synthesis/trust-consistency/VAL-CROSS-ordlga-annotated.png",
+          "portfolio-synthesis/trust-consistency/VAL-CROSS-003-ordlga-full.png"
+        ],
+        "consoleErrors": "Home route: none observed. /projects: Loading chunk 7177 failed (/_next/static/chunks/app/layout-04004db2ab7b0e3e.js). Route detail: repeated Loading chunk 7177 failed plus repeated Cannot read properties of null (reading 'parentNode').",
+        "network": "Browser captured GET /, GET /projects, and GET /projects/ord-lga-price-war during the comparison attempt."
+      },
+      "issues": "Blocked because the projects index crashed before its portfolio-level trust cue could be checked; home-to-route comparison looked honest, but the assigned cross-surface assertion could not be fully proven."
+    }
+  ],
+  "frictions": [
+    {
+      "description": "The production-like runtime repeatedly emitted a chunk-load failure for /_next/static/chunks/app/layout-04004db2ab7b0e3e.js, which made the /projects page unusable and polluted route console logs during trust validation.",
+      "resolved": false,
+      "resolution": "Retried navigation on the affected routes and continued with whatever browser-visible evidence remained available.",
+      "affectedAssertions": ["VAL-CROSS-002", "VAL-CROSS-003", "VAL-CROSS-005", "VAL-CROSS-008"]
+    }
+  ],
+  "blockers": [
+    {
+      "description": "The /projects page crashed into a generic client-side application error instead of rendering project cards, preventing full cross-surface trust comparison through the visible UI.",
+      "affectedAssertions": ["VAL-CROSS-002", "VAL-CROSS-008"],
+      "quickFixAttempted": "Reloaded and revisited /projects in the same isolated browser session; the client-side error persisted."
+    }
+  ],
+  "summary": "Tested 4 assertions: 1 passed (VAL-CROSS-003), 1 failed (VAL-CROSS-005), and 2 were blocked by the production-like runtime crashing on /projects and route-probe error states. Home-to-route trust framing for ORD-LGA looked honest, but index-level parity could not be proven because the projects index was broken."
+}

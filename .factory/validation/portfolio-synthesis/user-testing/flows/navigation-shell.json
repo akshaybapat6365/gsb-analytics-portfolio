@@ -1,0 +1,169 @@
+{
+  "groupId": "navigation-shell",
+  "testedAt": "2026-03-29T02:01:49Z",
+  "isolation": {
+    "appUrl": "http://localhost:3501",
+    "missionDir": "/home/mostltyharmless/.factory/missions/0bc5abab-8b5e-4fc7-8d9d-3feb9bdd1a02",
+    "routesUsed": [
+      "/",
+      "/projects",
+      "/resume",
+      "/projects/tesla-nacs"
+    ],
+    "sessionRule": "Used named agent-browser sessions only; no default session used."
+  },
+  "toolsUsed": [
+    "agent-browser",
+    "curl"
+  ],
+  "assertions": [
+    {
+      "id": "VAL-CROSS-001",
+      "title": "Home-to-library-to-case-study discovery works end to end",
+      "status": "fail",
+      "steps": [
+        {
+          "action": "Open / and inspect the global shell and project cards",
+          "expected": "Home renders with global navigation and trust-rich project entry points",
+          "observed": "Home rendered with Home/Projects/Resume links and six trust-framed project cards."
+        },
+        {
+          "action": "Use the Home navigation link to go to /projects",
+          "expected": "Projects library loads cleanly and remains usable for discovery",
+          "observed": "Navigation reached /projects, but the page hit a client-side chunk failure (`Loading chunk 7177 failed`) and the browser snapshot returned no interactive elements until the route was hard-opened again."
+        },
+        {
+          "action": "Enter a case-study detail page from the projects library",
+          "expected": "A detail page opens with preserved trust context and working shell navigation",
+          "observed": "After reopening /projects directly, the Tesla NACS card opened /projects/tesla-nacs and showed the shared shell plus route trust content."
+        }
+      ],
+      "evidence": {
+        "screenshots": [
+          "portfolio-synthesis/navigation-shell/VAL-CROSS-001-home.png",
+          "portfolio-synthesis/navigation-shell/VAL-CROSS-001-projects-filtered.png",
+          "portfolio-synthesis/navigation-shell/VAL-CROSS-001-detail-entry.png"
+        ],
+        "consoleErrors": "On Home -> Projects navigation, `Loading chunk 7177 failed` and repeated `Failed to load resource: the server responded with a status of 500 (Internal Server Error)` errors occurred on /projects.",
+        "network": "GET / -> 200; GET /projects -> 200; GET /projects/tesla-nacs -> 200. Browser console still logged failing chunk/resource requests on /projects."
+      },
+      "issues": "The end-to-end discovery flow is not reliably usable because navigating into /projects from the shell can strand the user on a broken client state before they can continue browsing."
+    },
+    {
+      "id": "VAL-CROSS-004",
+      "title": "Keyboard-first navigation remains viable across shell and drawers",
+      "status": "fail",
+      "steps": [
+        {
+          "action": "On /, tab into the global shell",
+          "expected": "Keyboard focus moves through shell controls with visible focus indication",
+          "observed": "The first Tab reached the skip link and header controls; the screenshot captured the keyboard-reachable shell on home."
+        },
+        {
+          "action": "On /projects, tab through the shell and filter controls",
+          "expected": "Project filters and links remain keyboard-reachable with visible focus",
+          "observed": "The /projects route repeatedly entered the same client chunk failure state, and after tabbing the active element collapsed to BODY with no usable interactive snapshot."
+        },
+        {
+          "action": "On a case-study route, tab into trust/drawer-related controls",
+          "expected": "Trust/drawer entry points can be reached and activated from the keyboard with visible focus",
+          "observed": "On /projects/tesla-nacs, after repeated Tab presses the active element again resolved to BODY while the page logged chunk/resource errors, so viable keyboard focus on deeper controls could not be proven."
+        }
+      ],
+      "evidence": {
+        "screenshots": [
+          "portfolio-synthesis/navigation-shell/VAL-CROSS-004-focus-home.png",
+          "portfolio-synthesis/navigation-shell/VAL-CROSS-004-focus-projects.png",
+          "portfolio-synthesis/navigation-shell/VAL-CROSS-004-focus-drawer.png"
+        ],
+        "consoleErrors": "`Loading chunk 7177 failed` plus multiple 500/404 resource errors occurred during keyboard testing on /projects and /projects/tesla-nacs.",
+        "network": "GET /projects -> 200 and GET /projects/tesla-nacs -> 200, but required client chunks/resources failed in-browser, leaving BODY focused instead of usable controls."
+      },
+      "issues": "Keyboard-first traversal is not reliable across major surfaces because the projects shell and case-study flow can lose interactive focusability due to client chunk failures."
+    },
+    {
+      "id": "VAL-CROSS-006",
+      "title": "Every portfolio card reaches a unique, non-broken destination",
+      "status": "pass",
+      "steps": [
+        {
+          "action": "Inspect Home project card destinations",
+          "expected": "All home cards point to unique case-study routes",
+          "observed": "The six Home cards linked to `/projects/ord-lga-price-war`, `/projects/fraud-radar`, `/projects/target-shrink`, `/projects/starbucks-pivot`, `/projects/tesla-nacs`, and `/projects/netflix-roi`."
+        },
+        {
+          "action": "Inspect Projects index card destinations",
+          "expected": "All index cards point to the same set of unique case-study routes without duplicates",
+          "observed": "The Projects index exposed the same six unique case-study routes."
+        },
+        {
+          "action": "Verify route reachability and open one representative index card",
+          "expected": "Each destination returns successfully and opened cards land on route-specific detail pages",
+          "observed": "Curl returned HTTP 200 for all six case-study routes, and clicking the Tesla NACS card from /projects opened `http://localhost:3501/projects/tesla-nacs` with route-specific content."
+        }
+      ],
+      "evidence": {
+        "screenshots": [
+          "portfolio-synthesis/navigation-shell/VAL-CROSS-001-home.png",
+          "portfolio-synthesis/navigation-shell/VAL-CROSS-006-index-card-route.png"
+        ],
+        "consoleErrors": "Opening the representative Tesla NACS route logged some 500/404 resource errors, but the route still rendered route-specific content and the underlying destinations were unique and reachable.",
+        "network": "GET /projects/ord-lga-price-war -> 200; GET /projects/fraud-radar -> 200; GET /projects/target-shrink -> 200; GET /projects/starbucks-pivot -> 200; GET /projects/tesla-nacs -> 200; GET /projects/netflix-roi -> 200."
+      },
+      "issues": null
+    },
+    {
+      "id": "VAL-CROSS-007",
+      "title": "Users can navigate from resume and case studies back into portfolio browsing",
+      "status": "fail",
+      "steps": [
+        {
+          "action": "Open /resume and inspect return-navigation links",
+          "expected": "Resume page exposes working navigation back to Home or Projects",
+          "observed": "Resume rendered with shared Home/Projects/Resume navigation and footer links."
+        },
+        {
+          "action": "Activate Projects from /resume",
+          "expected": "User returns to portfolio browsing and can continue exploring",
+          "observed": "The browser reached /projects, but the same `Loading chunk 7177 failed` client error appeared with repeated 500 resource errors, preventing a clean continuation of browsing."
+        },
+        {
+          "action": "Activate Projects from a case-study route",
+          "expected": "Case-study navigation returns to a usable browsing surface",
+          "observed": "From /projects/tesla-nacs, the Projects link again reached /projects but logged 404/500 resource failures and did not demonstrate a clean, reliable browsing surface."
+        }
+      ],
+      "evidence": {
+        "screenshots": [
+          "portfolio-synthesis/navigation-shell/VAL-CROSS-007-resume-nav-return.png",
+          "portfolio-synthesis/navigation-shell/VAL-CROSS-007-detail-nav-return.png"
+        ],
+        "consoleErrors": "Both resume->projects and detail->projects navigation produced `Loading chunk 7177 failed` and repeated 500/404 resource errors on /projects.",
+        "network": "GET /resume -> 200; GET /projects/tesla-nacs -> 200; subsequent navigation target /projects returned 200 HTML but failed required browser resources/chunks."
+      },
+      "issues": "Return-to-browsing navigation exists in the shell, but it currently leads users into a broken /projects client state instead of a dependable browsing surface."
+    }
+  ],
+  "frictions": [
+    {
+      "description": "The /projects route intermittently loaded into a broken client state after in-app navigation, showing `Loading chunk 7177 failed` and leaving agent-browser snapshots with no interactive elements until the route was reopened directly.",
+      "resolved": true,
+      "resolution": "Worked around it for evidence gathering by hard-opening /projects in a fresh/named browser session, but the product issue remains and caused assertion failures where reliable in-app navigation was required.",
+      "affectedAssertions": [
+        "VAL-CROSS-001",
+        "VAL-CROSS-004",
+        "VAL-CROSS-007"
+      ]
+    },
+    {
+      "description": "Raw page text on App Router pages included streamed script/payload content, so text capture was noisy for keyboard-state inspection.",
+      "resolved": true,
+      "resolution": "Used screenshots, URL checks, focused-element inspection, and console/error logs instead of relying on body text alone.",
+      "affectedAssertions": [
+        "VAL-CROSS-004"
+      ]
+    }
+  ],
+  "blockers": [],
+  "summary": "Tested 4 assertions: 1 passed and 3 failed. The main regression is that navigating into /projects from resume, case-study, or home shell routes can trigger a client-side chunk/resource failure, which also prevents reliable keyboard-first validation across the shared navigation shell."
+}
