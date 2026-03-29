@@ -1,0 +1,156 @@
+{
+  "groupId": "navigation-shell-rerun",
+  "testedAt": "2026-03-29T02:36:40Z",
+  "isolation": {
+    "appUrl": "http://localhost:3501",
+    "missionDir": "/home/mostltyharmless/.factory/missions/0bc5abab-8b5e-4fc7-8d9d-3feb9bdd1a02",
+    "routesUsed": [
+      "/",
+      "/projects",
+      "/resume",
+      "/projects/tesla-nacs",
+      "/projects/tesla-nacs?routeProbe=error"
+    ],
+    "sessionName": "navigation-rerun-worker"
+  },
+  "toolsUsed": [
+    "agent-browser",
+    "curl"
+  ],
+  "assertions": [
+    {
+      "id": "VAL-CROSS-001",
+      "title": "Home-to-library-to-case-study discovery works end to end",
+      "status": "pass",
+      "steps": [
+        {
+          "action": "Open / and inspect the global shell and project entry points",
+          "expected": "Home renders with global navigation and trust-rich project entry points",
+          "observed": "Home rendered with Home, Projects, Resume, skip link, and trust-framed project cards."
+        },
+        {
+          "action": "Navigate from home to /projects using the shell",
+          "expected": "Projects library loads cleanly and remains usable for discovery",
+          "observed": "Projects loaded at /projects with visible filter controls for category, evidence level, and output type."
+        },
+        {
+          "action": "Discover and open a case study from /projects",
+          "expected": "A detail page opens with preserved shell and trust context",
+          "observed": "From /projects, the Tesla NACS card opened /projects/tesla-nacs and preserved the shared shell plus route-level case-study framing."
+        }
+      ],
+      "evidence": {
+        "screenshots": [
+          "portfolio-synthesis/navigation-rerun/VAL-CROSS-001-home.png",
+          "portfolio-synthesis/navigation-rerun/VAL-CROSS-001-projects-filtered.png",
+          "portfolio-synthesis/navigation-rerun/VAL-CROSS-001-detail-entry.png"
+        ],
+        "consoleErrors": "none observed during the rerun flow",
+        "network": "GET / -> 200; GET /projects -> 200; GET /projects/tesla-nacs -> 200"
+      },
+      "issues": null
+    },
+    {
+      "id": "VAL-CROSS-004",
+      "title": "Keyboard-first navigation remains viable across shell and drawers",
+      "status": "fail",
+      "steps": [
+        {
+          "action": "Tab into the home shell from /",
+          "expected": "Visible keyboard focus reaches the skip link and shell controls",
+          "observed": "The first Tab focused the visible Skip to content link on home."
+        },
+        {
+          "action": "Tab through the /projects shell and filter controls",
+          "expected": "Project filters and links remain keyboard reachable and activatable",
+          "observed": "Repeated Tab navigation reached the /projects controls, including the filter buttons; after 12 Tabs the focused element was the All filter button with aria-pressed=true."
+        },
+        {
+          "action": "Verify keyboard access to trust-drawer controls on an assigned case-study surface",
+          "expected": "Trust drawer entry points are visible, keyboard reachable, and activatable",
+          "observed": "On /projects/tesla-nacs, the interactive controls exposed shell links, chapter tabs, sliders, and state buttons, but no visible trust/provenance drawer trigger was discoverable in the interactive DOM for keyboard activation."
+        }
+      ],
+      "evidence": {
+        "screenshots": [
+          "portfolio-synthesis/navigation-rerun/VAL-CROSS-004-focus-home.png",
+          "portfolio-synthesis/navigation-rerun/VAL-CROSS-004-focus-projects.png",
+          "portfolio-synthesis/navigation-rerun/VAL-CROSS-001-detail-entry.png"
+        ],
+        "consoleErrors": "none observed during the rerun flow",
+        "network": "GET / -> 200; GET /projects -> 200; GET /projects/tesla-nacs -> 200"
+      },
+      "issues": "Keyboard traversal for shell and projects filters worked, but the assigned case-study route did not expose a visible trust-drawer entry point that could be reached and activated from the keyboard, so the assertion did not satisfy the full shell-and-drawers contract."
+    },
+    {
+      "id": "VAL-CROSS-005",
+      "title": "Route loading or failure recovery never strands the user",
+      "status": "pass",
+      "steps": [
+        {
+          "action": "Open the supported recovery probe /projects/tesla-nacs?routeProbe=error",
+          "expected": "A route-specific recovery UI renders instead of a broken dead end",
+          "observed": "The Tesla NACS error probe rendered a route-specific recovery surface."
+        },
+        {
+          "action": "Inspect recovery actions on the probe surface",
+          "expected": "User can retry the live route or safely return to the project library",
+          "observed": "The recovery UI exposed Open live route linking to /projects/tesla-nacs and Back to projects linking to /projects."
+        }
+      ],
+      "evidence": {
+        "screenshots": [
+          "portfolio-synthesis/navigation-rerun/VAL-CROSS-005-error-recovery.png"
+        ],
+        "consoleErrors": "none observed during the rerun flow",
+        "network": "GET /projects/tesla-nacs?routeProbe=error -> 200"
+      },
+      "issues": null
+    },
+    {
+      "id": "VAL-CROSS-007",
+      "title": "Users can navigate from resume and case studies back into portfolio browsing",
+      "status": "pass",
+      "steps": [
+        {
+          "action": "Open /resume and inspect return-navigation links",
+          "expected": "Resume exposes working navigation back to browsing surfaces",
+          "observed": "Resume rendered with shared Home, Projects, and Resume navigation."
+        },
+        {
+          "action": "Activate Projects from /resume",
+          "expected": "User returns to a usable browsing surface",
+          "observed": "Selecting Projects from /resume navigated back to /projects successfully."
+        },
+        {
+          "action": "Activate Projects from a case-study route",
+          "expected": "User returns from a detail page to continue portfolio browsing",
+          "observed": "From /projects/tesla-nacs, selecting Projects returned to /projects and preserved the browsing surface."
+        }
+      ],
+      "evidence": {
+        "screenshots": [
+          "portfolio-synthesis/navigation-rerun/VAL-CROSS-007-resume-nav-return.png",
+          "portfolio-synthesis/navigation-rerun/VAL-CROSS-007-detail-nav-return.png"
+        ],
+        "consoleErrors": "none observed during the rerun flow",
+        "network": "GET /resume -> 200; GET /projects/tesla-nacs -> 200; GET /projects -> 200"
+      },
+      "issues": null
+    }
+  ],
+  "frictions": [
+    {
+      "description": "App Router body text capture included streamed payload/script text, so raw text reads were noisy for route inspection.",
+      "resolved": true,
+      "resolution": "Used annotated screenshots, URL checks, DOM inspection, and focused-element checks instead of relying on body text alone.",
+      "affectedAssertions": [
+        "VAL-CROSS-001",
+        "VAL-CROSS-004",
+        "VAL-CROSS-007"
+      ]
+    }
+  ],
+  "blockers": [],
+  "summary": "Retested 4 assertions: 3 passed and 1 failed. Home-to-projects-to-case-study discovery, supported route recovery, and return-to-browsing flows worked on the 3501 runtime, but the full keyboard-first shell-and-drawer contract still failed because no visible trust-drawer entry point could be reached and activated on the assigned case-study surface."
+}

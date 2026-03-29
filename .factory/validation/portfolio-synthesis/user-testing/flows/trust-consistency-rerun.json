@@ -1,0 +1,101 @@
+{
+  "groupId": "trust-consistency-rerun",
+  "testedAt": "2026-03-29T02:31:10Z",
+  "isolation": {
+    "appUrl": "http://localhost:3501",
+    "routesAllowed": [
+      "/",
+      "/projects",
+      "/projects/ord-lga-price-war"
+    ],
+    "session": "trust-rerun",
+    "missionDir": "/home/mostltyharmless/.factory/missions/0bc5abab-8b5e-4fc7-8d9d-3feb9bdd1a02"
+  },
+  "toolsUsed": [
+    "agent-browser",
+    "curl"
+  ],
+  "assertions": [
+    {
+      "id": "VAL-CROSS-002",
+      "title": "Trust taxonomy stays consistent across portfolio surfaces",
+      "status": "pass",
+      "steps": [
+        {
+          "action": "Open / and inspect the ORD-LGA card trust cues",
+          "expected": "Home card shows evidence level, source framing, and as-of language that can be compared to other surfaces",
+          "observed": "Home card showed MIXED evidence, 'DQN fare policy with inferred competitor response. DOT DB1B anchors + modeled policy simulation.', and 'As-of 2026-02-21' for the ORD-LGA project."
+        },
+        {
+          "action": "Open /projects and inspect the ORD-LGA card trust cues",
+          "expected": "Projects index card exposes the same trust taxonomy on the library surface",
+          "observed": "Projects index loaded successfully and the ORD-LGA card repeated the same MIXED evidence posture, method/source wording, and 'As-of 2026-02-21' freshness cue."
+        },
+        {
+          "action": "Open /projects/ord-lga-price-war and inspect the top summary/trust line",
+          "expected": "Route summary uses semantically matching evidence/source/freshness language",
+          "observed": "The route hero and body text described observed anchors plus inferred competitor behavior and a modeled pricing policy, and the route text exposed 'MIXED · DOT DB1B anchors + modeled policy simulation · as-of 2026-02-21' with a limitation that competitor policy is inferred, not observed from internal airline systems."
+        }
+      ],
+      "evidence": {
+        "screenshots": [
+          "portfolio-synthesis/trust-rerun/VAL-CROSS-home-annotated.png",
+          "portfolio-synthesis/trust-rerun/VAL-CROSS-projects-annotated.png",
+          "portfolio-synthesis/trust-rerun/VAL-CROSS-projects-full.png",
+          "portfolio-synthesis/trust-rerun/VAL-CROSS-ordlga-top-annotated.png",
+          "portfolio-synthesis/trust-rerun/VAL-CROSS-ordlga-full.png"
+        ],
+        "consoleErrors": "Home: none observed. Projects index: none observed during this rerun. ORD-LGA route: no console errors on initial top-of-page inspection; later downward scroll attempts triggered 'Loading chunk 988 failed' for /_next/static/chunks/app/projects/ord-lga-price-war/layout-e328cd0f6908d9bc.js and repeated 'Cannot read properties of null (reading parentNode)'.",
+        "network": "curl -I http://localhost:3501 -> 200 OK. Browser captured GET /, GET /projects, and GET /projects/ord-lga-price-war with route-specific JS chunks for the projects index and ORD-LGA page."
+      },
+      "issues": null
+    },
+    {
+      "id": "VAL-CROSS-008",
+      "title": "Portfolio-level trust cues do not overstate route-level reproducibility",
+      "status": "pass",
+      "steps": [
+        {
+          "action": "Compare the ORD-LGA trust cue on / against the route-level trust language",
+          "expected": "Home card should not claim stronger reproducibility or evidence posture than the route discloses",
+          "observed": "Home card framed the case as MIXED evidence with modeled policy simulation and an as-of date, which remained consistent with the route's mixed/observed/inferred/modeled framing and explicit limitation language."
+        },
+        {
+          "action": "Compare the ORD-LGA trust cue on /projects against the route-level trust language",
+          "expected": "Projects index card should remain honest about modeled or inferred elements",
+          "observed": "Projects index card used the same MIXED evidence posture, the same method/source wording, and the same freshness cue as the home card, without claiming direct real-time telemetry or full observed truth."
+        },
+        {
+          "action": "Inspect route-level trust/provenance disclosure on /projects/ord-lga-price-war",
+          "expected": "Route-level trust surface should substantiate or narrow the portfolio-level cue rather than reveal hidden overstatement",
+          "observed": "Route text disclosed trust/provenance detail, current-run metadata, and assumptions/limits language including that observed airfare anchors are blended with inferred competitor behavior and modeled policy outputs, and that the recommendation should be treated as a decision aid rather than direct historical truth. This narrowed the claim rather than contradicting it."
+        }
+      ],
+      "evidence": {
+        "screenshots": [
+          "portfolio-synthesis/trust-rerun/VAL-CROSS-home-annotated.png",
+          "portfolio-synthesis/trust-rerun/VAL-CROSS-projects-annotated.png",
+          "portfolio-synthesis/trust-rerun/VAL-CROSS-projects-full.png",
+          "portfolio-synthesis/trust-rerun/VAL-CROSS-ordlga-top-annotated.png",
+          "portfolio-synthesis/trust-rerun/VAL-CROSS-ordlga-full.png"
+        ],
+        "consoleErrors": "Home: none observed. Projects index: none observed during card inspection. ORD-LGA route: later scroll deeper into the route caused 'Loading chunk 988 failed' and repeated 'Cannot read properties of null (reading parentNode)', but the visible trust/provenance wording gathered before the crash did not reveal any overstatement relative to home or index cards.",
+        "network": "Browser captured GET /, GET /projects, and GET /projects/ord-lga-price-war while gathering trust-cue evidence."
+      },
+      "issues": null
+    }
+  ],
+  "frictions": [
+    {
+      "description": "The ORD-LGA route remained inspectable at the top, but a deeper scroll during evidence capture triggered a client-side chunk-load failure and generic application-error screen.",
+      "resolved": false,
+      "resolution": "Used the already-visible top-summary evidence plus route body text capture gathered before the crash to complete the trust comparison.",
+      "affectedAssertions": [
+        "VAL-CROSS-002",
+        "VAL-CROSS-008"
+      ]
+    }
+  ],
+  "blockers": [],
+  "summary": "Retested 2 assigned assertions. Both passed: the ORD-LGA trust taxonomy matched across home, projects index, and route summary, and the portfolio-level cues did not overstate what the route-level trust/provenance surfaces disclosed. A remaining friction persists on deeper ORD-LGA scrolling because the route can still collapse into a generic client-side chunk-load error."
+}
