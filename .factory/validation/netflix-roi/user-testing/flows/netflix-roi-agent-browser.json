@@ -1,11 +1,14 @@
 {
   "groupId": "netflix-roi-agent-browser",
-  "testedAt": "2026-03-29T01:13:01.640492+00:00",
+  "testedAt": "2026-03-28T19:37:29-06:00",
   "isolation": {
     "appUrl": "http://localhost:3501",
-    "route": "/projects/netflix-roi",
-    "missionDir": "/home/mostltyharmless/.factory/missions/0bc5abab-8b5e-4fc7-8d9d-3feb9bdd1a02",
-    "evidenceDir": "/home/mostltyharmless/.factory/missions/0bc5abab-8b5e-4fc7-8d9d-3feb9bdd1a02/evidence/netflix-roi/netflix-roi-agent-browser/"
+    "routeFamily": [
+      "/projects/netflix-roi",
+      "/projects/netflix-roi?routeProbe=loading",
+      "/projects/netflix-roi?routeProbe=error"
+    ],
+    "missionDir": "/home/mostltyharmless/.factory/missions/0bc5abab-8b5e-4fc7-8d9d-3feb9bdd1a02"
   },
   "toolsUsed": [
     "agent-browser",
@@ -13,126 +16,82 @@
   ],
   "assertions": [
     {
-      "id": "VAL-NETFLIX-001",
-      "title": "Netflix ROI frames the page as a committee-grade content allocation board",
+      "id": "VAL-NETFLIX-002",
+      "title": "Netflix controls update modeled frontier and title-ranking outputs",
       "status": "pass",
       "steps": [
         {
-          "action": "Open /projects/netflix-roi on the shared localhost:3501 runtime",
-          "expected": "Netflix ROI hero and BLUF frame acquisition-vs-retention tradeoffs and committee decision posture",
-          "observed": "Hero shows 'Investment Committee Room', 'Acquisition vs retention split', 'Capital allocation frontier', and H1 'Netflix ROI Autopsy: capital committee decision deck'."
+          "action": "Open /projects/netflix-roi and inspect the interactive chapter",
+          "expected": "Visible simulator controls for budget, buzz, acclaim, retention, or decay plus downstream outputs",
+          "observed": "Visible sliders rendered for Budget ($90M), Buzz (66%), Critical acclaim (74%), Retention priority (58%), and Buzz decay intensity (44%), alongside title selector buttons and downstream KPI/output sections."
         },
         {
-          "action": "Inspect top summary / BLUF copy",
-          "expected": "BLUF explains title-level slate economics and modeled committee framing",
-          "observed": "BLUF includes the business question about subscriber acquisition vs retention, a bottom line about synthetic control estimates and Pareto frontier, and 'Portfolio allocation output: Acquisition vs retention frontier'."
+          "action": "Increase the Budget slider from $90M to $95M",
+          "expected": "Selected-title details and at least two outputs update visibly",
+          "observed": "Budget changed to $95M; Predicted adds changed from 1.19M to 1.21M; Retention months changed from 5.2 to 5.3; stress cards updated from 1.19M/5.2 mo to 1.21M/5.3 mo with upside 1.41M and downside 0.95M."
+        },
+        {
+          "action": "Select title button '#2 The Residence'",
+          "expected": "Selected-title detail packet and recommendation outputs update without reload",
+          "observed": "Selected title switched from Bridgerton (#9, capital intensive, 21% vs top title) to The Residence (#2, scalable, 97% vs top title); payback changed from 5.3 months to 2 months and capital recommendation changed from 'hold or rework concept' to 'greenlight and overweight'."
         }
       ],
       "evidence": {
         "screenshots": [
-          "netflix-roi/netflix-roi-agent-browser/VAL-NETFLIX-001-hero-annotated.png",
-          "netflix-roi/netflix-roi-agent-browser/VAL-NETFLIX-001-bluf-full.png",
-          "netflix-roi/netflix-roi-agent-browser/VAL-NETFLIX-001-full-page.png"
+          "netflix-roi/netflix-roi-agent-browser/VAL-NETFLIX-002-initial.png",
+          "netflix-roi/netflix-roi-agent-browser/VAL-NETFLIX-002-after-budget-change.png",
+          "netflix-roi/netflix-roi-agent-browser/VAL-NETFLIX-002-after-title-select.png"
         ],
-        "consoleErrors": "none observed",
-        "network": "GET /projects/netflix-roi -> 200 via curl on localhost:3501"
+        "consoleErrors": "none observed during live-route validation",
+        "network": "Local route loaded successfully. Browser captured GET /projects/netflix-roi?routeProbe=loading -> 200 and GET /projects/netflix-roi?routeProbe=error -> 200 during recoverability checks; curl confirmed GET /projects/netflix-roi -> 200."
       },
       "issues": null
     },
     {
-      "id": "VAL-NETFLIX-002",
-      "title": "Netflix controls update modeled frontier and title-ranking outputs",
-      "status": "fail",
-      "steps": [
-        {
-          "action": "Inspect the route for interactive controls affecting budget, buzz, acclaim, retention, or decay",
-          "expected": "Visible simulator controls are available for user manipulation",
-          "observed": "The page only exposed evidence-rail filter buttons ('all', 'shock', 'anomaly', 'inflection', 'recommendation'). The page text states 'Interactive controls are loading' and 'Incoming modules: Scenario sliders, stress charts, and recommendation console.'"
-        },
-        {
-          "action": "Attempt interaction through the visible Netflix route controls",
-          "expected": "Selected-title details plus at least two downstream outputs update visibly",
-          "observed": "No budget/buzz/acclaim/retention/decay controls were present, and the required selected-title/detail-output update could not be produced. Clicking visible controls did not surface the missing simulator module in the validated state."
-        }
-      ],
-      "evidence": {
-        "screenshots": [
-          "netflix-roi/netflix-roi-agent-browser/VAL-NETFLIX-002-before.png",
-          "netflix-roi/netflix-roi-agent-browser/VAL-NETFLIX-002-before-controls.png",
-          "netflix-roi/netflix-roi-agent-browser/VAL-NETFLIX-002-after-click-recommendation.png",
-          "netflix-roi/netflix-roi-agent-browser/VAL-NETFLIX-002-after.png"
-        ],
-        "consoleErrors": "none observed",
-        "network": "Route HTML served successfully from localhost:3501, but no separate client request activity was captured by agent-browser during the failed control validation."
-      },
-      "issues": "Required simulator inputs and downstream recommendation controls were not rendered in the tested production-like route state; the route remained in an 'Interactive controls are loading' placeholder state."
-    },
-    {
       "id": "VAL-NETFLIX-003",
       "title": "Netflix route translates analysis into interpretable recommendation language",
-      "status": "fail",
-      "steps": [
-        {
-          "action": "Inspect the decision surface for recommendation outputs",
-          "expected": "The route exposes predicted adds, retention months, greenlight score, capital recommendation, and supporting evidence",
-          "observed": "The visible page showed BLUF, trust detail, frontier summary, retention lift, best net contribution, and the committee evidence rail, but not the required recommendation packet metrics."
-        },
-        {
-          "action": "Search visible page text for required recommendation fields",
-          "expected": "Required recommendation labels are present and inspectable",
-          "observed": "Visible text did not include 'predicted adds', 'retention months', 'greenlight score', or 'capital recommendation'; only placeholder text referenced an incoming recommendation console."
-        }
-      ],
-      "evidence": {
-        "screenshots": [
-          "netflix-roi/netflix-roi-agent-browser/VAL-NETFLIX-current-state-full.png",
-          "netflix-roi/netflix-roi-agent-browser/VAL-NETFLIX-002-after-click-recommendation.png"
-        ],
-        "consoleErrors": "none observed",
-        "network": "GET /projects/netflix-roi -> 200 via curl on localhost:3501"
-      },
-      "issues": "The route did not expose the required interpretable recommendation metrics in the real user surface; only a placeholder indicated that the recommendation console was still loading/incoming."
-    },
-    {
-      "id": "VAL-NETFLIX-004",
-      "title": "Netflix recommendation outputs remain explicitly modeled",
       "status": "pass",
       "steps": [
         {
-          "action": "Inspect the top summary and trust framing",
-          "expected": "Modeled/decision-aid framing stays visible and does not present title economics as direct observed truth",
-          "observed": "The BLUF explicitly labels the route 'MODELED · Synthetic content panel + frontier optimizer' and states 'Limitation: Title economics are synthetic and intended for scenario stress testing only.'"
+          "action": "Inspect the live route's committee decision and evidence sections",
+          "expected": "An interpretable recommendation packet exposing predicted adds, retention months, greenlight score, capital recommendation, and supporting evidence",
+          "observed": "The route exposed PREDICTED ADDS (1.19M initially, then 1.21M after budget change), RETENTION MONTHS (5.2 then 5.3), GREENLIGHT SCORE (0), capital recommendation ('hold or rework concept' for Bridgerton, then 'greenlight and overweight' for The Residence), expected payback window, selected-rank details, modeled value mix, and an evidence trace packet with recommendation ID, confidence band, primary drivers, and trust boundary language."
         },
         {
-          "action": "Inspect trust/provenance and assumptions entry points",
-          "expected": "Trust and assumption surfaces reinforce modeled framing",
-          "observed": "The page shows 'Trust, provenance & current run' plus 'Assumptions, limits & swap path', and trust detail distinguishes real feeds from unavailable contextual feeds while keeping modeled route framing explicit."
+          "action": "Validate that recommendation language remains committee-oriented and interpretable",
+          "expected": "A coherent decision packet with supporting evidence rather than isolated metrics",
+          "observed": "The route showed 'COMMITTEE DECISION PACKET', 'MODELED COMMITTEE OUTPUT', 'DECISION CONSOLE', and 'ACTIVE COMMITTEE EVIDENCE PACK' sections that tied the selected title, rank, payback, capital lane, recommendation, and evidence trace together in one readable flow."
         }
       ],
       "evidence": {
         "screenshots": [
-          "netflix-roi/netflix-roi-agent-browser/VAL-NETFLIX-004-trust-annotated.png",
-          "netflix-roi/netflix-roi-agent-browser/VAL-NETFLIX-001-bluf-full.png"
+          "netflix-roi/netflix-roi-agent-browser/VAL-NETFLIX-003-decision-initial.png",
+          "netflix-roi/netflix-roi-agent-browser/VAL-NETFLIX-002-after-title-select.png"
         ],
-        "consoleErrors": "none observed",
-        "network": "GET /projects/netflix-roi -> 200 via curl on localhost:3501"
+        "consoleErrors": "none observed during recommendation-packet inspection",
+        "network": "Live route served over local Next.js runtime; curl confirmed GET /projects/netflix-roi -> 200."
       },
       "issues": null
     },
     {
       "id": "VAL-NETFLIX-005",
       "title": "Netflix loading or route failures remain recoverable",
-      "status": "blocked",
+      "status": "pass",
       "steps": [
         {
           "action": "Open /projects/netflix-roi?routeProbe=loading",
-          "expected": "A Netflix-specific loading state with visible recovery path appears",
-          "observed": "The route rendered the same normal page content as the baseline route; no route-specific loading state or recovery affordance was surfaced."
+          "expected": "Distinct Netflix-specific loading state with visible recovery actions",
+          "observed": "A Netflix-specific LOADING state rendered with copy 'Recoverability probe active: ranking board, frontier scenario deck, and committee packet are rehydrating...' plus visible recovery actions 'Open live route' and 'Back to projects'."
         },
         {
           "action": "Open /projects/netflix-roi?routeProbe=error",
-          "expected": "A Netflix-specific error state with retry or return-to-projects recovery appears",
-          "observed": "The route again rendered the same normal page content, so no route-level error or recovery UI could be honestly verified."
+          "expected": "Distinct Netflix-specific route error state with visible recovery actions",
+          "observed": "A Netflix-specific ROUTE ERROR state rendered with copy about a controlled failure preserving acquisition-versus-retention framing, plus 'Open live route', 'Back to projects', and diagnostics showing 'message: Recoverability probe triggered with ?routeProbe=error'."
+        },
+        {
+          "action": "Check probe reachability",
+          "expected": "Supported probe URLs should resolve successfully",
+          "observed": "curl confirmed GET /projects/netflix-roi?routeProbe=loading -> 200 and GET /projects/netflix-roi?routeProbe=error -> 200."
         }
       ],
       "evidence": {
@@ -140,47 +99,24 @@
           "netflix-roi/netflix-roi-agent-browser/VAL-NETFLIX-005-loading-probe.png",
           "netflix-roi/netflix-roi-agent-browser/VAL-NETFLIX-005-error-probe.png"
         ],
-        "consoleErrors": "none observed",
-        "network": "GET /projects/netflix-roi?routeProbe=loading -> route rendered normally; GET /projects/netflix-roi?routeProbe=error -> route rendered normally"
+        "consoleErrors": "none observed on loading or error probes",
+        "network": "Browser request log captured GET /projects/netflix-roi?routeProbe=loading (document) and GET /projects/netflix-roi?routeProbe=error (document); curl also returned HTTP 200 for both probes."
       },
-      "issues": "Supported recoverability probes did not trigger a distinct loading or failure surface on the healthy runtime, so recoverability could not be verified through the real user surface."
+      "issues": null
     }
   ],
   "frictions": [
     {
-      "description": "The Netflix route exposed only the first interactive chapter and a placeholder for the allocation committee module during this validation run.",
-      "resolved": false,
-      "resolution": "Waited, rescrolled, reloaded the route, increased viewport size, and retried visible interactions, but the simulator controls and recommendation console never rendered.",
+      "description": "The first browser network-requests check on the live route returned 'No requests captured', so I used explicit probe navigations plus curl status checks to record route-level network evidence.",
+      "resolved": true,
+      "resolution": "Captured browser request logs while navigating to the supported probe URLs and verified all three target URLs with curl.",
       "affectedAssertions": [
         "VAL-NETFLIX-002",
-        "VAL-NETFLIX-003"
-      ]
-    },
-    {
-      "description": "The supported routeProbe URLs for Netflix ROI rendered the same normal route content instead of a distinct loading/error state.",
-      "resolved": false,
-      "resolution": "Captured screenshots for both probe URLs and marked recoverability validation blocked rather than guessing.",
-      "affectedAssertions": [
+        "VAL-NETFLIX-003",
         "VAL-NETFLIX-005"
       ]
     }
   ],
-  "blockers": [
-    {
-      "description": "The production-like Netflix ROI route did not surface the required simulator/recommendation module during validation, preventing honest verification of control-driven updates and recommendation packet outputs.",
-      "affectedAssertions": [
-        "VAL-NETFLIX-002",
-        "VAL-NETFLIX-003"
-      ],
-      "quickFixAttempted": "Reloaded the route, waited additional time, changed viewport, rescrolled, and retried visible control interaction; the missing module still did not render."
-    },
-    {
-      "description": "Route-level loading/error recoverability probes for Netflix ROI did not produce a distinguishable loading or error state on the healthy runtime.",
-      "affectedAssertions": [
-        "VAL-NETFLIX-005"
-      ],
-      "quickFixAttempted": "Tested both supported probe URLs directly on localhost:3501 and compared the rendered content to the baseline route; all rendered the same normal page."
-    }
-  ],
-  "summary": "Tested 5 Netflix ROI assertions on localhost:3501: 2 passed, 2 failed, and 1 was blocked. The route convincingly frames a modeled committee-grade Netflix ROI analysis and keeps modeled/synthetic trust language explicit, but the production-like surface did not render the expected allocation committee simulator or recommendation packet, and supported recoverability probes did not surface a distinct loading/error state."
+  "blockers": [],
+  "summary": "Retested 3 Netflix ROI assertions on the production-like runtime: VAL-NETFLIX-002 passed, VAL-NETFLIX-003 passed, and VAL-NETFLIX-005 passed. The live route now exposes working simulator controls and recommendation outputs, and both supported routeProbe URLs render distinct Netflix-specific recoverability states with visible recovery paths."
 }
