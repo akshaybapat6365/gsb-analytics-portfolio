@@ -6,13 +6,26 @@ import { buildProjectMetadata, buildProjectSchema } from "@/lib/seo";
 import { Hero } from "./Hero";
 import { EvShell } from "./EvShell";
 import { EvInteractiveSection } from "./InteractiveSection";
+import { RecoverabilityProbe } from "./RecoverabilityProbe";
+import { resolveEvRouteProbe } from "./recoverability";
 import { StructuredDataScript } from "@/components/seo/StructuredDataScript";
 import { CaseStudyTrustStack } from "@/components/story/CaseStudyTrustStack";
 
 const project = getProject("tesla-nacs");
 export const metadata: Metadata = buildProjectMetadata(project);
 
-export default async function TeslaNacsPage() {
+type TeslaNacsPageProps = {
+  searchParams?: Promise<Record<string, string | string[] | undefined>>;
+};
+
+export default async function TeslaNacsPage({ searchParams }: TeslaNacsPageProps) {
+  const resolvedSearchParams = searchParams ? await searchParams : undefined;
+  const probe = resolveEvRouteProbe(resolvedSearchParams?.routeProbe);
+
+  if (probe !== "none") {
+    return <RecoverabilityProbe probe={probe} />;
+  }
+
   const payload = await loadEvPayload();
   const summary = project.homepage;
 

@@ -16,6 +16,7 @@ import { DecisionConsole } from "@/components/story/DecisionConsole";
 import { formatNumber, formatUSD } from "@/lib/metrics/format";
 import { clamp } from "@/lib/metrics/math";
 import type { EvPayload } from "@/lib/schemas/ev";
+import { deriveEvScenario, type EvNodeState } from "@/lib/viewmodels/ev";
 
 const STATION_COLORS = {
   Tesla: new Uint8ClampedArray([34, 211, 238, 210]),
@@ -30,7 +31,6 @@ const FLOW_COLORS = {
   Other: new Uint8ClampedArray([148, 163, 184, 88]),
 } as const;
 
-type NodeState = "build" | "hold" | "abandon";
 
 function stationColor(brand: "Tesla" | "EA" | "Other") {
   return STATION_COLORS[brand];
@@ -55,86 +55,24 @@ export default function EvClient({ payload }: { payload: EvPayload }) {
   const [rangeAnxiety, setRangeAnxiety] = useState(56);
   const [capexMultiplier, setCapexMultiplier] = useState(108);
   const [competitorPressure, setCompetitorPressure] = useState(44);
-  const [nodeStates, setNodeStates] = useState<Record<string, NodeState>>(() =>
+  const [nodeStates, setNodeStates] = useState<Record<string, EvNodeState>>(() =>
     Object.fromEntries(
       payload.candidateSites.map((site) => [site.id, site.npvM >= 0 ? "build" : "hold"]),
-    ) as Record<string, NodeState>,
+    ) as Record<string, EvNodeState>,
   );
 
-  const derived = useMemo(() => {
-    const anxiety = clamp(rangeAnxiety / 100, 0, 1);
-    const capexFactor = clamp(capexMultiplier / 100, 0.8, 1.45);
-    const competitor = clamp(competitorPressure / 100, 0, 1);
-
-    const adjustedSites = payload.candidateSites.map((site) => {
-      const state = nodeStates[site.id] ?? "hold";
-      const stateFactor = state === "build" ? 1 : state === "hold" ? 0.58 : 0.22;
-
-      const capture = clamp(
-        site.capturesFordPct * (0.78 + anxiety * 0.58) * (1 - competitor * 0.26) * stateFactor,
-        2,
-        96,
-      );
-      const cannibalization = clamp(
-        site.cannibalizesTeslaUnitsPerMonth * (1 + competitor * 0.42) * (state === "abandon" ? 0.45 : 1),
-        0,
-        40,
-      );
-      const adjustedCapexM = site.capexM * capexFactor * (state === "build" ? 1 : state === "hold" ? 0.68 : 0.18);
-      const captureLiftM = (capture - site.capturesFordPct) * 0.06;
-      const cannibalDragM = (cannibalization - site.cannibalizesTeslaUnitsPerMonth) * 0.14;
-      const capexDragM = adjustedCapexM - site.capexM;
-      const statePenalty = state === "abandon" ? -site.capexM * 0.26 : 0;
-      const adjustedNpvM = site.npvM + captureLiftM - cannibalDragM - capexDragM + statePenalty;
-
-      return {
-        ...site,
-        state,
-        capture,
-        cannibalization,
-        adjustedCapexM,
-        adjustedNpvM,
-      };
-    });
-
-    const selectedSite = adjustedSites.find((site) => site.id === selectedSiteId) ?? adjustedSites[0]!;
-    const ranked = [...adjustedSites].sort((a, b) => b.adjustedNpvM - a.adjustedNpvM);
-
-    const flowMix = payload.flows.reduce<Record<string, number>>((acc, flow) => {
-      acc[flow.brand] = (acc[flow.brand] ?? 0) + 1;
-      return acc;
-    }, {});
-    const totalFlows = payload.flows.length;
-
-    const sensitivity = Array.from({ length: 9 }, (_, idx) => 0.78 + idx * 0.08).map((capex) => {
-      const adjustedCapex = selectedSite.capexM * capex;
-      const npv = selectedSite.adjustedNpvM - (adjustedCapex - selectedSite.adjustedCapexM);
-      const downside = npv - (0.32 + competitor * 0.2);
-      const upside = npv + (0.28 + anxiety * 0.22);
-      return { capex, npv, downside, upside };
-    });
-
-    const corridorNpv = adjustedSites.reduce((sum, site) => sum + site.adjustedNpvM, 0);
-    const buildCount = adjustedSites.filter((site) => site.state === "build").length;
-    const utilizationForecast = clamp(0.48 + buildCount / Math.max(1, adjustedSites.length) * 0.42 + anxiety * 0.14, 0.2, 0.98);
-    const downsideSummary = adjustedSites.filter((site) => site.adjustedNpvM < 0).length;
-
-    return {
-      anxiety,
-      capexFactor,
-      competitor,
-      adjustedSites,
-      selectedSite,
-      ranked,
-      flowMix,
-      totalFlows,
-      sensitivity,
-      corridorNpv,
-      buildCount,
-      utilizationForecast,
-      downsideSummary,
-    };
-  }, [payload, selectedSiteId, rangeAnxiety, capexMultiplier, competitorPressure, nodeStates]);
+  const derived = useMemo(
+    () =>
+      deriveEvScenario({
+        payload,
+        selectedSiteId,
+        rangeAnxiety,
+        capexMultiplier,
+        competitorPressure,
+        nodeStates,
+      }),
+    [payload, selectedSiteId, rangeAnxiety, capexMultiplier, competitorPressure, nodeStates],
+  );
 
   type Station = EvPayload["stations"][number];
   type Flow = EvPayload["flows"][number];
@@ -250,7 +188,7 @@ export default function EvClient({ payload }: { payload: EvPayload }) {
           capture?: number;
           cannibalization?: number;
           npv?: number;
-          state?: NodeState;
+          state?: EvNodeState;
         };
         return `${data.name ?? "Site"}<br/>State: ${data.state ?? "hold"}<br/>Capture: ${Math.round(data.capture ?? 0)}%<br/>Cannibalization: ${(data.cannibalization ?? 0).toFixed(1)} units/mo<br/>NPV: ${formatUSD((data.npv ?? 0) * 1_000_000)}`;
       },
@@ -288,7 +226,7 @@ export default function EvClient({ payload }: { payload: EvPayload }) {
         itemStyle: {
           color: (param: unknown) => {
             const raw = param as { data?: unknown };
-            const data = (raw.data ?? {}) as { state?: NodeState; npv?: number };
+            const data = (raw.data ?? {}) as { state?: EvNodeState; npv?: number };
             if (data.state === "abandon") return "rgba(157,49,49,0.88)";
             if (data.state === "build") return "rgba(73,95,69,0.86)";
             if ((data.npv ?? 0) >= 0) return "rgba(139,107,62,0.84)";
@@ -532,36 +470,53 @@ export default function EvClient({ payload }: { payload: EvPayload }) {
           title="Build-order recommendation"
           description="Rank deployment sequence and summarize downside risk at corridor scale."
           insight={`Top node ${derived.ranked[0]?.name ?? "n/a"} at ${derived.ranked[0] ? formatUSD(derived.ranked[0].adjustedNpvM * 1_000_000) : "—"}.`}
-          impact={`Downside nodes ${formatNumber(derived.downsideSummary)} with utilization forecast ${formatNumber(derived.utilizationForecast * 100, { digits: 0 })}%.`}
+          impact={`${derived.decisionSummary} Downside nodes ${formatNumber(derived.downsideSummary)} with utilization forecast ${formatNumber(derived.utilizationForecast * 100, { digits: 0 })}%.`}
           annotationCount={chapterCAnnotations.length}
           tone="emerald"
         >
           <div className="grid gap-4 xl:grid-cols-[minmax(0,1fr)_360px]">
             <EChart option={npvChart} height={560} title="Adjusted Candidate NPV by Node State" className="neo-panel" />
-            <DecisionConsole
-              lines={[
-                {
-                  label: "Aggregate corridor NPV",
-                  value: formatUSD(derived.corridorNpv * 1_000_000),
-                  tone: derived.corridorNpv >= 0 ? "emerald" : "crimson",
-                },
-                {
-                  label: "Build candidates",
-                  value: `${formatNumber(derived.buildCount)} / ${formatNumber(derived.adjustedSites.length)}`,
-                  tone: "amber",
-                },
-                {
-                  label: "Utilization forecast",
-                  value: `${formatNumber(derived.utilizationForecast * 100, { digits: 0 })}%`,
-                  tone: "emerald",
-                },
-                {
-                  label: "Downside case summary",
-                  value: `${formatNumber(derived.downsideSummary)} nodes negative`,
-                  tone: derived.downsideSummary > 0 ? "crimson" : "neutral",
-                },
-              ]}
-            />
+            <div className="space-y-4">
+              <DecisionConsole
+                title="Corridor action packet"
+                lines={[
+                  {
+                    label: "Aggregate corridor NPV",
+                    value: formatUSD(derived.corridorNpv * 1_000_000),
+                    tone: derived.corridorNpv >= 0 ? "emerald" : "crimson",
+                  },
+                  {
+                    label: "Build candidates",
+                    value: `${formatNumber(derived.buildCount)} / ${formatNumber(derived.adjustedSites.length)}`,
+                    tone: "amber",
+                  },
+                  {
+                    label: "Utilization forecast",
+                    value: `${formatNumber(derived.utilizationForecast * 100, { digits: 0 })}%`,
+                    tone: "emerald",
+                  },
+                  {
+                    label: "Downside case summary",
+                    value: `${formatNumber(derived.downsideSummary)} nodes negative`,
+                    tone: derived.downsideSummary > 0 ? "crimson" : "neutral",
+                  },
+                ]}
+              />
+              <DecisionConsole
+                title="Ranked build-order"
+                lines={derived.ranked.slice(0, 4).map((site, index) => ({
+                  label: `#${index + 1} ${site.name}`,
+                  value: formatUSD(site.adjustedNpvM * 1_000_000),
+                  tone:
+                    site.state === "abandon"
+                      ? "crimson"
+                      : site.state === "build"
+                        ? "emerald"
+                        : "amber",
+                  hint: `${site.state.toUpperCase()} · capture ${formatNumber(site.capture, { digits: 0 })}% · cannibalization ${formatNumber(site.cannibalization, { digits: 1 })} u/mo`,
+                }))}
+              />
+            </div>
           </div>
           <NarrativeStrip
             title="Decision Notes"
@@ -578,8 +533,8 @@ export default function EvClient({ payload }: { payload: EvPayload }) {
           chapter="Evidence"
           title="Recommendation evidence trace"
           description="Evidence packets and annotation trail for investment-committee style review."
-          insight={`Evidence packets available: ${formatNumber(payload.decisionEvidence?.length ?? 0)}.`}
-          impact="Creates a transparent trail from node-state assumptions to rollout recommendation."
+          insight={`Evidence packets available: ${formatNumber(derived.recommendationEvidence.length)} active rows for the visible build order.`}
+          impact={derived.readinessSummary}
           annotationCount={chapterDAnnotations.length}
           tone="cyan"
         >
@@ -591,7 +546,12 @@ export default function EvClient({ payload }: { payload: EvPayload }) {
               tone="amber"
               maxItems={6}
             />
-            <DecisionEvidencePanel title="Build Strategy Evidence" evidence={payload.decisionEvidence} />
+            <DecisionEvidencePanel
+              title="Build Strategy Evidence"
+              summary={`${derived.decisionSummary} ${derived.readinessSummary}`}
+              footer="Trust boundary: strategic multipliers and node readiness remain explicit. Treat this corridor build order as a scenario-driven decision aid until real demand and utilization feeds are swapped in."
+              evidence={derived.recommendationEvidence}
+            />
           </div>
         </StoryChapterShell>
       </RouteReveal>
