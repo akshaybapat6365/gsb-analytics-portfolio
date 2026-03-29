@@ -1,0 +1,71 @@
+{
+  "milestone": "tesla-nacs",
+  "groupId": "ev-flow",
+  "surface": "agent-browser",
+  "status": "pass",
+  "assertions": [
+    {
+      "id": "VAL-EV-001",
+      "status": "pass",
+      "summary": "The hero and top summary clearly frame the route as a corridor build-order war game with candidate-site strategy, build/hold/abandon posture, and corridor-level economics. Observed copy included 'Tesla NACS War Board: corridor build-order simulator', 'Where should Tesla build vs. abandon stations to maximize network effects while minimizing cannibalization?', node status chips, and top/bottom node economics.",
+      "evidence": [
+        "/home/mostltyharmless/.factory/missions/0bc5abab-8b5e-4fc7-8d9d-3feb9bdd1a02/evidence/tesla-nacs/ev-flow/VAL-EV-001-hero-annotated.png",
+        "/home/mostltyharmless/.factory/missions/0bc5abab-8b5e-4fc7-8d9d-3feb9bdd1a02/evidence/tesla-nacs/ev-flow/VAL-EV-001-full-page.png"
+      ],
+      "frictions": [],
+      "blockers": [],
+      "toolsUsed": ["agent-browser"]
+    },
+    {
+      "id": "VAL-EV-002",
+      "status": "pass",
+      "summary": "Changing selected-node state visibly updated the selected-site panel and multiple downstream views. After switching Harris Ranch, CA from HOLD to BUILD, the selected-site panel changed from 'Selected State HOLD / Adj NPV $334K / Corridor NPV -$12M / Utilization Forecast 56%' to 'Selected State BUILD / Adj NPV -$551K / Corridor NPV -$13M / Utilization Forecast 61%'. Downstream outputs also changed: the map insight changed to 'Harris Ranch, CA: -$551K adjusted NPV (build)', build-state count changed from '0 of 8' to '1 of 8', the top node in the decision console changed from Harris Ranch, CA to Bakersfield, CA, and the ranked build-order reordered to put Bakersfield #1 and Harris Ranch #2 with BUILD posture.",
+      "evidence": [
+        "/home/mostltyharmless/.factory/missions/0bc5abab-8b5e-4fc7-8d9d-3feb9bdd1a02/evidence/tesla-nacs/ev-flow/VAL-EV-002-before-annotated.png",
+        "/home/mostltyharmless/.factory/missions/0bc5abab-8b5e-4fc7-8d9d-3feb9bdd1a02/evidence/tesla-nacs/ev-flow/VAL-EV-002-after-build-annotated.png"
+      ],
+      "frictions": [],
+      "blockers": [],
+      "toolsUsed": ["agent-browser"]
+    },
+    {
+      "id": "VAL-EV-003",
+      "status": "pass",
+      "summary": "The route exposes ranked build-order recommendations with aggregate economics, build-count logic, top-node identification, and supporting evidence. Observed decision outputs included 'Aggregate corridor NPV -$12M', 'Build candidates 0 / 8', 'Utilization forecast 56%', 'Downside case summary 7 nodes negative', top-node callout 'Harris Ranch, CA at $334K', and a ranked build-order list (#1 Harris Ranch, #2 Bakersfield, #3 Los Angeles, #4 Redding) backed by a 'Recommendation evidence trace' and evidence rows with counterfactual deltas and confidence bands.",
+      "evidence": [
+        "/home/mostltyharmless/.factory/missions/0bc5abab-8b5e-4fc7-8d9d-3feb9bdd1a02/evidence/tesla-nacs/ev-flow/VAL-EV-003-decision-console.png",
+        "/home/mostltyharmless/.factory/missions/0bc5abab-8b5e-4fc7-8d9d-3feb9bdd1a02/evidence/tesla-nacs/ev-flow/VAL-EV-001-full-page.png"
+      ],
+      "frictions": [],
+      "blockers": [],
+      "toolsUsed": ["agent-browser"]
+    },
+    {
+      "id": "VAL-EV-004",
+      "status": "pass",
+      "summary": "Trust framing keeps scenario multipliers, readiness caveats, and swap-path assumptions explicit. The route shows 'MIXED · DOE station anchors + modeled node economics', 'Limitation: Utilization and cannibalization are modeled with stylized adoption assumptions', run metadata with policy and freshness, fallback diagnostics for OSM/NREL station counts, an 'Assumptions, limits & swap path' section, evidence text calling out 'Strategic multipliers remain explicit: range anxiety 56%, capex 108%, competitor pressure 44%', and a trust boundary note telling reviewers to treat the build order as a scenario-driven decision aid until real demand and utilization feeds are swapped in.",
+      "evidence": [
+        "/home/mostltyharmless/.factory/missions/0bc5abab-8b5e-4fc7-8d9d-3feb9bdd1a02/evidence/tesla-nacs/ev-flow/VAL-EV-001-full-page.png",
+        "/home/mostltyharmless/.factory/missions/0bc5abab-8b5e-4fc7-8d9d-3feb9bdd1a02/evidence/tesla-nacs/ev-flow/VAL-EV-004-trust-evidence-lower.png"
+      ],
+      "frictions": [],
+      "blockers": [],
+      "toolsUsed": ["agent-browser"]
+    },
+    {
+      "id": "VAL-EV-005",
+      "status": "pass",
+      "summary": "Both supported routeProbe recoverability surfaces preserved Tesla-specific copy and visible recovery actions. The loading probe showed 'Tesla NACS War Game' with corridor-flow/build-order recovery messaging plus 'Open live route' and 'Back to projects' links. The error probe showed Tesla-specific failure text, readiness caveat language, probe diagnostics for '?routeProbe=error', and the same two recovery actions.",
+      "evidence": [
+        "/home/mostltyharmless/.factory/missions/0bc5abab-8b5e-4fc7-8d9d-3feb9bdd1a02/evidence/tesla-nacs/ev-flow/VAL-EV-005-loading.png",
+        "/home/mostltyharmless/.factory/missions/0bc5abab-8b5e-4fc7-8d9d-3feb9bdd1a02/evidence/tesla-nacs/ev-flow/VAL-EV-005-error.png"
+      ],
+      "frictions": [],
+      "blockers": [],
+      "toolsUsed": ["agent-browser"]
+    }
+  ],
+  "frictions": [],
+  "blockers": [],
+  "toolsUsed": ["agent-browser"]
+}

@@ -1,0 +1,28 @@
+{
+  "milestone": "tesla-nacs",
+  "round": 1,
+  "status": "pass",
+  "assertionsSummary": {
+    "total": 5,
+    "passed": 5,
+    "failed": 0,
+    "blocked": 0
+  },
+  "passedAssertions": [
+    "VAL-EV-001",
+    "VAL-EV-002",
+    "VAL-EV-003",
+    "VAL-EV-004",
+    "VAL-EV-005"
+  ],
+  "failedAssertions": [],
+  "blockedAssertions": [],
+  "appliedUpdates": [
+    {
+      "target": "user-testing.md",
+      "description": "Added Tesla NACS routeProbe guidance for the production-like validation surface on port 3501.",
+      "source": "flow-report"
+    }
+  ],
+  "previousRound": null
+}
