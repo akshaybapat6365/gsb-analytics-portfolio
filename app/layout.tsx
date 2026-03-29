@@ -19,6 +19,7 @@ import "maplibre-gl/dist/maplibre-gl.css";
 import { SiteFooter } from "@/components/ui/SiteFooter";
 import { TopNav } from "@/components/ui/TopNav";
 import { DevEnvBanner } from "@/components/ui/DevEnvBanner";
+import { ChunkLoadRecovery } from "@/components/ui/ChunkLoadRecovery";
 import { PerfDiagnosticsBoundary } from "@/components/perf/PerfDiagnosticsBoundary";
 import { PageTransitionShell } from "@/components/motion/PageTransitionShell";
 import { site } from "@/lib/site";
@@ -165,6 +166,7 @@ export default function RootLayout({
           </a>
           <TopNav />
           <DevEnvBanner />
+          <ChunkLoadRecovery />
           <PerfDiagnosticsBoundary />
           <main
             id="main-content"
