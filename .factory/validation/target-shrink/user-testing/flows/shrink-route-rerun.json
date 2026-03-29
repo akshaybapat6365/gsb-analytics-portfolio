@@ -1,0 +1,63 @@
+{
+  "groupId": "shrink-route-rerun",
+  "testedAt": "2026-03-28T18:09:00-06:00",
+  "isolation": {
+    "appUrl": "http://localhost:3501",
+    "route": "/projects/target-shrink",
+    "assertionIds": ["VAL-SHRINK-002"],
+    "missionDir": "/home/mostltyharmless/.factory/missions/0bc5abab-8b5e-4fc7-8d9d-3feb9bdd1a02",
+    "evidenceDir": "/home/mostltyharmless/.factory/missions/0bc5abab-8b5e-4fc7-8d9d-3feb9bdd1a02/evidence/target-shrink/shrink-route-rerun"
+  },
+  "toolsUsed": ["agent-browser"],
+  "assertionResults": [
+    {
+      "id": "VAL-SHRINK-002",
+      "title": "Threshold and false-positive controls update economics live",
+      "status": "pass",
+      "steps": [
+        {
+          "action": "Open http://localhost:3501/projects/target-shrink and capture the initial control panel plus threshold economics strip.",
+          "expected": "Current threshold, recommended threshold, and economics values are visible before interaction.",
+          "observed": "Visible baseline values were: Detain threshold 85%, False-positive cost multiplier 100%, Current threshold 85%, Expected net value -$2K, Recommended threshold 85%, Triggered incidents 3. The threshold economics strip also showed Monthly net economics signal -$7K and the note '85% remains the frontier argmax and the live stop rule is aligned with it.'"
+        },
+        {
+          "action": "Lower the detain threshold seven ArrowLeft steps and raise the false-positive multiplier eight ArrowRight steps.",
+          "expected": "Threshold and false-positive assumptions change through the route controls without leaving the page.",
+          "observed": "The controls updated live to Detain threshold 78% and False-positive cost multiplier 108%."
+        },
+        {
+          "action": "Inspect the same visible control-panel and recommendation outputs after the control changes.",
+          "expected": "Either the recommended-threshold output recomputes, or the UI explicitly explains that the recommendation stays unchanged while economics update.",
+          "observed": "The page recomputed economics and also added explicit unchanged-recommendation labeling. After the control change, the visible outputs became: Current threshold 78%, Expected net value -$3K, Triggered incidents 4, Recommended threshold 85%. The recommendation copy changed to '85% remains the frontier argmax even at 108% false-positive cost. Economics moved, but no alternate cutoff beats it yet.' The threshold economics strip also updated to 'MONTHLY NET ECONOMICS SIGNAL -$10K' and '85% still maximizes recovered net under the active assumptions; the live 78% threshold is currently off the frontier optimum.'"
+        }
+      ],
+      "evidence": {
+        "screenshots": [
+          "target-shrink/shrink-route-rerun/VAL-SHRINK-002-before.png",
+          "target-shrink/shrink-route-rerun/VAL-SHRINK-002-before-annotated.png",
+          "target-shrink/shrink-route-rerun/VAL-SHRINK-002-after-controls.png"
+        ],
+        "consoleErrors": "none",
+        "network": "No additional XHR/fetch requests were captured; the threshold and economics updates appeared in-page on the existing route."
+      },
+      "issues": null
+    }
+  ],
+  "frictions": [
+    {
+      "description": "Raw body-text capture on this Next.js App Router page included streamed payload/script text, which made unfocused text dumps noisy.",
+      "resolved": true,
+      "resolution": "Used screenshots plus targeted in-browser extraction of the visible threshold/economics sections to capture exact before/after labels and values.",
+      "affectedAssertions": ["VAL-SHRINK-002"]
+    }
+  ],
+  "blockers": [],
+  "evidence": {
+    "files": [
+      "/home/mostltyharmless/.factory/missions/0bc5abab-8b5e-4fc7-8d9d-3feb9bdd1a02/evidence/target-shrink/shrink-route-rerun/VAL-SHRINK-002-before.png",
+      "/home/mostltyharmless/.factory/missions/0bc5abab-8b5e-4fc7-8d9d-3feb9bdd1a02/evidence/target-shrink/shrink-route-rerun/VAL-SHRINK-002-before-annotated.png",
+      "/home/mostltyharmless/.factory/missions/0bc5abab-8b5e-4fc7-8d9d-3feb9bdd1a02/evidence/target-shrink/shrink-route-rerun/VAL-SHRINK-002-after-controls.png"
+    ]
+  },
+  "summary": "Re-tested VAL-SHRINK-002 on the production-like Target Shrink route. The assertion now passes: changing the threshold and false-positive assumptions updated current-threshold and economics values live, while the UI explicitly stated that the recommended threshold remained 85% because it was still the frontier argmax under the new assumptions."
+}
