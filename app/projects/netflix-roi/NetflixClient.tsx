@@ -10,8 +10,8 @@ import { RouteReveal } from "@/components/motion/RouteReveal";
 import { NarrativeStrip } from "@/components/story/NarrativeStrip";
 import { DecisionEvidencePanel } from "@/components/story/DecisionEvidencePanel";
 import { DecisionConsole } from "@/components/story/DecisionConsole";
-import { clamp } from "@/lib/metrics/math";
 import { formatNumber, formatUSD } from "@/lib/metrics/format";
+import { deriveNetflixScenario } from "@/lib/viewmodels/netflix";
 import type { NetflixPayload } from "@/lib/schemas/netflix";
 
 function pickChapterAnnotations(
@@ -37,106 +37,18 @@ export default function NetflixClient({ payload }: { payload: NetflixPayload }) 
   const [buzzDecay, setBuzzDecay] = useState(44);
   const [selectedTitleId, setSelectedTitleId] = useState(payload.titles[0]?.id ?? "");
 
-  const derived = useMemo(() => {
-    const budget = clamp(budgetM, 5, 250);
-    const buzzNorm = clamp(buzz / 100, 0, 1);
-    const acclaimNorm = clamp(acclaim / 100, 0, 1);
-    const retentionWeight = clamp(retentionPriority / 100, 0, 1);
-    const decay = clamp(buzzDecay / 100, 0, 1);
-
-    const adds =
-      payload.model.acquisitionAddsCoeff.intercept +
-      payload.model.acquisitionAddsCoeff.budget * budget +
-      payload.model.acquisitionAddsCoeff.buzz * buzzNorm * (1 - decay * 0.3) +
-      payload.model.acquisitionAddsCoeff.acclaim * acclaimNorm;
-
-    const retentionMonths =
-      payload.model.retentionMonthsCoeff.intercept +
-      payload.model.retentionMonthsCoeff.budget * budget * (0.85 + retentionWeight * 0.35) +
-      payload.model.retentionMonthsCoeff.buzz * buzzNorm * (1 - decay * 0.45) +
-      payload.model.retentionMonthsCoeff.acclaim * acclaimNorm;
-
-    const weightedTitles = payload.titles.map((title) => {
-      const weightedLtv =
-        title.acquisitionLtvM * (1 - retentionWeight) +
-        title.retentionLtvM * retentionWeight;
-      const weightedRoi = weightedLtv / Math.max(1, title.costM);
-      const paybackMonths = clamp((title.costM / Math.max(1, weightedLtv)) * 14, 2, 36);
-      return { ...title, weightedLtv, weightedRoi, paybackMonths };
-    });
-
-    const ranked = [...weightedTitles].sort((a, b) => b.weightedRoi - a.weightedRoi).slice(0, 10);
-    const top = ranked[0] ?? weightedTitles[0];
-    const selectedTitle = weightedTitles.find((title) => title.id === selectedTitleId) ?? top;
-
-    const buzzTimeline = Array.from({ length: 12 }, (_, idx) => {
-      const week = idx + 1;
-      const baseline = buzzNorm * Math.exp(-decay * 0.22 * idx);
-      const momentum = acclaimNorm * 0.12 * Math.exp(-0.08 * idx);
-      return {
-        week,
-        buzz: clamp((baseline + momentum) * 100, 0, 100),
-      };
-    });
-
-    const greenlightScore = clamp(
-      (Math.max(0, adds) * 0.22 + Math.max(0, retentionMonths) * 0.78) / 10,
-      0,
-      100,
-    );
-
-    const selectedFrontierPoint: [number, number] = [
-      clamp(selectedTitle.acquisitionLtvM * (0.72 + buzzNorm * 0.22), 0, 220),
-      clamp(selectedTitle.retentionLtvM * (0.8 + retentionWeight * 0.26), 0, 220),
-    ];
-
-    const stressCards = [
-      {
-        id: "base",
-        label: "Base",
-        addsM: Math.max(0, adds),
-        retention: Math.max(0, retentionMonths),
-      },
-      {
-        id: "upside",
-        label: "Upside",
-        addsM: Math.max(0, adds * 1.16),
-        retention: Math.max(0, retentionMonths * 1.14),
-      },
-      {
-        id: "downside",
-        label: "Downside",
-        addsM: Math.max(0, adds * 0.78),
-        retention: Math.max(0, retentionMonths * 0.72),
-      },
-    ];
-
-    const allocationRecommendation =
-      selectedTitle.weightedRoi >= 2.2
-        ? "greenlight and overweight"
-        : selectedTitle.weightedRoi >= 1.5
-          ? "greenlight with spend guardrails"
-          : "hold or rework concept";
-
-    return {
-      budget,
-      buzzNorm,
-      acclaimNorm,
-      retentionWeight,
-      decay,
-      predictedAddsM: Math.max(0, adds),
-      predictedRetentionMonths: Math.max(0, retentionMonths),
-      weightedTitles,
-      ranked,
-      top,
-      selectedTitle,
-      buzzTimeline,
-      greenlightScore,
-      selectedFrontierPoint,
-      stressCards,
-      allocationRecommendation,
-    };
-  }, [payload, budgetM, buzz, acclaim, retentionPriority, buzzDecay, selectedTitleId]);
+  const derived = useMemo(
+    () =>
+      deriveNetflixScenario(payload, {
+        budgetM,
+        buzz,
+        acclaim,
+        retentionPriority,
+        buzzDecay,
+        selectedTitleId,
+      }),
+    [payload, budgetM, buzz, acclaim, retentionPriority, buzzDecay, selectedTitleId],
+  );
 
   const bubbleChart: EChartsOption = {
     backgroundColor: "transparent",
@@ -423,28 +335,68 @@ export default function NetflixClient({ payload }: { payload: NetflixPayload }) 
           <KpiCard
             label="Predicted Adds"
             value={`${formatNumber(derived.predictedAddsM, { digits: 2 })}M`}
-            hint="Scenario-estimated acquisition"
+            hint="Scenario-estimated acquisition lift"
             accent="emerald"
           />
           <KpiCard
             label="Retention Months"
             value={formatNumber(derived.predictedRetentionMonths, { digits: 1 })}
-            hint="Scenario persistence signal"
+            hint="Scenario-estimated durability"
             accent="cyan"
           />
           <KpiCard
             label="Greenlight Score"
             value={formatNumber(derived.greenlightScore, { digits: 0 })}
-            hint="Committee readiness"
+            hint={`${derived.decisionPacket.committeeLens} committee lens`}
             accent={derived.greenlightScore >= 60 ? "emerald" : "amber"}
           />
           <KpiCard
             label="Top Weighted Title"
             value={derived.top?.title ?? "—"}
-            hint={derived.top ? `${formatNumber(derived.top.weightedRoi, { digits: 2 })}x weighted ROI` : ""}
+            hint={
+              derived.top
+                ? `#1 under ${derived.decisionPacket.committeeLens} weighting · ${formatNumber(derived.top.weightedRoi, { digits: 2 })}x ROI`
+                : ""
+            }
             accent="amber"
           />
         </div>
+      </RouteReveal>
+
+      <RouteReveal profile="cinematic" delay={0.08}>
+        <section className="glass rounded-[28px] border border-white/10 p-5">
+          <div className="grid gap-4 xl:grid-cols-[minmax(0,1.15fr)_minmax(0,0.85fr)] xl:items-start">
+            <div>
+              <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-amber-100/90">Committee Decision Packet</p>
+              <h2 className="mt-3 text-2xl font-semibold tracking-tight text-slate-50">
+                {derived.decisionPacket.recommendationHeadline}
+              </h2>
+              <p className="mt-3 max-w-3xl text-sm leading-7 text-slate-300">
+                {derived.decisionPacket.recommendationRationale}
+              </p>
+              <div className="mt-4 grid gap-3 sm:grid-cols-3">
+                <div className="rounded-2xl border border-white/10 bg-black/20 p-3">
+                  <p className="font-mono text-[10px] uppercase tracking-[0.16em] text-slate-400">Selected rank</p>
+                  <p className="mt-2 font-mono text-xl text-amber-100">#{derived.decisionPacket.selectedRank}</p>
+                </div>
+                <div className="rounded-2xl border border-white/10 bg-black/20 p-3">
+                  <p className="font-mono text-[10px] uppercase tracking-[0.16em] text-slate-400">Capital lane</p>
+                  <p className="mt-2 text-sm font-semibold uppercase tracking-[0.1em] text-slate-100">{derived.decisionPacket.capitalLane}</p>
+                </div>
+                <div className="rounded-2xl border border-white/10 bg-black/20 p-3">
+                  <p className="font-mono text-[10px] uppercase tracking-[0.16em] text-slate-400">Vs. top title</p>
+                  <p className="mt-2 font-mono text-xl text-emerald-200">{formatNumber(derived.decisionPacket.selectedVsTopPct, { digits: 0 })}%</p>
+                </div>
+              </div>
+            </div>
+            <div className="rounded-[24px] border border-amber-300/15 bg-amber-300/8 p-4 text-sm leading-7 text-slate-200">
+              <p className="font-mono text-[10px] uppercase tracking-[0.16em] text-amber-100/90">Interpretation guardrail</p>
+              <p className="mt-3">
+                {derived.decisionPacket.recommendationFootnote}
+              </p>
+            </div>
+          </div>
+        </section>
       </RouteReveal>
 
       <RouteReveal profile="cinematic" delay={0.1}>
@@ -465,23 +417,36 @@ export default function NetflixClient({ payload }: { payload: NetflixPayload }) 
             className="neo-panel"
           />
           <div className="glass rounded-2xl p-4">
-            <p className="font-mono text-[11px] uppercase tracking-[0.16em] text-amber-100/90">Title Selector</p>
+            <div className="flex flex-wrap items-start justify-between gap-3">
+              <div>
+                <p className="font-mono text-[11px] uppercase tracking-[0.16em] text-amber-100/90">Title Selector</p>
+                <p className="mt-2 text-[13px] leading-6 text-slate-400">
+                  Ranking below reorders when the committee shifts between acquisition pull and retention durability.
+                </p>
+              </div>
+              <div className="rounded-full border border-white/10 bg-black/20 px-3 py-1 font-mono text-[11px] uppercase tracking-[0.12em] text-slate-300">
+                {formatNumber(derived.acquisitionWeight * 100, { digits: 0 })}% acquisition / {formatNumber(derived.retentionWeight * 100, { digits: 0 })}% retention
+              </div>
+            </div>
             <div className="mt-3 flex flex-wrap gap-2">
-              {derived.ranked.slice(0, 8).map((title, index) => (
-                <button
-                  key={title.id}
-                  type="button"
-                  title={title.title}
-                  onClick={() => setSelectedTitleId(title.id)}
-                  className={
-                    selectedTitleId === title.id
-                      ? `rounded-full border border-amber-300/35 bg-amber-300/14 px-3 py-1.5 text-[11px] font-mono uppercase tracking-[0.1em] text-amber-100 ${index >= 5 ? "hidden sm:inline-flex" : ""}`
-                      : `rounded-full border border-white/10 bg-white/[0.04] px-3 py-1.5 text-[11px] font-mono uppercase tracking-[0.1em] text-slate-300 hover:bg-white/[0.08] ${index >= 5 ? "hidden sm:inline-flex" : ""}`
-                  }
-                >
-                  {compactTitle(title.title)}
-                </button>
-              ))}
+              {derived.ranked.slice(0, 8).map((title, index) => {
+                const active = derived.selectedTitle.id === title.id;
+                return (
+                  <button
+                    key={title.id}
+                    type="button"
+                    title={title.title}
+                    onClick={() => setSelectedTitleId(title.id)}
+                    className={
+                      active
+                        ? `rounded-full border border-amber-300/35 bg-amber-300/14 px-3 py-1.5 text-[11px] font-mono uppercase tracking-[0.1em] text-amber-100 ${index >= 5 ? "hidden sm:inline-flex" : ""}`
+                        : `rounded-full border border-white/10 bg-white/[0.04] px-3 py-1.5 text-[11px] font-mono uppercase tracking-[0.1em] text-slate-300 hover:bg-white/[0.08] ${index >= 5 ? "hidden sm:inline-flex" : ""}`
+                    }
+                  >
+                    #{index + 1} {compactTitle(title.title)}
+                  </button>
+                );
+              })}
             </div>
           </div>
           <NarrativeStrip
@@ -535,13 +500,33 @@ export default function NetflixClient({ payload }: { payload: NetflixPayload }) 
               title="Buzz Decay Signal"
               className="neo-panel"
             />
-            <EChart
-              option={rankingChart}
-              height={520}
-              mobileHeight={320}
-              title="Weighted ROI Ranking"
-              className="neo-panel"
-            />
+            <div className="space-y-4">
+              <EChart
+                option={rankingChart}
+                height={520}
+                mobileHeight={320}
+                title="Weighted ROI Ranking"
+                className="neo-panel"
+              />
+              <section className="glass rounded-2xl p-4">
+                <p className="font-mono text-[11px] uppercase tracking-[0.16em] text-cyan-100/90">Ranking readout</p>
+                <div className="mt-3 space-y-3 text-sm text-slate-300">
+                  <p>
+                    <span className="text-slate-100">Current #1:</span> {derived.top?.title ?? "—"} · {derived.top ? formatNumber(derived.top.weightedRoi, { digits: 2 }) : "—"}x weighted ROI
+                  </p>
+                  <p>
+                    <span className="text-slate-100">Selected title:</span> #{derived.selectedRank} · {derived.selectedTitle.title} · {formatNumber(derived.selectedTitle.committeeSpread, { digits: 0 })} pt committee spread
+                  </p>
+                  <p className="rounded-2xl border border-white/10 bg-black/20 p-3 text-[13px] leading-6 text-slate-200">
+                    {derived.selectedTitle.committeeBias === "retention-weighted"
+                      ? "This title climbs when the committee values long-tail retention durability more than opening-week acquisition spikes."
+                      : derived.selectedTitle.committeeBias === "acquisition-weighted"
+                        ? "This title wins mainly on modeled acquisition pull and becomes more fragile when the committee leans toward retention durability."
+                        : "This title remains balanced across acquisition and retention, making it a hedge when committee priorities are still unsettled."}
+                  </p>
+                </div>
+              </section>
+            </div>
           </div>
           <NarrativeStrip
             title="Scenario Notes"
@@ -566,34 +551,44 @@ export default function NetflixClient({ payload }: { payload: NetflixPayload }) 
           <div className="grid gap-4 xl:grid-cols-[minmax(0,1fr)_360px]">
             <section className="glass rounded-2xl p-5">
               <p className="font-mono text-[11px] uppercase tracking-[0.16em] text-emerald-100/90">Selected Title Board</p>
-              <div className="mt-3 space-y-2 text-sm text-slate-300">
+              <div className="mt-3 space-y-3 text-sm text-slate-300">
                 <p><span className="text-slate-100">Title:</span> {derived.selectedTitle.title}</p>
+                <p><span className="text-slate-100">Rank:</span> #{derived.selectedRank} under the {derived.decisionPacket.committeeLens} committee lens</p>
                 <p><span className="text-slate-100">Weighted ROI:</span> {formatNumber(derived.selectedTitle.weightedRoi, { digits: 2 })}x</p>
                 <p><span className="text-slate-100">Modeled LTV:</span> {formatUSD(derived.selectedTitle.weightedLtv * 1_000_000)}</p>
                 <p><span className="text-slate-100">Payback:</span> {formatNumber(derived.selectedTitle.paybackMonths, { digits: 1 })} months</p>
+                <p><span className="text-slate-100">Modeled value mix:</span> {formatNumber(derived.selectedTitle.acquisitionShare * 100, { digits: 0 })}% acquisition / {formatNumber(derived.selectedTitle.retentionShare * 100, { digits: 0 })}% retention</p>
+                <p className="rounded-2xl border border-white/10 bg-white/[0.04] p-3 text-[13px] leading-6 text-slate-200">
+                  {derived.decisionPacket.recommendationRationale}
+                </p>
               </div>
             </section>
             <DecisionConsole
+              title="Modeled committee output"
               lines={[
                 {
                   label: "Greenlight score",
                   value: formatNumber(derived.greenlightScore, { digits: 0 }),
                   tone: derived.greenlightScore >= 60 ? "emerald" : "amber",
+                  hint: "Composite decision aid blending acquisition adds and retention months under the current scenario.",
                 },
                 {
                   label: "Capital recommendation",
                   value: derived.allocationRecommendation,
                   tone: "amber",
+                  hint: `${derived.decisionPacket.capitalLane} lane for the active budget envelope.`,
                 },
                 {
                   label: "Expected payback window",
                   value: `${formatNumber(derived.selectedTitle.paybackMonths, { digits: 1 })} months`,
                   tone: "emerald",
+                  hint: "Shorter modeled payback windows imply faster capital recycling, not observed realized returns.",
                 },
                 {
                   label: "Predicted adds / retention",
                   value: `${formatNumber(derived.predictedAddsM, { digits: 2 })}M / ${formatNumber(derived.predictedRetentionMonths, { digits: 1 })} mo`,
                   tone: "neutral",
+                  hint: "Scenario-level modeled frontier output for committee comparison only.",
                 },
               ]}
             />
@@ -619,14 +614,27 @@ export default function NetflixClient({ payload }: { payload: NetflixPayload }) 
           tone="amber"
         >
           <div className="grid gap-4 xl:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]">
-            <NarrativeStrip
-              title="Evidence Callouts"
-              subtitle="Source-linked annotations supporting current committee recommendation."
-              annotations={chapterDAnnotations}
-              tone="amber"
-              maxItems={6}
+            <div className="space-y-4">
+              <NarrativeStrip
+                title="Evidence Callouts"
+                subtitle="Source-linked annotations supporting current committee recommendation."
+                annotations={chapterDAnnotations}
+                tone="amber"
+                maxItems={6}
+              />
+              <section className="rounded-2xl border border-amber-300/20 bg-amber-300/8 p-4 text-sm leading-7 text-slate-200">
+                <p className="font-mono text-[10px] uppercase tracking-[0.16em] text-amber-100/90">Modeled-output trust framing</p>
+                <p className="mt-3">
+                  Final committee language stays explicitly modeled: title economics, predicted adds, retention months, and payback windows are synthetic scenario outputs constrained by real-feed readiness signals, not directly observed causal truth.
+                </p>
+              </section>
+            </div>
+            <DecisionEvidencePanel
+              title={derived.recommendationContract.evidenceTitle}
+              summary={derived.recommendationContract.evidenceSummary}
+              footer={derived.recommendationContract.evidenceFooter}
+              evidence={derived.recommendationContract.evidence}
             />
-            <DecisionEvidencePanel title="Greenlight Evidence" evidence={payload.decisionEvidence} />
           </div>
         </StoryChapterShell>
       </RouteReveal>

@@ -29,6 +29,7 @@ export function Hero({ payload }: { payload: NetflixPayload }) {
             <Chip tone="amber">Investment Committee Room</Chip>
             <Chip tone="neutral">Acquisition vs retention split</Chip>
             <Chip tone="neutral">Capital allocation frontier</Chip>
+            <Chip tone="neutral">Modeled title economics</Chip>
           </div>
 
           <p className="font-feature mt-6 text-xs uppercase tracking-[0.24em] text-amber-100/90">Project 06</p>
@@ -38,8 +39,8 @@ export function Hero({ payload }: { payload: NetflixPayload }) {
             <span className="text-amber-100">capital committee decision deck</span>
           </h1>
           <p className="mt-5 max-w-2xl text-base leading-relaxed text-slate-200/90">
-            Film-wall composition with ROI chips, split-value accounting, and
-            a budget-envelope lens for greenlight sequencing.
+            Committee-grade slate planning board balancing acquisition pull, retention durability,
+            and budget efficiency while keeping modeled economics clearly separated from observed truth.
           </p>
 
           <div className="mt-6 grid gap-3 sm:grid-cols-3">
@@ -81,9 +82,12 @@ export function Hero({ payload }: { payload: NetflixPayload }) {
               <p className="mt-1 font-mono text-xl text-rose-100">{formatUSD(totalRetention * 1_000_000)}</p>
             </div>
           </div>
-          <div className="mt-3 rounded-2xl border border-white/10 bg-black/25 p-3 text-sm text-slate-300">
+          <div className="mt-3 space-y-3 rounded-2xl border border-white/10 bg-black/25 p-3 text-sm text-slate-300">
             <p>
               Acquisition/Retention split: <span className="font-mono text-amber-100">{formatNumber((totalAcq / Math.max(1, totalAcq + totalRetention)) * 100, { digits: 0 })}% / {formatNumber((totalRetention / Math.max(1, totalAcq + totalRetention)) * 100, { digits: 0 })}%</span>
+            </p>
+            <p className="text-[13px] leading-6 text-slate-400">
+              Committee posture: title ranking and payback outputs below are modeled decision aids built from synthetic title economics plus real-feed readiness metadata. Treat them as allocation scenarios, not observed causal proof.
             </p>
           </div>
         </div>

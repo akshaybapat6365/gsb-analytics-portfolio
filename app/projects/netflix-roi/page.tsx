@@ -6,13 +6,26 @@ import { buildProjectMetadata, buildProjectSchema } from "@/lib/seo";
 import { Hero } from "./Hero";
 import { NetflixShell } from "./NetflixShell";
 import { NetflixInteractiveSection } from "./InteractiveSection";
+import { RecoverabilityProbe } from "./RecoverabilityProbe";
+import { resolveNetflixRouteProbe } from "./recoverability";
 import { StructuredDataScript } from "@/components/seo/StructuredDataScript";
 import { CaseStudyTrustStack } from "@/components/story/CaseStudyTrustStack";
 
 const project = getProject("netflix-roi");
 export const metadata: Metadata = buildProjectMetadata(project);
 
-export default async function NetflixRoiPage() {
+type NetflixRoiPageProps = {
+  searchParams?: Promise<Record<string, string | string[] | undefined>>;
+};
+
+export default async function NetflixRoiPage({ searchParams }: NetflixRoiPageProps) {
+  const resolvedSearchParams = searchParams ? await searchParams : undefined;
+  const probe = resolveNetflixRouteProbe(resolvedSearchParams?.routeProbe);
+
+  if (probe !== "none") {
+    return <RecoverabilityProbe probe={probe} />;
+  }
+
   const payload = await loadNetflixPayload();
   const summary = project.homepage;
 
