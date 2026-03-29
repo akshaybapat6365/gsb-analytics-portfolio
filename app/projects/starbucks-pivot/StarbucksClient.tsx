@@ -13,8 +13,13 @@ import { RouteReveal } from "@/components/motion/RouteReveal";
 import { NarrativeStrip } from "@/components/story/NarrativeStrip";
 import { DecisionEvidencePanel } from "@/components/story/DecisionEvidencePanel";
 import { DecisionConsole } from "@/components/story/DecisionConsole";
-import { clamp } from "@/lib/metrics/math";
 import { formatNumber, formatPct, formatUSD } from "@/lib/metrics/format";
+import {
+  deriveStarbucksScenario,
+  STARBUCKS_SEGMENTS,
+  type StarbucksDerivedStore,
+  type StarbucksSegmentFilter,
+} from "@/lib/viewmodels/starbucks";
 import type { StarbucksPayload } from "@/lib/schemas/starbucks";
 
 const STORE_COLORS = {
@@ -22,9 +27,6 @@ const STORE_COLORS = {
   Lockers: new Uint8ClampedArray([52, 211, 153, 206]),
   Close: new Uint8ClampedArray([251, 113, 133, 214]),
 } as const;
-
-const SEGMENTS = ["all", "office", "mixed", "residential"] as const;
-type SegmentFilter = (typeof SEGMENTS)[number];
 
 function colorFor(rec: "Convert" | "Lockers" | "Close") {
   return STORE_COLORS[rec];
@@ -47,120 +49,25 @@ function pickChapterAnnotations(
 export default function StarbucksClient({ payload }: { payload: StarbucksPayload }) {
   const [wfh, setWfh] = useState(58);
   const [officeShock, setOfficeShock] = useState(42);
-  const [segmentFilter, setSegmentFilter] = useState<SegmentFilter>("all");
+  const [segmentFilter, setSegmentFilter] = useState<StarbucksSegmentFilter>("all");
   const [selectedStoreId, setSelectedStoreId] = useState<string>(payload.stores[0]?.id ?? "");
   const [placeboMode, setPlaceboMode] = useState(false);
 
-  const derived = useMemo(() => {
-    const w = clamp(wfh / 100, 0, 1);
-    const office = clamp(officeShock / 100, 0, 1);
-
-    const stores = payload.stores.map((store) => {
-      const segmentShock =
-        store.segment === "office"
-          ? office * 0.34
-          : store.segment === "mixed"
-            ? office * 0.18
-            : -office * 0.08;
-      const trafficMultiplier = clamp(
-        1 - w * store.wfhExposure * 0.86 - segmentShock,
-        0.34,
-        1.3,
-      );
-      const traffic = store.baselineTraffic * trafficMultiplier;
-      const profitK =
-        store.baselineProfitK +
-        store.deltaProfitK * w +
-        (store.segment === "residential" ? 12 * office : -10 * office);
-      const confidence = clamp(
-        (Math.abs(store.deltaProfitK) / 120 + store.wfhExposure) / 2,
-        0,
-        1,
-      );
-
-      return { ...store, traffic, profitK, confidence, trafficMultiplier };
-    });
-
-    const visibleStores =
-      segmentFilter === "all"
-        ? stores
-        : stores.filter((store) => store.segment === segmentFilter);
-
-    const byRec = visibleStores.reduce<Record<string, number>>((acc, store) => {
-      acc[store.recommendation] = (acc[store.recommendation] ?? 0) + 1;
-      return acc;
-    }, {});
-
-    const totalDeltaProfitK = visibleStores.reduce(
-      (sum, store) => sum + (store.profitK - store.baselineProfitK),
-      0,
-    );
-    const avgTraffic =
-      visibleStores.reduce((sum, store) => sum + store.traffic, 0) /
-      Math.max(1, visibleStores.length);
-
-    const segmentStats = ["office", "mixed", "residential"].map((segment) => {
-      const rows = stores.filter((store) => store.segment === segment);
-      const baselineTraffic = rows.reduce((sum, store) => sum + store.baselineTraffic, 0);
-      const scenarioTraffic = rows.reduce((sum, store) => sum + store.traffic, 0);
-      const baselineProfitK = rows.reduce((sum, store) => sum + store.baselineProfitK, 0);
-      const scenarioProfitK = rows.reduce((sum, store) => sum + store.profitK, 0);
-      return {
-        segment,
-        baselineTraffic,
-        scenarioTraffic,
-        baselineProfitK,
-        scenarioProfitK,
-      };
-    });
-
-    const selectedStore =
-      stores.find((store) => store.id === selectedStoreId) ??
-      visibleStores[0] ??
-      stores[0];
-
-    const ranked = [...visibleStores]
-      .sort((a, b) => b.profitK - b.baselineProfitK - (a.profitK - a.baselineProfitK))
-      .slice(0, 10);
-
-    const scenarios = [...payload.scenarios].sort((a, b) => a.wfhIndex - b.wfhIndex);
-    const treatmentSeries = scenarios.map((row) => {
-      const base = row.trafficMultiplier;
-      const shift = placeboMode ? 0.01 : office * 0.18 + payload.did.ate * 0.15;
-      return clamp(base - shift, 0.3, 1.35);
-    });
-    const controlSeries = scenarios.map((row) => {
-      const base = row.trafficMultiplier;
-      const shift = placeboMode ? 0.008 : office * 0.06;
-      return clamp(base - shift, 0.32, 1.35);
-    });
-
-    const divergenceSeries = treatmentSeries.map((value, idx) => value - controlSeries[idx]!);
-    const ciBand = Math.max(0.01, (payload.did.ci[1] - payload.did.ci[0]) / 2);
-
-    return {
-      w,
-      office,
-      stores,
-      visibleStores,
-      byRec,
-      totalDeltaProfitK,
-      avgTraffic,
-      segmentStats,
-      selectedStore,
-      ranked,
-      scenarios,
-      treatmentSeries,
-      controlSeries,
-      divergenceSeries,
-      ciBand,
-    };
-  }, [payload, wfh, officeShock, segmentFilter, selectedStoreId, placeboMode]);
-
-  type Store = (typeof derived.stores)[number];
+  const derived = useMemo(
+    () =>
+      deriveStarbucksScenario({
+        payload,
+        wfh,
+        officeShock,
+        segmentFilter,
+        selectedStoreId,
+        placeboMode,
+      }),
+    [payload, wfh, officeShock, segmentFilter, selectedStoreId, placeboMode],
+  );
 
   const layers: Layer[] = [
-    new ScatterplotLayer<Store>({
+    new ScatterplotLayer<StarbucksDerivedStore>({
       id: "starbucks-stores",
       data: derived.visibleStores,
       getPosition: (store) => [store.lon, store.lat],
@@ -177,7 +84,7 @@ export default function StarbucksClient({ payload }: { payload: StarbucksPayload
       stroked: true,
       pickable: true,
       onClick: (info: PickingInfo) => {
-        const obj = info.object as Store | null;
+        const obj = info.object as StarbucksDerivedStore | null;
         if (obj?.id) {
           setSelectedStoreId(obj.id);
         }
@@ -204,7 +111,7 @@ export default function StarbucksClient({ payload }: { payload: StarbucksPayload
       {
         name: "Store count",
         type: "bar",
-        data: ["Convert", "Lockers", "Close"].map((key) => derived.byRec[key] ?? 0),
+        data: ["Convert", "Lockers", "Close"].map((key) => derived.recommendationMix[key] ?? 0),
         itemStyle: {
           color: (param: unknown) => {
             const raw = param as { name?: unknown };
@@ -361,6 +268,40 @@ export default function StarbucksClient({ payload }: { payload: StarbucksPayload
     ],
   };
 
+  const segmentExposureChart: EChartsOption = {
+    backgroundColor: "transparent",
+    grid: { left: 52, right: 24, top: 22, bottom: 38 },
+    tooltip: { trigger: "axis" },
+    legend: { textStyle: { color: "#cbd5e1" } },
+    xAxis: {
+      type: "category",
+      data: derived.segmentStats.map((row) => row.segment),
+      axisLabel: { color: "#94a3b8" },
+      axisLine: { lineStyle: { color: "rgba(182,169,151,0.25)" } },
+    },
+    yAxis: {
+      type: "value",
+      axisLabel: { color: "#94a3b8" },
+      splitLine: { lineStyle: { color: "rgba(182,169,151,0.12)" } },
+    },
+    series: [
+      {
+        name: "Baseline traffic",
+        type: "bar",
+        stack: "traffic",
+        data: derived.segmentStats.map((row) => row.baselineTraffic),
+        itemStyle: { color: "rgba(148,163,184,0.52)" },
+      },
+      {
+        name: "Scenario traffic",
+        type: "bar",
+        stack: "scenario",
+        data: derived.segmentStats.map((row) => row.scenarioTraffic),
+        itemStyle: { color: "rgba(52,211,153,0.72)" },
+      },
+    ],
+  };
+
   const annotations = payload.annotations ?? [];
   const chapterAAnnotations = pickChapterAnnotations(annotations, ["portfolio", "surgery", "store", "map"]);
   const chapterBAnnotations = pickChapterAnnotations(annotations, ["segment", "did", "causal"]);
@@ -401,7 +342,7 @@ export default function StarbucksClient({ payload }: { payload: StarbucksPayload
             </div>
           </div>
           <div className="mt-4 flex flex-wrap gap-2">
-            {SEGMENTS.map((segment) => (
+            {STARBUCKS_SEGMENTS.map((segment) => (
               <button
                 key={segment}
                 type="button"
@@ -471,7 +412,7 @@ export default function StarbucksClient({ payload }: { payload: StarbucksPayload
               height={640}
               className="neo-panel"
               getTooltip={(info: PickingInfo) => {
-                const obj = info.object as Store | null;
+                const obj = info.object as StarbucksDerivedStore | null;
                 if (!obj) return null;
                 return `${obj.name}\n${obj.recommendation}\nProjected delta: ${formatUSD((obj.profitK - obj.baselineProfitK) * 1000)}\nConfidence: ${formatPct(obj.confidence, { digits: 0 })}`;
               }}
@@ -483,10 +424,11 @@ export default function StarbucksClient({ payload }: { payload: StarbucksPayload
               <div className="space-y-3 px-5 py-5 text-sm text-slate-300">
                 <p><span className="text-slate-100">Store:</span> {derived.selectedStore?.name ?? "—"}</p>
                 <p><span className="text-slate-100">Recommendation:</span> {derived.selectedStore?.recommendation ?? "—"}</p>
+                <p><span className="text-slate-100">Execution action:</span> {derived.selectedStore?.actionLabel ?? "—"}</p>
                 <p>
                   <span className="text-slate-100">Projected delta:</span>{" "}
                   {derived.selectedStore
-                    ? formatUSD((derived.selectedStore.profitK - derived.selectedStore.baselineProfitK) * 1000)
+                    ? formatUSD(derived.selectedStoreDeltaProfitK * 1000)
                     : "—"}
                 </p>
                 <p>
@@ -495,6 +437,24 @@ export default function StarbucksClient({ payload }: { payload: StarbucksPayload
                     ? formatPct(derived.selectedStore.confidence, { digits: 0 })
                     : "—"}
                 </p>
+                <p className="rounded-2xl border border-white/10 bg-white/[0.04] p-3 text-[13px] leading-6 text-slate-200">
+                  {derived.selectedStore?.actionReason ?? "Map selection will populate the synchronized action rationale."}
+                </p>
+              </div>
+            </section>
+          </div>
+          <div className="mt-4 grid gap-4 xl:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)]">
+            <EChart option={segmentExposureChart} height={360} title="Segment traffic migration" className="neo-panel" />
+            <section className="glass rounded-2xl p-5">
+              <p className="font-mono text-[11px] uppercase tracking-[0.16em] text-emerald-100/90">Selection sync check</p>
+              <div className="mt-3 space-y-3 text-sm leading-6 text-slate-300">
+                <p>
+                  Changing filters keeps <span className="text-slate-100">{derived.selectedStore?.name ?? "the pinned store"}</span> visible in the map + queue workflow, then falls back to the next visible store if the old pin drops out.
+                </p>
+                <p>
+                  Queue lead: <span className="font-mono text-emerald-100">{derived.topPriorityStore?.name ?? "—"}</span>
+                </p>
+                <p>{derived.queueSummary}</p>
               </div>
             </section>
           </div>
@@ -520,7 +480,10 @@ export default function StarbucksClient({ payload }: { payload: StarbucksPayload
         >
           <div className="glass rounded-2xl p-4">
             <div className="flex flex-wrap items-center justify-between gap-3">
-              <p className="font-mono text-[11px] uppercase tracking-[0.16em] text-amber-100/90">Causal Stress Toggles</p>
+              <div>
+                <p className="font-mono text-[11px] uppercase tracking-[0.16em] text-amber-100/90">Causal Stress Toggles</p>
+                <p className="mt-1 text-sm leading-6 text-slate-300">{derived.causalSummary}</p>
+              </div>
               <button
                 type="button"
                 onClick={() => setPlaceboMode((prev) => !prev)}
@@ -553,7 +516,7 @@ export default function StarbucksClient({ payload }: { payload: StarbucksPayload
           chapter="Decision Console"
           title="Store surgery matrix and action queue"
           description="Quadrant-style matrix for WFH exposure vs profit delta, plus top-10 implementation sequence."
-          insight={`Top candidate: ${derived.ranked[0]?.name ?? "n/a"} at ${derived.ranked[0] ? formatUSD((derived.ranked[0].profitK - derived.ranked[0].baselineProfitK) * 1000) : "—"} delta.`}
+          insight={`Top candidate: ${derived.topPriorityStore?.name ?? "n/a"} at ${derived.topPriorityStore ? formatUSD((derived.topPriorityStore.profitK - derived.topPriorityStore.baselineProfitK) * 1000) : "—"} delta.`}
           impact="Queue ranking prioritizes fastest recoverable economics under current commuter assumptions."
           annotationCount={chapterCAnnotations.length}
           tone="amber"
@@ -564,6 +527,7 @@ export default function StarbucksClient({ payload }: { payload: StarbucksPayload
           </div>
           <div className="grid gap-4 xl:grid-cols-[minmax(0,1fr)_360px]">
             <DecisionConsole
+              title="Portfolio action packet"
               lines={[
                 {
                   label: "Portfolio delta",
@@ -572,42 +536,49 @@ export default function StarbucksClient({ payload }: { payload: StarbucksPayload
                 },
                 {
                   label: "Convert / Lockers / Close",
-                  value: `${formatNumber(derived.byRec.Convert ?? 0)} / ${formatNumber(derived.byRec.Lockers ?? 0)} / ${formatNumber(derived.byRec.Close ?? 0)}`,
+                  value: `${formatNumber(derived.recommendationMix.Convert ?? 0)} / ${formatNumber(derived.recommendationMix.Lockers ?? 0)} / ${formatNumber(derived.recommendationMix.Close ?? 0)}`,
                   tone: "amber",
                 },
                 {
                   label: "Priority #1",
-                  value: derived.ranked[0]?.name ?? "—",
+                  value: derived.topPriorityStore?.name ?? "—",
                   tone: "emerald",
+                  hint: derived.topPriorityStore?.actionReason,
                 },
                 {
                   label: "Implementation queue",
                   value: `${formatNumber(derived.ranked.length)} stores`,
                   tone: "neutral",
+                  hint: derived.queueSummary,
                 },
               ]}
             />
             <DecisionConsole
+              title="Causal confidence next to action output"
               lines={[
                 {
-                  label: "Top queue node",
-                  value: derived.ranked[0]?.name ?? "—",
+                  label: "Top queue action",
+                  value: derived.topPriorityStore?.actionLabel ?? "—",
                   tone: "emerald",
                 },
                 {
                   label: "Top queue delta",
-                  value: derived.ranked[0] ? formatUSD((derived.ranked[0].profitK - derived.ranked[0].baselineProfitK) * 1000) : "—",
+                  value: derived.topPriorityStore ? formatUSD((derived.topPriorityStore.profitK - derived.topPriorityStore.baselineProfitK) * 1000) : "—",
                   tone: "amber",
                 },
                 {
                   label: "DiD confidence window",
                   value: `${formatPct(payload.did.ci[0], { digits: 0 })} → ${formatPct(payload.did.ci[1], { digits: 0 })}`,
                   tone: "neutral",
+                  hint: "Directional only — the queue is scenario-specific and should not be read as guaranteed realized lift.",
                 },
                 {
                   label: "Pretrend p-value",
                   value: formatNumber(payload.did.pretrendP, { digits: 2 }),
                   tone: payload.did.pretrendP > 0.1 ? "emerald" : "crimson",
+                  hint: placeboMode
+                    ? "Placebo mode lowers confidence by design so action sequencing stays uncertainty-aware."
+                    : "Visible action outputs remain tethered to the DiD diagnostic context.",
                 },
               ]}
             />
@@ -624,14 +595,26 @@ export default function StarbucksClient({ payload }: { payload: StarbucksPayload
               <p className="font-mono text-[11px] uppercase tracking-[0.16em] text-amber-100/90">Top-10 Queue</p>
               <div className="mt-3 space-y-2 text-sm text-slate-300">
                 {derived.ranked.map((store, index) => (
-                  <div key={store.id} className="flex items-center justify-between gap-3">
-                    <p>
-                      <span className="text-slate-500">{index + 1}.</span> {store.name}
-                    </p>
+                  <button
+                    key={store.id}
+                    type="button"
+                    onClick={() => setSelectedStoreId(store.id)}
+                    className={`flex w-full items-start justify-between gap-3 rounded-2xl border px-3 py-2 text-left transition ${
+                      store.id === derived.selectedStore?.id
+                        ? "border-emerald-300/35 bg-emerald-300/10"
+                        : "border-white/10 bg-black/15 hover:bg-white/[0.05]"
+                    }`}
+                  >
+                    <div>
+                      <p>
+                        <span className="text-slate-500">{index + 1}.</span> {store.name}
+                      </p>
+                      <p className="mt-1 text-[12px] leading-5 text-slate-400">{store.actionLabel} · {store.actionReason}</p>
+                    </div>
                     <span className="font-mono text-emerald-100">
                       {formatUSD((store.profitK - store.baselineProfitK) * 1000)}
                     </span>
-                  </div>
+                  </button>
                 ))}
               </div>
             </section>
@@ -644,7 +627,7 @@ export default function StarbucksClient({ payload }: { payload: StarbucksPayload
           chapter="Evidence"
           title="Recommendation evidence trace"
           description="Source-linked annotation evidence and decision packet for committee-style review."
-          insight={`Evidence packets available: ${formatNumber(payload.decisionEvidence?.length ?? 0)}.`}
+          insight={`Evidence packets available: ${formatNumber(derived.evidence.length)} active rows for the visible queue.`}
           impact="Improves governance quality by binding each action recommendation to explicit supporting evidence."
           annotationCount={chapterDAnnotations.length}
           tone="emerald"
@@ -657,7 +640,12 @@ export default function StarbucksClient({ payload }: { payload: StarbucksPayload
               tone="emerald"
               maxItems={6}
             />
-            <DecisionEvidencePanel title="Portfolio Surgery Evidence" evidence={payload.decisionEvidence} />
+            <DecisionEvidencePanel
+              title="Active portfolio surgery evidence"
+              summary={`${derived.queueSummary} ${derived.causalSummary}`}
+              footer="Trust boundary: these ranked actions are scenario-driven decision aids. Keep causal uncertainty visible when translating this queue into real estate actions."
+              evidence={derived.evidence}
+            />
           </div>
         </StoryChapterShell>
       </RouteReveal>

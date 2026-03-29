@@ -6,13 +6,26 @@ import { buildProjectMetadata, buildProjectSchema } from "@/lib/seo";
 import { Hero } from "./Hero";
 import { StarbucksShell } from "./StarbucksShell";
 import { StarbucksInteractiveSection } from "./InteractiveSection";
+import { RecoverabilityProbe } from "./RecoverabilityProbe";
+import { resolveStarbucksRouteProbe } from "./recoverability";
 import { StructuredDataScript } from "@/components/seo/StructuredDataScript";
 import { CaseStudyTrustStack } from "@/components/story/CaseStudyTrustStack";
 
 const project = getProject("starbucks-pivot");
 export const metadata: Metadata = buildProjectMetadata(project);
 
-export default async function StarbucksPivotPage() {
+type StarbucksPivotPageProps = {
+  searchParams?: Promise<Record<string, string | string[] | undefined>>;
+};
+
+export default async function StarbucksPivotPage({ searchParams }: StarbucksPivotPageProps) {
+  const resolvedSearchParams = searchParams ? await searchParams : undefined;
+  const probe = resolveStarbucksRouteProbe(resolvedSearchParams?.routeProbe);
+
+  if (probe !== "none") {
+    return <RecoverabilityProbe probe={probe} />;
+  }
+
   const payload = await loadStarbucksPayload();
   const summary = project.homepage;
 
