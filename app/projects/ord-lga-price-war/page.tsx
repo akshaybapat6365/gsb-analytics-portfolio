@@ -7,6 +7,7 @@ import { StructuredDataScript } from "@/components/seo/StructuredDataScript";
 import { Hero } from "./Hero";
 import { OrdLgaInteractiveSection } from "./InteractiveSection";
 import { OrdLgaShell } from "./OrdLgaShell";
+import { OrdLgaChrome } from "./OrdLgaChrome";
 import { RecoverabilityProbe } from "./RecoverabilityProbe";
 import { resolveOrdLgaRouteProbe } from "./recoverability";
 import { CaseStudyTrustStack } from "@/components/story/CaseStudyTrustStack";
@@ -31,7 +32,7 @@ export default async function OrdLgaPriceWarPage({
   const payload = await loadAirlinePayload();
 
   return (
-    <>
+    <OrdLgaChrome>
       <StructuredDataScript
         id="project-jsonld-ord-lga-price-war"
         data={buildProjectSchema(project)}
@@ -59,6 +60,6 @@ export default async function OrdLgaPriceWarPage({
 
         <OrdLgaInteractiveSection payload={payload} />
       </div>
-    </>
+    </OrdLgaChrome>
   );
 }
