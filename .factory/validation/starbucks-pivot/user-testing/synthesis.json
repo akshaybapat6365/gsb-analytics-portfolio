@@ -1,0 +1,22 @@
+{
+  "milestone": "starbucks-pivot",
+  "round": 1,
+  "status": "pass",
+  "assertionsSummary": {
+    "total": 5,
+    "passed": 5,
+    "failed": 0,
+    "blocked": 0
+  },
+  "passedAssertions": [
+    "VAL-STARBUCKS-001",
+    "VAL-STARBUCKS-002",
+    "VAL-STARBUCKS-003",
+    "VAL-STARBUCKS-004",
+    "VAL-STARBUCKS-005"
+  ],
+  "failedAssertions": [],
+  "blockedAssertions": [],
+  "appliedUpdates": [],
+  "previousRound": null
+}

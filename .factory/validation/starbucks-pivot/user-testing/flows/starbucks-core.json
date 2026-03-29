@@ -1,0 +1,178 @@
+{
+  "groupId": "starbucks-core",
+  "testedAt": "2026-03-29T00:27:35.540675+00:00",
+  "isolation": {
+    "appUrl": "http://localhost:3501",
+    "route": "/projects/starbucks-pivot",
+    "allowedProbes": [
+      "/projects/starbucks-pivot?routeProbe=loading",
+      "/projects/starbucks-pivot?routeProbe=error"
+    ],
+    "missionDir": "/home/mostltyharmless/.factory/missions/0bc5abab-8b5e-4fc7-8d9d-3feb9bdd1a02",
+    "evidenceDir": "/home/mostltyharmless/.factory/missions/0bc5abab-8b5e-4fc7-8d9d-3feb9bdd1a02/evidence/starbucks-pivot/starbucks-core"
+  },
+  "toolsUsed": [
+    "agent-browser",
+    "curl"
+  ],
+  "assertions": [
+    {
+      "id": "VAL-STARBUCKS-001",
+      "title": "Starbucks Pivot communicates geo-strategy portfolio surgery",
+      "status": "pass",
+      "steps": [
+        {
+          "action": "Open /projects/starbucks-pivot on the shared production-like runtime",
+          "expected": "The route should clearly frame suburban/office migration strategy with recommendation classes and top-level economics",
+          "observed": "The hero labeled the page 'Starbucks Pivot: geo-strategy operating board' and described 'office-district collapse versus suburban midday migration' while the top card surfaced recommendation classes Convert, Lockers, and Close with top-level economics including 'Portfolio delta: $2M', office exposure 71%, residential 28%, and 'DiD ATE: -18%'."
+        },
+        {
+          "action": "Inspect the BLUF and trust summary near the top of the route",
+          "expected": "The route should pair top-level economics with causal framing and limitations",
+          "observed": "The BLUF asked which suburban stores should convert to pickup-only/drive-thru-only, stated that a Diff-in-Diff design estimated a traffic shift away from office-adjacent stores, and labeled the payload 'MODELED' with limitation copy that store-level profitability deltas are scenario outputs rather than reported P&Ls."
+        }
+      ],
+      "evidence": {
+        "screenshots": [
+          "starbucks-pivot/starbucks-core/VAL-STARBUCKS-001-hero-annotated.png",
+          "starbucks-pivot/starbucks-core/VAL-STARBUCKS-001-bluf.png"
+        ],
+        "consoleErrors": "none",
+        "network": "GET /projects/starbucks-pivot -> 200"
+      },
+      "issues": null
+    },
+    {
+      "id": "VAL-STARBUCKS-002",
+      "title": "Starbucks controls drive visible map and causal-board updates",
+      "status": "pass",
+      "steps": [
+        {
+          "action": "Capture the baseline route state with default controls",
+          "expected": "The page should expose user-adjustable WFH or office-shock controls and downstream views tied to the active state",
+          "observed": "Baseline state exposed sliders at WFH index 58% and Office park shock 42%, visible store filter ALL, a pinned-store panel for Denver Store 01 with Recommendation Lockers, and a top queue led by Denver Store 48 at $38K projected uplift."
+        },
+        {
+          "action": "Increase WFH index to 61%, reduce office park shock to 40%, and switch the visible-store filter from ALL to OFFICE",
+          "expected": "At least the selected-store workflow and two downstream views should update visibly without a page reload",
+          "observed": "Without a document reload, the sliders updated to 61% and 40%, the queue recomputed with Denver Store 48 still ranked first but now at $40K uplift, the lower queue reordered to replace Denver Store 54 with Denver Store 11 and Denver Store 14, and the route showed 'Filter: OFFICE'."
+        },
+        {
+          "action": "Switch the segment filter from OFFICE to RESIDENTIAL and inspect the queue state",
+          "expected": "Changing segment filters should visibly drive another downstream scenario update",
+          "observed": "The queue and visible-state messaging changed again to 'Filter: RESIDENTIAL', the queue lead changed to Denver Store 60, and the top ranked actions switched from convert recommendations to locker-installation recommendations such as '1. Denver Store 60 ... $25K' and '2. Denver Store 55 ... $26K'."
+        }
+      ],
+      "evidence": {
+        "screenshots": [
+          "starbucks-pivot/starbucks-core/VAL-STARBUCKS-002-before.png",
+          "starbucks-pivot/starbucks-core/VAL-STARBUCKS-002-after.png",
+          "starbucks-pivot/starbucks-core/VAL-STARBUCKS-002-residential-probe.png"
+        ],
+        "consoleErrors": "none",
+        "network": "GET /projects/starbucks-pivot -> 200; slider and segment-filter changes updated the route in-page without a document reload"
+      },
+      "issues": null
+    },
+    {
+      "id": "VAL-STARBUCKS-003",
+      "title": "Starbucks route converts scenario analysis into ranked actions",
+      "status": "pass",
+      "steps": [
+        {
+          "action": "Inspect the decision console, queue, and evidence pack in the default scenario",
+          "expected": "The route should expose portfolio delta, recommendation mix, top-priority store, ranked implementation logic, and supporting evidence",
+          "observed": "The decision console surfaced recommendation composition, the top-10 queue, and an evidence trace. In the default state it showed 'Portfolio delta: $2M', Convert 9 / Lockers 51 / Close 0, and ranked Denver Store 48 first with a $38K uplift and explanation for immediate format conversion review."
+        },
+        {
+          "action": "Inspect the evidence trace after the OFFICE scenario update",
+          "expected": "Ranked actions should remain tied to supporting evidence under the active assumptions",
+          "observed": "After the OFFICE-filter scenario change, the evidence rail updated to 'Counterfactual delta: Denver Store 48 ranks #1 with $40K scenario delta' and the route kept the causal note that recommendation confidence is directional with DiD ATE -18% and a -26% to -10% interval."
+        },
+        {
+          "action": "Select the top residential queue item after switching to the RESIDENTIAL filter",
+          "expected": "The selected-store panel and evidence should synchronize with the ranked action logic",
+          "observed": "Selecting the top residential action synchronized the route around Denver Store 60, showing 'Store: Denver Store 60', 'Recommendation: Lockers', 'Execution action: Install lockers', 'Projected delta: $25K', and 'Counterfactual delta: Denver Store 60 ranks #1 with $25K scenario delta'."
+        }
+      ],
+      "evidence": {
+        "screenshots": [
+          "starbucks-pivot/starbucks-core/VAL-STARBUCKS-003-queue.png",
+          "starbucks-pivot/starbucks-core/VAL-STARBUCKS-003-decision-evidence.png",
+          "starbucks-pivot/starbucks-core/VAL-STARBUCKS-003-residential-selected.png"
+        ],
+        "consoleErrors": "none",
+        "network": "GET /projects/starbucks-pivot -> 200; decision, queue, and evidence surfaces updated in-page under active scenario and queue-selection changes"
+      },
+      "issues": null
+    },
+    {
+      "id": "VAL-STARBUCKS-004",
+      "title": "Starbucks trust framing keeps causal uncertainty visible near action outputs",
+      "status": "pass",
+      "steps": [
+        {
+          "action": "Inspect the trust/provenance and assumptions surfaces near the top of the route",
+          "expected": "The route should make modeled, scenario-specific, and auditable trust framing visible before deeper analysis",
+          "observed": "The route exposed 'TRUST, PROVENANCE & CURRENT RUN', current run metadata ('run real-20260219202020'), module readiness, and an appendix labeled 'Assumptions, limits & swap path', all before the deeper interactive sections."
+        },
+        {
+          "action": "Inspect the causal board and decision-area copy next to recommendation outputs",
+          "expected": "Causal outputs should remain directional and uncertainty-aware rather than treated as guaranteed truth",
+          "observed": "The causal board stated 'Recommendation confidence stays directional: DiD ATE is -18% with -26% → -10% interval and pretrend p-value 0.42', while the decision console explicitly labeled 'CAUSAL CONFIDENCE NEXT TO ACTION OUTPUT' so uncertainty remained adjacent to the action queue."
+        }
+      ],
+      "evidence": {
+        "screenshots": [
+          "starbucks-pivot/starbucks-core/VAL-STARBUCKS-001-bluf.png",
+          "starbucks-pivot/starbucks-core/VAL-STARBUCKS-003-decision-evidence.png"
+        ],
+        "consoleErrors": "none",
+        "network": "GET /projects/starbucks-pivot -> 200"
+      },
+      "issues": null
+    },
+    {
+      "id": "VAL-STARBUCKS-005",
+      "title": "Starbucks loading or failures preserve usable recovery",
+      "status": "pass",
+      "steps": [
+        {
+          "action": "Open /projects/starbucks-pivot?routeProbe=loading",
+          "expected": "The loading state should be Starbucks-specific and preserve a visible recovery path",
+          "observed": "The loading probe rendered 'Loading Starbucks Suburban Pivot' with copy that geo layers, queue logic, and causal overlays were rehydrating while the recovery path stayed visible."
+        },
+        {
+          "action": "Open /projects/starbucks-pivot?routeProbe=error",
+          "expected": "The route error state should preserve retry or safe return behavior",
+          "observed": "The error probe rendered 'Route Error Starbucks Suburban Pivot' with Starbucks-specific copy saying the controlled failure kept geo-strategy posture, causal caveats, and queue recovery actions explicit so operators could safely recover."
+        }
+      ],
+      "evidence": {
+        "screenshots": [
+          "starbucks-pivot/starbucks-core/VAL-STARBUCKS-005-loading.png",
+          "starbucks-pivot/starbucks-core/VAL-STARBUCKS-005-error.png"
+        ],
+        "consoleErrors": "none",
+        "network": "GET /projects/starbucks-pivot?routeProbe=loading -> 200; GET /projects/starbucks-pivot?routeProbe=error -> 200"
+      },
+      "issues": null
+    }
+  ],
+  "frictions": [
+    {
+      "description": "Raw body-text capture on this Next.js App Router page included streamed payload/script text, so exact visible copy was harder to isolate from text dumps alone.",
+      "resolved": true,
+      "resolution": "Used screenshot evidence plus targeted DOM text checks and interactive snapshots to confirm the visible labels, queue items, and trust copy.",
+      "affectedAssertions": [
+        "VAL-STARBUCKS-001",
+        "VAL-STARBUCKS-002",
+        "VAL-STARBUCKS-003",
+        "VAL-STARBUCKS-004",
+        "VAL-STARBUCKS-005"
+      ]
+    }
+  ],
+  "blockers": [],
+  "summary": "Tested 5 Starbucks Pivot assertions on http://localhost:3501. All 5 passed: the route clearly framed geo-strategy portfolio surgery, scenario controls visibly recomputed queue and segment states without reload, ranked actions stayed evidence-linked and uncertainty-aware, and both supported recoverability probes exposed Starbucks-specific recovery messaging."
+}
