@@ -1,0 +1,65 @@
+{
+  "groupId": "keyboard-trust-rerun",
+  "testedAt": "2026-03-29T03:00:27Z",
+  "isolation": {
+    "appUrl": "http://localhost:3501",
+    "milestone": "portfolio-synthesis",
+    "assignedAssertionIds": ["VAL-CROSS-004"],
+    "routesUsed": ["/", "/projects", "/projects/ord-lga-price-war", "/projects/tesla-nacs"],
+    "evidenceDir": "/home/mostltyharmless/.factory/missions/0bc5abab-8b5e-4fc7-8d9d-3feb9bdd1a02/evidence/portfolio-synthesis/keyboard-trust-rerun"
+  },
+  "toolsUsed": ["agent-browser", "curl"],
+  "assertions": [
+    {
+      "id": "VAL-CROSS-004",
+      "title": "Keyboard-first navigation remains viable across shell and drawers",
+      "status": "pass",
+      "steps": [
+        {
+          "action": "Open / and press Tab once",
+          "expected": "A browser-visible shell entry point is reachable by keyboard with visible focus treatment",
+          "observed": "On /, the first Tab focused the visible 'Skip to content' link. The active element reported tag=A, text='SKIP TO CONTENT', class='skip-link', and the focus ring was captured in VAL-CROSS-004-focus-home.png."
+        },
+        {
+          "action": "Open /projects and tab through the shared shell into the filter rail",
+          "expected": "Projects filters are keyboard reachable with visible focus styling",
+          "observed": "On /projects, repeated Tab navigation reached the filter rail. The focused element reported tag=BUTTON, text='ALL', aria-pressed='true', with class tokens including 'focus-visible:ring-2 focus-visible:ring-white/45', and the visible focused state was captured in VAL-CROSS-004-focus-projects.png."
+        },
+        {
+          "action": "Use keyboard-only navigation on / to focus and activate a project link",
+          "expected": "A project link is reachable without pointer interaction and opens its case-study route from the keyboard",
+          "observed": "On /, keyboard traversal reached the featured case card link for 'United vs Delta ORD-LGA Pricing Simulator' with href='/projects/ord-lga-price-war'. Pressing Enter navigated to http://localhost:3501/projects/ord-lga-price-war, confirming keyboard activation of a project link."
+        },
+        {
+          "action": "Open /projects/tesla-nacs and tab to the trust/provenance entry point, then activate it from the keyboard",
+          "expected": "The assigned case-study route exposes a visible trust/provenance entry point on default load that is keyboard reachable, shows visible focus treatment, and can be activated without pointer input",
+          "observed": "On /projects/tesla-nacs, keyboard traversal reached the visible trust entry button labeled 'Trust, provenance & current run'. The focused element reported tag=BUTTON, aria-expanded='true', and class tokens including 'focus-visible:ring-2 focus-visible:ring-amber-200'. The focused state was captured in VAL-CROSS-004-focus-drawer.png. Pressing Enter toggled the control from 'HIDE TRUST DETAILS' to 'OPEN TRUST DETAILS' and set aria-expanded='false' while hiding the controlled panel, confirming keyboard activation of the trust/provenance entry point."
+        }
+      ],
+      "evidence": {
+        "screenshots": [
+          "portfolio-synthesis/keyboard-trust-rerun/VAL-CROSS-004-home-annotated.png",
+          "portfolio-synthesis/keyboard-trust-rerun/VAL-CROSS-004-focus-home.png",
+          "portfolio-synthesis/keyboard-trust-rerun/VAL-CROSS-004-projects-annotated.png",
+          "portfolio-synthesis/keyboard-trust-rerun/VAL-CROSS-004-focus-projects.png",
+          "portfolio-synthesis/keyboard-trust-rerun/VAL-CROSS-004-focus-project-link-home.png",
+          "portfolio-synthesis/keyboard-trust-rerun/VAL-CROSS-004-detail-annotated.png",
+          "portfolio-synthesis/keyboard-trust-rerun/VAL-CROSS-004-focus-drawer.png"
+        ],
+        "consoleErrors": "none observed during the rerun flow on /, /projects, /projects/ord-lga-price-war, or /projects/tesla-nacs",
+        "network": "GET / -> 200; GET /projects -> 200; GET /projects/ord-lga-price-war -> 200; GET /projects/tesla-nacs -> 200"
+      },
+      "issues": null
+    }
+  ],
+  "frictions": [
+    {
+      "description": "The /projects interactive snapshot exposed the filter rail but did not enumerate the project cards as interactive refs during this rerun, so keyboard project-link activation evidence was captured from the home page featured case card instead.",
+      "resolved": true,
+      "resolution": "Validated keyboard project-link activation on / by tabbing to the featured ORD-LGA case card and pressing Enter to navigate to /projects/ord-lga-price-war.",
+      "affectedAssertions": ["VAL-CROSS-004"]
+    }
+  ],
+  "blockers": [],
+  "summary": "Retested 1 assertion. VAL-CROSS-004 passed on the current 3501 runtime: keyboard traversal remained viable across the global shell and /projects filters, a project link was activated from the keyboard, and the visible trust/provenance entry point on /projects/tesla-nacs was reachable with Tab, showed visible focus treatment, and toggled via Enter without pointer interaction."
+}
