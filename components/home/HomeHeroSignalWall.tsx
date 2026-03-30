@@ -101,100 +101,116 @@ export function HomeHeroSignalWall({ hero, kpis }: Props) {
   const annY = c.yScale(mode.primarySeries[annIdx]);
 
   return (
-    <section className="relative -mx-5 px-5 pt-20 sm:-mx-7 sm:px-7 md:pt-28 lg:-mx-10 lg:px-10 lg:pt-32">
-      <div className="relative mx-auto w-full max-w-[1100px]">
+    <section className="relative -mx-5 overflow-hidden px-5 pb-4 pt-16 sm:-mx-7 sm:px-7 sm:pt-20 lg:-mx-10 lg:px-10 lg:pt-24">
+      <div
+        aria-hidden="true"
+        className="absolute inset-x-0 top-0 h-[560px] bg-[radial-gradient(circle_at_top,rgba(56,189,248,0.2),transparent_48%),radial-gradient(circle_at_18%_22%,rgba(14,165,233,0.12),transparent_26%),linear-gradient(180deg,rgba(4,10,20,0.7),rgba(4,10,20,0))]"
+      />
+      <div className="relative mx-auto w-full max-w-[1180px] rounded-[34px] border border-sky-300/12 bg-[linear-gradient(180deg,rgba(7,12,22,0.92),rgba(5,10,18,0.82))] px-6 py-8 shadow-[0_30px_120px_rgba(2,12,24,0.42)] backdrop-blur-sm sm:px-8 sm:py-10 lg:px-12 lg:py-12">
+        <div className="absolute inset-x-10 top-0 h-px bg-gradient-to-r from-transparent via-sky-200/80 to-transparent" aria-hidden="true" />
 
-        {/* ── 2-Column Hero Layout ──────────────────── */}
-        <div className="grid gap-12 lg:grid-cols-[1fr_1.1fr] lg:items-start lg:gap-16">
-
-          {/* Left Column: Identity + CTAs */}
-          <div>
-            {/* Eyebrow */}
-            <motion.p
-              className="mb-5 font-mono text-[11px] uppercase tracking-[0.2em] text-slate-500"
-              {...fade(rm, 0.1)}
+        <div className="grid gap-14 lg:grid-cols-[minmax(0,1.05fr)_minmax(420px,0.95fr)] lg:items-center lg:gap-16">
+          <div className="min-w-0">
+            <motion.div
+              className="inline-flex items-center gap-3 rounded-full border border-sky-300/18 bg-sky-300/[0.07] px-4 py-2 font-mono text-[10px] uppercase tracking-[0.22em] text-sky-100/80 sm:text-[11px]"
+              {...fade(rm, 0.08)}
             >
+              <span className="inline-flex h-2 w-2 rounded-full bg-sky-300 shadow-[0_0_16px_rgba(125,211,252,0.85)]" />
               {hero.eyebrow}
-            </motion.p>
+            </motion.div>
 
-            {/* Headline */}
             <motion.h1
-              className="font-display text-[clamp(2.8rem,5.5vw,4rem)] leading-[1.05] tracking-[-0.03em] text-white"
-              {...fade(rm, 0.2)}
+              className="mt-7 max-w-[11ch] text-balance font-display text-[clamp(3.65rem,10vw,6.5rem)] leading-[0.92] tracking-[-0.05em] text-white"
+              {...fade(rm, 0.16)}
             >
-              {hero.headline}
+              <span className="bg-[linear-gradient(135deg,#ffffff_18%,#d9f5ff_52%,#7dd3fc_92%)] bg-clip-text text-transparent">
+                {hero.headline}
+              </span>
             </motion.h1>
 
-            {/* Subhead — larger, higher contrast, concrete */}
             <motion.p
-              className="mt-6 max-w-[52ch] text-[17px] leading-[1.65] text-slate-300"
-              {...fade(rm, 0.3)}
+              className="mt-7 max-w-[44rem] text-[18px] leading-[1.8] text-slate-200 sm:text-[19px]"
+              {...fade(rm, 0.24)}
             >
               {hero.subhead}
             </motion.p>
 
-            {/* Proof line */}
-            <motion.p
-              className="mt-4 font-mono text-[12px] leading-relaxed tracking-wide text-slate-500"
-              {...fade(rm, 0.35)}
+            <motion.div
+              className="mt-8 flex flex-wrap items-center gap-3 text-[11px] uppercase tracking-[0.18em] text-sky-100/65 sm:gap-4"
+              {...fade(rm, 0.3)}
             >
-              Pricing · Fraud · Retail Ops · Geospatial · Infrastructure · Content — all evidence-tagged
-            </motion.p>
+              <span className="rounded-full border border-white/10 px-3 py-1.5 font-mono">Pricing</span>
+              <span className="rounded-full border border-white/10 px-3 py-1.5 font-mono">Fraud</span>
+              <span className="rounded-full border border-white/10 px-3 py-1.5 font-mono">Operations</span>
+              <span className="rounded-full border border-white/10 px-3 py-1.5 font-mono">Geo Strategy</span>
+              <span className="rounded-full border border-white/10 px-3 py-1.5 font-mono">Infrastructure</span>
+              <span className="rounded-full border border-white/10 px-3 py-1.5 font-mono">Content</span>
+            </motion.div>
 
-            {/* CTAs */}
-            <motion.div className="mt-8 flex items-center gap-4" {...fade(rm, 0.4)}>
-              <Link href={hero.ctaPrimary.href} className="cta-primary">
+            <motion.div className="mt-10 flex flex-wrap items-center gap-4" {...fade(rm, 0.36)}>
+              <Link href={hero.ctaPrimary.href} className="cta-primary shadow-[0_18px_48px_rgba(125,211,252,0.2)]">
                 {hero.ctaPrimary.label}
               </Link>
-              <Link href={hero.ctaSecondary.href} className="cta-secondary">
+              <Link href={hero.ctaSecondary.href} className="cta-secondary bg-white/[0.03]">
                 {hero.ctaSecondary.label}
               </Link>
             </motion.div>
           </div>
 
-          {/* Right Column: Signal Chart */}
-          <motion.div className="mt-4 lg:mt-0" {...fade(rm, 0.5)}>
-            {/* Mode pills */}
-            <div className="mb-3 flex items-center gap-4">
-              {hero.modes.map((item) => {
-                const active = item.id === modeId;
-                return (
-                  <button
-                    key={item.id}
-                    type="button"
-                    onClick={() => setModeId(item.id)}
-                    className={`font-mono text-[11px] uppercase tracking-[0.1em] transition-colors duration-200 ${active
-                      ? "text-white"
-                      : "text-slate-600 hover:text-slate-400"
-                      }`}
-                    aria-pressed={active}
-                  >
-                    {active && <span className="mr-1.5 inline-block h-1.5 w-1.5 rounded-full bg-white align-middle" />}
-                    {item.label}
-                  </button>
-                );
-              })}
-            </div>
+          <motion.div className="mt-2 lg:mt-0" {...fade(rm, 0.42)}>
+            <div className="rounded-[28px] border border-sky-300/12 bg-[linear-gradient(180deg,rgba(10,18,30,0.95),rgba(7,12,22,0.94))] p-5 shadow-[inset_0_1px_0_rgba(255,255,255,0.03)] sm:p-6">
+              <div className="mb-4 flex flex-wrap items-center justify-between gap-4">
+                <div>
+                  <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-sky-100/55">
+                    Live decision canvas
+                  </p>
+                  <p className="mt-2 max-w-md text-sm leading-6 text-slate-300">
+                    A single accent-led signal wall tracks scenario posture, downside pressure, and allocation efficiency without the dashboard clutter.
+                  </p>
+                </div>
+                <div className="flex flex-wrap items-center gap-3">
+                  {hero.modes.map((item) => {
+                    const active = item.id === modeId;
+                    return (
+                      <button
+                        key={item.id}
+                        type="button"
+                        onClick={() => setModeId(item.id)}
+                        className={`rounded-full border px-3 py-1.5 font-mono text-[10px] uppercase tracking-[0.14em] transition-colors duration-200 ${active
+                          ? "border-sky-200/40 bg-sky-300/10 text-sky-50"
+                          : "border-white/8 text-slate-500 hover:border-sky-200/20 hover:text-slate-200"
+                          }`}
+                        aria-pressed={active}
+                      >
+                        {active && <span className="mr-1.5 inline-block h-1.5 w-1.5 rounded-full bg-sky-300 align-middle" />}
+                        {item.label}
+                      </button>
+                    );
+                  })}
+                </div>
+              </div>
 
-            {/* Chart container */}
-            <div className="rounded-xl border border-white/[0.06] bg-white/[0.015] px-4 py-5 sm:px-6">
+              <div className="rounded-[24px] border border-white/[0.06] bg-[linear-gradient(180deg,rgba(255,255,255,0.025),rgba(255,255,255,0.01))] px-4 py-5 sm:px-6">
+                <p className="mb-3 font-mono text-[9px] uppercase tracking-[0.18em] text-sky-100/48">
+                  {mode.axisLabel} ({mode.unit})
+                </p>
 
-              {/* Y-axis label */}
-              <p className="mb-2 font-mono text-[9px] uppercase tracking-[0.14em] text-slate-600">
-                {mode.axisLabel} ({mode.unit})
-              </p>
-
-              <svg
-                viewBox={`-40 0 ${c.w + 130} ${c.h + 16}`}
-                className="h-[200px] w-full sm:h-[260px]"
-                preserveAspectRatio="none"
-                role="img"
-                aria-label={`${mode.label}: ${mode.description}`}
-              >
+                <svg
+                  viewBox={`-40 0 ${c.w + 130} ${c.h + 16}`}
+                  className="h-[200px] w-full sm:h-[260px]"
+                  preserveAspectRatio="none"
+                  role="img"
+                  aria-label={`${mode.label}: ${mode.description}`}
+                >
                 <defs>
                   <filter id="primary-glow">
                     <feGaussianBlur stdDeviation="5" />
                   </filter>
+                  <linearGradient id="hero-primary-line" x1="0%" y1="0%" x2="100%" y2="0%">
+                    <stop offset="0%" stopColor="rgba(125,211,252,0.64)" />
+                    <stop offset="50%" stopColor="rgba(147,197,253,0.92)" />
+                    <stop offset="100%" stopColor="rgba(186,230,253,0.98)" />
+                  </linearGradient>
                 </defs>
 
                 {/* Grid lines */}
@@ -230,7 +246,7 @@ export function HomeHeroSignalWall({ hero, kpis }: Props) {
                 <motion.path
                   d={c.primaryPath}
                   fill="none"
-                  stroke="rgba(140,160,240,0.35)"
+                  stroke="rgba(125,211,252,0.34)"
                   strokeWidth={7}
                   strokeLinecap="round"
                   filter="url(#primary-glow)"
@@ -243,7 +259,7 @@ export function HomeHeroSignalWall({ hero, kpis }: Props) {
                 <motion.path
                   d={c.stressPath}
                   fill="none"
-                  stroke="rgba(200,80,100,0.45)"
+                  stroke="rgba(125,211,252,0.3)"
                   strokeWidth={1.5}
                   strokeLinecap="round"
                   initial={rm ? false : { pathLength: 0 }}
@@ -255,7 +271,7 @@ export function HomeHeroSignalWall({ hero, kpis }: Props) {
                 <motion.path
                   d={c.baselinePath}
                   fill="none"
-                  stroke="rgba(60,190,170,0.45)"
+                  stroke="rgba(125,211,252,0.2)"
                   strokeWidth={1.5}
                   strokeLinecap="round"
                   initial={rm ? false : { pathLength: 0 }}
@@ -267,7 +283,7 @@ export function HomeHeroSignalWall({ hero, kpis }: Props) {
                 <motion.path
                   d={c.primaryPath}
                   fill="none"
-                  stroke="rgba(140,160,240,0.9)"
+                  stroke="url(#hero-primary-line)"
                   strokeWidth={2.5}
                   strokeLinecap="round"
                   initial={rm ? false : { pathLength: 0 }}
@@ -285,12 +301,12 @@ export function HomeHeroSignalWall({ hero, kpis }: Props) {
                   strokeWidth={1}
                   strokeDasharray="4 3"
                 />
-                <circle cx={annX} cy={annY} r={4} fill="rgba(140,160,240,0.9)" stroke="rgba(10,10,14,1)" strokeWidth={2} />
+                <circle cx={annX} cy={annY} r={4} fill="rgba(125,211,252,0.92)" stroke="rgba(10,10,14,1)" strokeWidth={2} />
                 {/* Annotation label — positioned well above line to avoid overlap */}
                 <text
                   x={annX + 10}
                   y={Math.min(annY - 40, c.h * 0.15)}
-                  fill="rgba(255,255,255,0.65)"
+                  fill="rgba(224,242,254,0.82)"
                   fontSize="9"
                   fontFamily="var(--font-mono)"
                   fontWeight="500"
@@ -300,7 +316,7 @@ export function HomeHeroSignalWall({ hero, kpis }: Props) {
                 <text
                   x={annX + 10}
                   y={Math.min(annY - 28, c.h * 0.15 + 12)}
-                  fill="rgba(255,255,255,0.3)"
+                  fill="rgba(224,242,254,0.38)"
                   fontSize="8"
                   fontFamily="var(--font-mono)"
                 >
@@ -317,13 +333,13 @@ export function HomeHeroSignalWall({ hero, kpis }: Props) {
                 />
 
                 {/* ── Direct endpoint labels on lines ── */}
-                <text x={c.primaryEnd[0] + 8} y={c.primaryEnd[1] + 1} fill="rgba(140,160,240,0.8)" fontSize="10" fontFamily="var(--font-mono)" fontWeight="500" dominantBaseline="middle">
+                <text x={c.primaryEnd[0] + 8} y={c.primaryEnd[1] + 1} fill="rgba(224,242,254,0.82)" fontSize="10" fontFamily="var(--font-mono)" fontWeight="500" dominantBaseline="middle">
                   Policy
                 </text>
-                <text x={c.baselineEnd[0] + 8} y={c.baselineEnd[1] + 1} fill="rgba(60,190,170,0.6)" fontSize="10" fontFamily="var(--font-mono)" dominantBaseline="middle">
+                <text x={c.baselineEnd[0] + 8} y={c.baselineEnd[1] + 1} fill="rgba(224,242,254,0.55)" fontSize="10" fontFamily="var(--font-mono)" dominantBaseline="middle">
                   Baseline
                 </text>
-                <text x={c.stressEnd[0] + 8} y={c.stressEnd[1] + 1} fill="rgba(200,80,100,0.6)" fontSize="10" fontFamily="var(--font-mono)" dominantBaseline="middle">
+                <text x={c.stressEnd[0] + 8} y={c.stressEnd[1] + 1} fill="rgba(224,242,254,0.42)" fontSize="10" fontFamily="var(--font-mono)" dominantBaseline="middle">
                   Stress
                 </text>
 
@@ -338,34 +354,36 @@ export function HomeHeroSignalWall({ hero, kpis }: Props) {
                 >
                   {mode.xAxisLabel.toUpperCase()}
                 </text>
-              </svg>
+                </svg>
 
-              {/* Scenario context */}
-              <p className="mt-3 font-mono text-[10px] uppercase tracking-[0.12em] text-slate-600">
-                {mode.scenario} · {mode.unit}
-              </p>
+                <p className="mt-4 font-mono text-[10px] uppercase tracking-[0.16em] text-sky-100/48">
+                  {mode.scenario} · {mode.unit}
+                </p>
+              </div>
             </div>
           </motion.div>
         </div>
 
-        {/* ── KPI Proof Strip — Editorial Layout ─────── */}
         <motion.div
-          className="mt-16 flex flex-col gap-8 sm:mt-20 sm:flex-row sm:items-baseline sm:gap-16"
+          className="mt-12 grid gap-4 border-t border-white/6 pt-8 sm:grid-cols-3 sm:gap-5 sm:pt-10"
           {...fade(rm, 0.7)}
         >
           {kpis.map((item) => (
-            <div key={item.label} className="flex items-baseline gap-3">
-              <span className="text-[40px] font-bold tabular-nums leading-none tracking-tight text-white">
-                <MetricCount value={Number(item.value)} pad={2} durationMs={1200} />
-              </span>
-              <div>
-                <p className="text-[14px] font-medium text-slate-300">
-                  {item.label}
-                </p>
-                <p className="mt-0.5 text-[12px] leading-snug text-slate-500">
-                  {item.hint}
-                </p>
+            <div
+              key={item.label}
+              className="rounded-[22px] border border-sky-300/10 bg-white/[0.025] px-5 py-5 shadow-[inset_0_1px_0_rgba(255,255,255,0.02)]"
+            >
+              <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-sky-100/52">
+                {item.label}
+              </p>
+              <div className="mt-3 flex items-baseline gap-3">
+                <span className="text-[44px] font-bold tabular-nums leading-none tracking-[-0.04em] text-white">
+                  <MetricCount value={Number(item.value)} pad={2} durationMs={1200} />
+                </span>
               </div>
+              <p className="mt-3 max-w-[26ch] text-[13px] leading-6 text-slate-400">
+                {item.hint}
+              </p>
             </div>
           ))}
         </motion.div>
