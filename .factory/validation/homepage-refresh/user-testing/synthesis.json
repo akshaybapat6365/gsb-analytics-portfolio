@@ -1,0 +1,21 @@
+{
+  "milestone": "homepage-refresh",
+  "round": 1,
+  "status": "pass",
+  "assertionsSummary": {
+    "total": 4,
+    "passed": 4,
+    "failed": 0,
+    "blocked": 0
+  },
+  "passedAssertions": [
+    "VAL-HOME-001",
+    "VAL-HOME-002",
+    "VAL-HOME-003",
+    "VAL-HOME-004"
+  ],
+  "failedAssertions": [],
+  "blockedAssertions": [],
+  "appliedUpdates": [],
+  "previousRound": null
+}

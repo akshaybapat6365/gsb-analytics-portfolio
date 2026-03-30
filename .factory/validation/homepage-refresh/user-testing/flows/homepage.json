@@ -1,0 +1,123 @@
+{
+  "groupId": "homepage",
+  "testedAt": "2026-03-30T23:35:31Z",
+  "isolation": {
+    "appUrl": "http://localhost:3501/",
+    "missionDir": "/home/mostltyharmless/.factory/missions/0bc5abab-8b5e-4fc7-8d9d-3feb9bdd1a02",
+    "assignedAssertions": ["VAL-HOME-001", "VAL-HOME-002", "VAL-HOME-003", "VAL-HOME-004"],
+    "routeScope": ["/"]
+  },
+  "toolsUsed": ["agent-browser", "curl"],
+  "assertions": [
+    {
+      "id": "VAL-HOME-001",
+      "title": "Home hero lands as a spacious, polished decision-intelligence intro",
+      "status": "pass",
+      "steps": [
+        {
+          "action": "Open http://localhost:3501/ and wait for the homepage to settle",
+          "expected": "A spacious homepage hero with a prominent gradient headline and obvious primary actions is visible",
+          "observed": "The hero fills the top of the page with a large gradient headline ('Strategy simulators that move real capital.'), generous spacing, and visible primary CTAs for 'Explore Simulators' and 'View Resume'."
+        },
+        {
+          "action": "Inspect the top-of-page supporting UI",
+          "expected": "Supporting UI is simplified and does not crowd the hero",
+          "observed": "The shell stays minimal with compact nav pills and light utility icons, while the hero remains the dominant visual surface."
+        }
+      ],
+      "evidence": {
+        "screenshots": [
+          "homepage-refresh/homepage/VAL-HOME-001-home-hero.png",
+          "homepage-refresh/homepage/VAL-HOME-001-home-hero-cta.png",
+          "homepage-refresh/homepage/VAL-HOME-001-home-hero-annotated.png"
+        ],
+        "consoleErrors": "none",
+        "network": "GET / -> 200; homepage document, fonts, CSS, JS, and hero asset loaded successfully on the production-like runtime."
+      },
+      "issues": null
+    },
+    {
+      "id": "VAL-HOME-002",
+      "title": "Home project cards are simplified into cleaner evidence-linked previews",
+      "status": "pass",
+      "steps": [
+        {
+          "action": "Inspect the homepage project grid",
+          "expected": "All six case studies appear as simplified cards with image, title, one-line description, evidence badge, and a working case-study link",
+          "observed": "The grid shows six cards, each with a visual preview, title, concise summary, evidence/state badge (for example MIXED or MODELED), as-of date, and a visible 'Case study' link target."
+        },
+        {
+          "action": "Hover a case-study card",
+          "expected": "A visible hover-lift or equivalent elevated interaction state appears",
+          "observed": "Hovering the first card produced an elevated interactive state visible in the captured hover screenshot."
+        },
+        {
+          "action": "Activate a homepage card link",
+          "expected": "The card opens its corresponding detail page",
+          "observed": "Clicking the ORD-LGA card navigated to /projects/ord-lga-price-war, confirming the homepage cards link to live detail routes."
+        }
+      ],
+      "evidence": {
+        "screenshots": [
+          "homepage-refresh/homepage/VAL-HOME-002-home-card-hover.png",
+          "homepage-refresh/homepage/VAL-HOME-002-home-card-links.png",
+          "homepage-refresh/homepage/VAL-HOME-002-home-card-link-destination.png"
+        ],
+        "consoleErrors": "none",
+        "network": "Homepage DOM exposed six /projects/* destinations; clicking the first card navigated to GET /projects/ord-lga-price-war successfully."
+      },
+      "issues": null
+    },
+    {
+      "id": "VAL-HOME-003",
+      "title": "Homepage secondary sections are reduced to concise, low-noise framing",
+      "status": "pass",
+      "steps": [
+        {
+          "action": "Scroll below the hero and inspect the secondary homepage framing",
+          "expected": "The homepage keeps secondary framing concise, with any trust-taxonomy text reduced to a subtle line and explanatory copy kept minimal",
+          "observed": "Below the hero there is only a thin single-line trust/evidence statement and a concise 'Six cleaner previews. One fast path to the full case study.' section header with short supporting copy. There is no large trust taxonomy block or noisy explanatory section competing with the cards."
+        }
+      ],
+      "evidence": {
+        "screenshots": [
+          "homepage-refresh/homepage/VAL-HOME-003-home-midpage.png"
+        ],
+        "consoleErrors": "none",
+        "network": "No additional failing requests observed while validating the midpage section."
+      },
+      "issues": null
+    },
+    {
+      "id": "VAL-HOME-004",
+      "title": "Homepage styling uses one consistent accent system with refined support surfaces",
+      "status": "pass",
+      "steps": [
+        {
+          "action": "Inspect the hero, stat row, and direct homepage sections",
+          "expected": "The homepage uses one consistent accent color, keeps the stat row polished/legible, and relies on subtle atmospheric treatment rather than noisy clutter",
+          "observed": "The page consistently uses a cool blue accent across the headline, chart glow, and section treatments. The three stat cards in the hero are legible and restrained, and the background atmosphere stays subtle with soft gradients/glow instead of heavy visual noise."
+        }
+      ],
+      "evidence": {
+        "screenshots": [
+          "homepage-refresh/homepage/VAL-HOME-004-home-stats.png",
+          "homepage-refresh/homepage/VAL-HOME-004-home-stats-atmosphere.png"
+        ],
+        "consoleErrors": "none",
+        "network": "No failing asset loads or console-visible runtime issues were observed while validating the accent/stats surfaces."
+      },
+      "issues": null
+    }
+  ],
+  "frictions": [
+    {
+      "description": "Some full-page screenshots taken after scrolling captured the sticky header partway down the image, which can make the midpage composition harder to read at a glance.",
+      "resolved": true,
+      "resolution": "Reloaded and captured additional top-of-page and annotated screenshots so each assertion still has clear visual evidence.",
+      "affectedAssertions": ["VAL-HOME-003", "VAL-HOME-004"]
+    }
+  ],
+  "blockers": [],
+  "summary": "Tested 4 homepage-refresh assertions on the production-like runtime at http://localhost:3501/. All four passed: the hero is spacious and CTA-forward, the six cards are cleaner evidence-linked previews with working destinations and hover state, the secondary framing is concise, and the styling uses a consistent restrained accent system."
+}
