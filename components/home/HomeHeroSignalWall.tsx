@@ -104,18 +104,21 @@ export function HomeHeroSignalWall({ hero, kpis }: Props) {
     <section className="relative -mx-5 overflow-hidden px-5 pb-4 pt-16 sm:-mx-7 sm:px-7 sm:pt-20 lg:-mx-10 lg:px-10 lg:pt-24">
       <div
         aria-hidden="true"
-        className="absolute inset-x-0 top-0 h-[560px] bg-[radial-gradient(circle_at_top,rgba(56,189,248,0.2),transparent_48%),radial-gradient(circle_at_18%_22%,rgba(14,165,233,0.12),transparent_26%),linear-gradient(180deg,rgba(4,10,20,0.7),rgba(4,10,20,0))]"
+        className="absolute inset-x-0 top-0 h-[620px] bg-[radial-gradient(circle_at_top,rgba(245,158,11,0.18),transparent_38%),radial-gradient(circle_at_16%_18%,rgba(251,191,36,0.14),transparent_24%),radial-gradient(circle_at_82%_10%,rgba(244,114,36,0.14),transparent_28%),linear-gradient(180deg,rgba(24,14,8,0.92),rgba(9,10,16,0))]"
       />
-      <div className="relative mx-auto w-full max-w-[1180px] rounded-[34px] border border-sky-300/12 bg-[linear-gradient(180deg,rgba(7,12,22,0.92),rgba(5,10,18,0.82))] px-6 py-8 shadow-[0_30px_120px_rgba(2,12,24,0.42)] backdrop-blur-sm sm:px-8 sm:py-10 lg:px-12 lg:py-12">
-        <div className="absolute inset-x-10 top-0 h-px bg-gradient-to-r from-transparent via-sky-200/80 to-transparent" aria-hidden="true" />
+      <div className="absolute inset-x-0 top-24 h-[540px] bg-[radial-gradient(circle_at_center,rgba(120,53,15,0.16),transparent_56%)]" aria-hidden="true" />
+      <div className="relative mx-auto w-full max-w-[1180px] rounded-[38px] border border-white/10 bg-[linear-gradient(145deg,rgba(47,29,18,0.7),rgba(14,14,20,0.9)_36%,rgba(11,11,18,0.96)_100%)] px-6 py-8 shadow-[0_34px_140px_rgba(11,7,4,0.52)] backdrop-blur-xl sm:px-8 sm:py-10 lg:px-12 lg:py-12">
+        <div className="absolute inset-x-10 top-0 h-px bg-gradient-to-r from-transparent via-amber-100/70 to-transparent" aria-hidden="true" />
+        <div className="absolute inset-x-8 bottom-0 h-px bg-gradient-to-r from-transparent via-orange-200/20 to-transparent" aria-hidden="true" />
+        <div className="absolute inset-0 rounded-[38px] bg-[linear-gradient(180deg,rgba(255,255,255,0.05),transparent_22%,transparent_78%,rgba(255,255,255,0.02))]" aria-hidden="true" />
 
         <div className="grid gap-14 lg:grid-cols-[minmax(0,1.05fr)_minmax(420px,0.95fr)] lg:items-center lg:gap-16">
           <div className="min-w-0">
             <motion.div
-              className="inline-flex items-center gap-3 rounded-full border border-sky-300/18 bg-sky-300/[0.07] px-4 py-2 font-mono text-[10px] uppercase tracking-[0.22em] text-sky-100/80 sm:text-[11px]"
+              className="inline-flex items-center gap-3 rounded-full border border-amber-100/18 bg-[linear-gradient(135deg,rgba(251,191,36,0.12),rgba(255,255,255,0.05))] px-4 py-2 font-mono text-[10px] uppercase tracking-[0.22em] text-stone-100/80 sm:text-[11px]"
               {...fade(rm, 0.08)}
             >
-              <span className="inline-flex h-2 w-2 rounded-full bg-sky-300 shadow-[0_0_16px_rgba(125,211,252,0.85)]" />
+              <span className="inline-flex h-2 w-2 rounded-full bg-amber-300 shadow-[0_0_18px_rgba(251,191,36,0.75)]" />
               {hero.eyebrow}
             </motion.div>
 
@@ -123,49 +126,55 @@ export function HomeHeroSignalWall({ hero, kpis }: Props) {
               className="mt-7 max-w-[11ch] text-balance font-display text-[clamp(3.65rem,10vw,6.5rem)] leading-[0.92] tracking-[-0.05em] text-white"
               {...fade(rm, 0.16)}
             >
-              <span className="bg-[linear-gradient(135deg,#ffffff_18%,#d9f5ff_52%,#7dd3fc_92%)] bg-clip-text text-transparent">
+              <span className="bg-[linear-gradient(135deg,#fff7ed_10%,#fde68a_38%,#fb923c_74%,#f8fafc_100%)] bg-clip-text text-transparent">
                 {hero.headline}
               </span>
             </motion.h1>
 
             <motion.p
-              className="mt-7 max-w-[44rem] text-[18px] leading-[1.8] text-slate-200 sm:text-[19px]"
+              className="mt-7 max-w-[44rem] text-[18px] leading-[1.8] text-stone-200/82 sm:text-[19px]"
               {...fade(rm, 0.24)}
             >
               {hero.subhead}
             </motion.p>
 
             <motion.div
-              className="mt-8 flex flex-wrap items-center gap-3 text-[11px] uppercase tracking-[0.18em] text-sky-100/65 sm:gap-4"
+              className="mt-8 flex flex-wrap items-center gap-3 text-[11px] uppercase tracking-[0.18em] text-stone-200/58 sm:gap-4"
               {...fade(rm, 0.3)}
             >
-              <span className="rounded-full border border-white/10 px-3 py-1.5 font-mono">Pricing</span>
-              <span className="rounded-full border border-white/10 px-3 py-1.5 font-mono">Fraud</span>
-              <span className="rounded-full border border-white/10 px-3 py-1.5 font-mono">Operations</span>
-              <span className="rounded-full border border-white/10 px-3 py-1.5 font-mono">Geo Strategy</span>
-              <span className="rounded-full border border-white/10 px-3 py-1.5 font-mono">Infrastructure</span>
-              <span className="rounded-full border border-white/10 px-3 py-1.5 font-mono">Content</span>
+              <span className="rounded-full border border-white/10 bg-white/[0.03] px-3 py-1.5 font-mono">Pricing</span>
+              <span className="rounded-full border border-white/10 bg-white/[0.03] px-3 py-1.5 font-mono">Fraud</span>
+              <span className="rounded-full border border-white/10 bg-white/[0.03] px-3 py-1.5 font-mono">Operations</span>
+              <span className="rounded-full border border-white/10 bg-white/[0.03] px-3 py-1.5 font-mono">Geo Strategy</span>
+              <span className="rounded-full border border-white/10 bg-white/[0.03] px-3 py-1.5 font-mono">Infrastructure</span>
+              <span className="rounded-full border border-white/10 bg-white/[0.03] px-3 py-1.5 font-mono">Content</span>
             </motion.div>
 
             <motion.div className="mt-10 flex flex-wrap items-center gap-4" {...fade(rm, 0.36)}>
-              <Link href={hero.ctaPrimary.href} className="cta-primary shadow-[0_18px_48px_rgba(125,211,252,0.2)]">
+              <Link
+                href={hero.ctaPrimary.href}
+                className="cta-primary border-amber-100/30 bg-[linear-gradient(135deg,rgba(254,243,199,0.98),rgba(251,191,36,0.92))] text-stone-950 shadow-[0_20px_55px_rgba(245,158,11,0.24)]"
+              >
                 {hero.ctaPrimary.label}
               </Link>
-              <Link href={hero.ctaSecondary.href} className="cta-secondary bg-white/[0.03]">
+              <Link
+                href={hero.ctaSecondary.href}
+                className="cta-secondary border-white/14 bg-white/[0.04] text-stone-100/86 shadow-[inset_0_1px_0_rgba(255,255,255,0.05)]"
+              >
                 {hero.ctaSecondary.label}
               </Link>
             </motion.div>
           </div>
 
           <motion.div className="mt-2 lg:mt-0" {...fade(rm, 0.42)}>
-            <div className="rounded-[28px] border border-sky-300/12 bg-[linear-gradient(180deg,rgba(10,18,30,0.95),rgba(7,12,22,0.94))] p-5 shadow-[inset_0_1px_0_rgba(255,255,255,0.03)] sm:p-6">
+            <div className="rounded-[30px] border border-white/10 bg-[linear-gradient(180deg,rgba(50,31,20,0.58),rgba(13,13,18,0.94))] p-5 shadow-[inset_0_1px_0_rgba(255,255,255,0.04)] backdrop-blur-xl sm:p-6">
               <div className="mb-4 flex flex-wrap items-center justify-between gap-4">
                 <div>
-                  <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-sky-100/55">
+                  <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-amber-100/58">
                     Live decision canvas
                   </p>
-                  <p className="mt-2 max-w-md text-sm leading-6 text-slate-300">
-                    A single accent-led signal wall tracks scenario posture, downside pressure, and allocation efficiency without the dashboard clutter.
+                  <p className="mt-2 max-w-md text-sm leading-6 text-stone-200/70">
+                    A single signal wall tracks scenario posture, downside pressure, and allocation efficiency with a calmer, warmer visual rhythm.
                   </p>
                 </div>
                 <div className="flex flex-wrap items-center gap-3">
@@ -177,12 +186,12 @@ export function HomeHeroSignalWall({ hero, kpis }: Props) {
                         type="button"
                         onClick={() => setModeId(item.id)}
                         className={`rounded-full border px-3 py-1.5 font-mono text-[10px] uppercase tracking-[0.14em] transition-colors duration-200 ${active
-                          ? "border-sky-200/40 bg-sky-300/10 text-sky-50"
-                          : "border-white/8 text-slate-500 hover:border-sky-200/20 hover:text-slate-200"
+                          ? "border-amber-100/34 bg-amber-200/[0.1] text-amber-50"
+                          : "border-white/8 text-stone-400 hover:border-orange-200/18 hover:text-stone-200"
                           }`}
                         aria-pressed={active}
                       >
-                        {active && <span className="mr-1.5 inline-block h-1.5 w-1.5 rounded-full bg-sky-300 align-middle" />}
+                        {active && <span className="mr-1.5 inline-block h-1.5 w-1.5 rounded-full bg-amber-300 align-middle" />}
                         {item.label}
                       </button>
                     );
@@ -190,8 +199,8 @@ export function HomeHeroSignalWall({ hero, kpis }: Props) {
                 </div>
               </div>
 
-              <div className="rounded-[24px] border border-white/[0.06] bg-[linear-gradient(180deg,rgba(255,255,255,0.025),rgba(255,255,255,0.01))] px-4 py-5 sm:px-6">
-                <p className="mb-3 font-mono text-[9px] uppercase tracking-[0.18em] text-sky-100/48">
+              <div className="rounded-[24px] border border-white/[0.08] bg-[linear-gradient(180deg,rgba(255,248,240,0.055),rgba(255,255,255,0.012))] px-4 py-5 sm:px-6">
+                <p className="mb-3 font-mono text-[9px] uppercase tracking-[0.18em] text-stone-200/48">
                   {mode.axisLabel} ({mode.unit})
                 </p>
 
@@ -207,9 +216,9 @@ export function HomeHeroSignalWall({ hero, kpis }: Props) {
                     <feGaussianBlur stdDeviation="5" />
                   </filter>
                   <linearGradient id="hero-primary-line" x1="0%" y1="0%" x2="100%" y2="0%">
-                    <stop offset="0%" stopColor="rgba(125,211,252,0.64)" />
-                    <stop offset="50%" stopColor="rgba(147,197,253,0.92)" />
-                    <stop offset="100%" stopColor="rgba(186,230,253,0.98)" />
+                    <stop offset="0%" stopColor="rgba(251,191,36,0.56)" />
+                    <stop offset="50%" stopColor="rgba(249,115,22,0.88)" />
+                    <stop offset="100%" stopColor="rgba(254,243,199,0.96)" />
                   </linearGradient>
                 </defs>
 
@@ -246,7 +255,7 @@ export function HomeHeroSignalWall({ hero, kpis }: Props) {
                 <motion.path
                   d={c.primaryPath}
                   fill="none"
-                  stroke="rgba(125,211,252,0.34)"
+                  stroke="rgba(251,191,36,0.26)"
                   strokeWidth={7}
                   strokeLinecap="round"
                   filter="url(#primary-glow)"
@@ -259,7 +268,7 @@ export function HomeHeroSignalWall({ hero, kpis }: Props) {
                 <motion.path
                   d={c.stressPath}
                   fill="none"
-                  stroke="rgba(125,211,252,0.3)"
+                  stroke="rgba(251,146,60,0.3)"
                   strokeWidth={1.5}
                   strokeLinecap="round"
                   initial={rm ? false : { pathLength: 0 }}
@@ -271,7 +280,7 @@ export function HomeHeroSignalWall({ hero, kpis }: Props) {
                 <motion.path
                   d={c.baselinePath}
                   fill="none"
-                  stroke="rgba(125,211,252,0.2)"
+                  stroke="rgba(245,158,11,0.22)"
                   strokeWidth={1.5}
                   strokeLinecap="round"
                   initial={rm ? false : { pathLength: 0 }}
@@ -301,12 +310,12 @@ export function HomeHeroSignalWall({ hero, kpis }: Props) {
                   strokeWidth={1}
                   strokeDasharray="4 3"
                 />
-                <circle cx={annX} cy={annY} r={4} fill="rgba(125,211,252,0.92)" stroke="rgba(10,10,14,1)" strokeWidth={2} />
+                <circle cx={annX} cy={annY} r={4} fill="rgba(251,191,36,0.92)" stroke="rgba(10,10,14,1)" strokeWidth={2} />
                 {/* Annotation label — positioned well above line to avoid overlap */}
                 <text
                   x={annX + 10}
                   y={Math.min(annY - 40, c.h * 0.15)}
-                  fill="rgba(224,242,254,0.82)"
+                  fill="rgba(254,243,199,0.82)"
                   fontSize="9"
                   fontFamily="var(--font-mono)"
                   fontWeight="500"
@@ -316,7 +325,7 @@ export function HomeHeroSignalWall({ hero, kpis }: Props) {
                 <text
                   x={annX + 10}
                   y={Math.min(annY - 28, c.h * 0.15 + 12)}
-                  fill="rgba(224,242,254,0.38)"
+                  fill="rgba(255,237,213,0.42)"
                   fontSize="8"
                   fontFamily="var(--font-mono)"
                 >
@@ -333,13 +342,13 @@ export function HomeHeroSignalWall({ hero, kpis }: Props) {
                 />
 
                 {/* ── Direct endpoint labels on lines ── */}
-                <text x={c.primaryEnd[0] + 8} y={c.primaryEnd[1] + 1} fill="rgba(224,242,254,0.82)" fontSize="10" fontFamily="var(--font-mono)" fontWeight="500" dominantBaseline="middle">
+                <text x={c.primaryEnd[0] + 8} y={c.primaryEnd[1] + 1} fill="rgba(254,243,199,0.82)" fontSize="10" fontFamily="var(--font-mono)" fontWeight="500" dominantBaseline="middle">
                   Policy
                 </text>
-                <text x={c.baselineEnd[0] + 8} y={c.baselineEnd[1] + 1} fill="rgba(224,242,254,0.55)" fontSize="10" fontFamily="var(--font-mono)" dominantBaseline="middle">
+                <text x={c.baselineEnd[0] + 8} y={c.baselineEnd[1] + 1} fill="rgba(255,237,213,0.55)" fontSize="10" fontFamily="var(--font-mono)" dominantBaseline="middle">
                   Baseline
                 </text>
-                <text x={c.stressEnd[0] + 8} y={c.stressEnd[1] + 1} fill="rgba(224,242,254,0.42)" fontSize="10" fontFamily="var(--font-mono)" dominantBaseline="middle">
+                <text x={c.stressEnd[0] + 8} y={c.stressEnd[1] + 1} fill="rgba(255,237,213,0.38)" fontSize="10" fontFamily="var(--font-mono)" dominantBaseline="middle">
                   Stress
                 </text>
 
@@ -356,7 +365,7 @@ export function HomeHeroSignalWall({ hero, kpis }: Props) {
                 </text>
                 </svg>
 
-                <p className="mt-4 font-mono text-[10px] uppercase tracking-[0.16em] text-sky-100/48">
+                <p className="mt-4 font-mono text-[10px] uppercase tracking-[0.16em] text-stone-200/44">
                   {mode.scenario} · {mode.unit}
                 </p>
               </div>
@@ -365,23 +374,23 @@ export function HomeHeroSignalWall({ hero, kpis }: Props) {
         </div>
 
         <motion.div
-          className="mt-12 grid gap-4 border-t border-white/6 pt-8 sm:grid-cols-3 sm:gap-5 sm:pt-10"
+          className="mt-12 grid gap-4 border-t border-white/8 pt-8 sm:grid-cols-3 sm:gap-5 sm:pt-10"
           {...fade(rm, 0.7)}
         >
           {kpis.map((item) => (
             <div
               key={item.label}
-              className="rounded-[22px] border border-sky-300/10 bg-white/[0.025] px-5 py-5 shadow-[inset_0_1px_0_rgba(255,255,255,0.02)]"
+              className="rounded-[24px] border border-white/10 bg-[linear-gradient(180deg,rgba(255,248,240,0.06),rgba(255,255,255,0.02))] px-5 py-5 shadow-[inset_0_1px_0_rgba(255,255,255,0.025)] backdrop-blur-md"
             >
-              <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-sky-100/52">
+              <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-stone-200/54">
                 {item.label}
               </p>
               <div className="mt-3 flex items-baseline gap-3">
-                <span className="text-[44px] font-bold tabular-nums leading-none tracking-[-0.04em] text-white">
+                <span className="text-[44px] font-bold tabular-nums leading-none tracking-[-0.04em] text-stone-50">
                   <MetricCount value={Number(item.value)} pad={2} durationMs={1200} />
                 </span>
               </div>
-              <p className="mt-3 max-w-[26ch] text-[13px] leading-6 text-slate-400">
+              <p className="mt-3 max-w-[26ch] text-[13px] leading-6 text-stone-300/62">
                 {item.hint}
               </p>
             </div>

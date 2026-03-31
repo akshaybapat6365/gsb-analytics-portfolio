@@ -138,21 +138,21 @@ function buildKpis(input: Project[]): HomeKpiItem[] {
 
   return [
     {
-      label: "Simulators shipped",
+      label: "Case studies",
       value: String(input.length).padStart(2, "0"),
-      hint: "Across pricing, fraud, retail ops, geospatial, infrastructure, and content allocation",
+      hint: "Pricing, fraud, retail ops, geospatial strategy, infrastructure, and media allocation",
       tone: "primary",
     },
     {
-      label: "Evidence-tagged claims",
+      label: "Evidence in view",
       value: String(input.length).padStart(2, "0"),
-      hint: `${mixedCount} mixed-evidence, ${modeledCount} modeled — all framed with source and as-of date`,
+      hint: `${mixedCount} mixed, ${modeledCount} modeled — every preview keeps source posture and as-of timing visible`,
       tone: "neutral",
     },
     {
-      label: "Output families",
+      label: "Decision lenses",
       value: "04",
-      hint: "ROI / NPV / ATE / Risk — delivered in every case study",
+      hint: "ROI, NPV, causal lift, and risk framing carried through the portfolio",
       tone: "success",
     },
   ];
@@ -236,10 +236,10 @@ export function buildHomePageViewModel(inputProjects: Project[] = projects): Hom
   return {
     hero: {
       eyebrow: "Decision Science · Strategy Simulation · Analytics Engineering",
-      headline: "Strategy simulators that move real capital.",
+      headline: "Warm strategy systems for high-stakes decisions.",
       subhead:
-        "I build strategy simulators for pricing, fraud, operations, and capital allocation teams — each delivers a quantified decision with sensitivity analysis and evidence framing.",
-      ctaPrimary: { label: "Explore Simulators", href: "/projects" },
+        "Six case studies in pricing, fraud, operations, geospatial strategy, infrastructure, and media allocation — each designed to feel editorial, exacting, and easy to trust at first glance.",
+      ctaPrimary: { label: "Explore Projects", href: "/projects" },
       ctaSecondary: { label: "View Resume", href: "/resume" },
       modes: buildHeroModes(),
     },
